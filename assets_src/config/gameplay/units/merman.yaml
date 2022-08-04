@@ -1,0 +1,378 @@
+---
+
+weapons:
+  - id: bident
+    rangeMin: 1
+    rangeMax: 2
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      water: 1
+    tagDamage:
+      archer: 0.35
+      soldier: 0.35
+      villager: 0.35
+      spearman: 0.25
+      dog: 0.45
+      wagon: 0.35
+      knight: 0.15
+      trebuchet: 0.20
+      mage: 0.45
+      structure: 0.15
+      commander: 0.1
+      ballista: 0.25
+      giant: 0.05
+      rifleman: 0.45
+      thief: 0.35
+
+      flagship: 0.05
+      pirate_ship: 0.25
+      warship: 0.05
+      harpoonship: 0.3
+      travelboat: 0.1
+      turtle: 0.1     
+      merman: 0.25
+
+unitClasses:
+  - id: merman
+    name: unit_class_name_merman
+    cost: 350
+    movement: amphibious
+    moveRange: 5
+    damageMultiplier: 1
+    uiEffectivenessMultiplier: 2
+    aiPriority: 1.0
+    weapons:
+      - id: bident
+    verbs:
+      - capture
+      - load
+      - pick_up_crown
+      - hand_over_crown
+    tags:
+      - merman
+      - type.amphibious
+    battleUnitCount: 4
+    passiveMultiplier: 2
+    deathVerbId: death_drop_crown
+
+
+units:
+  - class: merman
+    faction: cherrystone
+    name: unit_name_merman_cherrystone
+    mapAnimation: units/merman/cherrystone/map_merman_cherrystone
+    mapAnimationWater: units/merman/cherrystone/map_merman_swim_cherrystone
+    battleAnimation: units/merman/cherrystone/battle_merman_cherrystone
+    battleAnimationRiver: fx/river_overlay/battle_merman_river
+    battleAnimationWater: units/merman/cherrystone/battle_merman_swim_cherrystone
+    smallPortrait: units/merman/cherrystone/portrait_merman_cherrystone_small.png
+    mediumPortrait: units/merman/cherrystone/portrait_merman_cherrystone_medium.png
+    mapSpeed: 4.0
+    grabPos: [18, 24]
+    sounds:
+      attackMap: unitAttack
+      attack: merfolkAttack
+      attackEffect1: merfolkAttackEffect1
+      attackEffect2: merfolkAttackEffect2
+      attackEffect3: merfolkAttackEffect3
+      attackEffect4: merfolkAttackEffect4
+      counter: merfolkCounterAttack
+      captureShout: merfolkCaptureShout
+      death: merfolkDie
+      deathMap: unitDie
+      run: merfolkEntry
+      runMap: merfolkMapEntry
+      runWater: waterEntry
+      runMapWater: waterMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        attackAnimationSequence: counter
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 0.7
+        attackSound: counter
+        samePanel: true
+      - id: oneMermen
+        hitDelay: [1.5]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_bident_attack_1
+        effectDelay: 1.3
+        attackEffectSound: attackEffect1
+        numAttackers: 1
+        ranged: true
+      - id: twoMermen
+        hitDelay: [1.5, 1.7]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_bident_attack_2
+        effectDelay: 1.3
+        attackEffectSound: attackEffect2
+        numAttackers: 2
+        ranged: true
+      - id: threeMermen
+        hitDelay: [1.5, 1.7, 1.9]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_bident_attack_3
+        effectDelay: 1.3
+        attackEffectSound: attackEffect3
+        numAttackers: 3
+        ranged: true
+      - id: fourMermen
+        hitDelay: [1.5, 1.7, 1.9, 2.1]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_bident_attack_4
+        effectDelay: 1.3
+        attackEffectSound: attackEffect4
+        numAttackers: 4
+        ranged: true
+    shouts:      
+      merfolk_shout1: merfolkShout1
+      merfolk_shout2: merfolkShout2
+
+  - class: merman
+    faction: felheim
+    name: unit_name_merman_felheim
+    mapAnimation: units/merman/felheim/map_merman_felheim
+    mapAnimationWater: units/merman/felheim/map_merman_swim_felheim
+    battleAnimation: units/merman/felheim/battle_merman_felheim
+    battleAnimationRiver: fx/river_overlay/battle_merman_river
+    battleAnimationWater: units/merman/felheim/battle_merman_swim_felheim
+    smallPortrait: units/merman/felheim/portrait_merman_felheim_small.png
+    mediumPortrait: units/merman/felheim/portrait_merman_felheim_medium.png
+    mapSpeed: 4.0
+    grabPos: [18, 24]
+    sounds:
+      attackMap: unitAttack
+      attack: merfolkAttack
+      attackEffect1: merfolkAttackEffect1
+      attackEffect2: merfolkAttackEffect2
+      attackEffect3: merfolkAttackEffect3
+      attackEffect4: merfolkAttackEffect4
+      counter: merfolkCounterAttack
+      captureShout: merfolkCaptureShout
+      death: merfolkDie
+      deathMap: unitDie
+      run: merfolkEntry
+      runMap: merfolkMapEntry
+      runWater: waterEntry
+      runMapWater: waterMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        attackAnimationSequence: counter
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 0.7
+        attackSound: counter
+        samePanel: true
+      - id: oneMermen
+        hitDelay: [1.5]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_bident_attack_1
+        effectDelay: 1.3
+        attackEffectSound: attackEffect1
+        numAttackers: 1
+        ranged: true
+      - id: twoMermen
+        hitDelay: [1.5, 1.7]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_bident_attack_2
+        effectDelay: 1.3
+        attackEffectSound: attackEffect2
+        numAttackers: 2
+        ranged: true
+      - id: threeMermen
+        hitDelay: [1.5, 1.7, 1.9]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_bident_attack_3
+        effectDelay: 1.3
+        attackEffectSound: attackEffect3
+        numAttackers: 3
+        ranged: true
+      - id: fourMermen
+        hitDelay: [1.5, 1.7, 1.9, 2.1]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_bident_attack_4
+        effectDelay: 1.3
+        attackEffectSound: attackEffect4
+        numAttackers: 4
+        ranged: true
+    emotes:
+      idle: idle
+      mermanpose1: emote_mermanpose1
+      mermanpose2: emote_mermanpose2    
+      
+    shouts:      
+      merfolk_shout1: merfolkShout1
+      merfolk_shout2: merfolkShout2
+
+  - class: merman
+    faction: heavensong
+    name: unit_name_merman_heavensong
+    mapAnimation: units/merman/heavensong/map_merman_heavensong
+    mapAnimationWater: units/merman/heavensong/map_merman_swim_heavensong
+    battleAnimation: units/merman/heavensong/battle_merman_heavensong
+    battleAnimationRiver: fx/river_overlay/battle_merman_river
+    battleAnimationWater: units/merman/heavensong/battle_merman_swim_heavensong
+    smallPortrait: units/merman/heavensong/portrait_merman_heavensong_small.png
+    mediumPortrait: units/merman/heavensong/portrait_merman_heavensong_medium.png
+    mapSpeed: 4.0
+    grabPos: [18, 21]
+    sounds:
+      attackMap: unitAttack
+      attack: merfolkAttackYellow
+      attackEffect1: merfolkAttackEffect1
+      attackEffect2: merfolkAttackEffect2
+      attackEffect3: merfolkAttackEffect3
+      attackEffect4: merfolkAttackEffect4
+      counter: merfolkCounterAttackYellow
+      captureShout: soldierPreAttackYellow
+      death: soldierDieYellow
+      deathMap: unitDie
+      run: infantryMediumEntry2
+      runMap: infantryMediumMapEntry2
+      runWater: waterEntry
+      runMapWater: waterMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        attackAnimationSequence: counter
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 0.7
+        attackSound: counter
+        samePanel: true
+      - id: oneMermen
+        hitDelay: [1.5]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_bident_attack_1
+        effectDelay: 1.3
+        attackEffectSound: attackEffect1
+        numAttackers: 1
+        ranged: true
+      - id: twoMermen
+        hitDelay: [1.5, 1.7]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_bident_attack_2
+        effectDelay: 1.3
+        attackEffectSound: attackEffect2
+        numAttackers: 2
+        ranged: true
+      - id: threeMermen
+        hitDelay: [1.5, 1.7, 1.9]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_bident_attack_3
+        effectDelay: 1.3
+        attackEffectSound: attackEffect3
+        numAttackers: 3
+        ranged: true
+      - id: fourMermen
+        hitDelay: [1.5, 1.7, 1.9, 2.1]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_bident_attack_4
+        effectDelay: 1.3
+        attackEffectSound: attackEffect4
+        numAttackers: 4
+        ranged: true
+    shouts:
+      soldier_yellow_shout1: soldierShoutYellow1
+      soldier_yellow_shout2: soldierShoutYellow2
+      soldier_yellow_shout3: soldierShoutYellow3
+      soldier_yellow_shout4: soldierShoutYellow4
+      soldier_yellow_shout5: soldierShoutYellow5
+      soldier_muffled_talk1: cutscene/soldierMuffledTalk1
+      soldier_muffled_talk2: cutscene/soldierMuffledTalk2
+    hidden:
+      shouts:
+        - soldier_yellow_shout2
+        - soldier_yellow_shout5
+        - soldier_muffled_talk1
+        - soldier_muffled_talk2
+
+  - class: merman
+    faction: floran
+    name: unit_name_merman_floran
+    mapAnimation: units/merman/floran/map_merman_floran
+    mapAnimationWater: units/merman/floran/map_merman_swim_floran
+    battleAnimation: units/merman/floran/battle_merman_floran
+    battleAnimationRiver: fx/river_overlay/battle_merman_river
+    battleAnimationWater: units/merman/floran/battle_merman_swim_floran
+    smallPortrait: units/merman/floran/portrait_merman_floran_small.png
+    mediumPortrait: units/merman/floran/portrait_merman_floran_medium.png
+    mapSpeed: 4.0
+    grabPos: [18, 22]
+    sounds:
+      attackMap: unitAttack
+      attack: merfolkAttackGreen
+      attackEffect1: merfolkAttackEffect1
+      attackEffect2: merfolkAttackEffect2
+      attackEffect3: merfolkAttackEffect3
+      attackEffect4: merfolkAttackEffect4
+      counter: merfolkCounterAttackGreen
+      captureShout: soldierPreAttackGreen
+      death: soldierDieGreen
+      deathMap: unitDie
+      run: merfolkEntry
+      runMap: merfolkMapEntry
+      runWater: waterEntry
+      runMapWater: waterMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        attackAnimationSequence: counter
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 0.7
+        attackSound: counter
+        samePanel: true
+      - id: oneMermen
+        hitDelay: [1.5]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_bident_floran_attack_1
+        effectPaletteSwaps: true
+        effectDelay: 1.3
+        attackEffectSound: attackEffect1
+        numAttackers: 1
+        ranged: true
+      - id: twoMermen
+        hitDelay: [1.5, 1.7]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_bident_floran_attack_2
+        effectPaletteSwaps: true
+        effectDelay: 1.3
+        attackEffectSound: attackEffect2
+        numAttackers: 2
+        ranged: true
+      - id: threeMermen
+        hitDelay: [1.5, 1.7, 1.9]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_bident_floran_attack_3
+        effectPaletteSwaps: true
+        effectDelay: 1.3
+        attackEffectSound: attackEffect3
+        numAttackers: 3
+        ranged: true
+      - id: fourMermen
+        hitDelay: [1.5, 1.7, 1.9, 2.1]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_bident_floran_attack_4
+        effectPaletteSwaps: true
+        effectDelay: 1.3
+        attackEffectSound: attackEffect4
+        numAttackers: 4
+        ranged: true
+    shouts:
+      soldier_green_shout1: soldierShoutGreen1
+      soldier_green_shout2: soldierShoutGreen2
+      soldier_green_shout3: soldierShoutGreen3
+      soldier_green_shout4: soldierShoutGreen4
+      soldier_green_shout5: soldierShoutGreen5
+      soldier_green_shout6: soldierShoutGreen6
+    hidden:
+      shouts:
+        - soldier_green_shout2
+        - soldier_green_shout4
+        - soldier_green_shout5
+
+...

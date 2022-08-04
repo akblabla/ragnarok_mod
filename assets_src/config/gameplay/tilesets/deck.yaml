@@ -1,0 +1,81 @@
+---
+tilesets:
+  - id: deck
+    biomes:
+      - types: [grass, ice, desert]
+        spriteSheet: terrain_tilesets
+        spriteBase: deck_tileset
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: deck_background
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_deck.png"
+        infoScreenOffset: 70
+        fillColour: '#2a2542'
+      - types: [volcano]
+        spriteSheet: terrain_tilesets
+        spriteBase: deck_tileset
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: deck_background
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_deck.png"
+        infoScreenOffset: 70
+        fillColour: '#76231c'
+    primaryConnect: [undefined, invisible_wall_ocean,ocean,deck]
+    secondaryConnect: [sea, beach, ocean, reef, bridge]
+    decayTo: sea
+    tiles:
+      - { x: 0, y: 0, adj: "e s se !n !w !nw" }
+      - { x: 0, y: 0, adj: "w sw s se e !n" }
+      - { x: 0, y: 0, adj: "w s sw !n !e !ne" }
+      - { x: 0, y: 0, adj: "e !n !w !s !nw !sw" }
+      - { x: 0, y: 0, adj: "e w !n !s" }
+      - { x: 0, y: 0, adj: "w !n !e !s !ne !se" }
+      - { x: 0, y: 0, adj: "!n !s !e !w !ne !se !nw !sw" }
+
+      - { x: 0, y: 0, adj: "n ne e se s !w" }
+      - { x: 0, y: 0, adj: "n w e s ne nw se sw" }
+      - { x: 0, y: 0, adj: "n nw w sw s !e" }
+      - { x: 0, y: 0, adj: "s !n !w !e !nw !ne" }
+      - { x: 0, y: 0, adj: "n e s w" }
+      - { x: 0, y: 0, adj: "w s e !n" }
+      - { x: 0, y: 0, adj: "n w e !s" }
+
+      - { x: 0, y: 0, adj: "n ne e !w !s !sw" }
+      - { x: 0, y: 0, adj: "w nw n ne e !s" }
+      - { x: 0, y: 0, adj: "w nw n !e !s !se" }
+      - { x: 0, y: 0, adj: "n s !e !w" }
+      - { x: 0, y: 0, adj: "n s e !w" }
+      - { x: 0, y: 0, adj: "s e !n !w !nw" }
+      - { x: 0, y: 0, adj: "s w !n !e !ne" }
+
+      - { x: 0, y: 0, adj: "n !s !w !e !sw !se" }
+      - { x: 0, y: 0, adj: "n w s !e" }
+      - { x: 0, y: 0, adj: "n e !w !s !sw" }
+      - { x: 0, y: 0, adj: "n w !e !s !se" }
+      - { x: 0, y: 0, adj: "n w e s ne nw sw" }
+      - { x: 0, y: 0, adj: "n w e s ne nw se" }
+      - { x: 0, y: 0, adj: "n w e s nw se sw" }
+      - { x: 0, y: 0, adj: "n w e s ne se sw" }
+
+      - { x: 0, y: 0, adj: "n w e s se sw" }
+      - { x: 0, y: 0, adj: "n w e s nw sw" }
+      - { x: 0, y: 0, adj: "n w e s ne nw" }
+      - { x: 0, y: 0, adj: "n w e s ne se" }
+      - { x: 0, y: 0, adj: "n w s sw !e" }
+
+      - { x: 0, y: 0, adj: "w s e se !n" }
+      - { x: 0, y: 0, adj: "w s e sw !n" }
+      - { x: 0, y: 0, adj: "n w e ne !s" }
+      - { x: 0, y: 0, adj: "n w e nw !s" }
+      - { x: 0, y: 0, adj: "n s e se !w" }
+      - { x: 0, y: 0, adj: "n s e ne !w" }
+      - { x: 0, y: 0, adj: "n w s nw !e" }
+
+      - { x: 0, y: 0, adj: "n e s w nw" }
+      - { x: 0, y: 0, adj: "n e s w ne" }
+      - { x: 0, y: 0, adj: "n e s w se" }
+      - { x: 0, y: 0, adj: "n e s w sw" }
+      - { x: 0, y: 0, adj: "n w e s ne sw" }
+      - { x: 0, y: 0, adj: "n w e s nw se" }
+
+...

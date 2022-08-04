@@ -1,0 +1,34 @@
+---
+
+aiProfiles:
+  - id: rival_pirate
+    name: ai_profile_rival_pirate
+    attackLookAhead: 5
+    captureLookAhead: 5
+    captureBias: 1.5
+    attackBias: 1.5
+    braveryBonus: 0.4
+    recklessness: 1
+    moveBias: 0.3
+    lookAheadBias: 0.5
+    baseDoomPenalty: 100.0
+    additionalDoomPenalty: 1000.0
+    attackThreshold:
+      commander: 0.25
+      hq: 0.25
+      structure: 1
+    strategicValue:
+      commander:
+        enemy: 1.5
+      hq:
+        enemy: 0
+      structure:
+        enemy: 0
+    recruitBonus:
+      thief: 0.1
+      pirate_ship: 10
+    recruitLimit:
+      thief: 1
+      witch: 3
+      pirate_ship: 2
+...

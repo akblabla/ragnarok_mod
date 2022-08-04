@@ -1,0 +1,159 @@
+---
+
+weapons:
+  - id: citybow
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      air: 1
+      water: 1
+      land: 1
+    tagDamage:
+      archer: 0.35
+      soldier: 0.65
+      villager: 0.3
+      dog: 0.45
+      spearman: 0.55
+      balloon: 0.2
+      wagon: 0.35                  
+      mage: 0.50
+      harpy: 0.55
+      knight: 0.25
+      witch: 0.2
+      ballista: 0.25     
+      trebuchet: 0.2
+      giant: 0.2
+      dragon: 0.1
+      structure: 0.2
+      commander: 0.1
+      rifleman: 0.4
+      thief: 0.3
+      
+
+      flagship: 0.15
+      pirate_ship: 0.3
+      warship: 0.2
+      harpoonship: 0.2
+      turtle: 0.2
+      travelboat: 0.2
+      merman: 0.4
+
+
+unitClasses:
+  - id: garrison
+    name: unit_class_name_garrison
+    cost: 100
+    movement: walking
+    moveRange: 3
+    damageMultiplier: 1
+    aiPriority: 1.0
+    isRecruitable: false
+    isHidden: true
+    isSpawnable: false
+    weapons:
+      - id: citybow
+        ammo: 100
+    verbs:
+      - capture
+      - load
+    tags:
+      - soldier
+      - type.ground.light
+    battleUnitCount: 1
+
+
+units:
+  - class: garrison
+    enabled: false
+    faction: cherrystone
+    name: unit_name_soldier_cherrystone
+    mapAnimation: units/soldier/cherrystone/map_soldier_cherrystone
+    battleAnimation: units/keeper/cherrystone/battle_keeper_cherrystone
+    smallPortrait: portraits/small/portrait_structure_small.png
+    mediumPortrait: portraits/medium/city.png
+    mapSpeed: 4.0
+    sounds:
+      death: ""
+      run: ""
+      runMap: ""
+      hit: ""
+      attackEffect: cityAttack
+    attacks:
+      - id: primary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.1, 1.3, 1.5, 1.7, 1.8]
+        effect: fx/bs_city_counterattack
+        effectDelay: 0.0
+        ranged: true
+
+  - class: garrison
+    enabled: false
+    faction: felheim
+    name: unit_name_soldier_felheim
+    mapAnimation: units/soldier/felheim/map_soldier_felheim
+    battleAnimation: units/keeper/felheim/battle_keeper_felheim
+    smallPortrait: portraits/small/portrait_structure_small.png
+    mediumPortrait: portraits/medium/city.png
+    mapSpeed: 4.0
+    sounds:
+      death: ""
+      run: ""
+      runMap: ""
+      hit: ""
+      attackEffect: cityAttack
+    attacks:
+      - id: primary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.1, 1.3, 1.5, 1.7, 1.8]
+        effect: fx/bs_city_counterattack
+        effectDelay: 0.0
+        ranged: true
+
+  - class: garrison
+    enabled: false
+    faction: heavensong
+    name: unit_name_soldier_heavensong
+    mapAnimation: units/soldier/heavensong/map_soldier_heavensong
+    battleAnimation: units/keeper/heavensong/battle_keeper_heavensong
+    smallPortrait: portraits/small/portrait_structure_small.png
+    mediumPortrait: portraits/medium/city.png
+    mapSpeed: 4.0
+    sounds:
+      death: ""
+      run: ""
+      runMap: ""
+      hit: ""
+      attackEffect: cityAttack
+    attacks:
+      - id: primary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.1, 1.3, 1.5, 1.7, 1.8]
+        effect: fx/bs_city_counterattack
+        effectDelay: 0.0
+        ranged: true
+
+  - class: garrison
+    enabled: false
+    faction: floran
+    name: unit_name_soldier_floran
+    mapAnimation: units/soldier/floran/map_soldier_floran
+    battleAnimation: units/keeper/floran/battle_keeper_floran
+    smallPortrait: portraits/small/portrait_structure_small.png
+    mediumPortrait: portraits/medium/city.png
+    mapSpeed: 4.0
+    sounds:
+      death: ""
+      run: ""
+      runMap: ""
+      hit: ""
+      attackEffect: cityAttack
+    attacks:
+      - id: primary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.1, 1.3, 1.5, 1.7, 1.8]
+        effect: fx/bs_city_counterattack
+        effectDelay: 0.0
+        ranged: true
+
+...

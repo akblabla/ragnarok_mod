@@ -1,0 +1,155 @@
+---
+weapons:
+  - id: lightning
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      air: 1
+      water: 1
+    tagDamage:
+      archer: 0.85
+      soldier: 0.85
+      villager: 1.0
+      spearman: 0.75
+      dog: 0.8
+      wagon: 0.55
+      knight: 0.30
+      trebuchet: 0.45
+      ballista: 0.30
+      witch: 1.3
+      dragon: 0.8
+      merman: 0.55
+      mage: 0.35
+      harpy: 1.4
+      structure: 0.35
+      balloon: 1.0
+      giant: 0.20
+      commander: 0.2
+      rifleman: 0.95
+      thief: 0.85
+
+      warship: 0.15
+      harpoonship: 0.2
+      turtle: 0.45
+      travelboat: 0.25
+      pirate_ship: 0.3
+      flagship: 0.15
+
+unitClasses:
+  - id: mage
+    name: unit_class_name_mage
+    cost: 400
+    movement: walking
+    moveRange: 5
+    damageMultiplier: 1
+    aiPriority: 1.0
+    weapons:
+      - id: lightning
+        ammo: 5
+    tags:
+      - mage
+      - type.ground.light
+      - spellcaster
+    verbs:
+      - load
+      - capture
+      - spell_heal
+      - pick_up_crown
+      - hand_over_crown
+    battleUnitCount: 4
+    passiveMultiplier: 1.5
+    deathVerbId: death_drop_crown
+
+units:
+  - class: mage
+    faction: outlaw
+    name: unit_name_mage_outlaws
+    mapAnimation: units/mage/outlaws/map_mage_outlaws
+    battleAnimation: units/mage/outlaws/battle_mage_outlaws
+    battleAnimationRiver: fx/river_overlay/battle_mage_cherrystone_river
+    smallPortrait: units/mage/outlaws/portrait_mage_outlaws_small.png
+    mediumPortrait: units/mage/outlaws/portrait_mage_outlaws_medium.png
+    mapSpeed: 4.0
+    grabPos: [15, 12]
+    sounds:
+      attackMap: unitAttack
+      attack: mageAttackRed
+      attackEffect: mageAttackEffect
+      attackEffect1: mageAttackEffect1
+      attackEffect2: mageAttackEffect2
+      attackEffect3: mageAttackEffect3
+      attackEffect4: mageAttackEffect4
+      captureShout: soldierPreAttackRed
+      death: soldierDieRed
+      deathMap: unitDie
+      run: infantryMediumEntry2
+      runMap: infantryMediumMapEntry2
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: fourMages
+        hitDelay: [1.0, 1.3, 1.6, 1.9]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_mage_attack_4
+        effectDelay: 1.0
+        attackEffectSound: attackEffect4
+        numAttackers: 4
+        ranged: true
+        cutscenePivot: [-50, 175]
+      - id: threeMages
+        hitDelay: [1.0, 1.3, 1.6]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_mage_attack_3
+        effectDelay: 1.0
+        attackEffectSound: attackEffect3
+        numAttackers: 3
+        ranged: true
+        cutscenePivot: [-50, 175]
+      - id: twoMages
+        hitDelay: [1.0, 1.3]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_mage_attack_2
+        effectDelay: 1.0
+        attackEffectSound: attackEffect2
+        numAttackers: 2
+        ranged: true
+        cutscenePivot: [-50, 175]
+      - id: oneMage
+        hitDelay: [1.0]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_mage_attack_1
+        effectDelay: 1.0
+        attackEffectSound: attackEffect1
+        numAttackers: 1
+        ranged: true
+        cutscenePivot: [-50, 175]
+    shouts:
+      soldier_shout1: soldierShoutRed1
+      soldier_shout2: soldierShoutRed2
+      soldier_shout3: soldierShoutRed3
+      soldier_shout4: soldierShoutRed4
+      soldier_shout5: soldierShoutRed5
+      soldier_shout6: soldierShoutRed6
+      soldier_shout7: soldierShoutRed7
+      soldier_shout8: soldierShoutRed8
+      soldier_shout9: soldierShoutRed9
+      soldier_hit1: soldierHitRed1
+      soldier_hit2: soldierHitRed2
+      soldier_hit3: soldierHitRed3
+      soldier_hit4: soldierHitRed4
+      soldier_hit5: soldierHitRed5
+      crownbearer_panting: cutscene/crownbearerPanting
+      crownbearer_yell: cutscene/crownbearerYell
+    emotes:
+      idle: idle
+      summon: emote_summon
+    hidden:
+      shouts:
+        - soldier_shout3
+        - soldier_shout5
+        - soldier_shout6
+        - soldier_shout9
+
+...

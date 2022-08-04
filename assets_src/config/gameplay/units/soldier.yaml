@@ -1,0 +1,163 @@
+---
+weapons:
+  - id: sword
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      water: 1
+    tagDamage:
+      archer: 0.65
+      soldier: 0.55
+      villager: 0.55
+      spearman: 0.35
+      dog: 0.45
+      wagon: 0.35
+      knight: 0.15
+      trebuchet: 0.3
+      merman: 0.55
+      mage: 0.55
+      structure: 0.35
+      commander: 0.10
+      ballista: 0.35
+      giant: 0.05
+      rifleman: 0.65
+      thief: 0.95
+
+      warship: 0.2
+      harpoonship: 0.3
+      turtle: 0.25
+      travelboat: 0.25
+      pirate_ship: 0.3
+      flagship: 0.1
+      
+
+unitClasses:
+  - id: soldier
+    name: unit_class_name_soldier
+    cost: 100
+    movement: walking
+    moveRange: 4
+    damageMultiplier: 1
+    aiPriority: 1.0
+    weapons:
+      - id: sword
+    verbs:
+      - capture
+      - load
+      - pick_up_crown
+      - throw_crown
+    tags:
+      - soldier
+      - type.ground.light
+    battleUnitCount: 4
+    passiveMultiplier: 1.5
+    deathVerbId: death_drop_crown
+
+units:
+  - class: soldier
+    faction: cherrystone
+    name: unit_name_soldier_cherrystone
+    mapAnimation: units/soldier/cherrystone/map_soldier_cherrystone
+    battleAnimation: units/soldier/cherrystone/battle_soldier_cherrystone2
+    battleAnimationRiver: fx/river_overlay/battle_soldier_cherrystone_river
+    smallPortrait: units/soldier/cherrystone/portrait_soldier_cherrystone_small.png
+    mediumPortrait: units/soldier/cherrystone/portrait_soldier_cherrystone_medium.png
+    mapSpeed: 4.0
+    grabPos: [13, 14]
+    sounds:
+      attack: soldierAttackRed
+      attackShout: soldierPreAttackRed
+      attackMap: unitAttack
+      captureShout: soldierPreAttackRed
+      death: soldierDieRed
+      deathMap: unitDie
+      run: infantryHeavyEntry
+      runMap: infantryHeavyMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [0.45, 0.8]
+    shouts:
+      soldier_shout1: soldierShoutRed1
+      soldier_shout2: soldierShoutRed2
+      soldier_shout3: soldierShoutRed3
+      soldier_shout4: soldierShoutRed4
+      soldier_shout5: soldierShoutRed5
+      soldier_shout6: soldierShoutRed6
+      soldier_shout7: soldierShoutRed7
+      soldier_shout8: soldierShoutRed8
+      soldier_shout9: soldierShoutRed9
+      soldier_hit1: soldierHitRed1
+      soldier_hit2: soldierHitRed2
+      soldier_hit3: soldierHitRed3
+      soldier_hit4: soldierHitRed4
+      soldier_hit5: soldierHitRed5
+      crownbearer_panting: cutscene/crownbearerPanting
+      crownbearer_yell: cutscene/crownbearerYell
+    emotes:
+      idle: idle
+      idle_crownbearer: idle_crownbearer
+      idle_crown: emote_idle_crown
+      idle_crown_ragged: emote_idle_crown_ragged
+      cushion: emote_cushion
+      idle_cushion: emote_idle_cushion
+      crown_surprise: emote_crown_surprise
+      crown_surprise_clean: emote_crown_surprise_clean
+      cushion_surprise_clean: emote_cushion_surprise_clean
+      telescope: emote_telescope
+      dance: emote_dance
+    alternativeRuns:
+      - id: run_crown
+      - id: run_ragged
+      - id: run_2
+        
+  - class: soldier
+    faction: outlaw
+    name: unit_name_soldier_outlaws
+    mapAnimation: units/soldier/outlaws/map_soldier_outlaws
+    battleAnimation: units/soldier/outlaws/battle_soldier_outlaws
+    battleAnimationRiver: fx/river_overlay/battle_soldier_cherrystone_river
+    smallPortrait: units/soldier/outlaws/portrait_soldier_outlaws_small.png
+    mediumPortrait: units/soldier/outlaws/portrait_soldier_outlaws_medium.png
+    mapSpeed: 4.0
+    grabPos: [13, 14]
+    sounds:
+      attack: soldierAttackRed
+      attackShout: soldierPreAttackRed
+      attackMap: unitAttack
+      captureShout: soldierPreAttackRed
+      death: soldierDieRed
+      deathMap: unitDie
+      run: infantryHeavyEntry
+      runMap: infantryHeavyMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [0.45, 0.8]
+    shouts:
+      soldier_shout1: soldierShoutRed1
+      soldier_shout2: soldierShoutRed2
+      soldier_shout3: soldierShoutRed3
+      soldier_shout4: soldierShoutRed4
+      soldier_shout5: soldierShoutRed5
+      soldier_shout6: soldierShoutRed6
+      soldier_shout7: soldierShoutRed7
+      soldier_shout8: soldierShoutRed8
+      soldier_shout9: soldierShoutRed9
+      soldier_hit1: soldierHitRed1
+      soldier_hit2: soldierHitRed2
+      soldier_hit3: soldierHitRed3
+      soldier_hit4: soldierHitRed4
+      soldier_hit5: soldierHitRed5
+      crownbearer_panting: cutscene/crownbearerPanting
+      crownbearer_yell: cutscene/crownbearerYell
+    emotes:
+      idle: idle
+
+...

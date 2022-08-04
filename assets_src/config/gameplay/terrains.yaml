@@ -1,0 +1,295 @@
+---
+
+terrains:
+  - id: plains
+    name: terrain_name_plains
+    defenceBonus: 1
+    movementCost:
+      walking: 1
+      riding: 1
+      flying: 1
+      hovering: 1
+      wheels: 2
+      amphibious: 2
+      land_building: 1
+      indoor_building: 1
+    movementGroupType: land
+    placeable: true
+    tilesets:
+      0: plains
+
+  - id: road
+    name: terrain_name_road
+    defenceBonus: 0
+    movementCost:
+      walking: 1
+      riding: 1
+      flying: 1
+      hovering: 1
+      wheels: 1
+      amphibious: 2
+      land_building: 1
+      indoor_building: 1
+    movementGroupType: land
+    placeable: true
+    tilesets:
+      0: [plains, rough, plains_alt]
+      2: road
+
+  - id: forest
+    name: terrain_name_forest
+    defenceBonus: 3
+    movementCost:
+      walking: 2
+      riding: 3
+      flying: 1
+      hovering: 1
+      amphibious: 4
+    movementGroupType: land
+    placeable: true
+    visionBlocking: true
+    fowCover: true
+    tilesets:
+      0: [plains, rough, plains_alt]
+      1: forest
+
+  - id: mountain
+    name: terrain_name_mountain
+    defenceBonus: 4
+    movementCost:
+      walking: 3
+      flying: 1
+      hovering: 1
+    movementGroupType: land
+    placeable: true
+    visionBlocking: true
+    sightBonus: 2
+    tilesets:
+      0: [plains, rough, plains_alt]
+      1: mountain
+
+  - id: cobblestone
+    name: terrain_name_cobblestone
+    defenceBonus: 2
+    movementCost:
+      walking: 1
+      riding: 1
+      flying: 1
+      amphibious: 2
+      hovering: 1
+      land_building: 1
+      indoor_building: 1
+    movementGroupType: land
+    cantStop: [flying]
+    placeable: true
+    indoor: true
+    tilesets:
+      0: [plains, rough, plains_alt]
+      1: cobblestone
+
+  - id: carpet
+    name: terrain_name_carpet
+    defenceBonus: 2
+    movementCost:
+      walking: 1
+      riding: 1
+      flying: 1
+      amphibious: 2
+      hovering: 1
+      land_building: 1
+      indoor_building: 1
+    movementGroupType: land
+    cantStop: [flying]
+    placeable: true
+    indoor: true
+    tilesets:
+      0: [plains, rough, plains_alt]
+      1: cobblestone
+      2: carpet
+
+  - id: wall
+    name: terrain_name_wall
+    defenceBonus: 0
+    movementCost: {}
+    movementGroupType: land
+    visionBlocking: true
+    placeable: true
+    tilesets:
+      0: [plains, rough, plains_alt]
+      1: cobblestone
+      2: wall
+
+  - id: bridge
+    name: terrain_name_bridge
+    defenceBonus: 0
+    movementCost:
+      walking: 1
+      riding: 1
+      flying: 1
+      hovering: 1
+      wheels: 1
+      amphibious: 1
+      sailing: 1
+      land_building: 1
+      indoor_building: 1
+    cantStop: [sailing]
+    movementGroupType: land
+    placeable: true
+    tilesets: 
+      0: [plains, rough, plains_alt]
+      1: [sea_alt, river]
+      2: bridge
+
+  - id: sea
+    name: terrain_name_sea
+    biomeNames:
+      volcano: terrain_name_sea_lava
+    biomeDescriptions:
+      volcano: terrain_description_lava
+    defenceBonus: 1
+    movementCost:
+      sailing: 1
+      flying: 1
+      hovering: 1
+      amphibious: 1
+      sea_building: 1
+    biomeMovementCosts:
+      volcano:
+        flying: 1
+        hovering: 1
+    movementGroupType: water
+    placeable: false
+    tilesets:
+      0: [plains, rough, plains_alt]
+      1: sea
+
+  - id: ocean
+    name: terrain_name_ocean
+    biomeNames:
+      volcano: terrain_name_ocean_lava
+    biomeDescriptions:
+      volcano: terrain_description_lava
+    defenceBonus: 0
+    movementCost:
+      sailing: 1
+      flying: 1
+      hovering: 1
+      amphibious: 1
+      sea_building: 1
+    biomeMovementCosts:
+      volcano:
+        flying: 1
+        hovering: 1
+    movementGroupType: water
+    placeable: true
+    tilesets:
+      1: ocean
+
+  - id: reef
+    name: terrain_name_reef
+    biomeNames:
+      volcano: terrain_name_reef_lava
+    biomeDescriptions:
+      volcano: terrain_description_lava
+    defenceBonus: 2
+    movementCost:
+      sailing: 2
+      flying: 1
+      hovering: 1
+      amphibious: 1
+      sea_building: 1
+    biomeMovementCosts:
+      volcano:
+        flying: 1
+        hovering: 1
+    movementGroupType: water
+    placeable: true
+    fowCover: true
+    tilesets: 
+      0: [plains, rough, plains_alt]
+      1: sea_alt
+      2: reef
+
+  - id: river
+    name: terrain_name_river
+    biomeNames:
+      volcano: terrain_name_river_lava
+    biomeDescriptions:
+      volcano: terrain_description_lava
+    defenceBonus: -2
+    movementCost:
+      sailing: 1
+      walking: 2
+      riding: 4
+      flying: 1
+      hovering: 1
+      amphibious: 1
+      sea_building: 1
+    biomeMovementCosts:
+      volcano:
+        flying: 1
+        hovering: 1
+    movementGroupType: land
+    placeable: true
+    tilesets:
+      0: [plains, rough, plains_alt]
+      1: river
+
+  - id: beach
+    name: terrain_name_beach
+    defenceBonus: -1
+    movementCost:
+      sailing: 1
+      walking: 1
+      riding: 1
+      flying: 1
+      hovering: 1
+      amphibious: 1
+      sea_building: 1
+      land_building: 1
+      indoor_building: 1
+    biomeMovementCosts:
+      volcano:
+        walking: 1
+        riding: 1
+        flying: 1
+        hovering: 1
+        amphibious: 2
+    movementGroupType: land
+    placeable: true
+    tilesets:
+      0: [plains, rough, plains_alt]
+      1: beach
+
+  - id: sky
+    name: terrain_name_sky
+    defenceBonus: 0
+    movementCost:
+      flying: 1
+      hovering: 1
+    movementGroupType: air
+    placeable: false
+
+  - id: city
+    name: structure_name_city
+    defenceBonus: 4
+    movementCost:
+      walking: 1
+      riding: 1
+      flying: 1
+      hovering: 1
+      wheels: 1
+      amphibious: 2
+    movementGroupType: land
+    placeable: false
+
+  - id: volcano
+    name: terrain_name_volcano
+    defenceBonus: 0
+    movementCost: {}
+    movementGroupType: land
+    placeable: true
+    hidden: true
+    tilesets:
+      0: volcano
+...

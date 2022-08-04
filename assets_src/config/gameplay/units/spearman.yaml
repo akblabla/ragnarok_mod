@@ -1,0 +1,83 @@
+---
+weapons:
+  - id: spear
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      water: 1
+    tagDamage:
+      archer: 0.7
+      soldier: 0.75
+      villager: 0.75
+      spearman: 0.55
+      dog: 0.8
+      wagon: 0.45
+      knight: 0.7
+      trebuchet: 0.5
+      ballista: 0.55
+      giant: 0.10
+      merman: 0.75
+      mage: 0.65
+      structure: 0.5
+      commander: 0.15
+      rifleman: 0.85
+      thief: 0.75
+
+      warship: 0.25
+      harpoonship: 0.35
+      turtle: 0.3
+      travelboat: 0.3
+      pirate_ship: 0.35
+      flagship: 0.15
+      
+unitClasses:
+  - id: spearman
+    name: unit_class_name_spearman
+    cost: 250
+    movement: walking
+    moveRange: 3
+    damageMultiplier: 1
+    aiPriority: 1.0
+    weapons:
+      - id: spear
+    verbs:
+      - capture
+      - load
+      - pick_up_crown
+      - hand_over_crown
+    tags:
+      - spearman
+      - type.ground.light
+    battleUnitCount: 4
+    deathVerbId: death_drop_crown
+    passiveMultiplier: 1.5
+    
+units:
+  - class: spearman
+    faction: outlaw
+    name: unit_name_spearman_outlaws
+    mapAnimation: units/spearman/outlaws/map_spearman_outlaws
+    battleAnimation: units/spearman/outlaws/battle_spearman_outlaws
+    battleAnimationRiver: fx/river_overlay/battle_spearman_cherrystone_river
+    smallPortrait: units/spearman/outlaws/portrait_spearman_outlaws_small.png
+    mediumPortrait: units/spearman/outlaws/portrait_spearman_outlaws_medium.png
+    mapSpeed: 4.0
+    grabPos: [18, 12]
+    sounds:
+      attackMap: unitAttack
+      attack: soldierAttackRed
+      attackShout: soldierPreAttackRed
+      captureShout: soldierPreAttackRed
+      death: soldierDieRed
+      deathMap: unitDie
+      run: infantryHeavyEntry
+      runMap: infantryHeavyMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 0.4
+...

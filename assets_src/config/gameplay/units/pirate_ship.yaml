@@ -1,0 +1,90 @@
+---
+
+weapons:
+  - id: pirate_ship_cannon
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      water: 1
+    tagDamage:
+      archer: 0.85
+      soldier: 0.75
+      spearman: 0.65
+      dog: 0.70
+      wagon: 0.55
+      knight: 0.15
+      trebuchet: 0.6
+      ballista: 0.65
+      mage: 0.7
+      structure: 0.4
+      commander: 0.15
+      giant: 0.1
+      rifleman: 0.9
+      thief: 1
+      
+      flagship: 0.3
+      pirate_ship: 0.55
+      warship: 0.4
+      harpoonship: 0.7
+      turtle: 0.1
+      travelboat: 0.6
+      merman: 0.2
+unitClasses:
+  - id: pirate_ship
+    name: unit_class_name_pirate_ship
+    cost: 600
+    classIconSpritesheet: ui_RagnarokMod
+    movement: sailing
+    moveRange: 7
+    damageMultiplier: 1
+    aiPriority: 3
+    weapons:
+      - id: pirate_ship_cannon
+    cargoSpace: 2
+    tags:
+      - pirate_ship
+      - type.sea
+    startingStates:
+      - id: gold
+        value: 0
+    verbs:
+#      - attack_board
+      - pirate_steal
+#      - betterMerge
+    battleUnitCount: 1
+    passiveMultiplier: 1.5
+    sightRange: 5
+    isHiddenInCutsceneEditor: true
+
+units:
+  - class: pirate_ship
+    faction: cherrystone
+    name: unit_name_pirate_ship
+    mapAnimation: units/raider/cherrystone/map_raider_cherrystone
+    battleAnimation: units/warship/cherrystone/battle_warship_cherrystone
+    smallPortrait: units/warship/cherrystone/portrait_warship_cherrystone_small.png
+    mediumPortrait: units/warship/cherrystone/portrait_warship_cherrystone_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: warshipAttack
+      attackEffect: warshipAttackEffect
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_warship_attack
+        effectDelay: 1.8
+        hitDelay: [2.0, 2.3, 2.6]

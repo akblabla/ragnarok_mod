@@ -1,0 +1,6 @@
+---
+gizmos:
+  - id: pulley
+    layer: units
+    animation: gizmo/pulley
+...

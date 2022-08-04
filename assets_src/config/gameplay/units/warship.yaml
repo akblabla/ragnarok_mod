@@ -1,0 +1,53 @@
+---
+weapons:
+  - id: warshipCannon
+    rangeMin: 2
+    rangeMax: 4
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      water: 1
+    tagDamage:
+      archer: 1.0
+      soldier: 0.9
+      villager: 1.0
+      spearman: 0.7
+      dog: 1
+      wagon: 0.6
+      knight: 0.7
+      trebuchet: 0.8
+      ballista: 0.85
+      mage: 0.8
+      structure: 0.75
+      giant: 0.55
+      commander: 0.25
+      rifleman: 1.1
+      thief: 1.0
+
+      warship: 0.55
+      turtle: 0.3
+      harpoonship: 0.8
+      merman: 0.75
+      travelboat: 0.65
+      flagship: 0.35
+      pirate_ship: 0.8
+      
+unitClasses:
+  - id: warship
+    name: unit_class_name_warship
+    cost: 1000
+    movement: sailing
+    moveRange: 5
+    damageMultiplier: 1
+    aiPriority: 1.0
+    weapons:
+      - id: warshipCannon
+    cargoSpace: 2
+    tags:
+      - warship
+      - type.sea
+    battleUnitCount: 1
+    passiveMultiplier: 1.5
+    sightRange: 5
+    isHiddenInCutsceneEditor: true
+...

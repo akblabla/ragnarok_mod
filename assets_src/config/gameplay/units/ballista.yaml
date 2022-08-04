@@ -1,0 +1,42 @@
+---
+
+weapons:
+  - id: ballistaBolt
+    rangeMin: 2
+    rangeMax: 6
+    canMoveAndAttack: false
+    baseDamage:
+      air: 1
+      land: 1
+      water: 1      
+    tagDamage:
+      witch: 0.95
+      dragon: 0.85
+      harpy: 1.3
+      balloon: 1.1
+
+      archer: 0.3
+      soldier: 0.4
+      villager: 0.4
+      dog: 0.5
+      spearman: 0.3
+      wagon: 0.3                  
+      mage: 0.4
+      knight: 0.25
+      ballista: 0.2
+      trebuchet: 0.1
+      giant: 0.1
+      structure: 0.3
+      commander: 0.10
+      rifleman: 0.5
+      thief: 0.4
+
+      flagship: 0.15
+      pirate_ship: 0.35
+      warship: 0.2
+      harpoonship: 0.3
+      turtle: 0.35
+      travelboat: 0.25
+      merman: 0.4
+      
+...

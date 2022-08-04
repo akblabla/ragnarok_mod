@@ -1,0 +1,203 @@
+---
+
+# This is the string configuration file for English.
+en-GB:
+  #AI
+  ai_profile_rival_pirate: Rival Pirate
+  ai_profile_coward: Coward
+
+  # Merge Verb
+  ui_unit_verbs_better_merge: Merge
+  ui_unit_verbs_pirate_deposit: Deposit
+  ui_unit_verbs_pirate_steal: Steal
+  ui_unit_verbs_board: Board
+  ui_unit_verbs_hand_over_crown: Hand Over Crown
+  ui_unit_verbs_pick_up_crown: Pick Up Crown
+  ui_unit_verbs_throw_crown: Throw Crown
+  ui_unit_verbs_spawn_flare_1: Spawn Flare[1]
+  ui_unit_verbs_spawn_flare_2: Spawn Flare[2]
+  ui_unit_verbs_spawn_flare_many: Spawn Flare[3+]
+  
+  #terrain
+  terrain_name_rough: Cave
+  terrain_description_rough: Only ground units can enter the depths.
+  terrain_name_deck: Deck
+  terrain_description_deck: The deck provides small amount of defense and doesn't impede the movement of any ground units.
+  
+  terrain_name_hull: Hull
+  terrain_name_cabin: Cabin Walls
+  terrain_description_invisible_wall_sea: The hull of the ship is unscalable by normal means, but still lets flyers pass over.
+  terrain_description_invisible_wall_ocean: The hull of the ship is unscalable by normal means, but still lets flyers pass over.
+  terrain_description_invisible_blocker_ocean: The cabin walls prevents all units from passing.
+  terrain_description_sea_alt: Open water. Accessible only to air and naval units.
+  terrain_description_river: Slows down land units. Units attacked in a river are at a distinct disadvantage.
+  
+  terrain_name_deck: Deck
+  terrain_name_outlaw_ship: Outlaw Ship
+  terrain_name_outlaw_cherry_ship: Outlaw and Cherry Ship
+  
+  #units
+  
+  unit_class_name_flagship_wulfar: "Wulfar's Flagship"
+  unit_name_flagship_wulfar: "Wulfar's Flagship"
+  unit_description_commander_flagship_wulfar: "Flagship of Wulfar"
+  
+  unit_class_name_flagship_rival: "Rival's Flagship"
+  unit_name_flagship_rival: "Rival's Flagship"
+  unit_description_commander_flagship_rival: "Flagship of Rival"
+  
+  # Commander
+  character_flagship_wulfar_name: "Wulfar"
+  character_flagship_wulfar_title: "Captain Wulfar"
+  
+  groove_name_broadside: "Broadside"
+  groove_description_broadside: "Blasts enemies in a cone. The closest enemies take 100% of the commanders damage at full health, the next layer 66% and the furthest layer 33%."
+  groove_name_all_caps_groove_broadside: "BROADSIDE"
+  
+  character_flagship_rival_name: "Rival"
+  character_flagship_rival_title: "Captain Rival  "
+  
+  groove_name_area_damage_rival: "Fire bombs"
+  groove_description_area_damage_rival: "Sets an area ablaze over several turns."
+  groove_name_all_caps_groove_area_damage_rival: "FIRE BOMBS"
+  
+  unit_class_name_pirate_ship: Raider Ship
+  unit_description_pirate_ship: "Can steal gold from structures. It can't attack whilst loaded. Critical hit against enemies adjacent to allies."
+  unit_name_pirate_ship: Pirate Ship
+  
+  unit_class_name_flare: Flare
+  unit_description_flare: Reveals hidden units in an area. It expires at the end of the turn.
+  unit_name_flare: Flare
+
+  unit_class_name_pirate_ship_loaded: Raider Ship Loaded
+  unit_description_pirate_ship_loaded: "Can steal gold from structures. It can't attack whilst loaded. Critical hit against enemies adjacent to allies."
+
+  unit_class_name_thief_with_crown: Thief with crown
+  unit_description_thief_with_crown: "This brave soul is carrying the Cherry Crown for warmistress Vesper. Do not lose him."
+
+
+  unit_name_archer_outlaws: Poacher 
+  unit_name_dog_outlaws: Stray
+  unit_name_mage_outlaws: Trickster 
+  unit_name_rifleman_outlaws: Sharpshooter 
+  unit_name_soldier_outlaws: Cutthroat
+  unit_name_spearman_outlaws: Brigand 
+  unit_name_knight_outlaws: Highwayman 
+  unit_name_wagon_outlaws: Wagon
+  unit_name_warship_outlaws: Warship 
+  unit_name_harpoonship_outlaws: Harpoon Ship 
+  unit_name_dragon_outlaws: Emberwing 
+  unit_name_trebuchet_outlaws: Trebuchet 
+  unit_name_merman_outlaws: Merfolk
+  unit_name_turtle_outlaws: Seadog 
+  unit_name_witch_outlaws: Hag 
+  unit_name_harpy_outlaws: Harpy 
+  unit_name_balloon_outlaws: Balloon 
+  unit_name_giant_outlaws: Golem 
+  unit_name_ballista_outlaws: Ballista 
+  unit_name_travelboat_outlaws: Barge
+  unit_name_villager_outlaws: Beggar 
+  unit_name_thief_outlaws: Smuggler
+  unit_name_rifleman_outlaws: Sharpshooter 
+  unit_name_thief_with_crown_outlaws: Smuggler with Crown 
+  
+  
+  # Triggers
+  trigger_action_name_ai_set_no_building_attacking: "AI: Set no building attacking"
+  trigger_action_description_ai_set_no_building_attacking: "Prevents AI from attacking buildings."
+  trigger_action_readable_ai_set_no_building_attacking: "Prevent AI controlled by player {0} from attacking buildings."
+  
+  trigger_action_name_set_state: "Unit: Set State"
+  trigger_action_description_set_state: "Sets the unit state."
+  trigger_action_readable_set_state: "Add set state {3} to {4} for unit type(s) {0} at location {1} owned by player {2}."
+  
+  trigger_action_name_give_crown: "Unit: Give Crown"
+  trigger_action_description_give_crown: "Gives unit the Crown."
+  trigger_action_readable_give_crown: "Give the crown to units of type {0} at location {1} owned by player {2}."
+  
+  trigger_action_name_place_crown: "Map: Place Crown"
+  trigger_action_description_place_crown: "Place crown at center of location."
+  trigger_action_readable_place_crown: "Place the crown location {0}."
+  
+  trigger_action_name_change_objective_with_3_counters: "Map: Change Objective with 3 Counters"
+  trigger_action_description_change_objective_with_3_counters: "Change objective with 3 counters."
+  trigger_action_readable_change_objective_with_3_counters: "Sets the map objective to {0} ({1}) {2} ({3}) {4}."
+  
+  trigger_action_name_dialogue_box_with_counter: "Map: Display dialog with counter"
+  trigger_action_description_dialogue_box_with_counter: "Display dialog with counter."
+  trigger_action_readable_dialogue_box_with_counter: "Display dialogue box with {0} {1} saying \"{2}\" with shout: {3}. Use counter {4}."
+  
+  trigger_action_name_message_counter: "Data: Display message with counter"
+  trigger_action_description_message_counter: "Display message with counter."
+  trigger_action_readable_message_counter: "Display message: \"{0}\" and then counter {1}."
+  
+  trigger_condition_name_state: "Has State"
+  trigger_condition_description_state: "Triggers if a unit has a particular state."
+  trigger_condition_readable_state: "If unit type(s) {0} at location {1} owned by player {2} have state {3} equal to {4}."
+  
+  
+  trigger_action_name_transfer_gold_robbed: "Transfer: Gold Robbed"
+  trigger_action_description_transfer_gold_robbed: "Sets/Gets gold robbed by player."
+  trigger_action_readable_transfer_gold_robbed: "Transfer gold robbed by {0}: {1} {2}" 
+  
+  trigger_action_name_link_gizmo_state_with_activators: "Gizmo: Link Gizmo State with Activators"
+  trigger_action_description_link_gizmo_state_with_activators: "Activate all gizmos when all activator gizmos are triggered."
+  trigger_action_readable_link_gizmo_state_with_activators: "Link all gizmos with the activators at location {0}."
+  
+  trigger_action_name_gizmo_active_when_stood_on: "Gizmo: Activate when stood on"
+  trigger_action_description_gizmo_active_when_stood_on: "Activate Gizmos at location when stood on."
+  trigger_action_readable_gizmo_active_when_stood_on: "Activate Gizmos at location {0} if a unit or crown stands on them."
+  
+  trigger_action_name_gizmo_toggle_when_stood_on: "Gizmo: Toggle when stood on"
+  trigger_action_description_gizmo_toggle_when_stood_on: "Gizmos toggle at location when stood on."
+  trigger_action_readable_gizmo_toggle_when_stood_on: "Gizmos toggle when unit moves to location {0}."
+  
+  trigger_action_name_invert_gizmo: "Gizmo: Invert Active State"
+  trigger_action_description_invert_gizmo: "Invert active states of gizmos."
+  trigger_action_readable_invert_gizmo: "Invert active states of gizmos at location {0}."
+  
+  trigger_action_name_set_threat_at_location: "AI: Set Threat at Location"
+  trigger_action_description_set_threat_at_location: "Set threat level at location."
+  trigger_action_readable_set_threat_at_location: "Sets the threat level of {0} to {1}, sourcing the owner as {2} at {3} owned by {4}"
+  
+  trigger_action_name_spawn_unit_closest_to_location: "Unit: Spawn as close as possible"
+  trigger_action_description_spawn_unit_closest_to_location: "Spawn as close as possible to target location."
+  trigger_action_readable_spawn_unit_closest_to_location: "Spawn {0} at {1} as close as possible to {4} for {2} (silent = {3})"
+  
+  trigger_action_name_move_location_to_next_structure: "Location: Move location to Next"
+  trigger_action_description_move_location_to_next_structure: "Move location to next unit on the right."
+  trigger_action_readable_move_location_to_next_structure: "Move location {0} to next {1} owned by {2} at {3} to the right."
+
+  trigger_condition_name_does_next_structure_exist: "Location: Next Exists"
+  trigger_condition_description_does_next_structure_exist: "Triggers if a unit to the right of location exists."
+  trigger_condition_readable_does_next_structure_exist: "If there are more {1} owned by {2} at {3} to the right of location {0}"
+  
+  trigger_action_name_modify_flare_count: "Player: Modify Flare Count"
+  trigger_action_description_modify_flare_count: "Modifies the amount of flares available to a player."
+  trigger_action_readable_modify_flare_count: "Modify the number of flares owned by {0}: {1} {2}"
+  
+  #backgrounds
+  ui_cutscene_background_deck: "Ship Deck"
+  ui_cutscene_background_outlaw_ship: "Outlaw Ship"
+  ui_cutscene_background_outlaw_ship_right: "Outlaw Ship Mirrored"
+  ui_cutscene_background_outlaw_cherry_ship: "Outlaw and Cherry Ship"
+  
+  #cutscene sound effects
+  ui_cutscene_sfx_wulfar_hug: "Wulfar and Vesper Hug"
+  ui_cutscene_sfx_emeric_charged_attack: "Emeric Charged Attack"
+  
+  # CUTSCENE VISUAL EFFECTS
+  ui_cutscene_vfx_wulfar_vesper_hug: "Wulfar and Vesper Hug"
+  
+  #Walk cycles
+  ui_cutscene_walk_type_backwards_walk: "Backwards Walk"
+  
+  #HIGHLIGHTS
+  location_highlight_tutorial_cross: "Tutorial Cross"
+  
+  # CUTSCENE PROPS
+  ui_cutscene_prop_tavernfire: "Tavern Fire"
+  ui_cutscene_prop_rays: "Light Rays"
+
+  
+...

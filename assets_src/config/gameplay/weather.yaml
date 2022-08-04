@@ -1,0 +1,115 @@
+---
+
+# Modifiers:
+# Stats:
+#	  DamageMultiplier
+#   PassiveMultiplier
+#   SightRange
+#   RangedAttackMaxRange
+#
+# Operations:
+#   Add
+#   Subtract
+#   Multiply
+#   Divide
+#
+# For the tags list, an affected unit must have at least one of the tags
+#
+
+weather:
+  - id: sunny
+    iconSpriteSheet: ui
+    iconSprite: weather_icons_sunny
+  
+  - id: windy
+    iconSpriteSheet: ui
+    iconSprite: weather_icons_windy
+    ambience: weather_windy
+    modifiers:
+      - stat: DamageMultiplier
+        operation: Multiply
+        value: 1.2f
+        tags: [type.air]
+      - stat: MoveRange
+        operation: Add
+        value: 1
+        tags: [type.sea]
+      - stat: RangedAttackMaxRange
+        operation: Add
+        value: 1
+        tags: [type.ground.light, type.ground.heavy]
+
+  - id: rain
+    iconSpriteSheet: ui
+    iconSprite: weather_icons_rain
+    ambience: weather_storm
+    modifiers:
+      - stat: DamageMultiplier
+        operation: Multiply
+        value: 0.8f
+        tags: [type.air]
+      - stat: MoveRange
+        operation: Subtract
+        value: 1
+        tags: [type.sea]
+      - stat: RangedAttackMaxRange
+        operation: Subtract
+        value: 1
+        tags: [type.ground.light, type.ground.heavy]
+
+  - id: sandstorm
+    iconSpriteSheet: ui
+    iconSprite: weather_icons_sandstorm
+    ambience: weather_sandstorm
+    modifiers:
+      - stat: DamageMultiplier
+        operation: Multiply
+        value: 0.8f
+        tags: [type.air]
+      - stat: MoveRange
+        operation: Subtract
+        value: 1
+        tags: [type.sea]
+      - stat: RangedAttackMaxRange
+        operation: Subtract
+        value: 1
+        tags: [type.ground.light, type.ground.heavy]
+
+  - id: snow
+    iconSpriteSheet: ui
+    iconSprite: weather_icons_snow
+    ambience: weather_blizzard
+    modifiers:
+      - stat: DamageMultiplier
+        operation: Multiply
+        value: 0.8f
+        tags: [type.air]
+      - stat: MoveRange
+        operation: Subtract
+        value: 1
+        tags: [type.sea]
+      - stat: RangedAttackMaxRange
+        operation: Subtract
+        value: 1
+        tags: [type.ground.light, type.ground.heavy]
+
+  - id: ash
+    iconSpriteSheet: ui
+    iconSprite: weather_icons_ash
+    ambience: volcano_ambience
+    hidden: true
+    modifiers:
+      - stat: DamageMultiplier
+        operation: Multiply
+        value: 0.8f
+        tags: [type.air]
+      - stat: MoveRange
+        operation: Subtract
+        value: 1
+        tags: [type.sea]
+      - stat: RangedAttackMaxRange
+        operation: Subtract
+        value: 1
+        tags: [type.ground.light, type.ground.heavy]
+
+...

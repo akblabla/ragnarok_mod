@@ -1,0 +1,131 @@
+---
+weapons:
+  - id: musket
+    rangeMin: 1
+    rangeMax: 9
+    canMoveAndAttack: false
+    horizontalAndVerticalOnly: true
+    horizontalAndVerticalExtraWidth: 1
+    terrainExclusion:
+      - forest
+    baseDamage:
+      land: 1
+    tagDamage:
+      archer: 0.85
+      soldier: 1.2
+      villager: 1.2
+      dog: 0.2
+      spearman: 1.0
+      mage: 1.0
+      rifleman: 0.85
+      thief: 1.0                        
+
+      knight: 0.10      
+      ballista: 0.05
+      trebuchet: 0.05
+      giant: 0.05
+      wagon: 0.10
+
+      harpy: 0.6
+      witch: 0.6
+      dragon: 0.05
+      balloon: 0.15
+
+      flagship: 0.05
+      pirate_ship: 0.2
+      merman: 0.75  
+      warship: 0.1 
+      harpoonship: 0.15
+      turtle: 0.1
+      travelboat: 0.2
+
+      structure: 0.05
+      
+      commander: 0.05
+
+unitClasses:
+  - id: rifleman
+    name: unit_class_name_rifleman
+    cost: 750
+    movement: walking
+    moveRange: 4
+    damageMultiplier: 1
+    aiPriority: 1.0
+    defaultAttack: attack_rifleman
+    weapons:
+      - id: musket
+    tags:
+      - rifleman
+      - type.ground.hideout
+    verbs:
+      - reload
+      - load
+      - capture
+      - pick_up_crown
+      - hand_over_crown
+    battleUnitCount: 4
+    passiveMultiplier: 1.5
+    sightRange: 9
+    deathVerbId: death_drop_crown
+    startingStates:
+      - id: ammo
+        value: 3
+
+units:
+  - class: rifleman
+    faction: outlaw
+    name: unit_name_rifleman_outlaws
+    mapAnimation: units/rifleman/outlaws/map_rifleman_outlaws
+    battleAnimation: units/rifleman/outlaws/battle_rifleman_outlaws
+    battleAnimationRiver: fx/river_overlay/battle_rifleman_river
+    smallPortrait: units/rifleman/outlaws/portrait_rifleman_outlaws_small.png
+    mediumPortrait: units/rifleman/outlaws/portrait_rifleman_outlaws_medium.png
+    mapSpeed: 4.0
+    grabPos: [15, 24]
+    sounds:
+      attackMap: unitAttack
+      attack: riflemanAttack
+      counter: riflemanCounterAttack
+      captureShout: soldierPreAttackRed
+      death: soldierDieRed
+      deathMap: unitDie
+      run: infantryMediumEntry2
+      runMap: infantryMediumMapEntry2
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        attackAnimationSequence: counter
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 0.6
+        samePanel: true
+        attackSound: counter
+      - id: ranged
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.4
+        ranged: true
+    emotes:
+      idle: idle
+    shouts:
+      soldier_shout1: soldierShoutRed1
+      soldier_shout2: soldierShoutRed2
+      soldier_shout3: soldierShoutRed3
+      soldier_shout4: soldierShoutRed4
+      soldier_shout5: soldierShoutRed5
+      soldier_shout6: soldierShoutRed6
+      soldier_shout7: soldierShoutRed7
+      soldier_shout8: soldierShoutRed8
+      soldier_shout9: soldierShoutRed9
+      soldier_hit1: soldierHitRed1
+      soldier_hit2: soldierHitRed2
+      soldier_hit3: soldierHitRed3
+      soldier_hit4: soldierHitRed4
+      soldier_hit5: soldierHitRed5
+    hidden:
+      shouts:
+        - soldier_shout3
+        - soldier_shout5
+        - soldier_shout6
+        - soldier_shout9
+
+...

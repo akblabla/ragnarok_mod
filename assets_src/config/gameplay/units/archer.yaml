@@ -1,0 +1,155 @@
+---
+weapons:
+  - id: bow
+    rangeMin: 1
+    rangeMax: 3
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      water: 1
+      air: 1
+    tagDamage:
+      archer: 0.65
+      soldier: 0.7
+      villager: 0.7
+      dog: 0.75
+      spearman: 0.60
+      balloon: 0.2
+      wagon: 0.35                  
+      mage: 0.75
+      harpy: 0.3
+      knight: 0.4
+      witch: 0.2
+      ballista: 0.3      
+      trebuchet: 0.25
+      giant: 0.1
+      dragon: 0.1
+      structure: 0.2
+      commander: 0.05
+      warship: 0.25
+      harpoonship: 0.3
+      turtle: 0.3
+      travelboat: 0.35
+      merman: 0.7
+      rifleman: 0.8
+      thief: 0.7
+      pirate_ship: 0.45
+
+
+      flagship: 0.1
+
+
+unitClasses:
+  - id: archer
+    name: unit_class_name_archer
+    cost: 500
+    movement: walking
+    moveRange: 3
+    damageMultiplier: 1
+    aiPriority: 1.0
+    weapons:
+      - id: bow
+    tags:
+      - archer
+      - type.ground.light
+    verbs:
+      - load
+      - capture
+      - pick_up_crown
+      - throw_crown
+    battleUnitCount: 4
+    passiveMultiplier: 1.35
+    sightRange: 5
+    deathVerbId: death_drop_crown
+
+units:
+  - class: archer
+    faction: outlaw
+    name: unit_name_archer_outlaws
+    mapAnimation: units/archer/outlaws/map_archer_outlaws
+    battleAnimation: units/archer/outlaws/battle_archer_outlaws
+    battleAnimationRiver: fx/river_overlay/battle_archer_river
+    smallPortrait: units/archer/outlaws/portrait_archer_outlaws_small.png
+    mediumPortrait: units/archer/outlaws/portrait_archer_outlaws_medium.png
+    mapSpeed: 4.0
+    grabPos: [15, 24]
+    sounds:
+      attackMap: unitAttack
+      attack: archerAttack
+      attackEffect1: archerAttackEffect1
+      attackEffect2: archerAttackEffect2
+      attackEffect3: archerAttackEffect3
+      attackEffect4: archerAttackEffect4
+      captureShout: soldierPreAttackRed
+      death: soldierDieRed
+      deathMap: unitDie
+      run: infantryLightEntry
+      runMap: infantryLightMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+      counter: archerCounterAttack
+    attacks:
+      - id: primary
+        attackAnimationSequence: counter
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 0.8
+        attackSound: counter
+        samePanel: true
+      - id: oneArchers
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7]
+        effect: fx/bs_archer_attack_1
+        effectDelay: 1.4
+        attackEffectSound: attackEffect1
+        numAttackers: 1
+        ranged: true
+      - id: twoArchers
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9]
+        effect: fx/bs_archer_attack_2
+        effectDelay: 1.4
+        attackEffectSound: attackEffect2
+        numAttackers: 2
+        ranged: true
+      - id: threeArchers
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9, 2.1]
+        effect: fx/bs_archer_attack_3
+        effectDelay: 1.4
+        attackEffectSound: attackEffect3
+        numAttackers: 3
+        ranged: true
+      - id: fourArchers
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9, 2.1, 2.3]
+        effect: fx/bs_archer_attack_4
+        attackEffectSound: attackEffect4
+        effectDelay: 1.4
+        numAttackers: 4
+        ranged: true
+    emotes:
+      idle: idle
+      dance: emote_dance
+      surprise: emote_surprise
+    shouts:
+      soldier_shout1: soldierShoutRed1
+      soldier_shout2: soldierShoutRed2
+      soldier_shout3: soldierShoutRed3
+      soldier_shout4: soldierShoutRed4
+      soldier_shout5: soldierShoutRed5
+      soldier_shout6: soldierShoutRed6
+      soldier_shout7: soldierShoutRed7
+      soldier_shout8: soldierShoutRed8
+      soldier_shout9: soldierShoutRed9
+      soldier_hit1: soldierHitRed1
+      soldier_hit2: soldierHitRed2
+      soldier_hit3: soldierHitRed3
+      soldier_hit4: soldierHitRed4
+      soldier_hit5: soldierHitRed5
+    hidden:
+      shouts:
+        - soldier_shout3
+        - soldier_shout5
+        - soldier_shout6
+        - soldier_shout9
+...

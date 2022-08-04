@@ -1,0 +1,30 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/riflemanAttackShot.ogg ]
+    group: sfx
+    delay: 0
+    volume: 0.9
+  - type: play
+    clips: [ sfx/warshipCannon.ogg ]
+    group: sfx
+    delay: 0.15
+    volume: 0.7
+  - type: play
+    clips: [ sfx/riflemanAttackShot.ogg ]
+    group: sfx
+    delay: 0.3
+    pitch: [ 0.9, 1.1 ]
+    volume: 0.4
+  - type: play
+    clips: [ sfx/cutscene/explosionBig.ogg ]
+    group: sfx
+    delay: 0.45
+    volume: 0.7
+  - type: play
+    clips: [ sfx/riflemanAttackShot.ogg ]
+    group: sfx
+    delay: 0.6
+    pitch: [ 0.9, 1.1 ]
+    volume: 0.9
+...

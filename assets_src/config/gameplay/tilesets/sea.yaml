@@ -1,0 +1,111 @@
+---
+tilesets:
+  - id: sea
+    biomes:
+      - types: [grass, ice, desert]
+        spriteSheet: tilesets
+        spriteBase: sea_tileset_000
+        waterSpriteBase: sea_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: beach_in_sea_background
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_ocean
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Ocean
+        infoScreenOffset: 35
+        fillColour: '#2a2542'
+      - types: [volcano]
+        spriteSheet: tilesets
+        spriteBase: sea_tileset_000
+        waterSpriteBase: sea_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: volcano_battlescreen_extendedbackgrounds_lava
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Ocean
+        infoScreenOffset: 70
+        fillColour: '#76231c'
+    primaryConnect: [undefined, sea, bridge, beach, ocean, river]
+    decayTo: plains
+    tiles:
+      - { x: 0, y: 0, adj: "e se s" }
+      - { x: 1, y: 0, adj: "e se s sw w" }
+      - { x: 2, y: 0, adj: "s sw w" }
+      - { x: 3, y: 0, adj: "n ne e se s" }
+      - { x: 4, y: 0, adj: "n nw w sw s" }
+      - { x: 5, y: 0, adj: "n s" }
+
+      - { x: 0, y: 1, adj: "n ne e se s" }
+      - { x: 1, y: 1, adj: "n ne e se s sw w nw", default: true }
+      - { x: 2, y: 1, adj: "n nw w sw s" }
+      - { x: 3, y: 1, adj: "n ne e se s" }
+      - { x: 4, y: 1, adj: "n nw w sw s" }
+      - { x: 5, y: 1, adj: "n s" }
+
+      - { x: 0, y: 2, adj: "n ne e" }
+      - { x: 1, y: 2, adj: "w nw n ne e" }
+      - { x: 2, y: 2, adj: "w nw n" }
+      - { x: 3, y: 2, adj: "n ne e se s" }
+      - { x: 4, y: 2, adj: "n nw w sw s" }
+      - { x: 5, y: 2, adj: "n s" }
+
+      - { x: 0, y: 3, adj: "e se s sw w" }
+      - { x: 1, y: 3, adj: "e se s sw w" }
+      - { x: 2, y: 3, adj: "e se s sw w" }
+      - { x: 3, y: 3, adj: "e se s sw w" }
+      - { x: 4, y: 3, adj: "e se s sw w" }
+      - { x: 5, y: 3, adj: "w e" }
+      - { x: 6, y: 3, adj: "w e" }
+      - { x: 7, y: 3, adj: "w e" }
+      - { x: 8, y: 3, adj: "w e" }
+      - { x: 9, y: 3, adj: "w e" }
+
+      - { x: 0, y: 4, adj: "w nw n ne e" }
+      - { x: 1, y: 4, adj: "w nw n ne e" }
+      - { x: 2, y: 4, adj: "w nw n ne e" }
+      - { x: 3, y: 4, adj: "w nw n ne e" }
+      - { x: 4, y: 4, adj: "w nw n ne e" }
+
+      - { x: 0, y: 5, adj: "s" }
+      - { x: 1, y: 5, adj: "e" }
+      - { x: 2, y: 5, adj: "e w" }
+      - { x: 3, y: 5, adj: "w" }
+      - { x: 4, y: 5, adj: "s w n" }
+      - { x: 5, y: 5, adj: "n e s w ne se" }
+      - { x: 6, y: 5, adj: "n e s w nw sw" }
+      - { x: 7, y: 5, adj: "n e s w ne se" }
+      - { x: 8, y: 5, adj: "w s se e" }
+      - { x: 9, y: 5, adj: "w sw s e" }
+
+      - { x: 0, y: 6, adj: "n s" }
+      - { x: 1, y: 6, adj: "w s" }
+      - { x: 2, y: 6, adj: "s e" }
+      - { x: 3, y: 6, adj: "w s e" }
+      - { x: 4, y: 6, adj: "n e s w" }
+      - { x: 5, y: 6, adj: "n e s w se" }
+      - { x: 6, y: 6, adj: "n e s w sw" }
+      - { x: 7, y: 6, adj: "n e s w nw" }
+      - { x: 8, y: 6, adj: "n e s w ne" }
+      - { x: 9, y: 6, adj: "s w nw n ne e" }
+
+      - { x: 0, y: 7, adj: "n" }
+      - { x: 1, y: 7, adj: "n e" }
+      - { x: 2, y: 7, adj: "n w" }
+      - { x: 3, y: 7, adj: "n e s" }
+      - { x: 4, y: 7, adj: "w n e" }
+      - { x: 5, y: 7, adj: "n e s w se sw" }
+      - { x: 6, y: 7, adj: "n e s se" }
+      - { x: 7, y: 7, adj: "n e w nw" }
+      - { x: 8, y: 7, adj: "n e w ne" }
+      - { x: 9, y: 7, adj: "n ne e s sw w" }
+
+      - { x: 0, y: 8, adj: "" }
+      - { x: 1, y: 8, adj: "n e s w ne nw sw" }
+      - { x: 2, y: 8, adj: "n e s w ne nw se" }
+      - { x: 5, y: 8, adj: "n nw w s" }
+      - { x: 6, y: 8, adj: "n ne e s" }
+      - { x: 9, y: 8, adj: "n e se s w nw" }
+      
+      - { x: 1, y: 9, adj: "n e s w nw sw se" }
+      - { x: 2, y: 9, adj: "n e s w ne se sw" }
+      - { x: 5, y: 9, adj: "n w sw s" }
+...

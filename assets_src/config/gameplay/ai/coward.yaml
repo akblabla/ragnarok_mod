@@ -1,0 +1,41 @@
+---
+
+aiProfiles:
+  - id: coward
+    name: ai_profile_coward
+    attackLookAhead: 0
+    captureLookAhead: 0
+    captureBias: 0
+    attackBias: 0.1
+    braveryBonus: -1
+    recklessness: -1
+    moveBias: 10
+    lookAheadBias: 1
+    baseDoomPenalty: 100.0
+    additionalDoomPenalty: 1000.0
+    attackThreshold:
+      commander: 2
+      hq: 2
+    strategicValue:
+      commander:
+        samePlayer: 2.0
+        ally: 0.5
+      hq:
+        samePlayer: 1.5
+        ally: 0.5
+      structure:
+        samePlayer: 0.5
+        neutral: 0.3
+    stealValue:
+      hq: 0.6
+      structure: 0.3
+    depositValue:
+      hq: 1.0
+      structure: 1.0
+    recruitBonus:
+      thief: 0.1
+    recruitLimit:
+      thief: 1
+      witch: 3
+
+...

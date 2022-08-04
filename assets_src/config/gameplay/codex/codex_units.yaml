@@ -1,0 +1,735 @@
+---
+codex:
+
+- id: unit_soldier_outlaws
+  category: units
+  faction: outlaw
+  name: unit_name_soldier_outlaws
+  icon:
+    image: units/soldier/outlaws/portrait_soldier_outlaws_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: soldier
+    faction: outlaw
+    title: unit_name_soldier_outlaws
+    text: codex_unit_soldier_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: soldier
+    faction: outlaw
+    title: unit_name_soldier_outlaws
+    text: codex_unit_soldier_critical_text
+  - pageType: stats
+    layoutType: animation
+    animation: ui/codex/content/unit_soldiercrit
+    title: unit_name_soldier_outlaws
+    text: unit_description_soldier
+    unitClass: soldier
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: soldier
+
+- id: unit_spearman_outlaws
+  category: units
+  faction: outlaw
+  name: unit_name_spearman_outlaws
+  icon:
+    image: units/spearman/outlaws/portrait_spearman_outlaws_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: spearman
+    faction: outlaw
+    title: unit_name_spearman_outlaws
+    text: codex_unit_spearman_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: spearman
+    faction: outlaw
+    title: unit_name_spearman_outlaws
+    text: codex_unit_spearman_critical_text
+  - pageType: stats
+    layoutType: animation
+    animation: ui/codex/content/unit_spearmancrit
+    title: unit_name_spearman_outlaws
+    text: unit_description_spearman
+    unitClass: spearman
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: spearman
+
+- id: unit_dog_outlaws
+  category: units
+  faction: outlaw
+  name: unit_name_dog_outlaws
+  icon:
+    image: units/dog/outlaws/portrait_dog_outlaws_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: dog
+    faction: outlaw
+    title: unit_name_dog_outlaws
+    text: codex_unit_dog_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: dog
+    faction: outlaw
+    title: unit_name_dog_outlaws
+    text: codex_unit_dog_critical_text
+  - pageType: stats
+    layoutType: animation
+    animation: ui/codex/content/unit_dogcrit
+    title: unit_name_dog_outlaws
+    text: unit_description_dog
+    unitClass: dog
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: dog
+    
+- id: unit_wagon_outlaws
+  category: units
+  faction: outlaw
+  name: unit_name_wagon_outlaws
+  icon:
+    image: units/wagon/cherrystone/portrait_wagon_cherrystone_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: wagon
+    faction: outlaw
+    title: unit_name_wagon_outlaws
+    text: codex_unit_wagon_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: wagon
+    faction: outlaw
+    title: unit_name_wagon_outlaws
+    text: codex_unit_wagon_critical_text
+  - pageType: stats
+    layoutType: unit_sprite
+    unitClass: wagon
+    faction: outlaw
+    title: unit_name_wagon_outlaws
+    text: unit_description_wagon
+    unitClass: wagon
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: wagon
+    
+- id: unit_archer_outlaws
+  category: units
+  faction: outlaw
+  name: unit_name_archer_outlaws
+  icon:
+    image: units/archer/cherrystone/portrait_archer_cherrystone_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: archer
+    faction: outlaw
+    title: unit_name_archer_outlaws
+    text: codex_unit_archer_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: archer
+    faction: outlaw
+    title: unit_name_archer_outlaws
+    text: codex_unit_archer_critical_text
+  - pageType: stats
+    layoutType: animation
+    animation: ui/codex/content/unit_archercrit
+    title: unit_name_archer_outlaws
+    text: unit_description_archer
+    unitClass: archer
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: archer
+    
+- id: unit_mage_outlaws
+  category: units
+  faction: outlaw
+  name: unit_name_mage_outlaws
+  icon:
+    image: units/mage/cherrystone/portrait_mage_cherrystone_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: mage
+    faction: outlaw
+    title: unit_name_mage_outlaws
+    text: codex_unit_mage_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: mage
+    faction: outlaw
+    title: unit_name_mage_outlaws
+    text: codex_unit_mage_critical_text
+  - pageType: stats
+    layoutType: animation
+    animation: ui/codex/content/unit_magecrit
+    title: unit_name_mage_outlaws
+    text: unit_description_mage
+    unitClass: mage
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: mage
+    
+- id: unit_warship_outlaws
+  category: units
+  faction: outlaw
+  name: unit_name_warship_outlaws
+  icon:
+    image: units/warship/cherrystone/portrait_warship_cherrystone_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: warship
+    faction: outlaw
+    title: unit_name_warship_outlaws
+    text: codex_unit_warship_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: warship
+    faction: outlaw
+    title: unit_name_warship_outlaws
+    text: codex_unit_warship_critical_text
+  - pageType: stats
+    layoutType: animation
+    animation: ui/codex/content/unit_warshipcrit
+    title: unit_name_warship_outlaws
+    text: unit_description_warship
+    unitClass: warship
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: warship
+    
+- id: unit_harpoonship_outlaws
+  category: units
+  faction: outlaw
+  name: unit_name_harpoonship_outlaws
+  icon:
+    image: units/harpoonship/cherrystone/portrait_harpoonship_cherrystone_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: harpoonship
+    faction: outlaw
+    title: unit_name_harpoonship_outlaws
+    text: codex_unit_harpoonship_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: harpoonship
+    faction: outlaw
+    title: unit_name_harpoonship_outlaws
+    text: codex_unit_harpoonship_critical_text
+  - pageType: stats
+    layoutType: animation
+    animation: ui/codex/content/unit_harpoonshipcrit
+    title: unit_name_harpoonship_outlaws
+    text: unit_description_harpoonship
+    unitClass: harpoonship
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: harpoonship
+    
+- id: unit_dragon_outlaws
+  category: units
+  faction: outlaw
+  name: unit_name_dragon_outlaws
+  icon:
+    image: units/dragon/cherrystone/portrait_dragon_cherrystone_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: dragon
+    faction: outlaw
+    title: unit_name_dragon_outlaws
+    text: codex_unit_dragon_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: dragon
+    faction: outlaw
+    title: unit_name_dragon_outlaws
+    text: codex_unit_dragon_critical_text
+  - pageType: stats
+    layoutType: animation
+    animation: ui/codex/content/unit_dragoncrit
+    title: unit_name_dragon_outlaws
+    text: unit_description_dragon
+    unitClass: dragon
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: dragon
+    
+- id: unit_knight_outlaws
+  category: units
+  faction: outlaw
+  name: unit_name_knight_outlaws
+  icon:
+    image: units/knight/cherrystone/portrait_knight_cherrystone_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: knight
+    faction: outlaw
+    title: unit_name_knight_outlaws
+    text: codex_unit_knight_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: knight
+    faction: outlaw
+    title: unit_name_knight_outlaws
+    text: codex_unit_knight_critical_text
+  - pageType: stats
+    layoutType: animation
+    animation: ui/codex/content/unit_knightcrit
+    title: unit_name_knight_outlaws
+    text: unit_description_knight
+    unitClass: knight
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: knight
+    
+- id: unit_trebuchet_outlaws
+  category: units
+  faction: outlaw
+  name: unit_name_trebuchet_cherrystone
+  icon:
+    image: units/trebuchet/cherrystone/portrait_trebuchet_cherrystone_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: trebuchet
+    faction: outlaw
+    title: unit_name_trebuchet_outlaws
+    text: codex_unit_trebuchet_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: trebuchet
+    faction: outlaw
+    title: unit_name_trebuchet_outlaws
+    text: codex_unit_trebuchet_critical_text
+  - pageType: stats
+    layoutType: animation
+    animation: ui/codex/content/unit_trebuchetcrit
+    title: unit_name_trebuchet_outlaws
+    text: unit_description_trebuchet
+    unitClass: trebuchet
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: trebuchet
+    
+- id: unit_merman_outlaws
+  category: units
+  faction: outlaw
+  name: unit_name_merman_outlaws
+  icon:
+    image: units/merman/cherrystone/portrait_merman_cherrystone_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: merman
+    faction: outlaw
+    title: unit_name_merman_outlaws
+    text: codex_unit_merman_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: merman
+    faction: outlaw
+    title: unit_name_merman_outlaws
+    text: codex_unit_merman_critical_text
+  - pageType: stats
+    layoutType: animation
+    animation: ui/codex/content/unit_mermancrit
+    title: unit_name_merman_outlaws
+    text: unit_description_merman
+    unitClass: merman
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: merman
+    
+- id: unit_turtle_outlaws
+  category: units
+  faction: outlaw
+  name: unit_name_turtle_outlaws
+  icon:
+    image: units/turtle/cherrystone/portrait_turtle_cherrystone_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: turtle
+    faction: outlaw
+    title: unit_name_turtle_outlaws
+    text: codex_unit_turtle_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: turtle
+    faction: outlaw
+    title: unit_name_turtle_outlaws
+    text: codex_unit_turtle_critical_text
+  - pageType: stats
+    layoutType: animation
+    animation: ui/codex/content/unit_turtlecrit
+    title: unit_name_turtle_outlaws
+    text: unit_description_turtle
+    unitClass: turtle
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: turtle
+    
+- id: unit_witch_outlaws
+  category: units
+  faction: outlaw
+  name: unit_name_witch_outlaws
+  icon:
+    image: units/witch/cherrystone/portrait_witch_cherrystone_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: witch
+    faction: outlaw
+    title: unit_name_witch_outlaws
+    text: codex_unit_witch_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: witch
+    faction: outlaw
+    title: unit_name_witch_outlaws
+    text: codex_unit_witch_critical_text
+  - pageType: stats
+    layoutType: animation
+    animation: ui/codex/content/unit_witchcrit
+    title: unit_name_witch_outlaws
+    text: unit_description_witch
+    unitClass: witch
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: witch
+    
+- id: unit_harpy_outlaws
+  category: units
+  faction: outlaw
+  name: unit_name_harpy_outlaws
+  icon:
+    image: units/harpy/cherrystone/portrait_harpy_cherrystone_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: harpy
+    faction: outlaw
+    title: unit_name_harpy_outlaws
+    text: codex_unit_harpy_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: harpy
+    faction: outlaw
+    title: unit_name_harpy_outlaws
+    text: codex_unit_harpy_critical_text
+  - pageType: stats
+    layoutType: animation
+    animation: ui/codex/content/unit_harpycrit
+    title: unit_name_harpy_outlaws
+    text: unit_description_harpy
+    unitClass: harpy
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: harpy
+    
+- id: unit_balloon_outlaws
+  category: units
+  faction: outlaw
+  name: unit_name_balloon_outlaws
+  icon:
+    image: units/balloon/cherrystone/portrait_balloon_cherrystone_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: balloon
+    faction: outlaw
+    title: unit_name_balloon_outlaws
+    text: codex_unit_balloon_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: balloon
+    faction: outlaw
+    title: unit_name_balloon_outlaws
+    text: codex_unit_balloon_critical_text
+  - pageType: stats
+    layoutType: unit_sprite
+    unitClass: balloon
+    faction: outlaw
+    title: unit_name_balloon_outlaws
+    text: unit_description_balloon
+    unitClass: balloon
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: balloon
+
+- id: unit_giant_outlaws
+  category: units
+  faction: outlaw
+  name: unit_name_giant_outlaws
+  icon:
+    image: units/giant/cherrystone/portrait_giant_cherrystone_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: giant
+    faction: outlaw
+    title: unit_name_giant_outlaws
+    text: codex_unit_giant_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: giant
+    faction: outlaw
+    title: unit_name_giant_outlaws
+    text: codex_unit_giant_critical_text
+  - pageType: stats
+    layoutType: animation
+    animation: ui/codex/content/unit_giantcrit
+    title: unit_name_giant_outlaws
+    text: unit_description_giant
+    unitClass: giant
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: giant
+    
+- id: unit_ballista_outlaws
+  category: units
+  faction: outlaw
+  name: unit_name_ballista_outlaws
+  icon:
+    image: units/ballista/cherrystone/portrait_ballista_cherrystone_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: ballista
+    faction: outlaw
+    title: unit_name_ballista_outlaws
+    text: codex_unit_ballista_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: ballista
+    faction: outlaw
+    title: unit_name_ballista_outlaws
+    text: codex_unit_ballista_critical_text
+  - pageType: stats
+    layoutType: animation
+    animation: ui/codex/content/unit_ballistacrit
+    title: unit_name_ballista_outlaws
+    text: unit_description_ballista
+    unitClass: ballista
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: ballista
+    
+- id: unit_travelboat_outlaws
+  category: units
+  faction: outlaw
+  name: unit_name_travelboat_outlaws
+  icon:
+    image: units/travelboat/cherrystone/portrait_travelboat_cherrystone_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: travelboat
+    faction: outlaw
+    title: unit_name_travelboat_outlaws
+    text: codex_unit_travelboat_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: travelboat
+    faction: outlaw
+    title: unit_name_travelboat_outlaws
+    text: codex_unit_travelboat_critical_text
+  - pageType: stats
+    layoutType: unit_sprite
+    unitClass: travelboat
+    faction: outlaw
+    title: unit_name_travelboat_outlaws
+    text: unit_description_travelboat
+    unitClass: travelboat
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: travelboat
+    
+- id: unit_villager_outlaws
+  category: units
+  faction: outlaw
+  name: unit_name_villager_outlaws
+  icon:
+    image: units/villager/cherrystone/portrait_villager_cherrystone_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: villager
+    faction: outlaw
+    title: unit_name_villager_outlaws
+    text: codex_unit_villager_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: villager
+    faction: outlaw
+    title: unit_name_villager_outlaws
+    text: codex_unit_villager_critical_text
+  - pageType: stats
+    layoutType: unit_sprite
+    unitClass: villager
+    faction: outlaw
+    title: unit_name_villager_outlaws
+    text: unit_description_villager
+    unitClass: villager
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: villager
+    
+- id: unit_thief_outlaws
+  category: units
+  faction: outlaw
+  name: unit_name_thief_outlaws
+  icon:
+    image: units/thief/cherrystone/portrait_thief_cherrystone_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIII
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: thief
+    faction: outlaw
+    title: unit_name_thief_outlaws
+    text: codex_unit_thief_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: thief
+    faction: outlaw
+    title: unit_name_thief_outlaws
+    text: codex_unit_thief_critical_text
+  - pageType: stats
+    layoutType: unit_sprite
+    unitClass: thief
+    faction: outlaw
+    title: unit_name_thief_outlaws
+    text: unit_description_thief
+    unitClass: thief
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: thief
+    
+- id: unit_rifleman_outlaws
+  category: units
+  faction: outlaw
+  name: unit_name_rifleman_outlaws
+  icon:
+    image: units/rifleman/cherrystone/portrait_rifleman_cherrystone_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIII
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: rifleman
+    faction: outlaw
+    title: unit_name_rifleman_outlaws
+    text: codex_unit_rifleman_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: rifleman
+    faction: outlaw
+    title: unit_name_rifleman_outlaws
+    text: codex_unit_rifleman_critical_text
+  - pageType: stats
+    layoutType: unit_sprite
+    unitClass: rifleman
+    faction: outlaw
+    title: unit_name_rifleman_outlaws
+    text: unit_description_rifleman
+    unitClass: rifleman
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: rifleman
+...

@@ -1,0 +1,132 @@
+---
+
+verbs:
+  - id: betterMerge
+    icon: ui/icons/grooves/unit_action_icon_inspire.png
+    name: ui_unit_verbs_better_merge
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetted: true
+    directTarget: true                                  # This verb targets a specific unit
+    scriptName: verbs/better_merge
+    #aiUses: true
+
+
+  - id: pick_up_crown
+    icon: ui/icons/grooves/unit_action_icon_inspire.png
+    name: ui_unit_verbs_pick_up_crown
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetted: true
+    
+    scriptName: verbs/pick_up_crown
+    
+  - id: hand_over_crown
+    icon: ui/icons/grooves/unit_action_icon_inspire.png
+    name: ui_unit_verbs_hand_over_crown
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetted: true
+    directTarget: true
+    scriptName: verbs/hand_over_crown
+    
+  - id: throw_crown
+    icon: ui/icons/grooves/unit_action_icon_inspire.png
+    name: ui_unit_verbs_throw_crown
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetted: true
+#    directTarget: true
+    scriptName: verbs/throw_crown
+    
+  - id: death_drop_crown
+    icon: ui/icons/grooves/unit_action_icon_bomb.png
+    name: ui_unit_verbs_explode
+    splashOutlineColour: attack_target_outline
+    scriptName: verbs/death_drop_crown
+    
+  - id: pirate_steal
+    icon: ui/icons/unit_action_icon_steal.png
+    name: ui_unit_verbs_steal
+    targetColour: attack_target
+    targetOutlineColour: target_outline
+    targetted: true
+    directTarget: true                                  # This verb targets a specific unit
+    scriptName: verbs/pirate_steal
+    aiUses: true
+    
+  - id: pirate_deposit
+    icon: ui/icons/unit_action_icon_deposit.png
+    name: ui_unit_verbs_deposit
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetted: true
+    directTarget: true                                  # This verb targets a specific unit
+    scriptName: verbs/pirate_deposit
+    aiUses: true
+    
+  - id: attack_board
+    icon: ui/icons/unit_action_icon_attack.png
+    name: ui_unit_verbs_board
+    isBasicAttack: true
+    targetColour: attack_target
+    targetOutlineColour: attack_target_outline
+    targetted: true
+    directTarget: true                                  # This verb targets a specific unit
+    scriptName: verbs/board
+    #aiUses: true
+
+  - id: groove_broadside
+    icon: ui/icons/grooves/unit_action_icon_shield.png
+    name: groove_name_broadside
+    targetColour: target
+    targetOutlineColour: attack_target_outline
+    targetDisplayOutlineColour: attack_target_outline
+    targetted: true
+    preExecute: true
+    scriptName: verbs/groove_broadside
+  
+  - id: groove_area_damage_rival
+    icon: ui/icons/grooves/unit_action_icon_shield.png
+    name: groove_name_area_damage_rival
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetDisplayOutlineColour: attack_target_outline
+    targetted: true
+    scriptName: verbs/groove_area_damage_rival
+    splashOutlineColour: attack_target_outline
+    splashRadius: 3
+    
+  - id: spawn_flare_1
+    icon: ui/icons/grooves/unit_action_icon_inspire.png
+    name: ui_unit_verbs_spawn_flare_1
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetDisplayOutlineColour: attack_target_outline
+    targetted: true
+    scriptName: verbs/spawn_flare_1
+    splashOutlineColour: attack_target_outline
+    splashRadius: 5
+
+  - id: spawn_flare_2
+    icon: ui/icons/grooves/unit_action_icon_inspire.png
+    name: ui_unit_verbs_spawn_flare_2
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetDisplayOutlineColour: attack_target_outline
+    targetted: true
+    scriptName: verbs/spawn_flare_2
+    splashOutlineColour: attack_target_outline
+    splashRadius: 5
+
+  - id: spawn_flare_many
+    icon: ui/icons/grooves/unit_action_icon_inspire.png
+    name: ui_unit_verbs_spawn_flare_many
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetDisplayOutlineColour: attack_target_outline
+    targetted: true
+    scriptName: verbs/spawn_flare_many
+    splashOutlineColour: attack_target_outline
+    splashRadius: 5
+...

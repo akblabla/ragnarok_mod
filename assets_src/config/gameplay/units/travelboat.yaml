@@ -1,0 +1,6 @@
+---
+modifyingUnitClasses:
+  - id: travelboat
+    replace:
+        moveRange: 8
+...

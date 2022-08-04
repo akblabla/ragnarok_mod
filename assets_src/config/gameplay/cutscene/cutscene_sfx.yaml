@@ -1,0 +1,60 @@
+---
+
+cutscene_sfx:
+  - id: wulfar_hug
+    path: cutscene/wulfarHug
+  - id: emeric_charged_attack
+    path: cutscene/emericChargedAttack
+
+    # Normally HIDDEN
+  - id: spell_binding
+    path: cutscene/spellBinding
+  - id: cutscene_ancient_door_open
+    path: cutscene/ancientDoorOpen
+  - id: cutscene_requiem_break
+    path: cutscene/requiemBreak
+  - id: cutscene_requiem_explode
+    path: cutscene/requiemExplode
+  - id: cutscene_requiem_sheath
+    path: cutscene/requiemSheath
+  - id: cutscene_sigrid_disappear
+    path: cutscene/sigridDisappear
+  - id: cutscene_crown_fall
+    path: cutscene/crownFall
+  - id: ship_die
+    path: cutscene/shipDie
+  - id: huge_giant_step
+    path: cutscene/hugeGiantStep
+  - id: teleport
+    path: cutscene/teleportOut
+  - id: teleport_in
+    path: cutscene/teleportIn
+  - id: bird_fly1
+    path: cutscene/birdFly1
+  - id: bird_fly2
+    path: cutscene/birdFly2
+  - id: bird_song1
+    path: cutscene/birdSong1
+  - id: bird_song2
+    path: cutscene/birdSong2
+  - id: treasure_stolen
+    path: cutscene/treasureStolen
+  - id: rustling_bushes
+    path: cutscene/bushRustle
+  - id: family_leaving_bushes
+    path: cutscene/familyLeavingBushes
+  - id: family_leaving_cactus
+    path: cutscene/familyLeavingCactii
+  - id: wulfar_carries_kids
+    path: cutscene/familyCarry
+  - id: rope_unfurl
+    path: cutscene/ropeThrow
+  - id: rope_slide
+    path: cutscene/ropeSlide
+  - id: floran_ambush
+    path: cutscene/floranAmbush
+  - id: meow
+    path: cutscene/catMeow
+  - id: purr
+    path: cutscene/catPurr
+...

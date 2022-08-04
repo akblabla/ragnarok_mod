@@ -1,0 +1,89 @@
+---
+# List of Layer Types:
+# base - drawn at the base layer, underneath mountains and rivers [grass effects, etc]
+# ground - drawn below all units [flowers, rocks, etc.]
+# units - sort together with units, base on the Y position, same as trees [flags etc.]
+# sky - draws on top of all units [Clouds...?]
+
+decorations:
+  - id: shipExterior 
+    layer: ground
+    snapToGrid: true
+    animation:
+      undefined: decoration/unit/shipExterior
+  - id: shipForeground
+    layer: units
+    snapToGrid: true
+    animation:
+      undefined: decoration/unit/shipForeground
+  - id: shipBridge
+    layer: units
+    animation:
+      undefined: decoration/unit/shipBridge
+  - id: solidBarrel
+    layer: units
+    animation:
+      undefined: decoration/unit/solidBarrel
+  - id: pirateShipExterior
+    layer: ground
+    snapToGrid: true
+    animation:
+      undefined: decoration/unit/pirateShipExterior
+  - id: pirateShipForeground
+    layer: units
+    snapToGrid: true
+    animation:
+      undefined: decoration/unit/pirateShipForeground
+  - id: NWCaveCorner
+    layer: ground
+    snapToGrid: true
+    animation:
+      undefined: decoration/unit/NWCaveCorner
+  - id: NECaveCorner
+    layer: ground
+    snapToGrid: true
+    animation:
+      undefined: decoration/unit/NECaveCorner
+  - id: mountain_river01_cave
+    layer: ground
+    snapToGrid: true
+    snapOffset: [-5, 10]
+    animation:
+      undefined: decoration/water/mountainriver01_cave
+  - id: mountain_river01_cave_west
+    layer: ground
+    snapToGrid: true
+    snapOffset: [4, -3]
+    animation:
+      undefined: decoration/water/mountainriver01_cave_west
+  - id: mountain_river01_cave_east
+    layer: ground
+    snapToGrid: true
+    snapOffset: [13, -3]
+    animation:
+      undefined: decoration/water/mountainriver01_cave_east
+  - id: stalagmite01
+    layer: units
+    animation:
+      undefined: decoration/water/stalagmite01
+  - id: stalagmite02
+    layer: units
+    animation:
+      undefined: decoration/water/stalagmite02
+  - id: stalagmite_stalactite01
+    layer: units
+    animation:
+      undefined: decoration/water/stalagmiteStalactite01
+  - id: market_stand01
+    layer: units
+    animation:
+      undefined: decoration/unit/marketStand01
+  - id: market_stand02
+    layer: units
+    animation:
+      undefined: decoration/unit/marketStand02
+  - id: market_stand03
+    layer: units
+    animation:
+      undefined: decoration/unit/marketStand03
+...

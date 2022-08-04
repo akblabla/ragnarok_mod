@@ -1,0 +1,56 @@
+---
+
+weapons:
+  - id: lance
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      water: 1
+    tagDamage:
+      archer: 1
+      soldier: 0.9
+      villager: 0.9
+      spearman: 0.45
+      dog: 1.2
+      wagon: 0.55
+      knight: 0.55
+      trebuchet: 0.8
+      ballista: 0.85
+      merman: 0.85
+      mage: 1.1
+      structure: 0.65
+      giant: 0.25
+      commander: 0.25
+      rifleman: 1.0
+      thief: 0.9
+
+      warship: 0.2
+      harpoonship: 0.3
+      turtle: 0.25
+      travelboat: 0.25
+      pirate_ship: 0.3
+      flagship: 0.2
+      
+unitClasses:
+  - id: knight
+    name: unit_class_name_knight
+    cost: 600
+    movement: riding
+    moveRange: 6
+    damageMultiplier: 1
+    aiPriority: 1.0
+    weapons:
+      - id: lance
+    tags:
+      - knight
+      - type.ground.heavy
+    verbs:
+      - load
+      - pick_up_crown
+      - hand_over_crown
+    battleUnitCount: 4
+    passiveMultiplier: 1.5
+    deathVerbId: death_drop_crown
+...

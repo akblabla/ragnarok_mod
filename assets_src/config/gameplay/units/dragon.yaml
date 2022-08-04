@@ -1,0 +1,183 @@
+---
+
+weapons:
+  - id: fireBreath
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      water: 1
+    tagDamage:
+      archer: 1.4
+      soldier: 1.2
+      villager: 1.2
+      spearman: 1.2
+      dog: 1.5
+      wagon: 0.8
+      knight: 1
+      trebuchet: 1.05
+      ballista: 1.1
+      mage: 0.65
+      structure: 0.65
+      commander: 0.35
+      giant: 0.65
+      rifleman: 1.3
+      thief: 1.2
+      
+      
+      flagship: 0.3
+      pirate_ship: 1.1
+      warship: 0.9
+      harpoonship: 0.7
+      turtle: 0.75
+      travelboat: 1.1
+      merman: 1.2
+
+
+unitClasses:
+  - id: dragon
+    name: unit_class_name_dragon
+    cost: 1250
+    movement: flying
+    moveRange: 8
+    damageMultiplier: 1
+    aiPriority: 1.0
+    weapons:
+      - id: fireBreath
+    tags:
+      - dragon
+      - type.air
+    battleUnitCount: 1
+    passiveMultiplier: 1.5
+    sightRange: 6
+    canSeeOverTerrain: true
+
+
+units:
+  - class: dragon
+    faction: cherrystone
+    name: unit_name_dragon_cherrystone
+    mapAnimation: units/dragon/cherrystone/map_dragon_cherrystone
+    battleAnimation: units/dragon/cherrystone/battle_dragon_cherrystone
+    smallPortrait: units/dragon/cherrystone/portrait_dragon_cherrystone_small.png
+    mediumPortrait: units/dragon/cherrystone/portrait_dragon_cherrystone_medium.png
+    mapSpeed: 8.0
+    grabPos: [24, 13]
+    attackOffset: [10, 0]
+    cutsceneStartOffset: [75, 0]
+    sounds:
+      attackMap: unitAttack
+      attack: dragonAttack
+      attackEffect: dragonBreathFireEffect
+      death: dragonDie
+      deathMap: unitDie
+      run: dragonEntry
+      runMap: dragonEntry
+      firstHit: dragonHit
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        ranged: true
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.5
+        effect: fx/bs_dragon_attack
+        effectDelay: 0.9
+    emotes:
+      idle: idle
+      idle_norider: idle_norider
+    alternativeRuns:
+      - id: run_norider
+
+  - class: dragon
+    faction: felheim
+    name: unit_name_dragon_felheim
+    mapAnimation: units/dragon/felheim/map_dragon_felheim
+    battleAnimation: units/dragon/felheim/battle_dragon_felheim
+    smallPortrait: units/dragon/felheim/portrait_dragon_felheim_small.png
+    mediumPortrait: units/dragon/felheim/portrait_dragon_felheim_medium.png
+    mapSpeed: 8.0
+    grabPos: [24, 13]
+    attackOffset: [10, 0]
+    cutsceneStartOffset: [75, 0]
+    sounds:
+      attackMap: unitAttack
+      attack: dragonAttackBlue
+      attackEffect: dragonBreathFireEffect
+      death: dragonDie
+      deathMap: unitDie
+      run: dragonEntry
+      runMap: dragonEntry
+      firstHit: dragonHitBlue
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        ranged: true
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.5
+        effect: fx/bs_dragon_attack
+        effectDelay: 0.9
+
+  - class: dragon
+    faction: heavensong
+    name: unit_name_dragon_heavensong
+    mapAnimation: units/dragon/heavensong/map_dragon_heavensong
+    battleAnimation: units/dragon/heavensong/battle_dragon_heavensong
+    smallPortrait: units/dragon/heavensong/portrait_dragon_heavensong_small.png
+    mediumPortrait: units/dragon/heavensong/portrait_dragon_heavensong_medium.png
+    mapSpeed: 8.0
+    grabPos: [24, 13]
+    attackOffset: [10, 0]
+    cutsceneStartOffset: [75, 0]
+    sounds:
+      attackMap: unitAttack
+      attack: dragonAttackYellow
+      attackEffect: dragonBreathFireEffect
+      death: dragonDieYellow
+      deathMap: unitDie
+      run: dragonEntry
+      runMap: dragonEntry
+      firstHit: ""
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        ranged: true
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.5
+        effect: fx/bs_dragon_attack
+        effectDelay: 0.9
+
+  - class: dragon
+    faction: floran
+    name: unit_name_dragon_floran
+    mapAnimation: units/dragon/floran/map_dragon_floran
+    battleAnimation: units/dragon/floran/battle_dragon_floran
+    smallPortrait: units/dragon/floran/portrait_dragon_floran_small.png
+    mediumPortrait: units/dragon/floran/portrait_dragon_floran_medium.png
+    mapSpeed: 8.0
+    grabPos: [24, 13]
+    attackOffset: [10, 0]
+    cutsceneStartOffset: [75, 0]
+    sounds:
+      attackMap: unitAttack
+      attack: dragonAttack
+      attackEffect: dragonBreathFireEffect
+      death: dragonDie
+      deathMap: unitDie
+      run: dragonEntry
+      runMap: dragonEntry
+      firstHit: dragonHit
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        ranged: true
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.5
+        effect: fx/bs_dragon_attack
+        effectDelay: 0.9
+
+...

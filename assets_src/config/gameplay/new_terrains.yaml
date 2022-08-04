@@ -1,0 +1,139 @@
+---
+terrains:
+  - id: sea_alt
+    name: terrain_name_sea
+    biomeNames:
+      volcano: terrain_name_sea_lava
+    biomeDescriptions:
+      volcano: terrain_description_lava
+    defenceBonus: 1
+    movementCost:
+      sailing: 1
+      flying: 1
+      hovering: 1
+      amphibious: 1
+      sea_building: 1
+    biomeMovementCosts:
+      volcano:
+        flying: 1
+        hovering: 1
+    movementGroupType: water
+    placeable: true
+    tilesets:
+      0: [plains, rough, plains_alt]
+      1: sea_alt
+
+  - id: plains_alt
+    name: terrain_name_plains
+    defenceBonus: 1
+    movementCost:
+      walking: 1
+      riding: 1
+      flying: 1
+      hovering: 1
+      wheels: 2
+      amphibious: 2
+      land_building: 1
+      indoor_building: 1
+    movementGroupType: land
+    placeable: true
+    tilesets:
+      0: plains_alt
+
+  - id: forest_alt
+    name: terrain_name_forest
+    defenceBonus: 3
+    movementCost:
+      walking: 2
+      riding: 3
+      flying: 1
+      hovering: 1
+      amphibious: 4
+    movementGroupType: land
+    placeable: true
+    visionBlocking: true
+    fowCover: true
+    tilesets:
+      0: [plains, rough, plains_alt]
+      1: forest_alt
+
+  - id: rough
+    name: terrain_name_rough
+    defenceBonus: 2
+    movementCost:
+      walking: 1
+      riding: 1
+      hovering: 1
+      amphibious: 2
+      land_building: 1
+      indoor_building: 1
+    movementGroupType: land
+    placeable: true
+    tilesets:
+      0: rough
+      
+  - id: cave_wall
+    name: terrain_name_wall
+    defenceBonus: 0
+    movementCost: {}
+    movementGroupType: land
+    visionBlocking: true
+    placeable: true
+    tilesets:
+      0: [plains, rough, plains_alt]
+      1: cave_wall
+      
+      
+  - id: deck
+    name: terrain_name_deck
+    defenceBonus: 1
+    movementCost:
+      walking: 1
+      riding: 1
+      flying: 1
+      hovering: 1
+      wheels: 2
+      amphibious: 2
+      land_building: 1
+      indoor_building: 1
+    movementGroupType: land
+    placeable: true
+    tilesets:
+      1: ocean
+      2: deck
+      
+  - id: invisible_wall_ocean
+    name: terrain_name_hull
+    defenceBonus: 0
+    movementCost:
+      flying: 1
+    movementGroupType: land
+    visionBlocking: true
+    placeable: true
+    tilesets:
+      0: [plains, rough, plains_alt]
+      1: invisible_wall_ocean
+
+  - id: invisible_wall_sea
+    name: terrain_name_hull
+    defenceBonus: 0
+    movementCost: 
+      flying: 1
+    movementGroupType: land
+    visionBlocking: true
+    placeable: true
+    tilesets:
+      0: [plains, rough, plains_alt]
+      1: invisible_wall_sea
+      
+  - id: invisible_blocker_ocean
+    name: terrain_name_cabin
+    defenceBonus: 0
+    movementCost: {}
+    movementGroupType: land
+    visionBlocking: true
+    placeable: true
+    tilesets:
+      0: [plains, rough, plains_alt]
+      1: invisible_blocker_ocean
+...

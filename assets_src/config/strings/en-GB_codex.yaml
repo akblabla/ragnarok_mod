@@ -1,0 +1,49 @@
+---
+
+en-GB:
+# CODEX: UNIT INFORMATION
+  codex_unit_soldier_outlaws_lore_text: "Cutthroats are young aspirants that start there journey by mugging farmers minding their own buisness. It is common for farmers to just pretend to be scared and hand over the money when Cutthroats' inexperience shows."
+
+  codex_unit_spearman_outlaws_lore_text: "Brigands travel in bands, having each others backs. They don't get much done, as they are usually busy singing and drinking around their camps."
+
+  codex_unit_dog_outlaws_lore_text: "The Strays have been abandoned by their former owners in the past. The outlaws welcome these pubs however. They tend to work in packs of two when stealing from villagers. One Stray charms and distracts the poor villager with their adorable antics, whilst the other subtly steals the bounty, before they both scatter."
+ 
+  codex_unit_wagon_outlaws_lore_text: "The outlaws have always gone on heists, and what better get away vehicle is there than the humble Wagon. Fast and even discrete, should guards be nearby."
+ 
+  codex_unit_archer_outlaws_lore_text: "The Poachers hunt in the Gloomwoods inorder to sell valuable venison and fur coats. This practice has been banned ever since the peace treaty between the Cherrykingdom and the Florans. Despite this, the poachers still hunt and then let the Outlaws handle their contraband."
+ 
+  codex_unit_mage_outlaws_lore_text: "The Tricksters are rejects from the Alchemists Academy of the Cherrykingdom. Most got caught cheating during their exams by using Heavensong fireworks inorder to enhance the spectacle of their spells. Whilst they do deploy a lot of tricks and illusions to exaggerate their magics, they are still excellent mages.\n Some trickters were part of the student council of the Alchemist Academy, and continue their legacy by helping in the bureaucracy of the Outlaws' Department of Ethics and Rights."
+  
+  codex_unit_warship_outlaws_lore_text: "The Outlaws' build their own ships. The Outlaws have plenty humans ready join the merfolk on the sea. Whilst communication can be tough between the human and the merfolk crew, the moral is high with their constant sea shanties."
+ 
+  codex_unit_harpoonship_outlaws_lore_text: "The Outlaw Harpoon Ships are repurposed whaling ships. Their harpoons have been upgraded to be able to reach even dragons in the sky."
+  
+  codex_unit_dragon_outlaws_lore_text: "The Emberwing is the Outlaws' Dragon unit. It turns out the Emberwings have a primordial instinct to hoard gold. Outlaws train their Emberwings by using gold as rewards for good behavior. They are however careful to not give them too much, as the Emberwing might end up sleeping on their pile of gold more than helping."
+  
+  codex_unit_knight_outlaws_lore_text: "The Highwaymen are the Cavalry of the Outlaws. They lay in ambush along roads all across the continent, ambushing travelling traders. These Outlaws have left many traders empty handed."
+  
+  codex_unit_trebuchet_outlaws_lore_text: "The Outlaws rarely end up using siege weapons, as they are slow and cumbersome. If the need arises however, ship builders can quickly adapt and build trebuchets as necessary."
+
+  codex_unit_merman_outlaws_lore_text: "Merfolk are useful allies for the outlaw pirates, as they are perfect for stalking barges leaving safe waters."
+
+  codex_unit_turtle_outlaws_lore_text: "Seadog is the loving nickname the Outlaws gave the turtles for the ability to smell ambushers in forests and reefs. They are sometimes used to smuggle contraband, as they are by far the fastest on the sea, and can dive if they need to hide. Just make sure to use waterproof sacks."
+  
+  codex_unit_witch_outlaws_lore_text: "The Hag is Outlaws' Sky Rider unit. Hags are cooky witches that ends up spending their evenings cackling in the night sky. Parents across Aurania scare their children with stories about how the Hags kidnap naughty children. These stories do have a grain of truth to them, as you do see them in the nightsky with childrens on their brooms. However they are not abducting any children, instead they are taking their newly adopted orphan home."
+  
+  codex_unit_harpy_outlaws_lore_text: "The Harpy is Outlaws' Aeronaut unit. Whilst Harpies love the lands of the Cherrykingdom, not all care much for the royalty, and end up spending more time with the local Outlaws'. The Outlaw bakers make better cinamon buns anyway."
+  
+  codex_unit_balloon_outlaws_lore_text: "Outlaw Balloons are woven from a silk produced by silkworms found on the western edge of the Gloomwoods. Powered by a particularly potent Trickster's brew, they are capable of transporting heavy cargo and staying aloft almost indefinitely. Once in a while, the Balloon's pilot will add iron filings to the brew to ensure it continues to bubble. No one questions why this works for fear it may stop."
+  
+  codex_unit_giant_outlaws_lore_text: "The Golem is Cherrystone's Giant unit. Golems are the work of Cherrystone's master stonemasons. They are constructed from the toughest rock washed ashore from Guardian's Teeth, and shaped with tools made of dragon scales. At the heart of each Golem sits a single, pebble-sized Cherrystone, its power imbuing the lifeless stone with sentience and purpose. Those brave enough to place their ear to the Golem's chest may hear strange whispers from within."
+  
+  codex_unit_ballista_outlaws_lore_text: "Each Ballista is manned and maintained by a skilled Bowman. The Bowman will grow to appreciate the eccentricities of his or her particular Ballista, compensating for its shortcomings and leaning into its strengths. Should the machine be damaged in battle, the Bowman will carefully relearn the idiosyncrasies of his newly mended charge."
+  
+  codex_unit_travelboat_outlaws_lore_text: "During peacetime, these Barges are used to trade goods with Heavensong. It's not uncommon to see children waiting at the docks to sing a song to the Merfolk onboard, hoping they might share some of their cargo.\n\n''Ello Mister, how do ye do? Plip plip, plip plip.\nWhere have you been travellin' to? Plip plip, plip plip.\nDid you bring back somethin' nice? Plip plip, plip plip.\nSilk and spices, herbs and rice? Plip plip plip!\n\nOnce in a while, the Merfolk hand out brightly coloured exotic seashells found on the Scorched Beach and the children are left daydreaming of lands far away."
+  
+  codex_unit_villager_outlaws_lore_text: "The poor exist in all corners of Aurania. These people become Beggars that live off what they are donated. Some of these take to the Outlaws where they are welcomed with open arms, and can learn valuable skills such as pickpocketing and sewing."
+  
+  codex_unit_thief_outlaws_lore_text: "Smuggler's are the backbone of the Outlaw economy. It is a dangerous job, but a thief must make an honest living somehow."
+  
+  codex_unit_rifleman_outlaws_lore_text: "The Sharpshooters are the riflemen of the Outlaw. These trickshooters can knock a coin off a post a mile away. Although they constantly talk about how busy they are, and demand high pay for their work, you can somehow always find them playing cards at the bar day and night."
+  
+...

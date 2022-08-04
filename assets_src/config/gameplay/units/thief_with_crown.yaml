@@ -1,0 +1,175 @@
+---
+
+unitClasses:
+  - id: thief_with_crown
+    name: unit_class_name_thief_with_crown
+    cost: 400
+    movement: walking
+    moveRange: 3
+    damageMultiplier: 0.5
+    classIconSpritesheet: ui_RagnarokMod
+    aiPriority: 2.5
+    weapons: []
+    verbs:
+      - load
+      - bypass_gate
+    tags:
+      - thief
+      - type.ground.hideout
+    battleUnitCount: 1
+    isRecruitable: false
+    appearsInLists: false
+    inPalette: false
+    sightRange: 5
+    codexClass: thief
+
+
+units:
+  - class: thief_with_crown
+    faction: cherrystone
+    name: unit_name_thief_with_gold_cherrystone
+    mapAnimation: units/thief/cherrystone/map_thief_gold_cherrystone
+    battleAnimation: units/thief/cherrystone/battle_thief_gold_cherrystone
+    battleAnimationRiver: fx/river_overlay/battle_thief_river
+    smallPortrait: units/thief/cherrystone/portrait_thief_cherrystone_small.png
+    mediumPortrait: units/thief/cherrystone/portrait_thief_cherrystone_medium.png
+    mapSpeed: 4.0
+    grabPos: [13, 14]
+    deathMoveMin: 0
+    deathMoveMax: 0
+    stayAfterDeath: true
+    sounds:
+      death: thiefLoadedDieRed
+      deathMap: unitDie
+      run: thiefLoadedMapEntry
+      runMap: thiefLoadedMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    shouts:
+      soldier_shout1: soldierShoutRed1
+      soldier_shout2: soldierShoutRed2
+      soldier_shout3: soldierShoutRed3
+      soldier_shout4: soldierShoutRed4
+      soldier_shout5: soldierShoutRed5
+      soldier_shout6: soldierShoutRed6
+      soldier_shout7: soldierShoutRed7
+      soldier_shout8: soldierShoutRed8
+      soldier_shout9: soldierShoutRed9
+      soldier_hit1: soldierHitRed1
+      soldier_hit2: soldierHitRed2
+      soldier_hit3: soldierHitRed3
+      soldier_hit4: soldierHitRed4
+      soldier_hit5: soldierHitRed5
+    hidden:
+      shouts:
+        - soldier_shout3
+        - soldier_shout5
+        - soldier_shout6
+        - soldier_shout9
+    emotes:
+      idle: idle
+
+
+  - class: thief_with_crown
+    faction: felheim
+    name: unit_name_thief_with_gold_felheim
+    mapAnimation: units/thief/felheim/map_thief_gold_felheim
+    battleAnimation: units/thief/felheim/battle_thief_gold_felheim
+    battleAnimationRiver: fx/river_overlay/battle_thief_river
+    smallPortrait: units/thief/felheim/portrait_thief_felheim_small.png
+    mediumPortrait: units/thief/felheim/portrait_thief_felheim_medium.png
+    mapSpeed: 4.0
+    grabPos: [13, 14]
+    deathMoveMin: 0
+    deathMoveMax: 0
+    stayAfterDeath: true
+    sounds:
+      death: thiefLoadedDieBlue
+      deathMap: unitDie
+      run: thiefLoadedMapEntry
+      runMap: thiefLoadedMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    shouts:
+      soldier_blue_shout1: soldierShoutBlue1
+      soldier_blue_shout2: soldierShoutBlue2
+
+    emotes:
+      idle: idle
+
+  - class: thief_with_crown
+    faction: heavensong
+    name: unit_name_thief_with_gold_heavensong
+    mapAnimation: units/thief/heavensong/map_thief_gold_heavensong
+    battleAnimation: units/thief/heavensong/battle_thief_gold_heavensong
+    battleAnimationRiver: fx/river_overlay/battle_thief_river
+    smallPortrait: units/thief/heavensong/portrait_thief_heavensong_small.png
+    mediumPortrait: units/thief/heavensong/portrait_thief_heavensong_medium.png
+    mapSpeed: 4.0
+    grabPos: [13, 14]
+    deathMoveMin: 0
+    deathMoveMax: 0
+    stayAfterDeath: true
+    sounds:
+      death: thiefLoadedDieYellow
+      deathMap: unitDie
+      run: thiefLoadedMapEntry
+      runMap: thiefLoadedMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    shouts:
+      soldier_yellow_shout1: soldierShoutYellow1
+      soldier_yellow_shout2: soldierShoutYellow2
+      soldier_yellow_shout3: soldierShoutYellow3
+      soldier_yellow_shout4: soldierShoutYellow4
+      soldier_yellow_shout5: soldierShoutYellow5
+      soldier_yellow_hit1: soldierHitYellow1
+      soldier_yellow_hit2: soldierHitYellow2
+      soldier_yellow_hit3: soldierHitYellow3
+      soldier_yellow_hit4: soldierHitYellow4
+    hidden:
+      shouts:
+        - soldier_yellow_shout2
+        - soldier_yellow_shout5
+    emotes:
+      idle: idle
+
+  - class: thief_with_crown
+    faction: floran
+    name: unit_name_thief_with_gold_floran
+    mapAnimation: units/thief/floran/map_thief_gold_floran
+    battleAnimation: units/thief/floran/battle_thief_gold_floran
+    battleAnimationRiver: fx/river_overlay/battle_thief_river
+    smallPortrait: units/thief/floran/portrait_thief_floran_small.png
+    mediumPortrait: units/thief/floran/portrait_thief_floran_medium.png
+    mapSpeed: 4.0
+    grabPos: [13, 14]
+    deathMoveMin: 0
+    deathMoveMax: 0
+    stayAfterDeath: true
+    sounds:
+      death: thiefLoadedDieGreen
+      deathMap: unitDie
+      run: thiefLoadedMapEntry
+      runMap: thiefLoadedMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    shouts:
+      soldier_green_shout1: soldierShoutGreen1
+      soldier_green_shout2: soldierShoutGreen2
+      soldier_green_shout3: soldierShoutGreen3
+      soldier_green_shout4: soldierShoutGreen4
+      soldier_green_shout5: soldierShoutGreen5
+      soldier_green_shout6: soldierShoutGreen6
+      soldier_green_hit1: soldierHitGreen1
+      soldier_green_hit2: soldierHitGreen2
+      soldier_green_hit3: soldierHitGreen3
+    hidden:
+      shouts:
+        - soldier_green_shout2
+        - soldier_green_shout4
+        - soldier_green_shout5
+    emotes:
+      idle: idle
+
+...

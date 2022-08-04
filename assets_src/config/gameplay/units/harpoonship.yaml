@@ -1,0 +1,29 @@
+---
+modifyingUnitClasses:
+  - id: harpoonship
+    replace:
+        moveRange: 6
+weapons:
+  - id: harpoonshipCannon
+    rangeMin: 2
+    rangeMax: 3
+    canMoveAndAttack: true
+    baseDamage:
+      air: 1
+      water: 1
+    tagDamage:
+      witch: 0.8
+      dragon: 0.7
+      harpy: 1.3
+      balloon: 0.8
+
+      structure: 0.3
+      warship: 0.15
+      harpoonship: 0.3
+      turtle: 0.75
+      merman: 0.3
+      travelboat: 0.45
+      flagship: 0.1
+      pirate_ship: 0.25
+
+...

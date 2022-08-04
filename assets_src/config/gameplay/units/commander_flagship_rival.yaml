@@ -1,0 +1,90 @@
+---
+
+weapons:
+  - id: flagship_cannon
+    rangeMin: 2
+    rangeMax: 4
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      water: 1
+    tagDamage:
+      archer: 1.2
+      soldier: 1.0
+      villager: 1.0
+      spearman: 0.75
+      dog: 1.1
+      wagon: 0.6
+      knight: 0.7
+      trebuchet: 0.8
+      ballista: 0.85
+      mage: 0.8
+      structure: 0.75
+      giant: 0.55
+      commander: 0.4
+      rifleman: 1.1
+      thief: 1.0
+      balloon: 0.55
+      harpy: 0.9
+      witch: 0.7
+      dragon: 0.35
+
+      warship: 0.55
+      turtle: 0.4
+      harpoonship: 0.8
+      merman: 0.75
+      travelboat: 0.65
+      flagship: 0.4
+      pirate_ship: 0.8
+
+unitClasses:
+  - id: commander_flagship_rival
+    name: unit_class_name_flagship_rival
+    cost: 900
+    movement: sailing
+    moveRange: 5
+    aiPriority: 4.0
+    weapons:
+      - id: flagship_cannon
+    cargoSpace: 2
+    tags:
+      - flagship
+      - type.sea
+    battleUnitCount: 1
+    passiveMultiplier: 1
+    sightRange: 5
+    regeneration: 5
+    isCommander: true
+    grooveId: groove_area_damage_rival
+    isHiddenInCutsceneEditor: true
+
+units:
+  - class: commander_flagship_rival
+    faction: outlaw
+    name: unit_name_flagship_rival
+    mapAnimation: units/warship/outlaw/map_warship_outlaw
+    battleAnimation: units/warship/outlaw/battle_warship_outlaw
+    smallPortrait: units/warship/outlaw/portrait_warship_outlaw_small.png
+    mediumPortrait: units/warship/outlaw/portrait_warship_outlaw_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: warshipAttack
+      attackEffect: warshipAttackEffect
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_warship_attack
+        effectDelay: 1.8
+        hitDelay: [2.0, 2.3, 2.6]

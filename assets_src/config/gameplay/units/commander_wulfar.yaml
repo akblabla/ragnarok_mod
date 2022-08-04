@@ -1,0 +1,228 @@
+---
+
+weapons:
+  - id: wulfarHammer
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      water: 1
+    tagDamage:
+      archer: 1.3
+      soldier: 1.15
+      villager: 0.95
+      spearman: 0.75
+      dog: 1.15
+      wagon: 0.7
+      knight: 0.55
+      trebuchet: 0.55
+      ballista: 0.6
+      dragon: 0.3
+      mage: 0.8
+      giant: 0.4
+      structure: 0.7
+      balloon: 0.55
+      harpy: 0.9
+      witch: 0.7
+      dragon: 0.35
+      commander: 0.4
+      rifleman: 1.05
+      thief: 0.95
+      
+      pirate_ship: 0.6
+      warship: 0.55
+      harpoonship: 0.45
+      turtle: 0.55
+      travelboat: 0.6
+      merman: 0.95
+
+unitClasses:
+  - id: commander_wulfar
+    name: unit_class_name_commander
+    cost: 500
+    movement: walking
+    moveRange: 4
+    aiPriority: 8.0
+    regeneration: 5
+    weapons:
+      - id: wulfarHammer
+    verbs:
+      - load
+      - capture
+    tags:
+      - commander
+      - type.ground.light
+      - tall
+    battleUnitCount: 1
+    isCommander: true
+    grooveId: golf
+
+
+units:
+  - class: commander_wulfar
+    faction: outlaw
+    name: character_wulfar_name
+    mapAnimation: units/commanders/wulfar/map_wulfar
+    battleAnimation: units/commanders/wulfar/battle_wulfar_extra
+    battleAnimationRiver: fx/river_overlay/battle_wulfar_river
+    smallPortrait: units/commanders/wulfar/portrait_wulfar_small.png
+    mediumPortrait: units/commanders/wulfar/portrait_wulfar_medium.png
+    mapSpeed: 4.0
+    skinColour: typeII
+    grabPos: [47, 47]
+    deathMoveMin: 0
+    deathMoveMax: 0
+    alternativeCapture:
+      endPosOffset: -190 #coming from the left
+    stayAfterDeath: true
+    sounds:
+      attackMap: unitAttack
+      attack: wulfar/wulfarAttack
+      attackShout: wulfar/wulfarAttackShout
+      attackCommanderShout: wulfar/wulfarCommanderKillShout
+      capture: wulfar/wulfarStructureEntry
+      captureShout: wulfar/wulfarCapture
+      death: wulfar/wulfarDie
+      deathMap: wulfar/wulfarDieGhost
+      deathMapNoBattle: wulfar/wulfarDieNoBattle
+      run: wulfar/wulfarEntry
+      runMap: wulfar/wulfarEntry
+      firstHit: wulfar/wulfarHit
+      hit: hitOrganic
+      hitMap: hitOrganic
+      groove: wulfar/wulfarGrooveIntro
+    attacks:
+      - id: primary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.1, 2.05]
+    emotes:
+      idle: idle
+      surprise: emote_surprise
+      positive: emote_positive
+      negative: emote_negative
+      laugh: emote_laugh
+      crouching: emote_crouching
+      looking: emote_looking
+      grab: emote_grab
+      carrying: emote_carrying
+      rope: emote_rope
+      cactus: emote_cactus
+      dance: emote_dance
+      dark_wulfar: emote_dark_wulfar
+      dark_wulfar_handshake_1: emote_dark_wulfar_handshake_1
+      dark_wulfar_handshake_2: emote_dark_wulfar_handshake_2
+      dark_wulfar_handshake_3: emote_dark_wulfar_handshake_3
+      dark_wulfar_handshake_4: emote_dark_wulfar_handshake_4
+      handshake_1: emote_handshake_1
+      bush: emote_bush
+      bush2: emote_bush2
+      bush3: emote_bush3
+      handshake_2: emote_handshake_2
+      handshake_3: emote_handshake_3
+      hug: emote_hug
+      hug_idle: emote_hug_idle
+
+    shouts:
+      wulfar_agreed: wulfar/wulfarShoutAgreed
+      wulfar_aye1: wulfar/wulfarShoutAye1
+      wulfar_aye2: wulfar/wulfarShoutAye2
+      wulfar_beoffwithyou: wulfar/wulfarShoutBeOffWithYou
+      wulfar_boilyourhead: wulfar/wulfarShoutBoilYourHead
+      wulfar_bumsoutthewindow: wulfar/wulfarShoutBumsOutTheWindow
+      wulfar_didyouthreaten: wulfar/wulfarShoutDidYouThreaten
+      wulfar_dontdosomething: wulfar/wulfarShoutDontDoSomething
+      wulfar_followme: wulfar/wulfarShoutFollowMe
+      wulfar_formalcomplaint: wulfar/wulfarShoutFormalComplaint
+      wulfar_gonnaneedawagon: wulfar/wulfarShoutGonnaNeedAWagon
+      wulfar_goodlucklanding: wulfar/wulfarShoutGoodLuckLanding
+      wulfar_hammertime: wulfar/wulfarShoutHammerTime
+      wulfar_hello: wulfar/wulfarShoutHello
+      wulfar_hereicome: wulfar/wulfarShoutHereICome
+      wulfar_herestheplan: wulfar/wulfarShoutHeresThePlan
+      wulfar_hmm: wulfar/wulfarShoutHmm
+      wulfar_hmmlong: wulfar/wulfarShoutHmmLong
+      wulfar_hmph: wulfar/wulfarShoutHmph
+      wulfar_howcouldyou: wulfar/wulfarShoutHowCouldYou
+      wulfar_huh: wulfar/wulfarShoutHuh
+      wulfar_icannotfall: wulfar/wulfarShoutICannotFall
+      wulfar_illwallopyourhead: wulfar/wulfarShoutIllWallopYourHead
+      wulfar_introduction: wulfar/wulfarShoutIntroduction
+      wulfar_introductionfull: wulfar/wulfarShoutIntroductionFull
+      wulfar_itsdone: wulfar/wulfarShoutItsDone
+      wulfar_keepthehead: wulfar/wulfarShoutKeepTheHead
+      wulfar_laugh1: wulfar/wulfarShoutLaugh1
+      wulfar_laugh2: wulfar/wulfarShoutLaugh2
+      wulfar_letmehandlethis: wulfar/wulfarShoutLetMeHandleThis
+      wulfar_no: wulfar/wulfarShoutNo
+      wulfar_nodesperate: wulfar/wulfarShoutNoDesperate
+      wulfar_offyougo: wulfar/wulfarShoutOffYouGo
+      wulfar_oops: wulfar/wulfarShoutOops
+      wulfar_readyforawallop: wulfar/wulfarShoutReadyForAWallop
+      wulfar_shh: wulfar/wulfarShoutShh
+      wulfar_sigh: wulfar/wulfarShoutSigh
+      wulfar_takeahammering: wulfar/wulfarShoutTakeAHammering
+      wulfar_thankyou: wulfar/wulfarShoutThankYou
+      wulfar_thatsright: wulfar/wulfarShoutThatsRight
+      wulfar_thatsyoudone: wulfar/wulfarShoutThatsYouDone
+      wulfar_theclancoulddo: wulfar/wulfarShoutTheClanCouldDo
+      wulfar_theyllnevertake: wulfar/wulfarShoutTheyllNeverTake
+      wulfar_thismightbeasqueeze: wulfar/wulfarShoutThisMightBeASqueeze
+      wulfar_thismighthurtabit: wulfar/wulfarShoutThisMightHurtABit
+      wulfar_thiswillhurtmore: wulfar/wulfarShoutThisWillHurtMore
+      wulfar_trustyourself: wulfar/wulfarShoutTrustYourself
+      wulfar_tryandland: wulfar/wulfarShoutTryAndLand
+      wulfar_uh: wulfar/wulfarShoutUh
+      wulfar_upforthetask: wulfar/wulfarShoutUpForTheTask
+      wulfar_what: wulfar/wulfarShoutWhat
+      wulfar_youdidntthink: wulfar/wulfarShoutYouDidntThink
+      wulfar_youdidwell: wulfar/wulfarShoutYouDidWell
+      wulfar_youdumpling: wulfar/wulfarShoutYouDumpling
+      wulfar_yourebeaten: wulfar/wulfarShoutYoureBeaten
+      wulfar_youreoffyourhead: wulfar/wulfarShoutYoureOffYourHead
+      wulfar_youvebittenoff: wulfar/wulfarShoutYouveBittenOff
+      wulfar_youvemadeamistake: wulfar/wulfarShoutYouveMadeAMistake
+      wulfar_attack1: wulfar/wulfarShoutAttack1
+      wulfar_attack2: wulfar/wulfarShoutAttack2
+      wulfar_attack3: wulfar/wulfarShoutAttack3
+      wulfar_attack4: wulfar/wulfarShoutAttack4
+      wulfar_attack5: wulfar/wulfarShoutAttack5
+      wulfar_attack6: wulfar/wulfarShoutAttack6
+      wulfar_hit1: wulfar/wulfarShoutHit1
+      wulfar_hit2: wulfar/wulfarShoutHit2
+      wulfar_hit3: wulfar/wulfarShoutHit3
+      wulfar_hit4: wulfar/wulfarShoutHit4
+      wulfar_caesar: wulfar/wulfarShoutCaesar
+      wulfar_commanderryota: wulfar/wulfarShoutCommanderRyota
+      wulfar_dog: wulfar/wulfarShoutDog
+      wulfar_empresstenri: wulfar/wulfarShoutEmpressTenri
+      wulfar_enid: wulfar/wulfarShoutEnid
+      wulfar_errol: wulfar/wulfarShoutErrol
+      wulfar_errolorla: wulfar/wulfarShoutErrolOrla
+      wulfar_felllord: wulfar/wulfarShoutFellLord
+      wulfar_floran: wulfar/wulfarShoutFloran
+      wulfar_greenfinger: wulfar/wulfarShoutGreenfinger
+      wulfar_koji: wulfar/wulfarShoutKoji
+      wulfar_lordemeric: wulfar/wulfarShoutLordEmeric
+      wulfar_nuru: wulfar/wulfarShoutNuru
+      wulfar_orla: wulfar/wulfarShoutOrla
+      wulfar_queenmercia: wulfar/wulfarShoutQueenMercia
+      wulfar_ragna: wulfar/wulfarShoutRagna
+      wulfar_sedge: wulfar/wulfarShoutSedge
+      wulfar_sigrid: wulfar/wulfarShoutSigrid
+      wulfar_vampire: wulfar/wulfarShoutVampire
+      wulfar_vesper1: wulfar/wulfarShoutVesper1
+      wulfar_vesper2: wulfar/wulfarShoutVesper2
+      
+    alternativeAttackSounds:
+      no_voice: wulfar/wulfarAttackNoVoice
+
+    alternativeRuns:
+      - id: emote_carrying_walk
+
+
+
+
+
+
+...

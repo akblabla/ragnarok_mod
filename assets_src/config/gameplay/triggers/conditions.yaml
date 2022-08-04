@@ -1,0 +1,19 @@
+---
+
+triggerConditions:
+  - id: state
+    parameters:
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+      - type: string
+      - type: string
+      
+
+  - id: does_next_structure_exist
+    parameters:
+      - type: location_star
+      - type: unit_class_star
+      - type: player_neutral_star
+      - type: location_star
+...

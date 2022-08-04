@@ -1,0 +1,11 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/emeric/emericAttackChargeUpFoley.ogg ]
+    group: sfx
+    delay: 0.1
+  - type: play
+    clips: [ sfx/emeric/emericAttackChargeLightningFoley.ogg ]
+    group: sfx
+    delay: 1.3
+...

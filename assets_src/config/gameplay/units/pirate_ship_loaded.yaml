@@ -1,0 +1,58 @@
+---
+
+unitClasses:
+  - id: pirate_ship_loaded
+    name: unit_class_name_pirate_ship_loaded
+    appearsInLists: false
+    codexClass: pirate_ship
+    cost: 600
+    classIconSpritesheet: ui_RagnarokMod
+    movement: sailing
+    moveRange: 7
+    damageMultiplier: 1
+    aiPriority: 2
+    cargoSpace: 2
+    tags:
+      - pirate_ship
+      - type.sea
+    verbs:
+      - pirate_deposit
+    battleUnitCount: 1
+    isRecruitable: false
+    isPlaceable: false
+    passiveMultiplier: 1.5
+    sightRange: 5
+    isHiddenInCutsceneEditor: true
+    deathVerbId: death_give_gold 
+
+
+units:
+  - class: pirate_ship_loaded
+    faction: cherrystone
+    name: unit_name_pirate_ship
+    mapAnimation: units/raider/cherrystone/map_raider_loaded_cherrystone
+    battleAnimation: units/warship/cherrystone/battle_warship_cherrystone
+    smallPortrait: units/warship/cherrystone/portrait_warship_cherrystone_small.png
+    mediumPortrait: units/warship/cherrystone/portrait_warship_cherrystone_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: warshipAttack
+      attackEffect: warshipAttackEffect
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_warship_attack
+        effectDelay: 1.8
+        hitDelay: [2.0, 2.3, 2.6]

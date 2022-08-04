@@ -1,0 +1,28 @@
+---
+
+grooves:
+  - id: groove_broadside                        # The groove id
+    name: groove_name_broadside                 # The groove name (looks up the string in the string yaml file)
+    description: groove_description_broadside   # The groove description (looks up the string in the string yaml file)
+    maxCharge: 100                            # The maximum amount the groove can charge to
+    chargePerUse: 100                         # The amount of charge used per turn
+    chargeBy:                                 # The amount to charge the groove by when...
+      endOfTurn: 10                           #   The player ends their turn.
+      attack: 20                              #   The commander attacks an enemy unit.
+      counter: 10                             #   The commander is attacked by an enemy unit.
+      kill: 30                                #   The commander kills an enemy unit.
+    verb: groove_broadside                      #   The verb associated with the groove. This should match the id of the verb in verbs.yaml.
+
+  - id: groove_area_damage_rival                     # The groove id
+    name: groove_name_area_damage_rival                 # The groove name (looks up the string in the string yaml file)
+    description: groove_description_area_damage_rival   # The groove description (looks up the string in the string yaml file)
+    maxCharge: 150                            # The maximum amount the groove can charge to
+    chargePerUse: 150                         # The amount of charge used per turn
+    chargeBy:                                 # The amount to charge the groove by when...
+      endOfTurn: 10                           #   The player ends their turn.
+      attack: 20                              #   The commander attacks an enemy unit.
+      counter: 10                             #   The commander is attacked by an enemy unit.
+      kill: 30                                #   The commander kills an enemy unit.
+    verb: groove_area_damage_rival                      #   The verb associated with the groove. This should match the id of the verb in verbs.yaml.
+
+...

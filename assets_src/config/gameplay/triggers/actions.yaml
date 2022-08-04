@@ -1,0 +1,164 @@
+---
+
+triggerActions:
+  - id: ai_set_no_building_attacking
+    parameters:
+      - type: player
+
+  - id: set_state
+    parameters:
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+      - type: string
+      - type: string
+
+  - id: move_location_to_next_structure
+    parameters:
+      - type: location_star
+      - type: unit_class_star
+      - type: player_neutral_star
+      - type: location_star
+
+  - id: spawn_unit_closest_to_location
+    parameters:
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+      - type: boolean
+      - type: location_star
+
+  - id: link_gizmo_state_with_activators
+    parameters:
+      - type: location_star
+
+  - id: gizmo_active_when_stood_on
+    parameters:
+      - type: location_star
+
+  - id: gizmo_toggle_when_stood_on
+    parameters:
+      - type: location_star
+
+  - id: invert_gizmo
+    parameters:
+      - type: location_star
+
+  - id: set_threat_at_location
+    parameters:
+      - type: location_star
+      - type: integer
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+
+  - id: give_crown
+    parameters:
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+      
+  - id: place_crown
+    parameters:
+      - type: location_star
+      
+      
+  - id: transfer_gold_robbed
+    parameters:
+      - type: player
+      - type: transfer_type
+      - type: counter
+      
+  - id: message
+    parameters:
+      - type: string
+      
+  - id: message_counter
+    parameters:
+      - type: string
+      - type: counter
+
+  - id: dialogue_box_with_counter
+    parameters:
+      - type: character_expression
+      - type: character_non_playable
+      - type: string
+      - type: string
+      - type: counter
+
+  - id: dialogue_box
+    parameters:
+      - type: character_expression
+      - type: character_non_playable
+      - type: string
+      - type: string
+  - id: change_objective_with_3_counters
+    parameters:
+      - type: counter
+      - type: counter
+      - type: counter
+      - type: counter
+      - type: counter
+  - id: modify_flare_count
+    parameters:
+      - type: player_neutral_star
+      - type: operation
+      - type: integer
+#Normally hidden triggers
+  - id: set_conditional_location_highlight
+    parameters:
+      - type: location_real
+      - type: location_highlight
+      - type: player_colour_star
+      - type: boolean
+      - type: highlight_condition
+      
+  - id: force_action
+    parameters:
+      - type: location_star
+      - type: string
+      - type: location_star
+      - type: location_star      
+      - type: boolean
+      - type: character_expression
+      - type: character
+      - type: string
+
+  - id: force_open_ui_tutorial
+    parameters:
+      - type: tutorial_ui_script
+      - type: location_star
+      - type: character_expression
+      - type: character
+      - type: string
+      - type: map_flag_star
+      - type: boolean
+
+  - id: add_ui_tutorial
+    parameters:
+      - type: tutorial_ui_script
+      - type: location_star
+      - type: map_flag_star
+      - type: boolean
+
+  - id: queue_force_action
+    parameters:
+      - type: location_star
+      - type: string
+      - type: location_star
+      - type: location_star      
+      - type: boolean
+      - type: character_expression
+      - type: character
+      - type: string
+
+  - id: queue_force_open_ui_tutorial
+    parameters:
+      - type: tutorial_ui_script
+      - type: location_star
+      - type: character_expression
+      - type: character
+      - type: string
+      - type: map_flag_star
+      - type: boolean
+...

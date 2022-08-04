@@ -1,0 +1,6 @@
+---
+- data:
+    palette: image/palettes/wargroove_palette.png
+    material: Wargroove/PaletteSwap
+    atlas: terrain_trees
+...

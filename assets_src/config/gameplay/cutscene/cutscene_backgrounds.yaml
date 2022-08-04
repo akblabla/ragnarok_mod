@@ -1,0 +1,263 @@
+---
+# default height: 34
+cutscene_backgrounds:
+  - id: grass_plain
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    foreground: grass_battlescreen_extendedbackgrounds_plains_foreground
+    background: grass_battlescreen_extendedbackgrounds_plains
+  - id: grass_mountain
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    foreground: grass_battlescreen_extendedbackgrounds_mountain_foreground
+    background: grass_battlescreen_extendedbackgrounds_mountain
+  - id: grass_sky
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    foreground: grass_battlescreen_extendedbackgrounds_sky_foreground
+    background: grass_battlescreen_extendedbackgrounds_sky
+  - id: grass_road
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    foreground: grass_battlescreen_extendedbackgrounds_road_foreground
+    background: grass_battlescreen_extendedbackgrounds_road
+  - id: grass_bridge
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    foreground: grass_battlescreen_extendedbackgrounds_bridge_foreground
+    background: grass_battlescreen_extendedbackgrounds_bridge
+    tileHeight: 24
+  - id: grass_forest
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    foreground: grass_battlescreen_extendedbackgrounds_forest_foreground
+    background: grass_battlescreen_extendedbackgrounds_forest
+  - id: grass_beach
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    foreground: grass_battlescreen_extendedbackgrounds_beach_foreground
+    background: grass_battlescreen_extendedbackgrounds_beach
+  - id: grass_river
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    foreground: grass_battlescreen_extendedbackgrounds_river_foreground
+    background: grass_battlescreen_extendedbackgrounds_river
+  - id: snow_plain
+    spritesheet: backgrounds/snow_battlescreen_extendedbackgrounds
+    foreground: snow_battlescreen_extendedbackgrounds_plains_foreground
+    background: snow_battlescreen_extendedbackgrounds_plains
+  - id: snow_mountain
+    spritesheet: backgrounds/snow_battlescreen_extendedbackgrounds
+    foreground: snow_battlescreen_extendedbackgrounds_mountain_foreground
+    background: snow_battlescreen_extendedbackgrounds_mountain
+  - id: snow_road
+    spritesheet: backgrounds/snow_battlescreen_extendedbackgrounds
+    foreground: snow_battlescreen_extendedbackgrounds_road_foreground
+    background: snow_battlescreen_extendedbackgrounds_road
+  - id: snow_bridge
+    spritesheet: backgrounds/snow_battlescreen_extendedbackgrounds
+    foreground: snow_battlescreen_extendedbackgrounds_bridge_foreground
+    background: snow_battlescreen_extendedbackgrounds_bridge
+  - id: snow_forest
+    spritesheet: backgrounds/snow_battlescreen_extendedbackgrounds
+    foreground: snow_battlescreen_extendedbackgrounds_forest_foreground
+    background: snow_battlescreen_extendedbackgrounds_forest
+  - id: snow_beach
+    spritesheet: backgrounds/snow_battlescreen_extendedbackgrounds
+    foreground: snow_battlescreen_extendedbackgrounds_beach_foreground
+    background: snow_battlescreen_extendedbackgrounds_beach
+  - id: snow_river
+    spritesheet: backgrounds/snow_battlescreen_extendedbackgrounds
+    foreground: snow_battlescreen_extendedbackgrounds_river_foreground
+    background: snow_battlescreen_extendedbackgrounds_river
+  - id: forest_edited
+    hidden: true
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    foreground: grass_battlescreen_extendedbackgrounds_forest_foreground
+    background: grass_battlescreen_extendedbackgrounds_forest_edited
+  - id: sand_plain
+    spritesheet: backgrounds/sand_battlescreen_extendedbackgrounds
+    foreground: sand_battlescreen_extendedbackgrounds_plains_foreground
+    background: sand_battlescreen_extendedbackgrounds_plains
+  - id: sand_mountain   
+    spritesheet: backgrounds/sand_battlescreen_extendedbackgrounds
+    foreground: sand_battlescreen_extendedbackgrounds_mountain_foreground
+    background: sand_battlescreen_extendedbackgrounds_mountain
+  - id: sand_road
+    spritesheet: backgrounds/sand_battlescreen_extendedbackgrounds
+    foreground: sand_battlescreen_extendedbackgrounds_road_foreground
+    background: sand_battlescreen_extendedbackgrounds_road
+  - id: sand_bridge
+    spritesheet: backgrounds/sand_battlescreen_extendedbackgrounds
+    foreground: sand_battlescreen_extendedbackgrounds_bridge_foreground
+    background: sand_battlescreen_extendedbackgrounds_bridge
+  - id: sand_forest
+    spritesheet: backgrounds/sand_battlescreen_extendedbackgrounds
+    foreground: sand_battlescreen_extendedbackgrounds_forest_foreground
+    background: sand_battlescreen_extendedbackgrounds_forest
+  - id: sand_beach
+    spritesheet: backgrounds/sand_battlescreen_extendedbackgrounds
+    foreground: sand_battlescreen_extendedbackgrounds_beach_foreground
+    background: sand_battlescreen_extendedbackgrounds_beach
+  - id: sand_river
+    spritesheet: backgrounds/sand_battlescreen_extendedbackgrounds
+    foreground: sand_battlescreen_extendedbackgrounds_river_foreground
+    background: sand_battlescreen_extendedbackgrounds_river
+  - id: boat_felheim
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    foreground: grass_battlescreen_extendedbackgrounds_boat_felheim_foreground
+    background: grass_battlescreen_extendedbackgrounds_boat_felheim
+    tileHeight: 32
+  - id: boat_felheimcherry
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    foreground: grass_battlescreen_extendedbackgrounds_boat_felheimcherry_foreground
+    background: grass_battlescreen_extendedbackgrounds_boat_felheimcherry
+    tileHeight: 32
+  - id: boat_felheimcherry2
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    foreground: grass_battlescreen_extendedbackgrounds_boat_felheimcherry2_foreground
+    background: grass_battlescreen_extendedbackgrounds_boat_felheimcherry2
+    tileHeight: 32
+  - id: boat_cherry
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    foreground: grass_battlescreen_extendedbackgrounds_boat_cherry_foreground
+    background: grass_battlescreen_extendedbackgrounds_boat_cherry
+    tileHeight: 32
+  - id: boat_cherry_snow
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    foreground: grass_battlescreen_extendedbackgrounds_boat_cherry_snow_foreground
+    background: grass_battlescreen_extendedbackgrounds_boat_cherry_snow
+    tileHeight: 32
+  - id: boat_cherry2
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    foreground: grass_battlescreen_extendedbackgrounds_boat_cherry2_foreground
+    background: grass_battlescreen_extendedbackgrounds_boat_cherry2
+    tileHeight: 35
+  - id: boat_outlaw
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    foreground: grass_battlescreen_extendedbackgrounds_boat_outlaw_foreground
+    background: grass_battlescreen_extendedbackgrounds_boat_outlaw
+    tileHeight: 35
+  - id: boat_cherry3
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    foreground: grass_battlescreen_extendedbackgrounds_boat_cherry3_foreground
+    background: grass_battlescreen_extendedbackgrounds_boat_cherry3
+    tileHeight: 35
+  - id: indoor
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    background: grass_battlescreen_extendedbackgrounds_indoor
+  - id: indoor2
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    background: grass_battlescreen_extendedbackgrounds_indoor2    
+  - id: indoor_study
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    background: grass_battlescreen_extendedbackgrounds_indoor_study
+  - id: sand_indoor
+    spritesheet: backgrounds/sand_battlescreen_extendedbackgrounds
+    background: sand_battlescreen_extendedbackgrounds_indoor
+  - id: snow_indoor
+    spritesheet: backgrounds/snow_battlescreen_extendedbackgrounds
+    background: snow_battlescreen_extendedbackgrounds_indoor
+  - id: snow_throne_room
+    spritesheet: backgrounds/snow_battlescreen_extendedbackgrounds
+    background: snow_battlescreen_extendedbackgrounds_throne_room
+  - id: flagstone
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    background: grass_battlescreen_extendedbackgrounds_flagstone
+  - id: sand_flagstone
+    spritesheet: backgrounds/sand_battlescreen_extendedbackgrounds
+    background: sand_battlescreen_extendedbackgrounds_flagstone
+  - id: snow_flagstone
+    spritesheet: backgrounds/snow_battlescreen_extendedbackgrounds
+    background: snow_battlescreen_extendedbackgrounds_flagstone
+  - id: ocean
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    background: grass_battlescreen_extendedbackgrounds_ocean
+  - id: caveentrance
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    foreground: grass_battlescreen_extendedbackgrounds_caveentrance_foreground
+    background: grass_battlescreen_extendedbackgrounds_caveentrance
+  - id: caveentrance_closed
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    foreground: grass_battlescreen_extendedbackgrounds_caveentrance_foreground
+    background: grass_battlescreen_extendedbackgrounds_caveentrance_closed
+  - id: black
+    spritesheet: backgrounds/story_battlescreen
+    background: story_battlescreen_black
+  - id: white
+    spritesheet: backgrounds/story_battlescreen
+    background: story_battlescreen_white
+  - id: town
+    spritesheet: backgrounds/story_battlescreen
+    foreground: story_battlescreen_town_foreground
+    background: story_battlescreen_town
+  - id: sunset
+    spritesheet: backgrounds/story_battlescreen
+    foreground: story_battlescreen_sunset_foreground
+    background: story_battlescreen_sunset
+  - id: sunset_castle
+    spritesheet: backgrounds/story_battlescreen
+    foreground: story_battlescreen_sunset_foreground
+    background: story_battlescreen_sunset_castle
+  - id: grass_road_tower
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    foreground: grass_battlescreen_extendedbackgrounds_road_foreground
+    background: grass_battlescreen_extendedbackgrounds_road_tower
+  - id: grass_road_tower2
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    foreground: grass_battlescreen_extendedbackgrounds_road_tower2_foreground
+    background: grass_battlescreen_extendedbackgrounds_road_tower2
+  - id: volcano_bridge
+    spritesheet: backgrounds/volcano_battlescreen_extendedbackgrounds
+    foreground: volcano_battlescreen_extendedbackgrounds_bridge_foreground
+    background: volcano_battlescreen_extendedbackgrounds_bridge
+    name: terrain_name_bridge_volcanic
+  - id: beach_volcanic
+    spritesheet: backgrounds/volcano_battlescreen_extendedbackgrounds
+    foreground: volcano_battlescreen_extendedbackgrounds_beach_foreground
+    background: volcano_battlescreen_extendedbackgrounds_beach
+    name: terrain_name_beach_volcanic
+  - id: volcano_plain
+    spritesheet: backgrounds/volcano_battlescreen_extendedbackgrounds
+    foreground: volcano_battlescreen_extendedbackgrounds_plains_foreground
+    background: volcano_battlescreen_extendedbackgrounds_plains
+  - id: volcano_interior_carpet
+    spritesheet: backgrounds/volcano_battlescreen_extendedbackgrounds
+    background: volcano_battlescreen_extendedbackgrounds_interior_carpet
+  - id: volcano_interior
+    spritesheet: backgrounds/volcano_battlescreen_extendedbackgrounds
+    background: volcano_battlescreen_extendedbackgrounds_interior
+  - id: volcano_road
+    spritesheet: backgrounds/volcano_battlescreen_extendedbackgrounds
+    foreground: volcano_battlescreen_extendedbackgrounds_road_foreground
+    background: volcano_battlescreen_extendedbackgrounds_road
+  - id: volcano_mountain
+    spritesheet: backgrounds/volcano_battlescreen_extendedbackgrounds
+    foreground: volcano_battlescreen_extendedbackgrounds_mountain_foreground
+    background: volcano_battlescreen_extendedbackgrounds_mountain
+  - id: volcano_forest
+    spritesheet: backgrounds/volcano_battlescreen_extendedbackgrounds
+    foreground: volcano_battlescreen_extendedbackgrounds_forest_foreground
+    background: volcano_battlescreen_extendedbackgrounds_forest
+  - id: tavern
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    foreground: grass_battlescreen_extendedbackgrounds_tavern_foreground
+    background: grass_battlescreen_extendedbackgrounds_tavern
+  - id: deck
+    spritesheet: backgrounds/map_backgrounds_RagnarokMod
+    background: deck_background
+  - id: outlaw_ship
+    spritesheet: backgrounds/map_backgrounds_RagnarokMod
+    foreground: outlaw_ship_foreground
+    background: outlaw_ship_background
+  - id: outlaw_ship_right
+    spritesheet: backgrounds/map_backgrounds_RagnarokMod
+    foreground: outlaw_ship_right_foreground
+    background: outlaw_ship_right_background
+  - id: outlaw_cherry_ship
+    spritesheet: backgrounds/map_backgrounds_RagnarokMod
+    foreground: outlaw_and_cherrystone_ship_foreground
+    background: outlaw_and_cherrystone_ship_background
+  - id: sand_cave
+    spritesheet: backgrounds/map_backgrounds_RagnarokMod
+    foreground: cave_battlescreen_sand_foreground
+    background: cave_battlescreen_sand_background
+  - id: sand_forest_edited
+    hidden: true
+    spritesheet: backgrounds/sand_battlescreen_extendedbackgrounds
+    foreground: sand_battlescreen_extendedbackgrounds_forest_foreground
+    background: sand_battlescreen_extendedbackgrounds_forest_edited
+
+...

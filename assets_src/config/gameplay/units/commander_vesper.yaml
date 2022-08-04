@@ -1,0 +1,216 @@
+---
+
+weapons:
+  - id: vesperWhip
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      water: 1
+    tagDamage:
+      archer: 1.3
+      soldier: 1.15
+      villager: 0.95
+      spearman: 0.75
+      dog: 1.15
+      wagon: 0.7
+      knight: 0.55
+      trebuchet: 0.55
+      ballista: 0.6
+      dragon: 0.3
+      mage: 0.8
+      giant: 0.4
+      structure: 0.7
+      balloon: 0.55
+      harpy: 0.9
+      witch: 0.7
+      dragon: 0.35
+      commander: 0.4
+      rifleman: 1.05
+      thief: 0.95
+      
+      pirate_ship: 0.6
+      warship: 0.55
+      harpoonship: 0.45
+      turtle: 0.55
+      travelboat: 0.6
+      merman: 0.95
+
+unitClasses:
+  - id: commander_vesper
+    name: unit_class_name_commander
+    cost: 500
+    movement: walking
+    moveRange: 4
+    aiPriority: 8.0
+    regeneration: 5
+    weapons:
+      - id: vesperWhip
+    verbs:
+      - load
+      - capture
+      - pick_up_crown
+      - throw_crown
+    tags:
+      - commander
+      - type.ground.light
+    battleUnitCount: 1
+    isCommander: true
+    grooveId: smoke_screen
+    deathVerbId: death_drop_crown
+
+
+units:
+  - class: commander_vesper
+    faction: outlaw
+    name: character_vesper_name
+    mapAnimation: units/commanders/vesper/map_vesper
+    battleAnimation: units/commanders/vesper/battle_vesper_extra
+    battleAnimationRiver: fx/river_overlay/battle_vesper_river
+    smallPortrait: units/commanders/vesper/portrait_vesper_small.png
+    mediumPortrait: units/commanders/vesper/portrait_vesper_medium.png
+    mapSpeed: 4.0
+    skinColour: typeVI
+    grabPos: [47, 47]
+    deathMoveMin: 0
+    deathMoveMax: 0
+    stayAfterDeath: true
+    sounds:
+      attackMap: unitAttack
+      attack: vesper/vesperAttack
+      attackCommander: vesper/vesperCommanderKillAttack
+      attackEffect: vesper/vesperAttackEffect
+      counter: vesper/vesperCounterAttack
+      captureShout: vesper/vesperCapture
+      death: vesper/vesperDie
+      deathMap: vesper/vesperDieGhost
+      deathMapNoBattle: vesper/vesperDieNoBattle
+      run: infantryLightMapEntry
+      runMap: infantryLightMapEntry
+      firstHit: vesper/vesperHit
+      hit: hitOrganic
+      hitMap: hitOrganic
+      groove: vesper/vesperGrooveIntro
+    attacks:
+      - id: closeRange
+        attackAnimationSequence: counter
+        attackSound: counter
+        attackCommanderSound: counter
+        hitSpark: fx/bs_stab_attack
+        effectDelay: 0.60
+        hitDelay: 0.60
+        samePanel: true
+      - id: primary
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_vesper_attack
+        effectDelay: 2.2
+        effectPaletteSwaps: true
+        hitDelay: 2.5
+        ranged: true
+    emotes:
+      idle: idle
+      surprise: emote_surprise
+      hurt: emote_sad
+      positive: emote_positive
+      negative: emote_angry
+      laugh: emote_laugh
+      appear: emote_appear
+      appeared: emote_appeared
+      vanish: emote_vanish
+      seated: emote_seated
+      dance: emote_dance
+      hug: emote_hug
+      hug_idle: emote_hug_idle
+    shouts: 
+      vesper_aurevoir: vesper/vesperShoutAuRevoir
+      vesper_beautifullyappointed: vesper/vesperShoutBeautifullyAppointed
+      vesper_bonnechance: vesper/vesperShoutBonneChance
+      vesper_caesar: vesper/vesperShoutCaesar
+      vesper_canefaitrien: vesper/vesperShoutCaNeFaitRien
+      vesper_cestlaguerre: vesper/vesperShoutCestLaGuerre
+      vesper_commanderryota: vesper/vesperShoutCommanderRyota
+      vesper_dog: vesper/vesperShoutDog
+      vesper_empresstenri: vesper/vesperShoutEmpressTenri
+      vesper_enid: vesper/vesperShoutEnid
+      vesper_errol: vesper/vesperShoutErrol
+      vesper_errorandawful: vesper/vesperShoutErrorAndAwful
+      vesper_felllord: vesper/vesperShoutFellLord
+      vesper_floran: vesper/vesperShoutFloran
+      vesper_flymypretty: vesper/vesperShoutFlyMyPretty
+      vesper_greenfingerzawan: vesper/vesperShoutGreenfingerZawan
+      vesper_hardlysurprising: vesper/vesperShoutHardlySurprising
+      vesper_hellowulfar: vesper/vesperShoutHelloWulfar
+      vesper_hit1: vesper/vesperShoutHit1
+      vesper_hit2: vesper/vesperShoutHit2
+      vesper_hit3: vesper/vesperShoutHit3
+      vesper_hit4: vesper/vesperShoutHit4
+      vesper_hit5: vesper/vesperShoutHit5
+      vesper_hm: vesper/vesperShoutHm
+      vesper_hmm1: vesper/vesperShoutHmm1
+      vesper_hmm2: vesper/vesperShoutHmm2
+      vesper_hmm3: vesper/vesperShoutHmm3
+      vesper_hmph: vesper/vesperShoutHmph
+      vesper_howdareyou: vesper/vesperShoutHowDareYou
+      vesper_howdelightful: vesper/vesperShoutHowDelightful
+      vesper_huh: vesper/vesperShoutHuh
+      vesper_icastalongshadow: vesper/vesperShoutICastALongShadow
+      vesper_illjustbeonmywaynow: vesper/vesperShoutIllJustBeOnMyWayNow
+      vesper_illwinthisgame: vesper/vesperShoutIllWinThisGame
+      vesper_introduction: vesper/vesperShoutIntroduction
+      vesper_itsvesperdarling: vesper/vesperShoutItsVesperDarling
+      vesper_iwantriches: vesper/vesperShoutIWantRiches
+      vesper_justajoke: vesper/vesperShoutJustAJoke
+      vesper_justhereforthegold: vesper/vesperShoutJustHereForTheGold
+      vesper_justwhatineeded: vesper/vesperShoutJustWhatINeeded
+      vesper_laugh1: vesper/vesperShoutLaugh1
+      vesper_laugh2: vesper/vesperShoutLaugh2
+      vesper_laugh3: vesper/vesperShoutLaugh3
+      vesper_laugh4: vesper/vesperShoutLaugh4
+      vesper_laugh5: vesper/vesperShoutLaugh5
+      vesper_nestcepas: vesper/vesperShoutNestcePas
+      vesper_no1: vesper/vesperShoutNo1
+      vesper_no2: vesper/vesperShoutNo2
+      vesper_noangry: vesper/vesperShoutNoAngry
+      vesper_noupset: vesper/vesperShoutNoUpset
+      vesper_nosmokewithoutfire: vesper/vesperShoutNoSmokeWithoutFire
+      vesper_nuru: vesper/vesperShoutNuru
+      vesper_oopsie: vesper/vesperShoutOopsie
+      vesper_orla: vesper/vesperShoutOrla
+      vesper_pluscachange: vesper/vesperShoutPlusCaChange
+      vesper_princekoji: vesper/vesperShoutPrinceKoji
+      vesper_queenmercia: vesper/vesperShoutQueenMercia
+      vesper_queldommage: vesper/vesperShoutQuelDommage
+      vesper_quitethecoupdetheatre: vesper/vesperShoutQuiteTheCoupDeTheatre
+      vesper_ragna: vesper/vesperShoutRagna
+      vesper_sedge: vesper/vesperShoutSedge
+      vesper_shesclearlyamoron: vesper/vesperShoutShesClearlyAMoron
+      vesper_shh: vesper/vesperShoutShh
+      vesper_shush: vesper/vesperShoutShush
+      vesper_sicem: vesper/vesperShoutSicEm
+      vesper_sigh: vesper/vesperShoutSigh
+      vesper_sighannoyed: vesper/vesperShoutSighAnnoyed
+      vesper_sigrid: vesper/vesperShoutSigrid
+      vesper_siremeric: vesper/vesperShoutSirEmeric
+      vesper_smokeandshadows: vesper/vesperShoutSmokeAndShadows
+      vesper_sosad: vesper/vesperShoutSoSad
+      vesper_thankyou: vesper/vesperShoutThankYou
+      vesper_theloot: vesper/vesperShoutTheLoot
+      vesper_thishasbeenentertaining: vesper/vesperShoutThisHasBeenEntertaining
+      vesper_turnthatfrown: vesper/vesperShoutTurnThatFrown
+      vesper_valder: vesper/vesperShoutValder
+      vesper_vampire: vesper/vesperShoutVampire
+      vesper_watchthis: vesper/vesperShoutWatchThis
+      vesper_welcometothedarkness: vesper/vesperShoutWelcomeToTheDarkness
+      vesper_welldoneme: vesper/vesperShoutWellDoneMe
+      vesper_what: vesper/vesperShoutWhat
+      vesper_whatsalittleturpitude: vesper/vesperShoutWhatsALittleTurpitude
+      vesper_wonderful: vesper/vesperShoutWonderful
+      vesper_wulfar: vesper/vesperShoutWulfar
+      vesper_yes1: vesper/vesperShoutYes1
+      vesper_yes2: vesper/vesperShoutYes2
+      vesper_youwillchoke: vesper/vesperShoutYouWillChoke
+      
+    alternativeRuns:
+      - id: backwards_walk
+...

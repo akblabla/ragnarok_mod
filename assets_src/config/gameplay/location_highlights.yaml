@@ -1,0 +1,140 @@
+---
+
+#layers: ground, underArrow, behind, units, above
+#placements: center, all 
+
+location_highlights:
+  - id: none
+  - id: ground_pulse_only
+    layers:
+      - animation: "world/locations/ground_pulse"
+        placement: all
+        layer: ground
+        alphaPulse: true
+  - id: arrow
+    layers:
+      - animation: "world/locations/arrow"
+        placement: center
+        layer: above
+        offset: [0,-21]
+      - animation: "world/locations/ground_pulse"
+        placement: all
+        layer: ground
+        alphaPulse: true
+  - id: arrow_low
+    layers:
+      - animation: "world/locations/arrow"
+        placement: center
+        layer: above
+        offset: [0,-2]
+      - animation: "world/locations/ground_pulse"
+        placement: all
+        layer: ground
+        alphaPulse: true
+  - id: flag2
+    layers:
+      - animation: "world/locations/flag_2"
+        placement: center
+        layer: units
+        shadow: shadows_extralarge
+        offset: [-2,-7]
+      - animation: "world/locations/ground_pulse"
+        placement: all
+        layer: ground
+        alphaPulse: true
+  - id: flag
+    layers:
+      - animation: "world/locations/flag_1"
+        placement: center
+        layer: units
+        shadow: shadows_extralarge
+        offset: [-2,-7]
+      - animation: "world/locations/ground_pulse"
+        placement: all
+        layer: ground
+        alphaPulse: true
+  - id: flag3
+    layers:
+      - animation: "world/locations/flag_3"
+        placement: center
+        layer: units
+        shadow: shadows_extralarge
+        offset: [-2,-7]
+      - animation: "world/locations/ground_pulse"
+        placement: all
+        layer: ground
+        alphaPulse: true
+  - id: flag4
+    layers:
+      - animation: "world/locations/flag_4"
+        placement: center
+        layer: units
+        shadow: shadows_extralarge
+        offset: [-2,-7]
+      - animation: "world/locations/ground_pulse"
+        placement: all
+        layer: ground
+        alphaPulse: true
+  - id: btn_primary
+    layers:
+      - button: primary
+        placement: center
+        layer: above
+        offset: [0,0]
+      - animation: "world/locations/tutorial_cross"
+        placement: all
+        layer: underArrow
+        alphaPulse: false
+  - id: btn_primary_low
+    layers:
+      - button: primary
+        placement: center
+        layer: above
+        offset: [0,0]
+      - animation: "world/locations/tutorial_cross"
+        placement: all
+        layer: underArrow
+        alphaPulse: false
+  - id: btn_cancel
+    layers:
+      - button: cancel
+        placement: center
+        layer: above
+        offset: [0,0]
+      - animation: "world/locations/tutorial_cross"
+        placement: all
+        layer: underArrow
+        alphaPulse: false
+  - id: btn_primary_below
+    layers:
+      - button: primary_below
+        placement: center
+        layer: above
+        offset: [0,0]
+      - animation: "world/locations/tutorial_cross"
+        placement: all
+        layer: underArrow
+        alphaPulse: false
+  - id: btn_cancel_below
+    layers:
+      - button: cancel_below
+        placement: center
+        layer: above
+        offset: [0,0]
+      - animation: "world/locations/tutorial_cross"
+        placement: all
+        layer: underArrow
+        alphaPulse: false
+  - id: btn_overview
+    layers:
+      - button: btn_overview
+        placement: center
+        layer: above
+        offset: [0,0]
+  - id: tutorial_cross
+    layers:
+      - animation: "world/locations/tutorial_cross"
+        placement: all
+        layer: underArrow
+        alphaPulse: false
+... 

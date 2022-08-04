@@ -1,0 +1,365 @@
+---
+
+weapons:
+  - id: harpyClaws
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      air: 1
+      water: 1
+    tagDamage:
+      archer: 0.75
+      soldier: 0.65
+      villager: 0.65
+      spearman: 0.45
+      dog: 0.55
+      wagon: 0.35
+      knight: 0.75
+      balloon: 0.55
+      trebuchet: 0.55
+      ballista: 0.35
+      witch: 0.30
+      dragon: 0.35
+      mage: 0.25
+      harpy: 0.55
+      structure: 0.50
+      giant: 0.10
+      commander: 0.15
+      rifleman: 0.75
+      thief: 0.65
+
+
+      flagship: 0.1
+      pirate_ship: 0.35
+      warship: 0.45
+      harpoonship: 0.25
+      turtle: 0.25
+      travelboat: 0.35
+      merman: 0.65
+
+
+unitClasses:
+  - id: harpy
+    name: unit_class_name_harpy
+    cost: 600
+    movement: flying
+    moveRange: 5
+    damageMultiplier: 1.0
+    aiPriority: 1.0
+    weapons:
+      - id: harpyClaws
+    tags:
+      - harpy
+      - type.air
+    battleUnitCount: 4
+    passiveMultiplier: 1.25
+    sightRange: 5
+    canSeeOverTerrain: true
+
+
+units:
+  - class: harpy
+    faction: cherrystone
+    name: unit_name_harpy_cherrystone
+    mapAnimation: units/harpy/cherrystone/map_harpy_cherrystone
+    battleAnimation: units/harpy/cherrystone/battle_harpy_cherrystone
+    smallPortrait: units/harpy/cherrystone/portrait_harpy_cherrystone_small.png
+    mediumPortrait: units/harpy/cherrystone/portrait_harpy_cherrystone_medium.png
+    mapSpeed: 6.0
+    grabPos: [17, 11]
+    sounds:
+      attackMap: unitAttack
+      attack: harpyAttack
+      attackMelee: harpyMeleeAttack
+      attackEffect1: harpyAttackEffect1
+      attackEffect2: harpyAttackEffect2
+      attackEffect3: harpyAttackEffect3
+      attackEffect4: harpyAttackEffect4
+      death: witchDie
+      deathMap: unitDie
+      run: harpyEntry
+      runMap: harpyMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: fourHarpies
+        attackAnimationSequence: attack_range
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9, 2.1, 2.3]
+        effect: fx/bs_harpy_attack_4
+        effectPaletteSwaps: true
+        effectDelay: 1.4
+        attackEffectSound: attackEffect4
+        numAttackers: 4
+        attacksGround: true
+        ranged: true
+      - id: threeHarpies
+        attackAnimationSequence: attack_range
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9, 2.1]
+        effect: fx/bs_harpy_attack_3
+        effectPaletteSwaps: true
+        effectDelay: 1.4
+        attackEffectSound: attackEffect3
+        numAttackers: 3
+        attacksGround: true
+        ranged: true
+      - id: twoHarpies
+        attackAnimationSequence: attack_range
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9]
+        effect: fx/bs_harpy_attack_2
+        effectPaletteSwaps: true
+        effectDelay: 1.4
+        attackEffectSound: attackEffect2
+        numAttackers: 2
+        attacksGround: true
+        ranged: true
+      - id: oneHarpy
+        attackAnimationSequence: attack_range
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.7
+        effect: fx/bs_harpy_attack_1
+        effectPaletteSwaps: true
+        effectDelay: 1.4
+        attackEffectSound: attackEffect1
+        numAttackers: 1
+        attacksGround: true
+        ranged: true
+      - id: secondary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 0.65
+        attackSound: attackMelee
+    emotes:
+      idle: idle
+
+  - class: harpy
+    faction: felheim
+    name: unit_name_harpy_felheim
+    mapAnimation: units/harpy/felheim/map_harpy_felheim
+    battleAnimation: units/harpy/felheim/battle_harpy_felheim
+    smallPortrait: units/harpy/felheim/portrait_harpy_felheim_small.png
+    mediumPortrait: units/harpy/felheim/portrait_harpy_felheim_medium.png
+    mapSpeed: 6.0
+    grabPos: [17, 11]
+    sounds:
+      attackMap: unitAttack
+      attack: harpyAttack
+      attackMelee: harpyMeleeAttack
+      attackEffect1: harpyAttackEffect1
+      attackEffect2: harpyAttackEffect2
+      attackEffect3: harpyAttackEffect3
+      attackEffect4: harpyAttackEffect4
+      death: witchDie
+      deathMap: unitDie
+      run: harpyEntry
+      runMap: harpyMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: fourHarpies
+        attackAnimationSequence: attack_range
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9, 2.1, 2.3]
+        effect: fx/bs_vampire_attack_4
+        effectDelay: 1.4
+        attackEffectSound: attackEffect4
+        numAttackers: 4
+        attacksGround: true
+        ranged: true
+      - id: threeHarpies
+        attackAnimationSequence: attack_range
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9, 2.1]
+        effect: fx/bs_vampire_attack_3
+        effectDelay: 1.4
+        attackEffectSound: attackEffect3
+        numAttackers: 3
+        attacksGround: true
+        ranged: true
+      - id: twoHarpies
+        attackAnimationSequence: attack_range
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9]
+        effect: fx/bs_vampire_attack_2
+        effectDelay: 1.4
+        attackEffectSound: attackEffect2
+        numAttackers: 2
+        attacksGround: true
+        ranged: true
+      - id: oneHarpy
+        attackAnimationSequence: attack_range
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.7
+        effect: fx/bs_vampire_attack_1
+        effectDelay: 1.4
+        attackEffectSound: attackEffect1
+        numAttackers: 1
+        attacksGround: true
+        ranged: true
+      - id: secondary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 0.65
+        attackSound: attackMelee
+    emotes:
+      idle: idle
+      idle_shadow: idle_shadow
+      harpypose1: emote_harpypose1
+      harpypose2: emote_harpypose2    
+    alternativeRuns:
+      - id: run_shadow
+    hidden:
+      emotes:
+        - idle_shadow
+      alternativeRuns:
+        - run_shadow
+
+  - class: harpy
+    faction: heavensong
+    name: unit_name_harpy_heavensong
+    mapAnimation: units/harpy/heavensong/map_harpy_heavensong
+    battleAnimation: units/harpy/heavensong/battle_harpy_heavensong
+    smallPortrait: units/harpy/heavensong/portrait_harpy_heavensong_small.png
+    mediumPortrait: units/harpy/heavensong/portrait_harpy_heavensong_medium.png
+    mapSpeed: 6.0
+    grabPos: [17, 11]
+    sounds:
+      attackMap: unitAttack
+      attack: harpyAttack
+      attackMelee: harpyMeleeAttackYellow
+      attackEffect1: harpyAttackEffect1
+      attackEffect2: harpyAttackEffect2
+      attackEffect3: harpyAttackEffect3
+      attackEffect4: harpyAttackEffect4
+      death: witchDie
+      deathMap: unitDie
+      run: harpyEntry
+      runMap: harpyMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: fourHarpies
+        attackAnimationSequence: attack_range
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9, 2.1, 2.3]
+        effect: fx/bs_tengu_attack_4
+        effectDelay: 1.4
+        attackEffectSound: attackEffect4
+        numAttackers: 4
+        attacksGround: true
+        ranged: true
+      - id: threeHarpies
+        attackAnimationSequence: attack_range
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9, 2.1]
+        effect: fx/bs_tengu_attack_3
+        effectDelay: 1.4
+        attackEffectSound: attackEffect3
+        numAttackers: 3
+        attacksGround: true
+        ranged: true
+      - id: twoHarpies
+        attackAnimationSequence: attack_range
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9]
+        effect: fx/bs_tengu_attack_2
+        effectDelay: 1.4
+        attackEffectSound: attackEffect2
+        numAttackers: 2
+        attacksGround: true
+        ranged: true
+      - id: oneHarpy
+        attackAnimationSequence: attack_range
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.7
+        effect: fx/bs_tengu_attack_1
+        effectDelay: 1.4
+        attackEffectSound: attackEffect1
+        numAttackers: 1
+        attacksGround: true
+        ranged: true
+      - id: secondary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 0.8
+        attackSound: attackMelee
+    emotes:
+      idle: idle
+
+  - class: harpy
+    faction: floran
+    name: unit_name_harpy_floran
+    mapAnimation: units/harpy/floran/map_harpy_floran
+    battleAnimation: units/harpy/floran/battle_harpy_floran
+    smallPortrait: units/harpy/floran/portrait_harpy_floran_small.png
+    mediumPortrait: units/harpy/floran/portrait_harpy_floran_medium.png
+    mapSpeed: 6.0
+    grabPos: [17, 11]
+    sounds:
+      attackMap: unitAttack
+      attack: harpyAttackGreen
+      attackMelee: harpyMeleeAttackGreen
+      attackEffect1: harpyAttackEffect1
+      attackEffect2: harpyAttackEffect2
+      attackEffect3: harpyAttackEffect3
+      attackEffect4: harpyAttackEffect4
+      death: soldierDieGreen
+      deathMap: unitDie
+      run: harpyEntry
+      runMap: harpyMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: fourHarpies
+        attackAnimationSequence: attack_range
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9, 2.1, 2.3]
+        effect: fx/bs_leafwing_attack_4
+        effectPaletteSwaps: true
+        effectDelay: 1.4
+        attackEffectSound: attackEffect4
+        numAttackers: 4
+        attacksGround: true
+        ranged: true
+      - id: threeHarpies
+        attackAnimationSequence: attack_range
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9, 2.1]
+        effect: fx/bs_leafwing_attack_3
+        effectPaletteSwaps: true
+        effectDelay: 1.4
+        attackEffectSound: attackEffect3
+        numAttackers: 3
+        attacksGround: true
+        ranged: true
+      - id: twoHarpies
+        attackAnimationSequence: attack_range
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9]
+        effect: fx/bs_leafwing_attack_2
+        effectPaletteSwaps: true
+        effectDelay: 1.4
+        attackEffectSound: attackEffect2
+        numAttackers: 2
+        attacksGround: true
+        ranged: true
+      - id: oneHarpy
+        attackAnimationSequence: attack_range
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.7
+        effect: fx/bs_leafwing_attack_1
+        effectPaletteSwaps: true
+        effectDelay: 1.4
+        attackEffectSound: attackEffect1
+        numAttackers: 1
+        attacksGround: true
+        ranged: true
+      - id: secondary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 0.65
+        attackSound: attackMelee
+    emotes:
+      idle: idle
+
+...

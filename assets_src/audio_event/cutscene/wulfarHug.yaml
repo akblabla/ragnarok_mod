@@ -1,0 +1,47 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/cutscene/firePuff1.ogg]
+    group: sfx
+    delay: 0.1
+  - type: play
+    clips: [ sfx/vesper/vesperHuh.ogg]
+    group: sfx
+    volume: 0.7
+    delay: 0.25
+  # - type: play
+    # clips: [ sfx/cutscene/surprised.ogg ]
+    # group: sfx
+    # volume: 0.7
+    # delay: 0.3
+  - type: play
+    clips: [ sfx/wulfar/wulfarAttackWindupFoley2.ogg ]
+    group: sfx
+    volume: 1.0
+    delay: 0.5
+  - type: play
+    clips: [ sfx/hitStone1.ogg ]
+    group: sfx
+    volume: 1.0
+    delay: 0.65
+  - type: play
+    clips: [ sfx/wulfar/wulfarStepFoley.ogg ]
+    group: sfx
+    delay: 0.55
+    pitch: 1.1
+    volume: 0.7
+  - type: play
+    clips: [ sfx/cutscene/land.ogg]
+    group: sfx
+    delay: 0.7
+  - type: play
+    clips: [ sfx/vesper/vesperHit5.ogg]
+    group: sfx
+    volume: 0.8
+    delay: 0.75
+  - type: play
+    clips: [ sfx/vesper/vesperAttackWhipUncoilFoley.ogg]
+    group: sfx
+    delay: 0.75
+    
+...

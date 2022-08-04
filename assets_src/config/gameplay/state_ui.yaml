@@ -1,0 +1,7 @@
+---
+stateUIs:
+  - id: crown
+    type: text
+    icon: ui/icons/state_crown_alt_2.png
+    
+...

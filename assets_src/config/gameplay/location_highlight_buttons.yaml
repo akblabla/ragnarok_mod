@@ -1,0 +1,40 @@
+---
+
+location_highlight_buttons:
+  - id: primary
+    inputButtons:
+      mouse: "world/locations/btn_mouse_left"
+      playstation: "world/locations/btn_ps_x"
+      switch_joycon: "world/locations/btn_switch_right"
+      switch_full: "world/locations/btn_xbox_a"
+      xbox: "world/locations/btn_xbox_a"
+  - id: cancel
+    inputButtons:
+      mouse: "world/locations/btn_mouse_right"
+      playstation: "world/locations/btn_ps_o"
+      switch_joycon: "world/locations/btn_switch_down"
+      switch_full: "world/locations/btn_xbox_b"
+      xbox: "world/locations/btn_xbox_b"
+  - id: primary_below
+    inputButtons:
+      mouse: "world/locations/btn_mouse_left_below"
+      playstation: "world/locations/btn_ps_x_below"
+      switch_joycon: "world/locations/btn_switch_right_below"
+      switch_full: "world/locations/btn_xbox_a_below"
+      xbox: "world/locations/btn_xbox_a_below"
+  - id: cancel_below
+    inputButtons:
+      mouse: "world/locations/btn_mouse_right_below"
+      playstation: "world/locations/btn_ps_o_below"
+      switch_joycon: "world/locations/btn_switch_down_below"
+      switch_full: "world/locations/btn_xbox_b_below"
+      xbox: "world/locations/btn_xbox_b_below"
+  - id: btn_overview
+    inputButtons:
+      mouse: "world/locations/btn_pc_tab"
+      playstation: "world/locations/btn_ps_triangle"
+      switch_joycon: "world/locations/btn_switch_up"
+      switch_full: "world/locations/btn_switch_x"
+      xbox: "world/locations/btn_xbox_y"
+
+... 

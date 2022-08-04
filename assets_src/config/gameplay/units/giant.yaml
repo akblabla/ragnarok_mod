@@ -1,0 +1,58 @@
+---
+
+weapons:
+  - id: giantSlam
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      water: 1
+    tagDamage:
+      archer: 1.5
+      soldier: 1.3
+      villager: 1.3
+      spearman: 1
+      dog: 1.5
+      wagon: 0.75
+      knight: 0.85
+      trebuchet: 1.05
+      ballista: 1
+      merman: 1.3
+      mage: 1.1
+      structure: 0.85
+      giant: 0.45
+      commander: 0.35
+      rifleman: 1.4
+      thief: 1.3
+      
+      warship: 0.8
+      harpoonship: 1.1
+      turtle: 0.9
+      travelboat: 1
+      pirate_ship: 1.2
+      flagship: 0.35
+      
+unitClasses:
+  - id: giant
+    name: unit_class_name_giant
+    cost: 1200
+    movement: walking
+    moveRange: 5
+    damageMultiplier: 1
+    aiPriority: 1.0
+    weapons:
+      - id: giantSlam
+    tags:
+      - giant
+      - type.ground.heavy
+      - tall
+    verbs:
+      - load
+      - pick_up_crown
+      - hand_over_crown
+    battleUnitCount: 1
+    passiveMultiplier: 2.5
+    sightRange: 3
+    deathVerbId: death_drop_crown
+...

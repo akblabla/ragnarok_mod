@@ -1,0 +1,92 @@
+
+---
+
+weapons:
+  - id: bite
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      water: 1
+      land: 1
+    tagDamage:
+      archer: 0.75
+      soldier: 0.75
+      villager: 0.75
+      spearman: 0.45
+      dog: 0.65
+      wagon: 0.3
+      knight: 0.1
+      trebuchet: 0.35
+      ballista: 0.4
+      giant: 0.05
+      dragon: 100 #goodboy
+      merman: 0.75
+      mage: 0.55
+      structure: 0.2
+      commander: 0.15
+      rifleman: 1.1
+      thief: 0.85
+      
+      warship: 0.05
+      harpoonship: 0.1
+      turtle: 0.2
+      travelboat: 0.1
+      pirate_ship: 0.15
+      flagship: 0.05
+      
+unitClasses:
+  - id: dog
+    name: unit_class_name_dog
+    cost: 150
+    movement: walking
+    moveRange: 5
+    damageMultiplier: 1
+    aiPriority: 1.0
+    weapons:
+      - id: bite
+    verbs:
+      - load
+      - pick_up_crown
+      - throw_crown
+    tags:
+      - dog
+      - type.ground.light
+      - animal
+    battleUnitCount: 4
+    passiveMultiplier: 1.5
+    sightRange: 4
+    scout: true
+    runsAway: true
+    deathVerbId: death_drop_crown
+    
+units:
+  - class: dog
+    faction: outlaw
+    name: unit_name_dog_outlaws
+    mapAnimation: units/dog/outlaws/map_dog_outlaws
+    battleAnimation: units/dog/outlaws/battle_dog_outlaws
+    battleAnimationRiver: fx/river_overlay/battle_dog_cherrystone_river
+    smallPortrait: units/dog/outlaws/portrait_dog_outlaws_small.png
+    mediumPortrait: units/dog/outlaws/portrait_dog_outlaws_medium.png
+    mapSpeed: 5.0
+    grabPos: [15, 23]
+    sounds:
+      attackMap: unitAttack
+      attack: dogAttack
+      attackShout: dogPreAttack
+      death: dogDie
+      deathMap: unitDie
+      run: dogEntry
+      runMap: dogMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 0.3
+    shouts:      
+      dog_shout1: dogShoutGrowl
+      caesar_bark1: dogShoutBark
+
+...

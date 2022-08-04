@@ -1,0 +1,53 @@
+---
+
+weapons:
+  - id: turtleBite
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    terrainExclusion:
+      - plain
+      - bridge
+      - beach
+      - carpet
+      - city
+      - cobblestone
+      - forest
+      - mountain
+      - road
+    baseDamage:
+      water: 1
+      land: 1
+    tagDamage:
+    
+      archer: 0
+      soldier: 0
+      villager: 0
+      spearman: 0
+      dog: 0
+      wagon: 0
+      knight: 0
+      trebuchet: 0
+      ballista: 0
+      merman: 0
+      mage: 0
+      structure: 0
+      giant: 0
+      commander: 0
+      rifleman: 0
+      thief: 0
+      structure: 0
+
+      warship: 0.8
+      harpoonship: 0.35
+      turtle: 0.50
+      travelboat: 0.55
+      merman: 1.1
+      flagship: 0.35
+      pirate_ship: 0.75
+
+modifyingUnitClasses:
+  - id: turtle
+    replace:
+        moveRange: 8
+...

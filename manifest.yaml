@@ -1,0 +1,8 @@
+---
+
+id: RagnarokMod                      # The mod's id. This should not change over the lifetime of the mod.
+name: "Ragnarok Mod"               # The mod's name. This is looked up in the language string yaml configuration.
+author: "Akblabla"
+description: "Just a great time! -Outlaw faction skins by Robotos \n Version 0.1" # The mod's description. This is looked up in the language string yaml configuration.
+overwritesPalette: true
+...

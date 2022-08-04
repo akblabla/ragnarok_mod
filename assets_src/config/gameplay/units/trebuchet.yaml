@@ -1,0 +1,200 @@
+---
+
+weapons:
+  - id: trebuchetSling
+    rangeMin: 3
+    rangeMax: 5
+    canMoveAndAttack: false
+    baseDamage:
+      land: 1
+      water: 1
+    tagDamage:
+      archer: 1.2
+      soldier: 1
+      villager: 1
+      spearman: 0.8
+      dog: 1.1
+      wagon: 0.7
+      knight: 0.8
+      trebuchet: 0.8
+      ballista: 0.85
+      mage: 0.9
+      structure: 0.85
+      giant: 0.55
+      commander: 0.25
+      warship: 0.75
+      harpoonship: 0.65
+      turtle: 0.45
+      travelboat: 0.8
+      merman: 1
+      rifleman: 1.1
+      thief: 1
+
+      flagship: 0.25
+      pirate_ship: 0.8
+
+unitClasses:
+  - id: trebuchet
+    name: unit_class_name_trebuchet
+    cost: 1000
+    movement: wheels
+    moveRange: 6
+    damageMultiplier: 1
+    aiPriority: 1.6
+    weapons:
+      - id: trebuchetSling
+    tags:
+      - trebuchet
+      - type.ground.heavy
+    verbs:
+      - load
+    battleUnitCount: 1
+    passiveMultiplier: 1.5
+
+
+units:
+  - class: trebuchet
+    faction: cherrystone
+    name: unit_name_trebuchet_cherrystone
+    mapAnimation: units/trebuchet/cherrystone/map_trebuchet_cherrystone
+    battleAnimation: units/trebuchet/cherrystone/battle_trebuchet_cherrystone
+    smallPortrait: units/trebuchet/cherrystone/portrait_trebuchet_cherrystone_small.png
+    mediumPortrait: units/trebuchet/cherrystone/portrait_trebuchet_cherrystone_medium.png
+    mapSpeed: 4.0
+    grabPos: [16, 17]
+    attackOffset: [50, 0]
+    battlePosOffset: [-21, 0]
+    deathMoveMin: 0
+    deathMoveMax: 0
+    stayAfterDeath: true
+    sounds:
+      attackMap: unitAttack
+      attack: trebuchetAttack
+      attackEffect: trebuchetAttackEffect
+      death: trebuchetDie
+      deathMap: unitDie
+      run: trebuchetEntry
+      runMap: trebuchetMapEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_trebuchet_attack
+        effectPaletteSwaps: true
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
+        effectDelay: 1.8
+
+  - class: trebuchet
+    faction: felheim
+    name: unit_name_trebuchet_felheim
+    mapAnimation: units/trebuchet/felheim/map_trebuchet_felheim
+    battleAnimation: units/trebuchet/felheim/battle_trebuchet_felheim
+    smallPortrait: units/trebuchet/felheim/portrait_trebuchet_felheim_small.png
+    mediumPortrait: units/trebuchet/felheim/portrait_trebuchet_felheim_medium.png
+    mapSpeed: 4.0
+    grabPos: [16, 17]
+    attackOffset: [50, 0]
+    battlePosOffset: [-21, 0]
+    deathMoveMin: 0
+    deathMoveMax: 0
+    stayAfterDeath: true
+    sounds:
+      attackMap: unitAttack
+      attack: trebuchetAttack
+      attackEffect: trebuchetAttackEffect
+      death: trebuchetDieBlue
+      deathMap: unitDie
+      run: trebuchetEntryBlue
+      runMap: trebuchetMapEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_trebuchet_attack
+        effectPaletteSwaps: true
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
+        effectDelay: 1.8
+
+
+  - class: trebuchet
+    faction: heavensong
+    name: unit_name_trebuchet_heavensong
+    mapAnimation: units/trebuchet/heavensong/map_trebuchet_heavensong
+    battleAnimation: units/trebuchet/heavensong/battle_trebuchet_heavensong
+    smallPortrait: units/trebuchet/heavensong/portrait_trebuchet_heavensong_small.png
+    mediumPortrait: units/trebuchet/heavensong/portrait_trebuchet_heavensong_medium.png
+    mapSpeed: 4.0
+    grabPos: [16, 17]
+    attackOffset: [50, 0]
+    battlePosOffset: [-21, 0]
+    deathMoveMin: 0
+    deathMoveMax: 0
+    stayAfterDeath: true
+    sounds:
+      attackMap: unitAttack
+      attack: trebuchetAttack
+      attackEffect: trebuchetAttackEffect
+      death: trebuchetDie
+      deathMap: unitDie
+      run: trebuchetEntry
+      runMap: trebuchetMapEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_trebuchet_attack
+        effectPaletteSwaps: true
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
+        effectDelay: 1.8
+
+  - class: trebuchet
+    faction: floran
+    name: unit_name_trebuchet_floran
+    mapAnimation: units/trebuchet/floran/map_trebuchet_floran
+    battleAnimation: units/trebuchet/floran/battle_trebuchet_floran
+    smallPortrait: units/trebuchet/floran/portrait_trebuchet_floran_small.png
+    mediumPortrait: units/trebuchet/floran/portrait_trebuchet_floran_medium.png
+    mapSpeed: 4.0
+    grabPos: [16, 17]
+    attackOffset: [50, 0]
+    battlePosOffset: [-21, 0]
+    deathMoveMin: 0
+    deathMoveMax: 0
+    stayAfterDeath: true
+    sounds:
+      attackMap: unitAttack
+      attack: trebuchetAttack
+      attackEffect: trebuchetAttackEffect
+      death: trebuchetDieGreen
+      deathMap: unitDie
+      run: trebuchetEntryGreen
+      runMap: trebuchetMapEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_trebuchet_floran_attack
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
+        effectDelay: 1.8
+
+...

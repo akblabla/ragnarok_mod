@@ -1,0 +1,110 @@
+---
+
+unitClasses:
+  - id: balloon
+    name: unit_class_name_balloon
+    cost: 450
+    movement: flying
+    moveRange: 6
+    damageMultiplier: 1
+    aiPriority: 1.5
+    weapons: []
+    tags:
+      - balloon
+      - type.air
+    verbs:
+      - unload
+    battleUnitCount: 1
+    loadCapacity: 2
+    canSeeOverTerrain: true
+    sightRange: 3
+    transportTags: [ type.ground.light, type.amphibious, type.ground.hideout ]
+
+
+units:
+  - class: balloon
+    faction: cherrystone
+    name: unit_name_balloon_cherrystone
+    mapAnimation: units/balloon/cherrystone/map_balloon_cherrystone
+    battleAnimation: units/balloon/cherrystone/battle_balloon_cherrystone
+    smallPortrait: units/balloon/cherrystone/portrait_balloon_cherrystone_small.png
+    mediumPortrait: units/balloon/cherrystone/portrait_balloon_cherrystone_medium.png
+    mapSpeed: 6.0
+    grabPos: [22, 5]
+    sounds:
+      death: balloonDie
+      deathMap: unitDie
+      run: balloonEntry
+      runMap: balloonEntryMap
+      hit: hitWood
+      hitMap: hitWood
+
+  - class: balloon
+    faction: felheim
+    name: unit_name_balloon_felheim
+    mapAnimation: units/balloon/felheim/map_balloon_felheim
+    battleAnimation: units/balloon/felheim/battle_balloon_felheim
+    smallPortrait: units/balloon/felheim/portrait_balloon_felheim_small.png
+    mediumPortrait: units/balloon/felheim/portrait_balloon_felheim_medium.png
+    mapSpeed: 6.0
+    grabPos: [22, 5]
+    sounds:
+      death: balloonDieBlue
+      deathMap: unitDie
+      run: balloonEntry
+      runMap: balloonEntryMap
+      hit: hitWood
+      hitMap: hitWood
+
+  - class: balloon
+    faction: heavensong
+    name: unit_name_balloon_heavensong
+    mapAnimation: units/balloon/heavensong/map_balloon_heavensong
+    battleAnimation: units/balloon/heavensong/battle_balloon_heavensong
+    smallPortrait: units/balloon/heavensong/portrait_balloon_heavensong_small.png
+    mediumPortrait: units/balloon/heavensong/portrait_balloon_heavensong_medium.png
+    mapSpeed: 6.0
+    grabPos: [23, 4]
+    sounds:
+      death: balloonDie
+      deathMap: unitDie
+      run: balloonEntry
+      runMap: balloonEntryMap
+      hit: hitWood
+      hitMap: hitWood
+
+
+  - class: balloon
+    faction: floran
+    name: unit_name_balloon_floran
+    mapAnimation: units/balloon/floran/map_balloon_floran
+    battleAnimation: units/balloon/floran/battle_balloon_floran
+    smallPortrait: units/balloon/floran/portrait_balloon_floran_small.png
+    mediumPortrait: units/balloon/floran/portrait_balloon_floran_medium.png
+    mapSpeed: 6.0
+    grabPos: [22, 5]
+    sounds:
+      death: balloonDie
+      deathMap: unitDie
+      run: balloonEntry
+      runMap: balloonEntryMap
+      hit: hitWood
+      hitMap: hitWood
+
+  - class: balloon
+    faction: outlaw
+    name: unit_name_balloon_cherrystone
+    mapAnimation: units/balloon/outlaw/map_balloon_outlaw
+    battleAnimation: units/balloon/outlaw/battle_balloon_outlaw
+    smallPortrait: units/balloon/outlaw/portrait_balloon_outlaw_small.png
+    mediumPortrait: units/balloon/outlaw/portrait_balloon_outlaw_medium.png
+    mapSpeed: 6.0
+    grabPos: [22, 5]
+    sounds:
+      death: balloonDie
+      deathMap: unitDie
+      run: balloonEntry
+      runMap: balloonEntryMap
+      hit: hitWood
+      hitMap: hitWood
+...

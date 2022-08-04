@@ -1,0 +1,19 @@
+---
+
+cutscene_vfx:
+
+  - id: wulfar_vesper_hug
+    path: fx/cutscene/wulfar_vesper_hug
+  - id: cutscene_teleport_fx
+    path: fx/cutscene/cutscene_teleport_fx
+  - id: cutscene_bluebird
+    path: fx/cutscene/cutscene_bluebird
+  - id: cutscene_door_open
+    path: fx/cutscene/cutscene_door_open
+  - id: cutscene_ragna_sink
+    path: fx/cutscene/cutscene_ragna_sink
+  - id: cutscene_crown_falls
+    path: fx/cutscene/cutscene_crown_falls
+  - id: cutscene_four_orbs
+    path: fx/cutscene/cutscene_four_orbs
+...
