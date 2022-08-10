@@ -8,7 +8,7 @@ function Ragnarok.init()
 end
 
 local cantAttackBuildingsSet = {}
-local goldRobbed = nil
+local goldRobbed = {}
 local crownID = nil
 local crownPos = nil
 local crownBearerID = nil
@@ -23,13 +23,22 @@ end
 
 function Ragnarok.addGoldRobbed(playerId, amount)
 	print("addGoldRobbed starts here")
+	print("Player Id:")
 	print(playerId)
+	print("type")
+	print(type(playerId))
+	print("Amount To be deposited:")
 	print(amount)
 	print("type")
 	print(type(amount))
 	if goldRobbed[playerId] then
+		print("Total Deposited:")
+		print(goldRobbed[playerId])
+		print("type")
+		print(type(goldRobbed[playerId]))
 		goldRobbed[playerId] = goldRobbed[playerId]+amount
 	else
+		print("No Player with ID")
 		goldRobbed[playerId] = amount
 	end
 	print(goldRobbed[playerId])

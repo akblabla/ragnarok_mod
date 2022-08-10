@@ -48,6 +48,8 @@ unitClasses:
       - type.ground.heavy
     verbs:
       - load
+      - pick_up_crown
+      - throw_crown
     battleUnitCount: 1
     passiveMultiplier: 1.5
 

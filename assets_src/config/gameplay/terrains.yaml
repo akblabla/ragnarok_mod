@@ -137,7 +137,7 @@ terrains:
     placeable: true
     tilesets: 
       0: [plains, rough, plains_alt]
-      1: [sea_alt, river]
+      1: [sea_alt, river, cave_river, cave_sea]
       2: bridge
 
   - id: sea

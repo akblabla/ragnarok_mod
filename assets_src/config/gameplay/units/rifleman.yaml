@@ -62,7 +62,7 @@ unitClasses:
       - load
       - capture
       - pick_up_crown
-      - hand_over_crown
+      - throw_crown
     battleUnitCount: 4
     passiveMultiplier: 1.5
     sightRange: 9

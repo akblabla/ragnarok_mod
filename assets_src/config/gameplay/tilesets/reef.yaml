@@ -23,7 +23,7 @@ tilesets:
         iconSprite: terrain_icons_Reef
         infoScreenOffset: 70
         fillColour: '#76231c'
-    primaryConnect: [undefined, reef]
+    primaryConnect: [undefined, reef, cave_reef]
     decayTo: sea_alt
     tiles:
       - { x: 0, y: 0, adj: "e s se" }

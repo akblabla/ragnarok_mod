@@ -92,6 +92,16 @@ function throwCrown:onPostUpdateUnit(unit, targetPos, strParam, path)
     Wargroove.unsetFacingOverride(unit.id)
 end
 
+function throwCrown:generateOrders(unitId, canMove)
+    local unit = Wargroove.getUnitById(unitId)
+    return {}
+end
+
+function throwCrown:getScore(unitId, order)
+    local unit = Wargroove.getUnitById(unitId)
+    return {score = -1, introspection = {}}
+end
+
 function dump(o,level)
    if type(o) == 'table' then
       local s = '\n' .. string.rep("   ", level) .. '{\n'

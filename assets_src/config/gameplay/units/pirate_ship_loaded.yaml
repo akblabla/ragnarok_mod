@@ -16,6 +16,8 @@ unitClasses:
       - pirate_ship
       - type.sea
     verbs:
+      - pick_up_crown
+      - throw_crown
       - pirate_deposit
     battleUnitCount: 1
     isRecruitable: false

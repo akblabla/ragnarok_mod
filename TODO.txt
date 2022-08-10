@@ -1,0 +1,31 @@
+Mod todo list:
+
+Finish Tropical Cave Background
+Tropical Cave River Background
+Tropical Cave Sea Background
+Tropical Cave Bridge Background
+
+Tropical Extended Beach Background
+
+Grass Cave Background
+Grass Cave River Background
+Grass Cave Sea Background
+Grass Cave Bridge Background
+
+Mercival No Crown Sprites
+
+Fix up Cutthroat Portrait sprite
+
+Make Big Rival Portrait sprite
+
+Pirate Ship Battle Animations
+
+Flag Ship Battle Animations
+
+Flag Ship Map Animations
+
+Finish Garland Animation
+
+Cool Rock ceiling breaking animation
+
+Fix up river to sea connection

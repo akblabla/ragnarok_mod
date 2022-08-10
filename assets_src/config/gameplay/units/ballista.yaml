@@ -38,5 +38,25 @@ weapons:
       turtle: 0.35
       travelboat: 0.25
       merman: 0.4
-      
+
+unitClasses:
+  - id: ballista
+    name: unit_class_name_ballista
+    cost: 800
+    movement: wheels
+    moveRange: 6
+    damageMultiplier: 1
+    aiPriority: 1.6
+    weapons:
+      - id: ballistaBolt
+    tags:
+      - ballista
+      - type.ground.heavy
+    verbs:
+      - load
+      - pick_up_crown
+      - throw_crown
+    battleUnitCount: 1
+    passiveMultiplier: 1.5
+    sightRange: 2
 ...

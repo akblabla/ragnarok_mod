@@ -49,8 +49,10 @@ unitClasses:
     startingStates:
       - id: gold
         value: 0
+
     verbs:
-#      - attack_board
+      - pick_up_crown
+      - throw_crown
       - pirate_steal
 #      - betterMerge
     battleUnitCount: 1

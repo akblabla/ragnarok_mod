@@ -57,6 +57,11 @@ en-GB:
   character_flagship_rival_name: "Rival"
   character_flagship_rival_title: "Captain Rival  "
   
+  character_generic_outlaw_gang_name: "Generic Outlaws Gang"
+  character_generic_vesper_gang_name: "Generic Vespers Gang"
+  
+  
+  
   groove_name_area_damage_rival: "Fire bombs"
   groove_description_area_damage_rival: "Sets an area ablaze over several turns."
   groove_name_all_caps_groove_area_damage_rival: "FIRE BOMBS"

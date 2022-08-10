@@ -24,9 +24,9 @@ commanders:
     title: character_flagship_rival_title
     faction: outlaw
     portrait:
-      neutral: portraits/commanders/small/soldier_portrait_extra.png
-      happy: portraits/commanders/small/soldier_portrait_extra.png
-      sad: portraits/commanders/small/soldier_portrait_extra.png
+      neutral: portraits/commanders/small/rival_portrait_small.png
+      happy: portraits/commanders/small/rival_portrait_small.png
+      sad: portraits/commanders/small/rival_portrait_small.png
     cutscenePortrait: portraits/commanders/big/outlaw_portrait
     portraitOffset: [0, 20]
     themeSong: music/hostile
@@ -97,4 +97,70 @@ commanders:
     unitClassId: knight
     dialogueBoxVoice: ui/dialogue/textScroll
     
+  - id: empty
+    name: character_empty
+    faction: outlaw
+    playable: false
+    portrait:
+        extra: portraits/commanders/small/soldier_portrait_extra.png
+        happy: portraits/commanders/small/soldier_portrait_happy.png
+        neutral: portraits/commanders/small/soldier_portrait_small.png
+        sad: portraits/commanders/small/soldier_portrait_sad.png
+    cutscenePortrait: portraits/commanders/big/empty
+    portraitOffset: [0, 0]
+    themeSong: music/hostile
+    skinColour: typeVI
+    unitClassId: knight
+    dialogueBoxVoice: ui/dialogue/textScroll
+
+  - id: wulfar_offset
+    name: character_wulfar_name
+    title: character_wulfar_title
+    playable: false
+    faction: outlaw
+    factionIndex: 0
+    portrait:
+      neutral: portraits/commanders/small/wulfar_portrait_small.png
+      happy: portraits/commanders/small/wulfar_portrait_happy.png
+      sad: portraits/commanders/small/wulfar_portrait_sad.png
+    cutscenePortrait: portraits/commanders/big/wulfar_portrait
+    portraitOffset: [50, -45]
+    namePlate: ui/character_select/charlabel/charlabel_outlaw.png
+    themeSong: music/wulfar
+    skinColour: typeII
+    unitClassId: commander_wulfar
+    selectionSound: wulfar/wulfarShoutUpForTheTask
+    dialogueBoxVoice: ui/dialogue/textScrollWulfar
+
+  - id: outlaw_gang
+    name: character_generic_outlaw_gang_name
+    faction: outlaw
+    playable: false
+    portrait:
+        happy: portraits/commanders/small/outlaw_poacher_portrait.png
+        neutral: portraits/commanders/small/outlaw_soldier_portrait.png
+        sad: portraits/commanders/small/outlaw_thief_portrait.png
+        extra: portraits/commanders/small/outlaw_merfolk_portrait.png
+    cutscenePortrait: portraits/commanders/big/outlaw_portrait
+    portraitOffset: [0, 20]
+    themeSong: music/hostile
+    skinColour: typeII
+    unitClassId: knight
+    dialogueBoxVoice: ui/dialogue/textScroll
+    
+  - id: vesper_gang
+    name: character_generic_vesper_gang_name
+    faction: outlaw
+    playable: false
+    portrait:
+        happy: portraits/commanders/small/rival_portrait_small.png
+        neutral: portraits/commanders/small/vesper_soldier_portrait.png
+        sad: portraits/commanders/small/vesper_thief_portrait.png
+        extra: portraits/commanders/small/vesper_merfolk_portrait.png
+    cutscenePortrait: portraits/commanders/big/outlaw_portrait
+    portraitOffset: [0, 20]
+    themeSong: music/hostile
+    skinColour: typeII
+    unitClassId: knight
+    dialogueBoxVoice: ui/dialogue/textScroll
 ...

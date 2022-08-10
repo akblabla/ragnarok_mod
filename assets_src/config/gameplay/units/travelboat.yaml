@@ -1,6 +1,24 @@
 ---
-modifyingUnitClasses:
+unitClasses:
   - id: travelboat
-    replace:
-        moveRange: 8
+    name: unit_class_name_travelboat
+    cost: 200
+    movement: sailing
+    moveRange: 8
+    damageMultiplier: 1
+    aiPriority: 1.5
+    weapons: []
+    tags:
+      - travelboat
+      - transport
+      - type.sea
+    verbs:
+      - unload
+      - pick_up_crown
+      - throw_crown
+    battleUnitCount: 1
+    loadCapacity: 2
+    sightRange: 3
+    transportTags: [ type.ground.light, type.ground.heavy, type.amphibious, type.ground.hideout ]
+    isHiddenInCutsceneEditor: true
 ...

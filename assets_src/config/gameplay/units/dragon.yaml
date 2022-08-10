@@ -43,6 +43,9 @@ unitClasses:
     moveRange: 8
     damageMultiplier: 1
     aiPriority: 1.0
+    verbs:
+      - pick_up_crown
+      - throw_crown
     weapons:
       - id: fireBreath
     tags:

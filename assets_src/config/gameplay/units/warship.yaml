@@ -46,6 +46,9 @@ unitClasses:
     tags:
       - warship
       - type.sea
+    verbs:
+      - pick_up_crown
+      - throw_crown
     battleUnitCount: 1
     passiveMultiplier: 1.5
     sightRange: 5

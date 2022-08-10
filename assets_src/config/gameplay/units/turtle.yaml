@@ -46,8 +46,24 @@ weapons:
       flagship: 0.35
       pirate_ship: 0.75
 
-modifyingUnitClasses:
+unitClasses:
   - id: turtle
-    replace:
-        moveRange: 8
+    name: unit_class_name_turtle
+    cost: 400
+    movement: sailing
+    moveRange: 8
+    damageMultiplier: 1
+    aiPriority: 1.0
+    weapons:
+      - id: turtleBite
+    tags:
+      - turtle
+      - type.sea
+    verbs:
+      - pick_up_crown
+      - throw_crown
+    battleUnitCount: 4
+    passiveMultiplier: 1.5
+    sightRange: 4
+    scout: true
 ...

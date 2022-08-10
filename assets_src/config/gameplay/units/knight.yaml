@@ -49,7 +49,7 @@ unitClasses:
     verbs:
       - load
       - pick_up_crown
-      - hand_over_crown
+      - throw_crown
     battleUnitCount: 4
     passiveMultiplier: 1.5
     deathVerbId: death_drop_crown

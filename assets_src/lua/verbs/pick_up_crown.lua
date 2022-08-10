@@ -41,4 +41,14 @@ function handOverCrown:execute(unit, targetPos, strParam, path)
     Ragnarok.grabCrown(unit)
 end
 
+function handOverCrown:generateOrders(unitId, canMove)
+    local unit = Wargroove.getUnitById(unitId)
+    return {}
+end
+
+function handOverCrown:getScore(unitId, order)
+    local unit = Wargroove.getUnitById(unitId)
+    return {score = -1, introspection = {}}
+end
+
 return handOverCrown

@@ -26,4 +26,25 @@ weapons:
       flagship: 0.1
       pirate_ship: 0.25
 
+unitClasses:
+  - id: harpoonship
+    name: unit_class_name_harpoonship
+    cost: 550
+    movement: sailing
+    moveRange: 4
+    damageMultiplier: 1
+    aiPriority: 1.0
+    weapons:
+      - id: harpoonshipCannon
+    cargoSpace: 2
+    verbs:
+      - pick_up_crown
+      - throw_crown
+    tags:
+      - harpoonship
+      - type.sea
+    battleUnitCount: 1
+    passiveMultiplier: 1.5
+    sightRange: 3
+
 ...

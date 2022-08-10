@@ -13,6 +13,8 @@ unitClasses:
       - load
       - deposit
       - bypass_gate
+      - pick_up_crown
+      - throw_crown
     tags:
       - thief
       - type.ground.hideout

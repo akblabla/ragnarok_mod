@@ -1,0 +1,40 @@
+---
+ 
+weapons:
+  - id: witchSpell
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      air: 1
+    tagDamage:
+      witch: 0.35
+      dragon: 0.35
+      harpy: 0.6
+      balloon: 0.5
+
+
+unitClasses:
+  - id: witch
+    name: unit_class_name_witch
+    cost: 800
+    movement: flying
+    moveRange: 7
+    damageMultiplier: 1.0
+    aiPriority: 1.0
+    weapons:
+      - id: witchSpell
+    tags:
+      - witch
+      - type.air
+      - spellcaster
+    verbs:
+      - spell_hex
+      - pick_up_crown
+      - throw_crown
+    battleUnitCount: 4
+    passiveMultiplier: 2.0
+    sightRange: 4
+    canSeeOverTerrain: true
+
+...

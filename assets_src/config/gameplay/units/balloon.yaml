@@ -14,6 +14,8 @@ unitClasses:
       - type.air
     verbs:
       - unload
+      - pick_up_crown
+      - throw_crown
     battleUnitCount: 1
     loadCapacity: 2
     canSeeOverTerrain: true
