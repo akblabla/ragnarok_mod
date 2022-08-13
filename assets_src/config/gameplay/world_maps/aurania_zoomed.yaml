@@ -1,0 +1,98 @@
+---
+
+worldMaps:
+- id: aurania_zoomed
+  name: world_map_aurania_zoomed_name
+  icon: ui/campaign/map_icon6.png
+  size: [874, 974]
+  images:
+  - image: world/maps/arthuria/world_map_arthuria.png
+    layer: background
+    pos: [0, 0]
+  - image: world/maps/arthuria/world_map_arthuria_pillars.png
+    layer: ground_decorations
+    pos: [0, 0]
+  - image: world/maps/arthuria/world_map_arthuria_water.png
+    effect: water
+    layer: background_tiles_water
+    mask: world/maps/arthuria/world_map_arthuria_water_ramp.png
+    pos: [0, 0]
+  waterMask: masks/arthuria_water_mask.png
+  fishAnimations:
+  - world/world_map_fish_size01
+  - world/world_map_fish_size02
+  - world/world_map_fish_size03
+  fishes:
+  - pos: [117, 252]
+    radius: 120
+  - pos: [750, 320]
+    radius: 100
+  - pos: [160, 890]
+    radius: 100
+  sound:
+  - event: environmental/oceanAmbienceWorld
+  - event: environmental/fieldAmbienceWorld
+    sources:
+    - pos: [500, 820]
+      refDistance: 30
+      maxDistance: 300
+    - pos: [520, 690]
+      refDistance: 30
+      maxDistance: 300
+    - pos: [680, 695]
+      refDistance: 30
+      maxDistance: 300
+    - pos: [590, 590]
+      refDistance: 30
+      maxDistance: 300
+    - pos: [560, 480]
+      refDistance: 20
+      maxDistance: 200
+  - event: environmental/forestAmbienceWorld
+    sources:
+    - pos: [240, 560]
+      refDistance: 30
+      maxDistance: 300
+    - pos: [220, 670]
+      refDistance: 20
+      maxDistance: 200
+    - pos: [550, 670]
+      refDistance: 20
+      maxDistance: 200
+  - event: environmental/tundraAmbienceWorld
+    sources:
+    - pos: [440, 130]
+      refDistance: 30
+      maxDistance: 300
+    - pos: [420, 250]
+      refDistance: 30
+      maxDistance: 300
+    - pos: [440, 370]
+      refDistance: 30
+      maxDistance: 300
+  - event: environmental/mountainAmbienceWorld
+    sources:
+    - pos: [475, 240]
+      refDistance: 25
+      maxDistance: 250
+  - event: environmental/riverAmbienceWorld
+    sources:
+    - pos: [510, 380]
+      refDistance: 15
+      maxDistance: 150
+    - pos: [640, 555]
+      refDistance: 15
+      maxDistance: 150
+    - pos: [580, 630]
+      refDistance: 15
+      maxDistance: 150
+    - pos: [560, 745]
+      refDistance: 15
+      maxDistance: 150
+    - pos: [645, 760]
+      refDistance: 15
+      maxDistance: 150
+    - pos: [730, 760]
+      refDistance: 15
+      maxDistance: 150
+...

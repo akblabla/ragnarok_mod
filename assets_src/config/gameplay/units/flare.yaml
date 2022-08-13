@@ -3,20 +3,18 @@
 unitClasses:
   - id: flare
     name: unit_class_name_flare
-    cost: 25
-    movement: flying
-    moveRange: 3
+    cost: 300
+    movement: hovering
+    moveRange: 2
     aiPriority: 0.5
     weapons: []
     tags:
       - summon
       - type.air
     battleUnitCount: 1
-    isHidden: true
-    isRecruitable: false
     canAttack: false
     canSeeOverTerrain: true
-    regeneration: -100
+    regeneration: -35
     classIcon: unit_icons_summon
     scout: true
     sightRange: 5
@@ -26,7 +24,7 @@ units:
   - class: flare
     faction: cherrystone
     name: unit_name_flare
-    mapAnimation: units/balloon/cherrystone/map_balloon_cherrystone
+    mapAnimation: units/flare/map_flare
     battleAnimation: units/balloon/cherrystone/battle_balloon_cherrystone
     smallPortrait: units/balloon/cherrystone/portrait_balloon_cherrystone_small.png
     mediumPortrait: units/balloon/cherrystone/portrait_balloon_cherrystone_medium.png
@@ -43,7 +41,7 @@ units:
   - class: flare
     faction: felheim
     name: unit_name_flare
-    mapAnimation: units/balloon/felheim/map_balloon_felheim
+    mapAnimation: units/flare/map_flare
     battleAnimation: units/balloon/felheim/battle_balloon_felheim
     smallPortrait: units/balloon/felheim/portrait_balloon_felheim_small.png
     mediumPortrait: units/balloon/felheim/portrait_balloon_felheim_medium.png
@@ -60,7 +58,7 @@ units:
   - class: balloon
     faction: heavensong
     name: unit_name_flare
-    mapAnimation: units/balloon/heavensong/map_balloon_heavensong
+    mapAnimation: units/flare/map_flare
     battleAnimation: units/balloon/heavensong/battle_balloon_heavensong
     smallPortrait: units/balloon/heavensong/portrait_balloon_heavensong_small.png
     mediumPortrait: units/balloon/heavensong/portrait_balloon_heavensong_medium.png
@@ -78,7 +76,7 @@ units:
   - class: flare
     faction: floran
     name: unit_name_flare
-    mapAnimation: units/balloon/floran/map_balloon_floran
+    mapAnimation: units/flare/map_flare
     battleAnimation: units/balloon/floran/battle_balloon_floran
     smallPortrait: units/balloon/floran/portrait_balloon_floran_small.png
     mediumPortrait: units/balloon/floran/portrait_balloon_floran_medium.png
@@ -95,7 +93,7 @@ units:
   - class: flare
     faction: outlaw
     name: unit_name_flare
-    mapAnimation: units/balloon/outlaw/map_balloon_outlaw
+    mapAnimation: units/flare/map_flare
     battleAnimation: units/balloon/outlaw/battle_balloon_outlaw
     smallPortrait: units/balloon/outlaw/portrait_balloon_outlaw_small.png
     mediumPortrait: units/balloon/outlaw/portrait_balloon_outlaw_medium.png

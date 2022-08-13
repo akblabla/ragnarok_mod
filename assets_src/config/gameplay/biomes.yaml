@@ -1,0 +1,21 @@
+---
+
+biomes:
+  - id: grass
+    name: biome_name_grass
+    severeWeather: rain
+  - id: desert
+    name: biome_name_desert
+    severeWeather: sandstorm
+  - id: ice
+    name: biome_name_ice
+    severeWeather: snow
+  - id: volcano
+    name: biome_name_volcano
+    severeWeather: ash
+    canChange: false
+    waterPalette: palettes/water_colours_lava.png
+    waterTexture: terrain/water/lava_texture.png
+    splashEffect: fx/unit_splash_lava
+
+...

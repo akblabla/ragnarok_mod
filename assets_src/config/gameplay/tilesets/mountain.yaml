@@ -1,0 +1,154 @@
+---
+tilesets:
+  - id: mountain
+    biomes:
+      - types: [grass]
+        spriteSheet: tilesets
+        spriteBase: grass_mountain_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_mountain
+        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_mountain
+        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_mountain_foreground
+        swapBackgroundPanes: true
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Mountain
+      - types: [ice]
+        spriteSheet: tilesets
+        spriteBase: snow_mountain_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_mountain
+        battleBackgroundSpriteSheet: backgrounds/snow_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: snow_battlescreen_extendedbackgrounds_mountain
+        battleBackgroundSpriteForeground: snow_battlescreen_extendedbackgrounds_mountain_foreground
+        swapBackgroundPanes: true
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Mountain
+      - types: [desert]
+        spriteSheet: tilesets
+        spriteBase: sand_mountain_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_sand_mountains
+        battleBackgroundSpriteSheet: backgrounds/sand_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: sand_battlescreen_extendedbackgrounds_mountain
+        battleBackgroundSpriteForeground: sand_battlescreen_extendedbackgrounds_mountain_foreground
+        swapBackgroundPanes: true
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Mountain
+      - types: [volcano]
+        spriteSheet: tilesets
+        spriteBase: volcano_mountain_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_sand_mountains
+        battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: volcano_battlescreen_extendedbackgrounds_mountain
+        battleBackgroundSpriteForeground: volcano_battlescreen_extendedbackgrounds_mountain_foreground
+        swapBackgroundPanes: true
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Mountain
+    primaryConnect: []
+    decayTo: plains
+    tilesGroups:
+      - tiles:
+        - { x: 0, y: 0 }
+      - tiles:
+        - { x: 1, y: 0 }
+      - tiles:
+        - { x: 2, y: 0 }
+        - { x: 3, y: 0 }
+        - { x: 4, y: 0 }
+      - tiles:
+        - { x: 5, y: 0 }
+        - { x: 6, y: 0 }
+        - { x: 7, y: 0 }
+        - { x: 8, y: 0 }
+        - { x: 9, y: 0 }
+      - tiles:
+        - { x: 0, y: 1 }
+        - { x: 0, y: 2 }
+        - { x: 0, y: 3 }
+      - tiles:
+        - { x: 1, y: 1 }
+        - { x: 2, y: 1 }
+      - tiles:
+        - { x: 3, y: 1 }
+        - { x: 4, y: 1 }
+        - { x: 5, y: 1 }
+        - { x: 6, y: 1 }
+      - tiles:
+        - { x: 7, y: 1 }
+        - { x: 8, y: 1 }
+        - { x: 9, y: 1 }
+        - { x: 7, y: 2 }
+        - { x: 8, y: 2 }
+        - { x: 9, y: 2 }
+        - { x: 7, y: 3 }
+        - { x: 8, y: 3 }
+        - { x: 9, y: 3 }
+      - tiles:
+        - { x: 1, y: 2 }
+        - { x: 1, y: 3 }
+      - tiles:
+        - { x: 2, y: 2 }
+        - { x: 3, y: 2 }
+        - { x: 2, y: 3 }
+        - { x: 3, y: 3 }
+      - tiles:
+        - { x: 4, y: 2 }
+        - { x: 5, y: 2 }
+        - { x: 6, y: 2 }
+        - { x: 4, y: 3 }
+        - { x: 5, y: 3 }
+        - { x: 6, y: 3 }
+      - tiles:
+        - { x: 0, y: 4 }
+        - { x: 1, y: 4 }
+        - { x: 2, y: 4 }
+        - { x: 3, y: 4 }
+        - { x: 4, y: 4 }
+        - { x: 5, y: 4 }
+        - { x: 6, y: 4 }
+      - tiles:
+        - { x: 7, y: 4 }
+        - { x: 5, y: 5 }
+        - { x: 6, y: 5 }
+        - { x: 7, y: 5 }
+        - { x: 7, y: 6 }
+      - tiles:
+        - { x: 8, y: 4 }
+        - { x: 8, y: 5 }
+        - { x: 8, y: 6 }
+        - { x: 8, y: 7 }
+        - { x: 8, y: 8 }
+      - tiles:
+        - { x: 9, y: 4 }
+        - { x: 9, y: 5 }
+        - { x: 9, y: 6 }
+        - { x: 9, y: 7 }
+      - tiles:
+        - { x: 0, y: 5 }
+        - { x: 1, y: 5 }
+        - { x: 2, y: 5 }
+        - { x: 1, y: 6 }
+      - tiles:
+        - { x: 3, y: 5 }
+        - { x: 2, y: 6 }
+        - { x: 3, y: 6 }
+        - { x: 3, y: 7 }
+      - tiles:
+        - { x: 4, y: 5 }
+        - { x: 4, y: 6 }
+        - { x: 5, y: 6 }
+        - { x: 4, y: 7 }
+      - tiles:
+        - { x: 0, y: 6 }
+        - { x: 0, y: 7 }
+        - { x: 1, y: 7 }
+        - { x: 2, y: 7 }
+        - { x: 0, y: 8 }
+      - tiles:
+        - { x: 6, y: 6 }
+        - { x: 5, y: 7 }
+        - { x: 6, y: 7 }
+        - { x: 7, y: 7 }
+...

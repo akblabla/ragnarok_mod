@@ -1,0 +1,11 @@
+---
+tilesets:
+  - id: city
+    primaryConnect: []
+    biomes:
+      - types: [grass, desert, ice, volcano]
+        battleBackgroundSpriteSheet: backgrounds/battlescreen_extendedbackgrounds
+        battleBackgroundSprite: battlescreen_extendedbackgrounds_city
+        battleBackgroundSpriteForeground: battlescreen_extendedbackgrounds_city_foreground
+        mirrorBackground: true
+...

@@ -1,0 +1,71 @@
+---
+tilesets:
+  - id: plains
+    biomes:
+      - types: [grass]
+        spriteSheet: tilesets
+        spriteBase: grass_plains_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_plains
+        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_plains
+        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_plains_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Plain
+        infoScreenOffset: 30
+        fillColour: '#92b141'
+      - types: [ice]
+        spriteSheet: tilesets
+        spriteBase: snow_plains_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_plains
+        battleBackgroundSpriteSheet: backgrounds/snow_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: snow_battlescreen_extendedbackgrounds_plains
+        battleBackgroundSpriteForeground: snow_battlescreen_extendedbackgrounds_plains_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Plain
+        infoScreenOffset: 30
+        fillColour: '#aec6e3'
+      - types: [desert]
+        spriteSheet: tilesets
+        spriteBase: sand_plains_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_sand_plains
+        battleBackgroundSpriteSheet: backgrounds/sand_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: sand_battlescreen_extendedbackgrounds_plains
+        battleBackgroundSpriteForeground: sand_battlescreen_extendedbackgrounds_plains_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Plain
+        infoScreenOffset: 30
+        fillColour: '#987647'
+      - types: [volcano]
+        spriteSheet: tilesets
+        spriteBase: volcano_plains_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_sand_plains
+        battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: volcano_battlescreen_extendedbackgrounds_plains
+        battleBackgroundSpriteForeground: volcano_battlescreen_extendedbackgrounds_plains_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Plain
+        infoScreenOffset: 30
+        fillColour: '#6d5e56'
+    primaryConnect: []
+    decayTo: plains
+    tiles:
+      - { x: 0, y: 0, adj: "" }
+      - { x: 1, y: 0, adj: "" }
+      - { x: 2, y: 0, adj: "" }
+
+      - { x: 0, y: 1, adj: "" }
+      - { x: 1, y: 1, adj: "" }
+      - { x: 2, y: 1, adj: "" }
+      
+      - { x: 0, y: 2, adj: "" }
+      - { x: 1, y: 2, adj: "" }
+      - { x: 2, y: 2, adj: "" }
+      
+      - { x: 0, y: 3, adj: "" }
+      - { x: 1, y: 3, adj: "" }
+      - { x: 2, y: 3, adj: "" }
+...

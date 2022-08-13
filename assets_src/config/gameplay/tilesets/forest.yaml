@@ -1,0 +1,137 @@
+---
+tilesets:
+  - id: forest
+    primaryConnect: []
+    decayTo: plains
+    biomes:
+      - types: [grass]
+        minRandomElements: 2
+        maxRandomElements: 4
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_forest
+        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_forest
+        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_forest_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Forest
+        fillColour: '#7fa33b'
+        randomElements:
+          - sprite: terrain/trees/grass/cone_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/grass/cone_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/grass/cone_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+          - sprite: terrain/trees/grass/round_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/grass/round_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/grass/round_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+      - types: [ice]
+        minRandomElements: 2
+        maxRandomElements: 3
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_forest
+        battleBackgroundSpriteSheet: backgrounds/snow_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: snow_battlescreen_extendedbackgrounds_forest
+        battleBackgroundSpriteForeground: snow_battlescreen_extendedbackgrounds_forest_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Forest
+        fillColour: '#aec6e3'
+        randomElements:
+          - sprite: terrain/trees/ice/snowround_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/ice/snowround_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/ice/snowround_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+          - sprite: terrain/trees/ice/snowcone_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/ice/snowcone_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/ice/snowcone_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+      - types: [desert]
+        minRandomElements: 2
+        maxRandomElements: 3
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_sand_forest
+        battleBackgroundSpriteSheet: backgrounds/sand_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: sand_battlescreen_extendedbackgrounds_forest
+        battleBackgroundSpriteForeground: sand_battlescreen_extendedbackgrounds_forest_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Forest
+        fillColour: '#987647'
+        randomElements:
+          - sprite: terrain/trees/desert/palm_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/desert/palm_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/desert/palm_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+          - sprite: terrain/trees/desert/cactus_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+          - sprite: terrain/trees/desert/shrub_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+      - types: [volcano]
+        minRandomElements: 2
+        maxRandomElements: 3
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_sand_forest
+        battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: volcano_battlescreen_extendedbackgrounds_forest
+        battleBackgroundSpriteForeground: volcano_battlescreen_extendedbackgrounds_forest_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Forest
+        fillColour: '#6d5e56'
+        randomElements:
+          - sprite: terrain/trees/volcano/dry_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+            hasLeaves: false
+
+          - sprite: terrain/trees/volcano/dry_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+            hasLeaves: false
+
+          - sprite: terrain/trees/volcano/dry_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+            hasLeaves: false
+...

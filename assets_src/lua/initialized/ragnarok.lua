@@ -2,7 +2,8 @@ local Wargroove = require "wargroove/wargroove"
 
 
 local Ragnarok = {}
-Ragnarok.seaTiles = {"sea","sea_alt", "ocean","reef"}
+Ragnarok.seaTiles = {"sea","sea_alt", "ocean","reef","cave_sea", "cave_reef","cave_reef"}
+Ragnarok.amphibiousTiles = {"river", "cave_river", "beach", "cave_beach"}
 Ragnarok.groundTags = {"type.ground.light", "type.ground.heavy"}
 function Ragnarok.init()
 end
@@ -295,7 +296,8 @@ function Ragnarok.getFlareCount(playerId)
 	return 0
 end
 
-function Ragnarok.moveInArch(unitId, startPos, targetPos, numSteps, speed, gravity, xyGamma, zGamma)
+function Ragnarok.moveInArch(unitId, startPos, targetPos, numSteps, speed, gravity, xyGamma, zGamma, eventPackages)
+
 	if not xyGamma then
 		xyGamma = 1
 	end
@@ -329,12 +331,38 @@ function Ragnarok.moveInArch(unitId, startPos, targetPos, numSteps, speed, gravi
 			deltaSteps[i] = steps[i]
 		end
     end
+	local doneEvents = {}
     for i = 1, numSteps do
-      Wargroove.moveUnitToOverride(unitId, startPos, steps[i].x, steps[i].y, math.max(math.sqrt(deltaSteps[i].x^2+deltaSteps[i].y^2)*numSteps/tEnd,1))
-      while (Wargroove.isLuaMoving(unitId)) do
-        coroutine.yield()
-      end
+		print("Checking Event Packages")
+		for j, eventPackage in pairs(eventPackages) do
+			if doneEvents[j] == nil then
+				print("Event " .. tostring(j))
+				print(tostring(i/numSteps)..">="..tostring(eventPackage.time).." fraction")
+				print(tostring(i/numSteps*tEnd)..">="..tostring(eventPackage.time).." fraction")
+				print(tostring(i/numSteps*tEnd)..">="..tostring(tEnd-eventPackage.time).." fraction")
+				
+				if (i/numSteps>=eventPackage.time and eventPackage.mode == "fraction") or
+				(i/numSteps*tEnd>=eventPackage.time and eventPackage.mode == "fromStart") or
+				(i/numSteps*tEnd>=tEnd-eventPackage.time and eventPackage.mode == "fromEnd") then
+					print("Executing " .. tostring(j))
+					eventPackage.event(eventPackage.eventData)
+					print("Done " .. tostring(j))
+					doneEvents[j] = true
+				end
+			end
+		end
+		Wargroove.moveUnitToOverride(unitId, startPos, steps[i].x, steps[i].y, math.max(math.sqrt(deltaSteps[i].x^2+deltaSteps[i].y^2)*numSteps/tEnd,1))
+		while (Wargroove.isLuaMoving(unitId)) do
+			coroutine.yield()
+		end
     end
+	print("Checking for missed Event Packages")
+	for i, eventPackage in pairs(eventPackages) do
+		if doneEvents[i] == nil then
+			print("Found: " .. tostring(i))
+			eventPackage.event(eventPackage.eventData)
+		end
+	end
 end
 
 function dump(o,level)

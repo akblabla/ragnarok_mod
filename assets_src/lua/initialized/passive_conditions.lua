@@ -33,7 +33,12 @@ function PassiveConditions.pirate_ship(payload)
 		local isSea = false
         local terrain = getNeighbour(payload.attackerPos, i)
 		for i, seaType in ipairs(Ragnarok.seaTiles) do
-			if terrain == seaType or terrain == "river" or terrain == "beach" then
+			if terrain == seaType then
+				isSea = true
+			end
+		end
+		for i, amphibiousType in ipairs(Ragnarok.amphibiousTiles) do
+			if terrain == amphibiousType then
 				isSea = true
 			end
 		end
@@ -45,8 +50,19 @@ function PassiveConditions.pirate_ship(payload)
 end
 
 function PassiveConditions.merman(payload)
-    local terrainName = Wargroove.getTerrainNameAt(payload.attackerPos)
-    return terrainName == "river" or terrainName == "sea" or terrainName == "sea_alt" or terrainName == "ocean" or terrainName == "reef"
+	local isSea = false
+	local terrainName = Wargroove.getTerrainNameAt(payload.attackerPos)
+	for i, seaType in ipairs(Ragnarok.seaTiles) do
+		if terrainName == seaType then
+			isSea = true
+		end
+	end
+	for i, amphibiousType in ipairs(Ragnarok.amphibiousTiles) do
+		if terrainName == amphibiousType then
+			isSea = true
+		end
+	end
+    return isSea
 end
 
 return PassiveConditions

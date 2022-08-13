@@ -1,0 +1,7 @@
+---
+tilesets:
+  - id: undefined
+    primaryConnect: []
+    biomes:
+      - types: [grass, desert, ice]
+...

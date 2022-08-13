@@ -1,0 +1,115 @@
+---
+tilesets:
+  - id: carpet
+    biomes:
+      - types: [grass]
+        spriteSheet: tilesets
+        spriteBase: grass_carpet_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_indoor
+        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_indoor
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_carpet
+        infoScreenOffset: 80
+        fillColour: '#83786e'
+      - types: [ice]
+        spriteSheet: tilesets
+        spriteBase: snow_carpet_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_indoor
+        battleBackgroundSpriteSheet: backgrounds/snow_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: snow_battlescreen_extendedbackgrounds_indoor
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_carpet
+        infoScreenOffset: 80
+        fillColour: '#596876'
+      - types: [desert]
+        spriteSheet: tilesets
+        spriteBase: sand_carpet_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_indoor
+        battleBackgroundSpriteSheet: backgrounds/sand_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: sand_battlescreen_extendedbackgrounds_indoor
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_carpet
+        infoScreenOffset: 80
+        fillColour: '#807063'
+      - types: [volcano]
+        spriteSheet: tilesets
+        spriteBase: volcanic_carpet_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_indoor
+        battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: volcano_battlescreen_extendedbackgrounds_interior_carpet
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_carpet
+        infoScreenOffset: 80
+        fillColour: '#4e4340'
+    primaryConnect: [undefined, carpet]
+    decayTo: cobblestone
+    tiles:
+      - { x: 0, y: 0, adj: "e s se" }
+      - { x: 1, y: 0, adj: "w sw s se e" }
+      - { x: 2, y: 0, adj: "w s sw" }
+      - { x: 3, y: 0, adj: "e" }
+      - { x: 4, y: 0, adj: "e w" }
+      - { x: 5, y: 0, adj: "w" }
+      - { x: 6, y: 0, adj: "", default: true }
+      - { x: 7, y: 0, adj: "" }
+      - { x: 7, y: 1, adj: "" }
+      - { x: 7, y: 2, adj: "" }
+
+      - { x: 0, y: 1, adj: "n ne e se s" }
+      - { x: 1, y: 1, adj: "n w e s ne nw se sw" }
+      - { x: 2, y: 1, adj: "n nw w sw s" }
+      - { x: 3, y: 1, adj: "s" }
+      - { x: 4, y: 1, adj: "n e s w" }
+      - { x: 5, y: 1, adj: "w s e" }
+      - { x: 6, y: 1, adj: "n w e" }
+      - { x: 2, y: 3, adj: "n w e s ne nw se sw" }
+
+      - { x: 0, y: 2, adj: "n ne e" }
+      - { x: 1, y: 2, adj: "w nw n ne e" }
+      - { x: 2, y: 2, adj: "w nw n" }
+      - { x: 3, y: 2, adj: "n s" }
+      - { x: 4, y: 2, adj: "n s e" }
+      - { x: 5, y: 2, adj: "s e" }
+      - { x: 6, y: 2, adj: "s w" }
+      - { x: 7, y: 3, adj: "n s" }
+      - { x: 7, y: 4, adj: "e w" }
+      - { x: 7, y: 5, adj: "n s" }
+      - { x: 7, y: 6, adj: "e w" }
+
+      - { x: 3, y: 3, adj: "n" }
+      - { x: 4, y: 3, adj: "n w s" }
+      - { x: 5, y: 3, adj: "n e" }
+      - { x: 6, y: 3, adj: "n w" }
+
+      - { x: 0, y: 3, adj: "n w e s ne nw sw" }
+      - { x: 1, y: 3, adj: "n w e s ne nw se" }
+      - { x: 0, y: 4, adj: "n w e s nw se sw" }
+      - { x: 1, y: 4, adj: "n w e s ne se sw" }
+
+      - { x: 2, y: 4, adj: "n w e s se sw" }
+      - { x: 3, y: 4, adj: "n w e s nw sw" }
+      - { x: 4, y: 4, adj: "n w e s ne nw" }
+      - { x: 5, y: 4, adj: "n w e s ne se" }
+      - { x: 6, y: 4, adj: "n w s sw" }
+
+      - { x: 0, y: 5, adj: "w s e se" }
+      - { x: 1, y: 5, adj: "w s e sw" }
+      - { x: 2, y: 5, adj: "n w e ne" }
+      - { x: 3, y: 5, adj: "n w e nw" }
+      - { x: 4, y: 5, adj: "n s e se" }
+      - { x: 5, y: 5, adj: "n s e ne" }
+      - { x: 6, y: 5, adj: "n w s nw" }
+
+      - { x: 0, y: 6, adj: "n e s w nw" }
+      - { x: 1, y: 6, adj: "n e s w ne" }
+      - { x: 2, y: 6, adj: "n e s w se" }
+      - { x: 3, y: 6, adj: "n e s w sw" }
+      - { x: 4, y: 6, adj: "n w e s ne sw" }
+      - { x: 5, y: 6, adj: "n w e s nw se" }
+
+...

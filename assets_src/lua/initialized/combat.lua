@@ -82,7 +82,7 @@ function Combat:getDamage(attacker, defender, solveType, isCounter, attackerPos,
 	
 
 	-- For structures, check if there's a garrison; if so, attack as if it was that instead
-	local effectiveAttacker
+	local effectiveAttacker = nil
 	if attacker.garrisonClassId ~= '' then
 		effectiveAttacker = {
 			id = attacker.id,

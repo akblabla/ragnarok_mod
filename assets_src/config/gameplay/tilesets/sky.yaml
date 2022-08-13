@@ -1,0 +1,18 @@
+---
+tilesets:
+  - id: sky
+    primaryConnect: []
+    biomes:
+      - types: [grass, desert, ice, tropical]
+        battleBackgroundSpriteSheet: backgrounds/battlescreen_extendedbackgrounds
+        battleBackgroundSprite: battlescreen_extendedbackgrounds_sky
+        battleBackgroundSpriteForeground: battlescreen_extendedbackgrounds_sky_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_sky
+      - types: [volcano]
+        battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: volcano_battlescreen_extendedbackgrounds_sky
+        battleBackgroundSpriteForeground: volcano_battlescreen_extendedbackgrounds_sky_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_sky
+...

@@ -1,0 +1,83 @@
+---
+tilesets:
+  - id: road
+    biomes:
+      - types: [grass]
+        spriteSheet: tilesets
+        spriteBase: grass_road_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_road
+        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_road
+        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_road_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Road
+        infoScreenOffset: 80
+        fillColour: '#92b141'
+      - types: [ice]
+        spriteSheet: tilesets
+        spriteBase: snow_road_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_road
+        battleBackgroundSpriteSheet: backgrounds/snow_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: snow_battlescreen_extendedbackgrounds_road
+        battleBackgroundSpriteForeground: snow_battlescreen_extendedbackgrounds_road_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Road
+        infoScreenOffset: 80
+        fillColour: '#aec6e3'
+      - types: [desert]
+        spriteSheet: tilesets
+        spriteBase: sand_road_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_sand_road
+        battleBackgroundSpriteSheet: backgrounds/sand_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: sand_battlescreen_extendedbackgrounds_road
+        battleBackgroundSpriteForeground: sand_battlescreen_extendedbackgrounds_road_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Road
+        infoScreenOffset: 80
+        fillColour: '#987647'
+      - types: [volcano]
+        spriteSheet: tilesets
+        spriteBase: volcano_road_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_sand_road
+        battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: volcano_battlescreen_extendedbackgrounds_road
+        battleBackgroundSpriteForeground: volcano_battlescreen_extendedbackgrounds_road_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Road
+        infoScreenOffset: 80
+        fillColour: '#6d5e56'
+    primaryConnect: [undefined, road, bridge]
+    decayTo: plains
+    tiles:
+      - { x: 0, y: 0, adj: "e s" }
+      - { x: 1, y: 0, adj: "w e" }
+      - { x: 2, y: 0, adj: "w s" }
+      - { x: 3, y: 0, adj: "w e s" }
+      - { x: 4, y: 0, adj: "n e s" }
+
+      - { x: 0, y: 1, adj: "n s" }
+      - { x: 1, y: 1, adj: "", default: true }
+      - { x: 2, y: 1, adj: "n s" }
+      - { x: 3, y: 1, adj: "w n e" }
+      - { x: 4, y: 1, adj: "n w s" }
+
+      - { x: 0, y: 2, adj: "n e" }
+      - { x: 1, y: 2, adj: "e w" }
+      - { x: 2, y: 2, adj: "w n" }
+      - { x: 3, y: 2, adj: "s" }
+      - { x: 4, y: 2, adj: "n w s e" }
+
+      - { x: 0, y: 3, adj: "e" }
+      - { x: 1, y: 3, adj: "w" }
+      - { x: 3, y: 3, adj: "n" }
+      - { x: 4, y: 3, adj: "n s" }
+      - { x: 5, y: 3, adj: "e w" }
+      - { x: 6, y: 3, adj: "e w" }
+
+      - { x: 4, y: 4, adj: "n s" }
+      - { x: 5, y: 4, adj: "e w" }
+...

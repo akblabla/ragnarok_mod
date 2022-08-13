@@ -12,8 +12,6 @@ Grass Cave River Background
 Grass Cave Sea Background
 Grass Cave Bridge Background
 
-Mercival No Crown Sprites
-
 Fix up Cutthroat Portrait sprite
 
 Make Big Rival Portrait sprite

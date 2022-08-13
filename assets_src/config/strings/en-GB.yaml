@@ -36,6 +36,9 @@ en-GB:
   terrain_name_outlaw_ship: Outlaw Ship
   terrain_name_outlaw_cherry_ship: Outlaw and Cherry Ship
   
+  biome_name_tropical: "Tropical"
+  world_map_aurania_zoomed_name: "Aurania Zoomed"
+  
   #units
   
   unit_class_name_flagship_wulfar: "Wulfar's Flagship"
