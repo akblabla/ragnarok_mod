@@ -1,0 +1,7 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/cutscene/fireIgnite.ogg ]
+    group: sfx
+    delay: 0.15
+...

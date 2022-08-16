@@ -334,20 +334,22 @@ function Ragnarok.moveInArch(unitId, startPos, targetPos, numSteps, speed, gravi
 	local doneEvents = {}
     for i = 1, numSteps do
 		print("Checking Event Packages")
-		for j, eventPackage in pairs(eventPackages) do
-			if doneEvents[j] == nil then
-				print("Event " .. tostring(j))
-				print(tostring(i/numSteps)..">="..tostring(eventPackage.time).." fraction")
-				print(tostring(i/numSteps*tEnd)..">="..tostring(eventPackage.time).." fraction")
-				print(tostring(i/numSteps*tEnd)..">="..tostring(tEnd-eventPackage.time).." fraction")
-				
-				if (i/numSteps>=eventPackage.time and eventPackage.mode == "fraction") or
-				(i/numSteps*tEnd>=eventPackage.time and eventPackage.mode == "fromStart") or
-				(i/numSteps*tEnd>=tEnd-eventPackage.time and eventPackage.mode == "fromEnd") then
-					print("Executing " .. tostring(j))
-					eventPackage.event(eventPackage.eventData)
-					print("Done " .. tostring(j))
-					doneEvents[j] = true
+		if eventPackages ~= nil then
+			for j, eventPackage in pairs(eventPackages) do
+				if doneEvents[j] == nil then
+					print("Event " .. tostring(j))
+					print(tostring(i/numSteps)..">="..tostring(eventPackage.time).." fraction")
+					print(tostring(i/numSteps*tEnd)..">="..tostring(eventPackage.time).." fraction")
+					print(tostring(i/numSteps*tEnd)..">="..tostring(tEnd-eventPackage.time).." fraction")
+					
+					if (i/numSteps>=eventPackage.time and eventPackage.mode == "fraction") or
+					(i/numSteps*tEnd>=eventPackage.time and eventPackage.mode == "fromStart") or
+					(i/numSteps*tEnd>=tEnd-eventPackage.time and eventPackage.mode == "fromEnd") then
+						print("Executing " .. tostring(j))
+						eventPackage.event(eventPackage.eventData)
+						print("Done " .. tostring(j))
+						doneEvents[j] = true
+					end
 				end
 			end
 		end
@@ -357,10 +359,12 @@ function Ragnarok.moveInArch(unitId, startPos, targetPos, numSteps, speed, gravi
 		end
     end
 	print("Checking for missed Event Packages")
-	for i, eventPackage in pairs(eventPackages) do
-		if doneEvents[i] == nil then
-			print("Found: " .. tostring(i))
-			eventPackage.event(eventPackage.eventData)
+	if eventPackages ~= nil then
+		for i, eventPackage in pairs(eventPackages) do
+			if doneEvents[i] == nil then
+				print("Found: " .. tostring(i))
+				eventPackage.event(eventPackage.eventData)
+			end
 		end
 	end
 end
