@@ -1,0 +1,7 @@
+---
+actions:
+  - type: play
+    clips: [ music/tavernDistant.ogg ]
+    group: music
+    loop: true
+...

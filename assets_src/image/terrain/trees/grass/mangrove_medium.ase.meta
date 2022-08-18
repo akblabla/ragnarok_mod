@@ -1,0 +1,7 @@
+---
+pivotX: 8
+pivotY: 18
+atlas: units/map_units
+palette: image/palettes/wargroove_palette.png
+material: Wargroove/PaletteSwap
+...

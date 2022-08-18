@@ -1,0 +1,7 @@
+---
+
+music:
+  - id: tavern_distant
+    name: music_name_tavern_distant
+    audioEvent: music/tavernDistant
+...

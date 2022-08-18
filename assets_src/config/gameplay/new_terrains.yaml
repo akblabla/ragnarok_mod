@@ -1,5 +1,32 @@
 ---
 terrains:
+  - id: mangrove
+    name: terrain_name_river
+    biomeNames:
+      volcano: terrain_name_river_lava
+    biomeDescriptions:
+      volcano: terrain_description_lava
+    defenceBonus: 2
+    movementCost:
+      sailing: 3
+      walking: 3
+      flying: 1
+      hovering: 1
+      amphibious: 2
+      sea_building: 1
+    biomeMovementCosts:
+      volcano:
+        flying: 1
+        hovering: 1
+    movementGroupType: land
+    placeable: true
+    visionBlocking: true
+    fowCover: true
+    tilesets:
+      0: [plains, rough, plains_alt]
+      1: river
+      2: mangrove
+      
   - id: sea_alt
     name: terrain_name_sea
     biomeNames:

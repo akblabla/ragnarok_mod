@@ -1,0 +1,292 @@
+---
+en-GB:
+
+  # STORY MAIN 1 Prologue
+  # Cutscene: Start of match. Vesper stalks Emeric's ship
+  ragnarok_main1_cutscene_intro_1stMate_00: "We've been tracking them for days 'mam.[short_pause] Lets get 'em!"
+  ragnarok_main1_cutscene_intro_Vesper_00: "Yes, it is time for us to make our move."
+  ragnarok_main1_cutscene_intro_Vesper_01: "Men! Raise the clan flag!"
+  # Vesper catches up to Emeric's ship
+  ragnarok_main1_cutscene_intro_Emeric_00: "What is this Ruckus!"
+  ragnarok_main1_cutscene_intro_Emeric_01: "Oh, it is pirates.[short_pause] Crew, hand over the gold they are demanding so we can move along."
+  ragnarok_main1_cutscene_intro_Vesper_02: "Gold? No, I do not just want your gold.[short_pause] You have something far more valuable..."
+  ragnarok_main1_cutscene_intro_Emeric_02: "What?!"
+  ragnarok_main1_cutscene_intro_Vesper_03: "I know you won't hand over what I want just like this, so lets get the formalities over."
+  ragnarok_main1_cutscene_intro_Vesper_04: "Sic 'em!"
+  # Boarding begins
+  
+  #Ingame Dialogue:
+  #When Emeric feels threatened and starts pushing with his spear line and himself
+  ragnarok_main1_challenge_Emeric_00: "I won't let you take this ship so easily!"
+  #When Emeric is about to lose
+  ragnarok_main1_panic_Emeric_00: "The cherryfleet will chase you down if you take it!"
+  
+  
+  
+  #Cutscene: Victory. Vesper confronts Emeric
+  ragnarok_main1_cutscene_end_Vesper_00: "Well fought, monsieur."
+  ragnarok_main1_cutscene_end_Emeric_00: "You will not get past me."
+  #Emeric charges up a lightning blast, but gets interrupted and stunned by Vesper. A cherrystone crownbearer gets spooked behind emeric.
+  ragnarok_main1_cutscene_end_Vesper_01: "Well, that was that."
+  ragnarok_main1_cutscene_end_Vesper_02: "I'll just take this."
+  ragnarok_main1_cutscene_end_Vesper_03: "Au revior!"
+  #Emeric wakes up confused
+  ragnarok_main1_cutscene_end_Emeric_01: "Oh no, the crown is gone!"
+  
+  #Cutscene: Interlude. Vesper and her crew are sailing south with the cherry fleet on their tail
+  ragnarok_main1_cutscene_interlude_2ndMate_00: "Ma'am[slow]...[slow][short_pause] Pardon me...[short_pause] Mademoiselle, the Cherryfleet is trailing us."
+  ragnarok_main1_cutscene_interlude_Vesper_00: "Yes. This is why we are going through Felheim."
+  ragnarok_main1_cutscene_interlude_2ndMate_01: "[wavy]*gulp*[wavy][short_pause] Are you suggestion using the old backdoor?"
+  ragnarok_main1_cutscene_interlude_Vesper_01: "Are you suggesting going through the fleet instead, darling?"
+  ragnarok_main1_cutscene_interlude_Vesper_02: "So, stop your winching! This deal must go through."
+  ragnarok_main1_cutscene_interlude_Vesper_03: "We got the price we need."
+  
+#-----------------------------------------------------------------------------------------------#
+
+  # STORY MAIN 2 Hidden Fjord
+  # Cutscene: Start of match. Vespers ship is in a blizzard going south
+  ragnarok_main2_cutscene_start_Cutthroat_00: "[shaking]Brrrr, we are almost ashore.[shaking]"
+  ragnarok_main2_cutscene_start_Vesper_00: "Excellent. Let the landing begin!"
+  ragnarok_main2_cutscene_start_1stMate_00: "Wait, chief! You forgot the crown!"
+  ragnarok_main2_cutscene_start_1stMate_01: "Oh bother.[long_pause] Lets grab a rowboat."
+  
+  #Ingame Dialogue:
+  #Start of match after cutscene
+  ragnarok_main2_ingameIntro_Crew_00: "Uhm mam? I think this village is being invaded."
+  ragnarok_main2_ingameIntro_Vesper_00: "Are you worried about skeletons?[short_pause] These silly xylophones should be easy to outmaneuver."
+  ragnarok_main2_ingameIntro_Vesper_01: "We just need to get the crown past them."
+  #1st Mate lands via a barge with the crown
+  ragnarok_main2_ingameIntro_1stMate_00: "Wait,[short_pause] [wavy]*gasp*[wavy] the crown!"
+  ragnarok_main2_ingameIntro_Vesper_02: "Just pass it along. We don't have all day afterall."
+  
+  #After you move the crownbearer for the first time
+  ragnarok_main2_postThrow_Vesper_00: "Do keep yourself safe with the crown though, as you can't fight whilst holding it."
+  
+  #If you lose a unit to a rifle man
+  ragnarok_main2_keepYaHeadDown_Vesper_00: "Keep your heads down!"
+  ragnarok_main2_keepYaHeadDown_Vesper_01: "We do not give the enemy free practice shooting!"
+  ragnarok_main2_keepYaHeadDown_Crew_00: "Aye aye, chief!"
+  
+  #When you beat the mission
+  ragnarok_main2_ending_Crew_00: "The crown has been secured!"
+  ragnarok_main2_ending_Vesper_00: "Exquisite!"
+  #Emeric's fleet arives from the east
+  ragnarok_main2_ending_Emeric_00: "There she is! We can't let her get away!"
+  ragnarok_main2_ending_Vesper_01: "I see you finally woke up from your little nap."
+  ragnarok_main2_ending_Vesper_02: "But sadly, I don't have time for chit chat."
+  ragnarok_main2_ending_Vesper_03: "So if you don't mind, we'll just take our leave!"
+  ragnarok_main2_ending_Emeric_01: "You won't shake us of this easily pirate!"
+  ragnarok_main2_ending_Vesper_04: "It's Vesper, darling."
+  
+  # Cutscene: Interlude. Vespers is traveling along the fjord towards the outlaw HQ
+  ragnarok_main2_cutscene_interlude_1stMate_00: "Why are we even heading back to the hideout anyway?"
+  ragnarok_main2_cutscene_interlude_1stMate_01: "I thought our contact would meet us at Dragon's Dawn?"
+  ragnarok_main2_cutscene_interlude_Vesper_00: "Do you not know? The grand election for the title of clan chief is in a few days!"
+  ragnarok_main2_cutscene_interlude_Vesper_01: "And you know, as the chieftain it is proper etiquette to formally congratulate the new chieftain."
+  ragnarok_main2_cutscene_interlude_1stMate_02: "Uhm[slow]...[slow][short_pause] I thought you only cared about the deal getting through?"
+  ragnarok_main2_cutscene_interlude_Vesper_02: "Oh, it is still all about the deal."
+  ragnarok_main2_cutscene_interlude_Vesper_03: "We just need a little help from a friend of mine."
+  
+ #-----------------------------------------------------------------------------------------------#
+
+  # STORY MAIN 3 Election
+  # Cutscene: Start of match. We encounter Wulfar dancing among his peers in the tavern.
+  #After a bit of dancing, Rival dramatically kicks down the door. Everyone is silent except Wulfar, who keeps dancing without noticing.
+  
+  ragnarok_main3_cutscene_start_Rival_00: "Ahem,[short_pause] attention please!"
+  ragnarok_main3_cutscene_start_Rival_01: "Election day is coming up, and you are clearly not fit to lead the clan."
+  ragnarok_main3_cutscene_start_Rival_02: "I hereby challenge thee to a[short_pause] Pirate Bout!"
+  ragnarok_main3_cutscene_start_Wulfar_00: "If the clan wants the better pirate as their chief..."
+  ragnarok_main3_cutscene_start_Wulfar_01: "I accept ya challenge!"
+  ragnarok_main3_cutscene_start_Rival_03: "The Cherry Bay is where out Bout shall be performed."
+  ragnarok_main3_cutscene_start_Rival_04: "The pirate that robs the most gold wins!"
+  ragnarok_main3_cutscene_start_Wulfar_02: "Aye, lets go."
+  
+  #Ingame Dialogue:
+  #Start of match after cutscene
+  ragnarok_main3_ingameIntro_Wulfar_00: "We have to steal more gold from villages than our rival."
+  ragnarok_main3_ingameIntro_Wulfar_01: "Out pirate ships can steal 300 gold, but are left vulnerable while carrying it."
+  ragnarok_main3_ingameIntro_Wulfar_02: "They can deposit at either our flagship or our docks."
+  ragnarok_main3_ingameIntro_Wulfar_03: "Let's head out!"
+  
+  #Wulfar Wins
+  ragnarok_main3_ingameWins_Wulfar_00: "'Ey! There isn't enough gold left for you to catch up eh?"
+  ragnarok_main3_ingameWins_Rival_00: "[slow]1, 2[slow][short_pause]. Ough, he is right.[long_pause] Crew, lets head back..."
+  
+  #Rival Wins
+  ragnarok_main3_ingameRivalWins_Rival_00: "Ey' big fella! Noticed something?"
+  ragnarok_main3_ingameRivalWins_Rival_01: "There is not enough gold left on the map for you to catch up!"
+  ragnarok_main3_ingameRivalWins_Wulfar_00: "Aye. Let's head back. Drinks on me."
+  
+  #Rival Dies
+  ragnarok_main3_ingameRivalDies_Wulfar_00: "Wait a wee moment.[short_pause][wavy]He sank?![wavy]"
+  ragnarok_main3_ingameRivalDies_Wulfar_01: "I guess we won lads. Lets pick him and his crew up and head home."
+  
+  #Draw
+  ragnarok_main3_ingameDraw_Wulfar_00: "Guess we are at a draw. Gotta hand it to ya, that was well fought til the end!"
+  ragnarok_main3_ingameDraw_Rival_00: "I guess so, but who is going to be elected as clan chief then?"
+  ragnarok_main3_ingameDraw_Wulfar_01: "This was just a show. It is a democratic election afterall. Let's go home and see the results."
+  
+  #Player destroys village
+  ragnarok_main3_destroyVillage_Rival_00: "'Ey, you are destroying the villages?! Dirty tricks I see. You are denying my gold!"
+  ragnarok_main3_destroyVillage_Wulfar_00: "Aye. The greater tactian will win this."
+  
+  #Wulfar takes the lead
+  ragnarok_main3_wulfarWinning_Wulfar_00: "We've taken the lead!"
+  
+  #Wulfar comeback
+  ragnarok_main3_wulfarComeback_Wulfar_00: "Would ya look at that, we took the lead from ya!"
+  
+  #Rival takes the lead
+  ragnarok_main3_rivalWinning_Rival_00: "*Insert snarky dialog*"
+  
+  #Rival comeback
+  ragnarok_main3_rivalComeback_Rival_00: "Look who is falling behind. You don't have the touch like your grandfather!"
+  
+  #The game is about to end, with no more cities to raid
+  ragnarok_main3_endingSoon_Wulfar_00: "This is getting a wee close eh?"
+  ragnarok_main3_endingSoon_Rival_00: "Yeah, there are no more cities to raid."
+  
+  
+  # Cutscene: Wulfar Wins. Back at the tavern with the stolen gold displayed behind Wulfar and Rival.
+  ragnarok_main3_cutscene_win_Wulfar_00: "I won ya challenge. Turns out I got a wee bit of granpappy's skill afterall!"
+  ragnarok_main3_cutscene_win_Rival_00: "Hrmf, I have give it to you, not bad!"
+  ragnarok_main3_cutscene_win_Wulfar_01: "But in the end, it is the vote that counts in this election. So lets wait for the results."
+  ragnarok_main3_cutscene_win_Trickster_00: "All the votes have been tallied, and we have a winner.[short_pause]\n The clearly supperior and chieftain is..."
+  ragnarok_main3_cutscene_win_Trickster_01: "Wulfar!"
+  ragnarok_main3_cutscene_win_Wulfar_02: "I am honored to be ya chief!"
+  ragnarok_main3_cutscene_win_Wulfar_03: "But ol' friend, ye did well! Come 'ere!"
+  # Rival's name gets changed to "Ol' Friend"
+  ragnarok_main3_cutscene_win_Rival_01: "Thank you chieftain."
+  
+  # Cutscene: Draw. Back at the tavern with the stolen gold displayed behind Wulfar and Rival.
+  ragnarok_main3_cutscene_draw_Rival_00: "Looks like we are a draw matey."
+  ragnarok_main3_cutscene_draw_Wulfar_00: "Aye. Good thing this bout doesn't determine anything. It is an election afterall."
+  ragnarok_main3_cutscene_draw_Trickster_00: "The votes have been tallied."
+  ragnarok_main3_cutscene_draw_Trickster_01: "The new chieftian is..."
+  ragnarok_main3_cutscene_draw_Trickster_02: "Wulfar!"
+  #Rival is shocked
+  
+  # Cutscene: Interlude. At the docks of the Outlaw HQ
+  ragnarok_main3_cutscene_interlude_Wulfar_00: "Would ya look at that, Vesper is actually coming home."
+  ragnarok_main3_cutscene_interlude_Vesper_00: "Hello old friend."
+  ragnarok_main3_cutscene_interlude_Vesper_01: "I see the clan has once again made the right choice electing you!"
+  # Wulfar goes in for a bear hug
+  ragnarok_main3_cutscene_interlude_Wulfar_01: "It is so good to see ya again lassy!"
+  # Wulfar lets Vesper go
+  ragnarok_main3_cutscene_interlude_Vesper_02: "Well, now that you've got that off your chest, we have some formalities to go through."
+  ragnarok_main3_cutscene_interlude_Vesper_03: "I hearby withdraw my position as chieftain and pass the role of clan chief to you,"
+  ragnarok_main3_cutscene_interlude_Vesper_04: "and I shall return the warband to your service."
+  # Half the soldiers leaves
+  ragnarok_main3_cutscene_interlude_Wulfar_02: "Are you up for joining the feast? There will be boar and wine for days!"
+  ragnarok_main3_cutscene_interlude_Vesper_05: "I can't. I have some business to attend to."
+  ragnarok_main3_cutscene_interlude_Vesper_06: "So if you don't mind, I'll just head off now."
+  # Vesper leaves in a cloud of smoke
+  ragnarok_main3_cutscene_interlude_Wulfar_03: "That was a short visit."
+  ragnarok_main3_cutscene_interlude_Wulfar_04: "Farnsworth!"
+  ragnarok_main3_cutscene_interlude_Wulfar_05: "Could ya keep an eye on her?"
+  ragnarok_main3_cutscene_interlude_Farnsworth_00: "Plip plip!"
+  # Farnsworth jumps in the sea with an audible splash
+  
+  
+ #-----------------------------------------------------------------------------------------------#
+
+  # STORY MAIN 4 Hideout Defense
+  # Cutscene: Start of match. Wulfar wanders the streets of the outlaw HQ
+  ragnarok_main4_cutscene_start_Wulfar_00: "I wonder what that was all about..."
+  ragnarok_main4_cutscene_start_Trickster_00: "Sir, Cherrystone forces have been spotted down south in Felheim, and they are heading here!"
+  ragnarok_main4_cutscene_start_Wulfar_01: "Well, I guess that answers my question."
+  ragnarok_main4_cutscene_start_Wulfar_02: "Gather around!"
+  ragnarok_main4_cutscene_start_Wulfar_03: "Even if we beat 'em, this place has been discovered and is no longer safe."
+  ragnarok_main4_cutscene_start_Wulfar_04: "Anyone who is unable to fight must be evacuated."
+  ragnarok_main4_cutscene_start_Wulfar_05: "Everyone else will with me and defend the place until the rest are safe."
+  ragnarok_main4_cutscene_start_Wulfar_06: "Any questions?"
+  ragnarok_main4_cutscene_start_Wulfar_07: "No?"
+  ragnarok_main4_cutscene_start_Wulfar_08: "Off ye go!"
+  ragnarok_main4_cutscene_start_Wulfar_09: "They'll never take our freedom!"
+  
+  #Ingame Dialogue:
+  #Start of match after cutscene
+  ragnarok_main4_ingameIntro_Wulfar_00: "These 4 balloons have been prepped for evacuation. It'll take time for all the refugees to gather and leave though."
+  ragnarok_main4_ingameIntro_Wulfar_01: "Out villages will only provide half the income whilst the evacuation is going on, so we'll have to be resourceful."
+  ragnarok_main4_ingameIntro_Wulfar_02: "Once all the balloons have departed, I'll have to take my leave by boat."
+  ragnarok_main4_ingameIntro_Wulfar_03: "I'll deal with Vesper later."
+  ragnarok_main4_ingameIntro_Rival_00: "There they come chief!"
+  ragnarok_main4_ingameIntro_Mage_00: "Wait, is that a whole city of bandits?!"
+  ragnarok_main4_ingameIntro_Mage_01: "Send word to Emeric, they must be here!"
+  ragnarok_main4_ingameIntro_Soldier_00: "Yes mam!"
+  
+  #Emeric's ingame intro
+  ragnarok_main4_emericIntro_Emeric_00: "You must be the one who leads these bandits."
+  ragnarok_main4_emericIntro_Wulfar_00: "Aye. I am Wulfar, clan chief of the outlaws."
+  ragnarok_main4_emericIntro_Emeric_01: "I demand that you hand over Vesper, or we will be forced to take your town by force."
+  ragnarok_main4_emericIntro_Wulfar_01: "I am letting ya walsh in here just like that, sod off!"
+  ragnarok_main4_emericIntro_Emeric_02: "Good thing Mercival will come with reinforcments from the north in 5 turns. This place is massive."
+  
+  #Emeric Dies
+  ragnarok_main4_emericDies_Wulfar_00: "This will hurt more than just ye pride."
+  ragnarok_main4_emericDies_Mercival_00: "You'll regret that outlaw!"
+  
+  #Mercival Scouts Arive
+  ragnarok_main4_mercivalScout_Soldier_00: "Hey, those are Mericval's scouts!"
+  ragnarok_main4_mercivalScout_Emeric_00: "Indeed, we'll round these outlaws up no problem once Mercival arrives."
+  
+  #Mercival Arive (Emeric Alive)
+  ragnarok_main4_mercivalIntro_Mercival_00: "Emeric, good to see you old friend!"
+  ragnarok_main4_mercivalIntro_Emeric_00: "Sire! These bandits are harboring the bandits we were chasing. We have to take the city by force!"
+  ragnarok_main4_mercivalIntro_Mercival_01: "Force?[short_pause] Did you even try diplomacy?[short_pause] Let me have a go at it."
+  ragnarok_main4_mercivalIntro_Mercival_02: "Greetings Chieftain of the Outlaws.[short_pause] It seems like one of your folk took something from us. Would you be so kind to hand it back?"
+  ragnarok_main4_mercivalIntro_Wulfar_00: "I would never sellout one of me collegues to a tyrant like you."
+  ragnarok_main4_mercivalIntro_Wulfar_01: "Sod off!"
+  ragnarok_main4_mercivalIntro_Mercival_03: "Ah well, worth a shot."
+  ragnarok_main4_mercivalIntro_Mercival_04: "Charge!"
+  
+  #Mercival Arive (Emeric Dead)
+  ragnarok_main4_mercivalIntroAlt_Mercival_00: "Emeric, good to see you old friend!"
+  ragnarok_main4_mercivalIntroAlt_Soldier_00: "[slow]Uhm, sir?[slow][short_pause] I think they knocked out Emeric."
+  ragnarok_main4_mercivalIntroAlt_Mercival_01: "Wait, what?[short_pause] Still too reckless for his own good I see."
+  ragnarok_main4_mercivalIntroAlt_Mercival_02: "Greetings Chieftain of the Outlaws.[short_pause] It seems like one of your folk took something from us. Would you be so kind to hand it back?"
+  ragnarok_main4_mercivalIntroAlt_Wulfar_00: "I would never sellout one of me collegues to a tyrant like you."
+  ragnarok_main4_mercivalIntroAlt_Wulfar_01: "Sod off!"
+  ragnarok_main4_mercivalIntroAlt_Mercival_03: "Ah well, worth a shot."
+  ragnarok_main4_mercivalIntroAlt_Mercival_04: "Charge!"
+  
+  #Mercival Dies
+  ragnarok_main4_mercivalDies_Wulfar_00: "You've bitten of more than ye can chew!"
+  ragnarok_main4_mercivalDies_Emeric_00: "[shaking]Mercival![shaking]"
+  ragnarok_main4_mercivalDies_Emeric_01: "You will pay for this!"
+  
+  #Escape Sequence Warning
+  ragnarok_main4_escapeSequenceWarning_Outlaw_00: "The last balloon is about to leave sir!"
+  ragnarok_main4_escapeSequenceWarning_Wulfar_00: "Aye, that means we are heading out soon too."
+  
+  
+  #Start Escape Sequence
+  ragnarok_main4_escapeSequence_Wulfar_00: "Was that all?[short_pause] Then it is time for us to make our leave!"
+
+  #Ingame Ending
+  ragnarok_main4_ingameEnding_Wulfar_00: "It hurts seeing the homes of so many hard working criminals being razed."
+  ragnarok_main4_ingameEnding_Wulfar_01: "Let's leave this place"
+  
+  # Cutscene: End of match. At the docks of the outlaw HQ
+  ragnarok_main4_cutscene_ending_Emeric_00: "They are escaping!"
+  #Emeric starts channeling
+  ragnarok_main4_cutscene_ending_Mercival_00: "Let it go old friend. We will catch up with them."
+  ragnarok_main4_cutscene_ending_Emeric_01: "You are right as always my liege.[long_pause] I just got a bit frustrated. I let you down afterall."
+  ragnarok_main4_cutscene_ending_Mercival_01: "You have never let me down Emeric."
+  ragnarok_main4_cutscene_ending_Mercival_02: "The chieftain must know what happened to the crown."
+  ragnarok_main4_cutscene_ending_Emeric_02: "The balloons were just filled with low rate criminals. The ones we want went by boat."
+  ragnarok_main4_cutscene_ending_Mercival_03: "Then let us set sail!"
+
+#No more real content  
+#Mission 5 is Welcome to the Jungle, or maybe Mangroove Madness?
+#Wulfar gets a tip from Farnsworth about a battle at Cradle Island between vesper and the florans.
+#Wulfar arives to help, but Vesper has already left. Save vespers crew for info.
+
+#Mission 6 is the final.
+#Wulfar finds Vesper about to explore the coves where the big deal is to take place. Since the cherryfleet on their tail, Wulfar forces Vesper to cooperate, since he is the only one able to hold back the fleet until the deal goes through.
+#Once both wulfar and vesper reach the meeting point, they both wait and wait for the contact. After some time Wulfar says f' this and yeets the crown into the ocean, and the fleet immeadiatly abandons the chase to fish up the crown.
+  
+  
+  
+...

@@ -31,7 +31,7 @@ local function bruteForceCheckIfVisibleInStealthyTile(playerId, targetPos)
 		return false
 	end
 	local terrainName = Wargroove.getTerrainNameAt(targetPos)
-	if terrainName and (terrainName == "forest" or terrainName == "reef" or terrainName == "forest_alt") then
+	if terrainName and (terrainName == "forest" or terrainName == "reef" or terrainName == "forest_alt" or terrainName == "cave_reef" or terrainName == "mangrove") then
 		local maxDist = 6
 		for yOffset = -maxDist, maxDist do
 			for xOffset = -maxDist, maxDist do

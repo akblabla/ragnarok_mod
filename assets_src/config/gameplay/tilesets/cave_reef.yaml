@@ -24,7 +24,7 @@ tilesets:
         infoScreenOffset: 70
         fillColour: '#76231c'
     primaryConnect: [undefined, reef, cave_reef]
-    decayTo: sea_alt
+    decayTo: cave_sea
     tiles:
       - { x: 0, y: 0, adj: "e s se" }
       - { x: 1, y: 0, adj: "w sw s se e" }

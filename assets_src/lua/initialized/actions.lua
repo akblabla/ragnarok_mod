@@ -28,6 +28,7 @@ function Actions.populate(dst)
 	dst["force_action"] = Actions.forceAction
 	dst["place_crown"] = Actions.placeCrown
 	dst["modify_flare_count"] = Actions.modifyFlareCount
+	dst["enable_AI_fog_limitations"] = Actions.enableAIFogLimitations
 end
 
 --Local stuff
@@ -55,6 +56,11 @@ function Actions.setNoBuildingAttacking(context)
     local targetPlayer = context:getPlayerId(0)
 	print(targetPlayer)
 	Ragnarok.addAIToCantAttackBuildings(targetPlayer)
+end
+
+function Actions.enableAIFogLimitations(context)
+    -- "Enable AI fog Limitations"
+
 end
 
 function Actions.setState(context)

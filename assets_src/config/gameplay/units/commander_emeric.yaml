@@ -30,10 +30,11 @@ weapons:
       rifleman: 1.05
       thief: 0.95
       
+      pirate_ship: 0.6
       warship: 0.55
-      harpoonship: 0.45
+      harpoonship: 0.6
       turtle: 0.55
-      travelboat: 0.6
+      travelboat: 0.45
       merman: 0.95
 
 unitClasses:
