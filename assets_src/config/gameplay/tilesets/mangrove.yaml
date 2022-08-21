@@ -1,6 +1,8 @@
 ---
 tilesets:
   - id: mangrove
+    primaryConnect: []
+    decayTo: river
     biomes:
       - types: [grass]
         portraitSpriteSheet: terrain/terrain_portraits
