@@ -129,4 +129,13 @@ verbs:
     scriptName: verbs/spawn_flare_many
     splashOutlineColour: attack_target_outline
     splashRadius: 5
+
+  - id: rescue
+    icon: ui/icons/grooves/unit_action_icon_inspire.png
+    name: ui_unit_verbs_rescue
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetted: true
+    directTarget: true
+    scriptName: verbs/rescue
 ...

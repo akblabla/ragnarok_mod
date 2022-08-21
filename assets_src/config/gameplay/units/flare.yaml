@@ -3,10 +3,11 @@
 unitClasses:
   - id: flare
     name: unit_class_name_flare
-    cost: 300
+    cost: 200
+    damageMultiplier: 2
     movement: flying
     moveRange: 2
-    aiPriority: 0.5
+    aiPriority: 0.1
     weapons: []
     tags:
       - summon

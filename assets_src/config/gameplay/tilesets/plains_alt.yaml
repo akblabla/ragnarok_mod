@@ -10,8 +10,8 @@ tilesets:
         battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
         battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_plains
         battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_plains_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Plain
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_plains_alt.png"
         infoScreenOffset: 30
         fillColour: '#92b141'
       - types: [grass]
@@ -22,8 +22,8 @@ tilesets:
         battleBackgroundSpriteSheet: backgrounds/snow_battlescreen_extendedbackgrounds
         battleBackgroundSprite: snow_battlescreen_extendedbackgrounds_plains
         battleBackgroundSpriteForeground: snow_battlescreen_extendedbackgrounds_plains_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Plain
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_plains_alt.png"
         infoScreenOffset: 30
         fillColour: '#aec6e3'
       - types: [ice]
@@ -34,8 +34,8 @@ tilesets:
         battleBackgroundSpriteSheet: backgrounds/sand_battlescreen_extendedbackgrounds
         battleBackgroundSprite: sand_battlescreen_extendedbackgrounds_plains
         battleBackgroundSpriteForeground: sand_battlescreen_extendedbackgrounds_plains_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Plain
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_plains_alt.png"
         infoScreenOffset: 30
         fillColour: '#987647'
       - types: [volcano]
@@ -46,8 +46,8 @@ tilesets:
         battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
         battleBackgroundSprite: volcano_battlescreen_extendedbackgrounds_plains
         battleBackgroundSpriteForeground: volcano_battlescreen_extendedbackgrounds_plains_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Plain
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_plains_alt.png"
         infoScreenOffset: 30
         fillColour: '#6d5e56'
     primaryConnect: [undefined, plains_alt]

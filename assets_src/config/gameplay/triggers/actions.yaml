@@ -4,6 +4,8 @@ triggerActions:
   - id: ai_set_no_building_attacking
     parameters:
       - type: player
+      
+  - id: enable_AI_fog_limitations
 
   - id: set_state
     parameters:

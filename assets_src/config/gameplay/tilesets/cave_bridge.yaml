@@ -13,8 +13,8 @@ tilesets:
         battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
         battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_bridge
         battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_bridge_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Bridge
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_cave_bridge.png"
         infoScreenOffset: 75
         fillColour: '#2a2542'
       - types: [ice]
@@ -28,8 +28,8 @@ tilesets:
         battleBackgroundSpriteSheet: backgrounds/snow_battlescreen_extendedbackgrounds
         battleBackgroundSprite: snow_battlescreen_extendedbackgrounds_bridge
         battleBackgroundSpriteForeground: snow_battlescreen_extendedbackgrounds_bridge_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Bridge
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_cave_bridge.png"
         infoScreenOffset: 75
         fillColour: '#2a2542'
       - types: [desert]
@@ -43,8 +43,8 @@ tilesets:
         battleBackgroundSpriteSheet: backgrounds/sand_battlescreen_extendedbackgrounds
         battleBackgroundSprite: sand_battlescreen_extendedbackgrounds_bridge
         battleBackgroundSpriteForeground: sand_battlescreen_extendedbackgrounds_bridge_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Bridge
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_cave_bridge.png"
         infoScreenOffset: 75
         fillColour: '#2a2542'
       - types: [volcano]
@@ -58,12 +58,12 @@ tilesets:
         battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
         battleBackgroundSprite: volcano_battlescreen_extendedbackgrounds_bridge
         battleBackgroundSpriteForeground: volcano_battlescreen_extendedbackgrounds_bridge_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Bridge
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_cave_bridge.png"
         infoScreenOffset: 75
         fillColour: '#2a2542'
     primaryConnect: [undefined, bridge, cave_bridge]
-    secondaryConnect: [plains, rough, plains_alt, cave_wall, forest, forest_alt, mountain, road, wall, cobblestone, carpet]
+    secondaryConnect: [plains, rough, plains_alt, cave_wall, forest, forest_alt, forest_tropical, mountain, road, wall, cobblestone, carpet]
     decayTo: ":below"
     tiles:
       - { x: 0, y: 0, adj: "!w !e" }

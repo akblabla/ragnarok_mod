@@ -3,4 +3,9 @@ gizmos:
   - id: pulley
     layer: units
     animation: gizmo/pulley
+  - id: capsized_crew
+    layer: ground
+    animation: gizmo/capsized_crew
+    offState:
+      terrainOverride: invisible_blocker_ocean
 ...

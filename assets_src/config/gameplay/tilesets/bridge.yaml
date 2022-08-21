@@ -63,7 +63,7 @@ tilesets:
         infoScreenOffset: 75
         fillColour: '#2a2542'
     primaryConnect: [undefined, bridge]
-    secondaryConnect: [plains, rough, plains_alt, cave_wall, forest, forest_alt, mountain, road, wall, cobblestone, carpet]
+    secondaryConnect: [plains, rough, plains_alt, cave_wall, forest, forest_alt, forest_tropical, mountain, road, wall, cobblestone, carpet]
     decayTo: ":below"
     tiles:
       - { x: 0, y: 0, adj: "!w !e" }

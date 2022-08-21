@@ -138,7 +138,18 @@ decorations:
     layer: units
     animation:
       undefined: decoration/unit/garland01
-      
+  - id: mangrove_small
+    layer: units
+    animation:
+      undefined: decoration/unit/mangrove_small
+  - id: mangrove_medium
+    layer: units
+    animation:
+      undefined: decoration/unit/mangrove_medium
+  - id: mangrove_big
+    layer: units
+    animation:
+      undefined: decoration/unit/mangrove_big
 
   # flags
   - id: flag_cyan

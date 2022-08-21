@@ -9,8 +9,8 @@ tilesets:
         battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
         battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_reef
         battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_reef_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Reef
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_cave_reef.png"
         infoScreenOffset: 70
         fillColour: '#2a2542'
       - types: [volcano]
@@ -19,8 +19,8 @@ tilesets:
         waterSpriteBase: cave_reef_tileset_001
         battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
         battleBackgroundSprite: volcano_battlescreen_extendedbackgrounds_lava
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Reef
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_cave_reef.png"
         infoScreenOffset: 70
         fillColour: '#76231c'
     primaryConnect: [undefined, reef, cave_reef]

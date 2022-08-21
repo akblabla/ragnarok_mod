@@ -1,11 +1,27 @@
 local Wargroove = require "wargroove/wargroove"
+local WargrooveExtra = require "initialized/wargroove_extra"
+
 
 
 local Ragnarok = {}
 Ragnarok.seaTiles = {"sea","sea_alt", "ocean","reef","cave_sea", "cave_reef","cave_reef"}
-Ragnarok.amphibiousTiles = {"river", "cave_river", "beach", "cave_beach"}
+Ragnarok.amphibiousTiles = {"river", "cave_river", "beach", "cave_beach", "mangrove"}
 Ragnarok.groundTags = {"type.ground.light", "type.ground.heavy"}
 function Ragnarok.init()
+	local customTrigger = {
+		id = "Reset Occurence List",
+		recurring = "repeat",
+		actions = {
+			{
+				id = "reset_occurence_list",
+				parameters = {
+				}
+			}
+		},
+		conditions = {},
+		players = {1, 0, 0, 0, 0, 0, 0, 0}
+	}
+	Ragnarok.addHiddenTrigger(customTrigger,true)
 end
 
 local cantAttackBuildingsSet = {}
@@ -17,6 +33,39 @@ local crownAnimation = "ui/icons/fx_crown"
 local crownOffsetAnimation = "ui/icons/fx_crown_offset"
 local crownStateKey = "crown"
 local flareCountTable = {}
+local fogOfWarRulesEnabled = false
+local occurences = {}
+
+function Ragnarok.resetOccurences()
+	occurences = {}
+end
+
+function Ragnarok.didItOccur(occation)
+	print("didItOccur starts here")
+	print(occation)
+	print(dump(occurences,1))
+	return occurences[occation] ~= nil
+end
+
+function Ragnarok.reportOccation(occation)
+	print("reportOccation starts here")
+	print(Ragnarok.didItOccur(occation))
+	occurences[occation] = true
+	print(dump(occurences,1))
+	print(Ragnarok.didItOccur(occation))
+end
+
+function Ragnarok.setFogOfWarRules(fogOn)
+	fogOfWarRulesEnabled = fogOn
+end
+
+function Ragnarok.usingFogOfWarRules()
+	return fogOfWarRulesEnabled
+end
+
+function Ragnarok.addHiddenTrigger(trigger, atEnd)
+	WargrooveExtra.addHiddenTrigger(trigger, atEnd)
+end
 
 function Ragnarok.addAIToCantAttackBuildings(playerId)
 	cantAttackBuildingsSet[tostring(playerId)] = true

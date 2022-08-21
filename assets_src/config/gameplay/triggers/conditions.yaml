@@ -16,4 +16,8 @@ triggerConditions:
       - type: unit_class_star
       - type: player_neutral_star
       - type: location_star
+      
+  - id: did_it_occur
+    parameters:
+      - type: string
 ...

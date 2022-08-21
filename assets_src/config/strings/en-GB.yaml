@@ -80,9 +80,9 @@ en-GB:
   unit_class_name_pirate_ship_loaded: Raider Ship Loaded
   unit_description_pirate_ship_loaded: "Can steal gold from structures. It can't attack whilst loaded. Critical hit against enemies adjacent to allies."
 
-  unit_class_name_thief_with_crown: Thief with crown
-  unit_description_thief_with_crown: "This brave soul is carrying the Cherry Crown for warmistress Vesper. Do not lose him."
-
+  unit_class_name_crew: Capsized Crew
+  unit_description_crew: "Crew drifting at sea. Save them, and maybe they can help you in return."
+  unit_name_crew: Capsized Crew
 
   unit_name_archer_outlaws: Poacher 
   unit_name_dog_outlaws: Stray
@@ -107,13 +107,16 @@ en-GB:
   unit_name_villager_outlaws: Beggar 
   unit_name_thief_outlaws: Smuggler
   unit_name_rifleman_outlaws: Sharpshooter 
-  unit_name_thief_with_crown_outlaws: Smuggler with Crown 
   
   
   # Triggers
   trigger_action_name_ai_set_no_building_attacking: "AI: Set no building attacking"
   trigger_action_description_ai_set_no_building_attacking: "Prevents AI from attacking buildings."
   trigger_action_readable_ai_set_no_building_attacking: "Prevent AI controlled by player {0} from attacking buildings."
+  
+  trigger_action_name_enable_AI_fog_limitations: "AI: Enable AI fog Limitations"
+  trigger_action_description_enable_AI_fog_limitations: "Enables AI fog Limitations."
+  trigger_action_readable_enable_AI_fog_limitations: "Enable AI fog Limitations."
   
   trigger_action_name_set_state: "Unit: Set State"
   trigger_action_description_set_state: "Sets the unit state."
@@ -175,15 +178,20 @@ en-GB:
   trigger_action_name_move_location_to_next_structure: "Location: Move location to Next"
   trigger_action_description_move_location_to_next_structure: "Move location to next unit on the right."
   trigger_action_readable_move_location_to_next_structure: "Move location {0} to next {1} owned by {2} at {3} to the right."
-
-  trigger_condition_name_does_next_structure_exist: "Location: Next Exists"
-  trigger_condition_description_does_next_structure_exist: "Triggers if a unit to the right of location exists."
-  trigger_condition_readable_does_next_structure_exist: "If there are more {1} owned by {2} at {3} to the right of location {0}"
   
   trigger_action_name_modify_flare_count: "Player: Modify Flare Count"
   trigger_action_description_modify_flare_count: "Modifies the amount of flares available to a player."
   trigger_action_readable_modify_flare_count: "Modify the number of flares owned by {0}: {1} {2}"
   
+  trigger_condition_name_does_next_structure_exist: "Location: Next Exists"
+  trigger_condition_description_does_next_structure_exist: "Triggers if a unit to the right of location exists."
+  trigger_condition_readable_does_next_structure_exist: "If there are more {1} owned by {2} at {3} to the right of location {0}"
+  
+  trigger_condition_name_did_it_occur: "Dev: Did it Occur"
+  trigger_condition_description_did_it_occur: "Triggers when an occation occurs."
+  trigger_condition_readable_did_it_occur: "If {0} occured"
+  
+
   #backgrounds
   ui_cutscene_background_deck: "Ship Deck"
   ui_cutscene_background_outlaw_ship: "Outlaw Ship"

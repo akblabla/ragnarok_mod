@@ -40,7 +40,7 @@ function pirate_deposit:execute(unit, targetPos, strParam, path)
     Wargroove.waitTime(0.4)
     Wargroove.changeMoney(targetUnit.playerId, amountToDeposit)
 	Ragnarok.addGoldRobbed(unit.playerId, tonumber(amountToDeposit))
-	
+	Ragnarok.reportOccation("pirate_ship_deposited")
 end
 
 function pirate_deposit:generateOrders(unitId, canMove)

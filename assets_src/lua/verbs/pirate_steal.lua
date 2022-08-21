@@ -64,6 +64,8 @@ function pirate_steal:execute(unit, targetPos, strParam, path)
     end
 	
     Wargroove.waitTime(0.5)
+	Ragnarok.reportOccation("pirate_ship_stole")
+
 end
 
 function pirate_steal:generateOrders(unitId, canMove)

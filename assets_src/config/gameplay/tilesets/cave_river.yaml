@@ -11,8 +11,8 @@ tilesets:
         battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
         battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_river
         battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_river_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_River
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_cave_river.png"
         infoScreenOffset: 70
         fillColour: '#286ab1'
       - types: [ice]
@@ -24,8 +24,8 @@ tilesets:
         battleBackgroundSpriteSheet: backgrounds/snow_battlescreen_extendedbackgrounds
         battleBackgroundSprite: snow_battlescreen_extendedbackgrounds_river
         battleBackgroundSpriteForeground: snow_battlescreen_extendedbackgrounds_river_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_River
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_cave_river.png"
         infoScreenOffset: 70
         fillColour: '#1659a8'
       - types: [desert]
@@ -37,8 +37,8 @@ tilesets:
         battleBackgroundSpriteSheet: backgrounds/sand_battlescreen_extendedbackgrounds
         battleBackgroundSprite: sand_battlescreen_extendedbackgrounds_river
         battleBackgroundSpriteForeground: sand_battlescreen_extendedbackgrounds_river_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_River
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_cave_river.png"
         infoScreenOffset: 70
         fillColour: '#1659a8'
       - types: [volcano]
@@ -49,8 +49,8 @@ tilesets:
         portraitSprite: terrain_portraits_sand_river
         battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
         battleBackgroundSprite: volcano_battlescreen_extendedbackgrounds_lava
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_River
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_cave_river.png"
         infoScreenOffset: 70
         fillColour: '#76231c'
     primaryConnect: [undefined, river, mangrove, cave_river, bridge, sea_alt, cave_sea, ocean, beach, cave_beach]

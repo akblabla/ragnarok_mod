@@ -29,6 +29,8 @@ function Actions.populate(dst)
 	dst["place_crown"] = Actions.placeCrown
 	dst["modify_flare_count"] = Actions.modifyFlareCount
 	dst["enable_AI_fog_limitations"] = Actions.enableAIFogLimitations
+	--Hidden actions
+	dst["reset_occurence_list"] = Actions.resetOccurenceList
 end
 
 --Local stuff
@@ -60,7 +62,12 @@ end
 
 function Actions.enableAIFogLimitations(context)
     -- "Enable AI fog Limitations"
+	Ragnarok.setFogOfWarRules(true)
+end
 
+function Actions.resetOccurenceList(context)
+    -- "Hidden action"
+	Ragnarok.resetOccurences()
 end
 
 function Actions.setState(context)

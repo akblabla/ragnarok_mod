@@ -1,5 +1,6 @@
 local Wargroove = require "wargroove/wargroove"
 local Events = require "wargroove/events"
+local Ragnarok = require "initialized/ragnarok"
 
 local Conditions = {}
 
@@ -11,6 +12,7 @@ end
 function Conditions.populate(dst)
     dst["state"] = Conditions.state
     dst["does_next_structure_exist"] = Conditions.doesNextStructureExist
+    dst["did_it_occur"] = Conditions.didItOccur
 end
 
 function Conditions.state(context)
@@ -44,4 +46,11 @@ function Conditions.doesNextStructureExist(context)
     end
 	return nextLocation.x~=1000
 end
+
+function Conditions.didItOccur(context)
+    -- "If {0} occured"
+    local occation = context:getString(0)
+	return Ragnarok.didItOccur(occation)
+end
+
 return Conditions

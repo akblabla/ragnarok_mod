@@ -1,41 +1,40 @@
 ---
 
 weapons:
-  - id: flagship_cannon
-    rangeMin: 1
-    rangeMax: 2
+  - id: rival_flagship_cannon
+    rangeMin: 2
+    rangeMax: 4
     canMoveAndAttack: true
     baseDamage:
       land: 1
       water: 1
     tagDamage:
-      archer: 1.3
-      soldier: 1.15
-      villager: 0.95
-      spearman: 0.75
-      dog: 1.15
-      wagon: 0.7
-      knight: 0.55
-      trebuchet: 0.55
-      ballista: 0.6
+      archer: 1
+      soldier: 0.9
+      villager: 0.9
+      spearman: 0.6
+      dog: 0.9
+      wagon: 0.45
+      knight: 0.45
+      trebuchet: 0.45
+      ballista: 0.5
+      mage: 0.6
+      giant: 0.3
+      structure: 0.5
+      balloon: 0.4
+      harpy: 0.7
+      witch: 0.6
       dragon: 0.3
-      mage: 0.8
-      giant: 0.4
-      structure: 0.7
-      balloon: 0.55
-      harpy: 0.9
-      witch: 0.7
-      dragon: 0.35
-      commander: 0.4
-      rifleman: 1.05
-      thief: 0.95
+      commander: 0.3
+      rifleman: 0.9
+      thief: 0.75
       
-      warship: 0.55
+      warship: 0.45
       harpoonship: 0.6
-      turtle: 0.55
+      turtle: 0.45
       travelboat: 0.45
-      merman: 0.95
-      flagship: 0.4
+      merman: 0.75
+      flagship: 0.3
       pirate_ship: 0.6
 
 unitClasses:
@@ -43,10 +42,11 @@ unitClasses:
     name: unit_class_name_flagship_rival
     cost: 500
     movement: sailing
+    damageMultiplier: 0.75
     moveRange: 5
     aiPriority: 4.0
     weapons:
-      - id: flagship_cannon
+      - id: rival_flagship_cannon
     cargoSpace: 2
     tags:
       - flagship

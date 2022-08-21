@@ -12,7 +12,7 @@ tilesets:
         battleBackgroundSprite: cave_battlescreen_sand_background
         battleBackgroundSpriteForeground: cave_battlescreen_sand_foreground
         iconSpriteSheet: ui_RagnarokMod
-        iconSprite: ":img:ui/codex/icons/icon_terrain_rough_grass.png"
+        iconSprite: ":img:ui/codex/icons/icon_terrain_cave_wall.png"
         infoScreenOffset: 80
         fillColour: '#83786e'
     primaryConnect: [undefined, cave_wall, wall]

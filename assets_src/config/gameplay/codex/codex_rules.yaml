@@ -1,0 +1,16 @@
+---
+codex:
+- id: rules_changes
+  category: rules
+  name: codex_rules_changes
+  icon:
+    image: ui/codex/icons/icon_rules_question.png
+  pages:
+  - pageType: page
+    layoutType: animation
+    animation: ui/codex/content/rules_weather
+    title: codex_rules_changes_title
+    text: codex_rules_changes_text
+
+
+...
