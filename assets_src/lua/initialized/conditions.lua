@@ -1,6 +1,7 @@
 local Wargroove = require "wargroove/wargroove"
 local Events = require "wargroove/events"
 local Ragnarok = require "initialized/ragnarok"
+local Rescue = require "verbs/rescue"
 
 local Conditions = {}
 
@@ -13,6 +14,7 @@ function Conditions.populate(dst)
     dst["state"] = Conditions.state
     dst["does_next_structure_exist"] = Conditions.doesNextStructureExist
     dst["did_it_occur"] = Conditions.didItOccur
+    dst["is_rescued"] = Conditions.isRescued
 end
 
 function Conditions.state(context)
@@ -35,8 +37,8 @@ end
 
 function Conditions.doesNextStructureExist(context)
     -- "If there are more {1} owned by {2} at {3} to the right of location {0}"
-    location = context:getLocation(0)
-    units = context:gatherUnits(2, 1, 3)
+    local location = context:getLocation(0)
+    local units = context:gatherUnits(2, 1, 3)
     local center = findCentreOfLocation(location)
 	nextLocation = {x = 1000, y = 0}
     for i, unit in ipairs(units) do
@@ -52,5 +54,23 @@ function Conditions.didItOccur(context)
     local occation = context:getString(0)
 	return Ragnarok.didItOccur(occation)
 end
+
+function Conditions.isRescued(context)
+    -- "If capsized crew at location {0} is rescued by player {1}."
+	print("isRescued starts here")
+    local location = context:getLocation(0)
+    local playerId = context:getPlayerId(1)
+	print(playerId)
+    for i, pos in ipairs(location.positions) do
+		local gizmo = Wargroove.getGizmoAt(pos)
+		if gizmo and gizmo.type == "capsized_crew" and Ragnarok.getGizmoState(gizmo) == false then
+			if Rescue.isRescuedByPlayer(gizmo,playerId) then
+				return true
+			end
+		end
+    end
+	return false
+end
+
 
 return Conditions

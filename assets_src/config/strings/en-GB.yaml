@@ -191,6 +191,9 @@ en-GB:
   trigger_condition_description_did_it_occur: "Triggers when an occation occurs."
   trigger_condition_readable_did_it_occur: "If {0} occured"
   
+  trigger_condition_name_is_rescued: "Gizmo: Is Rescued"
+  trigger_condition_description_is_rescued: "Triggers when capsized crew is rescued."
+  trigger_condition_readable_is_rescued: "If capsized crew at location {0} is rescued by player {1}."
 
   #backgrounds
   ui_cutscene_background_deck: "Ship Deck"

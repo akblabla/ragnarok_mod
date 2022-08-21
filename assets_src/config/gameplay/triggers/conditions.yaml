@@ -20,4 +20,9 @@ triggerConditions:
   - id: did_it_occur
     parameters:
       - type: string
+      
+  - id: is_rescued
+    parameters:
+      - type: location_star
+      - type: player_neutral_star
 ...

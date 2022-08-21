@@ -8,7 +8,7 @@ Ragnarok.seaTiles = {"sea","sea_alt", "ocean","reef","cave_sea", "cave_reef","ca
 Ragnarok.amphibiousTiles = {"river", "cave_river", "beach", "cave_beach", "mangrove"}
 Ragnarok.groundTags = {"type.ground.light", "type.ground.heavy"}
 function Ragnarok.init()
-	local customTrigger = {
+	local resetOccurencesTrigger = {
 		id = "Reset Occurence List",
 		recurring = "repeat",
 		actions = {
@@ -21,7 +21,21 @@ function Ragnarok.init()
 		conditions = {},
 		players = {1, 0, 0, 0, 0, 0, 0, 0}
 	}
-	Ragnarok.addHiddenTrigger(customTrigger,true)
+	Ragnarok.addHiddenTrigger(resetOccurencesTrigger,true)
+	local resetRescuesTrigger = {
+		id = "Reset Rescue List",
+		recurring = "repeat",
+		actions = {
+			{
+				id = "reset_rescue_list",
+				parameters = {
+				}
+			}
+		},
+		conditions = {},
+		players = {1, 0, 0, 0, 0, 0, 0, 0}
+	}
+	Ragnarok.addHiddenTrigger(resetRescuesTrigger,true)
 end
 
 local cantAttackBuildingsSet = {}

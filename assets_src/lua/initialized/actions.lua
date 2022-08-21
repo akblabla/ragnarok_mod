@@ -1,6 +1,7 @@
 local Wargroove = require "wargroove/wargroove"
 local Events = require "wargroove/events"
 local Ragnarok = require "initialized/ragnarok"
+local Rescue = require "verbs/rescue"
 
 local Actions = {}
 
@@ -31,6 +32,7 @@ function Actions.populate(dst)
 	dst["enable_AI_fog_limitations"] = Actions.enableAIFogLimitations
 	--Hidden actions
 	dst["reset_occurence_list"] = Actions.resetOccurenceList
+	dst["reset_rescue_list"] = Actions.resetRescueList
 end
 
 --Local stuff
@@ -68,6 +70,11 @@ end
 function Actions.resetOccurenceList(context)
     -- "Hidden action"
 	Ragnarok.resetOccurences()
+end
+
+function Actions.resetRescueList(context)
+    -- "Hidden action"
+	--Rescue.resetRescued()
 end
 
 function Actions.setState(context)

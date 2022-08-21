@@ -33,9 +33,6 @@ end
 
 
 function Broadside:canExecuteWithTarget(unit, endPos, targetPos, strParam)
-    if not self:canSeeTarget(targetPos) then
-        return false
-    end
 	if targetPos.x == endPos.x and targetPos.y == endPos.y then
 		return false
 	end

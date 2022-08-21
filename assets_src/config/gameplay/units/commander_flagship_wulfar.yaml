@@ -49,9 +49,6 @@ unitClasses:
       - id: flagship_cannon
     verbs:
       - rescue
-      - spawn_flare_1
-      - spawn_flare_2
-      - spawn_flare_many
     cargoSpace: 2
     tags:
       - flagship

@@ -53,6 +53,7 @@ unitClasses:
       - archer
       - type.ground.light
     verbs:
+      - rescue
       - load
       - capture
       - pick_up_crown
