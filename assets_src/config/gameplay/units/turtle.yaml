@@ -44,7 +44,7 @@ weapons:
       turtle: 0.50
       travelboat: 0.55
       merman: 1.1
-      flagship: 0.25
+      flagship: 0.2
       pirate_ship: 0.75
 
 unitClasses:

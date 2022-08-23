@@ -163,4 +163,18 @@ commanders:
     skinColour: typeII
     unitClassId: knight
     dialogueBoxVoice: ui/dialogue/textScroll
+    
+  - id: generic_floran
+    name: character_generic_floran_name
+    faction: floran
+    playable: false
+    portrait:
+      neutral: portraits/commanders/small/floran_portrait_small.png
+      happy: portraits/commanders/small/floran_portrait_small.png
+      sad: portraits/commanders/small/floran_portrait_small.png
+    cutscenePortrait: portraits/commanders/big/floran_portrait
+    themeSong: music/nuru
+    skinColour: green
+    unitClassId: knight
+    dialogueBoxVoice: ui/dialogue/textScroll
 ...

@@ -1,4 +1,5 @@
 local Wargroove = require "wargroove/wargroove"
+local Ragnarok = require "initialized/ragnarok"
 
 local VisionTracker = {}
 function VisionTracker.init()
