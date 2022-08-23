@@ -5,14 +5,12 @@ local Ragnarok = require "initialized/ragnarok"
 local Rescue = Verb:new()
 local rescuedCrewList = {}
 
-function Rescue.isRescuedByPlayer(gizmo,playerId)
+function Rescue.isRescuedByPlayer(unitId,playerId)
 	print("isRescuedByPlayer starts here")
-	print(dump(rescuedCrewList,0))
-	print(Ragnarok.generateGizmoKey(gizmo))
 	if playerId == nil then
-		return not (rescuedCrewList[Ragnarok.generateGizmoKey(gizmo)] == nil)
+		return not (rescuedCrewList[unitId] == nil)
 	end
-	return rescuedCrewList[Ragnarok.generateGizmoKey(gizmo)] == playerId
+	return rescuedCrewList[unitId] == playerId
 end
 
 function Rescue.resetRescued()
@@ -32,18 +30,16 @@ function Rescue:canExecuteAnywhere(unit)
 end
 
 function Rescue:canExecuteWithTarget(unit, endPos, targetPos, strParam)    
-    local gizmo = Wargroove.getGizmoAt(targetPos)
+    local targetUnit = Wargroove.getUnitAt(targetPos)
 	
-    return gizmo and gizmo.type == "capsized_crew" and Ragnarok.getGizmoState(gizmo) == false
+    return targetUnit and targetUnit.unitClassId == "crew"
 end
 
 function Rescue:execute(unit, targetPos, strParam, path)
 	print("Rescue:execute starts here")
 	Ragnarok.reportOccation("rescued")
-	local gizmo = Wargroove.getGizmoAt(targetPos)
-	rescuedCrewList[Ragnarok.generateGizmoKey(gizmo)] = unit.playerId
-	print(dump(rescuedCrewList,0))
-	print(Ragnarok.generateGizmoKey(gizmo))
+	local targetUnit = Wargroove.getUnitAt(targetPos)
+	rescuedCrewList[targetUnit.id] = unit.playerId
 end
 
 function dump(o,level)

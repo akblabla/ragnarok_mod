@@ -3,7 +3,7 @@
 unitClasses:
   - id: flare
     name: unit_class_name_flare
-    cost: 200
+    cost: 150
     damageMultiplier: 2
     movement: flying
     moveRange: 2

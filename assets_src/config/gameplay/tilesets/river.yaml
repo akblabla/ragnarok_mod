@@ -2,7 +2,7 @@
 tilesets:
   - id: river
     biomes:
-      - types: [grass]
+      - types: [grass,tropical]
         spriteSheet: tilesets
         spriteBase: river_tileset_000
         waterSpriteBase: river_tileset_001

@@ -54,6 +54,7 @@ unitClasses:
       - harpy
       - type.air
     verbs:
+      - rescue
       - pick_up_crown
       - throw_crown
     battleUnitCount: 4

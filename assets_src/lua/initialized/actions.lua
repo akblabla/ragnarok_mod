@@ -30,6 +30,7 @@ function Actions.populate(dst)
 	dst["place_crown"] = Actions.placeCrown
 	dst["modify_flare_count"] = Actions.modifyFlareCount
 	dst["enable_AI_fog_limitations"] = Actions.enableAIFogLimitations
+	dst["reveal_all_but_hidden"] = Actions.revealAllButHidden
 	--Hidden actions
 	dst["reset_occurence_list"] = Actions.resetOccurenceList
 	dst["reset_rescue_list"] = Actions.resetRescueList
@@ -74,7 +75,43 @@ end
 
 function Actions.resetRescueList(context)
     -- "Hidden action"
-	--Rescue.resetRescued()
+	Rescue.resetRescued()
+end
+
+local nextX = 1
+local nextY = 1
+
+function Actions.revealAllButHidden(context)
+    -- "Spawn an eye at location {1} for player {0} seeing all except hidden tiles."
+    -- local allUnits = Wargroove.getAllUnitIds()
+    -- for i, id in ipairs(allUnits) do
+		-- Wargroove.setVisibleOverride(id, true)
+    -- end
+	-- Wargroove.updateFogOfWar(0)
+	-- coroutine.yield()
+	-- coroutine.yield()
+    local playerId = context:getPlayerId(0)
+    local location = context:getLocation(1)
+    local revealerId = Wargroove.spawnUnit(playerId, findCentreOfLocation(location), "reveal_all_but_hidden", false)
+	Wargroove.setVisibleOverride(revealerId, false)
+
+	Wargroove.setShadowVisible(revealerId, false)
+	coroutine.yield()
+	coroutine.yield()
+	Wargroove.updateFogOfWar(0)
+    -- Wargroove.clearCaches()
+	-- coroutine.yield()
+	-- coroutine.yield()
+	-- Wargroove.updateFogOfWar(0)
+	-- nextX = nextX + 1
+	-- nextY = nextY + 1
+	-- coroutine.yield()
+	-- coroutine.yield()
+    -- Wargroove.clearCaches()
+	-- Wargroove.removeUnit(revealerId)
+    -- for i, id in ipairs(allUnits) do
+		-- Wargroove.unsetVisibleOverride(id)
+    -- end
 end
 
 function Actions.setState(context)

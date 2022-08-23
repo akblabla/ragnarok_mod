@@ -53,6 +53,7 @@ unitClasses:
       - type.ground.light
       - spellcaster
     verbs:
+      - rescue
       - load
       - capture
       - spell_heal

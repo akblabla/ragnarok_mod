@@ -39,6 +39,45 @@ tilesets:
           - sprite: terrain/trees/grass/round_big
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_large
+      - types: [tropical]
+        minRandomElements: 3
+        maxRandomElements: 4
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_forest
+        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_forest
+        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_forest_foreground
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_forest_tropical.png"
+        fillColour: '#7fa33b'
+        randomElements:
+          - sprite: terrain/trees/desert/palm_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/desert/palm_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/desert/palm_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+          - sprite: terrain/trees/desert/shrub_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+            
+          - sprite: terrain/trees/grass/round_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/grass/round_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/grass/round_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
 
       - types: [ice]
         minRandomElements: 2

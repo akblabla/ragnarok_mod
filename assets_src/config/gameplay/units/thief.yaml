@@ -10,6 +10,7 @@ unitClasses:
     aiPriority: 1.0
     weapons: []
     verbs:
+      - rescue
       - load
       - steal
       - heist

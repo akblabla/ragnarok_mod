@@ -2,7 +2,7 @@
 tilesets:
   - id: invisible_blocker_ocean
     biomes:
-      - types: [grass, ice, desert]
+      - types: [grass,tropical, ice, desert]
         spriteSheet: tilesets
         spriteBase: ocean_tileset_000
         waterSpriteBase: ocean_tileset_001

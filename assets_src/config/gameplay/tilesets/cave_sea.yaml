@@ -2,7 +2,7 @@
 tilesets:
   - id: cave_sea
     biomes:
-      - types: [grass, ice, desert]
+      - types: [grass,tropical, ice, desert]
         spriteSheet: terrain_tilesets
         spriteBase: cave_sea_tileset_000
         waterSpriteBase: cave_sea_tileset_001

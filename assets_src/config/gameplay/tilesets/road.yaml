@@ -2,7 +2,7 @@
 tilesets:
   - id: road
     biomes:
-      - types: [grass]
+      - types: [grass,tropical]
         spriteSheet: tilesets
         spriteBase: grass_road_tileset
         portraitSpriteSheet: terrain/terrain_portraits

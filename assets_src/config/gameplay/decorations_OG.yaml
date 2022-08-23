@@ -1,0 +1,870 @@
+---
+# List of Layer Types:
+# base - drawn at the base layer, underneath mountains and rivers [grass effects, etc]
+# ground - drawn below all units [flowers, rocks, etc.]
+# units - sort together with units, base on the Y position, same as trees [flags etc.]
+# sky - draws on top of all units [Clouds...?]
+
+decorations:
+  # waterfalls and river connections
+  - id: waterfall_down1
+    layer: above_water
+    snapToGrid: true
+    animation:
+      tropical: decoration/water/waterfall_down01
+      grass: decoration/water/waterfall_down01
+      ice: decoration/water/waterfall_down01
+      desert: decoration/water/waterfall_down01
+      volcano: decoration/water/waterfall_down01_lava
+  - id: waterfall_down2
+    layer: above_water
+    snapToGrid: true
+    animation:
+      tropical: decoration/water/waterfall_down02
+      grass: decoration/water/waterfall_down02
+      ice: decoration/water/waterfall_down02
+      desert: decoration/water/waterfall_down02
+      volcano: decoration/water/waterfall_down02_lava
+  - id: waterfall_down3
+    layer: above_water
+    snapToGrid: true
+    animation:
+      tropical: decoration/water/waterfall_down03
+      grass: decoration/water/waterfall_down03
+      ice: decoration/water/waterfall_down03
+      desert: decoration/water/waterfall_down03
+      volcano: decoration/water/waterfall_down03_lava
+  - id: waterfall_left1
+    layer: above_water
+    snapToGrid: true
+    animation:
+      tropical: decoration/water/waterfall_left01
+      grass: decoration/water/waterfall_left01
+      ice: decoration/water/waterfall_left01
+      desert: decoration/water/waterfall_left01
+      volcano: decoration/water/waterfall_left01_lava
+  - id: waterfall_left2
+    layer: above_water
+    snapToGrid: true
+    animation:
+      tropical: decoration/water/waterfall_left02
+      grass: decoration/water/waterfall_left02
+      ice: decoration/water/waterfall_left02
+      desert: decoration/water/waterfall_left02
+      volcano: decoration/water/waterfall_left02_lava
+  - id: waterfall_left3
+    layer: above_water
+    snapToGrid: true
+    animation:
+      tropical: decoration/water/waterfall_left03
+      grass: decoration/water/waterfall_left03
+      ice: decoration/water/waterfall_left03
+      desert: decoration/water/waterfall_left03
+      volcano: decoration/water/waterfall_left03_lava
+  - id: waterfall_right1
+    layer: above_water
+    snapToGrid: true
+    animation:
+      tropical: decoration/water/waterfall_right01
+      grass: decoration/water/waterfall_right01
+      ice: decoration/water/waterfall_right01
+      desert: decoration/water/waterfall_right01
+      volcano: decoration/water/waterfall_right01_lava
+  - id: waterfall_right2
+    layer: above_water
+    snapToGrid: true
+    animation:
+      tropical: decoration/water/waterfall_right02
+      grass: decoration/water/waterfall_right02
+      ice: decoration/water/waterfall_right02
+      desert: decoration/water/waterfall_right02
+      volcano: decoration/water/waterfall_right02_lava
+  - id: waterfall_right3
+    layer: above_water
+    snapToGrid: true
+    animation:
+      tropical: decoration/water/waterfall_right03
+      grass: decoration/water/waterfall_right03
+      ice: decoration/water/waterfall_right03
+      desert: decoration/water/waterfall_right03
+      volcano: decoration/water/waterfall_right03_lava
+  - id: waterfall_up1
+    layer: above_water
+    snapToGrid: true
+    animation:
+      tropical: decoration/water/waterfall_up01
+      grass: decoration/water/waterfall_up01
+      ice: decoration/water/waterfall_up01
+      desert: decoration/water/waterfall_up01
+      volcano: decoration/water/waterfall_up01_lava
+  - id: waterfall_up2
+    layer: above_water
+    snapToGrid: true
+    animation:
+      tropical: decoration/water/waterfall_up02
+      grass: decoration/water/waterfall_up02
+      ice: decoration/water/waterfall_up02
+      desert: decoration/water/waterfall_up02
+      volcano: decoration/water/waterfall_up02_lava
+  - id: waterfall_up3
+    layer: above_water
+    snapToGrid: true
+    animation:
+      tropical: decoration/water/waterfall_up03
+      grass: decoration/water/waterfall_up03
+      ice: decoration/water/waterfall_up03
+      desert: decoration/water/waterfall_up03
+      volcano: decoration/water/waterfall_up03_lava
+  - id: mountain_river01
+    layer: ground
+    snapToGrid: true
+    snapOffset: [-5, 10]
+    animation:
+      tropical: decoration/water/mountainriver01_grass
+      grass: decoration/water/mountainriver01_grass
+      ice: decoration/water/mountainriver01_ice
+      desert: decoration/water/mountainriver01_desert
+      volcano: decoration/water/mountainriver01_volcano
+
+
+  # hidden decorations only used in campaign map. deleting them will break map
+  - id: waterfall_down2_lava
+    hidden: true
+    layer: above_water
+    snapToGrid: true
+    animation:
+      undefined: decoration/water/waterfall_down02_lava
+  - id: waterfall_down3_lava
+    hidden: true
+    layer: above_water
+    snapToGrid: true
+    animation:
+      undefined: decoration/water/waterfall_down03_lava   
+
+
+  # natural landscape decorations
+  - id: breeze
+    layer: base
+    animation:
+      tropical: decoration/ground/breeze_grass
+      grass: decoration/ground/breeze_grass
+      ice: decoration/ground/breeze_ice
+      desert: decoration/ground/breeze_desert
+      volcano: decoration/ground/breeze_volcano     
+  - id: rock0
+    layer: ground
+    animation:
+      tropical: decoration/ground/rock0_grass
+      grass: decoration/ground/rock0_grass
+      ice: decoration/ground/rock0_ice
+      desert: decoration/ground/rock0_desert
+      volcano: decoration/ground/rock0_volcano      
+  - id: rock1
+    layer: ground
+    animation:
+      tropical: decoration/ground/rock1_grass
+      grass: decoration/ground/rock1_grass
+      ice: decoration/ground/rock1_ice
+      desert: decoration/ground/rock1_desert
+      volcano: decoration/ground/rock1_volcano   
+  - id: rock2
+    layer: ground
+    animation:
+      tropical: decoration/ground/rock2_grass
+      grass: decoration/ground/rock2_grass
+      ice: decoration/ground/rock2_ice
+      desert: decoration/ground/rock2_desert
+      volcano: decoration/ground/rock2_volcano    
+  - id: flowers1
+    layer: ground
+    animation:
+      tropical: decoration/ground/flowers1_grass
+      grass: decoration/ground/flowers1_grass
+      ice: decoration/ground/flowers1_ice
+      desert: decoration/ground/flowers1_desert
+      volcano: decoration/ground/flowers1_volcano     
+  - id: flowers2
+    layer: ground
+    animation:
+      tropical: decoration/ground/flowers2_grass
+      grass: decoration/ground/flowers2_grass
+      ice: decoration/ground/flowers2_ice
+      desert: decoration/ground/flowers2_desert
+      volcano: decoration/ground/flowers2_volcano    
+  - id: log1
+    layer: ground
+    animation:
+      tropical: decoration/ground/log1_grass
+      grass: decoration/ground/log1_grass
+      ice: decoration/ground/log1_ice
+      desert: decoration/ground/log1_desert
+      volcano: decoration/ground/log1_volcano       
+  - id: log2
+    layer: ground
+    animation:
+      tropical: decoration/ground/log2_grass
+      grass: decoration/ground/log2_grass
+      ice: decoration/ground/log2_ice
+      desert: decoration/ground/log2_desert
+      volcano: decoration/ground/log2_volcano     
+  - id: stump1
+    layer: units
+    animation:
+      tropical: decoration/ground/stump1_grass
+      grass: decoration/ground/stump1_grass
+      ice: decoration/ground/stump1_ice
+      desert: decoration/ground/stump1_desert
+      volcano: decoration/ground/stump1_desert      
+  - id: monolith1
+    layer: units
+    animation:
+      tropical: decoration/unit/monolith1_grass
+      grass: decoration/unit/monolith1_grass
+      ice: decoration/unit/monolith1_ice
+      desert: decoration/unit/monolith1_desert
+      volcano: decoration/unit/monolith1_volcano    
+  - id: volcano_pillar_1
+    hidden: true
+    layer: units
+    animation:
+      undefined: decoration/ground/volcano_pillar_1
+  - id: volcano_pillar_2
+    hidden: true
+    layer: units
+    animation:
+      undefined: decoration/ground/volcano_pillar_2
+
+  # flags
+  - id: flag_red
+    layer: units
+    animation:
+      undefined: decoration/unit/flag_red
+  - id: flag_blue
+    layer: units
+    animation:
+      undefined: decoration/unit/flag_blue
+  - id: flag_yellow
+    layer: units
+    animation:
+      undefined: decoration/unit/flag_yellow
+  - id: flag_green
+    layer: units
+    animation:
+      undefined: decoration/unit/flag_green
+  - id: flag_purple
+    layer: units
+    animation:
+      undefined: decoration/unit/flag_purple
+  - id: volcano
+    hidden: true
+    layer: ground
+    animation:
+      undefined: decoration/ground/volcano   
+
+  # battle standards
+  - id: battlestandard_red
+    layer: units
+    animation:
+      undefined: decoration/unit/battlestandard_red
+  - id: battlestandard_blue
+    layer: units
+    animation:
+      undefined: decoration/unit/battlestandard_blue
+  - id: battlestandard_yellow
+    layer: units
+    animation:
+      undefined: decoration/unit/battlestandard_yellow
+  - id: battlestandard_green
+    layer: units
+    animation:
+      undefined: decoration/unit/battlestandard_green
+  - id: battlestandard_purple
+    layer: units
+    animation:
+      undefined: decoration/unit/battlestandard_purple
+  # ruins
+  - id: ruin1
+    layer: units
+    animation:
+      tropical: decoration/unit/ruin1_grass
+      grass: decoration/unit/ruin1_grass
+      ice: decoration/unit/ruin1_ice
+      desert: decoration/unit/ruin1_desert
+      volcano: decoration/unit/ruin1_volcano     
+  - id: ruin2
+    layer: units
+    animation:
+      tropical: decoration/unit/ruin2_grass
+      grass: decoration/unit/ruin2_grass
+      ice: decoration/unit/ruin2_ice
+      desert: decoration/unit/ruin2_desert
+      volcano: decoration/unit/ruin2_volcano    
+  - id: ruin3
+    layer: units
+    animation:
+      tropical: decoration/unit/ruin3_grass
+      grass: decoration/unit/ruin3_grass
+      ice: decoration/unit/ruin3_ice
+      desert: decoration/unit/ruin3_desert
+      volcano: decoration/unit/ruin3_volcano        
+  - id: ruin4
+    layer: units
+    animation:
+      tropical: decoration/unit/ruin4_grass
+      grass: decoration/unit/ruin4_grass
+      ice: decoration/unit/ruin4_ice
+      desert: decoration/unit/ruin4_desert
+      volcano: decoration/unit/ruin4_volcano      
+  - id: ruin5
+    layer: units
+    animation:
+      tropical: decoration/unit/ruin5_grass
+      grass: decoration/unit/ruin5_grass
+      ice: decoration/unit/ruin5_ice
+      desert: decoration/unit/ruin5_desert
+      volcano: decoration/unit/ruin5_volcano  
+  - id: ruin6
+    layer: units
+    animation:
+      tropical: decoration/unit/ruin6_grass
+      grass: decoration/unit/ruin6_grass
+      ice: decoration/unit/ruin6_ice
+      desert: decoration/unit/ruin6_desert
+      volcano: decoration/unit/ruin6_volcano      
+  - id: ruin7
+    layer: ground
+    animation:
+      tropical: decoration/ground/ruin7_grass
+      grass: decoration/ground/ruin7_grass
+      ice: decoration/ground/ruin7_ice
+      desert: decoration/ground/ruin7_desert
+      volcano: decoration/ground/ruin7_volcano   
+  - id: ruinground
+    layer: ground
+    animation:
+      tropical: decoration/ground/ruinground_grass
+      grass: decoration/ground/ruinground_grass
+      ice: decoration/ground/ruinground_ice
+      desert: decoration/ground/ruinground_desert
+      volcano: decoration/ground/ruinground_volcano
+  - id: orbstatue
+    layer: units
+    animation:
+      tropical: decoration/unit/orb_statue
+      grass: decoration/unit/orb_statue
+      ice: decoration/unit/orb_statue
+      desert: decoration/unit/orb_statue
+      volcano: decoration/unit/orb_statue  
+  - id: princessstatue
+    layer: units
+    animation:
+      tropical: decoration/unit/princess_statue_grass
+      grass: decoration/unit/princess_statue_grass
+      ice: decoration/unit/princess_statue_ice
+      desert: decoration/unit/princess_statue_desert
+      volcano: decoration/unit/princess_statue_volcano                                          
+  # man-made objects
+  - id: sign1
+    layer: units
+    animation:
+      tropical: decoration/unit/sign1_grass
+      grass: decoration/unit/sign1_grass
+      ice: decoration/unit/sign1_ice
+      desert: decoration/unit/sign1_desert
+      volcano: decoration/unit/sign1_desert        
+  - id: sign2
+    layer: units
+    animation:
+      tropical: decoration/unit/sign2_grass
+      grass: decoration/unit/sign2_grass
+      ice: decoration/unit/sign2_ice
+      desert: decoration/unit/sign2_desert
+      volcano: decoration/unit/sign2_desert     
+  - id: gravestone1
+    layer: units
+    animation:
+      tropical: decoration/unit/gravestone1_grass
+      grass: decoration/unit/gravestone1_grass
+      ice: decoration/unit/gravestone1_ice
+      desert: decoration/unit/gravestone1_desert
+      volcano: decoration/unit/gravestone1_volcano      
+  - id: well
+    layer: units
+    animation:
+      tropical: decoration/unit/well_grass
+      grass: decoration/unit/well_grass
+      ice: decoration/unit/well_ice
+      desert: decoration/unit/well_desert
+      volcano: decoration/unit/well_desert      
+  - id: campfire
+    layer: units
+    animation:
+      tropical: decoration/unit/campfire
+      grass: decoration/unit/campfire
+      ice: decoration/unit/campfire
+      desert: decoration/unit/campfire   
+      volcano: decoration/unit/campfire     
+  - id: chest1
+    layer: units
+    animation:
+      tropical: decoration/unit/chest1_grass
+      grass: decoration/unit/chest1_grass
+      ice: decoration/unit/chest1_ice
+      desert: decoration/unit/chest1_desert
+      volcano: decoration/unit/chest1_volcano     
+  - id: scarecrow1
+    layer: units
+    animation:
+      tropical: decoration/unit/scarecrow1_grass
+      grass: decoration/unit/scarecrow1_grass
+      ice: decoration/unit/scarecrow1_ice
+      desert: decoration/unit/scarecrow1_desert
+      volcano: decoration/unit/scarecrow1_volcano 
+  - id: pillar1
+    layer: units
+    animation:
+      tropical: decoration/unit/pillar1_grass
+      grass: decoration/unit/pillar1_grass
+      ice: decoration/unit/pillar1_ice
+      desert: decoration/unit/pillar1_desert
+      volcano: decoration/unit/pillar1_volcano     
+  - id: pillar2
+    layer: units
+    animation:
+      tropical: decoration/unit/pillar2_grass
+      grass: decoration/unit/pillar2_grass
+      ice: decoration/unit/pillar2_ice
+      desert: decoration/unit/pillar2_desert
+      volcano: decoration/unit/pillar2_volcano  
+  - id: barrel1
+    layer: units
+    animation:
+      tropical: decoration/unit/barrel1_grass
+      grass: decoration/unit/barrel1_grass
+      ice: decoration/unit/barrel1_ice
+      desert: decoration/unit/barrel1_desert
+      volcano: decoration/unit/barrel1_volcano    
+  - id: crate1
+    layer: units
+    animation:
+      tropical: decoration/unit/crate1_grass
+      grass: decoration/unit/crate1_grass
+      ice: decoration/unit/crate1_ice
+      desert: decoration/unit/crate1_desert
+      volcano: decoration/unit/crate1_volcano        
+  - id: hay
+    layer: units
+    animation:
+      tropical: decoration/unit/hay_grass
+      grass: decoration/unit/hay_grass
+      ice: decoration/unit/hay_ice
+      desert: decoration/unit/hay_desert
+      volcano: decoration/unit/hay_volcano     
+  # interior objects        
+  - id: vase1
+    layer: units
+    animation:
+      tropical: decoration/unit/vase1_interior
+      grass: decoration/unit/vase1_interior
+      ice: decoration/unit/vase1_interior
+      desert: decoration/unit/vase1_interior
+      volcano: decoration/unit/vase1_interior
+  - id: displaycase1 #to be removed
+    layer: units
+    animation:
+      tropical: decoration/unit/displaycase1_interior
+      grass: decoration/unit/displaycase1_interior
+      ice: decoration/unit/displaycase1_interior
+      desert: decoration/unit/displaycase1_interior
+      volcano: decoration/unit/displaycase1_interior      
+  - id: goldthrone1 #to be removed
+    layer: units
+    animation:
+      tropical: decoration/unit/goldthrone1_interior
+      grass: decoration/unit/goldthrone1_interior
+      ice: decoration/unit/goldthrone1_interior
+      desert: decoration/unit/goldthrone1_interior
+      volcano: decoration/unit/goldthrone1_interior      
+  - id: knightstand1 #to be removed
+    layer: units
+    animation:
+      tropical: decoration/unit/knightstand1_interior
+      grass: decoration/unit/knightstand1_interior
+      ice: decoration/unit/knightstand1_interior
+      desert: decoration/unit/knightstand1_interior 
+      volcano: decoration/unit/knightstand1_interior                         
+  - id: vase2
+    layer: units
+    animation:
+      tropical: decoration/unit/vase2_interior
+      grass: decoration/unit/vase2_interior
+      ice: decoration/unit/vase2_interior
+      desert: decoration/unit/vase2_interior 
+      volcano: decoration/unit/vase2_interior       
+  - id: bust1
+    layer: units
+    animation:
+      tropical: decoration/unit/bust1_interior
+      grass: decoration/unit/bust1_interior
+      ice: decoration/unit/bust1_interior
+      desert: decoration/unit/bust1_interior
+      volcano: decoration/unit/bust1_interior       
+  - id: bust2
+    layer: units
+    animation:
+      tropical: decoration/unit/bust2_interior
+      grass: decoration/unit/bust2_interior
+      ice: decoration/unit/bust2_interior
+      desert: decoration/unit/bust2_interior
+      volcano: decoration/unit/bust2_interior
+  - id: candleholder1
+    layer: units
+    animation:
+      tropical: decoration/unit/candleholder1_interior
+      grass: decoration/unit/candleholder1_interior
+      ice: decoration/unit/candleholder1_interior
+      desert: decoration/unit/candleholder1_interior
+      volcano: decoration/unit/candleholder1_interior
+  - id: plantpot1
+    layer: units
+    animation:
+      tropical: decoration/unit/plantpot1_interior
+      grass: decoration/unit/plantpot1_interior
+      ice: decoration/unit/plantpot1_interior
+      desert: decoration/unit/plantpot1_interior
+      volcano: decoration/unit/plantpot1_interior
+  - id: plantpot2
+    layer: units
+    animation:
+      tropical: decoration/unit/plantpot2_interior
+      grass: decoration/unit/plantpot2_interior
+      ice: decoration/unit/plantpot2_interior
+      desert: decoration/unit/plantpot2_interior
+      volcano: decoration/unit/plantpot2_interior      
+  - id: plantpot3
+    layer: units
+    animation:
+      tropical: decoration/unit/plantpot3_interior
+      grass: decoration/unit/plantpot3_interior
+      ice: decoration/unit/plantpot3_interior
+      desert: decoration/unit/plantpot3_interior
+      volcano: decoration/unit/plantpot3_interior
+  - id: walltorch1
+    layer: units
+    animation:
+      tropical: decoration/unit/walltorch1_interior
+      grass: decoration/unit/walltorch1_interior
+      ice: decoration/unit/walltorch1_interior
+      desert: decoration/unit/walltorch1_interior
+      volcano: decoration/unit/walltorch1_interior
+  - id: cherrythrone
+    layer: units
+    animation:
+      tropical: decoration/unit/cherrythrone_interior
+      grass: decoration/unit/cherrythrone_interior 
+      ice: decoration/unit/cherrythrone_interior
+      desert: decoration/unit/cherrythrone_interior
+      volcano: decoration/unit/cherrythrone_interior
+  - id: bookshelf1
+    layer: units
+    animation:
+      tropical: decoration/unit/bookshelf_interior1
+      grass: decoration/unit/bookshelf_interior1 
+      ice: decoration/unit/bookshelf_interior1
+      desert: decoration/unit/bookshelf_interior1
+      volcano: decoration/unit/bookshelf_interior1
+  - id: bookshelf2
+    layer: units
+    animation:
+      tropical: decoration/unit/bookshelf_interior2
+      grass: decoration/unit/bookshelf_interior2 
+      ice: decoration/unit/bookshelf_interior2
+      desert: decoration/unit/bookshelf_interior2
+      volcano: decoration/unit/bookshelf_interior2
+  - id: bookshelf3
+    layer: units
+    animation:
+      tropical: decoration/unit/bookshelf_interior3
+      grass: decoration/unit/bookshelf_interior3 
+      ice: decoration/unit/bookshelf_interior3
+      desert: decoration/unit/bookshelf_interior3
+      volcano: decoration/unit/bookshelf_interior3              
+  - id: deskstudy1
+    layer: units
+    animation:
+      tropical: decoration/unit/deskstudy_interior1
+      grass: decoration/unit/deskstudy_interior1
+      ice: decoration/unit/deskstudy_interior1
+      desert: decoration/unit/deskstudy_interior1
+      volcano: decoration/unit/deskstudy_interior1
+  - id: weaponrack1
+    layer: units
+    animation:
+      tropical: decoration/unit/weaponrack1_interior
+      grass: decoration/unit/weaponrack1_interior
+      ice: decoration/unit/weaponrack1_interior
+      desert: decoration/unit/weaponrack1_interior
+      volcano: decoration/unit/weaponrack1_interior
+  - id: bearrug1
+    layer: ground
+    animation:
+      tropical: decoration/ground/bearrug1_interior
+      grass: decoration/ground/bearrug1_interior
+      ice: decoration/ground/bearrug1_interior
+      desert: decoration/ground/bearrug1_interior
+      volcano: decoration/ground/bearrug1_interior
+  - id: bench1
+    layer: ground
+    animation:
+      tropical: decoration/ground/bench1_interior
+      grass: decoration/ground/bench1_interior
+      ice: decoration/ground/bench1_interior
+      desert: decoration/ground/bench1_interior
+      volcano: decoration/ground/bench1_interior
+  # fortress details
+  - id: crack1
+    layer: ground
+    animation:
+      tropical: decoration/ground/crack1_interior
+      grass: decoration/ground/crack1_interior
+      ice: decoration/ground/crack1_ice_interior
+      desert: decoration/ground/crack1_desert_interior
+      volcano: decoration/ground/crack1_volcano_interior
+  - id: crack2
+    layer: ground
+    animation:
+      tropical: decoration/ground/crack2_interior
+      grass: decoration/ground/crack2_interior
+      ice: decoration/ground/crack2_ice_interior
+      desert: decoration/ground/crack2_desert_interior
+      volcano: decoration/ground/crack2_volcano_interior
+  - id: crack3
+    layer: ground
+    animation:
+      tropical: decoration/ground/crack3_interior
+      grass: decoration/ground/crack3_interior
+      ice: decoration/ground/crack3_ice_interior
+      desert: decoration/ground/crack3_desert_interior
+      volcano: decoration/ground/crack3_volcano_interior
+  - id: crack4
+    layer: ground
+    animation:
+      tropical: decoration/ground/crack4_interior
+      grass: decoration/ground/crack4_interior
+      ice: decoration/ground/crack4_ice_interior
+      desert: decoration/ground/crack4_desert_interior
+      volcano: decoration/ground/crack4_volcano_interior
+  - id: rubble1
+    layer: ground
+    animation:
+      tropical: decoration/ground/rubble1_interior
+      grass: decoration/ground/rubble1_interior
+      ice: decoration/ground/rubble1_ice_interior
+      desert: decoration/ground/rubble1_desert_interior
+      volcano: decoration/ground/rubble1_volcano_interior
+  - id: rubble2
+    layer: ground
+    animation:
+      tropical: decoration/ground/rubble2_interior
+      grass: decoration/ground/rubble2_interior
+      ice: decoration/ground/rubble2_ice_interior
+      desert: decoration/ground/rubble2_desert_interior
+      volcano: decoration/ground/rubble2_volcano_interior
+  - id: rubble3
+    layer: ground
+    animation:
+      tropical: decoration/ground/rubble3_interior
+      grass: decoration/ground/rubble3_interior
+      ice: decoration/ground/rubble3_ice_interior
+      desert: decoration/ground/rubble3_desert_interior
+      volcano: decoration/ground/rubble3_volcano_interior
+  - id: rubble4
+    layer: ground
+    animation:
+      tropical: decoration/ground/rubble4_interior
+      grass: decoration/ground/rubble4_interior
+      ice: decoration/ground/rubble4_ice_interior
+      desert: decoration/ground/rubble4_desert_interior
+      volcano: decoration/ground/rubble4_volcano_interior                                                               
+  # prison objects
+  - id: prisondrain
+    layer: ground
+    animation:
+      tropical: decoration/ground/prisondrain1_interior
+      grass: decoration/ground/prisondrain1_interior
+      ice: decoration/ground/prisondrain1_interior
+      desert: decoration/ground/prisondrain1_interior
+      volcano: decoration/ground/prisondrain1_interior
+  - id: ballchain1
+    layer: ground
+    animation:
+      tropical: decoration/ground/ballchain1_interior
+      grass: decoration/ground/ballchain1_interior
+      ice: decoration/ground/ballchain1_interior
+      desert: decoration/ground/ballchain1_interior
+      volcano: decoration/ground/ballchain1_interior
+  - id: chain1
+    layer: ground
+    animation:
+      tropical: decoration/ground/chain1_interior
+      grass: decoration/ground/chain1_interior
+      ice: decoration/ground/chain1_interior
+      desert: decoration/ground/chain1_interior
+      volcano: decoration/ground/chain1_interior
+  - id: chain2
+    layer: ground
+    animation:
+      tropical: decoration/ground/chain2_interior
+      grass: decoration/ground/chain2_interior
+      ice: decoration/ground/chain2_interior
+      desert: decoration/ground/chain2_interior
+      volcano: decoration/ground/chain2_interior     
+  - id: bones1
+    layer: ground
+    animation:
+      tropical: decoration/ground/bones1
+      grass: decoration/ground/bones1
+      ice: decoration/ground/bones1
+      desert: decoration/ground/bones1
+      volcano: decoration/ground/bones1
+  - id: bones2
+    layer: ground
+    animation:
+      tropical: decoration/ground/bones2
+      grass: decoration/ground/bones2
+      ice: decoration/ground/bones2
+      desert: decoration/ground/bones2   
+      volcano: decoration/ground/bones2  
+  - id: bones3
+    layer: ground
+    animation:
+      tropical: decoration/ground/bones3
+      grass: decoration/ground/bones3
+      ice: decoration/ground/bones3
+      desert: decoration/ground/bones3   
+      volcano: decoration/ground/bones3                                                                                                                
+
+  # natural water
+  - id: reeds1
+    layer: ground
+    animation:
+      tropical: decoration/water/reeds1
+      grass: decoration/water/reeds1
+      ice: decoration/water/reeds1
+      desert: decoration/water/reeds1  
+      volcano: decoration/water/lavarock4
+  - id: shark1
+    layer: ground
+    animation:
+      tropical: decoration/water/shark1
+      grass: decoration/water/shark1
+      ice: decoration/water/shark1
+      desert: decoration/water/shark1  
+      volcano: decoration/water/lavabubble
+  - id: waterrock1
+    layer: ground
+    animation:
+      tropical: decoration/water/waterrock1
+      grass: decoration/water/waterrock1
+      ice: decoration/water/waterrock1
+      desert: decoration/water/waterrock1  
+      volcano: decoration/water/waterrock1_lava
+  - id: waterrock2
+    layer: ground
+    animation:
+      tropical: decoration/water/waterrock2
+      grass: decoration/water/waterrock2
+      ice: decoration/water/waterrock2
+      desert: decoration/water/waterrock2  
+      volcano: decoration/water/waterrock2_lava
+  - id: waterrock3
+    layer: ground
+    animation:
+      tropical: decoration/water/waterrock3
+      grass: decoration/water/waterrock3
+      ice: decoration/water/waterrock3
+      desert: decoration/water/waterrock3  
+      volcano: decoration/water/waterrock3_lava
+  - id: shipwreck1
+    layer: ground
+    animation:
+      tropical: decoration/water/shipwreck1
+      grass: decoration/water/shipwreck1
+      ice: decoration/water/shipwreck1
+      desert: decoration/water/shipwreck1  
+      volcano: decoration/water/lavarock1
+  - id: driftwood1
+    layer: ground
+    animation:
+      tropical: decoration/water/driftwood1
+      grass: decoration/water/driftwood1
+      ice: decoration/water/driftwood1
+      desert: decoration/water/driftwood1  
+      volcano: decoration/water/lavarock2
+  - id: waterruin1
+    layer: ground
+    animation:
+      tropical: decoration/water/waterruin1_grass
+      grass: decoration/water/waterruin1_grass
+      ice: decoration/water/waterruin1_ice
+      desert: decoration/water/waterruin1_grass  
+      volcano: decoration/water/waterruin1_lava
+  - id: waterruin2
+    layer: ground
+    animation:
+      tropical: decoration/water/waterruin2_grass
+      grass: decoration/water/waterruin2_grass
+      ice: decoration/water/waterruin2_ice
+      desert: decoration/water/waterruin2_grass  
+      volcano: decoration/water/waterruin2_lava
+  - id: waterruin3
+    layer: ground
+    animation:
+      tropical: decoration/water/waterruin3_grass
+      grass: decoration/water/waterruin3_grass
+      ice: decoration/water/waterruin3_ice
+      desert: decoration/water/waterruin3_grass  
+      volcano: decoration/water/waterruin3_lava
+  - id: waterruin4
+    layer: ground
+    animation:
+      tropical: decoration/water/waterruin4_grass
+      grass: decoration/water/waterruin4_grass
+      ice: decoration/water/waterruin4_ice
+      desert: decoration/water/waterruin4_grass  
+      volcano: decoration/water/waterruin4_lava
+  - id: waterruin5
+    layer: ground
+    animation:
+      tropical: decoration/water/waterruin5_grass
+      grass: decoration/water/waterruin5_grass
+      ice: decoration/water/waterruin5_ice
+      desert: decoration/water/waterruin5_grass  
+      volcano: decoration/water/waterruin5_lava                                  
+ # natural lava
+  - id: lavarock1
+    hidden: true
+    layer: ground
+    animation:
+      undefined: decoration/water/lavarock1
+  - id: lavarock2
+    hidden: true
+    layer: ground
+    animation:
+      undefined: decoration/water/lavarock2   
+  - id: lavarock3
+    hidden: true
+    layer: ground
+    animation:
+      undefined: decoration/water/lavarock3
+  - id: lavarock4
+    hidden: true
+    layer: ground
+    animation:
+      undefined: decoration/water/lavarock4
+  - id: lavabubble
+    hidden: true
+    layer: ground
+    animation:
+      undefined: decoration/water/lavabubble      
+...

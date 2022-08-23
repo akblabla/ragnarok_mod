@@ -24,7 +24,7 @@ tilesets:
         iconSprite: terrain_icons_carpet
         infoScreenOffset: 80
         fillColour: '#596876'
-      - types: [desert]
+      - types: [desert,tropical]
         spriteSheet: tilesets
         spriteBase: sand_carpet_tileset
         portraitSpriteSheet: terrain/terrain_portraits

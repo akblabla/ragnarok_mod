@@ -38,6 +38,7 @@ unitClasses:
       - id: harpoonshipCannon
     cargoSpace: 2
     verbs:
+      - rescue
       - pick_up_crown
       - throw_crown
     tags:

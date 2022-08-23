@@ -48,6 +48,7 @@ unitClasses:
       - type.ground.heavy
       - tall
     verbs:
+      - rescue
       - load
       - pick_up_crown
       - throw_crown

@@ -58,6 +58,7 @@ unitClasses:
       - rifleman
       - type.ground.hideout
     verbs:
+      - rescue
       - reload
       - load
       - capture

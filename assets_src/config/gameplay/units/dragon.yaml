@@ -44,6 +44,7 @@ unitClasses:
     damageMultiplier: 1
     aiPriority: 1.0
     verbs:
+      - rescue
       - pick_up_crown
       - throw_crown
     weapons:

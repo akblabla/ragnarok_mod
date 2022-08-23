@@ -3,5 +3,5 @@ tilesets:
   - id: undefined
     primaryConnect: []
     biomes:
-      - types: [grass, desert, ice]
+      - types: [grass,tropical, desert, ice]
 ...

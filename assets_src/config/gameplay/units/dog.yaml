@@ -46,6 +46,7 @@ unitClasses:
     weapons:
       - id: bite
     verbs:
+      - rescue
       - load
       - pick_up_crown
       - throw_crown

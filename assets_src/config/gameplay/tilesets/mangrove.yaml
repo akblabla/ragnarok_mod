@@ -4,7 +4,7 @@ tilesets:
     primaryConnect: []
     decayTo: river
     biomes:
-      - types: [grass]
+      - types: [grass,tropical]
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_ocean
         battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds

@@ -2,7 +2,7 @@
 tilesets:
   - id: deck
     biomes:
-      - types: [grass, ice, desert]
+      - types: [grass,tropical, ice, desert]
         spriteSheet: terrain_tilesets
         spriteBase: deck_tileset
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod

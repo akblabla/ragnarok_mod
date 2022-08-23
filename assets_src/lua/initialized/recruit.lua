@@ -61,6 +61,8 @@ function Recruit:canExecuteWithTarget(unit, endPos, targetPos, strParam)
 		if dist > 1 then
 			return false
 		end
+	elseif not Wargroove.isHuman(unit.playerId) then
+		return false
 	end
     return Wargroove.canStandAt(strParam, targetPos) and Wargroove.getMoney(unit.playerId) >= uc.cost and Wargroove.canPlayerSeeTile(unit.playerId, targetPos)
 end

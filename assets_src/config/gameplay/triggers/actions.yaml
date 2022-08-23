@@ -5,6 +5,11 @@ triggerActions:
     parameters:
       - type: player
       
+  - id: reveal_all_but_hidden
+    parameters:
+      - type: player
+      - type: location
+      
   - id: enable_AI_fog_limitations
 
   - id: set_state

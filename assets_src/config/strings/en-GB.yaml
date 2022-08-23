@@ -147,7 +147,11 @@ en-GB:
   trigger_condition_readable_state: "If unit type(s) {0} at location {1} owned by player {2} have state {3} equal to {4}."
   
   
-  trigger_action_name_transfer_gold_robbed: "Transfer: Gold Robbed"
+  trigger_action_name_reveal_all_but_hidden: "Player: Reveal all but hidden"
+  trigger_action_description_reveal_all_but_hidden: "Reveals all tiles except hidden tiles for a player."
+  trigger_action_readable_reveal_all_but_hidden: "Spawn an eye at location {1} for player {0} seeing all except hidden tiles."
+  
+  trigger_action_name_transfer_gold_robbed: "Data: Transfer Gold Robbed"
   trigger_action_description_transfer_gold_robbed: "Sets/Gets gold robbed by player."
   trigger_action_readable_transfer_gold_robbed: "Transfer gold robbed by {0}: {1} {2}" 
   
@@ -204,6 +208,8 @@ en-GB:
   #cutscene sound effects
   ui_cutscene_sfx_wulfar_hug: "Wulfar and Vesper Hug"
   ui_cutscene_sfx_emeric_charged_attack: "Emeric Charged Attack"
+  ui_cutscene_sfx_plip: "Plip"
+  ui_cutscene_sfx_plop: "Plop"
   
   # CUTSCENE VISUAL EFFECTS
   ui_cutscene_vfx_wulfar_vesper_hug: "Wulfar and Vesper Hug"

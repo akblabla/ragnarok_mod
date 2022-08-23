@@ -2,7 +2,7 @@
 tilesets:
   - id: volcano
     biomes:
-      - types: [grass]
+      - types: [grass,tropical]
         spriteSheet: tilesets
         spriteBase: grass_plains_tileset
         portraitSpriteSheet: terrain/terrain_portraits

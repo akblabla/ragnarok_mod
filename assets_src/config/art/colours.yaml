@@ -1,7 +1,0 @@
----
-
-# Colours used by various other yaml files, such as the biome.
-colours:
-  minimap_grass_sea_alt: '#50C4CB'
-
-...

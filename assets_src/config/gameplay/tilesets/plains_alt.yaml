@@ -14,6 +14,18 @@ tilesets:
         iconSprite: ":img:ui/codex/icons/icon_terrain_plains_alt.png"
         infoScreenOffset: 30
         fillColour: '#92b141'
+      - types: [tropical]
+        spriteSheet: terrain_tilesets
+        spriteBase: tropical_fake_sand_plains_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_plains
+        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_plains
+        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_plains_foreground
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_plains_alt.png"
+        infoScreenOffset: 30
+        fillColour: '#92b141'
       - types: [grass]
         spriteSheet: terrain_tilesets
         spriteBase: grass_fake_snow_plains_tileset

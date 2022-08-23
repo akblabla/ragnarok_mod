@@ -13,7 +13,7 @@ tilesets:
         iconSprite: terrain_icons_cobblestone
         infoScreenOffset: 80
         fillColour: '#83786e'
-      - types: [desert]
+      - types: [desert,tropical]
         spriteSheet: tilesets
         spriteBase: sand_cobblestone_tileset
         portraitSpriteSheet: terrain/terrain_portraits

@@ -62,9 +62,9 @@ function Conditions.isRescued(context)
     local playerId = context:getPlayerId(1)
 	print(playerId)
     for i, pos in ipairs(location.positions) do
-		local gizmo = Wargroove.getGizmoAt(pos)
-		if gizmo and gizmo.type == "capsized_crew" and Ragnarok.getGizmoState(gizmo) == false then
-			if Rescue.isRescuedByPlayer(gizmo,playerId) then
+		local unit = Wargroove.getUnitAt(pos)
+		if unit and unit.unitClassId == "crew" then
+			if Rescue.isRescuedByPlayer(unit.id,playerId) then
 				return true
 			end
 		end

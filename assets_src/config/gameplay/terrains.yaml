@@ -33,7 +33,7 @@ terrains:
     movementGroupType: land
     placeable: true
     tilesets:
-      0: [plains, rough, plains_alt]
+      0: [plains, plains_alt]
       2: road
 
   - id: forest
@@ -50,7 +50,7 @@ terrains:
     visionBlocking: true
     fowCover: true
     tilesets:
-      0: [plains, rough, plains_alt]
+      0: [plains, plains_alt]
       1: forest
 
   - id: mountain
@@ -136,7 +136,7 @@ terrains:
     movementGroupType: land
     placeable: true
     tilesets: 
-      0: [plains, rough, plains_alt]
+      0: [plains, plains_alt]
       1: [sea_alt, river, cave_river, cave_sea]
       2: bridge
 
@@ -160,7 +160,7 @@ terrains:
     movementGroupType: water
     placeable: false
     tilesets:
-      0: [plains, rough, plains_alt]
+      0: [plains, plains_alt]
       1: sea
 
   - id: ocean
@@ -206,7 +206,7 @@ terrains:
     placeable: true
     fowCover: true
     tilesets: 
-      0: [plains, rough, plains_alt]
+      0: [plains, plains_alt]
       1: sea_alt
       2: reef
 
@@ -232,7 +232,7 @@ terrains:
     movementGroupType: land
     placeable: true
     tilesets:
-      0: [plains, rough, plains_alt]
+      0: [plains, plains_alt]
       1: river
 
   - id: beach
@@ -258,7 +258,7 @@ terrains:
     movementGroupType: land
     placeable: true
     tilesets:
-      0: [plains, rough, plains_alt]
+      0: [plains, plains_alt]
       1: beach
 
   - id: sky

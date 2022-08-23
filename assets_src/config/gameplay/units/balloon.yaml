@@ -13,6 +13,7 @@ unitClasses:
       - balloon
       - type.air
     verbs:
+      - rescue
       - unload
       - pick_up_crown
       - throw_crown

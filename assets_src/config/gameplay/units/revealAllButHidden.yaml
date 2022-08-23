@@ -1,0 +1,45 @@
+---
+
+unitClasses:
+  - id: reveal_all_but_hidden
+    name: unit_class_name_area_heal
+    movement: walking
+    moveRange: 0
+    damageMultiplier: 0
+    aiPriority: 0
+    battleUnitCount: 1
+    passiveMultiplier: 1.25
+    sightRange: 200
+    canSeeOverTerrain: true
+    classIcon: unit_icons_summon
+    isHidden: true
+    hasTurn: false
+    isRecruitable: false
+    isSpawnable: false
+    hasDeathAnimation: false
+    appearsInLists: false
+    tags:
+      - summon
+
+
+units:
+  - class: reveal_all_but_hidden
+    faction: outlaw
+    name: unit_class_name_area_heal
+    mapAnimation: units/commanders/emeric/crystal
+    battleAnimation: units/commanders/emeric/battle_crystal
+    smallPortrait: units/balloon/heavensong/portrait_balloon_heavensong_small.png
+    mediumPortrait: units/commanders/emeric/portrait_crystal_medium.png
+    mapSpeed: 4.0
+    grabPos: [13, 14]
+    runsIn: false
+    deathMoveMin: 0
+    deathMoveMax: 0
+    sounds:
+      death: emeric/emericCrystalDie
+      deathMap: unitDie
+      deathMapNoBattle: emeric/emericCrystalDie
+      hit: hitStone
+      hitMap: hitStone
+
+...

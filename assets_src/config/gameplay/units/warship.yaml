@@ -47,6 +47,7 @@ unitClasses:
       - warship
       - type.sea
     verbs:
+      - rescue
       - pick_up_crown
       - throw_crown
     battleUnitCount: 1

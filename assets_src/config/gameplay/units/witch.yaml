@@ -29,6 +29,7 @@ unitClasses:
       - type.air
       - spellcaster
     verbs:
+      - rescue
       - spell_hex
       - pick_up_crown
       - throw_crown

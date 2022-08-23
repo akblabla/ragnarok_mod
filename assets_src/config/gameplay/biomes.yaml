@@ -1,5 +1,24 @@
 ---
 
+colours:
+  minimap_grass_sea_alt: '#50C4CB'
+
+  grid_tropical_move_range_mine: '#744A49'
+  grid_tropical_move_range_outline_mine: '#744A49'
+  grid_tropical_move_and_attack_range_mine: '#DFC686'
+  grid_tropical_move_and_attack_range_outline_mine: '#E9DEB8'
+  grid_tropical_attack_range_outline_mine: '#DFC686'
+  grid_tropical_move_range_theirs: '#744A49'
+  grid_tropical_move_range_outline_theirs: '#744A49'
+  grid_tropical_attack_range_outline_theirs: '#1D1C24'
+  grid_tropical_move_and_attack_range_theirs: '#1D1C24'
+  grid_tropical_move_and_attack_range_outline_theirs: '#1D1C24'
+  grid_tropical_attack_target: '#D71919'
+  grid_tropical_attack_target_outline: '#EB3232'
+  grid_tropical_target: '#07AB5E'
+  grid_tropical_target_outline: '#0CDE8A'
+  grid_tropical_heal_outline: '#FFFFFF'
+
 biomes:
   - id: grass
     name: biome_name_grass
@@ -10,6 +29,10 @@ biomes:
   - id: ice
     name: biome_name_ice
     severeWeather: snow
+  - id: tropical
+    name: biome_name_grass
+    severeWeather: rain
+
   - id: volcano
     name: biome_name_volcano
     severeWeather: ash

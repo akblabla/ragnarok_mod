@@ -2,7 +2,7 @@
 tilesets:
   - id: sea
     biomes:
-      - types: [grass, ice, desert]
+      - types: [grass,tropical, ice, desert]
         spriteSheet: tilesets
         spriteBase: sea_tileset_000
         waterSpriteBase: sea_tileset_001

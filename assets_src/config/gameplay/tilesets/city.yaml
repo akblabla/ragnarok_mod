@@ -3,7 +3,7 @@ tilesets:
   - id: city
     primaryConnect: []
     biomes:
-      - types: [grass, desert, ice, volcano]
+      - types: [grass,tropical, desert, ice, volcano]
         battleBackgroundSpriteSheet: backgrounds/battlescreen_extendedbackgrounds
         battleBackgroundSprite: battlescreen_extendedbackgrounds_city
         battleBackgroundSpriteForeground: battlescreen_extendedbackgrounds_city_foreground

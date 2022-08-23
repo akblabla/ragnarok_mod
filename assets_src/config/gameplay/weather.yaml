@@ -20,7 +20,8 @@ weather:
   - id: sunny
     iconSpriteSheet: ui
     iconSprite: weather_icons_sunny
-  
+
+
   - id: windy
     iconSpriteSheet: ui
     iconSprite: weather_icons_windy

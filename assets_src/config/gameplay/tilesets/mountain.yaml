@@ -2,7 +2,7 @@
 tilesets:
   - id: mountain
     biomes:
-      - types: [grass]
+      - types: [grass,tropical]
         spriteSheet: tilesets
         spriteBase: grass_mountain_tileset
         portraitSpriteSheet: terrain/terrain_portraits

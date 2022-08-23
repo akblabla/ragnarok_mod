@@ -2,7 +2,7 @@
 tilesets:
   - id: cave_river
     biomes:
-      - types: [grass]
+      - types: [grass,tropical]
         spriteSheet: terrain_tilesets
         spriteBase: cave_river_tileset_000
         waterSpriteBase: cave_river_tileset_001

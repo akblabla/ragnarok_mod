@@ -51,6 +51,7 @@ unitClasses:
         value: 0
 
     verbs:
+      - rescue
       - pick_up_crown
       - throw_crown
       - pirate_steal

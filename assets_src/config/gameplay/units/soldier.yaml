@@ -44,6 +44,7 @@ unitClasses:
     weapons:
       - id: sword
     verbs:
+      - rescue
       - capture
       - load
       - pick_up_crown

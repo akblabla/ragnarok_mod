@@ -43,6 +43,7 @@ unitClasses:
     weapons:
       - id: spear
     verbs:
+      - rescue
       - capture
       - load
       - pick_up_crown

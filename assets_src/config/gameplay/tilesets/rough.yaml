@@ -16,6 +16,19 @@ tilesets:
         infoScreenOffset: 80
         fillColour: '#83786e'
         
+      - types: [tropical]
+        spriteSheet: terrain_tilesets
+        spriteBase: tropical_cave_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_city
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: cave_battlescreen_sand_background
+        battleBackgroundSpriteForeground: cave_battlescreen_sand_foreground
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_rough_grass.png"
+        infoScreenOffset: 80
+        fillColour: '#807063'
+        
       - types: [desert]
         spriteSheet: terrain_tilesets
         spriteBase: sand_cave_tileset

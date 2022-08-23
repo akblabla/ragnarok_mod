@@ -57,4 +57,8 @@ cutscene_sfx:
     path: cutscene/catMeow
   - id: purr
     path: cutscene/catPurr
+  - id: plip
+    path: merfolkShout1
+  - id: plop
+    path: merfolkShout2
 ...

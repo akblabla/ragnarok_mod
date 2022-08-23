@@ -10,6 +10,7 @@ unitClasses:
     aiPriority: 2.5
     weapons: []
     verbs:
+      - rescue
       - load
       - deposit
       - bypass_gate

@@ -13,7 +13,7 @@ tilesets:
         iconSpriteSheet: ui
         iconSprite: terrain_icons_wall
         infoScreenOffset: 80
-      - types: [desert]
+      - types: [desert,tropical]
         spriteSheet: tilesets
         spriteBase: sand_wall_tileset
         portraitSpriteSheet: terrain/terrain_portraits
