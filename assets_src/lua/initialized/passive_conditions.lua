@@ -15,6 +15,8 @@ local PassiveConditions = {}
 function PassiveConditions.init()
     OriginalPassiveConditions.getPassiveConditions().pirate_ship = PassiveConditions.pirate_ship
     OriginalPassiveConditions.getPassiveConditions().merman = PassiveConditions.merman
+    OriginalPassiveConditions.getPassiveConditions().harpoonship = PassiveConditions.harpoonship
+    OriginalPassiveConditions.getPassiveConditions().warship = PassiveConditions.warship
 end
 
 -- Soldiers now get their passive condition if they are next to a dog
@@ -63,6 +65,16 @@ function PassiveConditions.merman(payload)
 		end
 	end
     return isSea
+end
+
+function PassiveConditions.harpoonship(payload)
+    local terrainName = Wargroove.getTerrainNameAt(payload.attackerPos)
+    return terrainName == "reef" or terrainName == "cave_reef" or terrainName == "reef_no_hiding"
+end
+
+function PassiveConditions.warship(payload)
+    local terrainName = Wargroove.getTerrainNameAt(payload.attackerPos)
+    return terrainName == "beach" or terrainName == "cave_beach"
 end
 
 return PassiveConditions

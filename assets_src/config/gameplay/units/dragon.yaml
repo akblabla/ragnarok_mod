@@ -54,7 +54,7 @@ unitClasses:
       - type.air
     battleUnitCount: 1
     passiveMultiplier: 1.5
-    sightRange: 6
+    sightRange: 5
     canSeeOverTerrain: true
 
 

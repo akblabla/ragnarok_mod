@@ -18,7 +18,7 @@ unitClasses:
     regeneration: -35
     classIcon: unit_icons_summon
     scout: true
-    sightRange: 5
+    sightRange: 6
 
 
 units:

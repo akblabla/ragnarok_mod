@@ -52,6 +52,7 @@ unitClasses:
       - spearman
       - type.ground.light
     battleUnitCount: 4
+    sightRange: 4
     deathVerbId: death_drop_crown
     passiveMultiplier: 1.5
     

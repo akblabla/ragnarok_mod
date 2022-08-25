@@ -205,7 +205,6 @@ terrains:
       amphibious: 2
       land_building: 1
       indoor_building: 1
-      flying: 2
     movementGroupType: land
     placeable: true
     tilesets:
@@ -275,4 +274,83 @@ terrains:
     tilesets:
       0: [plains, rough, plains_alt]
       1: invisible_blocker_ocean
+      
+  - id: forest_no_hiding
+    name: terrain_name_forest
+    defenceBonus: 3
+    movementCost:
+      walking: 2
+      riding: 3
+      flying: 1
+      hovering: 1
+      amphibious: 4
+    movementGroupType: land
+    placeable: true
+    tilesets:
+      0: [plains, plains_alt]
+      1: forest_no_hiding
+      
+  - id: mountain_no_blocking
+    name: terrain_name_mountain
+    defenceBonus: 4
+    movementCost:
+      walking: 3
+      flying: 1
+      hovering: 1
+    movementGroupType: land
+    placeable: true
+    sightBonus: 2
+    tilesets:
+      0: [plains, rough, plains_alt]
+      1: mountain_no_blocking
+      
+  - id: wall_no_blocking
+    name: terrain_name_wall
+    defenceBonus: 0
+    movementCost: {}
+    movementGroupType: land
+    placeable: true
+    tilesets:
+      0: [plains, rough, plains_alt]
+      1: cobblestone
+      2: wall_no_blocking
+      
+  - id: reef_no_hiding
+    name: terrain_name_reef
+    biomeNames:
+      volcano: terrain_name_reef_lava
+    biomeDescriptions:
+      volcano: terrain_description_lava
+    defenceBonus: 2
+    movementCost:
+      sailing: 2
+      flying: 1
+      hovering: 1
+      amphibious: 1
+      sea_building: 1
+    biomeMovementCosts:
+      volcano:
+        flying: 1
+        hovering: 1
+    movementGroupType: water
+    placeable: true
+    tilesets: 
+      0: [plains, plains_alt]
+      1: sea_alt
+      2: reef_no_hiding
+      
+  - id: forest_alt_no_hiding
+    name: terrain_name_forest
+    defenceBonus: 3
+    movementCost:
+      walking: 2
+      riding: 3
+      flying: 1
+      hovering: 1
+      amphibious: 4
+    movementGroupType: land
+    placeable: true
+    tilesets:
+      0: [plains, plains_alt]
+      1: forest_alt_no_hiding
 ...

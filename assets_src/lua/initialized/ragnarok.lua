@@ -4,7 +4,7 @@ local WargrooveExtra = require "initialized/wargroove_extra"
 
 
 local Ragnarok = {}
-Ragnarok.seaTiles = {"sea","sea_alt", "ocean","reef","cave_sea", "cave_reef","cave_reef"}
+Ragnarok.seaTiles = {"sea","sea_alt", "ocean","reef","cave_sea", "cave_reef","cave_reef","reef_no_hiding"}
 Ragnarok.amphibiousTiles = {"river", "cave_river", "beach", "cave_beach", "mangrove"}
 Ragnarok.groundTags = {"type.ground.light", "type.ground.heavy"}
 function Ragnarok.init()
@@ -36,6 +36,20 @@ function Ragnarok.init()
 		players = {1, 0, 0, 0, 0, 0, 0, 0}
 	}
 	Ragnarok.addHiddenTrigger(resetRescuesTrigger,true)
+	local updateGizmosTrigger = {
+		id = "Update Gizmos",
+		recurring = "repeat",
+		actions = {
+			{
+				id = "update_gizmos",
+				parameters = {
+				}
+			}
+		},
+		conditions = {},
+		players = {1, 0, 0, 0, 0, 0, 0, 0}
+	}
+	Ragnarok.addHiddenTrigger(updateGizmosTrigger,false)
 end
 
 local cantAttackBuildingsSet = {}
@@ -49,6 +63,34 @@ local crownStateKey = "crown"
 local flareCountTable = {}
 local fogOfWarRulesEnabled = false
 local occurences = {}
+
+local linkedLocations = {}
+
+function Ragnarok.addLinkedLocation(location)
+	table.insert(linkedLocations, location)
+end
+
+function Ragnarok.getLinkedLocations()
+	return linkedLocations
+end
+
+function Ragnarok.linkGizmoStateWithActivators(location)
+	local isActivated = true
+	local actuators = {}
+    for i, gizmo in ipairs(Wargroove.getGizmosAtLocation(location)) do
+		if Ragnarok.isActivator(gizmo) then
+			if gizmo:getState() == false then
+				isActivated = false
+			end
+		else
+			table.insert(actuators, gizmo)
+		end
+    end
+	if actuators and Ragnarok.wouldAnyStatesChange(actuators, isActivated) then
+		Wargroove.waitTime(0.3)
+		Ragnarok.setStates(actuators, isActivated, playSound)
+	end
+end
 
 function Ragnarok.resetOccurences()
 	occurences = {}
@@ -183,6 +225,7 @@ function Ragnarok.dropCrown(targetPos)
     --local pos = {key = "pos", value = "" .. targetPos.x .. "," .. targetPos.y}
     --table.insert(startingState, pos)
 	crownID = Wargroove.spawnUnit(-1, {x = targetPos.x-100, y = targetPos.y-100}, "crown", false)
+	Wargroove.setVisibleOverride(crownID, true)
 	print("Spawned Crown")
 	Wargroove.spawnUnitEffect(crownID, crownOffsetAnimation, "idle", startAnimation, true, false)
 	print("Added Crown Effect")
@@ -321,6 +364,15 @@ end
 function Ragnarok.isActivator(gizmo)
 	local key = Ragnarok.generateGizmoKey(gizmo)
 	return activator[key] == true
+end
+
+function Ragnarok.gizmoActivateWhenStoodOn(gizmo)
+	Ragnarok.setActivator(gizmo, true)
+	local unit = Wargroove.getUnitAt(gizmo.pos)
+	local crownPos = Ragnarok.getCrownPos()
+	local isCrown = crownPos and (crownPos.x == gizmo.pos.x) and (crownPos.y == gizmo.pos.y)
+	local isPressed = isCrown or unit ~= nil
+	Ragnarok.setState(gizmo,isPressed)
 end
 
 function Ragnarok.printCrownInfo()

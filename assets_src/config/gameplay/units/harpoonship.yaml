@@ -46,6 +46,6 @@ unitClasses:
       - type.sea
     battleUnitCount: 1
     passiveMultiplier: 1.5
-    sightRange: 3
+    sightRange: 5
 
 ...

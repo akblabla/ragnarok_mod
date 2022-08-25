@@ -2,6 +2,7 @@ local Wargroove = require "wargroove/wargroove"
 local Events = require "wargroove/events"
 local Ragnarok = require "initialized/ragnarok"
 local Rescue = require "verbs/rescue"
+local Recruit = require "initialized/recruit"
 
 local Actions = {}
 
@@ -30,10 +31,15 @@ function Actions.populate(dst)
 	dst["place_crown"] = Actions.placeCrown
 	dst["modify_flare_count"] = Actions.modifyFlareCount
 	dst["enable_AI_fog_limitations"] = Actions.enableAIFogLimitations
+	dst["reveal_all"] = Actions.revealAll
 	dst["reveal_all_but_hidden"] = Actions.revealAllButHidden
+	dst["reveal_all_but_over"] = Actions.revealAllButOver
 	dst["set_override_visibility"] = Actions.setOverrideVisibility
 	dst["unset_override_visibility"] = Actions.unsetOverrideVisibility
+	dst["allow_pirate_ships"] = Actions.allowPirateShips
 	--Hidden actions
+	dst["setup_gizmos"] = Actions.setupGizmos
+	dst["update_gizmos"] = Actions.updateGizmos
 	dst["reset_occurence_list"] = Actions.resetOccurenceList
 	dst["reset_rescue_list"] = Actions.resetRescueList
 end
@@ -59,10 +65,31 @@ local function spawnUnitCompareBestLocation(a, b)
 end
 --
 
+function Actions.setupGizmos(context)
+end
+
+function Actions.updateGizmos(context)
+    for i, gizmo in ipairs(Wargroove.getGizmosAtLocation(location)) do
+		if gizmo.type == "pressure_plate" then
+			Ragnarok.gizmoActivateWhenStoodOn(gizmo)
+		end
+    end
+	for i, location in ipairs(Ragnarok.getLinkedLocations()) do
+		Ragnarok.linkGizmoStateWithActivators(location)
+	end
+end
+
 function Actions.setNoBuildingAttacking(context)
     local targetPlayer = context:getPlayerId(0)
 	print(targetPlayer)
 	Ragnarok.addAIToCantAttackBuildings(targetPlayer)
+end
+
+function Actions.allowPirateShips(context)
+    -- "Let AI of player {0} build raider ships."
+    local targetPlayer = context:getPlayerId(0)
+	print(targetPlayer)
+	Recruit:allowAIToBuildRaiderShips(targetPlayer)
 end
 
 function Actions.enableAIFogLimitations(context)
@@ -100,9 +127,8 @@ function Actions.unsetOverrideVisibility(context)
         Wargroove.unsetVisibleOverride(unit.id)
     end
 end
-
-function Actions.revealAllButHidden(context)
-    -- "Spawn an eye at location {1} for player {0} seeing all except hidden tiles."
+function Actions.revealAll(context)
+    -- "Spawn an eye at location {1} for player {0} seeing all."
     -- local allUnits = Wargroove.getAllUnitIds()
     -- for i, id in ipairs(allUnits) do
 		-- Wargroove.setVisibleOverride(id, true)
@@ -112,7 +138,7 @@ function Actions.revealAllButHidden(context)
 	-- coroutine.yield()
     local playerId = context:getPlayerId(0)
     local location = context:getLocation(1)
-    local revealerId = Wargroove.spawnUnit(playerId, findCentreOfLocation(location), "reveal_all_but_hidden", false)
+    local revealerId = Wargroove.spawnUnit(playerId, findCentreOfLocation(location), "reveal_all", false)
 	Wargroove.setVisibleOverride(revealerId, false)
 
 	Wargroove.setShadowVisible(revealerId, false)
@@ -130,6 +156,32 @@ function Actions.revealAllButHidden(context)
     -- for i, id in ipairs(allUnits) do
 		-- Wargroove.unsetVisibleOverride(id)
     -- end
+end
+
+function Actions.revealAllButHidden(context)
+    -- "Spawn an eye at location {1} for player {0} seeing all except hidden tiles."
+    local playerId = context:getPlayerId(0)
+    local location = context:getLocation(1)
+    local revealerId = Wargroove.spawnUnit(playerId, findCentreOfLocation(location), "reveal_all_but_hidden", false)
+	Wargroove.setVisibleOverride(revealerId, false)
+
+	Wargroove.setShadowVisible(revealerId, false)
+	coroutine.yield()
+	coroutine.yield()
+	Wargroove.updateFogOfWar(0)
+end
+
+function Actions.revealAllButOver(context)
+    -- "Spawn an eye at location {1} for player {0} seeing all it has direct line of sight to."
+    local playerId = context:getPlayerId(0)
+    local location = context:getLocation(1)
+    local revealerId = Wargroove.spawnUnit(playerId, findCentreOfLocation(location), "reveal_all_but_over", false)
+	Wargroove.setVisibleOverride(revealerId, false)
+
+	Wargroove.setShadowVisible(revealerId, false)
+	coroutine.yield()
+	coroutine.yield()
+	Wargroove.updateFogOfWar(0)
 end
 
 function Actions.setState(context)
@@ -236,22 +288,7 @@ end
 function Actions.linkGizmoStateWithActivators(context)
     -- "Link all gizmos with the activators at location {0}."
     local location = context:getLocation(0)
-	
-	local isActivated = true
-	local actuators = {}
-    for i, gizmo in ipairs(Wargroove.getGizmosAtLocation(location)) do
-		if Ragnarok.isActivator(gizmo) then
-			if gizmo:getState() == false then
-				isActivated = false
-			end
-		else
-			table.insert(actuators, gizmo)
-		end
-    end
-	if actuators and Ragnarok.wouldAnyStatesChange(actuators, isActivated) then
-		Wargroove.waitTime(0.3)
-		Ragnarok.setStates(actuators, isActivated, playSound)
-	end
+	Ragnarok.addLinkedLocation(location)
 end
 
 function Actions.gizmoActiveWhenStoodOn(context)
@@ -266,7 +303,6 @@ function Actions.gizmoActiveWhenStoodOn(context)
 		local isPressed = isCrown or unit ~= nil
 		Ragnarok.setState(gizmo,isPressed)
     end
-
 end
 
 local toggleClear = {}

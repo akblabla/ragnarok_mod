@@ -56,7 +56,7 @@ unitClasses:
       - animal
     battleUnitCount: 4
     passiveMultiplier: 1.5
-    sightRange: 4
+    sightRange: 5
     scout: true
     runsAway: true
     deathVerbId: death_drop_crown

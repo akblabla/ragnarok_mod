@@ -5,7 +5,22 @@ triggerActions:
     parameters:
       - type: player
       
+  - id: allow_pirate_ships
+    parameters:
+      - type: player
+      
+      
+  - id: reveal_all
+    parameters:
+      - type: player
+      - type: location
+
   - id: reveal_all_but_hidden
+    parameters:
+      - type: player
+      - type: location
+      
+  - id: reveal_all_but_over
     parameters:
       - type: player
       - type: location

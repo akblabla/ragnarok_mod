@@ -132,6 +132,25 @@ commanders:
     selectionSound: wulfar/wulfarShoutUpForTheTask
     dialogueBoxVoice: ui/dialogue/textScrollWulfar
 
+  - id: emeric_forced_red
+    name: character_emeric_name
+    title: character_emeric_title
+    playable: false
+    faction: cherrystone
+    factionIndex: 1
+    portrait:
+      neutral: portraits/commanders/small/emeric_portrait_small.png
+      happy: portraits/commanders/small/emeric_portrait_happy.png
+      sad: portraits/commanders/small/emeric_portrait_sad.png
+    cutscenePortrait: portraits/commanders/big/emeric_portrait_forced_red
+    portraitOffset: [0, -25]
+    namePlate: ui/character_select/charlabel/charlabel_emeric.png
+    themeSong: music/emeric
+    skinColour: typeVI
+    unitClassId: commander_emeric
+    selectionSound: emeric/emericShoutEducatedChoice
+    dialogueBoxVoice: ui/dialogue/textScrollEmeric
+
   - id: outlaw_gang
     name: character_generic_outlaw_gang_name
     faction: outlaw

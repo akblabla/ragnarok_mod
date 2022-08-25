@@ -1,22 +1,30 @@
 ---
 tilesets:
-  - id: cave_wall
-    decayTo: plains
+  - id: reef_no_hiding
     biomes:
-      - types: [grass,tropical, ice, desert, volcano]
-        spriteSheet: terrain_tilesets
-        spriteBase: grass_cave_wall_tileset
-        portraitSpriteSheet: terrain/terrain_portraits
-        portraitSprite: terrain_portraits_city
-        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
-        battleBackgroundSprite: cave_battlescreen_sand_background
-        battleBackgroundSpriteForeground: cave_battlescreen_sand_foreground
-        iconSpriteSheet: ui_RagnarokMod
-        iconSprite: ":img:ui/codex/icons/icon_terrain_cave_wall.png"
-        infoScreenOffset: 80
-        fillColour: '#83786e'
-    primaryConnect: [undefined, cave_wall, wall, wall_no_blocking]
-    decayTo: ":below"
+      - types: [grass,tropical, ice, desert]
+        spriteSheet: tilesets
+        spriteBase: reef_tileset_000
+        waterSpriteBase: reef_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_reef
+        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_reef_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Reef
+        infoScreenOffset: 70
+        fillColour: '#2a2542'
+      - types: [volcano]
+        spriteSheet: tilesets
+        spriteBase: reef_tileset_000
+        waterSpriteBase: reef_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: volcano_battlescreen_extendedbackgrounds_lava
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Reef
+        infoScreenOffset: 70
+        fillColour: '#76231c'
+    primaryConnect: [undefined, reef, cave_reef]
+    decayTo: sea_alt
     tiles:
       - { x: 0, y: 0, adj: "e s se" }
       - { x: 1, y: 0, adj: "w sw s se e" }
@@ -24,7 +32,10 @@ tilesets:
       - { x: 3, y: 0, adj: "e" }
       - { x: 4, y: 0, adj: "e w" }
       - { x: 5, y: 0, adj: "w" }
-      - { x: 6, y: 0, adj: "" }
+      - { x: 6, y: 0, adj: "", default: true }
+      - { x: 7, y: 0, adj: "" }
+      - { x: 7, y: 1, adj: "" }
+      - { x: 7, y: 2, adj: "" }
 
       - { x: 0, y: 1, adj: "n ne e se s" }
       - { x: 1, y: 1, adj: "n w e s ne nw se sw" }
@@ -33,6 +44,10 @@ tilesets:
       - { x: 4, y: 1, adj: "n e s w" }
       - { x: 5, y: 1, adj: "w s e" }
       - { x: 6, y: 1, adj: "n w e" }
+      - { x: 6, y: 6, adj: "n w e s ne nw se sw" }
+      - { x: 7, y: 5, adj: "n w e s ne nw se sw" }
+      - { x: 7, y: 6, adj: "n w e s ne nw se sw" }
+      - { x: 2, y: 3, adj: "n w e s ne nw se sw" }
 
       - { x: 0, y: 2, adj: "n ne e" }
       - { x: 1, y: 2, adj: "w nw n ne e" }
@@ -41,8 +56,9 @@ tilesets:
       - { x: 4, y: 2, adj: "n s e" }
       - { x: 5, y: 2, adj: "s e" }
       - { x: 6, y: 2, adj: "s w" }
+      - { x: 7, y: 3, adj: "n s" }
+      - { x: 7, y: 4, adj: "e w" }
 
-      - { x: 2, y: 3, adj: "n w e s ne nw se sw" }
       - { x: 3, y: 3, adj: "n" }
       - { x: 4, y: 3, adj: "n w s" }
       - { x: 5, y: 3, adj: "n e" }
@@ -73,21 +89,5 @@ tilesets:
       - { x: 3, y: 6, adj: "n e s w sw" }
       - { x: 4, y: 6, adj: "n w e s ne sw" }
       - { x: 5, y: 6, adj: "n w e s nw se" }
-      - { x: 6, y: 6, adj: "n w e s ne nw se sw" }
 
-      - { x: 0, y: 7, adj: "n w e s ne nw se sw" }
-      - { x: 1, y: 7, adj: "n w e s ne nw se sw" }
-      - { x: 2, y: 7, adj: "n w e s ne nw se sw" }
-      - { x: 3, y: 7, adj: "n w e s ne nw se sw" }
-      - { x: 4, y: 7, adj: "n w e s ne nw se sw" }
-      - { x: 5, y: 7, adj: "n w e s ne nw se sw" }
-      - { x: 6, y: 7, adj: "n w e s ne nw se sw" }
-
-      - { x: 0, y: 8, adj: "n w e s ne nw se sw" }
-      - { x: 1, y: 8, adj: "n w e s ne nw se sw" }
-      - { x: 2, y: 8, adj: "n w e s ne nw se sw" }
-      - { x: 3, y: 8, adj: "n w e s ne nw se sw" }
-      - { x: 4, y: 8, adj: "n w e s ne nw se sw" }
-      - { x: 5, y: 8, adj: "n w e s ne nw se sw" }
-      - { x: 6, y: 8, adj: "n w e s ne nw se sw" }
 ...

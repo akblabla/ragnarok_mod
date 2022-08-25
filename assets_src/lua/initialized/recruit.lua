@@ -5,7 +5,7 @@ local OldRecruit = require "verbs/recruit"
 
 local Recruit = Verb:new()
 --local factionExclusiveUnits = {unitId = "pirate_ship", commanders = {"commander_wulfar","commander_vesper","commander_flagship_wulfar","commander_flagship_rival"}}
-
+local raiderShipBuilderList = {}
 function Recruit.init()
 	OldRecruit.getMaximumRange = Recruit.getMaximumRange
 	OldRecruit.canExecuteWithTarget = Recruit.canExecuteWithTarget
@@ -33,6 +33,10 @@ local function dump(o,level)
    else
       return tostring(o)
    end
+end
+
+function Recruit:allowAIToBuildRaiderShips(playerId)
+	raiderShipBuilderList[playerId] = true
 end
 
 function Recruit:canExecuteWithTarget(unit, endPos, targetPos, strParam)
@@ -63,6 +67,11 @@ function Recruit:canExecuteWithTarget(unit, endPos, targetPos, strParam)
 		end
 	elseif not Wargroove.isHuman(unit.playerId) then
 		return false
+	end
+	if strParam == "pirate_ship" and not Wargroove.isHuman(unit.playerId) then
+		if raiderShipBuilderList[unit.playerId] == nil then
+			return false
+		end
 	end
     return Wargroove.canStandAt(strParam, targetPos) and Wargroove.getMoney(unit.playerId) >= uc.cost and Wargroove.canPlayerSeeTile(unit.playerId, targetPos)
 end

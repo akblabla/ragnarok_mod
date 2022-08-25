@@ -114,6 +114,10 @@ en-GB:
   trigger_action_description_ai_set_no_building_attacking: "Prevents AI from attacking buildings."
   trigger_action_readable_ai_set_no_building_attacking: "Prevent AI controlled by player {0} from attacking buildings."
   
+  trigger_action_name_allow_pirate_ships: "AI: Allow Raider Ship Recruitment"
+  trigger_action_description_allow_pirate_ships: "Let AI build raider ships."
+  trigger_action_readable_allow_pirate_ships: "Let AI of player {0} build raider ships."
+  
   trigger_action_name_enable_AI_fog_limitations: "AI: Enable AI fog Limitations"
   trigger_action_description_enable_AI_fog_limitations: "Enables AI fog Limitations."
   trigger_action_readable_enable_AI_fog_limitations: "Enable AI fog Limitations."
@@ -146,10 +150,17 @@ en-GB:
   trigger_condition_description_state: "Triggers if a unit has a particular state."
   trigger_condition_readable_state: "If unit type(s) {0} at location {1} owned by player {2} have state {3} equal to {4}."
   
+  trigger_action_name_reveal_all: "Player: Reveal all"
+  trigger_action_description_reveal_all: "Reveals all tiles for a player."
+  trigger_action_readable_reveal_all: "Spawn an eye at location {1} for player {0} seeing all."
   
   trigger_action_name_reveal_all_but_hidden: "Player: Reveal all but hidden"
   trigger_action_description_reveal_all_but_hidden: "Reveals all tiles except hidden tiles for a player."
   trigger_action_readable_reveal_all_but_hidden: "Spawn an eye at location {1} for player {0} seeing all except hidden tiles."
+  
+  trigger_action_name_reveal_all_but_over: "Player: Reveal all but over"
+  trigger_action_description_reveal_all_but_over: "Reveals all tiles for a player, but limited to LOS."
+  trigger_action_readable_reveal_all_but_over: "Spawn an eye at location {1} for player {0} seeing all things it has direct line of sight to."
   
   trigger_action_name_transfer_gold_robbed: "Data: Transfer Gold Robbed"
   trigger_action_description_transfer_gold_robbed: "Sets/Gets gold robbed by player."

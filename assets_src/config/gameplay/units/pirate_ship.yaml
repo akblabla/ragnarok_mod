@@ -58,7 +58,7 @@ unitClasses:
 #      - betterMerge
     battleUnitCount: 1
     passiveMultiplier: 1.5
-    sightRange: 5
+    sightRange: 4
     isHiddenInCutsceneEditor: true
 
 units:

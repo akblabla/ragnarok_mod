@@ -54,7 +54,7 @@ unitClasses:
       - commander
       - type.ground.light
     battleUnitCount: 1
-    sightRange: 3
+    sightRange: 5
     isCommander: true
     grooveId: cherrystone_defence
 

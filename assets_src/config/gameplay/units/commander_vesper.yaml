@@ -56,6 +56,7 @@ unitClasses:
       - commander
       - type.ground.light
     battleUnitCount: 1
+    sightRange: 5
     isCommander: true
     grooveId: smoke_screen
     deathVerbId: death_drop_crown

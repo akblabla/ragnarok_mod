@@ -1,6 +1,6 @@
 ---
 tilesets:
-  - id: wall
+  - id: wall_no_blocking
     biomes:
       - types: [grass]
         spriteSheet: tilesets

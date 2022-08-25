@@ -21,7 +21,7 @@ unitClasses:
       - thief
       - type.ground.hideout
     battleUnitCount: 1
-    sightRange: 5
+    sightRange: 4
     deathVerbId: death_give_gold 
     startingStates:
       - id: gold

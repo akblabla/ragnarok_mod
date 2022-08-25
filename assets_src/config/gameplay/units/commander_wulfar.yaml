@@ -55,6 +55,7 @@ unitClasses:
       - type.ground.light
       - tall
     battleUnitCount: 1
+    sightRange: 5
     isCommander: true
     grooveId: golf
 

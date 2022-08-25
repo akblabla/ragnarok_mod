@@ -19,7 +19,7 @@ unitClasses:
       - throw_crown
     battleUnitCount: 1
     loadCapacity: 2
-    sightRange: 3
+    sightRange: 5
     transportTags: [ type.ground.light, type.ground.heavy, type.amphibious, type.ground.hideout ]
     isHiddenInCutsceneEditor: true
 ...

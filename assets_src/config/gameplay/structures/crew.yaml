@@ -6,18 +6,18 @@ unitClasses:
     aiPriority: 0
     cargoSpace: 1
     battleUnitCount: 1
-    damageMultiplier: 1
+    damageMultiplier: 0
     movement: sea_building
     isStructure: true
     canReinforce: false
     canBeReinforced: false
     canBeCaptured: false
-    income: 100
+    hasTurn: false
     cost: 500
-    regeneration: 10
+    regeneration: 100
     tags:
       - structure
-    sightRange: 1
+    sightRange: 0
 
 units:
   - class: crew
