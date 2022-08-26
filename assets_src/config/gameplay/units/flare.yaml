@@ -12,6 +12,7 @@ unitClasses:
     tags:
       - summon
       - type.air
+      - type.scout
     battleUnitCount: 1
     canAttack: false
     canSeeOverTerrain: true

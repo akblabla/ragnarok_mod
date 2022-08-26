@@ -74,8 +74,8 @@ function Actions.updateGizmos(context)
 			Ragnarok.gizmoActivateWhenStoodOn(gizmo)
 		end
     end
-	for i, location in ipairs(Ragnarok.getLinkedLocations()) do
-		Ragnarok.linkGizmoStateWithActivators(location)
+	for i, linkedLocation in ipairs(Ragnarok.getLinkedLocations()) do
+		Ragnarok.linkGizmoStateWithActivators(linkedLocation)
 	end
 end
 
@@ -286,9 +286,10 @@ end
 
 
 function Actions.linkGizmoStateWithActivators(context)
-    -- "Link all gizmos with the activators at location {0}."
+    -- "Link all gizmos with the activators at location {0}. (Lock when activated? = {1})"
     local location = context:getLocation(0)
-	Ragnarok.addLinkedLocation(location)
+    local locked = context:getBoolean(1)
+	Ragnarok.addLinkedLocation(location,locked)
 end
 
 function Actions.gizmoActiveWhenStoodOn(context)

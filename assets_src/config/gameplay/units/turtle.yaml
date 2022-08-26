@@ -60,12 +60,13 @@ unitClasses:
     tags:
       - turtle
       - type.sea
+      - type.scout
     verbs:
       - rescue
       - pick_up_crown
       - throw_crown
     battleUnitCount: 4
     passiveMultiplier: 1.5
-    sightRange: 6
+    sightRange: 5
     scout: true
 ...

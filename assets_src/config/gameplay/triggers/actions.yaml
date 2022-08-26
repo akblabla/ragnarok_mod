@@ -53,6 +53,7 @@ triggerActions:
   - id: link_gizmo_state_with_activators
     parameters:
       - type: location_star
+      - type: boolean
 
   - id: gizmo_active_when_stood_on
     parameters:

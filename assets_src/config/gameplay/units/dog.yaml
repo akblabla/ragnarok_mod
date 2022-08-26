@@ -54,6 +54,7 @@ unitClasses:
       - dog
       - type.ground.light
       - animal
+      - type.scout
     battleUnitCount: 4
     passiveMultiplier: 1.5
     sightRange: 5

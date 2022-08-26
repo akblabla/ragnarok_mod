@@ -168,7 +168,7 @@ en-GB:
   
   trigger_action_name_link_gizmo_state_with_activators: "Gizmo: Link Gizmo State with Activators"
   trigger_action_description_link_gizmo_state_with_activators: "Activate all gizmos when all activator gizmos are triggered."
-  trigger_action_readable_link_gizmo_state_with_activators: "Link all gizmos with the activators at location {0}."
+  trigger_action_readable_link_gizmo_state_with_activators: "Link all gizmos with the activators at location {0}. (Lock when activated? = {1})"
   
   trigger_action_name_gizmo_active_when_stood_on: "Gizmo: Activate when stood on"
   trigger_action_description_gizmo_active_when_stood_on: "Activate Gizmos at location when stood on."

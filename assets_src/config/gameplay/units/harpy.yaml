@@ -59,7 +59,7 @@ unitClasses:
       - throw_crown
     battleUnitCount: 4
     passiveMultiplier: 1.25
-    sightRange: 5
+    sightRange: 6
     canSeeOverTerrain: true
 
 

@@ -52,6 +52,6 @@ unitClasses:
       - throw_crown
     battleUnitCount: 1
     passiveMultiplier: 1.5
-    sightRange: 4
+    sightRange: 5
     isHiddenInCutsceneEditor: true
 ...

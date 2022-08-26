@@ -49,7 +49,7 @@ function Ragnarok.init()
 		conditions = {},
 		players = {1, 0, 0, 0, 0, 0, 0, 0}
 	}
-	Ragnarok.addHiddenTrigger(updateGizmosTrigger,false)
+	Ragnarok.addHiddenTrigger(updateGizmosTrigger,true)
 end
 
 local cantAttackBuildingsSet = {}
@@ -66,31 +66,14 @@ local occurences = {}
 
 local linkedLocations = {}
 
-function Ragnarok.addLinkedLocation(location)
-	table.insert(linkedLocations, location)
+function Ragnarok.addLinkedLocation(location,locked)
+	table.insert(linkedLocations, {location = location, locked = locked})
 end
 
 function Ragnarok.getLinkedLocations()
 	return linkedLocations
 end
 
-function Ragnarok.linkGizmoStateWithActivators(location)
-	local isActivated = true
-	local actuators = {}
-    for i, gizmo in ipairs(Wargroove.getGizmosAtLocation(location)) do
-		if Ragnarok.isActivator(gizmo) then
-			if gizmo:getState() == false then
-				isActivated = false
-			end
-		else
-			table.insert(actuators, gizmo)
-		end
-    end
-	if actuators and Ragnarok.wouldAnyStatesChange(actuators, isActivated) then
-		Wargroove.waitTime(0.3)
-		Ragnarok.setStates(actuators, isActivated, playSound)
-	end
-end
 
 function Ragnarok.resetOccurences()
 	occurences = {}
@@ -255,6 +238,7 @@ function Ragnarok.cantAttackBuildings(playerId)
 end
 
 local activator = {}
+local lockedGizmos = {}
 local invertedGizmos = {}
 
 local gizmoSoundMapOn = {
@@ -279,7 +263,38 @@ local gizmoSoundMapOff = {
 -- local gizmoSoundMapOn = {["pressure_plate"] = "cutscene/stoneScrape1",["drawbridge_left"] = "cutscene/drawbridgeDrop",["drawbridge_right"] = "cutscene/drawbridgeDrop",["drawbridge_top"] = "cutscene/drawbridgeDrop",["drawbridge_down"] = "cutscene/drawbridgeDrop"}
 -- local gizmoSoundMapOff = {["pressure_plate"] = "cutscene/stoneScrape2",["drawbridge_left"] = "cutscene/drawbridgeRaise",["drawbridge_right"] = "cutscene/drawbridgeRaise",["drawbridge_top"] = "cutscene/drawbridgeRaise",["drawbridge_down"] = "cutscene/drawbridgeRaise"}
 
+function Ragnarok.linkGizmoStateWithActivators(linkedLocation)
+	local isActivated = true
+	local anyActivators = false
+	local actuators = {}
+    for i, gizmo in ipairs(Wargroove.getGizmosAtLocation(linkedLocation.location)) do
+		if Ragnarok.isActivator(gizmo) then
+			anyActivators = true
+			if gizmo:getState() == false then
+				isActivated = false
+			end
+		else
+			table.insert(actuators, gizmo)
+		end
+    end
+	if anyActivators and actuators and Ragnarok.wouldAnyStatesChange(actuators, isActivated) then
+		Wargroove.waitTime(0.1)
+		Wargroove.playMapSound("cutscene/swordSheath", actuators[1].pos)
+		Wargroove.waitTime(0.3)
+		Ragnarok.setStates(actuators, isActivated, playSound)
+		if isActivated and linkedLocation.locked then
+			for i, gizmo in ipairs(Wargroove.getGizmosAtLocation(linkedLocation.location)) do
+				lockedGizmos[Ragnarok.generateGizmoKey(gizmo)] = true
+			end
+			
+		end
+	end
+end
+
 function Ragnarok.setState(gizmo, state, playSound)
+	if lockedGizmos[Ragnarok.generateGizmoKey(gizmo)] == true then
+		return {changedState = false, soundPlayed = false}
+	end
 	if playSound == nil then playSound = true end
 	print("Ragnarok.setState(gizmo,state) starts here")
 	print(invertedGizmos[Ragnarok.generateGizmoKey(gizmo)]) 
@@ -305,6 +320,9 @@ function Ragnarok.setState(gizmo, state, playSound)
 end
 
 function Ragnarok.wouldStateChange(gizmo, state)
+	if lockedGizmos[Ragnarok.generateGizmoKey(gizmo)] == true then
+		return false
+	end
 	local changedState = Ragnarok.getGizmoState(gizmo) ~= state
 	return changedState
 end

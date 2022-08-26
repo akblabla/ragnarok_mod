@@ -54,6 +54,6 @@ unitClasses:
       - throw_crown
     battleUnitCount: 1
     passiveMultiplier: 2.5
-    sightRange: 4
+    sightRange: 5
     deathVerbId: death_drop_crown
 ...

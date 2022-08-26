@@ -55,7 +55,7 @@ unitClasses:
       - type.amphibious
     battleUnitCount: 4
     passiveMultiplier: 2
-    sightRange: 4
+    sightRange: 5
     deathVerbId: death_drop_crown
 
 
