@@ -20,7 +20,7 @@ en-GB:
   
   #terrain
   terrain_name_rough: Cave
-  terrain_description_rough: Only ground units can enter the depths.
+  terrain_description_rough: Only ground units can enter.
   terrain_name_deck: Deck
   terrain_description_deck: The deck provides small amount of defense and doesn't impede the movement of any ground units.
   
@@ -31,6 +31,29 @@ en-GB:
   terrain_description_invisible_blocker_ocean: The cabin walls prevents all units from passing.
   terrain_description_sea_alt: Open water. Accessible only to air and naval units.
   terrain_description_river: Slows down land units. Units attacked in a river are at a distinct disadvantage.
+  terrain_name_mangrove: Mangrove
+  terrain_description_mangrove: Conceals both ground, air and naval units, but it is incredibly slow to traverse.
+  terrain_description_plains_alt: Whilst accessible to all units, plains provide little defence.
+  terrain_description_forest_alt: Forests are slow going, but provide good defence and a means of avoiding vehicles
+  terrain_name_cave_reef: Cove Reef
+  terrain_description_cave_reef: "Rocks that lie beneath the sea, slowing but also protecting naval units."
+  terrain_name_cave_sea: Cove
+  terrain_description_cave_sea: "Accessible only to naval units."
+  terrain_name_cave_beach: Cove Beach
+  terrain_description_cave_beach: "Accessible to naval and walking units. Those attacked on the beach are at a disadvantage."
+  terrain_name_cave_bridge: Cove Bridge
+  terrain_description_cave_bridge: "Cove Bridges allow ground units to travel over otherwise impassable waters."
+  terrain_name_cave_wall: Cave Wall
+  terrain_description_cave_wall: "Blocks all units."
+  terrain_name_cave_river: Cave River
+  terrain_description_cave_river: Slows down land units. Units attacked in a river are at a distinct disadvantage.
+  
+  #Fog of war gimmick tiles
+  terrain_description_forest_no_hiding: Forests are slow going, but provide good defence and a means of avoiding vehicles
+  terrain_description_forest_alt_no_hiding: Forests are slow going, but provide good defence and a means of avoiding vehicles
+  terrain_description_mountain_no_blocking: "Accessible only to walking and air units. Slow going, but confers high defence."
+  terrain_description_reef_no_hiding: "Rocks that lie beneath the sea, slowing but also protecting naval units."
+  terrain_description_wall_no_blocking: "While projectiles can travel over walls, units are unable to."
   
   terrain_name_deck: Deck
   terrain_name_outlaw_ship: Outlaw Ship

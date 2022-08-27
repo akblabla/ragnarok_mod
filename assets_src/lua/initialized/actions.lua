@@ -38,6 +38,8 @@ function Actions.populate(dst)
 	dst["unset_override_visibility"] = Actions.unsetOverrideVisibility
 	dst["allow_pirate_ships"] = Actions.allowPirateShips
 	--Hidden actions
+	dst["run_repeat_front_actions"] = Actions.runRepeatFrontActions
+	dst["run_repeat_back_actions"] = Actions.runRepeatBackActions
 	dst["setup_gizmos"] = Actions.setupGizmos
 	dst["update_gizmos"] = Actions.updateGizmos
 	dst["reset_occurence_list"] = Actions.resetOccurenceList
@@ -105,6 +107,22 @@ end
 function Actions.resetRescueList(context)
     -- "Hidden action"
 	Rescue.resetRescued()
+end
+
+function Actions.runRepeatFrontActions(context)
+    -- "Hidden action"
+	local actions = Ragnarok.getActions().repeating.front
+    for i, action in ipairs(actions) do
+        action(context)
+    end
+end
+
+function Actions.runRepeatBackActions(context)
+    -- "Hidden action"
+	local actions = Ragnarok.getActions().repeating.back
+    for i, action in ipairs(actions) do
+        action(context)
+    end
 end
 
 function Actions.setOverrideVisibility(context)

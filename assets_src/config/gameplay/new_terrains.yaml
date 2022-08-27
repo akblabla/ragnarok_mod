@@ -1,11 +1,7 @@
 ---
 terrains:
   - id: mangrove
-    name: terrain_name_river
-    biomeNames:
-      volcano: terrain_name_river_lava
-    biomeDescriptions:
-      volcano: terrain_description_lava
+    name: terrain_name_mangrove
     defenceBonus: 2
     movementCost:
       sailing: 3
@@ -14,10 +10,6 @@ terrains:
       hovering: 1
       amphibious: 2
       sea_building: 1
-    biomeMovementCosts:
-      volcano:
-        flying: 1
-        hovering: 1
     movementGroupType: land
     placeable: true
     visionBlocking: true
@@ -51,7 +43,7 @@ terrains:
       1: sea_alt
 
   - id: cave_sea
-    name: terrain_name_sea
+    name: terrain_name_cave_sea
     biomeNames:
       volcano: terrain_name_sea_lava
     biomeDescriptions:
@@ -72,7 +64,7 @@ terrains:
       1: cave_sea
 
   - id: cave_bridge
-    name: terrain_name_bridge
+    name: terrain_name_cave_bridge
     defenceBonus: 0
     movementCost:
       walking: 1
@@ -91,7 +83,7 @@ terrains:
       2: cave_bridge
 
   - id: cave_reef
-    name: terrain_name_reef
+    name: terrain_name_cave_reef
     biomeNames:
       volcano: terrain_name_reef_lava
     biomeDescriptions:
@@ -115,7 +107,7 @@ terrains:
       2: cave_reef
 
   - id: cave_river
-    name: terrain_name_river
+    name: terrain_name_cave_river
     biomeNames:
       volcano: terrain_name_river_lava
     biomeDescriptions:
@@ -138,7 +130,7 @@ terrains:
       1: cave_river
 
   - id: cave_beach
-    name: terrain_name_beach
+    name: terrain_name_cave_beach
     defenceBonus: -1
     movementCost:
       sailing: 1
@@ -211,7 +203,7 @@ terrains:
       0: rough
       
   - id: cave_wall
-    name: terrain_name_wall
+    name: terrain_name_cave_wall
     defenceBonus: 0
     movementCost: {}
     movementGroupType: land

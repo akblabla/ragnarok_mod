@@ -7,6 +7,12 @@ local Ragnarok = {}
 Ragnarok.seaTiles = {"sea","sea_alt", "ocean","reef","cave_sea", "cave_reef","cave_reef","reef_no_hiding"}
 Ragnarok.amphibiousTiles = {"river", "cave_river", "beach", "cave_beach", "mangrove"}
 Ragnarok.groundTags = {"type.ground.light", "type.ground.heavy"}
+
+local actions = {
+	start_of_match = {front = {}, back = {}},
+	end_of_match = {front = {}, back = {}},
+	repeating = {front = {}, back = {}}}
+
 function Ragnarok.init()
 	local resetOccurencesTrigger = {
 		id = "Reset Occurence List",
@@ -36,12 +42,12 @@ function Ragnarok.init()
 		players = {1, 0, 0, 0, 0, 0, 0, 0}
 	}
 	Ragnarok.addHiddenTrigger(resetRescuesTrigger,true)
-	local updateGizmosTrigger = {
-		id = "Update Gizmos",
+	local repeatFrontActionsTrigger = {
+		id = "Run Repeat Front Actions",
 		recurring = "repeat",
 		actions = {
 			{
-				id = "update_gizmos",
+				id = "run_repeat_front_actions",
 				parameters = {
 				}
 			}
@@ -49,7 +55,22 @@ function Ragnarok.init()
 		conditions = {},
 		players = {1, 0, 0, 0, 0, 0, 0, 0}
 	}
-	Ragnarok.addHiddenTrigger(updateGizmosTrigger,true)
+	Ragnarok.addHiddenTrigger(repeatFrontActionsTrigger,true)
+	local repeatBackActionsTrigger = {
+		id = "Run Repeat Back Actions",
+		recurring = "repeat",
+		actions = {
+			{
+				id = "run_repeat_back_actions",
+				parameters = {
+				}
+			}
+		},
+		conditions = {},
+		players = {1, 0, 0, 0, 0, 0, 0, 0}
+	}
+	Ragnarok.addHiddenTrigger(repeatBackActionsTrigger,false)
+	Ragnarok.addAction(Ragnarok.updateGizmos,"repeating",false)
 end
 
 local cantAttackBuildingsSet = {}
@@ -63,6 +84,43 @@ local crownStateKey = "crown"
 local flareCountTable = {}
 local fogOfWarRulesEnabled = false
 local occurences = {}
+
+function Ragnarok.getActions()
+	return actions
+end
+
+function Ragnarok.addAction(action,occurence,front)
+	if occurence == "start_of_match" then
+		if front then
+			table.insert(actions.start_of_match.front,action)
+		else
+			table.insert(actions.start_of_match.back,action)
+		end
+	elseif occurence == "end_of_match" then
+		if front then
+			table.insert(actions.end_of_match.front,action)
+		else
+			table.insert(actions.end_of_match.back,action)
+		end
+	elseif occurence == "repeating" then
+		if front then
+			table.insert(actions.repeating.front,action)
+		else
+			table.insert(actions.repeating.back,action)
+		end
+	end
+end
+
+function Ragnarok.updateGizmos(context)
+    for i, gizmo in ipairs(Wargroove.getGizmosAtLocation(location)) do
+		if gizmo.type == "pressure_plate" then
+			Ragnarok.gizmoActivateWhenStoodOn(gizmo)
+		end
+    end
+	for i, linkedLocation in ipairs(Ragnarok.getLinkedLocations()) do
+		Ragnarok.linkGizmoStateWithActivators(linkedLocation)
+	end
+end
 
 local linkedLocations = {}
 
