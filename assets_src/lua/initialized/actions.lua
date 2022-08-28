@@ -37,6 +37,7 @@ function Actions.populate(dst)
 	dst["set_override_visibility"] = Actions.setOverrideVisibility
 	dst["unset_override_visibility"] = Actions.unsetOverrideVisibility
 	dst["allow_pirate_ships"] = Actions.allowPirateShips
+    dst["ai_set_restriction"] = Actions.aiSetRestriction
 	--Hidden actions
 	dst["run_repeat_front_actions"] = Actions.runRepeatFrontActions
 	dst["run_repeat_back_actions"] = Actions.runRepeatBackActions
@@ -44,6 +45,21 @@ function Actions.populate(dst)
 	dst["update_gizmos"] = Actions.updateGizmos
 	dst["reset_occurence_list"] = Actions.resetOccurenceList
 	dst["reset_rescue_list"] = Actions.resetRescueList
+end
+
+function Actions.aiSetRestriction(context)
+    -- "Set AI restriction of {0} at {1} for {2}: Set {3} to {4}"
+    local restriction = context:getString(3)
+	print("Actions.aiSetRestriction(context) starts here")
+	print(restriction)
+    local value = context:getBoolean(4)
+    local units = context:gatherUnits(2, 0, 1)
+
+    for i, unit in ipairs(units) do
+        Wargroove.setAIRestriction(unit.id, restriction, value)
+    end
+
+    Wargroove.updateUnits(units)
 end
 
 --Local stuff
