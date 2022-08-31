@@ -27,16 +27,16 @@ local captureUnitList = {
 local valueReductionPerUnitList = {
 	archer = 0.8,
 	ballista = 0.3,
-	dog = 0.8,
+	dog = 0.65,
 	dragon = 0.8,
 	giant = 0.9,
 	harpoonship = 0.7,
-	harpy = 0.9,
+	harpy = 0.8,
 	knight = 0.9,
-	mage = 0.9,
+	mage = 0.8,
 	merman = 0.9,
 	rifleman = 0.5,
-	soldier = 0.8,
+	soldier = 0.9,
 	spearman = 0.95,
 	trebuchet = 0.5,
 	turtle = 0.8,
@@ -44,10 +44,32 @@ local valueReductionPerUnitList = {
 	witch = 0.6
 }
 
+local idealUnitRatioList = {
+	archer = 1,
+	ballista = 0.2,
+	dog = 1,
+	dragon = 0.5,
+	giant = 0.5,
+	harpoonship = 1,
+	harpy = 1,
+	knight = 1,
+	mage = 1,
+	merman = 1,
+	rifleman = 0.5,
+	soldier = 1,
+	spearman = 1,
+	trebuchet = 0.3,
+	turtle = 1,
+	warship = 1,
+	witch = 1
+}
+
+local currentUnitRatioScalingList = {}
+
 local powerMultiplierList = {
 	archer = 0.9,
 	ballista = 0.5,
-	harpy = 0.9,
+	harpy = 1.1,
 	harpoonship = 0.5,
 	mage = 0.7,
 	witch = 0
@@ -78,12 +100,11 @@ local function canUnitClassCapture(unitClassId)
 	return captureUnitList[unitClassId] == true
 end
 
-local unitCount = {}
-local enemyUnitCount = {}
+local unitCountPlayerList = {}
 local function getAirUnitPower(count)
 	local power = 0
 	for classId, amount in pairs(count) do
-		print(tostring(amount).. " "..classId)
+		-- print(tostring(amount).. " "..classId)
 		local class = Wargroove.getUnitClass(classId)
 		local isAir = false
 		for i, tag in pairs(class.tags) do
@@ -125,29 +146,156 @@ end
 
 local antiAirReluctance = 1000;
 local airThreatPerTower = 200;
-local function getUnitValue(unitClassId)
+
+local function getIncome(playerId)
+	local income = 0
+	if unitCountPlayerList[playerId]["village"] ~= nil then
+		income = income + unitCountPlayerList[playerId]["village"]*100
+	end
+	if unitCountPlayerList[playerId]["hq"] ~= nil then
+		income = income + unitCountPlayerList[playerId]["hq"]*100
+	end
+	return income
+end
+local baseLineOpportunityCost = 0.8
+local baseLineOpportunityCostScaling = 0.8
+
+local function updateUnitRatioModifier(newUnitClassId, playerId)
+	if currentUnitRatioScalingList[playerId] == nil then
+		currentUnitRatioScalingList[playerId] = {
+			archer = 0,
+			ballista = 0,
+			dog = 0,
+			dragon = 0,
+			giant = 0,
+			harpoonship = 0,
+			harpy = 0,
+			knight = 0,
+			mage = 0,
+			merman = 0,
+			rifleman = 0,
+			soldier = 0,
+			spearman = 0,
+			trebuchet = 0,
+			turtle = 0,
+			warship = 0,
+			witch = 0
+		}
+	end
+	local unitRatioNormalizationFactor = 0
+	print("summing up normalization factor")
+	for unitClassId, ratio in pairs(idealUnitRatioList) do
+		print("unit type: '" .. unitClassId .. "' has a ratio of: " .. tostring(ratio))
+		if unitClassId ~= newUnitClassId then
+			unitRatioNormalizationFactor = unitRatioNormalizationFactor+ratio
+		end
+	end
+	print("modifying table")
+	for unitClassId, ratio in pairs(idealUnitRatioList) do
+		print("unit type: '" .. unitClassId .. "' has a ratio of: " .. tostring(ratio))
+		if unitClassId ~= newUnitClassId then
+			print("Another unit class")
+			currentUnitRatioScalingList[playerId][unitClassId] = currentUnitRatioScalingList[playerId][unitClassId]-ratio/unitRatioNormalizationFactor
+		else
+			print("Current unit class")
+			currentUnitRatioScalingList[playerId][unitClassId] = currentUnitRatioScalingList[playerId][unitClassId]+1
+		end
+	end
+end
+unitRatioPenaltyPerUnit = 0.8
+local function getUnitRatioModifier(unitClassId, playerId)
+	if currentUnitRatioScalingList[playerId] == nil then
+		currentUnitRatioScalingList[playerId] = {
+			archer = 0,
+			ballista = 0,
+			dog = 0,
+			dragon = 0,
+			giant = 0,
+			harpoonship = 0,
+			harpy = 0,
+			knight = 0,
+			mage = 0,
+			merman = 0,
+			rifleman = 0,
+			soldier = 0,
+			spearman = 0,
+			trebuchet = 0,
+			turtle = 0,
+			warship = 0,
+			witch = 0
+		}
+	end
+	-- print("currentUnitRatioScalingList")
+	-- print(unitRatioPenaltyPerUnit)
+	-- print(currentUnitRatioScalingList[playerId][unitClassId])
+	-- print(result)
+	
+	local result = 1
+	local ratioScaling = currentUnitRatioScalingList[playerId][unitClassId]
+	if ratioScaling>0 then
+		result = (1-unitRatioPenaltyPerUnit)^(ratioScaling)
+	else
+		result = 2-(1-unitRatioPenaltyPerUnit)^(-ratioScaling)
+	end
+	-- print(result)
+	return result
+end
+
+local function getOpportunityCost(unitClassId, playerId)
+	local income = getIncome(playerId)
+	
+	return Wargroove.getUnitClass(unitClassId).cost * baseLineOpportunityCost*(baseLineOpportunityCostScaling)^(Wargroove.getMoney(playerId)/income)
+end
+
+local function getUnitCountPenalty(playerId)
+	local totalUnits = 0
+	for unitClassId, unitCount in ipairs(unitCountPlayerList[playerId]) do
+		totalUnits = totalUnits + unitCount
+	end
+	return totalUnits * 10
+end
+
+local function getUnitValue(unitClassId, playerId)
 	print("getUnitValue(unitClassId) starts here")
-	print("class: " .. unitClassId)
-	local value = Wargroove.getUnitClass(unitClassId).cost
+	-- print("class: " .. unitClassId)
+	local value = Wargroove.getUnitClass(unitClassId).cost+50
 	if powerMultiplierList[unitClassId] ~= nil then
 		value = value*powerMultiplierList[unitClassId]
 	end
-	print("value: " .. tostring(value))
-	local enemyAirPower = getAirUnitPower(enemyUnitCount)
-	print("enemyAirPower: " .. tostring(enemyAirPower))
-	local friendlyAntiAirPower = getAntiAirUnitPower(unitCount)
-	print("friendlyAntiAirPower: " .. tostring(friendlyAntiAirPower))
+	local enemyUnitCountList = {}
+	-- print("Summing Up Enemy Units")
+	for _playerId, unitCountList in ipairs(unitCountPlayerList) do
+		--print("_playerId: " .. _playerId)
+		if Wargroove.areEnemies(_playerId, playerId) then
+			for unitClassId, unitCount in ipairs(unitCountList) do
+				if enemyUnitCountList[unitClassId] == nil then
+					enemyUnitCountList[unitClassId] = 0
+				end
+				enemyUnitCountList[unitClassId] = enemyUnitCountList[unitClassId]+unitCount
+			end
+		end
+	end
+	-- print("value: " .. tostring(value))
+	local enemyAirPower = getAirUnitPower(enemyUnitCountList)
+	-- print("enemyAirPower: " .. tostring(enemyAirPower))
+	local friendlyAntiAirPower = getAntiAirUnitPower(unitCountPlayerList[playerId])
+	-- print("friendlyAntiAirPower: " .. tostring(friendlyAntiAirPower))
 	local enemyTowerCount = 0
-	if enemyUnitCount["tower"] ~= nil then
-		enemyTowerCount = enemyUnitCount["tower"]
+	if enemyUnitCountList["tower"] ~= nil then
+		enemyTowerCount = enemyUnitCountList["tower"]
 	end
 	local antiAirCounterBonus = calculateCounterBonus(unitClassId, enemyAirPower+enemyTowerCount*airThreatPerTower, friendlyAntiAirPower, antiAirReluctance, antiAirMultiplierList);
 	value = value + antiAirCounterBonus
-	print("antiAirCounterBonus: " .. tostring(antiAirCounterBonus))
-	if valueReductionPerUnitList[unitClassId] ~= nil and unitCount[unitClassId] ~= nil then
-		value = value*valueReductionPerUnitList[unitClassId]^unitCount[unitClassId]
+	--print("antiAirCounterBonus: " .. tostring(antiAirCounterBonus))
+	if valueReductionPerUnitList[unitClassId] ~= nil and unitCountPlayerList[playerId][unitClassId] ~= nil then
+		value = value*valueReductionPerUnitList[unitClassId]^unitCountPlayerList[playerId][unitClassId]
 	end
-	print("final value: " .. tostring(value))
+	value = value*getUnitRatioModifier(unitClassId, playerId)
+	print("ratio modifier for unit class '"..unitClassId.."' is: ".. tostring(getUnitRatioModifier(unitClassId, playerId)))
+	print(dump(currentUnitRatioScalingList[playerId],0))
+	value = value-getOpportunityCost(unitClassId, playerId)
+	value = value-getUnitCountPenalty(playerId)
+	--print("final value: " .. tostring(value))
 	return value
 end
 local soldierClass = Wargroove.getUnitClass("soldier")
@@ -164,32 +312,34 @@ local function calculateConvertedCost(producer, recruit, reserve)
 end
 
 function CustomAI.spendRest(context)
-	print("spendRest starts here")
+	-- print("spendRest starts here")
 	if context:checkState("endOfTurn") then
-		print("it is the end of the turn")
+		-- print("it is the end of the turn")
 		local playerId = Wargroove.getCurrentPlayerId();
-		print("Player of the day is: " .. tostring(playerId))
+		-- print("Player of the day is: " .. tostring(playerId))
 		if Wargroove.isHuman(playerId) == true then
 			print("Is Human")
 			return
 		end
-		print("Is AI")
-		unitCount = {}
-		enemyUnitCount = {}
+		-- print("Is AI")
+		unitCountPlayerList = {}
 		local barracksCount = 0
 		for i, unit in ipairs(Wargroove.getUnitsAtLocation(nil)) do
+			if unitCountPlayerList[unit.playerId] == nil then
+				unitCountPlayerList[unit.playerId] = {}
+			end
 			if unit.playerId == playerId then
-				if unitCount[unit.unitClassId] == nil then
-					unitCount[unit.unitClassId] = 1
+				if unitCountPlayerList[unit.playerId][unit.unitClassId] == nil then
+					unitCountPlayerList[unit.playerId][unit.unitClassId] = 1
 				else
-					unitCount[unit.unitClassId] = unitCount[unit.unitClassId] + unit.health/unit.unitClass.maxHealth
+					unitCountPlayerList[unit.playerId][unit.unitClassId] = unitCountPlayerList[unit.playerId][unit.unitClassId] + unit.health/unit.unitClass.maxHealth
 				end
 			end
 			if Wargroove.areEnemies(unit.playerId, playerId) then
-				if enemyUnitCount[unit.unitClassId] == nil then
-					enemyUnitCount[unit.unitClassId] = 1
+				if unitCountPlayerList[unit.playerId][unit.unitClassId] == nil then
+					unitCountPlayerList[unit.playerId][unit.unitClassId] = 1
 				else
-					enemyUnitCount[unit.unitClassId] = enemyUnitCount[unit.unitClassId] + unit.health/unit.unitClass.maxHealth
+					unitCountPlayerList[unit.playerId][unit.unitClassId] = unitCountPlayerList[unit.playerId][unit.unitClassId] + unit.health/unit.unitClass.maxHealth
 				end
 			end
 			if unit.unitClassId == "barracks" and unit.playerId == playerId then
@@ -208,8 +358,8 @@ function CustomAI.spendRest(context)
 		local captureUnitCount = 0
 		for unitClassId, canCapture in pairs(captureUnitList) do
 			if canCapture == true then
-				if unitCount[unitClassId] ~= nil then
-					captureUnitCount = captureUnitCount +  unitCount[unitClassId]
+				if unitCountPlayerList[playerId][unitClassId] ~= nil then
+					captureUnitCount = captureUnitCount +  unitCountPlayerList[playerId][unitClassId]
 				end
 			end
 		end
@@ -226,13 +376,13 @@ function CustomAI.spendRest(context)
 				end
 			end
 		end
-		print("ProductionBuildings detected")
+		-- print("ProductionBuildings detected")
 		for i, unit in ipairs(productionBuildings) do
-			print(unit.unitClassId)
+			-- print(unit.unitClassId)
 		end
-		print("ProductionBuildings processing initiated")
+		-- print("ProductionBuildings processing initiated")
 		for i, unit in pairs(productionBuildings) do
-			print("productionBuilding: " .. unit.unitClassId)
+			-- print("productionBuilding: " .. unit.unitClassId)
 			local relPos = {x = 0, y = 1}
 			for i = 1,4 do
 				relPos = rotate(relPos);
@@ -246,33 +396,38 @@ function CustomAI.spendRest(context)
 						if not isUnitClassBanned(recruit) and Recruit:canExecuteWithTarget(unit, unit.pos,spawnPos, recruit) then
 							print("Could recruit: " .. recruit)
 							local convertedCost = calculateConvertedCost(unit, recruit, reserve)
-							local score = getUnitValue(recruit)
+							local score = getUnitValue(recruit, playerId)
 							table.insert(productionOptions,{producerId = unit.id, spawnPos = spawnPos, convertedCost = convertedCost, score = score, recruit = recruit })
 						end
 					end
 				end
 			end
 		end
+		
 		print("Production selection starts here")
+		table.sort(productionOptions, function (k1, k2) return k1.score > k2.score end )
+		print(dump(productionOptions,0))
 		while next(productionOptions) ~= nil do
-			print("productionOptions before culling")
-			print(dump(productionOptions,0))
-			print("budget before culling: " .. tostring(budget))
-			print("reserve before culling: " .. tostring(reserve))
+--			print("productionOptions before culling")
+			-- print(dump(productionOptions,0))
+			-- print("budget before culling: " .. tostring(budget))
+			-- print("reserve before culling: " .. tostring(reserve))
 			for i = #productionOptions, 1, -1 do
 				local production = productionOptions[i]
 				if (production.convertedCost>budget and production.convertedCost>0) then
+					table.remove(productionOptions,i)
+				elseif (production.score<0) then
 					table.remove(productionOptions,i)
 				end
 			end
 			if next(productionOptions) == nil then
 				break;
 			end
-			print("productionOptions")
+			-- print("productionOptions")
 			table.sort(productionOptions, function (k1, k2) return k1.score > k2.score end )
-			print(dump(productionOptions,0))
-			print("budget: " .. tostring(budget))
-			print("reserve: " .. tostring(reserve))
+--			print(dump(productionOptions,0))
+--			print("budget: " .. tostring(budget))
+--			print("reserve: " .. tostring(reserve))
 			table.sort(productionOptions, function (k1, k2) return k1.score > k2.score end )
 			local chosenProduction = productionOptions[1]
 			local chosenProducer = Wargroove.getUnitById(chosenProduction.producerId)
@@ -284,21 +439,22 @@ function CustomAI.spendRest(context)
 				if chosenProduction.recruit == "soldier" then
 					reserve = math.max(reserve-soldierClass.cost,0)
 				end
+				updateUnitRatioModifier(chosenProduction.recruit, playerId)
 			end
-			if unitCount[chosenProduction.recruit] == nil then
-				unitCount[chosenProduction.recruit] = 1
+			if unitCountPlayerList[playerId][chosenProduction.recruit] == nil then
+				unitCountPlayerList[playerId][chosenProduction.recruit] = 1
 			else
-				unitCount[chosenProduction.recruit] = unitCount[chosenProduction.recruit] + 1
+				unitCountPlayerList[playerId][chosenProduction.recruit] = unitCountPlayerList[playerId][chosenProduction.recruit] + 1
 			end
-			print("budget after buying: " .. tostring(budget))
-			print("reserve after culling: " .. tostring(reserve))
+--			print("budget after buying: " .. tostring(budget))
+--			print("reserve after culling: " .. tostring(reserve))
 			for i = #productionOptions, 1, -1 do
 				local production = productionOptions[i]
 				if (production.spawnPos.x==chosenProduction.spawnPos.x and production.spawnPos.y==chosenProduction.spawnPos.y) or production.producerId == chosenProduction.producerId then
 					table.remove(productionOptions,i)
 				else
 					--recalculate score, just in case
-					production.score = getUnitValue(production.recruit)
+					production.score = getUnitValue(production.recruit, playerId)
 					production.convertedCost = calculateConvertedCost(Wargroove.getUnitById(production.producerId), production.recruit, reserve)
 				end
 			end

@@ -52,11 +52,64 @@ decorations:
     animation:
       undefined: decoration/bigDeco/westMountain02
       
+#Field 1
+  - id: field01
+    layer: base
+    snapToGrid: true
+    animation:
+      undefined: decoration/bigDeco/field01
+  - id: field01Layer01
+    layer: units
+    animation:
+      undefined: decoration/bigDeco/field01Layer01
+  - id: field01Layer02
+    layer: units
+    animation:
+      undefined: decoration/bigDeco/field01Layer02
+  - id: field01Layer03
+    layer: units
+    animation:
+      undefined: decoration/bigDeco/field01Layer03
+  - id: field01Layer04
+    layer: units
+    animation:
+      undefined: decoration/bigDeco/field01Layer04
+
+#Field 2
+  - id: field02
+    layer: base
+    snapToGrid: true
+    animation:
+      undefined: decoration/bigDeco/field02
+  - id: field02Layer01
+    layer: units
+    animation:
+      undefined: decoration/bigDeco/field02Layer01
+  - id: field02Layer02
+    layer: units
+    animation:
+      undefined: decoration/bigDeco/field02Layer02
+  - id: field02Layer03
+    layer: units
+    animation:
+      undefined: decoration/bigDeco/field02Layer03
+      
+
 #Normal Deco
   - id: solidBarrel
     layer: units
     animation:
       undefined: decoration/unit/solidBarrel
+  - id: windmill
+    layer: units
+    animation:
+      undefined: decoration/unit/windmill
+      
+  - id: tileCover
+    layer: ground
+    snapToGrid: true
+    animation:
+      undefined: decoration/ground/tileCover
       
   - id: NWCaveCorner
     layer: ground
