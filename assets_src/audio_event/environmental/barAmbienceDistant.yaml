@@ -1,0 +1,8 @@
+
+---
+actions:
+  - type: play
+    clips: [ sfx/environmental/bar_ambienceDistant.ogg ]
+    group: sfx
+    loop: true
+...

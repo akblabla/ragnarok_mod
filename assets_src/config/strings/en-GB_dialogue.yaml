@@ -127,6 +127,13 @@ en-GB:
   ragnarok_main3_ingameDraw_Rival_00: "I guess so, but who is going to be elected as clan chief then?"
   ragnarok_main3_ingameDraw_Wulfar_01: "This was just a show. It is a democratic election afterall. Let's go home and see the results."
   
+  #Donation
+  ragnarok_main3_ingameDonation_Wulfar_00: "Could ya hold this money for me? I have more gold to rob!"
+  ragnarok_main3_ingameDonation_Rival_00: "Uhm, thanks?"
+  ragnarok_main3_ingameDonation_Wulfar_01: "Still counts for my robbed amount. Use the gold well friend!"
+  ragnarok_main3_ingameDonation_Rival_01: "Bugger, you are right. You are a cheeky one."
+  
+  
   #Player destroys village
   ragnarok_main3_destroyVillage_Rival_00: "'Ey, you are destroying the villages?! Dirty tricks I see. You are denying my gold!"
   ragnarok_main3_destroyVillage_Wulfar_00: "Aye. The greater tactian will win this."

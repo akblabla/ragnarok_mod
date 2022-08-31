@@ -58,6 +58,7 @@ triggerActions:
   - id: gizmo_active_when_stood_on
     parameters:
       - type: location_star
+      - type: boolean
 
   - id: gizmo_toggle_when_stood_on
     parameters:

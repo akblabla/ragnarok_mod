@@ -195,7 +195,7 @@ en-GB:
   
   trigger_action_name_gizmo_active_when_stood_on: "Gizmo: Activate when stood on"
   trigger_action_description_gizmo_active_when_stood_on: "Activate Gizmos at location when stood on."
-  trigger_action_readable_gizmo_active_when_stood_on: "Activate Gizmos at location {0} if a unit or crown stands on them."
+  trigger_action_readable_gizmo_active_when_stood_on: "Activate Gizmos at location {0} if a unit or crown stands on them. (Invert? = {1})"
   
   trigger_action_name_gizmo_toggle_when_stood_on: "Gizmo: Toggle when stood on"
   trigger_action_description_gizmo_toggle_when_stood_on: "Gizmos toggle at location when stood on."
@@ -238,6 +238,8 @@ en-GB:
   ui_cutscene_background_outlaw_ship: "Outlaw Ship"
   ui_cutscene_background_outlaw_ship_right: "Outlaw Ship Mirrored"
   ui_cutscene_background_outlaw_cherry_ship: "Outlaw and Cherry Ship"
+  ui_cutscene_background_outlaw_HQ: "Outlaw HQ"
+  ui_cutscene_background_outlaw_HQ_intro: "Outlaw HQ Intro"
   
   #cutscene sound effects
   ui_cutscene_sfx_wulfar_hug: "Wulfar and Vesper Hug"
@@ -247,6 +249,8 @@ en-GB:
   
   # CUTSCENE VISUAL EFFECTS
   ui_cutscene_vfx_wulfar_vesper_hug: "Wulfar and Vesper Hug"
+  ui_cutscene_vfx_outlaw_HQ_banner: "Outlaw HQ Animated Banner"
+  ui_cutscene_vfx_one_sec_fade_in: "One Sec Fade In"
   
   #Walk cycles
   ui_cutscene_walk_type_backwards_walk: "Backwards Walk"
@@ -257,8 +261,14 @@ en-GB:
   # CUTSCENE PROPS
   ui_cutscene_prop_tavernfire: "Tavern Fire"
   ui_cutscene_prop_rays: "Light Rays"
+  ui_cutscene_prop_outlawHQ_intro_groundlight: "Outlaw HQ Intro Groundlight"
+  ui_cutscene_prop_outlawHQ_intro_windowlight: "Outlaw HQ Intro Windowlight"
+  ui_cutscene_prop_sleeping_dog_prop: "Sleeping Dog"
+  ui_cutscene_prop_outlaw_HQ_banner: "Outlaw HQ Animated Banner"
+  ui_cutscene_prop_one_sec_fade_in: "One Sec Fade In"
 
   # MUSIC
   music_name_tavern_distant: "Distant Tavern"
+  music_name_bar_ambience_distant: "Distant Tavern Ambience"
   
 ...

@@ -296,6 +296,7 @@ function Ragnarok.cantAttackBuildings(playerId)
 end
 
 local activator = {}
+local gizmoModeList = {}
 local lockedGizmos = {}
 local invertedGizmos = {}
 

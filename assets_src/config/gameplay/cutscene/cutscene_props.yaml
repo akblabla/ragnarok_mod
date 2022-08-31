@@ -123,4 +123,14 @@ cutscene_props:
     path: "backgrounds/props/tavernfire"
   - id: "rays"
     path: "backgrounds/props/rays"
+  - id: "outlawHQ_intro_groundlight"
+    path: "backgrounds/props/groundlight"
+  - id: "outlawHQ_intro_windowlight"
+    path: "backgrounds/props/windowlight"
+  - id: outlaw_HQ_banner
+    path: backgrounds/props/outlaw_HQ_banner
+  - id: sleeping_dog_prop
+    path: backgrounds/props/sleeping_dog
+  - id: one_sec_fade_in
+    path: backgrounds/props/one_sec_fade_in
 ...

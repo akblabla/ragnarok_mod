@@ -4,6 +4,10 @@ cutscene_vfx:
 
   - id: wulfar_vesper_hug
     path: fx/cutscene/wulfar_vesper_hug
+  - id: outlaw_HQ_banner
+    path: fx/cutscene/Outlaw_HQ_banner
+  - id: one_sec_fade_in
+    path: fx/cutscene/one_sec_fade_in
   - id: cutscene_teleport_fx
     path: fx/cutscene/cutscene_teleport_fx
   - id: cutscene_bluebird

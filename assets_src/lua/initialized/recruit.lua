@@ -65,7 +65,7 @@ function Recruit:canExecuteWithTarget(unit, endPos, targetPos, strParam)
 		if dist > 1 then
 			return false
 		end
-	elseif not Wargroove.isHuman(unit.playerId) then
+	elseif not Wargroove.isHuman(unit.playerId) or not Wargroove.canStandAt("balloon", targetPos) then
 		return false
 	end
 	if strParam == "pirate_ship" and not Wargroove.isHuman(unit.playerId) then

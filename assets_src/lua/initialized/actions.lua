@@ -327,8 +327,9 @@ function Actions.linkGizmoStateWithActivators(context)
 end
 
 function Actions.gizmoActiveWhenStoodOn(context)
-    -- "Gizmos activate when stood on location {0}."
+    -- "Activate Gizmos at location {0} if a unit or crown stands on them. (Invert? = {1})"
 	local location = context:getLocation(0)
+    local inverted = context:getBoolean(1)
 	
     for i, gizmo in ipairs(Wargroove.getGizmosAtLocation(location)) do
 		Ragnarok.setActivator(gizmo, true)

@@ -21,7 +21,7 @@ end
 
 function pirate_deposit:canExecuteWithTarget(unit, endPos, targetPos, strParam)    
     local targetUnit = Wargroove.getUnitAt(targetPos)
-    return targetUnit and (targetUnit.unitClassId == "port" or targetUnit.unitClassId == "commander_flagship_wulfar" or targetUnit.unitClassId == "commander_flagship_rival") and Wargroove.areAllies(unit.playerId, targetUnit.playerId)
+    return targetUnit and (targetUnit.unitClassId == "port" or targetUnit.unitClassId == "commander_flagship_wulfar" or targetUnit.unitClassId == "commander_flagship_rival" or targetUnit.unitClassId == "warship") and Wargroove.areAllies(unit.playerId, targetUnit.playerId)
 end
 
 function pirate_deposit:execute(unit, targetPos, strParam, path)
@@ -41,6 +41,9 @@ function pirate_deposit:execute(unit, targetPos, strParam, path)
     Wargroove.changeMoney(targetUnit.playerId, amountToDeposit)
 	Ragnarok.addGoldRobbed(unit.playerId, tonumber(amountToDeposit))
 	Ragnarok.reportOccation("pirate_ship_deposited")
+	if unit.playerId ~= targetUnit.playerId then
+		Ragnarok.reportOccation("pirate_ship_donation")
+	end
 end
 
 function pirate_deposit:generateOrders(unitId, canMove)

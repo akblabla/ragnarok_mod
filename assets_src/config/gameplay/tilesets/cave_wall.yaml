@@ -5,7 +5,7 @@ tilesets:
     biomes:
       - types: [grass,tropical, ice, desert, volcano]
         spriteSheet: terrain_tilesets
-        spriteBase: grass_cave_wall_tileset
+        spriteBase: grass_cave_wall_tileset_2
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_city
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod

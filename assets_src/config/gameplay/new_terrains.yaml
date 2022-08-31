@@ -2,7 +2,7 @@
 terrains:
   - id: mangrove
     name: terrain_name_mangrove
-    defenceBonus: 2
+    defenceBonus: 3
     movementCost:
       sailing: 3
       walking: 3
@@ -48,7 +48,7 @@ terrains:
       volcano: terrain_name_sea_lava
     biomeDescriptions:
       volcano: terrain_description_lava
-    defenceBonus: 1
+    defenceBonus: 2
     movementCost:
       sailing: 1
       hovering: 1
@@ -65,7 +65,7 @@ terrains:
 
   - id: cave_bridge
     name: terrain_name_cave_bridge
-    defenceBonus: 0
+    defenceBonus: 1
     movementCost:
       walking: 1
       riding: 1
@@ -88,7 +88,7 @@ terrains:
       volcano: terrain_name_reef_lava
     biomeDescriptions:
       volcano: terrain_description_lava
-    defenceBonus: 2
+    defenceBonus: 3
     movementCost:
       sailing: 2
       hovering: 1
@@ -112,7 +112,7 @@ terrains:
       volcano: terrain_name_river_lava
     biomeDescriptions:
       volcano: terrain_description_lava
-    defenceBonus: -2
+    defenceBonus: -1
     movementCost:
       sailing: 1
       walking: 2
@@ -131,7 +131,7 @@ terrains:
 
   - id: cave_beach
     name: terrain_name_cave_beach
-    defenceBonus: -1
+    defenceBonus: -0
     movementCost:
       sailing: 1
       walking: 1

@@ -4,4 +4,9 @@ music:
   - id: tavern_distant
     name: music_name_tavern_distant
     audioEvent: music/tavernDistant
+    
+  - id: bar_ambiance_distant
+    name: music_name_bar_ambience_distant
+    audioEvent: environmental/barAmbienceDistant
+    isAmbience: true
 ...

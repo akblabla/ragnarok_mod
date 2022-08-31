@@ -5,7 +5,7 @@ unitClasses:
     name: unit_class_name_flare
     cost: 150
     damageMultiplier: 2
-    movement: flying
+    movement: hovering
     moveRange: 2
     aiPriority: 0.1
     weapons: []

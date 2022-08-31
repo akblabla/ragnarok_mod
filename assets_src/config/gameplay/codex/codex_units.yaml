@@ -1,7 +1,7 @@
 ---
 codex:
 
-- id: unit_soldier_outlaws
+- id: unit_soldier_outlaw
   category: units
   faction: outlaw
   name: unit_name_soldier_outlaws
@@ -34,7 +34,7 @@ codex:
     title: ui_codex_damage_matrix
     unitClass: soldier
 
-- id: unit_spearman_outlaws
+- id: unit_spearman_outlaw
   category: units
   faction: outlaw
   name: unit_name_spearman_outlaws
@@ -67,7 +67,7 @@ codex:
     title: ui_codex_damage_matrix
     unitClass: spearman
 
-- id: unit_dog_outlaws
+- id: unit_dog_outlaw
   category: units
   faction: outlaw
   name: unit_name_dog_outlaws
@@ -100,7 +100,7 @@ codex:
     title: ui_codex_damage_matrix
     unitClass: dog
     
-- id: unit_wagon_outlaws
+- id: unit_wagon_outlaw
   category: units
   faction: outlaw
   name: unit_name_wagon_outlaws
@@ -134,7 +134,7 @@ codex:
     title: ui_codex_damage_matrix
     unitClass: wagon
     
-- id: unit_archer_outlaws
+- id: unit_archer_outlaw
   category: units
   faction: outlaw
   name: unit_name_archer_outlaws
@@ -167,7 +167,7 @@ codex:
     title: ui_codex_damage_matrix
     unitClass: archer
     
-- id: unit_mage_outlaws
+- id: unit_mage_outlaw
   category: units
   faction: outlaw
   name: unit_name_mage_outlaws
@@ -200,7 +200,7 @@ codex:
     title: ui_codex_damage_matrix
     unitClass: mage
     
-- id: unit_warship_outlaws
+- id: unit_warship_outlaw
   category: units
   faction: outlaw
   name: unit_name_warship_outlaws
@@ -233,7 +233,7 @@ codex:
     title: ui_codex_damage_matrix
     unitClass: warship
     
-- id: unit_harpoonship_outlaws
+- id: unit_harpoonship_outlaw
   category: units
   faction: outlaw
   name: unit_name_harpoonship_outlaws
@@ -266,7 +266,7 @@ codex:
     title: ui_codex_damage_matrix
     unitClass: harpoonship
     
-- id: unit_dragon_outlaws
+- id: unit_dragon_outlaw
   category: units
   faction: outlaw
   name: unit_name_dragon_outlaws
@@ -299,7 +299,7 @@ codex:
     title: ui_codex_damage_matrix
     unitClass: dragon
     
-- id: unit_knight_outlaws
+- id: unit_knight_outlaw
   category: units
   faction: outlaw
   name: unit_name_knight_outlaws
@@ -332,7 +332,7 @@ codex:
     title: ui_codex_damage_matrix
     unitClass: knight
     
-- id: unit_trebuchet_outlaws
+- id: unit_trebuchet_outlaw
   category: units
   faction: outlaw
   name: unit_name_trebuchet_cherrystone
@@ -365,7 +365,7 @@ codex:
     title: ui_codex_damage_matrix
     unitClass: trebuchet
     
-- id: unit_merman_outlaws
+- id: unit_merman_outlaw
   category: units
   faction: outlaw
   name: unit_name_merman_outlaws
@@ -398,7 +398,7 @@ codex:
     title: ui_codex_damage_matrix
     unitClass: merman
     
-- id: unit_turtle_outlaws
+- id: unit_turtle_outlaw
   category: units
   faction: outlaw
   name: unit_name_turtle_outlaws
@@ -431,7 +431,7 @@ codex:
     title: ui_codex_damage_matrix
     unitClass: turtle
     
-- id: unit_witch_outlaws
+- id: unit_witch_outlaw
   category: units
   faction: outlaw
   name: unit_name_witch_outlaws
@@ -464,7 +464,7 @@ codex:
     title: ui_codex_damage_matrix
     unitClass: witch
     
-- id: unit_harpy_outlaws
+- id: unit_harpy_outlaw
   category: units
   faction: outlaw
   name: unit_name_harpy_outlaws
@@ -497,7 +497,7 @@ codex:
     title: ui_codex_damage_matrix
     unitClass: harpy
     
-- id: unit_balloon_outlaws
+- id: unit_balloon_outlaw
   category: units
   faction: outlaw
   name: unit_name_balloon_outlaws
@@ -531,7 +531,7 @@ codex:
     title: ui_codex_damage_matrix
     unitClass: balloon
 
-- id: unit_giant_outlaws
+- id: unit_giant_outlaw
   category: units
   faction: outlaw
   name: unit_name_giant_outlaws
@@ -564,7 +564,7 @@ codex:
     title: ui_codex_damage_matrix
     unitClass: giant
     
-- id: unit_ballista_outlaws
+- id: unit_ballista_outlaw
   category: units
   faction: outlaw
   name: unit_name_ballista_outlaws
@@ -597,7 +597,7 @@ codex:
     title: ui_codex_damage_matrix
     unitClass: ballista
     
-- id: unit_travelboat_outlaws
+- id: unit_travelboat_outlaw
   category: units
   faction: outlaw
   name: unit_name_travelboat_outlaws
@@ -631,7 +631,7 @@ codex:
     title: ui_codex_damage_matrix
     unitClass: travelboat
     
-- id: unit_villager_outlaws
+- id: unit_villager_outlaw
   category: units
   faction: outlaw
   name: unit_name_villager_outlaws
@@ -665,7 +665,7 @@ codex:
     title: ui_codex_damage_matrix
     unitClass: villager
     
-- id: unit_thief_outlaws
+- id: unit_thief_outlaw
   category: units
   faction: outlaw
   name: unit_name_thief_outlaws
@@ -699,7 +699,7 @@ codex:
     title: ui_codex_damage_matrix
     unitClass: thief
     
-- id: unit_rifleman_outlaws
+- id: unit_rifleman_outlaw
   category: units
   faction: outlaw
   name: unit_name_rifleman_outlaws
