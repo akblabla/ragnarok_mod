@@ -54,7 +54,7 @@ decorations:
       
 #Field 1
   - id: field01
-    layer: base
+    layer: ground
     snapToGrid: true
     animation:
       undefined: decoration/bigDeco/field01
@@ -77,7 +77,7 @@ decorations:
 
 #Field 2
   - id: field02
-    layer: base
+    layer: ground
     snapToGrid: true
     animation:
       undefined: decoration/bigDeco/field02
@@ -92,9 +92,60 @@ decorations:
   - id: field02Layer03
     layer: units
     animation:
-      undefined: decoration/bigDeco/field02Layer03
+      undefined: decoration/bigDeco/field02Layer02
       
-
+#Field 3
+  - id: field03
+    layer: ground
+    snapToGrid: true
+    animation:
+      undefined: decoration/bigDeco/field03
+  - id: field03Layer01
+    layer: units
+    animation:
+      undefined: decoration/bigDeco/field03Layer01
+     
+#Field 4
+  - id: field04
+    layer: ground
+    snapToGrid: true
+    animation:
+      undefined: decoration/bigDeco/field04
+  - id: field04Layer01
+    layer: units
+    animation:
+      undefined: decoration/bigDeco/field04Layer01
+      
+#Field 5
+  - id: field05
+    layer: ground
+    snapToGrid: true
+    animation:
+      undefined: decoration/bigDeco/field05
+  - id: field05Layer01
+    layer: units
+    animation:
+      undefined: decoration/bigDeco/field05Layer01
+  - id: field05Layer02
+    layer: units
+    animation:
+      undefined: decoration/bigDeco/field05Layer02
+      
+#Field 6
+  - id: field06
+    layer: ground
+    snapToGrid: true
+    animation:
+      undefined: decoration/bigDeco/field06
+  - id: field06Layer01
+    layer: units
+    animation:
+      undefined: decoration/bigDeco/field06Layer01
+  - id: field06Layer02
+    layer: units
+    animation:
+      undefined: decoration/bigDeco/field06Layer02
+      
 #Normal Deco
   - id: solidBarrel
     layer: units
