@@ -30,7 +30,7 @@ biomes:
     name: biome_name_ice
     severeWeather: snow
   - id: tropical
-    name: biome_name_grass
+    name: biome_name_tropical
     severeWeather: rain
 
   - id: volcano

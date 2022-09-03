@@ -192,11 +192,26 @@ function Actions.revealAll(context)
     -- end
 end
 
+local idOffset = 0
 function Actions.revealAllButHidden(context)
     -- "Spawn an eye at location {1} for player {0} seeing all except hidden tiles."
     local playerId = context:getPlayerId(0)
     local location = context:getLocation(1)
-    local revealerId = Wargroove.spawnUnit(playerId, findCentreOfLocation(location), "reveal_all_but_hidden", false)
+	local spawnLocation = findCentreOfLocation(location)
+	local hidingSpotId = Wargroove.getUnitIdAtXY(spawnLocation.x, spawnLocation.y)
+	local oldHidingSpot = Wargroove.getUnitById(hidingSpotId)
+    local revealerId = Wargroove.spawnUnit(playerId, spawnLocation, "reveal_all_but_hidden", false)
+	Wargroove.clearCaches()
+	if hidingSpotId ~= Wargroove.getUnitIdAtXY(spawnLocation.x, spawnLocation.y) then
+		Wargroove.removeUnit(hidingSpotId)
+		Wargroove.removeUnit(revealerId)
+		hidingSpotId = Wargroove.spawnUnit(playerId, spawnLocation, hidingSpot.unitClassId, false)
+		hidingSpot = Wargroove.getUnitById(hidingSpotId)
+		hidingSpot.pos.x = oldHidingSpot.pos.x
+		hidingSpot.pos.y = oldHidingSpot.pos.y
+		Wargroove.updateUnit(hidingSpot)
+		revealerId = Wargroove.spawnUnit(playerId, spawnLocation, "reveal_all_but_hidden", false)
+	end
 	Wargroove.setVisibleOverride(revealerId, false)
 
 	Wargroove.setShadowVisible(revealerId, false)

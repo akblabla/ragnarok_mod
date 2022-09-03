@@ -732,4 +732,37 @@ codex:
     layoutType: no_image
     title: ui_codex_damage_matrix
     unitClass: rifleman
+    
+- id: unit_pirate_ship_outlaw
+  category: units
+  faction: outlaw
+  name: unit_name_pirate_ship_outlaws
+  icon:
+    image: units/warship/cherrystone/portrait_warship_cherrystone_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: pirate_ship
+    faction: outlaw
+    title: unit_name_pirate_ship_outlaws
+    text: codex_unit_pirate_ship_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: pirate_ship
+    faction: outlaw
+    title: unit_name_pirate_ship_outlaws
+    text: codex_unit_pirate_ship_critical_text
+  - pageType: stats
+    layoutType: animation
+    animation: ui/codex/content/unit_pirate_ship_crit
+    title: unit_name_pirate_ship_outlaws
+    text: unit_description_pirate_ship
+    unitClass: pirate_ship
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: pirate_ship
 ...

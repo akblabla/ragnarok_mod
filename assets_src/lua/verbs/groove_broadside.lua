@@ -234,16 +234,14 @@ function Broadside:getTargetsFromAreaList(unit,originPos, direction, areaList)
 			_tile.y = tile.x*direction.y+tile.y*direction.x + originPos.y
 			print(dump(_tile,1))
 			print("got here -3")
-			if self:canSeeTarget(_tile) then
-				local u = Wargroove.getUnitAt(_tile)
-				print("got here -2.25")
-				if (u ~= nil) and Wargroove.areEnemies(u.playerId, unit.playerId) then
-					print("got here -2.5")
-					local distance = math.sqrt((u.pos.y-originPos.y)^2+(u.pos.x-originPos.x)^2)
-					print("got here -2")
-					table.insert(targetList, {pos = u.pos, timing = timeBetweenShots*(i-1)+distance/projVel})
-					print("got here -1")
-				end
+			local u = Wargroove.getUnitAt(_tile)
+			print("got here -2.25")
+			if (u ~= nil) and Wargroove.areEnemies(u.playerId, unit.playerId) then
+				print("got here -2.5")
+				local distance = math.sqrt((u.pos.y-originPos.y)^2+(u.pos.x-originPos.x)^2)
+				print("got here -2")
+				table.insert(targetList, {pos = u.pos, timing = timeBetweenShots*(i-1)+distance/projVel})
+				print("got here -1")
 			end
 		end
 	end

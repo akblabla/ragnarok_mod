@@ -1,6 +1,6 @@
 ---
 - data:
-    tileWidth: 24
-    tileHeight: 48
+    pivotX: 0
+    pivotY: 24
     atlas: terrain_tall_tilesets
 ...

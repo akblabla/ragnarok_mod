@@ -23,7 +23,7 @@ tilesets:
         infoScreenOffset: 70
         fillColour: '#76231c'
     primaryConnect: [undefined, ocean, deck, invisible_blocker_ocean, invisible_wall_ocean]
-    secondaryConnect: [sea_alt, cave_sea, beach, cave_beach, ocean, reef, bridge, invisible_wall_sea, wall, rough, river, mangrove, cave_river, forest, forest_alt, cave_wall, mountain, road, cobblestone, carpet, plains, plains_alt]
+    secondaryConnect: [sea_alt, cave_sea, beach, cave_beach, ocean, reef, bridge, invisible_wall_sea, wall, rough, brush, brush_invis, river, mangrove, cave_river, forest, forest_alt, cave_wall, mountain, road, cave_road, cobblestone, carpet, plains, plains_alt]
     decayTo: sea_alt
     tiles:
       - { x: 0, y: 0, adj: "e s se !n !w !nw" }

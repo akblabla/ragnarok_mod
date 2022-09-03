@@ -65,6 +65,12 @@ verbs:
     scriptName: verbs/pirate_deposit
     aiUses: true
     
+  - id: pirate_claim
+    icon: ui/icons/unit_action_icon_capture.png
+    name: groove_name_heal_aura
+    targetColour: target
+    scriptName: verbs/pirate_claim
+    
   - id: attack_board
     icon: ui/icons/unit_action_icon_attack.png
     name: ui_unit_verbs_board

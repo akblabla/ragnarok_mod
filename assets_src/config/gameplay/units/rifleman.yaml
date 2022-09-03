@@ -8,6 +8,9 @@ weapons:
     horizontalAndVerticalExtraWidth: 1
     terrainExclusion:
       - forest
+      - forest_alt
+      - forest_no_hide
+      - mangrove
     baseDamage:
       land: 1
     tagDamage:

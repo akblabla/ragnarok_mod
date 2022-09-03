@@ -3,7 +3,7 @@ tilesets:
   - id: river
     biomes:
       - types: [grass,tropical]
-        spriteSheet: tilesets
+        spriteSheet: terrain_tilesets
         spriteBase: river_tileset_000
         waterSpriteBase: river_tileset_001
         portraitSpriteSheet: terrain/terrain_portraits
@@ -16,7 +16,7 @@ tilesets:
         infoScreenOffset: 70
         fillColour: '#286ab1'
       - types: [ice]
-        spriteSheet: tilesets
+        spriteSheet: terrain_tilesets
         spriteBase: river_tileset_000
         waterSpriteBase: river_tileset_001
         portraitSpriteSheet: terrain/terrain_portraits
@@ -29,7 +29,7 @@ tilesets:
         infoScreenOffset: 70
         fillColour: '#1659a8'
       - types: [desert]
-        spriteSheet: tilesets
+        spriteSheet: terrain_tilesets
         spriteBase: river_tileset_000
         waterSpriteBase: river_tileset_001
         portraitSpriteSheet: terrain/terrain_portraits
@@ -42,7 +42,7 @@ tilesets:
         infoScreenOffset: 70
         fillColour: '#1659a8'
       - types: [volcano]
-        spriteSheet: tilesets
+        spriteSheet: terrain_tilesets
         spriteBase: river_tileset_000
         waterSpriteBase: river_tileset_001
         portraitSpriteSheet: terrain/terrain_portraits

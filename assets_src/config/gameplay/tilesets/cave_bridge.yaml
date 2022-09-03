@@ -3,11 +3,11 @@ tilesets:
   - id: cave_bridge
     biomes:
       - types: [grass,tropical]
-        spriteSheet: tilesets
-        spriteBase: bridge_tileset_000
-        foregroundSpriteBase: bridge_tileset_001
+        spriteSheet: terrain_tilesets
+        spriteBase: cave_bridge_tileset_000
+        foregroundSpriteBase: cave_bridge_tileset_001
         foregroundBaseLine: 18
-        waterSpriteBase: bridge_tileset_002
+        waterSpriteBase: cave_bridge_tileset_002
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_bridge
         battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
@@ -18,11 +18,11 @@ tilesets:
         infoScreenOffset: 75
         fillColour: '#2a2542'
       - types: [ice]
-        spriteSheet: tilesets
-        spriteBase: snow_bridge_tileset_000
-        foregroundSpriteBase: snow_bridge_tileset_001
+        spriteSheet: terrain_tilesets
+        spriteBase: cave_bridge_tileset_000
+        foregroundSpriteBase: cave_bridge_tileset_001
         foregroundBaseLine: 18
-        waterSpriteBase: snow_bridge_tileset_002
+        waterSpriteBase: cave_bridge_tileset_002
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_snow_bridge
         battleBackgroundSpriteSheet: backgrounds/snow_battlescreen_extendedbackgrounds
@@ -33,11 +33,11 @@ tilesets:
         infoScreenOffset: 75
         fillColour: '#2a2542'
       - types: [desert]
-        spriteSheet: tilesets
-        spriteBase: sand_bridge_tileset_000
-        foregroundSpriteBase: sand_bridge_tileset_001
+        spriteSheet: terrain_tilesets
+        spriteBase: cave_bridge_tileset_000
+        foregroundSpriteBase: cave_bridge_tileset_001
         foregroundBaseLine: 18
-        waterSpriteBase: sand_bridge_tileset_002
+        waterSpriteBase: cave_bridge_tileset_002
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_sand_bridge
         battleBackgroundSpriteSheet: backgrounds/sand_battlescreen_extendedbackgrounds
@@ -48,11 +48,11 @@ tilesets:
         infoScreenOffset: 75
         fillColour: '#2a2542'
       - types: [volcano]
-        spriteSheet: tilesets
-        spriteBase: volcanic_bridge_tileset_000
-        foregroundSpriteBase: volcanic_bridge_tileset_001
+        spriteSheet: terrain_tilesets
+        spriteBase: cave_bridge_tileset_000
+        foregroundSpriteBase: cave_bridge_tileset_001
         foregroundBaseLine: 18
-        waterSpriteBase: volcanic_bridge_tileset_002
+        waterSpriteBase: cave_bridge_tileset_002
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_volcanic_bridge
         battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
@@ -63,35 +63,35 @@ tilesets:
         infoScreenOffset: 75
         fillColour: '#2a2542'
     primaryConnect: [undefined, bridge, cave_bridge]
-    secondaryConnect: [plains, rough, plains_alt, cave_wall, forest, forest_alt, brush, mountain, road, wall, cobblestone, carpet]
+    secondaryConnect: [plains, rough, plains_alt, cave_wall, forest, forest_alt, brush, brush_invis, mountain, road, cave_road, wall, cobblestone, carpet]
     decayTo: ":below"
     tiles:
       - { x: 0, y: 0, adj: "!w !e" }
       - { x: 1, y: 0, adj: "!w e" }
       - { x: 1, y: 0, adj: "!w" }
       - { x: 2, y: 0, adj: "w e" }
-      - { x: 2, y: 0, adj: "w" }
-      - { x: 2, y: 0, adj: "e" }
+      - { x: 5, y: 3, adj: "w" }
+      - { x: 4, y: 3, adj: "e" }
       - { x: 3, y: 0, adj: "w !e" }
       - { x: 3, y: 0, adj: "!e" }
 
       - { x: 0, y: 1, adj: "!n s" }
-      - { x: 0, y: 1, adj: "!n" }
+      - { x: 6, y: 1, adj: "!n" }
       - { x: 1, y: 1, adj: "!n !s" }
       - { x: 2, y: 1, adj: "w s e" }
       - { x: 3, y: 1, adj: "s e" }
       - { x: 4, y: 1, adj: "w s" }
 
       - { x: 0, y: 2, adj: "n s" }
-      - { x: 0, y: 2, adj: "n" }
-      - { x: 0, y: 2, adj: "s" }
+      - { x: 5, y: 2, adj: "n" }
+      - { x: 5, y: 1, adj: "s" }
       - { x: 1, y: 2, adj: "n e s" }
       - { x: 2, y: 2, adj: "w n e" }
       - { x: 3, y: 2, adj: "n e" }
       - { x: 4, y: 2, adj: "w n" }
 
       - { x: 0, y: 3, adj: "n !s" }
-      - { x: 0, y: 3, adj: "!s" }
+      - { x: 6, y: 0, adj: "!s" }
       - { x: 1, y: 3, adj: "n w s" }
       - { x: 2, y: 3, adj: "n e s w" }
       - { x: 3, y: 3, adj: "", default: true }

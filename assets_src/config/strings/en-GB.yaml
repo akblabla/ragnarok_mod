@@ -17,6 +17,8 @@ en-GB:
   ui_unit_verbs_spawn_flare_1: Spawn Flare[1]
   ui_unit_verbs_spawn_flare_2: Spawn Flare[2]
   ui_unit_verbs_spawn_flare_many: Spawn Flare[3+]
+  #biomes
+  biome_name_tropical: Tropical
   
   #terrain
   terrain_name_rough: Cave
@@ -47,6 +49,12 @@ en-GB:
   terrain_description_cave_wall: "Blocks all units."
   terrain_name_cave_river: Cave River
   terrain_description_cave_river: Slows down land units. Units attacked in a river are at a distinct disadvantage.
+  terrain_name_brush: Brush
+  terrain_description_brush: The Brush provides limited defense. Cavalry and wheeled units are slowed.
+  terrain_name_brush_grass: Field
+  terrain_description_brush_grass: Fields provides limited defense. Cavalry and wheeled units are slowed.
+  terrain_name_cave_road: Cave Road
+  terrain_description_cave_road: Underground roads speeds along wheeled units, but only provide limited defense.
   
   #Fog of war gimmick tiles
   terrain_description_forest_no_hiding: Forests are slow going, but provide good defence and a means of avoiding vehicles
@@ -93,8 +101,8 @@ en-GB:
   groove_name_all_caps_groove_area_damage_rival: "FIRE BOMBS"
   
   unit_class_name_pirate_ship: Raider Ship
-  unit_description_pirate_ship: "Can steal gold from structures. It can't attack whilst loaded. Critical hit against enemies adjacent to allies."
-  unit_name_pirate_ship: Pirate Ship
+  unit_description_pirate_ship: "Can steal gold from structures. It can't attack whilst loaded. Critical hits whilst fighting adjancent to land tiles."
+  unit_name_pirate_ship_outlaws: Pirate Ship
   
   unit_class_name_flare: Flare
   unit_description_flare: Reveals hidden units in an area. It expires at the end of the turn.

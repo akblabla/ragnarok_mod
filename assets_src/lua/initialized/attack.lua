@@ -120,7 +120,7 @@ function Attack:canExecuteWithTarget(unit, endPos, targetPos, strParam)
 	end
 	if targetInSea and isGround and #weapons == 1 and weapons[1].maxRange == 1 then
 		for i, tag in ipairs(targetUnit.unitClass.tags) do
-			if tag == "type.sea" or tag == "type.amphibious" then
+			if (tag == "type.sea" or tag == "type.amphibious") and unit.unitClassId ~= "mage" then
 				return false
 			end
 		end

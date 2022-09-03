@@ -2,7 +2,7 @@
 terrains:
   - id: mangrove
     name: terrain_name_mangrove
-    defenceBonus: 3
+    defenceBonus: 2
     movementCost:
       sailing: 3
       walking: 3
@@ -42,6 +42,24 @@ terrains:
       0: [plains, plains_alt]
       1: sea_alt
 
+  - id: cave_road
+    name: terrain_name_cave_road
+    defenceBonus: 1
+    movementCost:
+      walking: 1
+      riding: 1
+      flying: 2
+      hovering: 1
+      wheels: 1
+      amphibious: 2
+      land_building: 1
+      indoor_building: 1
+    movementGroupType: land
+    placeable: true
+    tilesets:
+      0: rough
+      2: cave_road
+
   - id: cave_sea
     name: terrain_name_cave_sea
     biomeNames:
@@ -52,6 +70,7 @@ terrains:
     movementCost:
       sailing: 1
       hovering: 1
+      flying: 2
       amphibious: 1
       sea_building: 1
     biomeMovementCosts:
@@ -69,6 +88,8 @@ terrains:
     movementCost:
       walking: 1
       riding: 1
+      wheels: 1
+      flying: 2
       hovering: 1
       amphibious: 1
       sailing: 1
@@ -91,6 +112,7 @@ terrains:
     defenceBonus: 3
     movementCost:
       sailing: 2
+      flying: 2
       hovering: 1
       amphibious: 1
       sea_building: 1
@@ -115,6 +137,7 @@ terrains:
     defenceBonus: -1
     movementCost:
       sailing: 1
+      flying: 2
       walking: 2
       riding: 4
       hovering: 1
@@ -135,6 +158,7 @@ terrains:
     movementCost:
       sailing: 1
       walking: 1
+      flying: 2
       riding: 1
       hovering: 1
       amphibious: 1
@@ -172,6 +196,10 @@ terrains:
 
   - id: brush
     name: terrain_name_brush
+    biomeNames:
+      grass: terrain_name_brush_grass
+    biomeDescriptions:
+      grass: terrain_description_brush_grass
     defenceBonus: 2
     movementCost:
       walking: 1
@@ -187,6 +215,28 @@ terrains:
     tilesets:
       0: [plains, plains_alt]
       1: brush
+
+  - id: brush_invis
+    name: terrain_name_brush
+    biomeNames:
+      grass: terrain_name_brush_grass
+    biomeDescriptions:
+      grass: terrain_description_brush_grass
+    defenceBonus: 2
+    movementCost:
+      walking: 1
+      riding: 2
+      wheels: 3
+      flying: 1
+      hovering: 1
+      amphibious: 3
+      land_building: 1
+      indoor_building: 1
+    movementGroupType: land
+    placeable: true
+    tilesets:
+      0: [plains, plains_alt]
+      1: brush_invis
 
   - id: forest_alt
     name: terrain_name_forest
@@ -212,6 +262,8 @@ terrains:
       walking: 1
       riding: 1
       hovering: 1
+      wheels: 2
+      flying: 2
       amphibious: 2
       land_building: 1
       indoor_building: 1

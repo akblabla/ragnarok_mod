@@ -21,7 +21,7 @@ function Unload:canExecuteWithTarget(unit, endPos, targetPos, strParam)
     local tags = unit.unitClass.tags
     for i, tag in ipairs(tags) do
         if tag == "type.sea" then
-            if Wargroove.getTerrainNameAt(endPos) ~= "beach" and Wargroove.getTerrainNameAt(endPos) ~= "river" then
+            if Wargroove.getTerrainNameAt(endPos) ~= "beach" and Wargroove.getTerrainNameAt(endPos) ~= "river" and Wargroove.getTerrainNameAt(endPos) ~= "cave_beach" and Wargroove.getTerrainNameAt(endPos) ~= "cave_river" then
                 return false
             end
         end

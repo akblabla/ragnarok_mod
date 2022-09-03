@@ -26,10 +26,10 @@ weapons:
       
       flagship: 0.3
       pirate_ship: 0.55
-      warship: 0.4
+      warship: 0.45
       harpoonship: 0.7
       turtle: 0.1
-      travelboat: 0.6
+      travelboat: 0.65
       merman: 0.2
 unitClasses:
   - id: pirate_ship
@@ -63,8 +63,8 @@ unitClasses:
 
 units:
   - class: pirate_ship
-    faction: cherrystone
-    name: unit_name_pirate_ship
+    faction: outlaw
+    name: unit_name_pirate_ship_outlaws
     mapAnimation: units/raider/cherrystone/map_raider_cherrystone
     battleAnimation: units/warship/cherrystone/battle_warship_cherrystone
     smallPortrait: units/warship/cherrystone/portrait_warship_cherrystone_small.png

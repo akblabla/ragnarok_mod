@@ -4,8 +4,8 @@ tilesets:
     decayTo: plains
     biomes:
       - types: [grass,tropical, ice, desert, volcano]
-        spriteSheet: terrain_tilesets
-        spriteBase: grass_cave_wall_tileset_2
+        spriteSheet: terrain_tall_tilesets
+        spriteBase: grass_cave_wall_tileset_tall
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_city
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod

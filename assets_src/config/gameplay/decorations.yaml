@@ -17,16 +17,6 @@ decorations:
     snapToGrid: true
     animation:
       undefined: decoration/bigDeco/shipForeground
-  - id: shadowMapMission4
-    layer: ground
-    snapToGrid: true
-    animation:
-      undefined: decoration/bigDeco/shadowMapMission4
-  - id: shadowMapMission4Foreground
-    layer: sky
-    snapToGrid: true
-    animation:
-      undefined: decoration/bigDeco/shadowMapMission4
   - id: shipBridge
     layer: units
     animation:
@@ -51,6 +41,16 @@ decorations:
     snapToGrid: true
     animation:
       undefined: decoration/bigDeco/westMountain02
+  - id: map4VoidMap
+    layer: sky
+    snapToGrid: true
+    animation:
+      undefined: decoration/bigDeco/map4VoidMap
+  - id: map6VoidMap
+    layer: sky
+    snapToGrid: true
+    animation:
+      undefined: decoration/bigDeco/map6VoidMap
       
 #Field 1
   - id: field01
@@ -147,6 +147,16 @@ decorations:
       undefined: decoration/bigDeco/field06Layer02
       
 #Normal Deco
+  - id: cabbageField
+    layer: ground
+    animation:
+      undefined: decoration/unit/carbage_field
+      
+  - id: potatoField
+    layer: ground
+    animation:
+      undefined: decoration/unit/potato_field
+      
   - id: solidBarrel
     layer: units
     animation:
@@ -181,13 +191,13 @@ decorations:
   - id: mountain_river01_cave_west
     layer: ground
     snapToGrid: true
-    snapOffset: [4, -3]
+    snapOffset: [8, -3]
     animation:
       undefined: decoration/water/mountainriver01_cave_west
   - id: mountain_river01_cave_east
     layer: ground
     snapToGrid: true
-    snapOffset: [13, -3]
+    snapOffset: [9, -3]
     animation:
       undefined: decoration/water/mountainriver01_cave_east
   - id: stalagmite01

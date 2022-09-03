@@ -14,37 +14,40 @@ weapons:
       - cobblestone
       - forest
       - forest_alt
+      - forest_alt_no_hiding
       - mountain
+      - mountain_no_blocking
       - road
       - rough
       - cave_bridge
+      - brush
     baseDamage:
       water: 1
       land: 1
     tagDamage:
     
-      archer: 0.5
-      soldier: 0.45
-      villager: 0.5
-      spearman: 0.4
-      dog: 0.5
+      archer: 0.3
+      soldier: 0.25
+      villager: 0.3
+      spearman: 0.2
+      dog: 0.3
       wagon: 0
-      knight: 0.2
+      knight: 0.15
       trebuchet: 0
       ballista: 0
-      mage: 0.4
+      mage: 0.25
       structure: 0.1
-      giant: 0.1
-      commander: 0.2
-      rifleman: 0.4
-      thief: 0.5
+      giant: 0.05
+      commander: 0.15
+      rifleman: 0.25
+      thief: 0.3
 
       warship: 0.8
       harpoonship: 0.35
       turtle: 0.50
       travelboat: 0.55
       merman: 1.1
-      flagship: 0.2
+      flagship: 0.3
       pirate_ship: 0.75
 
 unitClasses:

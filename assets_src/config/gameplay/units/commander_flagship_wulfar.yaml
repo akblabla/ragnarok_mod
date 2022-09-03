@@ -49,6 +49,7 @@ unitClasses:
       - id: flagship_cannon
     verbs:
       - rescue
+      - pirate_claim
     cargoSpace: 2
     tags:
       - flagship

@@ -26,7 +26,7 @@ function Load:canExecuteWithTarget(unit, endPos, targetPos, strParam)
     local targetTags = targetUnit.unitClass.tags
     for i, tag in ipairs(targetTags) do
         if tag == "type.sea" then
-            if Wargroove.getTerrainNameAt(targetUnit.pos) ~= "beach" and Wargroove.getTerrainNameAt(targetUnit.pos) ~= "river" then
+            if Wargroove.getTerrainNameAt(targetUnit.pos) ~= "beach" and Wargroove.getTerrainNameAt(targetUnit.pos) ~= "cave_beach" and Wargroove.getTerrainNameAt(targetUnit.pos) ~= "cave_river" and Wargroove.getTerrainNameAt(targetUnit.pos) ~= "river" then
                 return false
             end
         end

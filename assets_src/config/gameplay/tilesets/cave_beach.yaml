@@ -54,12 +54,12 @@ tilesets:
         iconSprite: ":img:ui/codex/icons/icon_terrain_cave_beach.png"
         infoScreenOffset: 75
         fillColour: '#6d5e56'
-    primaryConnect: [undefined, plains, rough, plains_alt, mountain, forest, forest_alt, brush, road, wall, cobblestone, carpet, rough, cave_wall]
+    primaryConnect: [undefined, plains, rough, plains_alt, mountain, forest, forest_alt, brush, brush_invis, road, cave_road, wall, cobblestone, carpet, rough, cave_wall]
     secondaryConnect: [beach, cave_beach]
     tertiaryConnect: [sea_alt, cave_sea, ocean, reef, cave_reef, bridge, cave_bridge, river, mangrove, cave_river]
-    decayTo: sea_alt
+    decayTo: cave_sea
     validator:
-      decayTo: sea_alt
+      decayTo: cave_sea
     tiles:
       - { x: 0, y: 0, adj: "n w !e !s #se" }
       - { x: 1, y: 0, adj: "n !e !w #s" }
