@@ -128,6 +128,13 @@ triggerActions:
       - type: player_neutral_star
       - type: operation
       - type: integer
+      
+  - id: modify_healing_potion_count
+    parameters:
+      - type: player_neutral_star
+      - type: operation
+      - type: integer
+      
 #Normally hidden triggers
   - id: set_conditional_location_highlight
     parameters:

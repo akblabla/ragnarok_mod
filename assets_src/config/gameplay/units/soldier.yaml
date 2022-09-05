@@ -49,6 +49,7 @@ unitClasses:
       - load
       - pick_up_crown
       - throw_crown
+      - healing_potion
     tags:
       - soldier
       - type.ground.light

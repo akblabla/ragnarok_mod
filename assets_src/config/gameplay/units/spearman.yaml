@@ -48,11 +48,12 @@ unitClasses:
       - load
       - pick_up_crown
       - throw_crown
+      - healing_potion
     tags:
       - spearman
       - type.ground.light
     battleUnitCount: 4
-    sightRange: 5
+    sightRange: 4
     deathVerbId: death_drop_crown
     passiveMultiplier: 1.5
     

@@ -17,6 +17,7 @@ unitClasses:
       - bypass_gate
       - pick_up_crown
       - throw_crown
+      - healing_potion
     tags:
       - thief
       - type.ground.hideout

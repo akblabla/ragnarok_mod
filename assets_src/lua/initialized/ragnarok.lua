@@ -71,6 +71,8 @@ function Ragnarok.init()
 	}
 	Ragnarok.addHiddenTrigger(repeatBackActionsTrigger,false)
 	Ragnarok.addAction(Ragnarok.updateGizmos,"repeating",false)
+	Ragnarok.addAction(Ragnarok.updateGizmos,"repeating",true)
+	Ragnarok.addAction(Ragnarok.regenerateCrownBearer,"repeating",true)
 end
 
 local cantAttackBuildingsSet = {}
@@ -87,6 +89,22 @@ local occurences = {}
 
 function Ragnarok.getActions()
 	return actions
+end
+
+function Ragnarok.regenerateCrownBearer(context)
+	if crownBearerID ~= nil and context:checkState("startOfTurn") then
+		local crownBearer = Wargroove.getUnitById(crownBearerID)
+		local currentTurnPlayerId = Wargroove.getCurrentPlayerId()
+		if currentTurnPlayerId == crownBearer.playerId or currentTurnPlayerId == Wargroove.getPlayerChildOf(crownBearer.playerId) then
+			if crownBearer.health<crownBearer.unitClass.maxHealth then
+                Wargroove.playMapSound("unitHealed", crownBearer.pos)
+				crownBearer:setHealth(crownBearer.health+10,crownBearerID)
+				Wargroove.updateUnit(crownBearer)
+                Wargroove.spawnMapAnimation(crownBearer.pos, 0, "fx/heal_unit")
+                Wargroove.waitTime(0.2)
+			end
+		end
+	end
 end
 
 function Ragnarok.addAction(action,occurence,front)

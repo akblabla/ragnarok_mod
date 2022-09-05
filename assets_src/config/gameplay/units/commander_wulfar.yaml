@@ -50,6 +50,9 @@ unitClasses:
     verbs:
       - load
       - capture
+      - pick_up_crown
+      - throw_crown
+      - healing_potion
     tags:
       - commander
       - type.ground.light

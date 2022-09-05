@@ -1,16 +1,15 @@
 ---
 
 verbs:
-  - id: betterMerge
-    icon: ui/icons/grooves/unit_action_icon_inspire.png
-    name: ui_unit_verbs_better_merge
+  - id: healing_potion
+    icon: ui/icons/grooves/unit_action_icon_heal.png
+    name: ui_unit_verbs_healing_potion
     targetColour: target
     targetOutlineColour: target_outline
+    splashOutlineColour: heal_outline
     targetted: true
-    directTarget: true                                  # This verb targets a specific unit
-    scriptName: verbs/better_merge
-    #aiUses: true
-
+    splashRadius: 3
+    scriptName: verbs/healing_potion
 
   - id: pick_up_crown
     icon: ui/icons/grooves/unit_action_icon_inspire.png

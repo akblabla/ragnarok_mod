@@ -13,7 +13,18 @@ tilesets:
         iconSpriteSheet: ui
         iconSprite: terrain_icons_wall
         infoScreenOffset: 80
-      - types: [desert,tropical]
+      - types: [tropical]
+        spriteSheet: tilesets
+        spriteBase: grass_wall_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_city
+        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_wall
+        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_road_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_wall
+        infoScreenOffset: 80
+      - types: [desert]
         spriteSheet: tilesets
         spriteBase: sand_wall_tileset
         portraitSpriteSheet: terrain/terrain_portraits

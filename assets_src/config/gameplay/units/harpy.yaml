@@ -57,6 +57,7 @@ unitClasses:
       - rescue
       - pick_up_crown
       - throw_crown
+      - healing_potion
     battleUnitCount: 4
     passiveMultiplier: 1.25
     sightRange: 6

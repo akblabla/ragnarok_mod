@@ -30,6 +30,7 @@ function Actions.populate(dst)
 	dst["force_action"] = Actions.forceAction
 	dst["place_crown"] = Actions.placeCrown
 	dst["modify_flare_count"] = Actions.modifyFlareCount
+	dst["modify_healing_potion_count"] = Actions.modifyHealingPotionCount
 	dst["enable_AI_fog_limitations"] = Actions.enableAIFogLimitations
 	dst["reveal_all"] = Actions.revealAll
 	dst["reveal_all_but_hidden"] = Actions.revealAllButHidden
@@ -278,6 +279,16 @@ function Actions.transferGoldRobbed(context)
 	if transfer == "store" then
 		context:setMapCounter(2, Ragnarok.getGoldRobbed(playerId))
 	end
+end
+
+local HealingPotion = require "verbs/healing_potion"
+function Actions.modifyHealingPotionCount(context)
+    -- "Modify the number of healing potions owned by {0}"
+    local playerId = context:getPlayerId(0)
+    local operation = context:getOperation(1)
+    local value = context:getInteger(2)
+    local previous = HealingPotion.getCharges(playerId)
+	HealingPotion.setCharges(playerId, operation(previous, value))
 end
 
 function Actions.modifyFlareCount(context)

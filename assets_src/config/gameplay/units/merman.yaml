@@ -50,6 +50,7 @@ unitClasses:
       - load
       - pick_up_crown
       - throw_crown
+      - healing_potion
     tags:
       - merman
       - type.amphibious

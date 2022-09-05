@@ -20,6 +20,7 @@ unitClasses:
       - pick_up_crown
       - throw_crown
       - pirate_deposit
+      - healing_potion
     battleUnitCount: 1
     isRecruitable: false
     isPlaceable: false

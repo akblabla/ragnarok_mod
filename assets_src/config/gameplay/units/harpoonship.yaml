@@ -41,11 +41,12 @@ unitClasses:
       - rescue
       - pick_up_crown
       - throw_crown
+      - healing_potion
     tags:
       - harpoonship
       - type.sea
     battleUnitCount: 1
     passiveMultiplier: 1.5
-    sightRange: 6
+    sightRange: 5
 
 ...

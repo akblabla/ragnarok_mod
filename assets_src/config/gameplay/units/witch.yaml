@@ -33,6 +33,7 @@ unitClasses:
       - spell_hex
       - pick_up_crown
       - throw_crown
+      - healing_potion
     battleUnitCount: 4
     passiveMultiplier: 2.0
     sightRange: 7

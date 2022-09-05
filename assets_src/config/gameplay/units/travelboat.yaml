@@ -17,9 +17,10 @@ unitClasses:
       - unload
       - pick_up_crown
       - throw_crown
+      - healing_potion
     battleUnitCount: 1
     loadCapacity: 2
-    sightRange: 5
+    sightRange: 4
     transportTags: [ type.ground.light, type.ground.heavy, type.amphibious, type.ground.hideout ]
     isHiddenInCutsceneEditor: true
 ...

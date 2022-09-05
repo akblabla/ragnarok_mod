@@ -51,6 +51,7 @@ unitClasses:
       - pirate_claim
       - pick_up_crown
       - throw_crown
+      - healing_potion
     battleUnitCount: 1
     passiveMultiplier: 1.5
     sightRange: 5

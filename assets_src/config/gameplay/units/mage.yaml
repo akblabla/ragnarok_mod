@@ -59,6 +59,7 @@ unitClasses:
       - spell_heal
       - pick_up_crown
       - throw_crown
+      - healing_potion
     battleUnitCount: 4
     passiveMultiplier: 1.5
     sightRange: 5

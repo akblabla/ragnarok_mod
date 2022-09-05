@@ -17,6 +17,7 @@ unitClasses:
       - unload
       - pick_up_crown
       - throw_crown
+      - healing_potion
     battleUnitCount: 1
     loadCapacity: 2
     canSeeOverTerrain: true

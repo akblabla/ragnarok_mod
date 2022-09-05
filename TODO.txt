@@ -1,7 +1,5 @@
 Mod todo list:
 
-Finish Tropical Cave Background
-Tropical Cave River Background
 Tropical Cave Sea Background
 Tropical Cave Bridge Background
 
@@ -11,16 +9,13 @@ Grass Cave Background
 Grass Cave River Background
 Grass Cave Sea Background
 Grass Cave Bridge Background
-
-Fix up Cutthroat Portrait sprite
+Grass Brush Background
 
 Make Big Rival Portrait sprite
 
 Pirate Ship Battle Animations
 
 Flag Ship Battle Animations
-
-Flag Ship Map Animations
 
 Finish Garland Animation
 
