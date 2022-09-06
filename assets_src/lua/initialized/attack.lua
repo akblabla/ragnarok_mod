@@ -2,6 +2,7 @@ local Wargroove = require "wargroove/wargroove"
 local OldAttack = require "verbs/attack"
 local Combat = require "wargroove/combat"
 local Ragnarok = require "initialized/ragnarok"
+local VisionTracker = require "initialized/vision_tracker"
 
 
 local Attack = {}
@@ -88,7 +89,7 @@ function Attack:canExecuteWithTarget(unit, endPos, targetPos, strParam)
         end
     end
     local targetUnit = Wargroove.getUnitAt(targetPos)
-	if Ragnarok.usingFogOfWarRules() and bruteForceCheckIfVisibleInStealthyTile(unit.playerId, targetPos) == false then
+	if Ragnarok.usingFogOfWarRules() and VisionTracker.canSeeTile(unit.playerId,targetPos) == false then--bruteForceCheckIfVisibleInStealthyTile(unit.playerId, targetPos) == false then
 		return false
 	end
     if not targetUnit or not Wargroove.areEnemies(unit.playerId, targetUnit.playerId) then

@@ -3,8 +3,23 @@ local Events = require "wargroove/events"
 local Ragnarok = require "initialized/ragnarok"
 local Rescue = require "verbs/rescue"
 local Recruit = require "initialized/recruit"
+local VisionTracker = require "initialized/vision_tracker"
 
 local Actions = {}
+
+local function dump(o,level)
+   if type(o) == 'table' then
+      local s = '\n' .. string.rep("   ", level) .. '{\n'
+      for k,v in pairs(o) do
+         if type(k) ~= 'number' then k = '"'..k..'"' end
+         s = s .. string.rep("   ", level+1) .. '['..k..'] = ' .. dump(v,level+1) .. ',\n'
+      end
+      return s .. string.rep("   ", level) .. '}'
+   else
+      return tostring(o)
+   end
+end
+
 
 -- This is called by the game when the map is loaded.
 function Actions.init()
@@ -39,14 +54,21 @@ function Actions.populate(dst)
 	dst["unset_override_visibility"] = Actions.unsetOverrideVisibility
 	dst["allow_pirate_ships"] = Actions.allowPirateShips
     dst["ai_set_restriction"] = Actions.aiSetRestriction
+	dst["set_location_to_vision"] = Actions.setLocationToVision
 	--Hidden actions
+	dst["run_start_front_actions"] = Actions.runStartFrontActions
+	dst["run_start_back_actions"] = Actions.runStartBackActions
 	dst["run_repeat_front_actions"] = Actions.runRepeatFrontActions
 	dst["run_repeat_back_actions"] = Actions.runRepeatBackActions
+	dst["run_end_front_actions"] = Actions.runEndFrontActions
+	dst["run_end_back_actions"] = Actions.runEndBackActions
 	dst["setup_gizmos"] = Actions.setupGizmos
 	dst["update_gizmos"] = Actions.updateGizmos
 	dst["reset_occurence_list"] = Actions.resetOccurenceList
 	dst["reset_rescue_list"] = Actions.resetRescueList
 end
+
+
 
 function Actions.aiSetRestriction(context)
     -- "Set AI restriction of {0} at {1} for {2}: Set {3} to {4}"
@@ -126,6 +148,22 @@ function Actions.resetRescueList(context)
 	Rescue.resetRescued()
 end
 
+function Actions.runStartFrontActions(context)
+    -- "Hidden action"
+	local actions = Ragnarok.getActions().start_of_match.front
+    for i, action in ipairs(actions) do
+        action(context)
+    end
+end
+
+function Actions.runStartBackActions(context)
+    -- "Hidden action"
+	local actions = Ragnarok.getActions().start_of_match.back
+    for i, action in ipairs(actions) do
+        action(context)
+    end
+end
+
 function Actions.runRepeatFrontActions(context)
     -- "Hidden action"
 	local actions = Ragnarok.getActions().repeating.front
@@ -137,6 +175,22 @@ end
 function Actions.runRepeatBackActions(context)
     -- "Hidden action"
 	local actions = Ragnarok.getActions().repeating.back
+    for i, action in ipairs(actions) do
+        action(context)
+    end
+end
+
+function Actions.runEndFrontActions(context)
+    -- "Hidden action"
+	local actions = Ragnarok.getActions().end_of_match.front
+    for i, action in ipairs(actions) do
+        action(context)
+    end
+end
+
+function Actions.runEndBackActions(context)
+    -- "Hidden action"
+	local actions = Ragnarok.getActions().end_of_match.back
     for i, action in ipairs(actions) do
         action(context)
     end
@@ -232,6 +286,27 @@ function Actions.revealAllButOver(context)
 	coroutine.yield()
 	coroutine.yield()
 	Wargroove.updateFogOfWar(0)
+end
+
+function Actions.setLocationToVision(context)
+    -- "Set location {0} to the vision of player {1}."
+    local location = context:getLocation(0)
+    local playerId = context:getPlayerId(1)
+
+	local mapSize = Wargroove.getMapSize()
+	local allTiles = {}
+	for x=0, mapSize.x-1 do
+		for y=0, mapSize.y-1 do
+			allTiles[x+mapSize.x*y+1] = {x=x,y=y}
+		end
+	end
+	local visibleTiles = {}
+	for j, checkedTile in ipairs(allTiles) do
+		if VisionTracker.canSeeTile(playerId,checkedTile) then
+			table.insert(visibleTiles,checkedTile)
+		end
+	end
+	location:setArea(visibleTiles)
 end
 
 function Actions.setState(context)
@@ -330,20 +405,6 @@ function Actions.changeObjectiveWith3Counters(context)
 
     Wargroove.changeObjective(superString)
 end
-
-function dump(o,level)
-   if type(o) == 'table' then
-      local s = '\n' .. string.rep("   ", level) .. '{\n'
-      for k,v in pairs(o) do
-         if type(k) ~= 'number' then k = '"'..k..'"' end
-         s = s .. string.rep("   ", level+1) .. '['..k..'] = ' .. dump(v,level+1) .. ',\n'
-      end
-      return s .. string.rep("   ", level) .. '}'
-   else
-      return tostring(o)
-   end
-end
-
 
 function Actions.linkGizmoStateWithActivators(context)
     -- "Link all gizmos with the activators at location {0}. (Lock when activated? = {1})"

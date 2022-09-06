@@ -235,6 +235,10 @@ en-GB:
   trigger_action_description_modify_healing_potion_count: "Modifies the amount of healing potions available to a player."
   trigger_action_readable_modify_healing_potion_count: "Modify the number of healing potions owned by {0}: {1} {2}"
   
+  trigger_action_name_set_location_to_vision: "Location: Set to Vision" 
+  trigger_action_description_set_location_to_vision: "Set location to the vision of a player"
+  trigger_action_readable_set_location_to_vision: "Set location {0} to the vision of player {1}."
+  
   trigger_condition_name_does_next_structure_exist: "Location: Next Exists"
   trigger_condition_description_does_next_structure_exist: "Triggers if a unit to the right of location exists."
   trigger_condition_readable_does_next_structure_exist: "If there are more {1} owned by {2} at {3} to the right of location {0}"

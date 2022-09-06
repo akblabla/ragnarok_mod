@@ -2,9 +2,19 @@
 
 en-GB:
 # CODEX: RULES
-  codex_rules_changes_title: "Changes from vanilla"
-  codex_rules_changes_text: "Structure counter attack damage now scales with HP like all units, structure counter damage adjusted to compensate.\n
+  codex_rules_changes: "Changes from vanilla"
+  
+  codex_rules_changes_table_of_content_title: Table of Content
+  codex_rules_changes_table_of_content_text: $codex_rules_changes_counter_title
+  
+  codex_rules_changes_counter_title: "Counter Attacks"
+  codex_rules_changes_counter_text: "Structure counter attack damage now scales with HP like all units, structure counter damage adjusted to compensate.\n
   Damage scaling for a 1% health unit is increased from 1% to 10%"
+
+  codex_rules_changes_melee_title: "Melee"
+  codex_rules_changes_melee_text: "Units with 1 range have now been seperated into two categories: Melee and Ranged. Melee units can only attack units on tiles they themselves can stand on, whilst ranged units does not check what the enemy is standing on. This means that melee units like soldiers can now attack naval units on beaches and in rivers."
+  
+
 
 # CODEX: UNIT INFORMATION
   codex_unit_soldier_outlaws_lore_text: "Cutthroats are young aspirants that start there journey by mugging farmers minding their own buisness. It is common for farmers to just pretend to be scared and hand over the money when Cutthroats' inexperience shows."

@@ -7,10 +7,23 @@ codex:
     image: ui/codex/icons/icon_rules_question.png
   pages:
   - pageType: page
-    layoutType: animation
-    animation: ui/codex/content/rules_weather
-    title: codex_rules_changes_title
-    text: codex_rules_changes_text
+    layoutType: unit_sprite
+    unitClass: commander_wulfar
+    faction: outlaw
+    title: codex_rules_changes_table_of_content_title
+    text: codex_rules_changes_table_of_content_text
+  - pageType: page
+    layoutType: unit_sprite
+    unitClass: soldier
+    faction: outlaw
+    title: codex_rules_changes_counter_title
+    text: codex_rules_changes_counter_text
+  - pageType: page
+    layoutType: unit_sprite
+    unitClass: soldier
+    faction: outlaw
+    title: codex_rules_changes_melee_title
+    text: codex_rules_changes_melee_text
 
 
 ...
