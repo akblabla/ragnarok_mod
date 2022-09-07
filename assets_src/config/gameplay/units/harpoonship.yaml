@@ -1,8 +1,4 @@
 ---
-modifyingUnitClasses:
-  - id: harpoonship
-    replace:
-        moveRange: 6
 weapons:
   - id: harpoonshipCannon
     rangeMin: 2
@@ -24,14 +20,14 @@ weapons:
       merman: 0.3
       travelboat: 0.45
       flagship: 0.1
-      pirate_ship: 0.25
+      pirate_ship: 0.2
 
 unitClasses:
   - id: harpoonship
     name: unit_class_name_harpoonship
     cost: 550
     movement: sailing
-    moveRange: 4
+    moveRange: 6
     damageMultiplier: 1
     aiPriority: 1.0
     weapons:

@@ -21,7 +21,7 @@ unitClasses:
     battleUnitCount: 1
     loadCapacity: 2
     canSeeOverTerrain: true
-    sightRange: 6
+    sightRange: 4
     transportTags: [ type.ground.light, type.amphibious, type.ground.hideout ]
 
 

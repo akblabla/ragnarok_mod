@@ -66,7 +66,7 @@ verbs:
     
   - id: pirate_claim
     icon: ui/icons/unit_action_icon_capture.png
-    name: groove_name_heal_aura
+    name: ui_unit_verbs_claim
     targetColour: target
     scriptName: verbs/pirate_claim
     

@@ -36,7 +36,7 @@ unitClasses:
       - healing_potion
     battleUnitCount: 4
     passiveMultiplier: 2.0
-    sightRange: 7
+    sightRange: 6
     canSeeOverTerrain: true
 
 ...

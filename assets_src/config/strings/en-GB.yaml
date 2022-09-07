@@ -18,6 +18,8 @@ en-GB:
   ui_unit_verbs_spawn_flare_2: Spawn Flare[2]
   ui_unit_verbs_spawn_flare_many: Spawn Flare[3+]
   ui_unit_verbs_healing_potion: Use Potion
+  ui_unit_verbs_claim: Retrieve
+  ui_unit_verbs_rescue: Rescue
   
   #biomes
   biome_name_tropical: Tropical

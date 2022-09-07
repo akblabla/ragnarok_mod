@@ -30,7 +30,7 @@ weapons:
       merman: 0.75
       travelboat: 0.65
       flagship: 0.25
-      pirate_ship: 0.8
+      pirate_ship: 0.7
       
 unitClasses:
   - id: warship

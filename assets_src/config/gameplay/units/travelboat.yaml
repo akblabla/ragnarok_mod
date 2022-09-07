@@ -20,7 +20,7 @@ unitClasses:
       - healing_potion
     battleUnitCount: 1
     loadCapacity: 2
-    sightRange: 4
+    sightRange: 3
     transportTags: [ type.ground.light, type.ground.heavy, type.amphibious, type.ground.hideout ]
     isHiddenInCutsceneEditor: true
 ...
