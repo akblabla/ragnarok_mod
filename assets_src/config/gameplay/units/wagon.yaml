@@ -1,0 +1,106 @@
+---
+
+unitClasses:
+  - id: wagon
+    name: unit_class_name_wagon
+    cost: 300
+    movement: wheels
+    moveRange: 12
+    damageMultiplier: 1
+    aiPriority: 1.5
+    weapons: []
+    tags:
+      - wagon
+      - type.ground.heavy
+      - transport
+    verbs:
+      - load
+      - unload
+    battleUnitCount: 1
+    loadCapacity: 1
+    sightRange: 3
+    transportTags: [ type.ground.light, type.amphibious, type.ground.hideout ]
+
+
+units:
+  - class: wagon
+    faction: cherrystone
+    name: unit_name_wagon_cherrystone
+    mapAnimation: units/wagon/cherrystone/map_wagon_cherrystone
+    battleAnimation: units/wagon/cherrystone/battle_wagon_cherrystone
+    smallPortrait: units/wagon/cherrystone/portrait_wagon_cherrystone_small.png
+    mediumPortrait: units/wagon/cherrystone/portrait_wagon_cherrystone_medium.png
+    mapSpeed: 6.0
+    grabPos: [15, 14]
+    deathMoveMin: 0
+    deathMoveMax: 0
+    stayAfterDeath: true
+    sounds:
+      death: gateDie
+      deathMap: unitDie
+      run: wagonEntry
+      runMap: wagonEntry
+      hit: hitWood
+      hitMap: hitWood
+
+  - class: wagon
+    faction: felheim
+    name: unit_name_wagon_felheim
+    mapAnimation: units/wagon/felheim/map_wagon_felheim
+    battleAnimation: units/wagon/felheim/battle_wagon_felheim
+    smallPortrait: units/wagon/felheim/portrait_wagon_felheim_small.png
+    mediumPortrait: units/wagon/felheim/portrait_wagon_felheim_medium.png
+    mapSpeed: 6.0
+    grabPos: [15, 14]
+    deathMoveMin: 0
+    deathMoveMax: 0
+    stayAfterDeath: true
+    sounds:
+      death: gateDie
+      deathMap: unitDie
+      run: wagonEntry
+      runMap: wagonEntry
+      hit: hitWood
+      hitMap: hitWood
+
+  - class: wagon
+    faction: heavensong
+    name: unit_name_wagon_heavensong
+    mapAnimation: units/wagon/heavensong/map_wagon_heavensong
+    battleAnimation: units/wagon/heavensong/battle_wagon_heavensong
+    smallPortrait: units/wagon/heavensong/portrait_wagon_heavensong_small.png
+    mediumPortrait: units/wagon/heavensong/portrait_wagon_heavensong_medium.png
+    mapSpeed: 6.0
+    grabPos: [15, 14]
+    deathMoveMin: 0
+    deathMoveMax: 0
+    stayAfterDeath: true
+    sounds:
+      death: gateDie
+      deathMap: unitDie
+      run: wagonEntry
+      runMap: wagonEntry
+      hit: hitWood
+      hitMap: hitWood
+
+  - class: wagon
+    faction: floran
+    name: unit_name_wagon_floran
+    mapAnimation: units/wagon/floran/map_wagon_floran
+    battleAnimation: units/wagon/floran/battle_wagon_floran
+    smallPortrait: units/wagon/floran/portrait_wagon_floran_small.png
+    mediumPortrait: units/wagon/floran/portrait_wagon_floran_medium.png
+    mapSpeed: 6.0
+    grabPos: [15, 14]
+    deathMoveMin: 0
+    deathMoveMax: 0
+    stayAfterDeath: true
+    sounds:
+      death: gateDie
+      deathMap: unitDie
+      run: wagonEntry
+      runMap: wagonEntry
+      hit: hitWood
+      hitMap: hitWood
+
+...

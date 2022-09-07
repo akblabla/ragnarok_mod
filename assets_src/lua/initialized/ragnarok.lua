@@ -57,7 +57,7 @@ function Ragnarok.init()
 		conditions = {},
 		players = {1, 0, 0, 0, 0, 0, 0, 0}
 	}
-	Ragnarok.addHiddenTrigger(startFrontActionsTrigger,true)
+	Ragnarok.addHiddenTrigger(startFrontActionsTrigger,false)
 	local startBackActionsTrigger = {
 		id = "Run Start Back Actions",
 		recurring = "start_of_match",
@@ -71,7 +71,7 @@ function Ragnarok.init()
 		conditions = {},
 		players = {1, 0, 0, 0, 0, 0, 0, 0}
 	}
-	Ragnarok.addHiddenTrigger(startBackActionsTrigger,false)
+	Ragnarok.addHiddenTrigger(startBackActionsTrigger,true)
 	
 	--Repeating Events
 	local repeatFrontActionsTrigger = {
@@ -87,7 +87,7 @@ function Ragnarok.init()
 		conditions = {},
 		players = {1, 0, 0, 0, 0, 0, 0, 0}
 	}
-	Ragnarok.addHiddenTrigger(repeatFrontActionsTrigger,true)
+	Ragnarok.addHiddenTrigger(repeatFrontActionsTrigger,false)
 	local repeatBackActionsTrigger = {
 		id = "Run Repeat Back Actions",
 		recurring = "repeat",
@@ -101,7 +101,7 @@ function Ragnarok.init()
 		conditions = {},
 		players = {1, 0, 0, 0, 0, 0, 0, 0}
 	}
-	Ragnarok.addHiddenTrigger(repeatBackActionsTrigger,false)
+	Ragnarok.addHiddenTrigger(repeatBackActionsTrigger,true)
 	
 	--End of Match Events
 	
@@ -118,7 +118,7 @@ function Ragnarok.init()
 		conditions = {},
 		players = {1, 0, 0, 0, 0, 0, 0, 0}
 	}
-	Ragnarok.addHiddenTrigger(endFrontActionsTrigger,true)
+	Ragnarok.addHiddenTrigger(endFrontActionsTrigger,false)
 	local endBackActionsTrigger = {
 		id = "Run End Back Actions",
 		recurring = "end_of_match",
@@ -132,7 +132,7 @@ function Ragnarok.init()
 		conditions = {},
 		players = {1, 0, 0, 0, 0, 0, 0, 0}
 	}
-	Ragnarok.addHiddenTrigger(endBackActionsTrigger,false)
+	Ragnarok.addHiddenTrigger(endBackActionsTrigger,true)
 	
 	Ragnarok.addAction(Ragnarok.updateGizmos,"repeating",false)
 	Ragnarok.addAction(Ragnarok.updateGizmos,"repeating",true)

@@ -89,7 +89,7 @@ triggerActions:
   - id: set_location_to_vision
     parameters:
       - type: location
-      - type: player
+      - type: player_neutral_star
       
       
   - id: transfer_gold_robbed

@@ -27,6 +27,7 @@ local sightRangeList = {
 	commander_wulfar = 5,
 	dog = 5,
 	dragon = 6,
+	flare = 6,
 	giant = 4,
 	harpoonship = 5,
 	harpy = 6,
@@ -58,7 +59,8 @@ local sightRangeList = {
 	tower = 1,
 	water_city = 1,
 	crew = 0,
-	gate_no_los_blocker = 1
+	gate_no_los_blocker = 1,
+	wagon = 3
 }
 
 local scoutList = {
@@ -96,6 +98,9 @@ local visionBlockingList = {
 	invisible_blocker_ocean = true
 }
 function getSightRange(unit)
+	if sightRangeList[unit.unitClassId] == nil then
+		return 0
+	end
 	local sightRange = sightRangeList[unit.unitClassId]
 	local weather = Wargroove.getCurrentWeather()
 	local isStructure = false
@@ -118,6 +123,34 @@ function getSightRange(unit)
 	return sightRange
 end
 
+
+local lastKnownUnitStateList = {}
+function VisionTracker.setLastKnownUnitState(unit)
+	lastKnownUnitStateList[unit.id] = {}
+	lastKnownUnitStateList[unit.id].pos = {}
+	lastKnownUnitStateList[unit.id].pos.x = unit.pos.x
+	lastKnownUnitStateList[unit.id].pos.y = unit.pos.y
+	lastKnownUnitStateList[unit.id].id = unit.id
+	lastKnownUnitStateList[unit.id].playerId = unit.playerId
+	lastKnownUnitStateList[unit.id].unitClassId = unit.unitClassId
+	lastKnownUnitStateList[unit.id].unitClass = {}
+	lastKnownUnitStateList[unit.id].unitClass.tags = {}
+	for i, tag in ipairs(unit.unitClass.tags) do
+		lastKnownUnitStateList[unit.id].unitClass.tags[i] = tag
+	end
+end
+
+function VisionTracker.getLastKnownUnitState(unitId)
+	if lastKnownUnitStateList[unitId]==nil then
+		VisionTracker.setLastKnownUnitState(Wargroove.getUnitById(unitId))
+	end
+	return lastKnownUnitStateList[unitId]
+end
+
+function VisionTracker.getLastKnownUnitStateList()
+	return lastKnownUnitStateList
+end
+
 local numberOfViewers = {}
 
 local function getNumberOfViewers(team,pos)
@@ -132,27 +165,60 @@ local function decrementNumberOfViewers(team,pos)
 	numberOfViewers[team][pos.x][pos.y] = numberOfViewers[team][pos.x][pos.y] - 1
 end
 
-function VisionTracker.getPlayerTeam(playerId)
-	if playerId == -1 then
-		return -1
+local teamPlayers = {}
+
+local function isDifferent(o1,o2)
+	if type(o1) == 'table' then
+		for k,v in pairs(o1) do
+			if o2[k] == nil then
+				return true
+			end
+			if isDifferent(o1[k],o2[k]) then
+				return true
+			end
+		end
+		return false
+	else
+		return o1~=o2
 	end
-	return Wargroove.getPlayerTeam(playerId)
 end
 
 function VisionTracker.addUnitToVisionMatrix(unit)
 	local visibleTiles = VisionTracker.calculateVisionOfUnit(unit)
-	local team = VisionTracker.getPlayerTeam(unit.playerId)
+	local playerId = unit.playerId
 	for i, pos in pairs(visibleTiles) do
-		incrementNumberOfViewers(team,pos)
+		incrementNumberOfViewers(playerId,pos)
 	end
+	VisionTracker.setLastKnownUnitState(unit)
+end
+
+function VisionTracker.updateUnitInVisionMatrix(unit)
+	local changed = false
+	local prevState = VisionTracker.getLastKnownUnitState(unit.id)
+	--if isDifferent(prevState,unit) then
+		local visibleTiles = VisionTracker.calculateVisionOfUnit(prevState)
+		local playerId = prevState.playerId
+		for i, pos in pairs(visibleTiles) do
+			decrementNumberOfViewers(playerId,pos)
+		end
+	
+		visibleTiles = VisionTracker.calculateVisionOfUnit(unit)
+		playerId = unit.playerId
+		for i, pos in pairs(visibleTiles) do
+			incrementNumberOfViewers(playerId,pos)
+		end
+	--end
+	VisionTracker.setLastKnownUnitState(unit)
 end
 
 function VisionTracker.removeUnitFromVisionMatrix(unit)
-	local visibleTiles = VisionTracker.calculateVisionOfUnit(unit)
-	local team = VisionTracker.getPlayerTeam(unit.playerId)
+	local prevState = VisionTracker.getLastKnownUnitState(unit.id)
+	local visibleTiles = VisionTracker.calculateVisionOfUnit(prevState)
+	local playerId = prevState.playerId
 	for i, pos in pairs(visibleTiles) do
-		decrementNumberOfViewers(team,pos)
+		decrementNumberOfViewers(playerId,pos)
 	end
+	prevState = nil
 end
 
 local function getTilesInRectangle(pos1,pos2)
@@ -316,48 +382,56 @@ end
 function VisionTracker.init()
 
 	print("VisionTracker Test added to list of tests")
+	Ragnarok.addAction(VisionTracker.setup,"start_of_match",true)
 	Ragnarok.addAction(VisionTracker.humanTest,"repeating",true)
 	Ragnarok.addAction(VisionTracker.aiTest,"repeating",true)
-	Ragnarok.addAction(VisionTracker.setup,"start_of_match",true)
 end
 
-local prevPosList = {}
-function VisionTracker.getPrevPosList()
-	return prevPosList
+function VisionTracker.setupTeamPlayers()
+	teamPlayers = {}
+	for playerId=-1,Wargroove.getNumPlayers(false)-1 do
+		if playerId ~= -1 and Wargroove.getPlayerTeam(playerId) ~= nil then
+			if teamPlayers[Wargroove.getPlayerTeam(playerId)] == nil then
+				teamPlayers[Wargroove.getPlayerTeam(playerId)] = {}
+			end
+			table.insert(teamPlayers[Wargroove.getPlayerTeam(playerId)],playerId)
+		end
+	end
 end
-
 function VisionTracker.setup()
 	
 	print("Setting Up Team Array")
-	for playerId=-1,Wargroove.getNumPlayers(false)-1 do
+	VisionTracker.setupTeamPlayers()
+	print("number of independent players: "..tostring(Wargroove.getNumPlayers(true)))
+	print("number of players: "..tostring(Wargroove.getNumPlayers(false)))
+	for playerId=-2,Wargroove.getNumPlayers(false)-1 do
 		-- print("Player: "..tostring(playerId))
-		local team = VisionTracker.getPlayerTeam(playerId)
 		-- print("team?")
 		-- print("team: "..tostring(team))
-		if team ~= nil and numberOfViewers[team] == nil then
-			numberOfViewers[team] = {}
+		if playerId ~= nil and numberOfViewers[playerId] == nil then
+			numberOfViewers[playerId] = {}
 		end
 	end
 	-- print("Setting Up Vision Matrix")
 	local mapSize = Wargroove.getMapSize()
-	for team,i in pairs(numberOfViewers) do
+	for checkedPlayerId,i in pairs(numberOfViewers) do
 		-- print("Team: "..tostring(team))
 		for x=0, mapSize.x-1 do
-			numberOfViewers[team][x] = {}
+			numberOfViewers[checkedPlayerId][x] = {}
 			for y=0, mapSize.y-1 do
 				-- print("Pos: "..tostring(x)..","..tostring(y))
-				numberOfViewers[team][x][y] = 0
+				numberOfViewers[checkedPlayerId][x][y] = 0
 			end
 		end
 	end
 	
 	for i, unit in pairs(Wargroove.getUnitsAtLocation(nil)) do
 		local visibleTiles = VisionTracker.calculateVisionOfUnit(unit)
-		team = VisionTracker.getPlayerTeam(unit.playerId)
-		for i, pos in pairs(visibleTiles) do
-			incrementNumberOfViewers(team,pos)
+		checkedPlayerId = unit.playerId
+		for j, pos in pairs(visibleTiles) do
+			incrementNumberOfViewers(checkedPlayerId,pos)
 		end
-		prevPosList[unit.id] = unit.pos
+		VisionTracker.setLastKnownUnitState(unit)
 	end
 	-- print(dump(numberOfViewers,0))
 end
@@ -371,8 +445,6 @@ function VisionTracker.aiTest(context)
 		print("VisionTracker AI Test Starts here")
 		print("Player is: "..tostring(playerId))
 
-		local team = VisionTracker.getPlayerTeam(playerId)
-		print("Player Team is: "..tostring(team))
 		local mapSize = Wargroove.getMapSize()
 		for x=0, mapSize.x-1 do
 			for y=0, mapSize.y-1 do
@@ -391,7 +463,6 @@ function VisionTracker.humanTest(context)
 		end
 		print("VisionTracker Human Test Starts here")
 		print("Player is: "..tostring(playerId))
-		print("Player Team is: "..tostring(VisionTracker.getPlayerTeam(playerId)))
 		Wargroove.updateFogOfWar()
 		print("Fog of war updated")
 		coroutine.yield()
@@ -455,7 +526,8 @@ function VisionTracker.isTileBlocking(origin, target, blocker)
 	-- print("\t\t\tblockerTile wasn't target")
 	if visionBlockingList[blockerTerrainType] == nil then return false end
 	-- print("\t\t\tblockerTile can block vision")
-	if lineSegmentCircleCollision(origin, target, blocker, 0.5) then
+	local dist = vectorLength(vectorDifference(origin,target))
+	if lineSegmentCircleCollision(origin, target, blocker, 0.5+dist/200) then
 		-- print("\t\t\tblockerTile blocked vision")
 		return true
 	end
@@ -464,7 +536,17 @@ function VisionTracker.isTileBlocking(origin, target, blocker)
 end
 
 function VisionTracker.canSeeTile(playerId,tile)
-	return getNumberOfViewers(VisionTracker.getPlayerTeam(playerId),tile)>0
+	if playerId == -1 then
+		return getNumberOfViewers(playerId,tile)>0
+	else
+		for i, checkedPlayerId in pairs(teamPlayers[Wargroove.getPlayerTeam(playerId)]) do
+			if getNumberOfViewers(checkedPlayerId,tile)>0 then
+				return true
+			end
+		end
+	end
+	
+	return false
 end
 
 function VisionTracker.canUnitSeeTile(unit,tile)
@@ -472,7 +554,10 @@ function VisionTracker.canUnitSeeTile(unit,tile)
 	-- print("\t\t\t\tTile at Pos: "..tostring(tile.x)..", "..tostring(tile.y))
 	local difference = {x = tile.x - unit.pos.x, y = tile.y - unit.pos.y}
 	local dist = math.abs(difference.x)+math.abs(difference.y)
-	if dist<=1 then
+	if dist == 0 then
+		return true
+	end
+	if dist<=1 and getSightRange(unit)>0 then
 		return true
 	end
 	-- print("\tDistance was: ".. tostring(dist))
@@ -496,7 +581,7 @@ function VisionTracker.canUnitSeeTile(unit,tile)
 		{x = 0, y = 0}}
 	for i, offset in pairs(offsets) do
 		local isBlocked = false
-		local origin = {x = unit.pos.x+offset.x/2, y = unit.pos.y+offset.y/2}
+		local origin = {x = unit.pos.x+offset.x, y = unit.pos.y+offset.y}
 		local target = {x = tile.x+offset.x, y = tile.y+offset.y}
 		for j,blockingTile in pairs(getTilesInLine(unit.pos,tile)) do
 			-- print("\t\tChecking Blocking Tile: "..tostring(blockingTile.x)..", "..tostring(blockingTile.y))
@@ -518,7 +603,15 @@ function VisionTracker.canUnitSeeTile(unit,tile)
 end
 
 function VisionTracker.calculateVisionOfUnit(unit)
+	local mapSize = Wargroove.getMapSize()
+	if unit.pos.x<0 or unit.pos.x>mapSize.x or unit.pos.y<0 or unit.pos.y>mapSize.y then
+		return {}
+	end
+	Wargroove.showMessage("Calculating vision of unit "..unit.id)
 	-- print("calculateVisionOfUnit(unit) starts here")
+	if getSightRange(unit) == 0 then
+		return {unit.pos}
+	end
 	local tilesInRange = Wargroove.getTargetsInRange(unit.pos, getSightRange(unit), "all")
 	-- print("Got the tiles in range")
 	if scoutList[unit.unitClassId] ~= nil then return tilesInRange end

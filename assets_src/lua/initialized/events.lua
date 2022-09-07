@@ -12,8 +12,7 @@ end
 
 function Events.reportUnitDeath(id, attackerUnitId, attackerPlayerId, attackerUnitClass)
 	local unit = Wargroove.getUnitById(id)
-	local oldUnit = {playerId = unit.playerId, unitClassId = unit.unitClassId, pos = VisionTracker.getPrevPosList()[id], unitClass = unit.unitClass}
-	VisionTracker.removeUnitFromVisionMatrix(oldUnit)
+	VisionTracker.removeUnitFromVisionMatrix(unit)
 	Original.reportUnitDeath(id, attackerUnitId, attackerPlayerId, attackerUnitClass)
 end
 

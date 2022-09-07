@@ -259,7 +259,6 @@ terrains:
       riding: 1
       hovering: 1
       wheels: 2
-      flying: 2
       amphibious: 2
       land_building: 1
       indoor_building: 1

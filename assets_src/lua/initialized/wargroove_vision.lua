@@ -18,6 +18,9 @@ local function dump(o,level)
 end
 
 function WargrooveVision.init()
+	Original.setPlayerTeam = OldWargroove.setPlayerTeam
+	OldWargroove.setPlayerTeam = WargrooveVision.setPlayerTeam
+	
 	Original.removeUnit = OldWargroove.removeUnit
 	OldWargroove.removeUnit = WargrooveVision.removeUnit
 	
@@ -26,6 +29,9 @@ function WargrooveVision.init()
 	
 	Original.updateUnit = OldWargroove.updateUnit
 	OldWargroove.updateUnit = WargrooveVision.updateUnit
+	
+	Original.updateUnits = OldWargroove.updateUnits
+	OldWargroove.updateUnits = WargrooveVision.updateUnits
 	
 	Original.startCapture = OldWargroove.startCapture
 	OldWargroove.startCapture = WargrooveVision.startCapture
@@ -46,27 +52,31 @@ function WargrooveVision.spawnUnit(playerId, pos, unitType, turnSpent, startAnim
 	local unitId = Original.spawnUnit(playerId, pos, unitType, turnSpent, startAnimation, startingState, factionOverride)  
 	local unit = OldWargroove.getUnitById(unitId)
 	VisionTracker.addUnitToVisionMatrix(unit)
-	VisionTracker.getPrevPosList()[unitId] = pos
+	--VisionTracker.getPrevPosList()[unitId] = pos
     return unitId
 end
 
+function WargrooveVision.setPlayerTeam(playerId, teamId)
+    Original.setPlayerTeam(playerId, teamId)
+	VisionTracker.setupTeamPlayers()
+end
 
 function WargrooveVision.updateUnit(unit)
-	print("WargrooveVision.updateUnit starts here")
-	local oldUnit = {playerId = unit.playerId, unitClassId = unit.unitClassId, pos = VisionTracker.getPrevPosList()[unit.id], unitClass = unit.unitClass}
-	oldUnit.pos = VisionTracker.getPrevPosList()[unit.id]
-	print("Old Unit Position: "..tostring(oldUnit.pos.x)..","..tostring(oldUnit.pos.y))
-	VisionTracker.removeUnitFromVisionMatrix(oldUnit)
     Original.updateUnit(unit)
-	print("New Unit Position: "..tostring(unit.pos.x)..","..tostring(unit.pos.y))
-	VisionTracker.addUnitToVisionMatrix(unit)
-	VisionTracker.getPrevPosList()[unit.id] = unit.pos
+	VisionTracker.updateUnitInVisionMatrix(unit)
+end
+
+function WargrooveVision.updateUnits(units)
+    Original.updateUnits(units)
+    for i, unit in ipairs(units) do
+        VisionTracker.updateUnitInVisionMatrix(unit)
+    end
 end
 
 function WargrooveVision.removeUnit(unitId)
 	local unit = OldWargroove.getUnitById(unitId)
-	local oldUnit = {playerId = unit.playerId, unitClassId = unit.unitClassId, pos = VisionTracker.getPrevPosList()[unitId], unitClass = unit.unitClass}
-	VisionTracker.removeUnitFromVisionMatrix(oldUnit)
+	--local oldUnit = {playerId = unit.playerId, unitClassId = unit.unitClassId, pos = VisionTracker.getPrevPosList()[unitId], unitClass = unit.unitClass}
+	VisionTracker.removeUnitFromVisionMatrix(unit)
 	Original.removeUnit(unitId)
 end
 
