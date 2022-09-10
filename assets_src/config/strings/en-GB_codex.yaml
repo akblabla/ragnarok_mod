@@ -1,21 +1,34 @@
 ---
 
 en-GB:
+# CODEX: COMMANDER INFO AND LORE
+  codex_commander_flagship_wulfar_lore1_text: "Age: 36.\nHeight: 220 cm.\nFavourite thing: Just parity between fellow souls.\nLeast favourite thing: Puns."
+  codex_commander_flagship_wulfar_lore2_text: "Chief Wulfar is the leader of Aurania’s largest and oldest outlaw clan. Standing more than 7 feet tall and wielding his great stone battle-hammer, he certainly cuts an imposing figure. But enemies should be wary of more than just his immense weapon and towering physique. It is Wulfar’s patience, intelligence and immovable resolve that render him a truly fearsome adversary."
+  codex_commander_flagship_wulfar_lore3_text: "For as long as there have been laws, there have been outlaws. Nowhere is this fact better illustrated than in Wulfar’s lineage. It was more than a century ago that Wulfar’s great grandfather, Magnus \"Bluetongue\" Pasternak, an infamous pirate captain, left his life on the high seas to settle in The Lost Leagues. There, he married Wulfar’s great grandmother, the shepherdess and renowned smuggler Mary Meyrick. These are but two individuals in the vast web of buccaneers and bootleggers, crooks and cutpurses that constitute Wulfar’s family tree."
+  codex_groove_description_flagship_wulfar: "Wulfar can order his crew to fire a mighty barage from the broadside of his vessel. Enemies at closest row of tiles take 100% of the flagship's normal attack damage, with each subsequent row dealing 1/3 less. The broadside can hit any enemy target, even those hiding in the fog of war. \n\nGroove Charge Speed: Fast."
+  codex_title_strategy_flagship_wulfar: "Broadside Strategy"
+  codex_groove_strategy_flagship_wulfar: "The broadside only deals full damage in the first row, so even if multiple angles might hit the same targets, consider who takes the full brunt of the broadside."
+
 # CODEX: RULES
   codex_rules_changes: "Changes from vanilla"
   
   codex_rules_changes_table_of_content_title: Table of Content
-  codex_rules_changes_table_of_content_text: $codex_rules_changes_counter_title
+  codex_rules_changes_table_of_content_text: To be written
   
   codex_rules_changes_counter_title: "Counter Attacks"
   codex_rules_changes_counter_text: "Structure counter attack damage now scales with HP like all units, structure counter damage adjusted to compensate.\n
   Damage scaling for a 1% health unit is increased from 1% to 10%"
 
   codex_rules_changes_melee_title: "Melee"
-  codex_rules_changes_melee_text: "Units with 1 range have now been seperated into two categories: Melee and Ranged. Melee units can only attack units on tiles they themselves can stand on, whilst ranged units does not check what the enemy is standing on. This means that melee units like soldiers can now attack naval units on beaches and in rivers."
+  codex_rules_changes_melee_text: "Units with 1 range have now been seperated into two categories: Melee and Ranged. Melee units can only attack units on tiles they themselves can stand on, whilst ranged units are unrestricted. This means that melee units can now attack naval units on beaches and in rivers."
   
-
-
+  codex_rules_changes_melee_list_title: "Melee List"
+  codex_rules_changes_melee_list_text: "Soldier\nSpearman\nDog\nCavalry\nGolem\nTurtle"
+  
+  codex_rules_changes_ranged_list_title: "Ranged List"
+  codex_rules_changes_ranged_list_text: "Mage\nAeronaut\nSky Rider\nDragon\nRaider Ship"
+  
+  
 # CODEX: UNIT INFORMATION
   codex_unit_soldier_outlaws_lore_text: "Cutthroats are young aspirants that start there journey by mugging farmers minding their own buisness. It is common for farmers to just pretend to be scared and hand over the money when Cutthroats' inexperience shows."
 

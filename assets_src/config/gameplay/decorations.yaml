@@ -147,15 +147,20 @@ decorations:
       undefined: decoration/bigDeco/field06Layer02
       
 #Normal Deco
+  - id: orangeField
+    layer: ground
+    animation:
+      undefined: decoration/ground/orange_field
+      
   - id: cabbageField
     layer: ground
     animation:
-      undefined: decoration/unit/carbage_field
+      undefined: decoration/ground/carbage_field
       
   - id: potatoField
     layer: ground
     animation:
-      undefined: decoration/unit/potato_field
+      undefined: decoration/ground/potato_field
       
   - id: solidBarrel
     layer: units

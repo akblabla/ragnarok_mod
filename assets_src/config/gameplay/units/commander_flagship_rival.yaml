@@ -16,8 +16,8 @@ weapons:
       dog: 0.9
       wagon: 0.45
       knight: 0.45
-      trebuchet: 0.45
-      ballista: 0.5
+      trebuchet: 0.55
+      ballista: 0.6
       mage: 0.6
       giant: 0.3
       structure: 0.5

@@ -17,8 +17,8 @@ weapons:
       dog: 0.65
       wagon: 0.3
       knight: 0.1
-      trebuchet: 0.35
-      ballista: 0.4
+      trebuchet: 0.45
+      ballista: 0.5
       giant: 0.05
       dragon: 100 #goodboy
       merman: 0.75

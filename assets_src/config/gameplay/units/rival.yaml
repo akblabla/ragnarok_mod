@@ -1,0 +1,121 @@
+---
+unitClasses:
+  - id: rival
+    name: unit_class_name_rival
+    classIconSpritesheet: ui_RagnarokMod
+    cost: 500
+    movement: walking
+    moveRange: 3
+    damageMultiplier: 0.75
+    aiPriority: 0.5
+    weapons:
+      - id: bow
+    tags:
+      - archer
+      - type.ground.light
+    verbs:
+      - rescue
+      - load
+      - capture
+      - pick_up_crown
+      - throw_crown
+      - healing_potion
+    battleUnitCount: 1
+    passiveMultiplier: 1.35
+    isHidden: true
+    isRecruitable: false
+    sightRange: 5
+    deathVerbId: death_drop_crown
+
+units:
+  - class: rival
+    faction: outlaw
+    name: unit_name_rival_outlaws
+    mapAnimation: units/rival/map_rival
+    battleAnimation: units/rival/battle_rival
+    battleAnimationRiver: fx/river_overlay/battle_archer_river
+    smallPortrait: units/rival/portrait_rival_small.png
+    mediumPortrait: units/rival/portrait_rival_medium.png
+    skinColour: typeII
+    mapSpeed: 4.0
+    grabPos: [15, 24]
+    sounds:
+      attackMap: unitAttack
+      attack: archerAttack
+      attackEffect1: archerAttackEffect1
+      attackEffect2: archerAttackEffect2
+      attackEffect3: archerAttackEffect3
+      attackEffect4: archerAttackEffect4
+      captureShout: soldierPreAttackRed
+      death: soldierDieRed
+      deathMap: unitDie
+      run: infantryLightEntry
+      runMap: infantryLightMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+      counter: archerCounterAttack
+    attacks:
+      - id: primary
+        attackAnimationSequence: counter
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 0.8
+        attackSound: counter
+        samePanel: true
+      - id: oneArchers
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7]
+        effect: fx/bs_archer_attack_1
+        effectDelay: 1.4
+        attackEffectSound: attackEffect1
+        numAttackers: 1
+        ranged: true
+      - id: twoArchers
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9]
+        effect: fx/bs_archer_attack_2
+        effectDelay: 1.4
+        attackEffectSound: attackEffect2
+        numAttackers: 2
+        ranged: true
+      - id: threeArchers
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9, 2.1]
+        effect: fx/bs_archer_attack_3
+        effectDelay: 1.4
+        attackEffectSound: attackEffect3
+        numAttackers: 3
+        ranged: true
+      - id: fourArchers
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9, 2.1, 2.3]
+        effect: fx/bs_archer_attack_4
+        attackEffectSound: attackEffect4
+        effectDelay: 1.4
+        numAttackers: 4
+        ranged: true
+    emotes:
+      idle: idle
+      dance: emote_dance
+      surprise: emote_surprise
+    shouts:
+      soldier_shout1: soldierShoutRed1
+      soldier_shout2: soldierShoutRed2
+      soldier_shout3: soldierShoutRed3
+      soldier_shout4: soldierShoutRed4
+      soldier_shout5: soldierShoutRed5
+      soldier_shout6: soldierShoutRed6
+      soldier_shout7: soldierShoutRed7
+      soldier_shout8: soldierShoutRed8
+      soldier_shout9: soldierShoutRed9
+      soldier_hit1: soldierHitRed1
+      soldier_hit2: soldierHitRed2
+      soldier_hit3: soldierHitRed3
+      soldier_hit4: soldierHitRed4
+      soldier_hit5: soldierHitRed5
+    hidden:
+      shouts:
+        - soldier_shout3
+        - soldier_shout5
+        - soldier_shout6
+        - soldier_shout9
+...

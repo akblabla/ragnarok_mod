@@ -14,10 +14,12 @@ local function dump(o,level)
    end
 end
 local testMode = false
+local setupRan = false
 
 local VisionTracker = {}
 local sightRangeList = {
 	archer = 5,
+	rival = 5,
 	ballista = 4,
 	commander_emeric = 5,
 	commander_flagship_rival = 5,
@@ -185,41 +187,46 @@ local function isDifferent(o1,o2)
 end
 
 function VisionTracker.addUnitToVisionMatrix(unit)
-	local visibleTiles = VisionTracker.calculateVisionOfUnit(unit)
-	local playerId = unit.playerId
-	for i, pos in pairs(visibleTiles) do
-		incrementNumberOfViewers(playerId,pos)
+	if setupRan then
+		local visibleTiles = VisionTracker.calculateVisionOfUnit(unit)
+		local playerId = unit.playerId
+		for i, pos in pairs(visibleTiles) do
+			incrementNumberOfViewers(playerId,pos)
+		end
+		VisionTracker.setLastKnownUnitState(unit)
 	end
-	VisionTracker.setLastKnownUnitState(unit)
 end
 
 function VisionTracker.updateUnitInVisionMatrix(unit)
-	local changed = false
-	local prevState = VisionTracker.getLastKnownUnitState(unit.id)
-	if isDifferent(prevState,unit) then
+	if setupRan then
+		local prevState = VisionTracker.getLastKnownUnitState(unit.id)
+		if isDifferent(prevState,unit) then
+			local visibleTiles = VisionTracker.calculateVisionOfUnit(prevState)
+			local playerId = prevState.playerId
+			for i, pos in pairs(visibleTiles) do
+				decrementNumberOfViewers(playerId,pos)
+			end
+		
+			visibleTiles = VisionTracker.calculateVisionOfUnit(unit)
+			playerId = unit.playerId
+			for i, pos in pairs(visibleTiles) do
+				incrementNumberOfViewers(playerId,pos)
+			end
+		end
+		VisionTracker.setLastKnownUnitState(unit)
+	end
+end
+
+function VisionTracker.removeUnitFromVisionMatrix(unit)
+	if setupRan then
+		local prevState = VisionTracker.getLastKnownUnitState(unit.id)
 		local visibleTiles = VisionTracker.calculateVisionOfUnit(prevState)
 		local playerId = prevState.playerId
 		for i, pos in pairs(visibleTiles) do
 			decrementNumberOfViewers(playerId,pos)
 		end
-	
-		visibleTiles = VisionTracker.calculateVisionOfUnit(unit)
-		playerId = unit.playerId
-		for i, pos in pairs(visibleTiles) do
-			incrementNumberOfViewers(playerId,pos)
-		end
+		prevState = nil
 	end
-	VisionTracker.setLastKnownUnitState(unit)
-end
-
-function VisionTracker.removeUnitFromVisionMatrix(unit)
-	local prevState = VisionTracker.getLastKnownUnitState(unit.id)
-	local visibleTiles = VisionTracker.calculateVisionOfUnit(prevState)
-	local playerId = prevState.playerId
-	for i, pos in pairs(visibleTiles) do
-		decrementNumberOfViewers(playerId,pos)
-	end
-	prevState = nil
 end
 
 local function getTilesInRectangle(pos1,pos2)
@@ -384,7 +391,7 @@ end
 
 function VisionTracker.init()
 	print("VisionTracker Test added to list of tests")
-	Ragnarok.addAction(VisionTracker.setup,"start_of_match",true)
+	--Ragnarok.addAction(VisionTracker.setup,"start_of_match",true)
 	Ragnarok.addAction(VisionTracker.humanTest,"repeating",true)
 	Ragnarok.addAction(VisionTracker.aiTest,"repeating",true)
 end
@@ -400,7 +407,6 @@ function VisionTracker.setupTeamPlayers()
 		end
 	end
 end
-local setupRan = false
 function VisionTracker.setup()
 	if setupRan then
 		return
@@ -447,7 +453,7 @@ function VisionTracker.aiTest(context)
 end
 
 function VisionTracker.humanTest(context)
-	if context:checkState("endOfUnitTurn") or context:checkState("endOfTurn") then
+	if (context:checkState("endOfUnitTurn") or context:checkState("endOfTurn")) and Ragnarok.usingFogOfWarRules() then
 		local playerId = Wargroove.getCurrentPlayerId();
 		if Wargroove.isHuman(playerId) == false then
 			return
@@ -527,6 +533,9 @@ function VisionTracker.isTileBlocking(origin, target, blocker)
 end
 
 function VisionTracker.canSeeTile(playerId,tile)
+	if not Ragnarok.usingFogOfWarRules() then
+		return true
+	end
 	VisionTracker.setup()
 	print("canSeeTile starts here")
 	print(dump(teamPlayers,0))
@@ -546,7 +555,9 @@ function VisionTracker.canSeeTile(playerId,tile)
 end
 
 function VisionTracker.canUnitSeeTile(unit,tile)
-	VisionTracker.setup()
+	if not Ragnarok.usingFogOfWarRules() then
+		return true
+	end
 	-- print("\tVisionTracker.canUnitSeeTile(unit,tile) starts here")
 	-- print("\t\t\t\tTile at Pos: "..tostring(tile.x)..", "..tostring(tile.y))
 	local difference = {x = tile.x - unit.pos.x, y = tile.y - unit.pos.y}
@@ -600,7 +611,6 @@ function VisionTracker.canUnitSeeTile(unit,tile)
 end
 
 function VisionTracker.calculateVisionOfUnit(unit)
-	VisionTracker.setup()
 	local mapSize = Wargroove.getMapSize()
 	if unit.pos.x<0 or unit.pos.x>=mapSize.x or unit.pos.y<0 or unit.pos.y>=mapSize.y then
 		return {}
@@ -640,9 +650,44 @@ function VisionTracker.calculateLoSOfUnitRays(unit)
 	return visibleTiles
 end
 
+function VisionTracker.getKnownOcclusionTileOrder(pos, range)
+	local result = {}
+	local orientationId = 0
+	local currentOrientationMatrixTable = {
+		{{x=1,y=0}, {x=0,y=1}},
+		{{x=-1,y=0}, {x=0,y=-1}},
+		{{x=0,y=-1}, {x=1,y=0}},
+		{{x=1,y=1}, {x=-1,y=0}}
+	}
+	local layer = 1
+	local currentLayerSize = 1
+	while layer<=range do
+		for orientationId = 1, 4 do
+			for i = 0,currentLayerSize*2-1 do
+				local offset = {x = layer, y = math.ceil(i/2)*(2*(i%2)-1)}
+				if math.abs(offset.x)+math.abs(offset.y) > range then
+					break
+				end				
+				local rotatedOffet = {x = vectorProjection(offset,currentOrientationMatrixTable[orientationId][1]), y = vectorProjection(offset,currentOrientationMatrixTable[orientationId][2])}
+				table.insert(result,vectorAdd(pos,rotatedOffset))
+			end
+			if orientationId == 2 then
+				currentLayerSize = currentLayerSize+1
+			end
+		end
+		layer = layer+1
+	end
+end
+
 function VisionTracker.calculateLoSOfUnitPulse(unit)
+	if Tree == nil then
+        Tree = require "util/binarySearchTreeDoubleLinked"
+    end
 	local visibleTiles = {}
-	for i, checkedTile in ipairs(tilesInRange) do
+	local orderedTiles = VisionTracker.getKnownOcclusionTileOrder(unit.pos, getSightRange(unit))
+	local t = Tree:new()
+	for i, checkedTile in ipairs(orderedTiles) do
+		t:insert(checkedTile.x)
 		-- print("checking LoS at: "..tostring(checkedTile.x)..","..tostring(checkedTile.y))
 		if VisionTracker.canUnitSeeTile(unit,checkedTile) then
 			-- print("Tile at: "..tostring(checkedTile.x)..","..tostring(checkedTile.y))
@@ -653,6 +698,11 @@ function VisionTracker.calculateLoSOfUnitPulse(unit)
 			-- print("Not Visible")			
 		end
 	end
+	print("Binary Tree Test")
+	print(t._root:data())
+	print(t._root.next:data())
+	print(t._root.next.next:data())
+	print(t._root.next.next.next:data())
 	return visibleTiles
 end
 

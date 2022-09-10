@@ -16,7 +16,7 @@ weapons:
       dog: 0.45
       wagon: 0.35
       knight: 0.15
-      trebuchet: 0.20
+      trebuchet: 0.2
       mage: 0.45
       structure: 0.15
       commander: 0.1

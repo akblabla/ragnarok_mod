@@ -15,8 +15,8 @@ weapons:
       dog: 0.70
       wagon: 0.55
       knight: 0.15
-      trebuchet: 0.6
-      ballista: 0.65
+      trebuchet: 0.7
+      ballista: 0.75
       mage: 0.7
       structure: 0.4
       commander: 0.15
@@ -68,8 +68,8 @@ units:
     name: unit_name_pirate_ship_outlaws
     mapAnimation: units/raider/cherrystone/map_raider_cherrystone
     battleAnimation: units/warship/cherrystone/battle_warship_cherrystone
-    smallPortrait: units/warship/cherrystone/portrait_warship_cherrystone_small.png
-    mediumPortrait: units/warship/cherrystone/portrait_warship_cherrystone_medium.png
+    smallPortrait: units/raider/cherrystone/portrait_raider_cherrystone_small.png
+    mediumPortrait: units/raider/cherrystone/portrait_raider_cherrystone_medium.png
     mapSpeed: 6.0
     grabPos: [10, 9]
     deathMoveMin: 80

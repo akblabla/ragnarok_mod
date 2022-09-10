@@ -1,4 +1,5 @@
 local OldWargroove = require "wargroove/wargroove"
+local Ragnarok = require "initialized/ragnarok"
 local VisionTracker = require "initialized/vision_tracker"
 
 local WargrooveVision = {}
@@ -35,6 +36,12 @@ function WargrooveVision.init()
 	
 	Original.startCapture = OldWargroove.startCapture
 	OldWargroove.startCapture = WargrooveVision.startCapture
+	
+	Original.canPlayerSeeTile = OldWargroove.canPlayerSeeTile
+	OldWargroove.canPlayerSeeTile = WargrooveVision.canPlayerSeeTile
+	
+	Original.canCurrentlySeeTile = OldWargroove.canCurrentlySeeTile
+	OldWargroove.canCurrentlySeeTile = WargrooveVision.canCurrentlySeeTile
 end
 
 function WargrooveVision.startCapture(attacker, defender, attackerPos)
@@ -80,5 +87,24 @@ function WargrooveVision.removeUnit(unitId)
 	Original.removeUnit(unitId)
 end
 
+function WargrooveVision.canPlayerSeeTile(player, tile)
+	if player == -1 then
+		player = OldWargroove.getCurrentPlayerId()
+	end
+	if Ragnarok.usingFogOfWarRules() and not OldWargroove.isHuman(player) then
+		return VisionTracker.canSeeTile(player,tile)
+	end
+    return Original.canPlayerSeeTile(player, tile)
+end
+
+function WargrooveVision.canCurrentlySeeTile(tile)
+	if Ragnarok.usingFogOfWarRules() then
+		local player = OldWargroove.getCurrentPlayerId()
+		if not OldWargroove.isHuman(player) then
+			return VisionTracker.canSeeTile(player,tile)
+		end
+	end
+    return Original.canCurrentlySeeTile(tile)
+end
 
 return WargrooveVision

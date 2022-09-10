@@ -85,7 +85,7 @@ en-GB:
   unit_description_commander_flagship_rival: "Flagship of Rival"
   
   # Commander
-  character_flagship_wulfar_name: "Wulfar"
+  character_flagship_wulfar_name: "Wulfar's Flagship"
   character_flagship_wulfar_title: "Captain Wulfar"
   
   groove_name_broadside: "Broadside"
@@ -118,6 +118,11 @@ en-GB:
   unit_class_name_crew: Capsized Crew
   unit_description_crew: "Crew drifting at sea. Save them, and maybe they can help you in return."
   unit_name_crew: Capsized Crew
+  
+  unit_class_name_rival: Rival
+  unit_description_rival: "Ranged ground units able to move and attack in the same turn. Critical hit when stationary."
+  unit_name_rival: Rival
+  
 
   unit_name_archer_outlaws: Poacher 
   unit_name_dog_outlaws: Stray
@@ -142,6 +147,7 @@ en-GB:
   unit_name_villager_outlaws: Beggar 
   unit_name_thief_outlaws: Smuggler
   unit_name_rifleman_outlaws: Sharpshooter 
+  unit_name_rival_outlaws: Poacher 
   
   
   # Triggers
@@ -252,6 +258,10 @@ en-GB:
   trigger_condition_name_is_rescued: "Gizmo: Is Rescued"
   trigger_condition_description_is_rescued: "Triggers when capsized crew is rescued."
   trigger_condition_readable_is_rescued: "If capsized crew at location {0} is rescued by player {1}."
+  
+  trigger_action_name_dialogue_box_unit: "UI: Show Dialogue Box for Unit"
+  trigger_action_description_dialogue_box_unit: "Triggers a dialogue box for a unit."
+  trigger_action_readable_dialogue_box_unit: "Display dialogue box from {0} at {1} for {2} being {3} saying {4} with colour {5}."
 
   #backgrounds
   ui_cutscene_background_deck: "Ship Deck"

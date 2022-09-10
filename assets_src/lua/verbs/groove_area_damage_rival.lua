@@ -4,7 +4,7 @@ local GrooveVerb = require "wargroove/groove_verb"
 local AreaDamage = GrooveVerb:new()
 
 function AreaDamage:getMaximumRange(unit, endPos)
-    return 6
+    return 12
 end
 
 function AreaDamage:getTargetType()
@@ -76,7 +76,7 @@ function AreaDamage:getScore(unitId, order)
 
     local opportunityCost = -1
     local totalScore = 0
-    local maxScore = 500
+    local maxScore = 250
 
     for i, pos in ipairs(targets) do
         local u = Wargroove.getUnitAt(pos)
@@ -84,7 +84,7 @@ function AreaDamage:getScore(unitId, order)
             local uc = u.unitClass
             if Wargroove.isHuman(u.playerId) then
                 totalScore = totalScore + uc.cost
-            else
+            elseif u.playerId == unit.playerId then
                 totalScore = totalScore - uc.cost
             end
         end

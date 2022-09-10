@@ -16,8 +16,8 @@ weapons:
       dog: 1.2
       wagon: 0.55
       knight: 0.55
-      trebuchet: 0.8
-      ballista: 0.85
+      trebuchet: 0.9
+      ballista: 0.95
       merman: 0.85
       mage: 1.1
       structure: 0.65

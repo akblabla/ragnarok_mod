@@ -172,7 +172,7 @@ commanders:
     faction: outlaw
     playable: false
     portrait:
-        happy: portraits/commanders/small/rival_portrait_small.png
+        happy: portraits/commanders/small/vesper_poacher_portrait.png
         neutral: portraits/commanders/small/vesper_soldier_portrait.png
         sad: portraits/commanders/small/vesper_thief_portrait.png
         extra: portraits/commanders/small/vesper_merfolk_portrait.png

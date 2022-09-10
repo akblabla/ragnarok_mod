@@ -55,6 +55,7 @@ function Actions.populate(dst)
 	dst["allow_pirate_ships"] = Actions.allowPirateShips
     dst["ai_set_restriction"] = Actions.aiSetRestriction
 	dst["set_location_to_vision"] = Actions.setLocationToVision
+	dst["dialogue_box_unit"] = Actions.dialogueBoxUnit
 	--Hidden actions
 	dst["run_start_front_actions"] = Actions.runStartFrontActions
 	dst["run_start_back_actions"] = Actions.runStartBackActions
@@ -388,11 +389,11 @@ end
 
 function Actions.changeObjectiveWith3Counters(context)
     -- "Sets the map objective to {0} ({1}) {2} ({3}) {4}."
-	local counter1 = context:getMapCounter(0)
-	local counter1enroute = context:getMapCounter(1)
-	local counter2 = context:getMapCounter(2)
-	local counter2enroute = context:getMapCounter(3)
-	local counter3 = context:getMapCounter(4)
+	local counter1 = math.floor(context:getMapCounter(0)+0.5)
+	local counter1enroute = math.floor(context:getMapCounter(1)+0.5)
+	local counter2 = math.floor(context:getMapCounter(2)+0.5)
+	local counter2enroute = math.floor(context:getMapCounter(3)+0.5)
+	local counter3 = math.floor(context:getMapCounter(4)+0.5)
 	local superString = "Win the Pirate Bout!\nStolen by Wulfar: "..tostring(counter1)
 	if counter1enroute ~= 0 then
 		superString = superString.." ("..tostring(counter1enroute).." enroute)"
@@ -665,6 +666,18 @@ function Actions.doForceAction(context, queue)
         Wargroove.forceAction(selectableUnits, toPositions, targetPositions, action, autoEnd, expression, commander, dialogue)
     end
 end
-
+local unitExpressionMap = {}
+function Actions.dialogueBoxUnit(context)
+    -- "Display dialogue box from {0} at {1} for {2} being {3} saying {4} with colour {5}."
+    local units = context:gatherUnits(2, 0, 1)
+	local unitType = context:getString(0)
+	local colour = context:getPlayerColour(5)
+	local iter = pairs(units)
+	local unit = iter(units)
+	if unit ~= nil then
+--		Wargroove.highlightLocation(context:getLocation(0).id, "arrow", context:getPlayerColour(5), false, false, false, false)
+	end
+    Wargroove.showDialogueBox(context:getString(3), "mercia", context:getString(2), "")
+end
 
 return Actions

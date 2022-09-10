@@ -121,6 +121,14 @@ triggerActions:
       - type: character_non_playable
       - type: string
       - type: string
+  - id: dialogue_box_unit
+    parameters:
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+      - type: character_expression
+      - type: string
+      - type: string
   - id: change_objective_with_3_counters
     parameters:
       - type: counter

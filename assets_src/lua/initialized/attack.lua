@@ -89,9 +89,9 @@ function Attack:canExecuteWithTarget(unit, endPos, targetPos, strParam)
         end
     end
     local targetUnit = Wargroove.getUnitAt(targetPos)
-	if Ragnarok.usingFogOfWarRules() and VisionTracker.canSeeTile(unit.playerId,targetPos) == false then--bruteForceCheckIfVisibleInStealthyTile(unit.playerId, targetPos) == false then
-		return false
-	end
+	-- if Ragnarok.usingFogOfWarRules() and VisionTracker.canSeeTile(unit.playerId,targetPos) == false then--bruteForceCheckIfVisibleInStealthyTile(unit.playerId, targetPos) == false then
+		-- return false
+	-- end
     if not targetUnit or not Wargroove.areEnemies(unit.playerId, targetUnit.playerId) then
         return false
     end

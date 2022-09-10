@@ -15,10 +15,11 @@ tilesets:
         iconSpriteSheet: ui_RagnarokMod
         iconSprite: ":img:ui/codex/icons/icon_terrain_brush.png"
         fillColour: '#7fa33b'
+
       - types: [tropical]
         spriteSheet: terrain_tilesets
-        spriteBase: grass_brush_tileset_000
-        foregroundSpriteBase: grass_brush_tileset_001
+        spriteBase: tropical_brush_tileset_000
+        foregroundSpriteBase: tropical_brush_tileset_001
         foregroundBaseLine: 16
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_forest

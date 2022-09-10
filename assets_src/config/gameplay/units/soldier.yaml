@@ -15,12 +15,12 @@ weapons:
       dog: 0.45
       wagon: 0.35
       knight: 0.15
-      trebuchet: 0.3
+      trebuchet: 0.5
       merman: 0.55
       mage: 0.55
       structure: 0.35
       commander: 0.10
-      ballista: 0.35
+      ballista: 0.55
       giant: 0.05
       rifleman: 0.65
       thief: 0.95

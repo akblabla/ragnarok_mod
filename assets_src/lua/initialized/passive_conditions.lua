@@ -17,6 +17,8 @@ function PassiveConditions.init()
     OriginalPassiveConditions.getPassiveConditions().merman = PassiveConditions.merman
     OriginalPassiveConditions.getPassiveConditions().harpoonship = PassiveConditions.harpoonship
     OriginalPassiveConditions.getPassiveConditions().warship = PassiveConditions.warship
+	OriginalPassiveConditions.getPassiveConditions().rival = PassiveConditions.rival
+	
 end
 
 -- Soldiers now get their passive condition if they are next to a dog
@@ -75,6 +77,16 @@ end
 function PassiveConditions.warship(payload)
     local terrainName = Wargroove.getTerrainNameAt(payload.attackerPos)
     return terrainName == "beach" or terrainName == "cave_beach"
+end
+
+function PassiveConditions.rival(payload)
+    if payload.isCounter then
+        return false
+    end
+    function isSame(a, b)
+        return a.x == b.x and a.y == b.y
+    end
+    return payload.path == nil or (#payload.path == 0) or isSame(payload.attacker.startPos, payload.path[#payload.path])
 end
 
 return PassiveConditions

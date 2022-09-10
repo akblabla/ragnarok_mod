@@ -302,6 +302,8 @@ terrains:
     defenceBonus: 0
     movementCost:
       flying: 1
+      hovering: 1
+    placeable: true
     movementGroupType: land
     tilesets:
       0: [plains, rough, plains_alt]
@@ -312,6 +314,8 @@ terrains:
     defenceBonus: 0
     movementCost: 
       flying: 1
+      hovering: 1
+    placeable: true
     movementGroupType: land
     tilesets:
       0: [plains, rough, plains_alt]

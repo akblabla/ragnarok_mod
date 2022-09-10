@@ -1,0 +1,44 @@
+---
+codex:
+- id: commander_flagship_wulfar
+  category: commanders
+  name: character_flagship_wulfar_name
+  icon:
+    image: units/commanders/wulfar/portrait_wulfar_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeII
+  pages:
+  - pageType: bio
+    layoutType: image
+    image: ui/codex/content/dlc1/commander_wulfar_portrait.png
+    title: character_flagship_wulfar_name
+    text: codex_commander_flagship_wulfar_lore2_text
+  - pageType: bio
+    layoutType: image
+    image: ui/codex/content/dlc1/commander_wulfar_portrait.png
+    title: character_flagship_wulfar_name
+    text: codex_commander_flagship_wulfar_lore1_text    
+    unlock: codex_wulfar_extra_lore
+  - pageType: bio
+    layoutType: image
+    image: ui/codex/content/dlc1/commander_wulfar_portrait.png
+    title: character_flagship_wulfar_name
+    text: codex_commander_flagship_wulfar_lore3_text    
+    unlock: codex_wulfar_extra_lore
+  - pageType: groove
+    layoutType: animation
+    animation: ui/codex/content/dlc1/commander_wulfargroove
+    title: groove_name_broadside
+    text: codex_groove_description_flagship_wulfar
+  - pageType: strategy
+    layoutType: animation
+    animation: ui/codex/content/dlc1/commander_wulfargroove
+    title: codex_title_strategy_flagship_wulfar
+    text: codex_groove_strategy_flagship_wulfar
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: commander_flagship_wulfar
+
+...

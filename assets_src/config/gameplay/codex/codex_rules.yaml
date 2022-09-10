@@ -3,6 +3,7 @@ codex:
 - id: rules_changes
   category: rules
   name: codex_rules_changes
+  faction: outlaw
   icon:
     image: ui/codex/icons/icon_rules_question.png
   pages:
@@ -14,7 +15,7 @@ codex:
     text: codex_rules_changes_table_of_content_text
   - pageType: page
     layoutType: unit_sprite
-    unitClass: soldier
+    unitClass: spearman
     faction: outlaw
     title: codex_rules_changes_counter_title
     text: codex_rules_changes_counter_text
@@ -24,6 +25,18 @@ codex:
     faction: outlaw
     title: codex_rules_changes_melee_title
     text: codex_rules_changes_melee_text
+  - pageType: page
+    layoutType: unit_sprite
+    unitClass: turtle
+    faction: outlaw
+    title: codex_rules_changes_melee_list_title
+    text: codex_rules_changes_melee_list_text
+  - pageType: page
+    layoutType: unit_sprite
+    unitClass: mage
+    faction: outlaw
+    title: codex_rules_changes_ranged_list_title
+    text: codex_rules_changes_ranged_list_text
 
 
 ...

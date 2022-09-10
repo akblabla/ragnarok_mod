@@ -9,6 +9,7 @@ local raiderShipBuilderList = {}
 function Recruit.init()
 	OldRecruit.getMaximumRange = Recruit.getMaximumRange
 	OldRecruit.canExecuteWithTarget = Recruit.canExecuteWithTarget
+	OldRecruit.canExecuteWithTarget = Recruit.canExecuteWithTarget
 	OldRecruit.execute = Recruit.execute
 end
 
@@ -78,6 +79,8 @@ end
 
 
 function Recruit:execute(unit, targetPos, strParam, path)
+	print("Recruit Execute starts here")
+	print(dump(unit,0))
 	local uc = Wargroove.getUnitClass(strParam)
 	Wargroove.changeMoney(unit.playerId, -uc.cost)
 	if strParam ~= "flare" then
@@ -161,6 +164,17 @@ function Recruit:execute(unit, targetPos, strParam, path)
 	end
 	Wargroove.notifyEvent("unit_recruit", unit.playerId)
 	Wargroove.setMetaLocation("last_recruit", targetPos)
+	print(dump(unit.recruits,0))
+	for i,recruit in ipairs(unit.recruits) do
+		if recruit==strParam then
+			table.remove(unit.recruits,i)
+			break
+		end
+	end
+	print(dump(unit.recruits,0))
+	Wargroove.updateUnit(unit)
+	print("post update")
+	print(dump(unit,0))
 end
 
 
