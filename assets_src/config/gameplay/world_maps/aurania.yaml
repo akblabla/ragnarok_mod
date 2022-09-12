@@ -4,7 +4,7 @@ worldMaps:
 - id: aurania
   name: world_map_aurania_name
   icon: ui/campaign/map_icon1.png
-  size: [720, 630]
+  size: [720, 520]
   spriteSheet: ragnarok_world
   images:
   - image: world/maps/aurania_v2/world_map.png
