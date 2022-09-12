@@ -635,7 +635,7 @@ function VisionTracker.calculateVisionOfUnit(unit)
 		end
 		return visibleTiles
 	end
-	
+	VisionTracker.calculateLoSOfUnitPulse(unit)
 	return VisionTracker.calculateLoSOfUnitRays(unit)
 end
 
@@ -651,43 +651,61 @@ function VisionTracker.calculateLoSOfUnitRays(unit)
 end
 
 function VisionTracker.getKnownOcclusionTileOrder(pos, range)
+	print("getKnownOcclusionTileOrder starts here")
+	print("Range: "..tostring(range))
 	local result = {}
 	local orientationId = 0
 	local currentOrientationMatrixTable = {
 		{{x=1,y=0}, {x=0,y=1}},
 		{{x=-1,y=0}, {x=0,y=-1}},
 		{{x=0,y=-1}, {x=1,y=0}},
-		{{x=1,y=1}, {x=-1,y=0}}
+		{{x=0,y=1}, {x=-1,y=0}}
 	}
 	local layer = 1
 	local currentLayerSize = 1
 	while layer<=range do
 		for orientationId = 1, 4 do
-			for i = 0,currentLayerSize*2-1 do
-				local offset = {x = layer, y = math.ceil(i/2)*(2*(i%2)-1)}
+			for i = 0,currentLayerSize*2-2 do
+				print("Assign offset")
+				local offset = {x = layer, y = math.ceil(i/2.0)*(2*(i%2)-1)}
+				print("Offset assigned")
 				if math.abs(offset.x)+math.abs(offset.y) > range then
+					print("Offset out of range")
 					break
 				end				
-				local rotatedOffet = {x = vectorProjection(offset,currentOrientationMatrixTable[orientationId][1]), y = vectorProjection(offset,currentOrientationMatrixTable[orientationId][2])}
+				print("Rotate offset")
+				local rotatedOffset = {x = dotProduct(offset,currentOrientationMatrixTable[orientationId][1]),
+					y = dotProduct(offset,currentOrientationMatrixTable[orientationId][2])}
+				print("Offset rotated")
 				table.insert(result,vectorAdd(pos,rotatedOffset))
+				print("Offset Inserted: "..tostring(rotatedOffset.x)..","..tostring(rotatedOffset.y))
+				
 			end
+			print("Side done")
+			print("")
 			if orientationId == 2 then
 				currentLayerSize = currentLayerSize+1
 			end
 		end
+		print("Increasing Range")
+		print("")
+		print("")
 		layer = layer+1
 	end
+	return result
 end
 
 function VisionTracker.calculateLoSOfUnitPulse(unit)
+	print("VisionTracker.calculateLoSOfUnitPulse starts here")
 	if Tree == nil then
-        Tree = require "util/binarySearchTreeDoubleLinked"
+        Tree = require "util/binarySearchTree"
     end
 	local visibleTiles = {}
 	local orderedTiles = VisionTracker.getKnownOcclusionTileOrder(unit.pos, getSightRange(unit))
+--	print(dump(orderedTiles,0))
 	local t = Tree:new()
 	for i, checkedTile in ipairs(orderedTiles) do
-		t:insert(checkedTile.x)
+		t:insert(math.atan(checkedTile.x, checkedTile.y));
 		-- print("checking LoS at: "..tostring(checkedTile.x)..","..tostring(checkedTile.y))
 		if VisionTracker.canUnitSeeTile(unit,checkedTile) then
 			-- print("Tile at: "..tostring(checkedTile.x)..","..tostring(checkedTile.y))
@@ -699,10 +717,8 @@ function VisionTracker.calculateLoSOfUnitPulse(unit)
 		end
 	end
 	print("Binary Tree Test")
-	print(t._root:data())
-	print(t._root.next:data())
-	print(t._root.next.next:data())
-	print(t._root.next.next.next:data())
+	
+	print(dump(t,0))
 	return visibleTiles
 end
 
