@@ -1,5 +1,6 @@
 local Wargroove = require "wargroove/wargroove"
 local Ragnarok = require "initialized/ragnarok"
+local Stats = require "util/stats"
 
 local function dump(o,level)
    if type(o) == 'table' then
@@ -17,93 +18,12 @@ local testMode = false
 local setupRan = false
 
 local VisionTracker = {}
-local sightRangeList = {
-	archer = 5,
-	rival = 5,
-	ballista = 4,
-	commander_emeric = 5,
-	commander_flagship_rival = 5,
-	commander_flagship_wulfar = 5,
-	commander_mercival = 5,
-	commander_vesper = 5,
-	commander_wulfar = 5,
-	dog = 5,
-	dragon = 6,
-	flare = 6,
-	giant = 4,
-	harpoonship = 5,
-	harpy = 6,
-	knight = 3,
-	mage = 5,
-	merman = 5,
-	pirate_ship = 5,
-	pirate_ship_loaded = 5,
-	reveal_all = 200,
-	reveal_all_but_hidden = 200,
-	reveal_all_but_over = 200,
-	rifleman = 6,	
-	soldier = 5,
-	spearman = 4,
-	trebuchet = 4,
-	thief = 5,
-	thief_with_gold = 5,
-	travelboat = 3,
-	turtle = 5,
-	warship = 5,
-	witch = 6,
-	barracks = 1,
-	city = 1,
-	gate = 1,
-	hideout = 1,
-	hq = 2,
-	port = 1,
-	tower = 1,
-	water_city = 1,
-	crew = 0,
-	gate_no_los_blocker = 1,
-	wagon = 3,
-	balloon = 4
-}
 
-local scoutList = {
-	dog = true,
-	turtle = true,
-	reveal_all = true,
-	flare = true
-}
-
-local seeOverList = {
-	harpy = true,
-	dragon = true,
-	reveal_all = true,
-	reveal_all_but_hidden = true,
-	witch = true
-}
-
-local fowCoverList = {
-	forest = true,
-	reef = true,
-	mangrove = true,
-	cave_reef = true,
-	forest_alt = true
-}
-
-local visionBlockingList = {
-	forest = true,
-	mountain = true,
-	wall = true,
-	mangrove = true,
-	forest_alt = true,
-	cave_wall = true,
-	brush = true,
-	brush_invis = true,
-	invisible_blocker_ocean = true
-}
 function getSightRange(unit)
-	if sightRangeList[unit.unitClassId] == nil then
+	if Stats.sightRangeList[unit.unitClassId] == nil then
 		return 0
 	end
-	local sightRange = sightRangeList[unit.unitClassId]
+	local sightRange = Stats.sightRangeList[unit.unitClassId]
 	local weather = Wargroove.getCurrentWeather()
 	local isStructure = false
 	for i,tag in ipairs(unit.unitClass.tags) do
@@ -112,12 +32,12 @@ function getSightRange(unit)
 			break
 		end
 	end
-	if weather == "windy" and scoutList[unit.unitClassId]==nil and not isStructure then
+	if weather == "windy" and Stats.scoutList[unit.unitClassId]==nil and not isStructure then
 		sightRange = sightRange-1
 	end
 	if (weather == "rain" or weather == "sandstorm" or weather == "snow" or weather == "ash") and not isStructure then
 		sightRange = sightRange-1
-		if scoutList[unit.unitClassId]==nil then
+		if Stats.scoutList[unit.unitClassId]==nil then
 			sightRange = sightRange-1
 		end
 	end
@@ -392,8 +312,8 @@ end
 function VisionTracker.init()
 	print("VisionTracker Test added to list of tests")
 	--Ragnarok.addAction(VisionTracker.setup,"start_of_match",true)
-	Ragnarok.addAction(VisionTracker.humanTest,"repeating",true)
-	Ragnarok.addAction(VisionTracker.aiTest,"repeating",true)
+	--Ragnarok.addAction(VisionTracker.humanTest,"repeating",true)
+	--Ragnarok.addAction(VisionTracker.aiTest,"repeating",true)
 end
 
 function VisionTracker.setupTeamPlayers()
@@ -513,6 +433,10 @@ function VisionTracker.humanTest(context)
 	end
 end
 
+function VisionTracker.isTileBlocker(tile)
+	return Stats.visionBlockingList[blockerTerrainType] ~= nil
+end
+
 function VisionTracker.isTileBlocking(origin, target, blocker)
 	-- print("\t\t\tVisionTracker.isTileBlocking(origin, target, blocker) starts here")
 	local blockerTerrainType = Wargroove.getTerrainNameAt(blocker)
@@ -521,7 +445,7 @@ function VisionTracker.isTileBlocking(origin, target, blocker)
 	-- print("\t\t\tblockerTile wasn't origin")
 	if math.floor(target.x+0.5) == blocker.x and math.floor(target.y+0.5) == blocker.y then return false end
 	-- print("\t\t\tblockerTile wasn't target")
-	if visionBlockingList[blockerTerrainType] == nil then return false end
+	if not VisionTracker.isTileBlocker(blockerTerrainType) then return false end
 	-- print("\t\t\tblockerTile can block vision")
 	local dist = vectorLength(vectorDifference(origin,target))
 	if lineSegmentCircleCollision(origin, target, blocker, 0.5+dist/200) then
@@ -571,13 +495,13 @@ function VisionTracker.canUnitSeeTile(unit,tile)
 	-- print("\tDistance was: ".. tostring(dist))
 	if dist>getSightRange(unit) then return false end
 	-- print("\tClose enough to see potentially")
-	if scoutList[unit.unitClassId] ~= nil then return true end
+	if Stats.scoutList[unit.unitClassId] ~= nil then return true end
 	-- print("\tNot a scout")
 	local terrainType = Wargroove.getTerrainNameAt(tile)
 	-- print("\tThe tile is a: ".. terrainType)
-	if fowCoverList[terrainType] ~= nil and dist>1 then return false end
+	if Stats.fowCoverList[terrainType] ~= nil and dist>1 then return false end
 	-- print("\tThe tile is not fog cover, or at least touching")
-	if seeOverList[unit.unitClassId] ~= nil then return true end
+	if Stats.seeOverList[unit.unitClassId] ~= nil then return true end
 	-- print("\tCan't see over terrain")
 	local isFullyBlocked = true
 	local euclideanDist = vectorLength(difference)
@@ -622,20 +546,19 @@ function VisionTracker.calculateVisionOfUnit(unit)
 	end
 	local tilesInRange = Wargroove.getTargetsInRange(unit.pos, getSightRange(unit), "all")
 	-- print("Got the tiles in range")
-	if scoutList[unit.unitClassId] ~= nil then return tilesInRange end
-	if seeOverList[unit.unitClassId] ~= nil then
+	if Stats.scoutList[unit.unitClassId] ~= nil then return tilesInRange end
+	if Stats.seeOverList[unit.unitClassId] ~= nil then
 		local visibleTiles = {}
 		for i, checkedTile in ipairs(tilesInRange) do
 			-- print("checking LoS at: "..tostring(checkedTile.x)..","..tostring(checkedTile.y))
 			local checkedTerrainName = Wargroove.getTerrainNameAt(checkedTile)
 			local dist = math.abs(checkedTile.x-unit.pos.x)+math.abs(checkedTile.y-unit.pos.y)
-			if fowCoverList[checkedTerrainName] == nil or dist <=1 then
+			if Stats.fowCoverList[checkedTerrainName] == nil or dist <=1 then
 				table.insert(visibleTiles, checkedTile)
 			end
 		end
 		return visibleTiles
 	end
-	VisionTracker.calculateLoSOfUnitPulse(unit)
 	return VisionTracker.calculateLoSOfUnitRays(unit)
 end
 

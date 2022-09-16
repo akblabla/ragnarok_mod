@@ -8,6 +8,7 @@ Ragnarok.seaTiles = {"sea","sea_alt", "ocean","reef","cave_sea", "cave_reef","ca
 Ragnarok.amphibiousTiles = {"river", "cave_river", "beach", "cave_beach", "mangrove"}
 Ragnarok.groundTags = {"type.ground.light", "type.ground.heavy"}
 
+
 local actions = {
 	start_of_match = {front = {}, back = {}},
 	end_of_match = {front = {}, back = {}},
@@ -162,7 +163,7 @@ function Ragnarok.regenerateCrownBearer(context)
 		if currentTurnPlayerId == crownBearer.playerId or currentTurnPlayerId == Wargroove.getPlayerChildOf(crownBearer.playerId) then
 			if crownBearer.health<crownBearer.unitClass.maxHealth then
                 Wargroove.playMapSound("unitHealed", crownBearer.pos)
-				crownBearer:setHealth(crownBearer.health+10,crownBearerID)
+				crownBearer:setHealth(crownBearer.health+20,crownBearerID)
 				Wargroove.updateUnit(crownBearer)
                 Wargroove.spawnMapAnimation(crownBearer.pos, 0, "fx/heal_unit")
                 Wargroove.waitTime(0.2)
@@ -380,7 +381,8 @@ end
 local activator = {}
 local gizmoModeList = {}
 local lockedGizmos = {}
-local invertedGizmos = {}
+local invertedVisualGizmos = {}
+local invertedOutputGizmos = {}
 
 local gizmoSoundMapOn = {
 	["pressure_plate"] = "cutscene/stoneScrape1",
@@ -438,8 +440,8 @@ function Ragnarok.setState(gizmo, state, playSound)
 	end
 	if playSound == nil then playSound = true end
 	print("Ragnarok.setState(gizmo,state) starts here")
-	print(invertedGizmos[Ragnarok.generateGizmoKey(gizmo)]) 
-	local changedState = Ragnarok.getGizmoState(gizmo) ~= state
+	print(invertedVisualGizmos[Ragnarok.generateGizmoKey(gizmo)]) 
+	local changedState = Ragnarok.getInternalGizmoState(gizmo) ~= state
 	local soundPlayed
 	print(changedState)
 	if changedState then
@@ -456,7 +458,7 @@ function Ragnarok.setState(gizmo, state, playSound)
 		Wargroove.playMapSound(soundPlayed, gizmo.pos)
 	end
 	local key = Ragnarok.generateGizmoKey(gizmo)
-	gizmo:setState(not(state  == (invertedGizmos[key]==true)))
+	gizmo:setState(not(state  == (invertedVisualGizmos[key]==true)))
 	return {changedState = changedState, soundPlayed = soundPlayed}
 end
 
@@ -464,7 +466,7 @@ function Ragnarok.wouldStateChange(gizmo, state)
 	if lockedGizmos[Ragnarok.generateGizmoKey(gizmo)] == true then
 		return false
 	end
-	local changedState = Ragnarok.getGizmoState(gizmo) ~= state
+	local changedState = Ragnarok.getInternalGizmoState(gizmo) ~= state
 	return changedState
 end
 
@@ -503,17 +505,35 @@ function Ragnarok.setActivator(gizmo,state)
 	if state == false then activator[key] = nil end
 end
 
-function Ragnarok.invertGizmo(gizmo)
+function Ragnarok.invertVisualGizmo(gizmo)
 	gizmo:setState(not gizmo:getState())
 	local key = Ragnarok.generateGizmoKey(gizmo)
-	if invertedGizmos[gizmo] then invertedGizmos[key] = nil
-	else invertedGizmos[key] = true
+	if invertedVisualGizmos[gizmo] then invertedVisualGizmos[key] = nil
+	else invertedVisualGizmos[key] = true
 	end
+end
+
+function Ragnarok.invertOutputGizmo(gizmo)
+	local key = Ragnarok.generateGizmoKey(gizmo)
+	if invertedOutputGizmos[gizmo] then invertedOutputGizmos[key] = nil
+	else invertedOutputGizmos[key] = true
+	end
+end
+
+function Ragnarok.getInternalGizmoState(gizmo)
+	local key = Ragnarok.generateGizmoKey(gizmo)
+	local result = gizmo:getState()
+	--invert visual
+	result = not(result  == (invertedVisualGizmos[key]==true))
+	return result
 end
 
 function Ragnarok.getGizmoState(gizmo)
 	local key = Ragnarok.generateGizmoKey(gizmo)
-	return not(gizmo:getState()  == (invertedGizmos[key]==true))
+	local result = Ragnarok.getInternalGizmoState(gizmo)
+	--invert output
+	result = not(result  == (invertedOutputGizmos[key]==true))
+	return result
 end
 
 function Ragnarok.generateGizmoKey(gizmo)

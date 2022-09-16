@@ -18,118 +18,72 @@ worldMaps:
     layer: background_tiles_water
     mask: world/maps/aurania_v2/world_map_water_ramp.png
     pos: [0, 0]
-  - animation: world/maps/aurania/world_map_smoke
-    layer: sky_effects
-    pos: [762, 535]
   #waterMask: world/maps/aurania_zoomed/aurania_zoomed_water_mask.png
   fishAnimations:
   - world/world_map_fish_size01
   - world/world_map_fish_size02
   - world/world_map_fish_size03
   fishes:
-  - pos: [297, 54]
+  - pos: [240, 125]
+    radius: 20
+  - pos: [335, 168]
     radius: 60
-  - pos: [252, 64]
+  - pos: [337, 350]
+    radius: 25
+  - pos: [375, 415]
+    radius: 40
+  - pos: [592, 468]
+    radius: 40
+  - pos: [670, 475]
+    radius: 50
+  - pos: [460, 90]
+    radius: 25
+  - pos: [565, 55]
+    radius: 25
+  - pos: [680, 60]
     radius: 60
-  - pos: [150, 336]
-    radius: 45
-  - pos: [103, 603]
-    radius: 45
-  - pos: [309, 756]
-    radius: 60
-  - pos: [610, 810]
-    radius: 30
-  - pos: [925, 672]
-    radius: 75
-  - pos: [630, 453]
-    radius: 30
-  - pos: [870, 396]
-    radius: 45
-  - pos: [1182, 640]
-    radius: 60
-  - pos: [1350, 321]
-    radius: 45
-  - pos: [1285, 123]
-    radius: 45
-  - pos: [1027, 0]
-    radius: 30
-  - pos: [790, 0]
-    radius: 30
   sound:
   - event: environmental/oceanAmbienceWorld
   - event: environmental/fieldAmbienceWorld
     sources:
     # Cherrystone
-    - pos: [290, 390]
+    - pos: [66, 105]
       refDistance: 30
       maxDistance: 300
-    - pos: [440, 490]
-      refDistance: 30
-      maxDistance: 300
-    # Lost Leagues
-    - pos: [600, 150]
-      refDistance: 30
-      maxDistance: 300
-    - pos: [770, 260]
-      refDistance: 30
-      maxDistance: 300
-    - pos: [810, 140]
-      refDistance: 30
-      maxDistance: 300
-    - pos: [880, 260]
-      refDistance: 30
-      maxDistance: 300
-    # Heavensong Mountains
-    - pos: [990, 410]
-      refDistance: 30
-      maxDistance: 300
-    - pos: [1000, 520]
+    - pos: [78, 260]
       refDistance: 30
       maxDistance: 300
   - event: environmental/forestAmbienceWorld
     sources:
     # The Gloomwoods
-    - pos: [460, 320]
+    - pos: [100, 30]
       refDistance: 20
       maxDistance: 200
-    - pos: [600, 280]
+    - pos: [300, 20]
       refDistance: 20
       maxDistance: 200
   - event: environmental/tundraAmbienceWorld
     sources:
     # Felheim
-    - pos: [224, 600]
+    - pos: [40, 450]
       refDistance: 20
       maxDistance: 200
-    - pos: [516, 660]
+    - pos: [180, 450]
       refDistance: 25
       maxDistance: 250
-    - pos: [700, 732]
+    - pos: [380, 500]
       refDistance: 10
       maxDistance: 100
   - event: environmental/mountainAmbienceWorld
     sources:
-    # Lost Leagues Mountain
-    - pos: [700, 140]
+    # Outlaw HQ
+    - pos: [230, 320]
       refDistance: 15
-      maxDistance: 150
-    # Heavensong Mountains
-    - pos: [1110, 440]
-      refDistance: 25
-      maxDistance: 250
-  - event: environmental/desertAmbienceWorld
-    sources:
-    # Heavensong
-    - pos: [1050, 160]
-      refDistance: 30
-      maxDistance: 300
-    - pos: [1140, 265]
-      refDistance: 30
-      maxDistance: 300
+      maxDistance: 100
   - event: environmental/swampAmbienceWorld
     sources:
     # The Swamp
-    - pos: [850, 140]
+    - pos: [440, 230]
       refDistance: 20
       maxDistance: 200
   - event: environmental/volcanoAmbienceWorld
@@ -141,32 +95,23 @@ worldMaps:
   - event: environmental/riverAmbienceWorld
     sources:
     #River from Felheim through Cherrystone
-    - pos: [275, 540]
+    - pos: [60, 465]
       refDistance: 15
       maxDistance: 150
-    - pos: [315, 450]
+    - pos: [260, 450]
       refDistance: 15
       maxDistance: 150
-    - pos: [340, 370]
-      refDistance: 15
-      maxDistance: 150
-    - pos: [350, 285]
+    - pos: [230, 380]
       refDistance: 15
       maxDistance: 150
     # Gloomwoods Rivers
-    - pos: [435, 250]
+    - pos: [200, 50]
       refDistance: 15
       maxDistance: 150
-    - pos: [512, 208]
+    - pos: [250, 40]
       refDistance: 15
       maxDistance: 150
-    - pos: [560, 290]
-      refDistance: 15
-      maxDistance: 150
-    - pos: [555, 365]
-      refDistance: 15
-      maxDistance: 150
-    - pos: [630, 350]
+    - pos: [365, 20]
       refDistance: 15
       maxDistance: 150
 ...

@@ -2,6 +2,7 @@ local Wargroove = require "wargroove/wargroove"
 local OldCombat = require "wargroove/combat"
 local PassiveConditions = require "wargroove/passive_conditions"
 local Ragnarok = require "initialized/ragnarok"
+local Stats = require "util/stats"
 
 
 --
@@ -136,28 +137,8 @@ function Combat:getDamage(attacker, defender, solveType, isCounter, attackerPos,
 	end
 	
 	
-	local isGround = false
-	for i, tag in ipairs(attacker.unitClass.tags) do
-		for i, groundTag in ipairs(Ragnarok.groundTags) do
-			if tag == groundTag then
-				isGround = true
-			end
-		end
-	end
-    local defenderTerrain = Wargroove.getTerrainNameAt(defenderPos)
-	local defenderInSea = false
-	
-	for i, terrain in ipairs(Ragnarok.seaTiles) do
-		if defenderTerrain == terrain then
-			defenderInSea = true
-		end
-	end
-	if defenderInSea and isGround and weapon and weapon.maxRange == 1 then
-		for i, tag in ipairs(defender.unitClass.tags) do
-			if tag == "type.sea" then
-				return nil,false
-			end
-		end
+	if Stats.meleeUnits[effectiveAttacker.unitClassId] ~= nil and not Wargroove.canStandAt(effectiveAttacker.unitClassId, defender.pos) then
+		return nil, false
 	end
 	
 	if weapon == nil or (isCounter and not weapon.canMoveAndAttack) or (Ragnarok.cantAttackBuildings(attacker.playerId) and defender.unitClass.isStructure) or baseDamage < 0.01 then

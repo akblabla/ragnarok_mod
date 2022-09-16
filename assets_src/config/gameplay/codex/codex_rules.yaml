@@ -1,24 +1,36 @@
 ---
 codex:
-- id: rules_changes
+- id: rules_fow_changes
   category: rules
-  name: codex_rules_changes
-  faction: outlaw
+  name: codex_rules_fow_changes
   icon:
     image: ui/codex/icons/icon_rules_question.png
   pages:
   - pageType: page
     layoutType: unit_sprite
-    unitClass: commander_wulfar
+    unitClass: dog
     faction: outlaw
-    title: codex_rules_changes_table_of_content_title
-    text: codex_rules_changes_table_of_content_text
+    title: codex_rules_fow_overall_title
+    text: codex_rules_fow_overall_text
   - pageType: page
     layoutType: unit_sprite
-    unitClass: spearman
+    unitClass: flare
     faction: outlaw
-    title: codex_rules_changes_counter_title
-    text: codex_rules_changes_counter_text
+    title: codex_rules_weather_title
+    text: codex_rules_weather_text
+  - pageType: page
+    layoutType: unit_sprite
+    unitClass: dog
+    faction: floran
+    title: codex_rules_fow_AI_title
+    text: codex_rules_fow_AI_text
+
+- id: rules_combat_changes
+  category: rules
+  name: codex_rules_combat_changes
+  icon:
+    image: ui/codex/icons/icon_rules_question.png
+  pages:
   - pageType: page
     layoutType: unit_sprite
     unitClass: soldier
@@ -33,10 +45,227 @@ codex:
     text: codex_rules_changes_melee_list_text
   - pageType: page
     layoutType: unit_sprite
+    unitClass: spearman
+    faction: outlaw
+    title: codex_rules_changes_counter_title
+    text: codex_rules_changes_counter_text
+  - pageType: page
+    layoutType: unit_sprite
     unitClass: mage
     faction: outlaw
-    title: codex_rules_changes_ranged_list_title
-    text: codex_rules_changes_ranged_list_text
+    title: codex_rules_damage_scaling_title
+    text: codex_rules_damage_scaling_text
+
+
+###########################################################
+- id: rules_win_conditions
+  category: rules
+  name: codex_rules_win_conditions
+  faction: test_faction
+  icon:
+    image: ui/codex/icons/icon_rules_question.png
+  pages:
+  - pageType: page
+    layoutType: animation
+    animation: ui/codex/content/rules_win
+    title: codex_rules_win_conditions_title
+    text: codex_rules_win_conditions_text
+
+- id: rules_movement
+  category: rules
+  name: codex_rules_movement
+  faction: test_faction
+  icon:
+    image: ui/codex/icons/icon_rules_question.png
+  pages:
+  - pageType: page
+    layoutType: animation
+    animation: ui/codex/content/rules_movement
+    title: codex_rules_movement_title
+    text: codex_rules_movement_text
+
+- id: rules_attacking
+  category: rules
+  name: codex_rules_attacking
+  faction: test_faction
+  icon:
+    image: ui/codex/icons/icon_rules_question.png
+  pages:
+  - pageType: page
+    layoutType: animation
+    animation: ui/codex/content/rules_attack
+    title: codex_rules_attacking_title
+    text: codex_rules_attacking_text
+
+- id: rules_counter
+  category: rules
+  name: codex_rules_counter
+  faction: test_faction
+  icon:
+    image: ui/codex/icons/icon_rules_question.png
+  pages:
+  - pageType: page
+    layoutType: animation
+    animation: ui/codex/content/rules_counterattack
+    title: codex_rules_counter_title
+    text: codex_rules_counter_text
+
+- id: rules_groove
+  category: rules
+  name: codex_rules_groove
+  faction: test_faction
+  icon:
+    image: ui/codex/icons/icon_rules_question.png
+  pages:
+  - pageType: page
+    layoutType: animation
+    animation: ui/codex/content/commander_merciagroove
+    title: codex_rules_groove_title
+    text: codex_rules_groove_text
+
+- id: rules_terraindefence
+  category: rules
+  name: codex_rules_terraindefence
+  faction: test_faction
+  icon:
+    image: ui/codex/icons/icon_rules_question.png
+  pages:
+  - pageType: page
+    layoutType: animation
+    animation: ui/codex/content/rules_terraindefence
+    title: codex_rules_terraindefence_title
+    text: codex_rules_terraindefence_text
+
+- id: rules_capture
+  category: rules
+  name: codex_rules_capture
+  faction: test_faction
+  icon:
+    image: ui/codex/icons/icon_rules_question.png
+  pages:
+  - pageType: page
+    layoutType: animation
+    animation: ui/codex/content/rules_capture
+    title: codex_rules_capture_title
+    text: codex_rules_capture_text
+
+- id: rules_income
+  category: rules
+  name: codex_rules_income
+  faction: test_faction
+  icon:
+    image: ui/codex/icons/icon_rules_question.png
+  pages:
+  - pageType: page
+    layoutType: animation
+    animation: ui/codex/content/rules_income
+    title: codex_rules_income_title
+    text: codex_rules_income_text
+
+- id: rules_recruitment
+  category: rules
+  name: codex_rules_recruitment
+  faction: test_faction
+  icon:
+    image: ui/codex/icons/icon_rules_question.png
+  pages:
+  - pageType: page
+    layoutType: animation
+    animation: ui/codex/content/rules_recruit
+    title: codex_rules_recruitment_title
+    text: codex_rules_recruitment_text
+
+- id: rules_reinforcement
+  category: rules
+  name: codex_rules_reinforcement
+  faction: test_faction
+  icon:
+    image: ui/codex/icons/icon_rules_question.png
+  pages:
+  - pageType: page
+    layoutType: animation
+    animation: ui/codex/content/rules_reinforce
+    title: codex_rules_reinforcement_title
+    text: codex_rules_reinforcement_text
+
+- id: rules_crits
+  category: rules
+  name: codex_rules_crits
+  faction: test_faction
+  icon:
+    image: ui/codex/icons/icon_rules_question.png
+  pages:
+  - pageType: page
+    layoutType: animation
+    animation: ui/codex/content/rules_crit
+    title: codex_rules_crits_title
+    text: codex_rules_crits_text
+
+- id: rules_transport
+  category: rules
+  name: codex_rules_transport
+  faction: test_faction
+  icon:
+    image: ui/codex/icons/icon_rules_question.png
+  pages:
+  - pageType: page
+    layoutType: animation
+    animation: ui/codex/content/rules_transport
+    title: codex_rules_transport_title
+    text: codex_rules_transport_text
+
+- id: rules_commanders
+  category: rules
+  name: codex_rules_commanders
+  faction: test_faction
+  icon:
+    image: ui/codex/icons/icon_rules_question.png
+  pages:
+  - pageType: page
+    layoutType: animation
+    animation: ui/codex/content/commander_merciagroove
+    title: codex_rules_commanders_title
+    text: codex_rules_commanders_text
+
+- id: rules_strongholds
+  category: rules
+  name: codex_rules_strongholds
+  faction: test_faction
+  icon:
+    image: ui/codex/icons/icon_rules_question.png
+  pages:
+  - pageType: page
+    layoutType: animation
+    animation: ui/codex/content/rules_stronghold
+    title: codex_rules_strongholds_title
+    text: codex_rules_strongholds_text
+
+- id: rules_fogofwar
+  category: rules
+  name: codex_rules_fogofwar
+  faction: test_faction
+  icon:
+    image: ui/codex/icons/icon_rules_question.png
+  pages:
+  - pageType: page
+    layoutType: animation
+    animation: ui/codex/content/rules_fogofwar
+    title: codex_rules_fogofwar_title
+    text: codex_rules_fogofwar_text
+    
+- id: rules_weather
+  category: rules
+  name: codex_rules_weather
+  faction: test_faction
+  icon:
+    image: ui/codex/icons/icon_rules_question.png
+  pages:
+  - pageType: page
+    layoutType: animation
+    animation: ui/codex/content/rules_weather
+    title: codex_rules_weather_title
+    text: codex_rules_weather_text
+
 
 
 ...
