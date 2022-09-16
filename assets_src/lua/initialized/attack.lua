@@ -2,7 +2,7 @@ local Wargroove = require "wargroove/wargroove"
 local OldAttack = require "verbs/attack"
 local Combat = require "wargroove/combat"
 local Ragnarok = require "initialized/ragnarok"
-local VisionTracker = require "initialized/vision_tracker"
+local Stats = require "util/stats"
 
 
 local Attack = {}
@@ -89,9 +89,6 @@ function Attack:canExecuteWithTarget(unit, endPos, targetPos, strParam)
         end
     end
     local targetUnit = Wargroove.getUnitAt(targetPos)
-	-- if Ragnarok.usingFogOfWarRules() and VisionTracker.canSeeTile(unit.playerId,targetPos) == false then--bruteForceCheckIfVisibleInStealthyTile(unit.playerId, targetPos) == false then
-		-- return false
-	-- end
     if not targetUnit or not Wargroove.areEnemies(unit.playerId, targetUnit.playerId) then
         return false
     end
@@ -104,28 +101,6 @@ function Attack:canExecuteWithTarget(unit, endPos, targetPos, strParam)
 		return false
 	end
 	if Ragnarok.hasCrown(unit) then return false end
-	local isGround = false
-	for i, tag in ipairs(unit.unitClass.tags) do
-		for i, groundTag in ipairs(Ragnarok.groundTags) do
-			if tag == groundTag then
-				isGround = true
-			end
-		end
-	end
-	local targetInSea = false
-	
-	for i, terrain in ipairs(Ragnarok.seaTiles) do
-		if targetTerrain == terrain then
-			targetInSea = true
-		end
-	end
-	if targetInSea and isGround and #weapons == 1 and weapons[1].maxRange == 1 then
-		for i, tag in ipairs(targetUnit.unitClass.tags) do
-			if (tag == "type.sea" or tag == "type.amphibious") and unit.unitClassId ~= "mage" then
-				return false
-			end
-		end
-	end
 	local fakePath = {unit.pos, endPos}
     local results = Combat:solveCombat(unit.id, targetUnit.id, fakePath, "simulationOptimistic")
 	local relativeValue = (targetUnit.unitClass.cost*(targetUnit.health-results.defenderHealth))/(unit.unitClass.cost*(unit.health-results.attackerHealth))
@@ -133,6 +108,9 @@ function Attack:canExecuteWithTarget(unit, endPos, targetPos, strParam)
 		return false
 	end
     
+	if Stats.meleeUnits[unit.unitClassId] ~= nil and not Wargroove.canStandAt(unit.unitClassId, targetPos) then
+		return false
+	end
 
     return Combat:getBaseDamage(unit, targetUnit, endPos) > 0.001
 end

@@ -459,14 +459,20 @@ function Actions.gizmoToggleStateWhenMovedTo(context)
 end
 
 function Actions.invertGizmo(context)
-    -- "Invert active states of gizmos at location {0}."
+    -- "Invert active states of gizmos at location {0} (only output? = {1})"
 	local location = context:getLocation(0)
+	local onlyOutput = context:getBoolean(1)
 	
     for i, gizmo in ipairs(Wargroove.getGizmosAtLocation(location)) do
-		Ragnarok.invertGizmo(gizmo)
+		if onlyOutput then
+			Ragnarok.invertOutputGizmo(gizmo)
+		else
+			Ragnarok.invertVisualGizmo(gizmo)
+		end
     end
 
 end
+
 
 function Actions.setThreatAtLocation(context)
     -- "Sets the threat level of {0} to {1}, sourcing the owner as {2} at {3} owned by {4}"

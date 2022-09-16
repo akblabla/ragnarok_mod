@@ -10,23 +10,31 @@ en-GB:
   codex_groove_strategy_flagship_wulfar: "The broadside only deals full damage in the first row, so even if multiple angles might hit the same targets, consider who takes the full brunt of the broadside."
 
 # CODEX: RULES
-  codex_rules_changes: "Changes from vanilla"
+  codex_rules_fow_changes: "Fog of War Changes"
   
-  codex_rules_changes_table_of_content_title: Table of Content
-  codex_rules_changes_table_of_content_text: To be written
+  codex_rules_fow_overall_title: "Overall adjustments"
+  codex_rules_fow_overall_text: "All units have had their sight range increased by 3 compared to vanilla, with exceptions to siege, transports, knights ect. which have nerfed sight range relatively to the other units. Building sight range remain unchanged."
+
+  codex_rules_weather_title: "Weather"
+  codex_rules_weather_text: "Windy weather now reduces the  sight range of non-scout units by 1.\n Sever weather now reduces the sight range of scouts by 1 and non-scouts by 2."
+
   
-  codex_rules_changes_counter_title: "Counter Attacks"
-  codex_rules_changes_counter_text: "Structure counter attack damage now scales with HP like all units, structure counter damage adjusted to compensate.\n
-  Damage scaling for a 1% health unit is increased from 1% to 10%"
+  codex_rules_fow_AI_title: "AI"
+  codex_rules_fow_AI_text: "The AI can no longer targets enemies it can't see. This means that forests, reefs and just staying outside of enemy sight range keeps you safe from enemy attacks."
+  
+  codex_rules_combat_changes: "Combat Changes"
 
   codex_rules_changes_melee_title: "Melee"
-  codex_rules_changes_melee_text: "Units with 1 range have now been seperated into two categories: Melee and Ranged. Melee units can only attack units on tiles they themselves can stand on, whilst ranged units are unrestricted. This means that melee units can now attack naval units on beaches and in rivers."
+  codex_rules_changes_melee_text: "Some units have now been tagged as melee units. Melee units can only attack units on tiles they themselves can stand on. Normal targeting restrictions against sea units for melee units have been removed. This means that melee units can now attack naval units on beaches and in rivers."
   
   codex_rules_changes_melee_list_title: "Melee List"
   codex_rules_changes_melee_list_text: "Soldier\nSpearman\nDog\nCavalry\nGolem\nTurtle"
   
-  codex_rules_changes_ranged_list_title: "Ranged List"
-  codex_rules_changes_ranged_list_text: "Mage\nAeronaut\nSky Rider\nDragon\nRaider Ship"
+  codex_rules_changes_counter_title: "Structure Counter Attacks"
+  codex_rules_changes_counter_text: "Structure counter attack damage now scales with HP like all units, structure counter damage adjusted to compensate."
+  
+  codex_rules_damage_scaling_title: "Damage Scaling"
+  codex_rules_damage_scaling_text: "Damage scaling for a 1% health unit is increased from 1% to 10%."
   
   
 # CODEX: UNIT INFORMATION
@@ -79,4 +87,147 @@ en-GB:
   
   codex_unit_rifleman_outlaws_lore_text: "The Sharpshooters are the riflemen of the Outlaw. These trickshooters can knock a coin off a post a mile away. Although they constantly talk about how busy they are, and demand high pay for their work, you can somehow always find them playing cards at the bar day and night."
   
+# CODEX: TERRAIN INFORMATION
+  terrain_name_road_tropical: "Tropical Road"
+  codex_terrain_road_tropical_description_text: "The distinctive red clay of Cradle Island is commenly used as roads. The rich colour lets it stand out in the foliage, so even the most weary of travelers can find back to civilization."
+
+  terrain_name_plains_tropical: "Tropical Plains"
+  codex_terrain_plains_tropical_description_text: "Clearings in the jungles are rare, but appriated by those who would otherwise risk being ambushed by florans every step in the jungle."
+
+  terrain_name_forest_tropical: "Tropical Forest"
+  codex_terrain_forest_tropical_description_text: "The jungle is as beautiful as it is dangorous. Who knows what can hide in this dense foliage."
+  
+  terrain_name_mountain_tropical: "Tropical Mountain"
+  codex_terrain_mountain_tropical_description_text: "Alpine grasses thrive in the damp, cool air of the mountains, nestled in loose earth between jagged rocks."
+  
+  terrain_name_river_tropical: "Tropical River"
+  codex_terrain_river_tropical_description_text: "Sparkling water meanders lazily across the land. Flickering shafts of sunlight pierce the clear water, dancing across the scales of the tiny, flitting fish that dwell in the shallow coolness."
+  
+  terrain_name_bridge_tropical: "Tropical Bridge"
+  codex_terrain_bridge_tropical_description_text: "A broad stone bridge. Though worn and weathered, it remains as strong as the day it was built."
+  
+  terrain_name_beach_tropical: "Tropical Beach"
+  codex_terrain_beach_tropical_description_text: "The coast dips gently, and sand stretches out to the sea, falling away to twilight darkness beneath the quiet waves."
+  
+  terrain_name_ocean_tropical: "Tropical Sea"
+  codex_terrain_sea_tropical_description_text: "Crystal clear waters where silver-scaled fish flock, and the air is filled with the tang of salt."
+  
+  terrain_name_deepsea_tropical: "Tropical Deep Sea"
+  codex_terrain_deepsea_tropical_description_text: "Clear water grows dark, and the ocean floor gives way to the fathomless deeps."
+  
+  terrain_name_reef_tropical: "Tropical Reef"
+  codex_terrain_reef_tropical_description_text: "Barnacled rocks break the swell of the water. Below the surface, the reef teems with life."
+  
+  terrain_name_wall_tropical: "Tropical Wall"
+  codex_terrain_wall_tropical_description_text: "An impassible bulwark of thick, heavy stone."
+  
+  terrain_name_cobblestone_tropical: "Tropical Flagstone"
+  codex_terrain_cobblestone_tropical_description_text: "Floor made from solid stone slabs. Built to last the ages."
+  
+  terrain_name_carpet_tropical: "Tropical Carpet"
+  codex_terrain_carpet_tropical_description_text: "A carpet of woven lambswool. The pile is thick and warm underfoot."
+  
+  terrain_name_mangrove_grass: "Grass Mangrove"
+  terrain_name_mangrove_tropical: "Tropical Mangrove"
+  terrain_name_mangrove_ice: "Snow Mangrove"
+  terrain_name_mangrove_desert: "Desert Mangrove"
+  terrain_name_mangrove_strategy: "Mangrove Strategy"
+  terrain_name_mangrove_stats: "Mangrove Statistics"
+  codex_terrain_mangrove_grass_description_text: "Mangroves are pretty neat. Write more plz."
+  codex_terrain_mangrove_tropical_description_text: "Mangroves are pretty neat. Write more plz."
+  codex_terrain_mangrove_ice_description_text: "Impossible! Mangroves in Felheim?!"
+  codex_terrain_mangrove_desert_description_text: "Mangroves are pretty neat. Write more plz."
+  codex_terrain_mangrove_strategy_text: "Whilst the high movement costs mostly prohibits units navigating through mangroves, they are still a far better alternative for ships than rivers in terms of defense. Ships should be aware of getting ambushed by cheap infantry such as soldiers hiding in mangroves however, they can deal heavy damage to ships stranded in a river tile."
+  codex_terrain_mangrove_stats_text: "Conceals units, but it is incredibly slow to traverse for both naval and ground units."
+
+  terrain_name_cave_road_grass: "Grass Cave Road"
+  terrain_name_cave_road_tropical: "Tropical Cave Road"
+  terrain_name_cave_road_ice: "Snow Cave Road"
+  terrain_name_cave_road_desert: "Desert Cave Road"
+  terrain_name_cave_road_strategy: "Cave Road Strategy"
+  terrain_name_cave_road_stats: "Cave Road Statistics"
+  codex_terrain_cave_road_grass_description_text: "Cave Roads are pretty neat. Write more plz."
+  codex_terrain_cave_road_tropical_description_text: "Cave Roads are pretty neat. Write more plz."
+  codex_terrain_cave_road_ice_description_text: "Cave Roads?"
+  codex_terrain_cave_road_desert_description_text: "Cave Roads are pretty neat. Write more plz."
+  codex_terrain_cave_road_strategy_text: "Cave roads are just like normal roads, although due to being inside, they provide 1 defense, unlike regular road. Flyers can't fly along Cave Roads."
+  codex_terrain_cave_road_stats_text: "Underground roads speeds along wheeled units, but only provide limited defense."
+
+  terrain_name_cave_sea_grass: "Grass Cove"
+  terrain_name_cave_sea_tropical: "Tropical Cove"
+  terrain_name_cave_sea_ice: "Snow Cove"
+  terrain_name_cave_sea_desert: "Desert Cove"
+  terrain_name_cave_sea_strategy: "Cove Strategy"
+  terrain_name_cave_sea_stats: "Cove Statistics"
+  codex_terrain_cave_sea_grass_description_text: "Cove. Write more plz."
+  codex_terrain_cave_sea_tropical_description_text: "Cove. Write more plz."
+  codex_terrain_cave_sea_ice_description_text: "Cove?"
+  codex_terrain_cave_sea_desert_description_text: "Cove. Write more plz."
+  codex_terrain_cave_sea_strategy_text: "Coves are only traversable by amphibians and naval units. They provide slightly more defense than the sea."
+  codex_terrain_cave_sea_stats_text: "Accessible only to naval units. Provides defense comparable to reefs in the open sea, but does not conceal."
+
+  terrain_name_cave_bridge_grass: "Grass Cave Bridge"
+  terrain_name_cave_bridge_tropical: "Tropical Cave Bridge"
+  terrain_name_cave_bridge_ice: "Snow Cave Bridge"
+  terrain_name_cave_bridge_desert: "Desert Cave Bridge"
+  terrain_name_cave_bridge_strategy: "Cave Bridge Strategy"
+  terrain_name_cave_bridge_stats: "Cave Bridge Statistics"
+  codex_terrain_cave_bridge_grass_description_text: "Cave Bridge. Write more plz."
+  codex_terrain_cave_bridge_tropical_description_text: "Cave Bridge. Write more plz."
+  codex_terrain_cave_bridge_ice_description_text: "Cave Bridge"
+  codex_terrain_cave_bridge_desert_description_text: "Cave Bridge. Write more plz."
+  codex_terrain_cave_bridge_strategy_text: "Cave bridges provide one more defense than their overworld counterparts, but are otherwise identical in function, except they don't let air units pass over them."
+  codex_terrain_cave_bridge_stats_text: "Cove Bridges allow ground units to travel over otherwise impassable waters."
+    
+  terrain_name_cave_reef_grass: "Grass Cove Reef"
+  terrain_name_cave_reef_tropical: "Tropical Cove Reef"
+  terrain_name_cave_reef_ice: "Snow Cove Reef"
+  terrain_name_cave_reef_desert: "Desert Cove Reef"
+  terrain_name_cave_reef_strategy: "Cove Reef Strategy"
+  terrain_name_cave_reef_stats: "Cove Reef Statistics"
+  codex_terrain_cave_reef_grass_description_text: "Cove Reef. Write more plz."
+  codex_terrain_cave_reef_tropical_description_text: "Cove Reef. Write more plz."
+  codex_terrain_cave_reef_ice_description_text: "Cove Reef"
+  codex_terrain_cave_reef_desert_description_text: "Cove Reef. Write more plz."
+  codex_terrain_cave_reef_strategy_text: "Cove Reefs provides 3 defense, the highest available for naval units outside of buffs. This makes them invaluable fog ships, even outside fog of war maps."
+  codex_terrain_cave_reef_stats_text: "Cove Reefs provide the highest amount of defense possible for naval units, but slows down movement."
+    
+  terrain_name_cave_river_grass: "Grass Cave River"
+  terrain_name_cave_river_tropical: "Tropical Cave River"
+  terrain_name_cave_river_ice: "Snow Cave River"
+  terrain_name_cave_river_desert: "Desert Cave River"
+  terrain_name_cave_river_strategy: "Cave River Strategy"
+  terrain_name_cave_river_stats: "Cave River Statistics"
+  codex_terrain_cave_river_grass_description_text: "Cave River. Write more plz."
+  codex_terrain_cave_river_tropical_description_text: "Cave River. Write more plz."
+  codex_terrain_cave_river_ice_description_text: "Cave River"
+  codex_terrain_cave_river_desert_description_text: "Cave River. Write more plz."
+  codex_terrain_cave_river_strategy_text: "Whilst Cove Rivers are less vulnurable positions than normal rivers, relatively to all other underground tiles, they still terrible for defense. Ships are in particular vulnerable to melee units whilst in cave rivers."
+  codex_terrain_cave_river_stats_text: "Slows down land units. Units attacked in a river are at a disadvantage."
+  
+  terrain_name_cave_beach_grass: "Grass Cove Beach"
+  terrain_name_cave_beach_tropical: "Tropical Cove Beach"
+  terrain_name_cave_beach_ice: "Snow Cove Beach"
+  terrain_name_cave_beach_desert: "Desert Cove Beach"
+  terrain_name_cave_beach_strategy: "Cove Beach Strategy"
+  terrain_name_cave_beach_stats: "Cove Beach Statistics"
+  codex_terrain_cave_beach_grass_description_text: "Cove Beach. Write more plz."
+  codex_terrain_cave_beach_tropical_description_text: "Cove Beach. Write more plz."
+  codex_terrain_cave_beach_ice_description_text: "Cove Beach"
+  codex_terrain_cave_beach_desert_description_text: "Cove Beach. Write more plz."
+  codex_terrain_cave_beach_strategy_text: "Cove Beaches allows barges to load and unload units, but provide no defense for naval units, and leaves them open to assault from melee units."
+  codex_terrain_cave_beach_stats_text: "Accessible to naval and walking units. Cove Beaches provides no defense."
+  
+  terrain_name_brush_grass: "Grass Field"
+  terrain_name_brush_tropical: "Tropical Field"
+  terrain_name_brush_ice: "Snow Field"
+  terrain_name_brush_desert: "Desert Field"
+  terrain_name_brush_strategy: "Field Strategy"
+  terrain_name_brush_stats: "Field Statistics"
+  codex_terrain_brush_grass_description_text: "Field. Write more plz."
+  codex_terrain_brush_tropical_description_text: "Field. Write more plz."
+  codex_terrain_brush_ice_description_text: "Field"
+  codex_terrain_brush_desert_description_text: "Field. Write more plz."
+  codex_terrain_brush_strategy_text: "Fields are great for infantry, as they provide more defense than plains, at no cost to movement, whilst slowing down cavalry that may want to charge them. In fog of war, they also block vision, so standind behind fields can prevent the enemy from seeing you. They do not hide units inside them like forest however."
+  codex_terrain_brush_stats_text: "Fields provides limited defense. Cavalry and wheeled units are slowed."
 ...

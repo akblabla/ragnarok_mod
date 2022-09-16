@@ -38,23 +38,23 @@ en-GB:
   terrain_description_sea_alt: Open water. Accessible only to air and naval units.
   terrain_description_river: Slows down land units. Units attacked in a river are at a distinct disadvantage.
   terrain_name_mangrove: Mangrove
-  terrain_description_mangrove: Conceals both ground, air and naval units, but it is incredibly slow to traverse.
+  terrain_description_mangrove: Conceals units, but it is incredibly slow to traverse for both naval and ground units.
   terrain_description_plains_alt: Whilst accessible to all units, plains provide little defence.
   terrain_description_forest_alt: Forests are slow going, but provide good defence and a means of avoiding vehicles
   terrain_name_cave_reef: Cove Reef
-  terrain_description_cave_reef: "Rocks that lie beneath the sea, slowing but also protecting naval units."
+  terrain_description_cave_reef: "Cove Reefs provide the highest amount of defense possible for naval units, but slows down movement."
   terrain_name_cave_sea: Cove
-  terrain_description_cave_sea: "Accessible only to naval units."
+  terrain_description_cave_sea: "Accessible only to naval units. Provides defense comparable to reefs in the open sea, but does not conceal."
   terrain_name_cave_beach: Cove Beach
-  terrain_description_cave_beach: "Accessible to naval and walking units. Those attacked on the beach are at a disadvantage."
+  terrain_description_cave_beach: "Accessible to naval and walking units. Cove Beaches provides no defense."
   terrain_name_cave_bridge: Cove Bridge
   terrain_description_cave_bridge: "Cove Bridges allow ground units to travel over otherwise impassable waters."
   terrain_name_cave_wall: Cave Wall
   terrain_description_cave_wall: "Blocks all units."
   terrain_name_cave_river: Cave River
-  terrain_description_cave_river: Slows down land units. Units attacked in a river are at a distinct disadvantage.
-  terrain_name_brush: Brush
-  terrain_description_brush: The Brush provides limited defense. Cavalry and wheeled units are slowed.
+  terrain_description_cave_river: Slows down land units. Units attacked in a river are at a disadvantage.
+  terrain_name_brush: Field
+  terrain_description_brush: Fields provides limited defense. Cavalry and wheeled units are slowed.
   terrain_name_brush_grass: Field
   terrain_description_brush_grass: Fields provides limited defense. Cavalry and wheeled units are slowed.
   terrain_name_cave_road: Cave Road
@@ -148,7 +148,29 @@ en-GB:
   unit_name_thief_outlaws: Smuggler
   unit_name_rifleman_outlaws: Sharpshooter 
   unit_name_rival_outlaws: Poacher 
-  
+
+
+  # UNIT DESCRIPTIONS
+  unit_description_soldier: "[MELEE] Basic infantry, useful for capturing structures. Critical hit when adjacent to its commander."
+  unit_description_villager: "Simple peasants. They're not equipped to fight, and are vulnerable to just about everything."
+  unit_description_spearman: "[MELEE] Slower, more powerful infantry. Critical hit when adjacent to another spearman."
+  unit_description_archer: "Ranged ground units able to move and attack in the same turn. Critical hit when stationary."
+  unit_description_dog: "[MELEE] A quick unit. Critical hit when another dog unit is adjacent to the target."
+  unit_description_mage: "A powerful unit built to combat air threats. Critical hit when defence is 3 or above. Able to heal allied targets by 20%."
+  unit_description_warship: "An immensely powerful long range unit. Critical hit when on beach."
+  unit_description_harpoonship: "Ranged water unit, able to attack air and sea. Critical hit when in reef."
+  unit_description_dragon: "Incredibly powerful air-to-ground unit. Critical hit when target is standing on a road."
+  unit_description_knight: "[MELEE] Powerful, mobile ground unit. Critical hit when it attacks from a location six spaces away from where it starts."
+  unit_description_wagon: "Capable of quickly transporting units that would otherwise travel by foot."
+  unit_description_trebuchet: "Powerful long-range unit, unable to move and attack in the same turn. Critical hit at max range."
+  unit_description_merman: "Amphibious infantry unit that can capture structures. Critical hit when in rivers or sea."
+  unit_description_turtle: "[MELEE] Powerful naval unit, built to conquer the water. Critical hit when in deep sea."
+  unit_description_witch: "Air-to-air unit. Critical hit when target is not adjacent to its own allied witch. Hex deals 10% damage to all unit types."
+  unit_description_harpy: "Immensely mobile units, useful for crossing enemy lines. Critical hit when above a mountain."
+  unit_description_balloon: "Aircraft able to transport footsoldiers and Dog units."
+  unit_description_giant: "[MELEE] An immensely powerful unit. Critical hit when at or below 40% health."
+  unit_description_ballista: "Ranged ground-to-air unit, unable to move and attack in the same turn. Critical hit at min range."
+  unit_description_travelboat: "Boats able to transport all ground units across water."  
   
   # Triggers
   trigger_action_name_ai_set_no_building_attacking: "AI: Set no building attacking"
@@ -221,7 +243,7 @@ en-GB:
   
   trigger_action_name_invert_gizmo: "Gizmo: Invert Active State"
   trigger_action_description_invert_gizmo: "Invert active states of gizmos."
-  trigger_action_readable_invert_gizmo: "Invert active states of gizmos at location {0}."
+  trigger_action_readable_invert_gizmo: "Invert active states of gizmos at location {0} (only output? = {1})"
   
   trigger_action_name_set_threat_at_location: "AI: Set Threat at Location"
   trigger_action_description_set_threat_at_location: "Set threat level at location."

@@ -67,6 +67,7 @@ triggerActions:
   - id: invert_gizmo
     parameters:
       - type: location_star
+      - type: boolean
 
   - id: set_threat_at_location
     parameters:
