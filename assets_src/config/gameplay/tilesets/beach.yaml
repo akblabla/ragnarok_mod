@@ -76,8 +76,14 @@ tilesets:
     tiles:
       - { x: 0, y: 0, adj: "n w !e !s #se" }
       - { x: 0, y: 0, adj: "n w !e !s !se" }
-      - { x: 1, y: 0, adj: "n !e !w #s" }
-      - { x: 1, y: 0, adj: "n !e !w !s" }
+      - { x: 1, y: 0, adj: "n !e !w #s #nw #ne" }
+      - { x: 1, y: 0, adj: "n !e !w !s #nw #ne" }
+      - { x: 1, y: 0, adj: "n !e !w #s !nw #ne" }
+      - { x: 1, y: 0, adj: "n !e !w !s !nw #ne" }
+      - { x: 1, y: 0, adj: "n !e !w #s !nw !ne" }
+      - { x: 1, y: 0, adj: "n !e !w !s !nw !ne" }
+      - { x: 1, y: 0, adj: "n !e !w #s #nw !ne" }
+      - { x: 1, y: 0, adj: "n !e !w !s #nw !ne" }
       - { x: 2, y: 0, adj: "n e !w !s #sw" }
       - { x: 2, y: 0, adj: "n e !w !s !sw" }
       - { x: 3, y: 0, adj: "n !e !w #s" }
@@ -103,10 +109,22 @@ tilesets:
       - { x: 9, y: 0, adj: "s #n #e #w" }
       - { x: 9, y: 0, adj: "s !n #e #w" }
 
-      - { x: 0, y: 1, adj: "w !n !s #e" }
-      - { x: 0, y: 1, adj: "w !n !s !e" }
-      - { x: 2, y: 1, adj: "e !n !s #w" }
-      - { x: 2, y: 1, adj: "e !n !s !w" }
+      - { x: 0, y: 1, adj: "w !n !s #e #ne #se" }
+      - { x: 0, y: 1, adj: "w !n !s !e #ne #se" }
+      - { x: 0, y: 1, adj: "w !n !s #e !ne #se" }
+      - { x: 0, y: 1, adj: "w !n !s !e !ne #se" }
+      - { x: 0, y: 1, adj: "w !n !s #e !ne !se" }
+      - { x: 0, y: 1, adj: "w !n !s !e !ne !se" }
+      - { x: 0, y: 1, adj: "w !n !s #e #ne !se" }
+      - { x: 0, y: 1, adj: "w !n !s !e #ne !se" }
+      - { x: 2, y: 1, adj: "e !n !s #w #nw #sw" }
+      - { x: 2, y: 1, adj: "e !n !s !w #nw #sw" }
+      - { x: 2, y: 1, adj: "e !n !s #w !nw #sw" }
+      - { x: 2, y: 1, adj: "e !n !s !w !nw #sw" }
+      - { x: 2, y: 1, adj: "e !n !s #w !nw !sw" }
+      - { x: 2, y: 1, adj: "e !n !s !w !nw !sw" }
+      - { x: 2, y: 1, adj: "e !n !s #w #nw !sw" }
+      - { x: 2, y: 1, adj: "e !n !s !w #nw !sw" }
       - { x: 3, y: 1, adj: "e !n !s #w" }
       - { x: 3, y: 1, adj: "e !n !s !w" }
       - { x: 4, y: 1, adj: "w !n !s #e" }
@@ -132,8 +150,14 @@ tilesets:
   
       - { x: 0, y: 2, adj: "w s !n !e #ne" }
       - { x: 0, y: 2, adj: "w s !n !e !ne" }
-      - { x: 1, y: 2, adj: "s !w !e #n" }
-      - { x: 1, y: 2, adj: "s !w !e !n" }
+      - { x: 1, y: 2, adj: "s !w !e #n #se #sw" }
+      - { x: 1, y: 2, adj: "s !w !e !n #se #sw" }
+      - { x: 1, y: 2, adj: "s !w !e #n !se #sw" }
+      - { x: 1, y: 2, adj: "s !w !e !n !se #sw" }
+      - { x: 1, y: 2, adj: "s !w !e #n !se !sw" }
+      - { x: 1, y: 2, adj: "s !w !e !n !se !sw" }
+      - { x: 1, y: 2, adj: "s !w !e #n #se !sw" }
+      - { x: 1, y: 2, adj: "s !w !e !n #se !sw" }
       - { x: 2, y: 2, adj: "e s !n !w #nw" }
       - { x: 2, y: 2, adj: "e s !n !w !nw" }
       - { x: 8, y: 2, adj: "e #w #n #s" }

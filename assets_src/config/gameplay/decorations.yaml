@@ -6,6 +6,68 @@
 # sky - draws on top of all units [Clouds...?]
 
 decorations:
+#COVE WATERFALLS
+  - id: cove_waterfall_down1
+    layer: above_water
+    snapToGrid: true
+    animation:
+      undefined: decoration/water/cove_waterfall_down01
+  - id: cove_waterfall_down2
+    layer: above_water
+    snapToGrid: true
+    animation:
+      undefined: decoration/water/cove_waterfall_down02
+  - id: cove_waterfall_down3
+    layer: above_water
+    snapToGrid: true
+    animation:
+      undefined: decoration/water/cove_waterfall_down03
+  - id: cove_waterfall_left1
+    layer: above_water
+    snapToGrid: true
+    animation:
+      undefined: decoration/water/cove_waterfall_left01
+  - id: cove_waterfall_left2
+    layer: above_water
+    snapToGrid: true
+    animation:
+      undefined: decoration/water/cove_waterfall_left02
+  - id: cove_waterfall_left3
+    layer: above_water
+    snapToGrid: true
+    animation:
+      undefined: decoration/water/cove_waterfall_left03
+  - id: cove_waterfall_right1
+    layer: above_water
+    snapToGrid: true
+    animation:
+      undefined: decoration/water/cove_waterfall_right01
+  - id: cove_waterfall_right2
+    layer: above_water
+    snapToGrid: true
+    animation:
+      undefined: decoration/water/cove_waterfall_right02
+  - id: cove_waterfall_right3
+    layer: above_water
+    snapToGrid: true
+    animation:
+      undefined: decoration/water/cove_waterfall_right03
+  - id: cove_waterfall_up1
+    layer: above_water
+    snapToGrid: true
+    animation:
+      undefined: decoration/water/cove_waterfall_up01
+  - id: cove_waterfall_up2
+    layer: above_water
+    snapToGrid: true
+    animation:
+      undefined: decoration/water/cove_waterfall_up02
+  - id: cove_waterfall_up3
+    layer: above_water
+    snapToGrid: true
+    animation:
+      undefined: decoration/water/cove_waterfall_up03
+
 #BIG DECO
   - id: shipExterior 
     layer: ground

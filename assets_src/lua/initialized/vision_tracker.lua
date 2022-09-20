@@ -1,6 +1,7 @@
 local Wargroove = require "wargroove/wargroove"
 local Ragnarok = require "initialized/ragnarok"
 local Stats = require "util/stats"
+local VectorMath = require "util/vectorMath"
 
 local function dump(o,level)
    if type(o) == 'table' then
@@ -75,16 +76,16 @@ end
 
 local numberOfViewers = {}
 
-local function getNumberOfViewers(team,pos)
-	return numberOfViewers[team][pos.x][pos.y]
+local function getNumberOfViewers(player,pos)
+	return numberOfViewers[player][pos.x][pos.y]
 end
 
-local function incrementNumberOfViewers(team,pos)
-	numberOfViewers[team][pos.x][pos.y] = numberOfViewers[team][pos.x][pos.y] + 1
+local function incrementNumberOfViewers(player,pos)
+	numberOfViewers[player][pos.x][pos.y] = numberOfViewers[player][pos.x][pos.y] + 1
 end
 
-local function decrementNumberOfViewers(team,pos)
-	numberOfViewers[team][pos.x][pos.y] = numberOfViewers[team][pos.x][pos.y] - 1
+local function decrementNumberOfViewers(player,pos)
+	numberOfViewers[player][pos.x][pos.y] = numberOfViewers[player][pos.x][pos.y] - 1
 end
 
 local teamPlayersSetup = false
@@ -311,8 +312,8 @@ end
 
 function VisionTracker.init()
 	print("VisionTracker Test added to list of tests")
-	--Ragnarok.addAction(VisionTracker.setup,"start_of_match",true)
-	--Ragnarok.addAction(VisionTracker.humanTest,"repeating",true)
+--	Ragnarok.addAction(VisionTracker.setup,"start_of_match",true)
+	Ragnarok.addAction(VisionTracker.humanTest,"repeating",true)
 	--Ragnarok.addAction(VisionTracker.aiTest,"repeating",true)
 end
 
@@ -416,7 +417,7 @@ function VisionTracker.humanTest(context)
 			if visionLoggerResult~=wargrooveResult then
 				print("Vision Logger Test failed at tile: "..tostring(checkedTile.x)..", "..tostring(checkedTile.y))
 				failedTile = checkedTile
-				if visionTrackerResult then
+				if visionLoggerResult then
 					failReason = "Logger Test. False Positive"
 				else
 					failReason = "Logger Test. False Negative"
@@ -434,21 +435,21 @@ function VisionTracker.humanTest(context)
 end
 
 function VisionTracker.isTileBlocker(tile)
+	local blockerTerrainType = Wargroove.getTerrainNameAt(tile)
 	return Stats.visionBlockingList[blockerTerrainType] ~= nil
 end
 
 function VisionTracker.isTileBlocking(origin, target, blocker)
 	-- print("\t\t\tVisionTracker.isTileBlocking(origin, target, blocker) starts here")
-	local blockerTerrainType = Wargroove.getTerrainNameAt(blocker)
 	-- print("\t\t\tblockerTile is: " .. blockerTerrainType)
 	if math.floor(origin.x+0.5) == blocker.x and math.floor(origin.y+0.5) == blocker.y then return false end
 	-- print("\t\t\tblockerTile wasn't origin")
 	if math.floor(target.x+0.5) == blocker.x and math.floor(target.y+0.5) == blocker.y then return false end
 	-- print("\t\t\tblockerTile wasn't target")
-	if not VisionTracker.isTileBlocker(blockerTerrainType) then return false end
+	if not VisionTracker.isTileBlocker(blocker) then return false end
 	-- print("\t\t\tblockerTile can block vision")
 	local dist = vectorLength(vectorDifference(origin,target))
-	if lineSegmentCircleCollision(origin, target, blocker, 0.5+dist/200) then
+	if lineSegmentCircleCollision(origin, target, blocker, math.min(0.5+dist/200,0.6)) then
 		-- print("\t\t\tblockerTile blocked vision")
 		return true
 	end
@@ -461,13 +462,13 @@ function VisionTracker.canSeeTile(playerId,tile)
 		return true
 	end
 	VisionTracker.setup()
-	print("canSeeTile starts here")
-	print(dump(teamPlayers,0))
+	--print("canSeeTile starts here")
+	--print(dump(teamPlayers,0))
 	if playerId < 0 then
 		return getNumberOfViewers(playerId,tile)>0
 	else
-		print("Player of the day is: "..tostring(playerId))
-		print("Team of the day is: "..tostring(Wargroove.getPlayerTeam(playerId)))
+		--print("Player of the day is: "..tostring(playerId))
+		--print("Team of the day is: "..tostring(Wargroove.getPlayerTeam(playerId)))
 		for i, checkedPlayerId in pairs(teamPlayers[Wargroove.getPlayerTeam(playerId)]) do
 			if getNumberOfViewers(checkedPlayerId,tile)>0 then
 				return true
@@ -499,7 +500,7 @@ function VisionTracker.canUnitSeeTile(unit,tile)
 	-- print("\tNot a scout")
 	local terrainType = Wargroove.getTerrainNameAt(tile)
 	-- print("\tThe tile is a: ".. terrainType)
-	if Stats.fowCoverList[terrainType] ~= nil and dist>1 then return false end
+	if (Stats.fowCoverList[terrainType] ~= nil) and (dist>1) then return false end
 	-- print("\tThe tile is not fog cover, or at least touching")
 	if Stats.seeOverList[unit.unitClassId] ~= nil then return true end
 	-- print("\tCan't see over terrain")
@@ -508,9 +509,10 @@ function VisionTracker.canUnitSeeTile(unit,tile)
 	towardsUnitVector = {x = difference.x/euclideanDist,y = difference.y/euclideanDist}
 	perpendicularUnitVector = vectorRotate90(towardsUnitVector)
 	
-	local offsets = {{x = 0.1*(-perpendicularUnitVector.x), y = 0.1*(-perpendicularUnitVector.y)},
-		{x = 0.1*(perpendicularUnitVector.x), y = 0.1*(perpendicularUnitVector.y)},
-		{x = 0, y = 0}}
+	-- local offsets = {{x = 0.1*(-perpendicularUnitVector.x), y = 0.1*(-perpendicularUnitVector.y)},
+		-- {x = 0.1*(perpendicularUnitVector.x), y = 0.1*(perpendicularUnitVector.y)},
+		-- {x = 0, y = 0}}
+	local offsets = {{x = 0.075, y = 0.075},{x = -0.075, y = 0.075},{x = -0.075, y = -0.075},{x = 0.075, y = -0.075},{x = 0, y = 0}}
 	for i, offset in pairs(offsets) do
 		local isBlocked = false
 		local origin = {x = unit.pos.x+offset.x, y = unit.pos.y+offset.y}
@@ -559,89 +561,57 @@ function VisionTracker.calculateVisionOfUnit(unit)
 		end
 		return visibleTiles
 	end
-	return VisionTracker.calculateLoSOfUnitRays(unit)
+	print("loading pulse scanner")
+	local PulseScanner = require "util/pulseScanner"
+	print("loaded pulse scanner")
+	local function getBlockerRadius(origin, pos)
+		local dist = VectorMath.dist(origin, pos)
+		return math.min(0.5+dist/200,0.6)
+	end
+
+	print("Setting Blocker Function")
+	PulseScanner.setBlockerFunction(VisionTracker.isTileBlocker)
+	print("Setting Blocker Radius Function")
+	PulseScanner.setBlockerRadiusFunction(getBlockerRadius)
+	print("Checking if Scout")
+	local isScout = Stats.isScout(unit)
+	print("Checking if it can see over")
+	local canSeeOver = Stats.canSeeOver(unit)
+	print("Checking sight range")
+	local sightRange = getSightRange(unit)
+	print("Calculating LoS using pulse")
+	local function removeDublicates(data)
+		local hash = {}
+		local res = {}
+
+		for _,v in ipairs(data) do
+		   if (not hash[v]) then
+			   res[#res+1] = v -- you could print here instead of saving to result table if you wanted
+			   hash[v] = true
+		   end
+		end
+		return data
+	end
+	local visibleTiles = VisionTracker.calculateLoSOfUnitRays(unit,math.min(5,sightRange))
+	if sightRange>5 then
+		local foundTiles = PulseScanner.calculateLoSOfUnitPulse(unit.pos, isScout, canSeeOver, sightRange,{x=0,y=0}, {x = mapSize.x, y = mapSize.y})
+		for i, tile in pairs(foundTiles) do
+			table.insert(visibleTiles,tile)
+		end
+		visibleTiles = removeDublicates(visibleTiles)
+	end
+	return visibleTiles
+--	return VisionTracker.calculateLoSOfUnitRays(unit,getSightRange(unit))
 end
 
-function VisionTracker.calculateLoSOfUnitRays(unit)
-	local tilesInRange = Wargroove.getTargetsInRange(unit.pos, getSightRange(unit), "all")
+function VisionTracker.calculateLoSOfUnitRays(unit,sightRange)
+	local tilesInRange = Wargroove.getTargetsInRange(unit.pos, sightRange, "all")
 	local visibleTiles = {}
 	for i, checkedTile in ipairs(tilesInRange) do
 		if VisionTracker.canUnitSeeTile(unit,checkedTile) then
 			table.insert(visibleTiles, checkedTile)		
 		end
 	end
-	return visibleTiles
-end
-
-function VisionTracker.getKnownOcclusionTileOrder(pos, range)
-	print("getKnownOcclusionTileOrder starts here")
-	print("Range: "..tostring(range))
-	local result = {}
-	local orientationId = 0
-	local currentOrientationMatrixTable = {
-		{{x=1,y=0}, {x=0,y=1}},
-		{{x=-1,y=0}, {x=0,y=-1}},
-		{{x=0,y=-1}, {x=1,y=0}},
-		{{x=0,y=1}, {x=-1,y=0}}
-	}
-	local layer = 1
-	local currentLayerSize = 1
-	while layer<=range do
-		for orientationId = 1, 4 do
-			for i = 0,currentLayerSize*2-2 do
-				print("Assign offset")
-				local offset = {x = layer, y = math.ceil(i/2.0)*(2*(i%2)-1)}
-				print("Offset assigned")
-				if math.abs(offset.x)+math.abs(offset.y) > range then
-					print("Offset out of range")
-					break
-				end				
-				print("Rotate offset")
-				local rotatedOffset = {x = dotProduct(offset,currentOrientationMatrixTable[orientationId][1]),
-					y = dotProduct(offset,currentOrientationMatrixTable[orientationId][2])}
-				print("Offset rotated")
-				table.insert(result,vectorAdd(pos,rotatedOffset))
-				print("Offset Inserted: "..tostring(rotatedOffset.x)..","..tostring(rotatedOffset.y))
-				
-			end
-			print("Side done")
-			print("")
-			if orientationId == 2 then
-				currentLayerSize = currentLayerSize+1
-			end
-		end
-		print("Increasing Range")
-		print("")
-		print("")
-		layer = layer+1
-	end
-	return result
-end
-
-function VisionTracker.calculateLoSOfUnitPulse(unit)
-	print("VisionTracker.calculateLoSOfUnitPulse starts here")
-	if Tree == nil then
-        Tree = require "util/binarySearchTree"
-    end
-	local visibleTiles = {}
-	local orderedTiles = VisionTracker.getKnownOcclusionTileOrder(unit.pos, getSightRange(unit))
---	print(dump(orderedTiles,0))
-	local t = Tree:new()
-	for i, checkedTile in ipairs(orderedTiles) do
-		t:insert(math.atan(checkedTile.x, checkedTile.y));
-		-- print("checking LoS at: "..tostring(checkedTile.x)..","..tostring(checkedTile.y))
-		if VisionTracker.canUnitSeeTile(unit,checkedTile) then
-			-- print("Tile at: "..tostring(checkedTile.x)..","..tostring(checkedTile.y))
-			-- print("Visible")
-			table.insert(visibleTiles, checkedTile)
-		else
-			-- print("Tile at: "..tostring(checkedTile.x)..","..tostring(checkedTile.y))
-			-- print("Not Visible")			
-		end
-	end
-	print("Binary Tree Test")
-	
-	print(dump(t,0))
 	return visibleTiles
 end
 

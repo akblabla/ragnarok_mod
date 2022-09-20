@@ -151,7 +151,7 @@ terrains:
     name: terrain_name_cave_beach
     defenceBonus: -0
     movementCost:
-      sailing: 1
+      sailing: 2
       walking: 1
       riding: 1
       hovering: 1

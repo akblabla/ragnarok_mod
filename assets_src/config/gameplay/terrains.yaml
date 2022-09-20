@@ -239,7 +239,7 @@ terrains:
     name: terrain_name_beach
     defenceBonus: -1
     movementCost:
-      sailing: 1
+      sailing: 2
       walking: 1
       riding: 1
       flying: 1

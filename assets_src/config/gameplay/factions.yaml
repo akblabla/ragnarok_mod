@@ -11,7 +11,15 @@ factions:
     rivalFaction: cherrystone
   - id: test_faction
     name: faction_name_outlaw
-    stdColour: black
+    stdColour: cyan
+    altColour: black
+    skinColours: [ "typeII", "typeIII", "typeIV", "typeV", "typeVI" ]
+    bannerForeground: backgrounds/banners/banner_outlaw_FG
+    bannerBackground: backgrounds/banners/banner_outlaw_BG
+    rivalFaction: cherrystone
+  - id: outlaw_rival
+    name: faction_name_outlaw
+    stdColour: purple
     altColour: cyan
     skinColours: [ "typeII", "typeIII", "typeIV", "typeV", "typeVI" ]
     bannerForeground: backgrounds/banners/banner_outlaw_FG

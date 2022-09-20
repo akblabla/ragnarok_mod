@@ -31,13 +31,13 @@ weapons:
       thief: 0.3
       
 
-      flagship: 0.15
-      pirate_ship: 0.3
-      warship: 0.2
-      harpoonship: 0.2
-      turtle: 0.2
-      travelboat: 0.2
-      merman: 0.4
+      flagship: 0.1
+      pirate_ship: 0.4
+      warship: 0.3
+      harpoonship: 0.45
+      turtle: 0.4
+      travelboat: 0.35
+      merman: 0.5
 
 
 unitClasses:

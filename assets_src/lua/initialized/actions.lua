@@ -543,7 +543,19 @@ function Actions.spawnUnit(context)
         if not silent then
             Wargroove.trackCameraTo(pos)
         end
-        Wargroove.spawnUnit(playerId, pos, unitClassId, false)
+        local unitId = Wargroove.spawnUnit(playerId, pos, unitClassId, false)
+		local spawnedUnit = Wargroove.getUnitById(unitId);
+		local mapSize = Wargroove.getMapSize()
+		if pos.x>(mapSize.x/2) then
+			-- spawnedUnit.startPos.facing = 1
+			-- spawnedUnit.pos.facing = 1
+			Wargroove.setFacingOverride(unitId, "left")
+		else
+			-- spawnedUnit.startPos.facing = 0
+			-- spawnedUnit.pos.facing = 0
+			Wargroove.setFacingOverride(unitId, "right")
+		end
+		--Wargroove.updateUnit(spawnedUnit)
         Wargroove.clearCaches()
         if silent or (not Wargroove.canCurrentlySeeTile(pos)) then
             -- Need to wait two frames to prevent being able to spawn on top of other units
@@ -604,6 +616,12 @@ function Actions.spawnUnitClosestToLocation(context)
         if not silent then
             Wargroove.trackCameraTo(pos)
         end
+		local mapSize = Wargroove.getMapSize()
+		if pos.x>(mapSize.x/2) then
+			pos.facing = 1
+		else
+			pos.facing = 0
+		end
         Wargroove.spawnUnit(playerId, pos, unitClassId, false)
         Wargroove.clearCaches()
         if (not silent) and Wargroove.canCurrentlySeeTile(pos) then

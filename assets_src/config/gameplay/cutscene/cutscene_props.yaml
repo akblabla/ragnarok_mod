@@ -133,4 +133,11 @@ cutscene_props:
     path: backgrounds/props/sleeping_dog
   - id: one_sec_fade_in
     path: backgrounds/props/one_sec_fade_in
+    
+  - id: cherrystone_building_background
+    path: backgrounds/props/cherrystone_building_background
+  - id: cherrystone_building_foreground
+    path: backgrounds/props/cherrystone_building_foreground
+  - id: telescope
+    path: backgrounds/props/telescope
 ...

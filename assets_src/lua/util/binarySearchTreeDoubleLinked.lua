@@ -186,9 +186,8 @@ local function remove(node, key)
 			node.next.prev = node.prev
             node = node.left
         else
-			node.prev.next = node.next
-			node.next.prev = node.prev
             node._key = node.right:getKey()
+            node._data = node.right:getData()
             node.right, _ = remove(node.right, node:getKey())
         end
     end

@@ -13,6 +13,7 @@ end
 function Events.reportUnitDeath(id, attackerUnitId, attackerPlayerId, attackerUnitClass)
 	local unit = Wargroove.getUnitById(id)
 	VisionTracker.removeUnitFromVisionMatrix(unit)
+	Wargroove.updateFogOfWar()
 	Original.reportUnitDeath(id, attackerUnitId, attackerPlayerId, attackerUnitClass)
 end
 

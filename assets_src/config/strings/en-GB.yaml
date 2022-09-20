@@ -292,6 +292,9 @@ en-GB:
   ui_cutscene_background_outlaw_cherry_ship: "Outlaw and Cherry Ship"
   ui_cutscene_background_outlaw_HQ: "Outlaw HQ"
   ui_cutscene_background_outlaw_HQ_intro: "Outlaw HQ Intro"
+  ui_cutscene_background_tropical_beach: "Tropical Beach"
+  ui_cutscene_background_tropical_beach_telescope: "Tropical Beach Telescope"
+  ui_cutscene_background_sand_cave: "Sand Cave"
   
   #cutscene sound effects
   ui_cutscene_sfx_wulfar_hug: "Wulfar and Vesper Hug"
@@ -318,6 +321,9 @@ en-GB:
   ui_cutscene_prop_sleeping_dog_prop: "Sleeping Dog"
   ui_cutscene_prop_outlaw_HQ_banner: "Outlaw HQ Animated Banner"
   ui_cutscene_prop_one_sec_fade_in: "One Sec Fade In"
+  ui_cutscene_prop_cherrystone_building_background: "Cherrystone Building Background"
+  ui_cutscene_prop_cherrystone_building_foreground: "Cherrystone Building Foreground"
+  ui_cutscene_prop_telescope: "Telescope"
 
   # MUSIC
   music_name_tavern_distant: "Distant Tavern"

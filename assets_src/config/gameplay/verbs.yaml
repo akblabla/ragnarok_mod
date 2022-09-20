@@ -143,4 +143,16 @@ verbs:
     targetted: true
     directTarget: true
     scriptName: verbs/rescue
+
+  - id: groove_golf
+    icon: ui/icons/grooves/unit_action_icon_hammer.png
+    name: groove_name_golf
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetDisplayColour: target
+    targetDisplayOutlineColour: target_outline
+    preExecute: true
+    targetted: true
+    directTarget: true
+    scriptName: verbs/groove_golf_v2
 ...

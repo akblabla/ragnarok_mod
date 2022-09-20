@@ -94,4 +94,20 @@ Stats.visionBlockingList = {
 	invisible_blocker_ocean = true
 }
 
+function Stats.isScout(unit)
+	return Stats.scoutList[unit.unitClassId] ~= nil
+end
+
+function Stats.canSeeOver(unit)
+	return Stats.seeOverList[unit.unitClassId] ~= nil
+end
+
+function Stats.isTerrainFowCover(terrainName)
+	return Stats.fowCoverList[terrainName] ~= nil
+end
+function Stats.isTerrainBlocking(terrainName)
+	return Stats.visionBlockingList[terrainName] ~= nil
+end
+
+
 return Stats

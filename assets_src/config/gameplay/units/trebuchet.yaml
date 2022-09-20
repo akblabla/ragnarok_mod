@@ -23,15 +23,15 @@ weapons:
       giant: 0.55
       commander: 0.25
       warship: 0.75
-      harpoonship: 0.65
-      turtle: 0.45
+      harpoonship: 0.85
+      turtle: 0.65
       travelboat: 0.8
       merman: 1
       rifleman: 1.1
       thief: 1
 
       flagship: 0.25
-      pirate_ship: 0.8
+      pirate_ship: 0.85
 
 unitClasses:
   - id: trebuchet

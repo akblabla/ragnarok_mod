@@ -261,6 +261,13 @@ cutscene_backgrounds:
     spritesheet: backgrounds/map_backgrounds_RagnarokMod
     foreground: cave_battlescreen_sand_foreground
     background: cave_battlescreen_sand_background
+  - id: tropical_beach
+    spritesheet: backgrounds/map_backgrounds_RagnarokMod
+    foreground: tropical_beach_foreground
+    background: tropical_beach_background
+  - id: tropical_beach_telescope
+    spritesheet: backgrounds/map_backgrounds_RagnarokMod
+    background: tropical_fake_sand_background
   - id: sand_forest_edited
     hidden: true
     spritesheet: backgrounds/sand_battlescreen_extendedbackgrounds

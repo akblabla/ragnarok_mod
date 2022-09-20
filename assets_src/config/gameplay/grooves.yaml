@@ -24,5 +24,4 @@ grooves:
       counter: 10                             #   The commander is attacked by an enemy unit.
       kill: 10                                #   The commander kills an enemy unit.
     verb: groove_area_damage_rival                      #   The verb associated with the groove. This should match the id of the verb in verbs.yaml.
-
 ...

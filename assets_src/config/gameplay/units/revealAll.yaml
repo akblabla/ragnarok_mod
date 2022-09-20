@@ -34,6 +34,8 @@ units:
     mapSpeed: 4.0
     grabPos: [13, 14]
     runsIn: false
+    hasUnitInfo: false
+    hasBattleScreen: false
     deathMoveMin: 0
     deathMoveMax: 0
     sounds:

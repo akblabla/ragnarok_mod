@@ -1,28 +1,10 @@
 ---
 
 commanders:
-  - id: flagship_wulfar
-    name: character_flagship_wulfar_name
-    title: character_flagship_wulfar_title
-    faction: outlaw
-    portrait:
-      neutral: portraits/commanders/small/wulfar_portrait_small.png
-      happy: portraits/commanders/small/wulfar_portrait_happy.png
-      sad: portraits/commanders/small/wulfar_portrait_sad.png
-      extra: portraits/commanders/small/wulfar_portrait_angry.png
-    cutscenePortrait: portraits/commanders/big/wulfar_portrait
-    portraitOffset: [10, 5]
-    namePlate: ui/character_select/charlabel/charlabel_outlaw.png
-    themeSong: music/wulfar
-    skinColour: typeII
-    unitClassId: commander_flagship_wulfar
-    selectionSound: wulfar/wulfarShoutUpForTheTask
-    dialogueBoxVoice: ui/dialogue/textScrollWulfar
-
-  - id: flagship_rival
+  - id: rival
     name: character_flagship_rival_name
     title: character_flagship_rival_title
-    faction: outlaw
+    faction: outlaw_rival
     portrait:
       neutral: portraits/commanders/small/rival_portrait_small.png
       happy: portraits/commanders/small/rival_portrait_small.png
@@ -31,7 +13,7 @@ commanders:
     portraitOffset: [0, 20]
     themeSong: music/hostile
     skinColour: typeII
-    unitClassId: commander_flagship_rival
+    unitClassId: rival
     dialogueBoxVoice: ui/dialogue/textScroll
 
   - id: generic_soldier

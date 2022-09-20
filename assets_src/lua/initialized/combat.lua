@@ -137,7 +137,7 @@ function Combat:getDamage(attacker, defender, solveType, isCounter, attackerPos,
 	end
 	
 	
-	if Stats.meleeUnits[effectiveAttacker.unitClassId] ~= nil and not Wargroove.canStandAt(effectiveAttacker.unitClassId, defender.pos) then
+	if not isGroove and (Stats.meleeUnits[effectiveAttacker.unitClassId] ~= nil and not Wargroove.canStandAt(effectiveAttacker.unitClassId, defender.pos)) then
 		return nil, false
 	end
 	
