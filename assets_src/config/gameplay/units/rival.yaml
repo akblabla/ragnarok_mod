@@ -22,7 +22,6 @@ unitClasses:
       - healing_potion
     battleUnitCount: 1
     passiveMultiplier: 1.35
-    isHidden: true
     isRecruitable: false
     sightRange: 5
     deathVerbId: death_drop_crown

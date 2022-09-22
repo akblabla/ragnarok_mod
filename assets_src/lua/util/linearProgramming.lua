@@ -1,0 +1,3 @@
+local LinearProgram = {}
+
+return LinearProgram

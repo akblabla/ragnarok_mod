@@ -9,6 +9,9 @@ triggerActions:
     parameters:
       - type: player
       
+  - id: set_match_seed
+    parameters:
+      - type: integer
       
   - id: reveal_all
     parameters:

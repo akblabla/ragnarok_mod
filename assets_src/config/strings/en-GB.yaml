@@ -285,6 +285,11 @@ en-GB:
   trigger_action_description_dialogue_box_unit: "Triggers a dialogue box for a unit."
   trigger_action_readable_dialogue_box_unit: "Display dialogue box from {0} at {1} for {2} being {3} saying {4} with colour {5}."
 
+  trigger_action_name_set_match_seed: "Map: Set Match Seed"
+  trigger_action_description_set_match_seed: "Set Match Seed."
+  trigger_action_readable_set_match_seed: "Set Match Seed to {0}."
+
+
   #backgrounds
   ui_cutscene_background_deck: "Ship Deck"
   ui_cutscene_background_outlaw_ship: "Outlaw Ship"

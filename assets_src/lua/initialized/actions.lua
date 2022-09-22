@@ -56,6 +56,7 @@ function Actions.populate(dst)
     dst["ai_set_restriction"] = Actions.aiSetRestriction
 	dst["set_location_to_vision"] = Actions.setLocationToVision
 	dst["dialogue_box_unit"] = Actions.dialogueBoxUnit
+	dst["set_match_seed"] = Actions.setMatchSeed
 	--Hidden actions
 	dst["run_start_front_actions"] = Actions.runStartFrontActions
 	dst["run_start_back_actions"] = Actions.runStartBackActions
@@ -344,6 +345,12 @@ function Actions.placeCrown(context)
     local location = context:getLocation(0)
     local centerPos = findCentreOfLocation(location)
 	Ragnarok.dropCrown(centerPos)
+end
+
+function Actions.setMatchSeed(context)
+    -- "Set Match Seed to {0}."
+    local seed = context:getInteger(0)
+	Wargroove.setMatchSeed(seed)
 end
 
 function Actions.transferGoldRobbed(context)
