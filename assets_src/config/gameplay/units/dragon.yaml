@@ -9,30 +9,30 @@ weapons:
       land: 1
       water: 1
     tagDamage:
-      archer: 1.4
-      soldier: 1.2
-      villager: 1.2
-      spearman: 1.2
-      dog: 1.5
-      wagon: 0.8
-      knight: 1
-      trebuchet: 1.05
-      ballista: 1.1
-      mage: 0.65
-      structure: 0.65
-      commander: 0.35
-      giant: 0.65
-      rifleman: 1.3
-      thief: 1.2
+      archer: 1.45
+      soldier: 1.25
+      villager: 1.25
+      spearman: 1.25
+      dog: 1.55
+      wagon: 0.85
+      knight: 1.05
+      trebuchet: 1.1
+      ballista: 1.15
+      mage: 0.7
+      structure: 0.7
+      commander: 0.4
+      giant: 0.7
+      rifleman: 1.35
+      thief: 1.25
       
       
-      flagship: 0.3
-      pirate_ship: 1.05
-      warship: 0.9
-      harpoonship: 0.7
-      turtle: 0.75
-      travelboat: 1.1
-      merman: 1.2
+      flagship: 0.35
+      pirate_ship: 1.1
+      warship: 1.0
+      harpoonship: 0.75
+      turtle: 0.8
+      travelboat: 1.15
+      merman: 1.25
 
 
 unitClasses:

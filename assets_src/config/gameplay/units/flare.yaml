@@ -27,9 +27,9 @@ units:
     faction: cherrystone
     name: unit_name_flare
     mapAnimation: units/flare/map_flare
-    battleAnimation: units/balloon/cherrystone/battle_balloon_cherrystone
-    smallPortrait: units/balloon/cherrystone/portrait_balloon_cherrystone_small.png
-    mediumPortrait: units/balloon/cherrystone/portrait_balloon_cherrystone_medium.png
+    battleAnimation: units/flare/battle_flare
+    smallPortrait: units/flare/portrait_flare_small.png
+    mediumPortrait: units/flare/portrait_flare_medium.png
     mapSpeed: 3.0
     grabPos: [22, 5]
     sounds:
@@ -44,9 +44,9 @@ units:
     faction: felheim
     name: unit_name_flare
     mapAnimation: units/flare/map_flare
-    battleAnimation: units/balloon/felheim/battle_balloon_felheim
-    smallPortrait: units/balloon/felheim/portrait_balloon_felheim_small.png
-    mediumPortrait: units/balloon/felheim/portrait_balloon_felheim_medium.png
+    battleAnimation: units/flare/battle_flare
+    smallPortrait: units/flare/portrait_flare_small.png
+    mediumPortrait: units/flare/portrait_flare_medium.png
     mapSpeed: 3.0
     grabPos: [22, 5]
     sounds:
@@ -61,9 +61,9 @@ units:
     faction: heavensong
     name: unit_name_flare
     mapAnimation: units/flare/map_flare
-    battleAnimation: units/balloon/heavensong/battle_balloon_heavensong
-    smallPortrait: units/balloon/heavensong/portrait_balloon_heavensong_small.png
-    mediumPortrait: units/balloon/heavensong/portrait_balloon_heavensong_medium.png
+    battleAnimation: units/flare/battle_flare
+    smallPortrait: units/flare/portrait_flare_small.png
+    mediumPortrait: units/flare/portrait_flare_medium.png
     mapSpeed: 3.0
     grabPos: [23, 4]
     sounds:
@@ -79,9 +79,9 @@ units:
     faction: floran
     name: unit_name_flare
     mapAnimation: units/flare/map_flare
-    battleAnimation: units/balloon/floran/battle_balloon_floran
-    smallPortrait: units/balloon/floran/portrait_balloon_floran_small.png
-    mediumPortrait: units/balloon/floran/portrait_balloon_floran_medium.png
+    battleAnimation: units/flare/battle_flare
+    smallPortrait: units/flare/portrait_flare_small.png
+    mediumPortrait: units/flare/portrait_flare_medium.png
     mapSpeed: 3.0
     grabPos: [22, 5]
     sounds:

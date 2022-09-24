@@ -8,10 +8,10 @@ weapons:
     baseDamage:
       air: 1
     tagDamage:
-      witch: 0.35
-      dragon: 0.35
-      harpy: 0.6
-      balloon: 0.5
+      witch: 0.4
+      dragon: 0.4
+      harpy: 0.65
+      balloon: 0.55
 
 
 unitClasses:

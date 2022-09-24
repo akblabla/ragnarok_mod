@@ -7,20 +7,34 @@ weapons:
     baseDamage:
       air: 1
       water: 1
+      land: 1
     tagDamage:
+      archer: 0.2
+      soldier: 0.2
+      villager: 0.25
+      spearman: 0.15
+      dog: 0.2
+      wagon: 0.1
+      knight: 0.1
+      trebuchet: 0.1
+      mage: 0.2
+      structure: 0.1
+      commander: 0.1
+      ballista: 0.1
+      giant: 0.05
+      rifleman: 0.2
+      thief: 0.2
+    
       witch: 0.8
       dragon: 0.7
       harpy: 1.3
       balloon: 0.8
 
-      structure: 0.3
       warship: 0.15
       harpoonship: 0.3
       turtle: 0.75
       merman: 0.3
       travelboat: 0.45
-      flagship: 0.1
-      pirate_ship: 0.2
 
 unitClasses:
   - id: harpoonship
@@ -29,6 +43,7 @@ unitClasses:
     movement: sailing
     moveRange: 6
     damageMultiplier: 1
+    uiEffectivenessMultiplier: 2
     aiPriority: 1.0
     weapons:
       - id: harpoonshipCannon

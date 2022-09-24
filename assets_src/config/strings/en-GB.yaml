@@ -55,8 +55,7 @@ en-GB:
   terrain_description_cave_river: Slows down land units. Units attacked in a river are at a disadvantage.
   terrain_name_brush: Field
   terrain_description_brush: Fields provides limited defense. Cavalry and wheeled units are slowed.
-  terrain_name_brush_grass: Field
-  terrain_description_brush_grass: Fields provides limited defense. Cavalry and wheeled units are slowed.
+  terrain_description_brush_invis: Fields provides limited defense. Cavalry and wheeled units are slowed.
   terrain_name_cave_road: Cave Road
   terrain_description_cave_road: Underground roads speeds along wheeled units, but only provide limited defense.
   
@@ -113,15 +112,15 @@ en-GB:
   unit_name_flare: Flare
 
   unit_class_name_pirate_ship_loaded: Raider Ship Loaded
-  unit_description_pirate_ship_loaded: "Can steal gold from structures. It can't attack whilst loaded. Critical hit against enemies adjacent to allies."
+  unit_description_pirate_ship_loaded: "Can steal gold from structures. It can't attack whilst loaded. Critical hits whilst fighting adjancent to land tiles."
 
   unit_class_name_crew: Capsized Crew
   unit_description_crew: "Crew drifting at sea. Save them, and maybe they can help you in return."
   unit_name_crew: Capsized Crew
   
-  unit_class_name_rival: Rival
+  unit_class_name_rival: Ol' Friend
   unit_description_rival: "Ranged ground units able to move and attack in the same turn. Critical hit when stationary."
-  unit_name_rival: Rival
+  unit_name_rival: Ol' Friend
   
 
   unit_name_archer_outlaws: Poacher 
@@ -158,7 +157,7 @@ en-GB:
   unit_description_dog: "[MELEE] A quick unit. Critical hit when another dog unit is adjacent to the target."
   unit_description_mage: "A powerful unit built to combat air threats. Critical hit when defence is 3 or above. Able to heal allied targets by 20%."
   unit_description_warship: "An immensely powerful long range unit. Critical hit when on beach."
-  unit_description_harpoonship: "Ranged water unit, able to attack air and sea. Critical hit when in reef."
+  unit_description_harpoonship: "Ranged anti-air water unit. Does half damage to enemies on land. Critical hit when in reef."
   unit_description_dragon: "Incredibly powerful air-to-ground unit. Critical hit when target is standing on a road."
   unit_description_knight: "[MELEE] Powerful, mobile ground unit. Critical hit when it attacks from a location six spaces away from where it starts."
   unit_description_wagon: "Capable of quickly transporting units that would otherwise travel by foot."

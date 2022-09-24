@@ -190,10 +190,6 @@ terrains:
 
   - id: brush
     name: terrain_name_brush
-    biomeNames:
-      grass: terrain_name_brush_grass
-    biomeDescriptions:
-      grass: terrain_description_brush_grass
     defenceBonus: 2
     movementCost:
       walking: 1
@@ -213,10 +209,6 @@ terrains:
 
   - id: brush_invis
     name: terrain_name_brush
-    biomeNames:
-      grass: terrain_name_brush_grass
-    biomeDescriptions:
-      grass: terrain_description_brush_grass
     defenceBonus: 2
     movementCost:
       walking: 1

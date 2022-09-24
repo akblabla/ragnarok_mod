@@ -7,9 +7,9 @@ tilesets:
       - types: [grass,tropical]
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_ocean
-        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_river
-        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_river_foreground
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: tropical_mangrove_background
+        battleBackgroundSpriteForeground: tropical_mangrove_foreground
         iconSpriteSheet: ui_RagnarokMod
         iconSprite: ":img:ui/codex/icons/icon_terrain_mangrove.png"
         infoScreenOffset: 70

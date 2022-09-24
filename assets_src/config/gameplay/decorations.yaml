@@ -254,19 +254,20 @@ decorations:
     snapToGrid: true
     snapOffset: [-5, 10]
     animation:
-      undefined: decoration/water/mountainriver01_cave
+      tropical: decoration/water/tropical_mountainriver01_cave
+      undefined: decoration/water/grass_mountainriver01_cave
   - id: mountain_river01_cave_west
     layer: ground
     snapToGrid: true
     snapOffset: [8, -3]
     animation:
-      undefined: decoration/water/mountainriver01_cave_west
+      undefined: decoration/water/grass_mountainriver01_cave_west
   - id: mountain_river01_cave_east
     layer: ground
     snapToGrid: true
     snapOffset: [9, -3]
     animation:
-      undefined: decoration/water/mountainriver01_cave_east
+      undefined: decoration/water/grass_mountainriver01_cave_east
   - id: stalagmite01
     layer: units
     animation:
