@@ -19,13 +19,6 @@ function Unload:canExecuteWithTarget(unit, endPos, targetPos, strParam)
 	end
     -- If it's a water transport, is it on a beach?
     local tags = unit.unitClass.tags
-    for i, tag in ipairs(tags) do
-        if tag == "type.sea" then
-            if Wargroove.getTerrainNameAt(endPos) ~= "beach" and Wargroove.getTerrainNameAt(endPos) ~= "river" and Wargroove.getTerrainNameAt(endPos) ~= "cave_beach" and Wargroove.getTerrainNameAt(endPos) ~= "cave_river" then
-                return false
-            end
-        end
-    end
 
     if strParam == '' then
         -- This means that the code is seeing if it should add unload to the action ui list
@@ -45,6 +38,11 @@ function Unload:canExecuteWithTarget(unit, endPos, targetPos, strParam)
         local loadedUnit = Wargroove.getUnitById(unitId)
 
         if Wargroove.canStandAt(loadedUnit.unitClassId, targetPos) and Wargroove.getUnitAt(targetPos)== nil then
+            if unit.unitClassId == "travelboat" then
+				if not Wargroove.canStandAt(loadedUnit.unitClassId, endPos) and not Wargroove.canStandAt("soldier", endPos) then
+					return false
+				end
+            end
             return true
         end
 
@@ -54,6 +52,11 @@ function Unload:canExecuteWithTarget(unit, endPos, targetPos, strParam)
     local targets = OldUnload:parseStrParam(strParam)
     for unitId, target in pairs(targets) do
         local loadedUnit = Wargroove.getUnitById(unitId)
+		if unit.unitClassId == "travelboat"  then
+			if not Wargroove.canStandAt(loadedUnit.unitClassId, endPos) and not Wargroove.canStandAt("soldier", endPos) then
+				return false
+			end
+		end
         if not Wargroove.canStandAt(loadedUnit.unitClassId, target) or not Wargroove.getUnitAt(targetPos)== nil then
             return false
         end

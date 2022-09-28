@@ -6,9 +6,9 @@ tilesets:
         spriteSheet: terrain_tilesets
         spriteBase: cave_reef_tileset_000
         waterSpriteBase: cave_reef_tileset_001
-        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_reef
-        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_reef_foreground
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: cove_battlescreen_background
+        battleBackgroundSpriteForeground: cave_battlescreen_sand_foreground
         iconSpriteSheet: ui_RagnarokMod
         iconSprite: ":img:ui/codex/icons/icon_terrain_cave_reef.png"
         infoScreenOffset: 70
@@ -17,8 +17,9 @@ tilesets:
         spriteSheet: terrain_tilesets
         spriteBase: cave_reef_tileset_000
         waterSpriteBase: cave_reef_tileset_001
-        battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: volcano_battlescreen_extendedbackgrounds_lava
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: cove_battlescreen_background
+        battleBackgroundSpriteForeground: cave_battlescreen_sand_foreground
         iconSpriteSheet: ui_RagnarokMod
         iconSprite: ":img:ui/codex/icons/icon_terrain_cave_reef.png"
         infoScreenOffset: 70

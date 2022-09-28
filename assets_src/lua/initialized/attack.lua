@@ -112,7 +112,7 @@ function Attack:canExecuteWithTarget(unit, endPos, targetPos, strParam)
 		return false
 	end
 
-    return Combat:getBaseDamage(unit, targetUnit, endPos) > 0.001
+    return Combat:getBaseDamage(unit, targetUnit, endPos) > 0
 end
 
 function Attack:getScore(unitId, order)

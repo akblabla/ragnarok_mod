@@ -15,7 +15,7 @@ local function dump(o,level)
       return tostring(o)
    end
 end
-local testMode = false
+
 local setupRan = false
 
 local VisionTracker = {}
@@ -88,7 +88,6 @@ local function decrementNumberOfViewers(player,pos)
 	numberOfViewers[player][pos.x][pos.y] = numberOfViewers[player][pos.x][pos.y] - 1
 end
 
-local teamPlayersSetup = false
 local teamPlayers = {}
 
 local function isDifferent(o1,o2)
@@ -314,7 +313,27 @@ function VisionTracker.init()
 	print("VisionTracker Test added to list of tests")
 --	Ragnarok.addAction(VisionTracker.setup,"start_of_match",true)
 	Ragnarok.addAction(VisionTracker.humanTest,"repeating",true)
+	Ragnarok.addAction(VisionTracker.weatherChecker,"repeating",true)
 	--Ragnarok.addAction(VisionTracker.aiTest,"repeating",true)
+end
+
+local lastWeather = nil
+function VisionTracker.weatherChecker(context)
+	if context:checkState("startOfTurn") then
+		Wargroove.updateFogOfWar()
+		if not Ragnarok.usingFogOfWarRules() then
+			return
+		end
+		local playerId = Wargroove.getCurrentPlayerId();
+		if playerId ~= 0 then
+			return
+		end
+		local newWeather = Wargroove.getCurrentWeather();
+		if lastWeather ~= newWeather then
+			VisionTracker.reset()
+		end
+		lastWeather = newWeather
+	end
 end
 
 function VisionTracker.setupTeamPlayers()
@@ -328,6 +347,14 @@ function VisionTracker.setupTeamPlayers()
 		end
 	end
 end
+
+function VisionTracker.reset()
+	numberOfViewers = {}
+	lastKnownUnitStateList = {}
+	setupRan = false
+	VisionTracker.setup()
+end
+
 function VisionTracker.setup()
 	if setupRan then
 		return
@@ -369,6 +396,7 @@ function VisionTracker.setup()
 	-- print(dump(numberOfViewers,0))
 end
 
+
 function VisionTracker.aiTest(context)
 
 end
@@ -376,12 +404,12 @@ end
 function VisionTracker.humanTest(context)
 	if (context:checkState("endOfUnitTurn") or context:checkState("endOfTurn")) and Ragnarok.usingFogOfWarRules() then
 		local playerId = Wargroove.getCurrentPlayerId();
+		Wargroove.updateFogOfWar()
 		if Wargroove.isHuman(playerId) == false then
 			return
 		end
 		print("VisionTracker Human Test Starts here")
 		print("Player is: "..tostring(playerId))
-		Wargroove.updateFogOfWar()
 		print("Fog of war updated")
 		coroutine.yield()
 		coroutine.yield()

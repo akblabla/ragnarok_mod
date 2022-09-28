@@ -9,34 +9,34 @@ weapons:
       land: 1
       water: 1
     tagDamage:
-      archer: 1.35
-      soldier: 1.2
-      villager: 1
-      spearman: 0.8
-      dog: 1.2
-      wagon: 0.75
-      knight: 0.6
-      trebuchet: 0.7
-      ballista: 0.75
+      archer: 1.3
+      soldier: 1.15
+      villager: 0.95
+      spearman: 0.75
+      dog: 1.15
+      wagon: 0.7
+      knight: 0.55
+      trebuchet: 0.65
+      ballista: 0.7
+      dragon: 0.3
+      mage: 0.8
+      giant: 0.4
+      structure: 0.7
+      balloon: 0.55
+      harpy: 0.9
+      witch: 0.7
       dragon: 0.35
-      mage: 0.85
-      giant: 0.45
-      structure: 0.75
-      balloon: 0.6
-      harpy: 0.95
-      witch: 0.75
-      dragon: 0.4
-      commander: 0.45
-      rifleman: 1.1
-      thief: 1.0
+      commander: 0.4
+      rifleman: 1.05
+      thief: 0.95
       
-      warship: 0.6
-      harpoonship: 0.65
-      turtle: 0.6
-      travelboat: 0.5
-      merman: 1.0
-      flagship: 0.45
-      pirate_ship: 0.65
+      warship: 0.55
+      harpoonship: 0.6
+      turtle: 0.55
+      travelboat: 0.45
+      merman: 0.95
+      flagship: 0.4
+      pirate_ship: 0.6
 
 unitClasses:
   - id: commander_flagship_wulfar

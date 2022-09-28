@@ -80,9 +80,6 @@ function Golf:canExecuteWithTarget(unit, endPos, targetPos, strParam)
         if not self:isInCone(endPos, movingUnit.pos, targetPos) then
           return false
         end
-        if not Wargroove.canStandAt("balloon", targetPos) then
-          return false
-        end
         if (targetPos.x == endPos.x and targetPos.y == endPos.y) then
             return false
         end

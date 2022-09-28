@@ -9,8 +9,8 @@ local Stats = require "util/stats"
 local defencePerShield = 0.10
 local damageAt0Health = 0.1
 local damageAt100Health = 1.0
-local randomDamageMin = -0.05
-local randomDamageMax = 0.05
+local randomDamageMin = 0
+local randomDamageMax = 0.1
 --
 
 local Combat = {}
@@ -19,6 +19,23 @@ local Combat = {}
 function Combat.init()
   OldCombat.getDamage = Combat.getDamage
   OldCombat.solveDamage = Combat.solveDamage
+  OldCombat.getBestWeapon = Combat.getBestWeapon
+end
+
+function Combat:getBestWeapon(attacker, defender, delta, moved, facing)
+	assert(facing ~= nil)
+
+	local weapons = attacker.unitClass.weapons
+		for i, weapon in ipairs(weapons) do
+		if self:canUseWeapon(weapon, moved, delta, facing) then
+			local dmg = Wargroove.getWeaponDamage(weapon, defender, facing)
+            if dmg > 0 then
+                return weapon, dmg
+            end
+        end
+    end
+
+	return nil, 0.0
 end
 
 function Combat:solveDamage(weaponDamage, attackerEffectiveness, defenderEffectiveness, terrainDefenceBonus, randomValue, crit, multiplier)
@@ -141,7 +158,7 @@ function Combat:getDamage(attacker, defender, solveType, isCounter, attackerPos,
 		local weapon
 		weapon, baseDamage = self:getBestWeapon(effectiveAttacker, defender, delta, moved, attackerPos.facing)
 
-		if weapon == nil or (isCounter and not weapon.canMoveAndAttack) or baseDamage < 0.01 then
+		if weapon == nil or (isCounter and not weapon.canMoveAndAttack) or baseDamage <= 0 then
 			return nil, false
 		end
 

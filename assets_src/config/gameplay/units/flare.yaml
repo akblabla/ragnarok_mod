@@ -57,7 +57,7 @@ units:
       hit: hitWood
       hitMap: hitWood
 
-  - class: balloon
+  - class: flare
     faction: heavensong
     name: unit_name_flare
     mapAnimation: units/flare/map_flare

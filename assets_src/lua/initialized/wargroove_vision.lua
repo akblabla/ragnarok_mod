@@ -1,9 +1,12 @@
 local OldWargroove = require "wargroove/wargroove"
 local Ragnarok = require "initialized/ragnarok"
 local VisionTracker = require "initialized/vision_tracker"
+local FIFOQueue = require "util/fifoQueue"
 
 local WargrooveVision = {}
 local Original = {}
+
+local weatherFIFO = FIFOQueue:new()
 
 local function dump(o,level)
    if type(o) == 'table' then
@@ -42,6 +45,9 @@ function WargrooveVision.init()
 	
 	Original.canCurrentlySeeTile = OldWargroove.canCurrentlySeeTile
 	OldWargroove.canCurrentlySeeTile = WargrooveVision.canCurrentlySeeTile
+	
+	Original.setWeather = OldWargroove.setWeather
+	OldWargroove.setWeather = WargrooveVision.setWeather
 end
 
 function WargrooveVision.startCapture(attacker, defender, attackerPos)
@@ -105,6 +111,13 @@ function WargrooveVision.canCurrentlySeeTile(tile)
 		end
 	end
     return Original.canCurrentlySeeTile(tile)
+end
+
+function WargrooveVision.setWeather(weatherFrequency, daysAhead)
+	Original.setWeather(weatherFrequency, daysAhead)
+	if daysAhead == 0 then
+		VisionTracker.reset()
+	end
 end
 
 return WargrooveVision

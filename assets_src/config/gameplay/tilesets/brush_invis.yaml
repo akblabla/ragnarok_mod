@@ -10,8 +10,8 @@ tilesets:
         battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
         battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_forest
         battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_forest_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Forest
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_brush.png"
         fillColour: '#7fa33b'
       - types: [tropical]
         minRandomElements: 3
@@ -22,7 +22,7 @@ tilesets:
         battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_forest
         battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_forest_foreground
         iconSpriteSheet: ui_RagnarokMod
-        iconSprite: ":img:ui/codex/icons/icon_terrain_forest_tropical.png"
+        iconSprite: ":img:ui/codex/icons/icon_terrain_brush.png"
         fillColour: '#7fa33b'
         randomElements:
           - sprite: terrain/trees/desert/shrub_medium
@@ -37,8 +37,8 @@ tilesets:
         battleBackgroundSpriteSheet: backgrounds/snow_battlescreen_extendedbackgrounds
         battleBackgroundSprite: snow_battlescreen_extendedbackgrounds_forest
         battleBackgroundSpriteForeground: snow_battlescreen_extendedbackgrounds_forest_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Forest
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_brush.png"
         fillColour: '#aec6e3'
         randomElements:
           - sprite: terrain/trees/desert/shrub_medium
@@ -53,8 +53,8 @@ tilesets:
         battleBackgroundSpriteSheet: backgrounds/sand_battlescreen_extendedbackgrounds
         battleBackgroundSprite: sand_battlescreen_extendedbackgrounds_forest
         battleBackgroundSpriteForeground: sand_battlescreen_extendedbackgrounds_forest_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Forest
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_brush.png"
         fillColour: '#987647'
         randomElements:
           - sprite: terrain/trees/desert/shrub_medium
@@ -68,8 +68,8 @@ tilesets:
         battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
         battleBackgroundSprite: volcano_battlescreen_extendedbackgrounds_forest
         battleBackgroundSpriteForeground: volcano_battlescreen_extendedbackgrounds_forest_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Forest
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_brush.png"
         fillColour: '#6d5e56'
         randomElements:
           - sprite: terrain/trees/desert/shrub_medium

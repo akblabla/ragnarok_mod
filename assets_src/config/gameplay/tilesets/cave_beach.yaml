@@ -8,9 +8,9 @@ tilesets:
         waterSpriteBase: cave_beach_tileset_001
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_ocean        
-        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_beach
-        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_beach_foreground
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: cave_river_battlescreen_sand_background
+        battleBackgroundSpriteForeground: cave_battlescreen_sand_foreground
         iconSpriteSheet: ui_RagnarokMod
         iconSprite: ":img:ui/codex/icons/icon_terrain_cave_beach.png"
         infoScreenOffset: 75
@@ -21,9 +21,9 @@ tilesets:
         waterSpriteBase: snow_beach_tileset_001
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_snow_beach
-        battleBackgroundSpriteSheet: backgrounds/snow_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: snow_battlescreen_extendedbackgrounds_beach
-        battleBackgroundSpriteForeground: snow_battlescreen_extendedbackgrounds_beach_foreground
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: cave_river_battlescreen_sand_background
+        battleBackgroundSpriteForeground: cave_battlescreen_sand_foreground
         iconSpriteSheet: ui_RagnarokMod
         iconSprite: ":img:ui/codex/icons/icon_terrain_cave_beach.png"
         infoScreenOffset: 75
@@ -32,9 +32,9 @@ tilesets:
         spriteSheet: tilesets
         spriteBase: sand_beach_tileset_000
         waterSpriteBase: sand_beach_tileset_001
-        battleBackgroundSpriteSheet: backgrounds/sand_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: sand_battlescreen_extendedbackgrounds_beach
-        battleBackgroundSpriteForeground: sand_battlescreen_extendedbackgrounds_beach_foreground
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: cave_river_battlescreen_sand_background
+        battleBackgroundSpriteForeground: cave_battlescreen_sand_foreground
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_sand_beach
         iconSpriteSheet: ui_RagnarokMod
@@ -45,9 +45,9 @@ tilesets:
         spriteSheet: tilesets
         spriteBase: volcanic_beach_tileset_000
         waterSpriteBase: volcanic_beach_tileset_001
-        battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: volcano_battlescreen_extendedbackgrounds_beach
-        battleBackgroundSpriteForeground: volcano_battlescreen_extendedbackgrounds_beach_foreground
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: cave_river_battlescreen_sand_background
+        battleBackgroundSpriteForeground: cave_battlescreen_sand_foreground
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_sand_beach
         iconSpriteSheet: ui_RagnarokMod

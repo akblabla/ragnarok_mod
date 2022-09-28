@@ -10,9 +10,9 @@ tilesets:
         waterSpriteBase: cave_bridge_tileset_002
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_bridge
-        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_bridge
-        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_bridge_foreground
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: cove_bridge_battlescreen_background
+        battleBackgroundSpriteForeground: cove_bridge_battlescreen_foreground
         iconSpriteSheet: ui_RagnarokMod
         iconSprite: ":img:ui/codex/icons/icon_terrain_cave_bridge.png"
         infoScreenOffset: 75
@@ -25,9 +25,9 @@ tilesets:
         waterSpriteBase: cave_bridge_tileset_002
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_snow_bridge
-        battleBackgroundSpriteSheet: backgrounds/snow_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: snow_battlescreen_extendedbackgrounds_bridge
-        battleBackgroundSpriteForeground: snow_battlescreen_extendedbackgrounds_bridge_foreground
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: cove_bridge_battlescreen_background
+        battleBackgroundSpriteForeground: cove_bridge_battlescreen_foreground
         iconSpriteSheet: ui_RagnarokMod
         iconSprite: ":img:ui/codex/icons/icon_terrain_cave_bridge.png"
         infoScreenOffset: 75
@@ -40,9 +40,9 @@ tilesets:
         waterSpriteBase: cave_bridge_tileset_002
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_sand_bridge
-        battleBackgroundSpriteSheet: backgrounds/sand_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: sand_battlescreen_extendedbackgrounds_bridge
-        battleBackgroundSpriteForeground: sand_battlescreen_extendedbackgrounds_bridge_foreground
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: cove_bridge_battlescreen_background
+        battleBackgroundSpriteForeground: cove_bridge_battlescreen_foreground
         iconSpriteSheet: ui_RagnarokMod
         iconSprite: ":img:ui/codex/icons/icon_terrain_cave_bridge.png"
         infoScreenOffset: 75
@@ -55,9 +55,9 @@ tilesets:
         waterSpriteBase: cave_bridge_tileset_002
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_volcanic_bridge
-        battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: volcano_battlescreen_extendedbackgrounds_bridge
-        battleBackgroundSpriteForeground: volcano_battlescreen_extendedbackgrounds_bridge_foreground
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: cove_bridge_battlescreen_background
+        battleBackgroundSpriteForeground: cove_bridge_battlescreen_foreground
         iconSpriteSheet: ui_RagnarokMod
         iconSprite: ":img:ui/codex/icons/icon_terrain_cave_bridge.png"
         infoScreenOffset: 75

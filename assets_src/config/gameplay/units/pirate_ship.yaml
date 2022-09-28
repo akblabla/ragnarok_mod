@@ -9,28 +9,28 @@ weapons:
       land: 1
       water: 1
     tagDamage:
-      archer: 0.9
-      soldier: 0.8
-      spearman: 0.7
-      dog: 0.75
-      wagon: 0.6
-      knight: 0.2
-      trebuchet: 0.75
-      ballista: 0.8
-      mage: 0.75
-      structure: 0.45
-      commander: 0.2
-      giant: 0.15
-      rifleman: 0.95
-      thief: 1.05
+      archer: 0.85
+      soldier: 0.75
+      spearman: 0.65
+      dog: 0.7
+      wagon: 0.55
+      knight: 0.15
+      trebuchet: 0.7
+      ballista: 0.75
+      mage: 0.7
+      structure: 0.4
+      commander: 0.15
+      giant: 0.1
+      rifleman: 0.9
+      thief: 1.0
       
-      flagship: 0.35
-      pirate_ship: 0.6
-      warship: 0.5
-      harpoonship: 0.75
-      turtle: 0.15
-      travelboat: 0.7
-      merman: 0.25
+      flagship: 0.3
+      pirate_ship: 0.55
+      warship: 0.45
+      harpoonship: 0.7
+      turtle: 0.1
+      travelboat: 0.65
+      merman: 0.2
 unitClasses:
   - id: pirate_ship
     name: unit_class_name_pirate_ship
