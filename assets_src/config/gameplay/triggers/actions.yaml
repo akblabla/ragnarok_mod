@@ -102,6 +102,10 @@ triggerActions:
       - type: transfer_type
       - type: counter
       
+  - id: log_message
+    parameters:
+      - type: string
+      
   - id: message
     parameters:
       - type: string

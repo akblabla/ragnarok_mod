@@ -64,6 +64,126 @@ unitClasses:
 
 units:
   - class: pirate_ship
+    faction: cherrystone
+    name: unit_name_pirate_ship_outlaws
+    mapAnimation: units/raider/cherrystone/map_raider_cherrystone
+    battleAnimation: units/warship/cherrystone/battle_warship_cherrystone
+    smallPortrait: units/raider/cherrystone/portrait_raider_cherrystone_small.png
+    mediumPortrait: units/raider/cherrystone/portrait_raider_cherrystone_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: warshipAttack
+      attackEffect: warshipAttackEffect
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_warship_attack
+        effectDelay: 1.8
+        hitDelay: [2.0, 2.3, 2.6]
+        
+  - class: pirate_ship
+    faction: felheim
+    name: unit_name_pirate_ship_outlaws
+    mapAnimation: units/raider/cherrystone/map_raider_cherrystone
+    battleAnimation: units/warship/cherrystone/battle_warship_cherrystone
+    smallPortrait: units/raider/cherrystone/portrait_raider_cherrystone_small.png
+    mediumPortrait: units/raider/cherrystone/portrait_raider_cherrystone_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: warshipAttack
+      attackEffect: warshipAttackEffect
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_warship_attack
+        effectDelay: 1.8
+        hitDelay: [2.0, 2.3, 2.6]
+        
+  - class: pirate_ship
+    faction: floran
+    name: unit_name_pirate_ship_outlaws
+    mapAnimation: units/raider/cherrystone/map_raider_cherrystone
+    battleAnimation: units/warship/cherrystone/battle_warship_cherrystone
+    smallPortrait: units/raider/cherrystone/portrait_raider_cherrystone_small.png
+    mediumPortrait: units/raider/cherrystone/portrait_raider_cherrystone_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: warshipAttack
+      attackEffect: warshipAttackEffect
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_warship_attack
+        effectDelay: 1.8
+        hitDelay: [2.0, 2.3, 2.6]
+        
+  - class: pirate_ship
+    faction: heavensong
+    name: unit_name_pirate_ship_outlaws
+    mapAnimation: units/raider/cherrystone/map_raider_cherrystone
+    battleAnimation: units/warship/cherrystone/battle_warship_cherrystone
+    smallPortrait: units/raider/cherrystone/portrait_raider_cherrystone_small.png
+    mediumPortrait: units/raider/cherrystone/portrait_raider_cherrystone_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: warshipAttack
+      attackEffect: warshipAttackEffect
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_warship_attack
+        effectDelay: 1.8
+        hitDelay: [2.0, 2.3, 2.6]
+        
+  - class: pirate_ship
     faction: outlaw
     name: unit_name_pirate_ship_outlaws
     mapAnimation: units/raider/cherrystone/map_raider_cherrystone

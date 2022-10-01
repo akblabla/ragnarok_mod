@@ -18,7 +18,7 @@ weapons:
       knight: 0.1
       trebuchet: 0.05
       mage: 0.2
-      structure: 0.1
+      structure: 0.05
       commander: 0.05
       ballista: 0.1
       giant: 0.0001

@@ -310,7 +310,7 @@ end
 
 
 function VisionTracker.init()
-	print("VisionTracker Test added to list of tests")
+	--print("VisionTracker Test added to list of tests")
 --	Ragnarok.addAction(VisionTracker.setup,"start_of_match",true)
 	Ragnarok.addAction(VisionTracker.humanTest,"repeating",true)
 	Ragnarok.addAction(VisionTracker.weatherChecker,"repeating",true)
@@ -360,10 +360,10 @@ function VisionTracker.setup()
 		return
 	end
 	setupRan = true
-	print("Setting Up Team Array")
+	--print("Setting Up Team Array")
 	VisionTracker.setupTeamPlayers()
-	print("number of independent players: "..tostring(Wargroove.getNumPlayers(true)))
-	print("number of players: "..tostring(Wargroove.getNumPlayers(false)))
+	--print("number of independent players: "..tostring(Wargroove.getNumPlayers(true)))
+	--print("number of players: "..tostring(Wargroove.getNumPlayers(false)))
 	for playerId=-2,Wargroove.getNumPlayers(false)-1 do
 		-- print("Player: "..tostring(playerId))
 		-- print("team?")
@@ -408,9 +408,9 @@ function VisionTracker.humanTest(context)
 		if Wargroove.isHuman(playerId) == false then
 			return
 		end
-		print("VisionTracker Human Test Starts here")
-		print("Player is: "..tostring(playerId))
-		print("Fog of war updated")
+		--print("VisionTracker Human Test Starts here")
+		--print("Player is: "..tostring(playerId))
+		--print("Fog of war updated")
 		coroutine.yield()
 		coroutine.yield()
 		coroutine.yield()
@@ -453,7 +453,7 @@ function VisionTracker.humanTest(context)
 				testSuccess = false break
 			end
 		end
-		print("VisionTracker Test Result: "..tostring(testSuccess))
+		--print("VisionTracker Test Result: "..tostring(testSuccess))
 		if (testSuccess == false) then
 			Wargroove.showMessage("VisionTracker Test Failed")
 			Wargroove.showMessage("Tile: "..tostring(failedTile.x)..","..tostring(failedTile.y))
@@ -589,25 +589,25 @@ function VisionTracker.calculateVisionOfUnit(unit)
 		end
 		return visibleTiles
 	end
-	print("loading pulse scanner")
+	--print("loading pulse scanner")
 	local PulseScanner = require "util/pulseScanner"
-	print("loaded pulse scanner")
+	--print("loaded pulse scanner")
 	local function getBlockerRadius(origin, pos)
 		local dist = VectorMath.dist(origin, pos)
 		return math.min(0.5+dist/200,0.6)
 	end
 
-	print("Setting Blocker Function")
+	--print("Setting Blocker Function")
 	PulseScanner.setBlockerFunction(VisionTracker.isTileBlocker)
-	print("Setting Blocker Radius Function")
+	--print("Setting Blocker Radius Function")
 	PulseScanner.setBlockerRadiusFunction(getBlockerRadius)
-	print("Checking if Scout")
+	--print("Checking if Scout")
 	local isScout = Stats.isScout(unit)
-	print("Checking if it can see over")
+	--print("Checking if it can see over")
 	local canSeeOver = Stats.canSeeOver(unit)
-	print("Checking sight range")
+	--print("Checking sight range")
 	local sightRange = getSightRange(unit)
-	print("Calculating LoS using pulse")
+	--print("Calculating LoS using pulse")
 	local function removeDublicates(data)
 		local hash = {}
 		local res = {}

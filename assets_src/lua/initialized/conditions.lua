@@ -57,10 +57,8 @@ end
 
 function Conditions.isRescued(context)
     -- "If capsized crew at location {0} is rescued by player {1}."
-	print("isRescued starts here")
     local location = context:getLocation(0)
     local playerId = context:getPlayerId(1)
-	print(playerId)
     for i, pos in ipairs(location.positions) do
 		local unit = Wargroove.getUnitAt(pos)
 		if unit and unit.unitClassId == "crew" then

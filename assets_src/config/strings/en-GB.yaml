@@ -284,6 +284,10 @@ en-GB:
   trigger_action_description_dialogue_box_unit: "Triggers a dialogue box for a unit."
   trigger_action_readable_dialogue_box_unit: "Display dialogue box from {0} at {1} for {2} being {3} saying {4} with colour {5}."
 
+  trigger_action_name_log_message: "Dev: Write to Log"
+  trigger_action_description_log_message: "Write message to log."
+  trigger_action_readable_log_message: "Write to log message: {0}"
+  
   trigger_action_name_set_match_seed: "Map: Set Match Seed"
   trigger_action_description_set_match_seed: "Set Match Seed."
   trigger_action_readable_set_match_seed: "Set Match Seed to {0}."

@@ -164,7 +164,7 @@ end
 
 function Golf:execute(unit, targetPos, strParam, path)
     if strParam == "" then
-        print("Golf:execute was not given any target positions.")
+        --print("Golf:execute was not given any target positions.")
         return
     end
 
@@ -281,7 +281,7 @@ function Golf:onPostUpdateUnit(unit, targetPos, strParam, path)
     GrooveVerb.onPostUpdateUnit(self, unit, targetPos, strParam, path)
 
     if strParam == "" then
-        print("Golf:onPostUpdateUnit was not given any target positions.")
+        --print("Golf:onPostUpdateUnit was not given any target positions.")
         return
     end
 

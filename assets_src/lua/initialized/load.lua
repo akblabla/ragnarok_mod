@@ -22,16 +22,14 @@ function Load:canExecuteWithTarget(unit, endPos, targetPos, strParam)
         return false
     end
    
-    -- If it's a water transport, is it on a beach?
-    local targetTags = targetUnit.unitClass.tags
-    for i, tag in ipairs(targetTags) do
-        if tag == "type.sea" then
-            if Wargroove.getTerrainNameAt(targetUnit.pos) ~= "beach" and Wargroove.getTerrainNameAt(targetUnit.pos) ~= "cave_beach" and Wargroove.getTerrainNameAt(targetUnit.pos) ~= "cave_river" and Wargroove.getTerrainNameAt(targetUnit.pos) ~= "river" then
-                return false
-            end
-        end
-    end
     
+
+	if targetUnit.unitClassId == "travelboat" then
+		if not Wargroove.canStandAt(unit.unitClassId, targetPos) and not Wargroove.canStandAt("soldier", targetPos) then
+			return false
+		end
+	end
+	
     -- Can carry me?
     local myTags = unit.unitClass.tags
     local transports = targetUnit.unitClass.transportTags

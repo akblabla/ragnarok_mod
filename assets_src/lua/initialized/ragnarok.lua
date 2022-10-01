@@ -221,18 +221,18 @@ function Ragnarok.resetOccurences()
 end
 
 function Ragnarok.didItOccur(occation)
-	print("didItOccur starts here")
-	print(occation)
-	print(dump(occurences,1))
+	--print("didItOccur starts here")
+	--print(occation)
+	--print(dump(occurences,1))
 	return occurences[occation] ~= nil
 end
 
 function Ragnarok.reportOccation(occation)
-	print("reportOccation starts here")
-	print(Ragnarok.didItOccur(occation))
+	--print("reportOccation starts here")
+	--print(Ragnarok.didItOccur(occation))
 	occurences[occation] = true
-	print(dump(occurences,1))
-	print(Ragnarok.didItOccur(occation))
+	--print(dump(occurences,1))
+	--print(Ragnarok.didItOccur(occation))
 end
 
 function Ragnarok.setFogOfWarRules(fogOn)
@@ -252,34 +252,34 @@ function Ragnarok.addAIToCantAttackBuildings(playerId)
 end
 
 function Ragnarok.addGoldRobbed(playerId, amount)
-	print("addGoldRobbed starts here")
-	print("Player Id:")
-	print(playerId)
-	print("type")
-	print(type(playerId))
-	print("Amount To be deposited:")
-	print(amount)
-	print("type")
-	print(type(amount))
+	--print("addGoldRobbed starts here")
+	--print("Player Id:")
+	--print(playerId)
+	--print("type")
+	--print(type(playerId))
+	--print("Amount To be deposited:")
+	--print(amount)
+	--print("type")
+	--print(type(amount))
 	if goldRobbed[playerId] then
-		print("Total Deposited:")
-		print(goldRobbed[playerId])
-		print("type")
-		print(type(goldRobbed[playerId]))
+		--print("Total Deposited:")
+		--print(goldRobbed[playerId])
+		--print("type")
+		--print(type(goldRobbed[playerId]))
 		goldRobbed[playerId] = goldRobbed[playerId]+amount
 	else
-		print("No Player with ID")
+		--print("No Player with ID")
 		goldRobbed[playerId] = amount
 	end
-	print(goldRobbed[playerId])
+	--print(goldRobbed[playerId])
 end
 
 function Ragnarok.getGoldRobbed(playerId)
-	print("getGoldRobbed starts here")
+	--print("getGoldRobbed starts here")
 	local robbedMoney = goldRobbed[playerId]
-	print(robbedMoney)
-	print("type")
-	print(type(robbedMoney))
+	--print(robbedMoney)
+	--print("type")
+	--print(type(robbedMoney))
 	if robbedMoney then return robbedMoney end
 	return 0
 end
@@ -312,7 +312,7 @@ function Ragnarok.hasCrown(unit)
 end
 
 function Ragnarok.removeCrown()
-	print("removeCrown function starts here")
+	--print("removeCrown function starts here")
 	if crownID ~= nil then
 		local crown = Wargroove.getUnitById(crownID)
 		if crown ~= nil then
@@ -342,27 +342,27 @@ function Ragnarok.removeCrown()
 end
 
 function Ragnarok.dropCrown(targetPos)
-	print("dropCrown function starts here")
+	--print("dropCrown function starts here")
 	Ragnarok.removeCrown()
-	print("removed Crown")
+	--print("removed Crown")
 	--local startingState = {}
     --local pos = {key = "pos", value = "" .. targetPos.x .. "," .. targetPos.y}
     --table.insert(startingState, pos)
 	crownID = Wargroove.spawnUnit(-1, {x = targetPos.x-100, y = targetPos.y-100}, "crown", false)
 	Wargroove.setVisibleOverride(crownID, true)
-	print("Spawned Crown")
+	--print("Spawned Crown")
 	Wargroove.spawnUnitEffect(crownID, crownOffsetAnimation, "idle", startAnimation, true, false)
-	print("Added Crown Effect")
+	--print("Added Crown Effect")
 	
 	crownPos = targetPos
-	print("Crown Position updated")
+	--print("Crown Position updated")
 	crownBearerID = nil
-	print("Nobody is carrying the crown anymore")
+	--print("Nobody is carrying the crown anymore")
 	return crownID
 end
 
 function Ragnarok.grabCrown(unit)
-	print("grabCrown function starts here")
+	--print("grabCrown function starts here")
 	Ragnarok.removeCrown()
 	Wargroove.setUnitState(unit, crownStateKey, "")
 	if not Wargroove.hasUnitEffect(unit.id, crownAnimation) then
@@ -439,11 +439,11 @@ function Ragnarok.setState(gizmo, state, playSound)
 		return {changedState = false, soundPlayed = false}
 	end
 	if playSound == nil then playSound = true end
-	print("Ragnarok.setState(gizmo,state) starts here")
-	print(invertedVisualGizmos[Ragnarok.generateGizmoKey(gizmo)]) 
+	--print("Ragnarok.setState(gizmo,state) starts here")
+	--print(invertedVisualGizmos[Ragnarok.generateGizmoKey(gizmo)]) 
 	local changedState = Ragnarok.getInternalGizmoState(gizmo) ~= state
 	local soundPlayed
-	print(changedState)
+	--print(changedState)
 	if changedState then
 		local soundOn = gizmoSoundMapOn[gizmo.type]
 		local soundOff = gizmoSoundMapOff[gizmo.type]
@@ -479,7 +479,7 @@ function Ragnarok.wouldAnyStatesChange(gizmos, state)
 end
 
 function Ragnarok.setStates(gizmos, state, playSound)
-	print("Ragnarok.setStates starts here") 
+	--print("Ragnarok.setStates starts here") 
 	if playSound == nil then playSound = true end
 	local changedState = false
 	local soundsPlayed = {}
@@ -489,8 +489,8 @@ function Ragnarok.setStates(gizmos, state, playSound)
 		sound = result.soundPlayed
 		changedState = changedState or result.changedState
 		if sound and playSound and soundsPlayed[sound] == nil then
-			print(sound)
-			print(soundsPlayed[sound])
+			--print(sound)
+			--print(soundsPlayed[sound])
 			Wargroove.playMapSound(sound, gizmo.pos)
 			soundsPlayed[sound] = true
 			soundCount = soundCount + 1
@@ -555,12 +555,12 @@ function Ragnarok.gizmoActivateWhenStoodOn(gizmo)
 end
 
 function Ragnarok.printCrownInfo()
-   print("Printing Crown Stuff")
-   print("crownID:",crownID)
-   print("crownPos:")
-   print(dump(crownPos,1))
-   print("crownBearerID:",crownBearerID)
-   print("")
+   -- print("Printing Crown Stuff")
+   -- print("crownID:",crownID)
+   -- print("crownPos:")
+   -- print(dump(crownPos,1))
+   -- print("crownBearerID:",crownBearerID)
+   -- print("")
 end
 
 function Ragnarok.setFlareCount(playerId, count)
@@ -627,21 +627,21 @@ function Ragnarok.moveInArch(unitId, startPos, targetPos, numSteps, speed, gravi
     end
 	local doneEvents = {}
     for i = 1, numSteps do
-		print("Checking Event Packages")
+		--print("Checking Event Packages")
 		if eventPackages ~= nil then
 			for j, eventPackage in pairs(eventPackages) do
 				if doneEvents[j] == nil then
-					print("Event " .. tostring(j))
-					print(tostring(i/numSteps)..">="..tostring(eventPackage.time).." fraction")
-					print(tostring(i/numSteps*tEnd)..">="..tostring(eventPackage.time).." fraction")
-					print(tostring(i/numSteps*tEnd)..">="..tostring(tEnd-eventPackage.time).." fraction")
+					--print("Event " .. tostring(j))
+					--print(tostring(i/numSteps)..">="..tostring(eventPackage.time).." fraction")
+					--print(tostring(i/numSteps*tEnd)..">="..tostring(eventPackage.time).." fraction")
+					--print(tostring(i/numSteps*tEnd)..">="..tostring(tEnd-eventPackage.time).." fraction")
 					
 					if (i/numSteps>=eventPackage.time and eventPackage.mode == "fraction") or
 					(i/numSteps*tEnd>=eventPackage.time and eventPackage.mode == "fromStart") or
 					(i/numSteps*tEnd>=tEnd-eventPackage.time and eventPackage.mode == "fromEnd") then
-						print("Executing " .. tostring(j))
+						--print("Executing " .. tostring(j))
 						eventPackage.event(eventPackage.eventData)
-						print("Done " .. tostring(j))
+						--print("Done " .. tostring(j))
 						doneEvents[j] = true
 					end
 				end
@@ -652,11 +652,11 @@ function Ragnarok.moveInArch(unitId, startPos, targetPos, numSteps, speed, gravi
 			coroutine.yield()
 		end
     end
-	print("Checking for missed Event Packages")
+	--print("Checking for missed Event Packages")
 	if eventPackages ~= nil then
 		for i, eventPackage in pairs(eventPackages) do
 			if doneEvents[i] == nil then
-				print("Found: " .. tostring(i))
+				--print("Found: " .. tostring(i))
 				eventPackage.event(eventPackage.eventData)
 			end
 		end

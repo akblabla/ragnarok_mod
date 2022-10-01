@@ -274,13 +274,13 @@ local function getUnitCountPenalty(playerId)
 end
 
 local function getUnitValue(unitClassId, playerId)
-	print("getUnitValue(unitClassId) starts here")
-	print("class: " .. unitClassId)
+	--print("getUnitValue(unitClassId) starts here")
+	--print("class: " .. unitClassId)
 	local value = Wargroove.getUnitClass(unitClassId).cost+50
 	if CustomAI.powerMultiplierList[unitClassId] ~= nil then
 		value = value*CustomAI.powerMultiplierList[unitClassId]
 	end
-	print("base value: " .. tostring(value))
+	--print("base value: " .. tostring(value))
 	local enemyUnitCountList = {}
 	-- print("Summing Up Enemy Units")
 	for _playerId, unitCountList in ipairs(unitCountPlayerList) do
@@ -305,17 +305,17 @@ local function getUnitValue(unitClassId, playerId)
 	end
 	local antiAirCounterBonus = calculateCounterBonus(unitClassId, enemyAirPower+enemyTowerCount*CustomAI.airThreatPerTower, friendlyAntiAirPower, CustomAI.antiAirReluctance, CustomAI.antiAirMultiplierList);
 	value = value + antiAirCounterBonus
-	print("value after anti-air bonus: " .. tostring(value))
+	--print("value after anti-air bonus: " .. tostring(value))
 	--print("antiAirCounterBonus: " .. tostring(antiAirCounterBonus))
 	if CustomAI.valueReductionPerUnitList[unitClassId] ~= nil and unitCountPlayerList[playerId][unitClassId] ~= nil then
 		value = value*CustomAI.valueReductionPerUnitList[unitClassId]^unitCountPlayerList[playerId][unitClassId]
 	end
 	value = value*getUnitRatioModifier(unitClassId, playerId)
-	print("value after ratio modifier: " .. tostring(value))
-	print("ratio modifier for unit class '"..unitClassId.."' is: ".. tostring(getUnitRatioModifier(unitClassId, playerId)))
-	print(dump(currentUnitRatioScalingList[playerId],0))
+	--print("value after ratio modifier: " .. tostring(value))
+	--print("ratio modifier for unit class '"..unitClassId.."' is: ".. tostring(getUnitRatioModifier(unitClassId, playerId)))
+	--print(dump(currentUnitRatioScalingList[playerId],0))
 	value = value-getUnitCountPenalty(playerId)
-	print("value after subtracting unit count penalty: " .. tostring(value))
+	--print("value after subtracting unit count penalty: " .. tostring(value))
 	--print("final value: " .. tostring(value))
 	return value
 end
@@ -323,7 +323,7 @@ end
 local function getProducedUnitValue(producer, unitClassId, playerId)
 	local value = getUnitValue(unitClassId, playerId)
 	value = value-getOpportunityCost(producer, unitClassId, playerId)
-	print("value after subtracting opportunity cost: " .. tostring(value))
+	--print("value after subtracting opportunity cost: " .. tostring(value))
 	if unitClassId == "soldier" and value<=0 then
 		value = 1 --Always worth buying a soldier if you have money left over
 	end
@@ -333,12 +333,12 @@ end
 
 function CustomAI.spendRest(context)
 	if context:checkState("endOfTurn") then
-		print("spendRest starts here")
-		print("it is the end of the turn")
+		--print("spendRest starts here")
+		--print("it is the end of the turn")
 		local playerId = Wargroove.getCurrentPlayerId();
-		print("Player of the day is: " .. tostring(playerId))
+		--print("Player of the day is: " .. tostring(playerId))
 		if Wargroove.isHuman(playerId) == true then
-			print("Is Human")
+			--print("Is Human")
 			return
 		end
 		-- print("Is AI")
@@ -424,9 +424,9 @@ function CustomAI.spendRest(context)
 			end
 		end
 		
-		print("Production selection starts here")
+		--print("Production selection starts here")
 		table.sort(productionOptions, function (k1, k2) return k1.score > k2.score end )
-		print(dump(productionOptions,0))
+		--print(dump(productionOptions,0))
 		while next(productionOptions) ~= nil do
 --			print("productionOptions before culling")
 			-- print(dump(productionOptions,0))

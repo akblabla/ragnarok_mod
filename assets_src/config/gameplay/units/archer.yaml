@@ -20,20 +20,20 @@ weapons:
       harpy: 0.3
       knight: 0.4
       witch: 0.2
-      ballista: 0.25
-      trebuchet: 0.2
+      ballista: 0.3
+      trebuchet: 0.25
       giant: 0.1
       dragon: 0.1
       structure: 0.2
       commander: 0.05
       warship: 0.25
-      harpoonship: 0.3
+      harpoonship: 0.35
       turtle: 0.3
       travelboat: 0.35
       merman: 0.7
       rifleman: 0.8
       thief: 0.7
-      pirate_ship: 0.4
+      pirate_ship: 0.3
 
 
       flagship: 0.05

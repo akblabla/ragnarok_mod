@@ -77,11 +77,11 @@ local function getRelativeAngle(originAngle, angle)
 end
 
 function PulseScanner.calculateLoSOfUnitPulse(pos, scout, canSeeOver, sightRange, targetOffset, mapsize)
-	print("PulseScanner.calculateLoSOfUnitPulse starts here")
-	print("Pos: "..tostring(pos.x)..","..tostring(pos.y))
-	print("scout: "..tostring(scout))
-	print("canSeeOver: "..tostring(canSeeOver))
-	print("sightRange: "..tostring(sightRange))
+	--print("PulseScanner.calculateLoSOfUnitPulse starts here")
+	--print("Pos: "..tostring(pos.x)..","..tostring(pos.y))
+	--print("scout: "..tostring(scout))
+	--print("canSeeOver: "..tostring(canSeeOver))
+	--print("sightRange: "..tostring(sightRange))
 	if Tree == nil then
         Tree = require "util/binarySearchTreeDoubleLinked"
     end
@@ -89,9 +89,9 @@ function PulseScanner.calculateLoSOfUnitPulse(pos, scout, canSeeOver, sightRange
 	if withinMapBounds(pos,mapsize) then
 		table.insert(visibleTiles,{x = math.floor(pos.x+0.5), y = math.floor(pos.y+0.5)})
 	end
-	print("Attempting to get order")
+	--print("Attempting to get order")
 	local orderedTiles = getKnownOcclusionTileOrder(pos, sightRange, mapsize)
-	print("Got Order")
+	--print("Got Order")
 	local t = Tree:new()
 	for i, checkedTile in ipairs(orderedTiles) do
 		-- print("")
@@ -156,13 +156,13 @@ function PulseScanner.calculateLoSOfUnitPulse(pos, scout, canSeeOver, sightRange
 				end
 				local function printTree(node, level)
 					if node~=nil then
-						print("Corner at layer "..tostring(level).." : angle = "..tostring(node:getKey())..", isBlocking = "..tostring(node:getData()))
+						--print("Corner at layer "..tostring(level).." : angle = "..tostring(node:getKey())..", isBlocking = "..tostring(node:getData()))
 						if node.left~=nil then
-							print("left")
+							--print("left")
 							printTree(node.left,level+1)
 						end
 						if node.right~=nil then
-							print("right")
+							--print("right")
 							printTree(node.right,level+1)
 						end
 					end

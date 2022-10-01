@@ -6,7 +6,7 @@ local Rescue = Verb:new()
 local rescuedCrewList = {}
 
 function Rescue.isRescuedByPlayer(unitId,playerId)
-	print("isRescuedByPlayer starts here")
+	--print("isRescuedByPlayer starts here")
 	if playerId == nil then
 		return not (rescuedCrewList[unitId] == nil)
 	end
@@ -36,7 +36,7 @@ function Rescue:canExecuteWithTarget(unit, endPos, targetPos, strParam)
 end
 
 function Rescue:execute(unit, targetPos, strParam, path)
-	print("Rescue:execute starts here")
+	--print("Rescue:execute starts here")
 	Ragnarok.reportOccation("rescued")
 	local targetUnit = Wargroove.getUnitAt(targetPos)
 	rescuedCrewList[targetUnit.id] = unit.playerId

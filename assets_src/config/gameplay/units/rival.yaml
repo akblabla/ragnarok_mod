@@ -23,6 +23,7 @@ unitClasses:
     battleUnitCount: 1
     passiveMultiplier: 1.35
     isRecruitable: false
+    isHidden: true
     sightRange: 5
     deathVerbId: death_drop_crown
 

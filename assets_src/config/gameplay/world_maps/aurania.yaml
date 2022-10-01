@@ -21,7 +21,6 @@ worldMaps:
   - animation: world/maps/aurania_v2/windmill
     layer: ground_decorations
     pos: [200, 210]
-  waterMask: masks/aurania_water_mask.png
   fishAnimations:
   - world/world_map_fish_size01
   - world/world_map_fish_size02

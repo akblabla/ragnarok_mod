@@ -56,6 +56,96 @@ codex:
     title: codex_rules_damage_scaling_title
     text: codex_rules_damage_scaling_text
 
+- id: rules_unit_changes
+  category: rules
+  name: codex_rules_unit_changes
+  icon:
+    image: ui/codex/icons/icon_rules_question.png
+  pages:
+  - pageType: page
+    layoutType: unit_sprite
+    unitClass: soldier
+    faction: outlaw
+    title: codex_rules_changes_soldier_title
+    text: codex_rules_changes_soldier_text
+  - pageType: page
+    layoutType: unit_sprite
+    unitClass: spearman
+    faction: outlaw
+    title: codex_rules_changes_spearman_title
+    text: codex_rules_changes_spearman_text
+  - pageType: page
+    layoutType: unit_sprite
+    unitClass: dog
+    faction: outlaw
+    title: codex_rules_changes_dog_title
+    text: codex_rules_changes_dog_text
+  - pageType: page
+    layoutType: unit_sprite
+    unitClass: mage
+    faction: outlaw
+    title: codex_rules_changes_mage_title
+    text: codex_rules_changes_mage_text
+  - pageType: page
+    layoutType: unit_sprite
+    unitClass: archer
+    faction: outlaw
+    title: codex_rules_changes_archer_title
+    text: codex_rules_changes_archer_text
+  - pageType: page
+    layoutType: unit_sprite
+    unitClass: rifleman
+    faction: outlaw
+    title: codex_rules_changes_rifle_title
+    text: codex_rules_changes_rifle_text
+  - pageType: page
+    layoutType: unit_sprite
+    unitClass: knight
+    faction: outlaw
+    title: codex_rules_changes_knight_title
+    text: codex_rules_changes_knight_text
+  - pageType: page
+    layoutType: unit_sprite
+    unitClass: trebuchet
+    faction: outlaw
+    title: codex_rules_changes_trebuchet_title
+    text: codex_rules_changes_trebuchet_text
+  - pageType: page
+    layoutType: unit_sprite
+    unitClass: ballista
+    faction: outlaw
+    title: codex_rules_changes_ballista_title
+    text: codex_rules_changes_ballista_text
+  - pageType: page
+    layoutType: unit_sprite
+    unitClass: dragon
+    faction: outlaw
+    title: codex_rules_changes_dragon_title
+    text: codex_rules_changes_dragon_text
+  - pageType: page
+    layoutType: unit_sprite
+    unitClass: travelboat
+    faction: outlaw
+    title: codex_rules_changes_travelboat_title
+    text: codex_rules_changes_travelboat_text
+  - pageType: page
+    layoutType: unit_sprite
+    unitClass: turtle
+    faction: outlaw
+    title: codex_rules_changes_turtle_title
+    text: codex_rules_changes_turtle_text
+  - pageType: page
+    layoutType: unit_sprite
+    unitClass: harpoonship
+    faction: outlaw
+    title: codex_rules_changes_harpoonship_title
+    text: codex_rules_changes_harpoonship_text
+  - pageType: page
+    layoutType: unit_sprite
+    unitClass: warship
+    faction: outlaw
+    title: codex_rules_changes_warship_title
+    text: codex_rules_changes_warship_text
 
 ###########################################################
 - id: rules_win_conditions

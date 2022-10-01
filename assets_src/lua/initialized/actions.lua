@@ -30,6 +30,7 @@ function Actions.populate(dst)
     dst["ai_set_no_building_attacking"] = Actions.setNoBuildingAttacking
     dst["set_state"] = Actions.setState
     dst["transfer_gold_robbed"] = Actions.transferGoldRobbed
+	dst["log_message"] = Actions.logMessage
 	dst["message_counter"] = Actions.messageCounter
 	dst["dialogue_box_with_counter"] = Actions.dialogueBoxWithCounter
 	dst["change_objective_with_3_counters"] = Actions.changeObjectiveWith3Counters
@@ -75,8 +76,6 @@ end
 function Actions.aiSetRestriction(context)
     -- "Set AI restriction of {0} at {1} for {2}: Set {3} to {4}"
     local restriction = context:getString(3)
-	print("Actions.aiSetRestriction(context) starts here")
-	print(restriction)
     local value = context:getBoolean(4)
     local units = context:gatherUnits(2, 0, 1)
 
@@ -124,14 +123,12 @@ end
 
 function Actions.setNoBuildingAttacking(context)
     local targetPlayer = context:getPlayerId(0)
-	print(targetPlayer)
 	Ragnarok.addAIToCantAttackBuildings(targetPlayer)
 end
 
 function Actions.allowPirateShips(context)
     -- "Let AI of player {0} build raider ships."
     local targetPlayer = context:getPlayerId(0)
-	print(targetPlayer)
 	Recruit:allowAIToBuildRaiderShips(targetPlayer)
 end
 
@@ -314,17 +311,12 @@ end
 function Actions.setState(context)
     -- "Add set state {3} to {4} for unit type(s) {0} at location {1} owned by player {2}."
 
-	print("setState starts here")
     -- The context contains an ordered table of values and has accessor methods for various types.
     local units = context:gatherUnits(2, 0, 1)  -- A useful function for gathering units of type, location, and player
     local stateKey = context:getString(3)       -- Gets a string
     local stateValue = context:getString(4)
-	print("gathered values")
     for i, unit in ipairs(units) do
         Wargroove.setUnitState(unit, stateKey, stateValue)
-		print("set a state")
-		print(stateKey)
-		print(stateValue)
         Wargroove.updateUnit(unit)
     end
 end
@@ -381,6 +373,11 @@ function Actions.modifyFlareCount(context)
     local value = context:getInteger(2)
     local previous = Ragnarok.getFlareCount(playerId)
 	Ragnarok.setFlareCount(playerId, operation(previous, value))
+end
+
+function Actions.logMessage(context)
+    -- "Write to log message: {0}"
+    print(context:getString(0))
 end
 
 function Actions.messageCounter(context)
@@ -651,7 +648,6 @@ function Actions.moveLocationToNextStructure(context)
 		end
     end
 	if nextLocation.x~=1000 then
-		print("I moved!")
 		nextLocation.x = nextLocation.x+1
 		Wargroove.moveLocationTo(location.id, nextLocation)
 	end
@@ -666,7 +662,6 @@ function Actions.doForceAction(context, queue)
 
     local fromLocation = context:getLocation(0)
     local action = context:getString(1)
-	print(action)
     local toLocation = context:getLocation(2)
     local targetLocation = context:getLocation(3)    
     local autoEnd = context:getBoolean(4)

@@ -64,9 +64,9 @@ function Broadside:atan2(a, b)
 end
 
 function Broadside:preExecute(unit, targetPos, strParam, endPos)
-	print("preexcution starts here")
+	--print("preexcution starts here")
 	chosenDirection = {x = targetPos.x-endPos.x, y = targetPos.y-endPos.y}
-	print(dump(chosenDirection,1))
+	--print(dump(chosenDirection,1))
     Broadside.isInPreExecute = true
 
     Wargroove.selectTarget()
@@ -115,39 +115,39 @@ function Broadside:execute(unit, targetPos, strParam, path)
     targetList = {}
 	--print(dump(areaListPreset,0))
 	self:getTargetsFromAreaList(unit,unit.pos, direction, areaListPreset)
-	print("got here 1")
-	print(dump(targetList,1))
+	--print("got here 1")
+	--print(dump(targetList,1))
 	table.sort(targetList, function (k1, k2) return k1.timing < k2.timing end )
-	print("got here 2")
-	print(dump(targetList,1))
+	--print("got here 2")
+	--print(dump(targetList,1))
 	local lastDistance = 0;
     for i, target in ipairs(targetList) do
 		if lastDistance+minimumSeperation<target.timing then
 			Wargroove.waitTime(target.timing-lastDistance)
 			lastDistance = target.timing
-			print("got here 3")
+			--print("got here 3")
 		end
-		print("got here 4")
+		--print("got here 4")
         local u = Wargroove.getUnitAt(target.pos)
         if u and Wargroove.areEnemies(u.playerId, unit.playerId) then
-			print("got here 5")
+			--print("got here 5")
 			local directionalDistance = 0
 			if direction.y == 0 then
 				directionalDistance = math.abs(targetPos.x-target.pos.x)
 			else
 				directionalDistance = math.abs(targetPos.y-target.pos.y)
 			end
-			print("got here 6")
-            local damage = Combat:getGrooveAttackerDamage(unit, u, "random", unit.pos, target.pos, path, nil) * (1/3)
-			print("got here 7")
+			--print("got here 6")
+            local damage = Combat:getGrooveAttackerDamage(unit, u, "random", unit.pos, target.pos, path, nil) * 0.3
+			--print("got here 7")
             u:setHealth(u.health - damage, unit.id)
             Wargroove.updateUnit(u)
             Wargroove.playUnitAnimation(u.id, "hit")
-			print("got here 8")
+			--print("got here 8")
 			Wargroove.spawnMapAnimation(target.pos, 1, "fx/map_critical_fx", "idle", "over_units", {x = 12, y = 12})
-			print(dump(u,0))
+			--print(dump(u,0))
         end
-		print("got here 9")
+		--print("got here 9")
     end
 	
 	
@@ -220,32 +220,32 @@ function dump(o,level)
 end
 
 function Broadside:getTargetsFromAreaList(unit,originPos, direction, areaList)
-	print("got here -5")
+	--print("got here -5")
     for i, area in ipairs(areaList) do
-		print("got here -4")
+		--print("got here -4")
 		for j, tile in ipairs(area) do
-			print(dump(tile,1))
+			--print(dump(tile,1))
 			local _tile = {x = tile.x, y = tile.y}
-			print(dump(direction,1))
-			print(dump(originPos,1))
+			--print(dump(direction,1))
+			--print(dump(originPos,1))
 			
 			--rotate tiles around origin
 			_tile.x = tile.x*direction.x-tile.y*direction.y + originPos.x
 			_tile.y = tile.x*direction.y+tile.y*direction.x + originPos.y
-			print(dump(_tile,1))
-			print("got here -3")
+			--print(dump(_tile,1))
+			--print("got here -3")
 			local u = Wargroove.getUnitAt(_tile)
-			print("got here -2.25")
+			--print("got here -2.25")
 			if (u ~= nil) and Wargroove.areEnemies(u.playerId, unit.playerId) then
-				print("got here -2.5")
+				--print("got here -2.5")
 				local distance = math.sqrt((u.pos.y-originPos.y)^2+(u.pos.x-originPos.x)^2)
-				print("got here -2")
+				--print("got here -2")
 				table.insert(targetList, {pos = u.pos, timing = timeBetweenShots*(i-1)+distance/projVel})
-				print("got here -1")
+				--print("got here -1")
 			end
 		end
 	end
-	print("got here 0")
+	--print("got here 0")
 end
 
 function Broadside:getSweepTargets(pos, targetPos, direction, targetList)

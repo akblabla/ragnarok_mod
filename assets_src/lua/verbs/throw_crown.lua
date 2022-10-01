@@ -28,11 +28,11 @@ function throwCrown:canExecuteWithTarget(unit, endPos, targetPos, strParam)
 end
 
 function throwCrown:execute(unit, targetPos, strParam, path)
-	print("Throw Crown Verb starts here")
+	--print("Throw Crown Verb starts here")
 	Ragnarok.printCrownInfo()
     local crownID = Ragnarok.dropCrown(unit.pos)
-	print("Dropped Crown")
-	print("")
+	--print("Dropped Crown")
+	--print("")
 	Ragnarok.printCrownInfo()
 	--Yoinked from groove_golf
 	local facingOverride = "left"
@@ -63,7 +63,7 @@ function throwCrown:execute(unit, targetPos, strParam, path)
     end
 
     local startingPosition = {x = unit.pos.x-100, y = unit.pos.y-100}
-	print("Start Arch")
+	--print("Start Arch")
 	Ragnarok.printCrownInfo()
     for i = 1, numSteps do
       Wargroove.moveUnitToOverride(crownID, startingPosition, steps[i].x, steps[i].y, 20)
@@ -71,16 +71,16 @@ function throwCrown:execute(unit, targetPos, strParam, path)
         coroutine.yield()
       end
     end
-	print("End Arch")
-	print("")
+	--print("End Arch")
+	--print("")
 	local targetUnit = Wargroove.getUnitAt(targetPos)
 	if targetUnit then
 		Wargroove.playMapSound("cutscene/land", targetPos)
-		print("Handing Crown to Another")
+		--print("Handing Crown to Another")
 		Ragnarok.grabCrown(targetUnit)
 	else
 		Wargroove.playMapSound("cutscene/swordDrop", targetPos)
-		print("Throwing crown on the ground")
+		--print("Throwing crown on the ground")
 		Ragnarok.dropCrown(targetPos)
 	end
 	Ragnarok.printCrownInfo()

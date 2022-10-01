@@ -55,7 +55,7 @@ function UnitPostCombat:piratePostCombat(wargroove, unit, isAttacker)
 	if defender == nil then
 		Wargroove.spawnUnit(wargroove.playerId, wargroove.pos, wargroove.unitClassId, false, "")
 	else
-		print(dump(defender,1))
+		--print(dump(defender,1))
 	end
 	
 end
