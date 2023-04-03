@@ -5,6 +5,7 @@ en-GB:
   #AI
   ai_profile_rival_pirate: Rival Pirate
   ai_profile_coward: Coward
+  ai_profile_charge: Charge
 
   # Merge Verb
   ui_unit_verbs_better_merge: Merge
@@ -291,7 +292,18 @@ en-GB:
   trigger_action_name_set_match_seed: "Map: Set Match Seed"
   trigger_action_description_set_match_seed: "Set Match Seed."
   trigger_action_readable_set_match_seed: "Set Match Seed to {0}."
+  
+  trigger_action_name_set_priority_target: "Unit: Set Priority Target"
+  trigger_action_description_set_priority_target: "Set Priority Target."
+  trigger_action_readable_set_priority_target: "Give units of type {0} at location {1} owned by player {2} priority orders to go to location {3}."
 
+  trigger_action_name_change_behavior_when_spotting: "Unit: Alert"
+  trigger_action_description_change_behavior_when_spotting: "Alert."
+  trigger_action_readable_change_behavior_when_spotting: "Units owned by player {0} use hide and seek rules against player {1}, {2}"
+
+  trigger_action_name_spawn_unit_in_transport: "Unit: Spawn Inside Transport"
+  trigger_action_description_spawn_unit_in_transport: "Spawn Inside Transport."
+  trigger_action_readable_spawn_unit_in_transport: "Give units of type {0} at location {1} owned by player {2} unit type {3}."
 
   #backgrounds
   ui_cutscene_background_deck: "Ship Deck"
@@ -336,5 +348,8 @@ en-GB:
   # MUSIC
   music_name_tavern_distant: "Distant Tavern"
   music_name_bar_ambience_distant: "Distant Tavern Ambience"
+  
+  # MAP HIGHLIGHT TYPES
+  location_highlight_arrow_up: "Arrow up"
   
 ...

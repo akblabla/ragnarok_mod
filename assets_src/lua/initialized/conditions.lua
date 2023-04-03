@@ -1,6 +1,7 @@
 local Wargroove = require "wargroove/wargroove"
 local Events = require "wargroove/events"
 local Ragnarok = require "initialized/ragnarok"
+local VisionTracker = require "initialized/vision_tracker"
 local Rescue = require "verbs/rescue"
 
 local Conditions = {}
@@ -69,6 +70,5 @@ function Conditions.isRescued(context)
     end
 	return false
 end
-
 
 return Conditions

@@ -31,7 +31,7 @@ weapons:
       turtle: 0.25
       travelboat: 0.25
       pirate_ship: 0.25
-      flagship: 0.2
+      flagship: 0.15
       
 unitClasses:
   - id: knight

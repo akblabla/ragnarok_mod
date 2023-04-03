@@ -31,7 +31,7 @@ weapons:
       turtle: 0.5
       travelboat: 0.55
       merman: 1.1
-      flagship: 0.35
+      flagship: 0.25
       pirate_ship: 0.75
 
 unitClasses:
@@ -55,6 +55,6 @@ unitClasses:
       - healing_potion
     battleUnitCount: 4
     passiveMultiplier: 1.5
-    sightRange: 5
+    sightRange: 6
     scout: true
 ...

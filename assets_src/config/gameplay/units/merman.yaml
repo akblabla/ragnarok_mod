@@ -25,7 +25,7 @@ weapons:
       rifleman: 0.45
       thief: 0.35
 
-      flagship: 0.05
+      flagship: 0.0001
       pirate_ship: 0.2
       warship: 0.05
       harpoonship: 0.3

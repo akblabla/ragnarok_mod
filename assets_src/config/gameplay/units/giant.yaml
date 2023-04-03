@@ -31,7 +31,7 @@ weapons:
       turtle: 0.9
       travelboat: 1.0
       pirate_ship: 1.1
-      flagship: 0.35
+      flagship: 0.25
       
 unitClasses:
   - id: giant

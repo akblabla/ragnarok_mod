@@ -1,6 +1,15 @@
 ---
 
 verbs:
+  - id: wait_ai
+    icon: ui/icons/unit_action_icon_wait.png
+    name: ui_unit_verbs_wait
+    targetColour: target
+    targetOutlineColour: target_outline
+    scriptName: verbs/wait_ai
+    targetted: false
+    aiUses: true
+
   - id: healing_potion
     icon: ui/icons/grooves/unit_action_icon_heal.png
     name: ui_unit_verbs_healing_potion

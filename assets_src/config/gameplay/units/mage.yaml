@@ -36,7 +36,7 @@ weapons:
       turtle: 0.35
       travelboat: 0.35
       pirate_ship: 0.35
-      flagship: 0.2
+      flagship: 0.15
 
 unitClasses:
   - id: mage

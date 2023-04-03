@@ -1,0 +1,100 @@
+---
+terrains:
+  - id: brush_invis
+    name: terrain_name_brush
+    defenceBonus: 0
+    movementCost: {}
+    movementGroupType: land
+    placeable: true
+    tilesets:
+      0: [plains, plains_alt]
+      1: brush_invis
+
+  - id: forest_no_hiding_icon
+    name: terrain_name_forest
+    defenceBonus: 0
+    movementCost: {}
+    movementGroupType: land
+    placeable: true
+    tilesets:
+      0: [plains, plains_alt]
+      1: forest_no_hiding
+
+  - id: forest_alt_no_hiding_icon
+    name: terrain_name_forest
+    defenceBonus: 0
+    movementCost: {}
+    movementGroupType: land
+    placeable: true
+    tilesets:
+      0: [plains, plains_alt]
+      1: forest_alt_no_hiding
+
+  - id: invisibleBlockerOcean_icon
+    name: terrain_name_cabin
+    defenceBonus: 0
+    movementCost: {}
+    movementGroupType: land
+    placeable: true
+    tilesets:
+      0: [plains, rough, plains_alt]
+      1: invisible_blocker_ocean
+
+  - id: invisibleWallOcean_icon
+    name: terrain_name_hull
+    defenceBonus: 0
+    movementCost: {}
+    movementGroupType: land
+    placeable: true
+    tilesets:
+      0: [plains, rough, plains_alt]
+      1: invisible_wall_ocean
+
+  - id: invisibleWallSea_icon
+    name: terrain_name_hull
+    defenceBonus: 0
+    movementCost: {}
+    movementGroupType: land
+    placeable: true
+    tilesets:
+      0: [plains, rough, plains_alt]
+      1: invisible_wall_sea
+
+  - id: mountain_no_blocking_icon
+    name: terrain_name_mountain
+    defenceBonus: 0
+    movementCost: {}
+    movementGroupType: land
+    placeable: true
+    tilesets:
+      0: [plains, rough, plains_alt]
+      1: mountain_no_blocking
+
+  - id: reef_no_hiding_icon
+    name: terrain_name_reef
+    biomeNames:
+      volcano: terrain_name_reef_lava
+    biomeDescriptions:
+      volcano: terrain_description_lava
+    defenceBonus: 0
+    movementCost: {}
+    movementGroupType: land
+    placeable: true
+    tilesets: 
+      0: [plains, plains_alt]
+      1: sea_alt
+      2: reef_no_hiding
+
+  - id: wall_no_blocking_icon
+    name: terrain_name_wall
+    defenceBonus: 0
+    movementCost: {}
+    movementGroupType: land
+    placeable: true
+    tilesets:
+      0: [plains, rough, plains_alt]
+      1: cobblestone
+      2: wall_no_blocking
+
+      
+...

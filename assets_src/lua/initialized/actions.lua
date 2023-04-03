@@ -3,6 +3,7 @@ local Events = require "wargroove/events"
 local Ragnarok = require "initialized/ragnarok"
 local Rescue = require "verbs/rescue"
 local Recruit = require "initialized/recruit"
+local AIManager = require "initialized/ai_manager"
 local VisionTracker = require "initialized/vision_tracker"
 
 local Actions = {}
@@ -41,6 +42,7 @@ function Actions.populate(dst)
 	dst["invert_gizmo"] = Actions.invertGizmo
 	dst["set_threat_at_location"] = Actions.setThreatAtLocation
 	dst["spawn_unit"] = Actions.spawnUnit
+	dst["spawn_unit_in_transport"] = Actions.spawnUnitInsideTransport
 	dst["spawn_unit_closest_to_location"] = Actions.spawnUnitClosestToLocation
 	dst["move_location_to_next_structure"] = Actions.moveLocationToNextStructure
 	dst["force_action"] = Actions.forceAction
@@ -58,6 +60,8 @@ function Actions.populate(dst)
 	dst["set_location_to_vision"] = Actions.setLocationToVision
 	dst["dialogue_box_unit"] = Actions.dialogueBoxUnit
 	dst["set_match_seed"] = Actions.setMatchSeed
+	dst["set_priority_target"] = Actions.setPriorityTarget
+	dst["change_behavior_when_spotting"] = Actions.changeBehaviorWhenSpotting
 	--Hidden actions
 	dst["run_start_front_actions"] = Actions.runStartFrontActions
 	dst["run_start_back_actions"] = Actions.runStartBackActions
@@ -344,6 +348,96 @@ function Actions.setMatchSeed(context)
     local seed = context:getInteger(0)
 	Wargroove.setMatchSeed(seed)
 end
+function Actions.setPriorityTarget(context)
+    -- "Give units of type {0} at location {1} owned by player {2} priority orders to go to location {3}."
+    local targetPos = findCentreOfLocation(context:getLocation(3))
+    local units = context:gatherUnits(2, 0, 1)
+    for i, unit in ipairs(units) do
+        AIManager.setAITarget(unit.id,targetPos)
+    end
+end
+function Actions.changeBehaviorWhenSpotting(context)
+    -- "Units owned by player {0} use hide and seek rules against player {1}, {2}"
+    local units = Wargroove.getUnitsAtLocation(nil)
+    local targetPlayer = context:getPlayerId(0)
+    local player = context:getPlayerId(1)
+    local restriction = context:getString(2)
+    print("restriction")
+    print(restriction)
+    for i, unit in ipairs(units) do
+        if (unit ~= nil and unit.playerId == targetPlayer and unit.inTransport == false) then 
+            local listOfViewerIds = VisionTracker.getListOfViewerIds(unit.pos);
+            print("unit.id")
+            print(unit.id)
+            print("unit position: "..unit.pos.x ..", "..unit.pos.y)
+            print("listOfViewers")
+            print(dump(listOfViewerIds,0))
+            for j, viewerId in pairs(listOfViewerIds) do
+                print("viewerId")
+                print(viewerId)
+                local viewer = Wargroove.getUnitById(viewerId)
+                if (viewer ~= nil) then
+                    print("Viewer")
+                    print(dump(viewer,0))
+                    if (viewer.playerId == player) then
+                        if (Wargroove.hasAIRestriction(viewerId, "cant_attack") == true) then
+                            if (unit.pos.x>viewer.pos.x) then
+                                Wargroove.setFacingOverride(viewerId, "right")
+                            else
+                                Wargroove.setFacingOverride(viewerId, "left")
+                            end
+                            Wargroove.updateUnit(viewer)
+                            Wargroove.spawnPaletteSwappedMapAnimation(viewer.pos, 0, "fx/ambush_fx", viewer.playerId, "default", "over_units", { x = 12, y = 0 })
+                            Wargroove.playMapSound("cutscene/surprised", viewer.pos)
+                            Wargroove.waitTime(0.5)
+                            Wargroove.setAIRestriction(viewerId, "cant_move", false)
+                            Wargroove.setAIRestriction(viewerId, "cant_attack", false)
+                            Wargroove.updateUnit(viewer)
+                        end
+                    end
+                end
+            end
+        end
+
+    end
+
+    for i, unit in ipairs(units) do
+        if (unit ~= nil and unit.playerId == player) then 
+            if (unit ~= nil and Wargroove.hasAIRestriction(unit.id, "cant_attack") == false) then
+                local listOfViewerIds = VisionTracker.getListOfViewerIds(unit.pos);
+                print("unit.id")
+                print(unit.id)
+                print("unit position: "..unit.pos.x ..", "..unit.pos.y)
+                print("listOfViewers")
+                print(dump(listOfViewerIds,0))
+                for j, viewerId in pairs(listOfViewerIds) do
+                    print("viewerId")
+                    print(viewerId)
+                    local viewer = Wargroove.getUnitById(viewerId)
+                    if (viewer ~= nil) then
+                        print("Viewer")
+                        print(dump(viewer,0))
+                        if (viewer.playerId == player) then
+                            if (Wargroove.hasAIRestriction(viewerId, "cant_move") ~= false) then
+                                if (unit.pos.x>viewer.pos.x) then
+                                    Wargroove.setFacingOverride(viewerId, "right")
+                                else
+                                    Wargroove.setFacingOverride(viewerId, "left")
+                                end
+                                Wargroove.updateUnit(viewer)
+                                Wargroove.spawnPaletteSwappedMapAnimation(viewer.pos, 0, "fx/surprised_fx", viewer.playerId, "default", "over_units", { x = 12, y = 0 })
+                                Wargroove.playMapSound("cutscene/surprised", viewer.pos)
+                                Wargroove.waitTime(0.5)
+                                Wargroove.setAIRestriction(viewerId, "cant_move", false)
+                                Wargroove.updateUnit(viewer)
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+end
 
 function Actions.transferGoldRobbed(context)
     -- "Transfer gold robbed by {0}: {1}{2}"
@@ -497,6 +591,27 @@ function Actions.setThreatAtLocation(context)
 end
 
 
+
+function Actions.spawnUnitInsideTransport(context)
+    -- "Give units of type {0} at location {1} owned by player {2} unit type {3}."
+    local units = context:gatherUnits(2, 0, 1)
+    local unitClassId = context:getUnitClass(3)
+
+    for i, transport in ipairs(units) do
+        print("Spawning in")
+        local unitId = Wargroove.spawnUnit(transport.playerId, {x=-100,y=-100}, unitClassId, false)
+        Wargroove.clearCaches()
+        print("Spawned")
+        Wargroove:waitFrame()
+        local unit = Wargroove:getUnitById(unitId)
+        print("Spawning in")
+        table.insert(transport.loadedUnits, unitId)
+        unit.inTransport = true
+        unit.transportedBy = transport.id
+        Wargroove.updateUnit(unit)
+        Wargroove.updateUnit(transport)
+    end
+end
 
 function Actions.spawnUnit(context)
     -- "Spawn {0} at {1} for {2} (silent = {3})"

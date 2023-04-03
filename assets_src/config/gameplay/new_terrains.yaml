@@ -222,6 +222,7 @@ terrains:
     movementGroupType: land
     visionBlocking: true
     placeable: true
+    hidden: true
     tilesets:
       0: [plains, plains_alt]
       1: brush_invis
@@ -297,6 +298,7 @@ terrains:
       hovering: 1
     placeable: true
     movementGroupType: land
+    hidden: true
     tilesets:
       0: [plains, rough, plains_alt]
       1: invisible_wall_ocean
@@ -309,6 +311,7 @@ terrains:
       hovering: 1
     placeable: true
     movementGroupType: land
+    hidden: true
     tilesets:
       0: [plains, rough, plains_alt]
       1: invisible_wall_sea
@@ -318,6 +321,7 @@ terrains:
     defenceBonus: 0
     movementCost: {}
     movementGroupType: land
+    hidden: true
     visionBlocking: true
     placeable: true
     tilesets:
@@ -334,6 +338,7 @@ terrains:
       hovering: 1
       amphibious: 4
     movementGroupType: land
+    hidden: true
     placeable: true
     tilesets:
       0: [plains, plains_alt]
@@ -348,6 +353,7 @@ terrains:
       hovering: 1
     movementGroupType: land
     placeable: true
+    hidden: true
     sightBonus: 2
     tilesets:
       0: [plains, rough, plains_alt]
@@ -359,6 +365,7 @@ terrains:
     movementCost: {}
     movementGroupType: land
     placeable: true
+    hidden: true
     tilesets:
       0: [plains, rough, plains_alt]
       1: cobblestone
@@ -383,6 +390,7 @@ terrains:
         hovering: 1
     movementGroupType: water
     placeable: true
+    hidden: true
     tilesets: 
       0: [plains, plains_alt]
       1: sea_alt
@@ -399,6 +407,7 @@ terrains:
       amphibious: 4
     movementGroupType: land
     placeable: true
+    hidden: true
     tilesets:
       0: [plains, plains_alt]
       1: forest_alt_no_hiding

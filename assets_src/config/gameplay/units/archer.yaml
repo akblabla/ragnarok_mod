@@ -36,7 +36,7 @@ weapons:
       pirate_ship: 0.3
 
 
-      flagship: 0.05
+      flagship: 0.0001
 
 
 unitClasses:

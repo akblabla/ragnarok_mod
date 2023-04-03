@@ -3,9 +3,9 @@ local Ragnarok = require "initialized/ragnarok"
 local Recruit = require "verbs/recruit"
 local Events = require "wargroove/events"
 
-local CustomAI = {}
-function CustomAI.init()
-	Ragnarok.addAction(CustomAI.spendRest,"repeating",false)
+local AIEconomyManager = {}
+function AIEconomyManager.init()
+	Ragnarok.addAction(AIEconomyManager.spendRest,"repeating",false)
 end
 
 local function isProductionStucture(unit)
@@ -24,7 +24,7 @@ local captureUnitList = {
 	spearman = true,
 }
 
-CustomAI.valueReductionPerUnitList = {
+AIEconomyManager.valueReductionPerUnitList = {
 	archer = 0.8,
 	ballista = 0.3,
 	dog = 0.5,
@@ -44,7 +44,7 @@ CustomAI.valueReductionPerUnitList = {
 	witch = 0.6
 }
 
-CustomAI.idealUnitRatioList = {
+AIEconomyManager.idealUnitRatioList = {
 	archer = 1,
 	ballista = 0.2,
 	dog = 1,
@@ -66,7 +66,7 @@ CustomAI.idealUnitRatioList = {
 
 local currentUnitRatioScalingList = {}
 
-CustomAI.powerMultiplierList = {
+AIEconomyManager.powerMultiplierList = {
 	archer = 0.9,
 	ballista = 0.5,
 	harpy = 1.1,
@@ -76,7 +76,7 @@ CustomAI.powerMultiplierList = {
 	witch = 0
 }
 
-CustomAI.antiAirMultiplierList = {
+AIEconomyManager.antiAirMultiplierList = {
 	archer = 0.25,
 	ballista = 1.5,
 	harpoonship = 1.5,
@@ -85,7 +85,7 @@ CustomAI.antiAirMultiplierList = {
 	witch = 3
 }
 
-CustomAI.bannedUnitList = {
+AIEconomyManager.bannedUnitList = {
 	pirate_ship = true,
 	wagon = true,
 	balloon = true,
@@ -94,7 +94,7 @@ CustomAI.bannedUnitList = {
 }
 
 local function isUnitClassBanned(unitClassId)
-	return CustomAI.bannedUnitList[unitClassId] == true
+	return AIEconomyManager.bannedUnitList[unitClassId] == true
 end
 
 local function canUnitClassCapture(unitClassId)
@@ -125,8 +125,8 @@ local function getAntiAirUnitPower(count)
 	local power = 0
 	for classId, amount in pairs(count) do
 		local class = Wargroove.getUnitClass(classId)
-		if CustomAI.antiAirMultiplierList[classId] ~= nil then
-			power = power+amount*class.cost*CustomAI.antiAirMultiplierList[classId]
+		if AIEconomyManager.antiAirMultiplierList[classId] ~= nil then
+			power = power+amount*class.cost*AIEconomyManager.antiAirMultiplierList[classId]
 		end
 	end
 	return power
@@ -145,8 +145,8 @@ local function calculateCounterBonus(unitClassId, power, counterPower, reluctanc
 end
 
 
-CustomAI.antiAirReluctance = 1000;
-CustomAI.airThreatPerTower = 200;
+AIEconomyManager.antiAirReluctance = 1000;
+AIEconomyManager.airThreatPerTower = 200;
 
 local function getIncome(playerId)
 	local income = 0
@@ -158,9 +158,9 @@ local function getIncome(playerId)
 	end
 	return income
 end
-CustomAI.baseLineOpportunityCost = 0.8
-CustomAI.baseLineOpportunityCostScaling = 0.8
-CustomAI.unitRatioResetPerUnit = 0.98
+AIEconomyManager.baseLineOpportunityCost = 0.8
+AIEconomyManager.baseLineOpportunityCostScaling = 0.8
+AIEconomyManager.unitRatioResetPerUnit = 0.98
 
 local function updateUnitRatioModifier(newUnitClassId, playerId)
 	if currentUnitRatioScalingList[playerId] == nil then
@@ -186,16 +186,16 @@ local function updateUnitRatioModifier(newUnitClassId, playerId)
 	end
 	local unitRatioNormalizationFactor = 0
 	--print("summing up normalization factor")
-	for unitClassId, ratio in pairs(CustomAI.idealUnitRatioList) do
+	for unitClassId, ratio in pairs(AIEconomyManager.idealUnitRatioList) do
 		--print("unit type: '" .. unitClassId .. "' has a ratio of: " .. tostring(ratio))
 		if unitClassId ~= newUnitClassId then
 			unitRatioNormalizationFactor = unitRatioNormalizationFactor+ratio
 		end
 	end
 	--print("modifying table")
-	for unitClassId, ratio in pairs(CustomAI.idealUnitRatioList) do
+	for unitClassId, ratio in pairs(AIEconomyManager.idealUnitRatioList) do
 	--	print("unit type: '" .. unitClassId .. "' has a ratio of: " .. tostring(ratio))
-		currentUnitRatioScalingList[playerId][unitClassId] = currentUnitRatioScalingList[playerId][unitClassId]*CustomAI.unitRatioResetPerUnit
+		currentUnitRatioScalingList[playerId][unitClassId] = currentUnitRatioScalingList[playerId][unitClassId]*AIEconomyManager.unitRatioResetPerUnit
 		if unitClassId ~= newUnitClassId then
 	--		print("Another unit class")
 			currentUnitRatioScalingList[playerId][unitClassId] = currentUnitRatioScalingList[playerId][unitClassId]-ratio/unitRatioNormalizationFactor
@@ -205,7 +205,7 @@ local function updateUnitRatioModifier(newUnitClassId, playerId)
 		end
 	end
 end
-CustomAI.unitRatioPenaltyPerUnit = 0.2
+AIEconomyManager.unitRatioPenaltyPerUnit = 0.2
 local function getUnitRatioModifier(unitClassId, playerId)
 	if currentUnitRatioScalingList[playerId] == nil then
 		currentUnitRatioScalingList[playerId] = {
@@ -236,12 +236,12 @@ local function getUnitRatioModifier(unitClassId, playerId)
 	local result = 1
 	local ratioScaling = currentUnitRatioScalingList[playerId][unitClassId]
 	if ratioScaling>0 then
-		result = (1-CustomAI.unitRatioPenaltyPerUnit)^(ratioScaling)
+		result = (1-AIEconomyManager.unitRatioPenaltyPerUnit)^(ratioScaling)
 		if unitClassId == "soldier" then
 			result = result*0.5+0.5 --soldier has a lower cap, because soldier
 		end
 	else
-		result = 2-(1-CustomAI.unitRatioPenaltyPerUnit)^(-ratioScaling)
+		result = 2-(1-AIEconomyManager.unitRatioPenaltyPerUnit)^(-ratioScaling)
 	end
 	-- print(result)
 	return result
@@ -262,7 +262,7 @@ end
 local function getOpportunityCost(producer, unitClassId, playerId)
 	local income = getIncome(playerId)
 	
-	return calculateConvertedCost(producer, unitClassId) * CustomAI.baseLineOpportunityCost*(CustomAI.baseLineOpportunityCostScaling)^(Wargroove.getMoney(playerId)/income)
+	return calculateConvertedCost(producer, unitClassId) * AIEconomyManager.baseLineOpportunityCost*(AIEconomyManager.baseLineOpportunityCostScaling)^(Wargroove.getMoney(playerId)/income)
 end
 
 local function getUnitCountPenalty(playerId)
@@ -277,8 +277,8 @@ local function getUnitValue(unitClassId, playerId)
 	--print("getUnitValue(unitClassId) starts here")
 	--print("class: " .. unitClassId)
 	local value = Wargroove.getUnitClass(unitClassId).cost+50
-	if CustomAI.powerMultiplierList[unitClassId] ~= nil then
-		value = value*CustomAI.powerMultiplierList[unitClassId]
+	if AIEconomyManager.powerMultiplierList[unitClassId] ~= nil then
+		value = value*AIEconomyManager.powerMultiplierList[unitClassId]
 	end
 	--print("base value: " .. tostring(value))
 	local enemyUnitCountList = {}
@@ -303,12 +303,12 @@ local function getUnitValue(unitClassId, playerId)
 	if enemyUnitCountList["tower"] ~= nil then
 		enemyTowerCount = enemyUnitCountList["tower"]
 	end
-	local antiAirCounterBonus = calculateCounterBonus(unitClassId, enemyAirPower+enemyTowerCount*CustomAI.airThreatPerTower, friendlyAntiAirPower, CustomAI.antiAirReluctance, CustomAI.antiAirMultiplierList);
+	local antiAirCounterBonus = calculateCounterBonus(unitClassId, enemyAirPower+enemyTowerCount*AIEconomyManager.airThreatPerTower, friendlyAntiAirPower, AIEconomyManager.antiAirReluctance, AIEconomyManager.antiAirMultiplierList);
 	value = value + antiAirCounterBonus
 	--print("value after anti-air bonus: " .. tostring(value))
 	--print("antiAirCounterBonus: " .. tostring(antiAirCounterBonus))
-	if CustomAI.valueReductionPerUnitList[unitClassId] ~= nil and unitCountPlayerList[playerId][unitClassId] ~= nil then
-		value = value*CustomAI.valueReductionPerUnitList[unitClassId]^unitCountPlayerList[playerId][unitClassId]
+	if AIEconomyManager.valueReductionPerUnitList[unitClassId] ~= nil and unitCountPlayerList[playerId][unitClassId] ~= nil then
+		value = value*AIEconomyManager.valueReductionPerUnitList[unitClassId]^unitCountPlayerList[playerId][unitClassId]
 	end
 	value = value*getUnitRatioModifier(unitClassId, playerId)
 	--print("value after ratio modifier: " .. tostring(value))
@@ -331,7 +331,7 @@ local function getProducedUnitValue(producer, unitClassId, playerId)
 end
 
 
-function CustomAI.spendRest(context)
+function AIEconomyManager.spendRest(context)
 	if context:checkState("endOfTurn") then
 		--print("spendRest starts here")
 		--print("it is the end of the turn")
@@ -496,4 +496,4 @@ function dump(o,level)
    end
 end
 
-return CustomAI
+return AIEconomyManager

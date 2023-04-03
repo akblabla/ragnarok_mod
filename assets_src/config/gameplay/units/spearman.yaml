@@ -30,7 +30,7 @@ weapons:
       turtle: 0.3
       travelboat: 0.3
       pirate_ship: 0.3
-      flagship: 0.15
+      flagship: 0.1
       
 unitClasses:
   - id: spearman

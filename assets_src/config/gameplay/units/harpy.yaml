@@ -31,7 +31,7 @@ weapons:
       thief: 0.65
 
 
-      flagship: 0.1
+      flagship: 0.05
       pirate_ship: 0.55
       warship: 0.45
       harpoonship: 0.25

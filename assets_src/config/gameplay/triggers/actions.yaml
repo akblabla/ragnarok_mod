@@ -45,6 +45,13 @@ triggerActions:
       - type: player_neutral_star
       - type: location_star
 
+  - id: spawn_unit_in_transport
+    parameters:
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+      - type: unit_class
+
   - id: spawn_unit_closest_to_location
     parameters:
       - type: unit_class_star
@@ -156,6 +163,18 @@ triggerActions:
       - type: operation
       - type: integer
       
+  - id: set_priority_target
+    parameters:
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+      - type: location
+
+  - id: change_behavior_when_spotting
+    parameters:
+      - type: player
+      - type: player
+      - type: ai_restriction
 #Normally hidden triggers
   - id: set_conditional_location_highlight
     parameters:

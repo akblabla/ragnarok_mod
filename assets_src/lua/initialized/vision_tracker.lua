@@ -75,6 +75,11 @@ function VisionTracker.getLastKnownUnitStateList()
 end
 
 local numberOfViewers = {}
+local listOfViewers = {}
+
+local function getViewers(pos)
+	return listOfViewers[pos.x][pos.y]
+end
 
 local function getNumberOfViewers(player,pos)
 	return numberOfViewers[player][pos.x][pos.y]
@@ -84,8 +89,18 @@ local function incrementNumberOfViewers(player,pos)
 	numberOfViewers[player][pos.x][pos.y] = numberOfViewers[player][pos.x][pos.y] + 1
 end
 
+local function addUnitToListOfViewers(unitId,pos)
+	listOfViewers[pos.x][pos.y][unitId] = unitId
+	incrementNumberOfViewers(Wargroove.getUnitById(unitId).playerId,pos)
+end
+
 local function decrementNumberOfViewers(player,pos)
 	numberOfViewers[player][pos.x][pos.y] = numberOfViewers[player][pos.x][pos.y] - 1
+end
+
+local function removeUnitFromListOfViewers(unitId,pos)
+	listOfViewers[pos.x][pos.y][unitId] = nil
+	decrementNumberOfViewers(Wargroove.getUnitById(unitId).playerId,pos)
 end
 
 local teamPlayers = {}
@@ -111,7 +126,7 @@ function VisionTracker.addUnitToVisionMatrix(unit)
 		local visibleTiles = VisionTracker.calculateVisionOfUnit(unit)
 		local playerId = unit.playerId
 		for i, pos in pairs(visibleTiles) do
-			incrementNumberOfViewers(playerId,pos)
+			addUnitToListOfViewers(unit.id,pos)
 		end
 		VisionTracker.setLastKnownUnitState(unit)
 	end
@@ -124,13 +139,13 @@ function VisionTracker.updateUnitInVisionMatrix(unit)
 			local visibleTiles = VisionTracker.calculateVisionOfUnit(prevState)
 			local playerId = prevState.playerId
 			for i, pos in pairs(visibleTiles) do
-				decrementNumberOfViewers(playerId,pos)
+				removeUnitFromListOfViewers(prevState.id,pos)
 			end
 		
 			visibleTiles = VisionTracker.calculateVisionOfUnit(unit)
 			playerId = unit.playerId
 			for i, pos in pairs(visibleTiles) do
-				incrementNumberOfViewers(playerId,pos)
+				addUnitToListOfViewers(unit.id,pos)
 			end
 		end
 		VisionTracker.setLastKnownUnitState(unit)
@@ -143,7 +158,7 @@ function VisionTracker.removeUnitFromVisionMatrix(unit)
 		local visibleTiles = VisionTracker.calculateVisionOfUnit(prevState)
 		local playerId = prevState.playerId
 		for i, pos in pairs(visibleTiles) do
-			decrementNumberOfViewers(playerId,pos)
+			removeUnitFromListOfViewers(prevState.id,pos)
 		end
 		prevState = nil
 	end
@@ -312,7 +327,7 @@ end
 function VisionTracker.init()
 	--print("VisionTracker Test added to list of tests")
 --	Ragnarok.addAction(VisionTracker.setup,"start_of_match",true)
-	Ragnarok.addAction(VisionTracker.humanTest,"repeating",true)
+--	Ragnarok.addAction(VisionTracker.humanTest,"repeating",true)
 	Ragnarok.addAction(VisionTracker.weatherChecker,"repeating",true)
 	--Ragnarok.addAction(VisionTracker.aiTest,"repeating",true)
 end
@@ -385,11 +400,18 @@ function VisionTracker.setup()
 		end
 	end
 	
+	for x=0, mapSize.x-1 do
+		listOfViewers[x] = {}
+		for y=0, mapSize.y-1 do
+			-- print("Pos: "..tostring(x)..","..tostring(y))
+			listOfViewers[x][y] = {}
+		end
+	end
+
 	for i, unit in pairs(Wargroove.getUnitsAtLocation(nil)) do
 		local visibleTiles = VisionTracker.calculateVisionOfUnit(unit)
-		checkedPlayerId = unit.playerId
 		for j, pos in pairs(visibleTiles) do
-			incrementNumberOfViewers(checkedPlayerId,pos)
+			addUnitToListOfViewers(unit.id,pos)
 		end
 		VisionTracker.setLastKnownUnitState(unit)
 	end
@@ -642,5 +664,13 @@ function VisionTracker.calculateLoSOfUnitRays(unit,sightRange)
 	end
 	return visibleTiles
 end
+
+function VisionTracker.getListOfViewerIds(pos)
+	if setupRan then
+		return getViewers(pos)
+	end
+	return {}
+end
+
 
 return VisionTracker

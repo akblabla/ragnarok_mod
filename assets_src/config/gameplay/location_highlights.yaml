@@ -137,4 +137,11 @@ location_highlights:
         placement: all
         layer: underArrow
         alphaPulse: false
+        
+  - id: arrow_up
+    layers:
+      - animation: "world/locations/tutorial_cross"
+        placement: all
+        layer: underArrow
+        alphaPulse: false
 ... 

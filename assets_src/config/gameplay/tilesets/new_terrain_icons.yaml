@@ -1,0 +1,48 @@
+---
+tilesets:
+  - id: brush_invis
+    biomes:
+      - types: [grass,tropical,ice,desert,volcano]
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_brush_invis.png"
+  - id: forest_no_hiding_icon
+    biomes:
+      - types: [grass,tropical,ice,desert,volcano]
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_forest_no_hiding.png"
+  - id: forest_alt_no_hiding_icon
+    biomes:
+      - types: [grass,tropical,ice,desert,volcano]
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_forest_alt_no_hiding.png"
+  - id: invisibleBlockerOcean_icon
+    biomes:
+      - types: [grass,tropical,ice,desert,volcano]
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_blocker_ocean.png"
+  - id: invisibleWallOcean_icon
+    biomes:
+      - types: [grass,tropical,ice,desert,volcano]
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_hull_ocean.png"
+  - id: invisibleWallSea_icon
+    biomes:
+      - types: [grass,tropical,ice,desert,volcano]
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_hull_sea.png"
+  - id: mountain_no_blocking_icon
+    biomes:
+      - types: [grass,tropical,ice,desert,volcano]
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_mountain_no_blocking.png"
+  - id: reef_no_hiding_icon
+    biomes:
+      - types: [grass,tropical,ice,desert,volcano]
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_reef_no_hiding.png"
+  - id: wall_no_blocking_icon
+    biomes:
+      - types: [grass,tropical,ice,desert,volcano]
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_wall_no_blocking.png"
+...
