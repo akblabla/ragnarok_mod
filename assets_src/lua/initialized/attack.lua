@@ -2,6 +2,7 @@ local Wargroove = require "wargroove/wargroove"
 local OldAttack = require "verbs/attack"
 local Combat = require "wargroove/combat"
 local Ragnarok = require "initialized/ragnarok"
+local StealthManager = require "initialized/stealth_manager"
 local Stats = require "util/stats"
 
 
@@ -47,11 +48,8 @@ function Attack.revertFlanked(context)
 		end
 		Wargroove.waitFrame()
 		Wargroove.clearCaches()
-        Wargroove.spawnPaletteSwappedMapAnimation(flanked.pos, 0, "fx/ambush_fx", flanked.playerId, "default", "over_units", { x = 12, y = 0 })
-        Wargroove.playMapSound("cutscene/surprised", flanked.pos)
         Wargroove.waitTime(0.5)
-        Wargroove.setAIRestriction(flankedId, "cant_move", false)
-        Wargroove.setAIRestriction(flankedId, "cant_attack", false)
+		StealthManager.makeUnitAlerted(flankedId,flanker.pos)
         Wargroove.updateUnit(flanked)
 		flankedId = nil
 		flankerId = nil

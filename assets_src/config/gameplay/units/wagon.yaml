@@ -16,6 +16,7 @@ unitClasses:
     verbs:
       - load
       - unload
+      - wait_ai
     battleUnitCount: 1
     loadCapacity: 1
     sightRange: 3

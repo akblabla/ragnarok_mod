@@ -297,9 +297,14 @@ en-GB:
   trigger_action_description_set_priority_target: "Set Priority Target."
   trigger_action_readable_set_priority_target: "Give units of type {0} at location {1} owned by player {2} priority orders to go to location {3}."
 
-  trigger_action_name_set_hide_and_seek: "AI: Set Hide and Seek"
+  trigger_action_name_set_hide_and_seek: "Stealth: Set Hide and Seek"
   trigger_action_description_set_hide_and_seek: "Set Hide and Seek."
   trigger_action_readable_set_hide_and_seek: "Is hide and seek rules for player {1} enabled {0}"
+
+  trigger_action_name_set_current_position_as_goal: "Stealth: Guard Position"
+  trigger_action_description_set_current_position_as_goal: "Set Guard Position."
+  trigger_action_readable_set_current_position_as_goal: "Make units of type {0} at location {1} owned by player {2} stand guard."
+
 
   trigger_action_name_spawn_unit_in_transport: "Unit: Spawn Inside Transport"
   trigger_action_description_spawn_unit_in_transport: "Spawn Inside Transport."

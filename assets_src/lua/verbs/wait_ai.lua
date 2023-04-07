@@ -39,17 +39,16 @@ end
 
 function WaitAI:getScore(unitId, order)
     local unit = Wargroove.getUnitById(unitId)
-    print("Verb:getScore")
     local target,_ = AIManager.getNextPosition(unitId)
     if (target ~= nil) then
-        print("Found the target")
+        print("getNextPosition")
+        print("target "..tostring(target.x)..", "..tostring(target.y))
         if target.x == order.endPosition.x and target.y == order.endPosition.y then
             return {score = 100, introspection = {}}
         else
             return {score = -1, introspection = {}}
         end
     end
-    print("No forced move.")
     return {score = -1, introspection = {}}
 end
 

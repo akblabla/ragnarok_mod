@@ -32,7 +32,7 @@ local function movementCost(pos, unitId)
 end
 
 function AIManager.init()
-	Ragnarok.addAction(AIManager.update,"repeating",true)
+--	Ragnarok.addAction(AIManager.update,"repeating",true)
 end
 
 function AIManager.setup(context)
@@ -45,8 +45,6 @@ function AIManager.getNextPosition(unitId)
    if AITargets[unitId] == nil then
       return nil
    end
-   print("AIManager.getNextPosition(unitId)")
-   print(unitId)
    local unit = Wargroove.getUnitById(unitId)
    if AITargets[unitId].order == "move" then
       local next,reachedEnd = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].pos)
@@ -106,11 +104,17 @@ function AIManager.getAITarget(unitId)
 end
 
 function AIManager.attackMoveOrder(unitId, pos)
+   if pos == nil then
+      return
+   end
 	AITargets[unitId] = {order = "attack_move", pos = pos}
 end
 
 function AIManager.moveOrder(unitId, pos)
-	AITargets[unitId] = {order = "move", pos = pos}
+   if pos == nil then
+      return
+   end
+   AITargets[unitId] = {order = "move", pos = pos}
 end
 
 function AIManager.clearOrder(unitId)

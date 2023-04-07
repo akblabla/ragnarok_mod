@@ -1,6 +1,6 @@
 local Wargroove = require "wargroove/wargroove"
 local Ragnarok = require "initialized/ragnarok"
-
+local io = require("io")
 local function dump(o,level)
    if type(o) == 'table' then
       local s = '\n' .. string.rep("   ", level) .. '{\n'
@@ -16,31 +16,39 @@ end
 
 local Logger = {}
 function Logger.init()
---	Ragnarok.addAction(Logger.logState,"repeating",true)
+	Ragnarok.addAction(Logger.logState,"repeating",true)
 end
 function Logger.logState(context)
 	if (not context:checkState("endOfTurn")) then
 		return
 	end
-	local playerId = Wargroove.getCurrentPlayerId();
-	print("\n--------------------------------------------")
-	print("Current Turn: "..tostring(Wargroove.getTurnNumber()))
-	print("Current Player: "..tostring(playerId))
-	print("Current Player is Human: "..tostring(Wargroove.isHuman(playerId)))
-	print("\nMap Flags")
-	print(dump(context.mapFlags,0))
-	print("\nMap Counters")
-	print(dump(context.mapCounters,0))
-	local allUnits = Wargroove.getUnitsAtLocation()
-	print("\nAll Units")
-	for i,unit in pairs(allUnits) do
-		print("class: "..unit.unitClassId)
-		print("\towner: "..unit.playerId)
-		print("\thealth: "..tostring(unit.health))
-		print("\tpos: "..tostring(unit.pos.x)..", "..tostring(unit.pos.y))
+	local file = io.open("Mission Log.txt","w")
+	if file == nil then
+		return
 	end
-	print("--------------------------------------------\n")
-	
+	local function printLine(file,msg)
+		file:write(msg)
+		file:write("\n")
+	end
+	local playerId = Wargroove.getCurrentPlayerId();
+	printLine(file,"\n--------------------------------------------")
+	printLine(file,"Current Turn: "..tostring(Wargroove.getTurnNumber()))
+	printLine(file,"Current Player: "..tostring(playerId))
+	printLine(file,"Current Player is Human: "..tostring(Wargroove.isHuman(playerId)))
+	printLine(file,"\nMap Flags")
+	printLine(file,dump(context.mapFlags,0))
+	printLine(file,"\nMap Counters")
+	printLine(file,dump(context.mapCounters,0))
+	local allUnits = Wargroove.getUnitsAtLocation()
+	printLine(file,"\nAll Units")
+	for i,unit in pairs(allUnits) do
+		printLine(file,"class: "..unit.unitClassId)
+		printLine(file,"\towner: "..unit.playerId)
+		printLine(file,"\thealth: "..tostring(unit.health))
+		printLine(file,"\tpos: "..tostring(unit.pos.x)..", "..tostring(unit.pos.y))
+	end
+	printLine(file,"--------------------------------------------\n")
+	file:close()
 end
 
 return Logger

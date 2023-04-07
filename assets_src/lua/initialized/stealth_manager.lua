@@ -38,10 +38,11 @@ end
 
 local StealthManager = {}
 local awarenessMap = {}
+local visualAwarenessMap = {}
 local active = {}
-local AILastKnownPosition = {}
+local AIGoalPos = {}
 function StealthManager.init()
-	Ragnarok.addAction(StealthManager.update,"repeating",false)
+    Ragnarok.addAction(StealthManager.update,"repeating",false)
 end
 
 function StealthManager.setActive(playerId,isActive)
@@ -51,35 +52,42 @@ function StealthManager.setActive(playerId,isActive)
     end
 end
 
+function StealthManager.setAIGoalPos(unitId,pos)
+	AIGoalPos[unitId] = pos
+end
+
 function StealthManager.update(context)
     if context:checkState("endOfUnitTurn") then
         local units = Wargroove.getUnitsAtLocation(nil)
         for i,unit in ipairs(units) do
             StealthManager.awarenessCheck(unit.id, {unit.pos})
         end
-        for id,pos in ipairs(AILastKnownPosition) do
-            if awarenessMap[id] == nil then
-                
-            elseif awarenessMap[id].alerted == false then
-                AIManager.moveOrder(id,pos)
-            elseif awarenessMap[id].alerted == true then
-                AIManager.attackOrder(id,pos)
+        for unitId,pos in pairs(AIGoalPos) do
+            if active[Wargroove.getCurrentPlayerId()] ~= nil then
+                AIManager.moveOrder(unitId,pos)
+            end
+        end
+        for id,awareness in pairs(awarenessMap) do
+            if active[Wargroove.getCurrentPlayerId()] ~= nil then
+                if awareness.alerted == false then
+                    AIManager.moveOrder(id,awareness.src)
+                elseif awareness.alerted == true then
+                    AIManager.attackMoveOrder(id,awareness.src)
+                end
             end
         end
     end
-    if context:checkState("endOfTurn") and Wargroove.getCurrentPlayerId() == 1 then
+    if context:checkState("endOfTurn") and active[Wargroove.getCurrentPlayerId()] ~= nil then
         local units = Wargroove.getUnitsAtLocation(nil)
         local cutOffEnemies = {}
         for i,unit in pairs(units) do
-            if unit.playerId == 1 then
+            if Wargroove.getCurrentPlayerId() then
                 cutOffEnemies[unit.id] = unit
             end
         end
         for i,unit in pairs(units) do
-            if unit.playerId == 0 then
+            if Wargroove.areEnemies(unit.playerId,Wargroove.getCurrentPlayerId()) then
                 local viewerIds = VisionTracker.getListOfViewerIds(unit.pos)
-                print("viewerIds")
-                print(dump(viewerIds,0))
                 for j,viewerId in pairs(viewerIds) do
                     local viewer = Wargroove.getUnitById(viewerId)
                     if viewer ~= nil and viewer.playerId == 1 then
@@ -88,14 +96,8 @@ function StealthManager.update(context)
                 end
             end
         end
-        print("cutOffEnemies")
-        print(dump(cutOffEnemies,0))
 
         for i,enemy in pairs(cutOffEnemies) do
-            print("enemy")
-            print(enemy.unitClassId)
-            print(Wargroove.hasAIRestriction(enemy.id,  "cant_attack"))
-            print(Wargroove.hasAIRestriction(enemy.id,  "cant_move"))
             if awarenessMap[enemy.id] ~= nil and awarenessMap[enemy.id].alerted == false then
                 awarenessMap[enemy.id] = nil
             end
@@ -206,37 +208,37 @@ function StealthManager.updateAwareness(unitId)
         return
     end
     local pair = awarenessMap[unitId]
-    if pair ~= nil and pair.alerted == true and (Wargroove.hasAIRestriction(unitId,  "cant_attack") or Wargroove.hasAIRestriction(unitId,  "cant_move")) then
+    if pair ~= nil and pair.alerted == true and not (visualAwarenessMap[unitId] ~= nil and visualAwarenessMap[unitId].alerted == true) then
         if pair.pos ~= nil then
             unit.pos.facing = getFacing(unit.pos, pair.pos)
         end
         Wargroove.updateUnit(unit)
         Wargroove.spawnPaletteSwappedMapAnimation(unit.pos, 0, "fx/ambush_fx", unit.playerId, "default", "over_units", { x = 12, y = 0 })
         Wargroove.playMapSound("cutscene/surprised", unit.pos)
-        Wargroove.setAIRestriction(unitId, "cant_move", false)
         Wargroove.setAIRestriction(unitId, "cant_attack", false)
         Wargroove.waitTime(0.5)
         Wargroove.updateUnit(unit)
+        visualAwarenessMap[unitId] = {alerted = true}
     end
-    if pair ~= nil and pair.alerted == false and (not Wargroove.hasAIRestriction(unitId,  "cant_attack") or Wargroove.hasAIRestriction(unitId,  "cant_move")) then
+    if pair ~= nil and pair.alerted == false and not (visualAwarenessMap[unitId] ~= nil and visualAwarenessMap[unitId].alerted == false) then
         if pair.pos ~= nil then
             unit.pos.facing = getFacing(unit.pos, pair.pos)
         end
         Wargroove.updateUnit(unit)
         Wargroove.spawnPaletteSwappedMapAnimation(unit.pos, 0, "fx/surprised_fx", unit.playerId, "default", "over_units", { x = 12, y = 0 })
         Wargroove.playMapSound("cutscene/surprised", unit.pos)
-        Wargroove.setAIRestriction(unitId, "cant_move", false)
         Wargroove.setAIRestriction(unitId, "cant_attack", true)
         Wargroove.waitTime(0.5)
         Wargroove.updateUnit(unit)
+        visualAwarenessMap[unitId] = {alerted = false}
     end
-    if pair == nil and (not Wargroove.hasAIRestriction(unitId,  "cant_attack") or not Wargroove.hasAIRestriction(unitId,  "cant_move")) then
+    if pair == nil and not visualAwarenessMap[unitId] == nil then
         Wargroove.spawnPaletteSwappedMapAnimation(unit.pos, 0, "fx/gave_up_fx", unit.playerId, "default", "over_units", { x = 12, y = 0 })
         Wargroove.playMapSound("cutscene/surprised", unit.pos)
-        Wargroove.setAIRestriction(unitId, "cant_move", true)
         Wargroove.setAIRestriction(unitId, "cant_attack", true)
         Wargroove.waitTime(0.5)
         Wargroove.updateUnit(unit)
+        visualAwarenessMap[unitId] = nil
     end
 end
 

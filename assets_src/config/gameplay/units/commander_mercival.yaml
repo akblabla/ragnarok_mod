@@ -51,6 +51,7 @@ unitClasses:
     verbs:
       - load
       - capture
+      - wait_ai
     tags:
       - commander
       - type.ground.light

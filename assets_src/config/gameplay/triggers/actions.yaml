@@ -170,6 +170,12 @@ triggerActions:
       - type: player_neutral_star
       - type: location
 
+  - id: set_current_position_as_goal
+    parameters:
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+
   - id: set_hide_and_seek
     parameters:
       - type: boolean

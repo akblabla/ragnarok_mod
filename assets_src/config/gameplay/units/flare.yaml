@@ -9,6 +9,8 @@ unitClasses:
     moveRange: 2
     aiPriority: 0.1
     weapons: []
+    verbs:
+      - wait_ai
     tags:
       - summon
       - type.air
@@ -19,7 +21,7 @@ unitClasses:
     regeneration: -35
     classIcon: unit_icons_summon
     scout: true
-    sightRange: 6
+    sightRange: 5
 
 
 units:

@@ -48,6 +48,7 @@ unitClasses:
       - pick_up_crown
       - throw_crown
       - healing_potion
+      - wait_ai
     weapons:
       - id: fireBreath
     tags:

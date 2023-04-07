@@ -63,6 +63,7 @@ function Actions.populate(dst)
 	dst["set_match_seed"] = Actions.setMatchSeed
 	dst["set_priority_target"] = Actions.setPriorityTarget
 	dst["set_hide_and_seek"] = Actions.setHideAndSeek
+    dst["set_current_position_as_goal"] = Actions.setCurrentPositionAsGoal
 	--Hidden actions
 	dst["run_start_front_actions"] = Actions.runStartFrontActions
 	dst["run_start_back_actions"] = Actions.runStartBackActions
@@ -357,6 +358,15 @@ function Actions.setPriorityTarget(context)
         AIManager.moveOrder(unit.id,targetPos)
     end
 end
+
+function Actions.setCurrentPositionAsGoal(context)
+    -- "Make units of type {0} at location {1} owned by player {2} stand guard."
+    local units = context:gatherUnits(2, 0, 1)
+    for i, unit in ipairs(units) do
+        StealthManager.setAIGoalPos(unit.id,unit.pos)
+    end
+end
+
 function Actions.setHideAndSeek(context)
     -- "Is hide and seek rules for player {1} enabled {0}"
     local active = context:getBoolean(0)

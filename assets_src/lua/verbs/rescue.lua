@@ -36,10 +36,10 @@ function Rescue:canExecuteWithTarget(unit, endPos, targetPos, strParam)
 end
 
 function Rescue:execute(unit, targetPos, strParam, path)
-	--print("Rescue:execute starts here")
-	Ragnarok.reportOccation("rescued")
-	local targetUnit = Wargroove.getUnitAt(targetPos)
+	print("Rescue:execute starts here")
+   local targetUnit = Wargroove.getUnitAt(targetPos)
 	rescuedCrewList[targetUnit.id] = unit.playerId
+	Ragnarok.reportOccation("rescued")
 end
 
 function dump(o,level)
