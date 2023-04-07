@@ -20,7 +20,7 @@ local setupRan = false
 
 local VisionTracker = {}
 
-function getSightRange(unit)
+function VisionTracker.getSightRange(unit)
 	if Stats.sightRangeList[unit.unitClassId] == nil then
 		return 0
 	end
@@ -37,10 +37,7 @@ function getSightRange(unit)
 		sightRange = sightRange-1
 	end
 	if (weather == "rain" or weather == "sandstorm" or weather == "snow" or weather == "ash") and not isStructure then
-		sightRange = sightRange-1
-		if Stats.scoutList[unit.unitClassId]==nil then
-			sightRange = sightRange-1
-		end
+		sightRange = sightRange-2
 	end
 	sightRange = math.max(sightRange,0)
 	return sightRange
@@ -187,25 +184,17 @@ local function triangleArea(A, B, C)
 	local AB = {x=B.x-A.x, y=B.y-A.y}
 	local AC = {x=C.x-A.x, y=C.y-A.y}
 	local area = math.abs(crossProduct(AB,AC)/2)
-	--print("\t\t\t\t\ttriangleArea: "..tostring(area))
 	return area
 end
 local function dotProduct(A,B)
-	--print("\t\t\tdotProduct")
-	--print("\t\t\tA: "..tostring(A.x)..", "..tostring(A.y))
-	--print("\t\t\tB: "..tostring(B.x)..", "..tostring(B.y))
 	local result = A.x*B.x+A.y*B.y
-	--print("\t\t\tresult: "..tostring(result))
 	return result
 end
 local function vectorRotate90(A)
 	return {x = -A.y, y = A.x}
 end
 local function vectorLength(A)
-	--print("\t\t\tvectorLength")
-	--print("\t\t\tA: "..tostring(A.x)..", "..tostring(A.y))
 	local result = math.sqrt(dotProduct(A,A))
-	--print("\t\t\tresult: "..tostring(result))
 	return result
 end
 local function vectorAdd(A,B)
@@ -218,31 +207,19 @@ local function vectorScale(A,b)
 	return {x=A.x*b,y=A.y*b}
 end
 local function vectorProjection(A,B)
-	--print("\t\t\tvectorProjection")
-	--print("\t\t\tA: "..tostring(A.x)..", "..tostring(A.y))
-	--print("\t\t\tB: "..tostring(B.x)..", "..tostring(B.y))
 	local scala = dotProduct(A,B)/dotProduct(B,B)
-	--print("\t\t\tscala: "..tostring(scala))
 	local result = {x=B.x*scala, y=B.y*scala}
-	--print("\t\t\tresult: "..tostring(result.x)..", "..tostring(result.y))
 	return result
 end
 
 local function vectorProjectionLength(A,B)
-	-- print("\t\t\tvectorProjectionLength")
-	-- print("\t\t\tA: "..tostring(A.x)..", "..tostring(A.y))
-	-- print("\t\t\tB: "..tostring(B.x)..", "..tostring(B.y))
 	local result = dotProduct(A,B)/vectorLength(B)
-	-- print("\t\t\tresult: "..tostring(result))
 	return result
 end
 
 local function getTilesInLine(A,B)
-	-- print("\t\t\tgetTilesInLine starts here")
 	local BA = vectorDifference(A,B)
-	-- print("\t\t\tBA: "..tostring(BA.x)..", "..tostring(BA.y))
 	local maxDist = vectorLength(BA)
-	-- print("\t\t\tmaxDist: "..tostring(maxDist))
 	local corners = {}
 	if BA.x>0 then
 		table.insert(corners,{x=1,y=0})
@@ -254,22 +231,14 @@ local function getTilesInLine(A,B)
 	elseif BA.y<0 then
 		table.insert(corners,{x=0,y=-1})
 	end
-	-- print("\t\t\tcorners: ")
-	-- print(dump(corners,9))
 	for i,corner in pairs(corners) do
-		-- print("\t\t\t\tcorner: "..tostring(corner.x)..", "..tostring(corner.y))
 		local result = vectorProjectionLength(corner,BA)
 		corner.speed = result
-		-- print("\t\t\t\tcornerSpeed: "..tostring(corner.speed))
 	end
-	-- print("\t\t\tcornerSpeeds: ")
-	-- print(dump(corners,9))
 	local result = {}
 	local dist = 0
 	local currentOffset = {x=0,y=0}
 	local BA90 = vectorRotate90(BA)
-	-- print("\t\t\tBA90: "..tostring(BA90.x)..", "..tostring(BA90.y))
-	-- print("\t\t\tFinding Path")
 	while dist<maxDist do
 		local leastErrorFromLine = 10000
 		local bestCorner = nil
@@ -283,8 +252,6 @@ local function getTilesInLine(A,B)
 		currentOffset = vectorAdd(bestCorner,currentOffset)
 		dist = dist+bestCorner.speed
 		table.insert(result,vectorAdd(B,currentOffset))
-		-- print("\t\t\t\t Pos: "..tostring(currentOffset.x)..", "..tostring(currentOffset.y))
-		-- print("\t\t\t\t Dist: "..tostring(dist))
 	end
 	return result
 end
@@ -293,23 +260,14 @@ end
 --04/09-2022
 
 local function lineSegmentCircleCollision(A, B, circleCenter, circleRadius)
-	-- print("\t\t\t\tlineSegmentCircleCollision starts here")
-	-- print("\t\t\t\tA: "..tostring(A.x)..", "..tostring(A.y))
-	-- print("\t\t\t\tB: "..tostring(B.x)..", "..tostring(B.y))
-	-- print("\t\t\t\tcircleCenter: "..tostring(circleCenter.x)..", "..tostring(circleCenter.y))
-	-- print("\t\t\t\tcircleRadius: "..tostring(circleRadius))
 	local minDist = circleRadius+1 --initial value must be some value bigger than circle radius
-	-- print("\t\t\t\tminDist: "..tostring(minDist))
 	local OA = {x=A.x-circleCenter.x, y=A.y-circleCenter.y}
 	local OB = {x=B.x-circleCenter.x, y=B.y-circleCenter.y}
 	local BA = {x=A.x-B.x, y=A.y-B.y}
-	-- print("\t\t\t\tAssigned Derived Vectors: ")
 	local distanceOA = vectorLength(OA)
 	local distanceOB = vectorLength(OB)
 	local distanceBA = vectorLength(BA)
-	-- print("\t\t\t\tdistanceAB: "..tostring(distanceBA))
 	local maxDist = math.max(distanceOA,distanceOB)
-	-- print("\t\t\t\tmaxDist: "..tostring(maxDist))
 	if dotProduct(OA,BA)>0 and dotProduct(OB,BA)<=0 then
 		minDist = 2*triangleArea(circleCenter, A, B)/distanceBA
 	else
@@ -375,26 +333,17 @@ function VisionTracker.setup()
 		return
 	end
 	setupRan = true
-	--print("Setting Up Team Array")
 	VisionTracker.setupTeamPlayers()
-	--print("number of independent players: "..tostring(Wargroove.getNumPlayers(true)))
-	--print("number of players: "..tostring(Wargroove.getNumPlayers(false)))
 	for playerId=-2,Wargroove.getNumPlayers(false)-1 do
-		-- print("Player: "..tostring(playerId))
-		-- print("team?")
-		-- print("team: "..tostring(team))
 		if playerId ~= nil and numberOfViewers[playerId] == nil then
 			numberOfViewers[playerId] = {}
 		end
 	end
-	-- print("Setting Up Vision Matrix")
 	local mapSize = Wargroove.getMapSize()
 	for checkedPlayerId,i in pairs(numberOfViewers) do
-		-- print("Team: "..tostring(team))
 		for x=0, mapSize.x-1 do
 			numberOfViewers[checkedPlayerId][x] = {}
 			for y=0, mapSize.y-1 do
-				-- print("Pos: "..tostring(x)..","..tostring(y))
 				numberOfViewers[checkedPlayerId][x][y] = 0
 			end
 		end
@@ -403,7 +352,6 @@ function VisionTracker.setup()
 	for x=0, mapSize.x-1 do
 		listOfViewers[x] = {}
 		for y=0, mapSize.y-1 do
-			-- print("Pos: "..tostring(x)..","..tostring(y))
 			listOfViewers[x][y] = {}
 		end
 	end
@@ -415,7 +363,6 @@ function VisionTracker.setup()
 		end
 		VisionTracker.setLastKnownUnitState(unit)
 	end
-	-- print(dump(numberOfViewers,0))
 end
 
 
@@ -430,9 +377,6 @@ function VisionTracker.humanTest(context)
 		if Wargroove.isHuman(playerId) == false then
 			return
 		end
-		--print("VisionTracker Human Test Starts here")
-		--print("Player is: "..tostring(playerId))
-		--print("Fog of war updated")
 		coroutine.yield()
 		coroutine.yield()
 		coroutine.yield()
@@ -475,7 +419,6 @@ function VisionTracker.humanTest(context)
 				testSuccess = false break
 			end
 		end
-		--print("VisionTracker Test Result: "..tostring(testSuccess))
 		if (testSuccess == false) then
 			Wargroove.showMessage("VisionTracker Test Failed")
 			Wargroove.showMessage("Tile: "..tostring(failedTile.x)..","..tostring(failedTile.y))
@@ -490,20 +433,13 @@ function VisionTracker.isTileBlocker(tile)
 end
 
 function VisionTracker.isTileBlocking(origin, target, blocker)
-	-- print("\t\t\tVisionTracker.isTileBlocking(origin, target, blocker) starts here")
-	-- print("\t\t\tblockerTile is: " .. blockerTerrainType)
 	if math.floor(origin.x+0.5) == blocker.x and math.floor(origin.y+0.5) == blocker.y then return false end
-	-- print("\t\t\tblockerTile wasn't origin")
 	if math.floor(target.x+0.5) == blocker.x and math.floor(target.y+0.5) == blocker.y then return false end
-	-- print("\t\t\tblockerTile wasn't target")
 	if not VisionTracker.isTileBlocker(blocker) then return false end
-	-- print("\t\t\tblockerTile can block vision")
 	local dist = vectorLength(vectorDifference(origin,target))
 	if lineSegmentCircleCollision(origin, target, blocker, math.min(0.5+dist/200,0.6)) then
-		-- print("\t\t\tblockerTile blocked vision")
 		return true
 	end
-	-- print("\t\t\tblockerTile did vision")
 	return false
 end
 
@@ -512,13 +448,9 @@ function VisionTracker.canSeeTile(playerId,tile)
 		return true
 	end
 	VisionTracker.setup()
-	--print("canSeeTile starts here")
-	--print(dump(teamPlayers,0))
 	if playerId < 0 then
 		return getNumberOfViewers(playerId,tile)>0
 	else
-		--print("Player of the day is: "..tostring(playerId))
-		--print("Team of the day is: "..tostring(Wargroove.getPlayerTeam(playerId)))
 		for i, checkedPlayerId in pairs(teamPlayers[Wargroove.getPlayerTeam(playerId)]) do
 			if getNumberOfViewers(checkedPlayerId,tile)>0 then
 				return true
@@ -533,27 +465,19 @@ function VisionTracker.canUnitSeeTile(unit,tile)
 	if not Ragnarok.usingFogOfWarRules() then
 		return true
 	end
-	-- print("\tVisionTracker.canUnitSeeTile(unit,tile) starts here")
-	-- print("\t\t\t\tTile at Pos: "..tostring(tile.x)..", "..tostring(tile.y))
 	local difference = {x = tile.x - unit.pos.x, y = tile.y - unit.pos.y}
 	local dist = math.abs(difference.x)+math.abs(difference.y)
 	if dist == 0 then
 		return true
 	end
-	if dist<=1 and getSightRange(unit)>0 then
+	if dist<=1 and VisionTracker.getSightRange(unit)>0 then
 		return true
 	end
-	-- print("\tDistance was: ".. tostring(dist))
-	if dist>getSightRange(unit) then return false end
-	-- print("\tClose enough to see potentially")
+	if dist>VisionTracker.getSightRange(unit) then return false end
 	if Stats.scoutList[unit.unitClassId] ~= nil then return true end
-	-- print("\tNot a scout")
 	local terrainType = Wargroove.getTerrainNameAt(tile)
-	-- print("\tThe tile is a: ".. terrainType)
 	if (Stats.fowCoverList[terrainType] ~= nil) and (dist>1) then return false end
-	-- print("\tThe tile is not fog cover, or at least touching")
 	if Stats.seeOverList[unit.unitClassId] ~= nil then return true end
-	-- print("\tCan't see over terrain")
 	local isFullyBlocked = true
 	local euclideanDist = vectorLength(difference)
 	towardsUnitVector = {x = difference.x/euclideanDist,y = difference.y/euclideanDist}
@@ -593,10 +517,10 @@ function VisionTracker.calculateVisionOfUnit(unit)
 	end
 	--Wargroove.showMessage("Calculating vision of unit "..unit.id)
 	-- print("calculateVisionOfUnit(unit) starts here")
-	if getSightRange(unit) == 0 then
+	if VisionTracker.getSightRange(unit) == 0 then
 		return {unit.pos}
 	end
-	local tilesInRange = Wargroove.getTargetsInRange(unit.pos, getSightRange(unit), "all")
+	local tilesInRange = Wargroove.getTargetsInRange(unit.pos, VisionTracker.getSightRange(unit), "all")
 	-- print("Got the tiles in range")
 	if Stats.scoutList[unit.unitClassId] ~= nil then return tilesInRange end
 	if Stats.seeOverList[unit.unitClassId] ~= nil then
@@ -628,9 +552,9 @@ function VisionTracker.calculateVisionOfUnit(unit)
 	--print("Checking if it can see over")
 	local canSeeOver = Stats.canSeeOver(unit)
 	--print("Checking sight range")
-	local sightRange = getSightRange(unit)
+	local sightRange = VisionTracker.getSightRange(unit)
 	--print("Calculating LoS using pulse")
-	local function removeDublicates(data)
+	local function removeDuplicates(data)
 		local hash = {}
 		local res = {}
 
@@ -648,7 +572,7 @@ function VisionTracker.calculateVisionOfUnit(unit)
 		for i, tile in pairs(foundTiles) do
 			table.insert(visibleTiles,tile)
 		end
-		visibleTiles = removeDublicates(visibleTiles)
+		visibleTiles = removeDuplicates(visibleTiles)
 	end
 	return visibleTiles
 --	return VisionTracker.calculateLoSOfUnitRays(unit,getSightRange(unit))

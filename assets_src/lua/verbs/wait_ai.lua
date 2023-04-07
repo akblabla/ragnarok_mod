@@ -40,16 +40,16 @@ end
 function WaitAI:getScore(unitId, order)
     local unit = Wargroove.getUnitById(unitId)
     print("Verb:getScore")
-    local target = AIManager.getAITarget(unitId)
+    local target,_ = AIManager.getNextPosition(unitId)
     if (target ~= nil) then
         print("Found the target")
         if target.x == order.endPosition.x and target.y == order.endPosition.y then
-            return {score = 1000, introspection = {}}
+            return {score = 100, introspection = {}}
         else
             return {score = -1, introspection = {}}
         end
     end
-    print("getScore not implemented for verb.")
+    print("No forced move.")
     return {score = -1, introspection = {}}
 end
 

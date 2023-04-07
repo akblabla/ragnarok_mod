@@ -77,11 +77,6 @@ local function getRelativeAngle(originAngle, angle)
 end
 
 function PulseScanner.calculateLoSOfUnitPulse(pos, scout, canSeeOver, sightRange, targetOffset, mapsize)
-	--print("PulseScanner.calculateLoSOfUnitPulse starts here")
-	--print("Pos: "..tostring(pos.x)..","..tostring(pos.y))
-	--print("scout: "..tostring(scout))
-	--print("canSeeOver: "..tostring(canSeeOver))
-	--print("sightRange: "..tostring(sightRange))
 	if Tree == nil then
         Tree = require "util/binarySearchTreeDoubleLinked"
     end
@@ -89,14 +84,9 @@ function PulseScanner.calculateLoSOfUnitPulse(pos, scout, canSeeOver, sightRange
 	if withinMapBounds(pos,mapsize) then
 		table.insert(visibleTiles,{x = math.floor(pos.x+0.5), y = math.floor(pos.y+0.5)})
 	end
-	--print("Attempting to get order")
 	local orderedTiles = getKnownOcclusionTileOrder(pos, sightRange, mapsize)
-	--print("Got Order")
 	local t = Tree:new()
 	for i, checkedTile in ipairs(orderedTiles) do
-		-- print("")
-		-- print("------------------------------")
-		-- print("Checked Tile: "..tostring(checkedTile.x)..","..tostring(checkedTile.y))
 		local dist = VectorMath.dist(pos,checkedTile)
 		if(not isBlockerFunction(checkedTile)) or dist<=1 then
 			local diff = VectorMath.diff(pos,VectorMath.add(checkedTile,targetOffset))
@@ -105,28 +95,18 @@ function PulseScanner.calculateLoSOfUnitPulse(pos, scout, canSeeOver, sightRange
 			local angleNode = t:getNodeBefore(angle)
 			if angleNode == nil or (angleNode ~= nil and angleNode:getData() == false) then
 				table.insert(visibleTiles, checkedTile)
-				-- print("visible\n")
 			else
-				-- print("blocked\n")
 			end
 		end
 		if isBlockerFunction(checkedTile) then
-			-- print("isForest\n")
 			local lowerAngle, upperAngle = getBlockerCorners(pos,VectorMath.add(checkedTile,targetOffset))
-			-- print("Corners: "..tostring(lowerAngle)..","..tostring(upperAngle))
 			local lowerAngleNode =t:getNodeBefore(lowerAngle)
 			local upperAngleNode =t:getNodeBefore(upperAngle)
-			if lowerAngleNode ~= nil and upperAngleNode ~= nil then
-				-- print("Lower Angle Before: angle = "..tostring(lowerAngleNode:getKey())..", isBlocking = "..tostring(lowerAngleNode:getData()))
-				-- print("Upper Angle Before: angle = "..tostring(upperAngleNode:getKey())..", isBlocking = "..tostring(upperAngleNode:getData()))
-			end
 
 			if lowerAngleNode == nil or lowerAngleNode:getData()==false then
-				-- print("Inserting Corner : angle = "..tostring(lowerAngle)..", isBlocking = true")
 				t:insert(lowerAngle, true)
 			end
 			if upperAngleNode == nil or upperAngleNode:getData()==false then
-				-- print("Inserting Corner : angle = "..tostring(upperAngle)..", isBlocking = false")
 				t:insert(upperAngle, false)
 			end
 			if (lowerAngleNode ~= nil and upperAngleNode ~= nil) then
@@ -136,18 +116,14 @@ function PulseScanner.calculateLoSOfUnitPulse(pos, scout, canSeeOver, sightRange
 				local keysToBeRemoved = {}
 				local keysToBeRemovedCount = 0
 				--cull tree
-				-- print("upperAngleNode angle: "..tostring(relativeUpperAngle))
 				while (relativeAngle>0.000001 and relativeAngle<relativeUpperAngle-0.000001) do
-					-- print("relative angle: ".. tostring(relativeAngle))
 					table.insert(keysToBeRemoved,currentNode:getKey())
-					-- print("removing corner with angle: ".. tostring(currentNode:getKey()))
 					keysToBeRemovedCount = keysToBeRemovedCount+1
 					if keysToBeRemovedCount>=t:getSize() then
 						--All angles are blocked
 						break
 					end
 					currentNode = currentNode.prev
-					-- print("next corner with angle: ".. tostring(currentNode:getKey()))
 					relativeAngle = getRelativeAngle(lowerAngle, currentNode:getKey())
 				end
 				if keysToBeRemovedCount>=t:getSize() then
@@ -177,22 +153,6 @@ function PulseScanner.calculateLoSOfUnitPulse(pos, scout, canSeeOver, sightRange
 				-- printTree(t._root, 0)
 			end
 		end
-		-- print("tree")
-		-- if (t._root ~= nil) then
-			-- local curentNode = t:getNodeBefore(0);
-			-- local prevAngle = 0;
-			-- local originAngle = curentNode:getKey()
-			-- -- print("Corner : angle = "..tostring(curentNode:getKey())..", isBlocking = "..tostring(curentNode:getData()))
-			-- curentNode = curentNode.next
-			-- local newAngle = getRelativeAngle(originAngle,curentNode:getKey())
-			-- while (getRelativeAngle(originAngle,curentNode:getKey())>prevAngle) do
-				-- newAngle = getRelativeAngle(originAngle,curentNode:getKey())
-				-- -- print("Corner : angle = "..tostring(curentNode:getKey())..", isBlocking = "..tostring(curentNode:getData()))
-				-- prevAngle = newAngle
-				-- curentNode = curentNode.next
-			-- end
-		-- end
-		-- print("------------------------------")
 	end
 	return visibleTiles
 end

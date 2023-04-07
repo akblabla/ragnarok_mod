@@ -35,8 +35,9 @@ Stats.sightRangeList = {
 	reveal_all = 200,
 	reveal_all_but_hidden = 200,
 	reveal_all_but_over = 200,
-	rifleman = 6,	
+	rifleman = 6,
 	soldier = 5,
+	soldier_flanked = 5,
 	spearman = 4,
 	trebuchet = 4,
 	thief = 5,
@@ -79,6 +80,8 @@ Stats.fowCoverList = {
 	reef = true,
 	mangrove = true,
 	cave_reef = true,
+	brush = true,
+	brush_invis = true,
 	forest_alt = true
 }
 
@@ -89,8 +92,6 @@ Stats.visionBlockingList = {
 	mangrove = true,
 	forest_alt = true,
 	cave_wall = true,
-	brush = true,
-	brush_invis = true,
 	invisible_blocker_ocean = true
 }
 

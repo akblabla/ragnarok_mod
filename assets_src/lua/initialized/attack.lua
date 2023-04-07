@@ -8,11 +8,82 @@ local Stats = require "util/stats"
 local Attack = {}
 local OldAttackGetScore;
 function Attack.init()
+	Ragnarok.addAction(Attack.revertFlanked,"repeating",true)
 	OldAttack.canExecuteWithTarget = Attack.canExecuteWithTarget
-	--OldAttackGetScore = OldAttack.getScore
-	--OldAttack.getScore = Attack.getScore
+	OldAttack.execute = Attack.execute
+--	OldAttack.onPostUpdateUnit = Attack.onPostUpdateUnit
 	
 end
+
+local function getFacing(from, to)
+    local dx = to.x - from.x
+    local dy = to.y - from.y
+
+    if math.abs(dx) > math.abs(dy) then
+        if dx > 0 then
+            return 1 -- Right
+        else
+            return 3 -- Left
+        end
+    else
+        if dy > 0 then
+            return 2 -- Down
+        else
+            return 0 -- Up
+        end
+    end
+end
+
+local flankerId = nil;
+local flankedId = nil;
+function Attack.revertFlanked(context)
+	if flankedId ~= nil and context:checkState("endOfUnitTurn") then
+		local flanked = Wargroove.getUnitById(flankedId)
+		local flanker = Wargroove.getUnitById(flankerId)
+		if flanked ~= nil and flanked.unitClassId == "soldier_flanked" then
+			flanked.unitClassId = "soldier"
+			flanked.pos.facing = getFacing(flanked.pos, flanker.pos)
+			Wargroove.updateUnit(flanked)
+		end
+		Wargroove.waitFrame()
+		Wargroove.clearCaches()
+        Wargroove.spawnPaletteSwappedMapAnimation(flanked.pos, 0, "fx/ambush_fx", flanked.playerId, "default", "over_units", { x = 12, y = 0 })
+        Wargroove.playMapSound("cutscene/surprised", flanked.pos)
+        Wargroove.waitTime(0.5)
+        Wargroove.setAIRestriction(flankedId, "cant_move", false)
+        Wargroove.setAIRestriction(flankedId, "cant_attack", false)
+        Wargroove.updateUnit(flanked)
+		flankedId = nil
+		flankerId = nil
+	end
+end
+
+function Attack:onPostUpdateUnit(unit, targetPos, strParam, path)
+end
+
+function Attack:execute(unit, targetPos, strParam, path)
+    --- Telegraph
+    if (not Wargroove.isLocalPlayer(unit.playerId)) and Wargroove.canCurrentlySeeTile(targetPos) then
+        Wargroove.spawnMapAnimation(targetPos, 0, "ui/grid/selection_cursor", "target", "over_units", {x = -4, y = -4})
+        Wargroove.waitTime(0.5)
+    end
+ 	local flanked = Wargroove.getUnitAt(targetPos)
+	if Wargroove.hasAIRestriction(flanked.id, "cant_attack") == true then
+		if flanked.unitClassId == "soldier" then
+			flanked.unitClassId = "soldier_flanked"
+			Wargroove.updateUnit(flanked)
+		end
+		Wargroove.waitFrame()
+		Wargroove.waitFrame()
+		Wargroove.clearCaches()
+		flanked = Wargroove.getUnitAt(targetPos)
+		flankedId = flanked.id
+		flankerId = unit.id
+	end
+    Wargroove.startCombat(unit, flanked, path)
+	
+end
+
 
 function dump(o,level)
    if type(o) == 'table' then
@@ -115,17 +186,5 @@ function Attack:canExecuteWithTarget(unit, endPos, targetPos, strParam)
     return Combat:getBaseDamage(unit, targetUnit, endPos) > 0
 end
 
-function Attack:getScore(unitId, order)
-    local targetUnit = Wargroove.getUnitAt(order.targetPosition)
-
-    local result = OldAttackGetScore(unitId, order)
-	if targetUnit and targetUnit.unitClass.isStructure then
-		result.score = -1000
-	end
-    return { score = myDelta, healthDelta = 0, introspection = {
-        { key = "amountToTake", value = amountToTake },
-        { key = "oldUnitValue", value = oldUnitValue },
-        { key = "newUnitValue", value = newUnitValue }}}
-end
 
 return Attack

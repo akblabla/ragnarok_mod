@@ -58,7 +58,7 @@ unitClasses:
       - type.scout
     battleUnitCount: 4
     passiveMultiplier: 1.5
-    sightRange: 6
+    sightRange: 5
     scout: true
     runsAway: true
     deathVerbId: death_drop_crown

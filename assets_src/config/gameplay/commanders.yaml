@@ -97,14 +97,13 @@ commanders:
     dialogueBoxVoice: ui/dialogue/textScroll
     
   - id: empty
-    name: character_empty
+    name: unit_class_name_rival
     faction: outlaw
     playable: false
     portrait:
-        extra: portraits/commanders/small/soldier_portrait_extra.png
-        happy: portraits/commanders/small/soldier_portrait_happy.png
-        neutral: portraits/commanders/small/soldier_portrait_small.png
-        sad: portraits/commanders/small/soldier_portrait_sad.png
+      neutral: portraits/commanders/small/rival_portrait_small.png
+      happy: portraits/commanders/small/rival_portrait_small.png
+      sad: portraits/commanders/small/rival_portrait_small.png
     cutscenePortrait: portraits/commanders/big/empty
     portraitOffset: [0, 0]
     themeSong: music/hostile

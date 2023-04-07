@@ -4,6 +4,7 @@ local Ragnarok = require "initialized/ragnarok"
 local Rescue = require "verbs/rescue"
 local Recruit = require "initialized/recruit"
 local AIManager = require "initialized/ai_manager"
+local StealthManager = require "initialized/stealth_manager"
 local VisionTracker = require "initialized/vision_tracker"
 
 local Actions = {}
@@ -61,7 +62,7 @@ function Actions.populate(dst)
 	dst["dialogue_box_unit"] = Actions.dialogueBoxUnit
 	dst["set_match_seed"] = Actions.setMatchSeed
 	dst["set_priority_target"] = Actions.setPriorityTarget
-	dst["change_behavior_when_spotting"] = Actions.changeBehaviorWhenSpotting
+	dst["set_hide_and_seek"] = Actions.setHideAndSeek
 	--Hidden actions
 	dst["run_start_front_actions"] = Actions.runStartFrontActions
 	dst["run_start_back_actions"] = Actions.runStartBackActions
@@ -353,90 +354,14 @@ function Actions.setPriorityTarget(context)
     local targetPos = findCentreOfLocation(context:getLocation(3))
     local units = context:gatherUnits(2, 0, 1)
     for i, unit in ipairs(units) do
-        AIManager.setAITarget(unit.id,targetPos)
+        AIManager.moveOrder(unit.id,targetPos)
     end
 end
-function Actions.changeBehaviorWhenSpotting(context)
-    -- "Units owned by player {0} use hide and seek rules against player {1}, {2}"
-    local units = Wargroove.getUnitsAtLocation(nil)
-    local targetPlayer = context:getPlayerId(0)
+function Actions.setHideAndSeek(context)
+    -- "Is hide and seek rules for player {1} enabled {0}"
+    local active = context:getBoolean(0)
     local player = context:getPlayerId(1)
-    local restriction = context:getString(2)
-    print("restriction")
-    print(restriction)
-    for i, unit in ipairs(units) do
-        if (unit ~= nil and unit.playerId == targetPlayer and unit.inTransport == false) then 
-            local listOfViewerIds = VisionTracker.getListOfViewerIds(unit.pos);
-            print("unit.id")
-            print(unit.id)
-            print("unit position: "..unit.pos.x ..", "..unit.pos.y)
-            print("listOfViewers")
-            print(dump(listOfViewerIds,0))
-            for j, viewerId in pairs(listOfViewerIds) do
-                print("viewerId")
-                print(viewerId)
-                local viewer = Wargroove.getUnitById(viewerId)
-                if (viewer ~= nil) then
-                    print("Viewer")
-                    print(dump(viewer,0))
-                    if (viewer.playerId == player) then
-                        if (Wargroove.hasAIRestriction(viewerId, "cant_attack") == true) then
-                            if (unit.pos.x>viewer.pos.x) then
-                                Wargroove.setFacingOverride(viewerId, "right")
-                            else
-                                Wargroove.setFacingOverride(viewerId, "left")
-                            end
-                            Wargroove.updateUnit(viewer)
-                            Wargroove.spawnPaletteSwappedMapAnimation(viewer.pos, 0, "fx/ambush_fx", viewer.playerId, "default", "over_units", { x = 12, y = 0 })
-                            Wargroove.playMapSound("cutscene/surprised", viewer.pos)
-                            Wargroove.waitTime(0.5)
-                            Wargroove.setAIRestriction(viewerId, "cant_move", false)
-                            Wargroove.setAIRestriction(viewerId, "cant_attack", false)
-                            Wargroove.updateUnit(viewer)
-                        end
-                    end
-                end
-            end
-        end
-
-    end
-
-    for i, unit in ipairs(units) do
-        if (unit ~= nil and unit.playerId == player) then 
-            if (unit ~= nil and Wargroove.hasAIRestriction(unit.id, "cant_attack") == false) then
-                local listOfViewerIds = VisionTracker.getListOfViewerIds(unit.pos);
-                print("unit.id")
-                print(unit.id)
-                print("unit position: "..unit.pos.x ..", "..unit.pos.y)
-                print("listOfViewers")
-                print(dump(listOfViewerIds,0))
-                for j, viewerId in pairs(listOfViewerIds) do
-                    print("viewerId")
-                    print(viewerId)
-                    local viewer = Wargroove.getUnitById(viewerId)
-                    if (viewer ~= nil) then
-                        print("Viewer")
-                        print(dump(viewer,0))
-                        if (viewer.playerId == player) then
-                            if (Wargroove.hasAIRestriction(viewerId, "cant_move") ~= false) then
-                                if (unit.pos.x>viewer.pos.x) then
-                                    Wargroove.setFacingOverride(viewerId, "right")
-                                else
-                                    Wargroove.setFacingOverride(viewerId, "left")
-                                end
-                                Wargroove.updateUnit(viewer)
-                                Wargroove.spawnPaletteSwappedMapAnimation(viewer.pos, 0, "fx/surprised_fx", viewer.playerId, "default", "over_units", { x = 12, y = 0 })
-                                Wargroove.playMapSound("cutscene/surprised", viewer.pos)
-                                Wargroove.waitTime(0.5)
-                                Wargroove.setAIRestriction(viewerId, "cant_move", false)
-                                Wargroove.updateUnit(viewer)
-                            end
-                        end
-                    end
-                end
-            end
-        end
-    end
+    StealthManager.setActive(player,active)
 end
 
 function Actions.transferGoldRobbed(context)
@@ -444,7 +369,7 @@ function Actions.transferGoldRobbed(context)
     local playerId = context:getPlayerId(0)
     local transfer = context:getString(1)
     local value = context:getMapCounter(2)
-	
+
 	if transfer == "store" then
 		context:setMapCounter(2, Ragnarok.getGoldRobbed(playerId))
 	end

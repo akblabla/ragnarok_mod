@@ -16,7 +16,7 @@ end
 
 local Logger = {}
 function Logger.init()
-	Ragnarok.addAction(Logger.logState,"repeating",true)
+--	Ragnarok.addAction(Logger.logState,"repeating",true)
 end
 function Logger.logState(context)
 	if (not context:checkState("endOfTurn")) then

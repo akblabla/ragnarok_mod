@@ -55,6 +55,6 @@ unitClasses:
       - healing_potion
     battleUnitCount: 4
     passiveMultiplier: 1.5
-    sightRange: 6
+    sightRange: 5
     scout: true
 ...

@@ -170,11 +170,10 @@ triggerActions:
       - type: player_neutral_star
       - type: location
 
-  - id: change_behavior_when_spotting
+  - id: set_hide_and_seek
     parameters:
+      - type: boolean
       - type: player
-      - type: player
-      - type: ai_restriction
 #Normally hidden triggers
   - id: set_conditional_location_highlight
     parameters:

@@ -1,0 +1,60 @@
+---
+unitClasses:
+  - id: soldier_flanked
+    name: unit_class_name_soldier
+    cost: 100
+    classIconSpritesheet: ui_RagnarokMod
+    movement: walking
+    moveRange: 4
+    damageMultiplier: 1.5
+    aiPriority: 1.0
+    weapons: []
+    tags:
+      - soldier
+      - type.ground.light
+    verbs:
+      - rescue
+      - capture
+      - load
+      - pick_up_crown
+      - throw_crown
+      - healing_potion
+      - wait_ai
+    battleUnitCount: 4
+    passiveMultiplier: 1.5
+    isHidden: true
+    hasTurn: false
+    isRecruitable: false
+    isSpawnable: false
+    appearsInLists: false
+    sightRange: 5
+    deathVerbId: death_drop_crown
+
+units:
+  - class: soldier_flanked
+    faction: cherrystone
+    name: unit_name_soldier_cherrystone
+    mapAnimation: units/soldier/cherrystone/map_soldier_cherrystone
+    battleAnimation: units/soldier/cherrystone/battle_soldier_flanked_cherrystone
+    battleAnimationRiver: fx/river_overlay/battle_soldier_cherrystone_river
+    smallPortrait: units/soldier/cherrystone/portrait_soldier_cherrystone_small.png
+    mediumPortrait: units/soldier/cherrystone/portrait_soldier_cherrystone_medium.png
+    mapSpeed: 4.0
+    grabPos: [13, 14]
+    runsIn: false
+    sounds:
+      attack: soldierAttackRed
+      attackShout: soldierPreAttackRed
+      attackMap: unitAttack
+      captureShout: soldierPreAttackRed
+      death: soldierDieRed
+      deathMap: unitDie
+      run: infantryHeavyEntry
+      runMap: infantryHeavyMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [0.45, 0.8]
+...

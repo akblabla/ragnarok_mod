@@ -52,11 +52,7 @@ end
 
 function WargrooveVision.startCapture(attacker, defender, attackerPos)
 	VisionTracker.removeUnitFromVisionMatrix(defender)
-	--print("captured building before")
-	--print(dump(defender,0))
 	Original.startCapture(attacker, defender, attackerPos)
-	--print("captured building after")
-	--print(dump(defender,0))
 	defender.playerId = attacker.playerId
 	VisionTracker.addUnitToVisionMatrix(defender)
 end

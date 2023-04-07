@@ -201,7 +201,7 @@ terrains:
       land_building: 1
       indoor_building: 1
     movementGroupType: land
-    visionBlocking: true
+    fowCover: true
     placeable: true
     tilesets:
       0: [plains, plains_alt]
@@ -220,7 +220,7 @@ terrains:
       land_building: 1
       indoor_building: 1
     movementGroupType: land
-    visionBlocking: true
+    fowCover: true
     placeable: true
     hidden: true
     tilesets:

@@ -6,9 +6,9 @@ verbs:
     name: ui_unit_verbs_wait
     targetColour: target
     targetOutlineColour: target_outline
-    scriptName: verbs/wait_ai
     targetted: false
     aiUses: true
+    scriptName: verbs/wait_ai
 
   - id: healing_potion
     icon: ui/icons/grooves/unit_action_icon_heal.png

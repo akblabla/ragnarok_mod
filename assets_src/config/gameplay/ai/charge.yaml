@@ -3,7 +3,7 @@
 aiProfiles:
   - id: charge
     name: ai_profile_charge
-    attackLookAhead: 10
+    attackLookAhead: 0
     captureLookAhead: 1
     captureBias: 0.1
     attackBias: 2.5

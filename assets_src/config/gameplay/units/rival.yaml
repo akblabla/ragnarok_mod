@@ -6,7 +6,7 @@ unitClasses:
     cost: 500
     movement: walking
     moveRange: 3
-    damageMultiplier: 1
+    damageMultiplier: 0.75
     aiPriority: 0.5
     weapons:
       - id: bow
