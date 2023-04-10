@@ -54,6 +54,7 @@ unitClasses:
       - throw_crown
       - healing_potion
       - wait_ai
+      - hire
     tags:
       - commander
       - type.ground.light

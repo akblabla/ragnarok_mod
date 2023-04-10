@@ -31,8 +31,22 @@ local function movementCost(pos, unitId)
    return Wargroove.getTerrainMovementCostAt(pos)
 end
 
+local function roadMovementCost(pos, unitId)
+   local stranger = Wargroove.getUnitAt(pos)
+   local unit = Wargroove.getUnitById(unitId)
+   if stranger ~= nil and unit ~= nil and Wargroove.areEnemies(unit.playerId, stranger.playerId) then
+      return 1000
+   end
+   local tileCost = Wargroove.getTerrainMovementCostAt(pos)
+   local terrainName = Wargroove.getTerrainNameAt(pos)
+   if not (terrainName == "road" or terrainName == "bridge") then
+      tileCost = tileCost+1
+   end
+   return tileCost
+end
+
 function AIManager.init()
---	Ragnarok.addAction(AIManager.update,"repeating",true)
+	Ragnarok.addAction(AIManager.update,"repeating",true)
 end
 
 function AIManager.setup(context)
@@ -46,9 +60,13 @@ function AIManager.getNextPosition(unitId)
       return nil
    end
    local unit = Wargroove.getUnitById(unitId)
+   if AITargets[unitId].order == "road_move" then
+      local next, distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].pos,roadMovementCost)
+	   return next, distMoved, dist
+   end
    if AITargets[unitId].order == "move" then
-      local next,reachedEnd = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].pos)
-	   return next, reachedEnd
+      local next, distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].pos,movementCost)
+	   return next, distMoved, dist
    end
    if AITargets[unitId].order == "attack_move" then
       local tileList = Wargroove.getTargetsInRange(unit.pos, VisionTracker.getSightRange(unit), "all")
@@ -67,16 +85,16 @@ function AIManager.getNextPosition(unitId)
          return nil, false
       else
          print("can't see enemy :(")
-         local next,reachedEnd = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].pos)
-         return next, reachedEnd
+         local next,distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].pos)
+         return next, distMoved, dist
       end
    end
-   return nil, true
+   return nil, 0,0
 end
 
-function AIManager.getNextPositionTowardsTarget(unitId, pos)
+function AIManager.getNextPositionTowardsTarget(unitId, pos, mCost)
    local unit = Wargroove.getUnitById(unitId)
-   local path = Pathfinding.AStar(unit.pos, pos, movementCost, unitId)
+   local path = Pathfinding.AStar(unit.pos, pos, mCost, unitId)
    --path[1] = nil
    local movePoints = unit.unitClass.moveRange
    local target = unit.pos
@@ -86,7 +104,7 @@ function AIManager.getNextPositionTowardsTarget(unitId, pos)
       if i == #path then
          reachedEnd = true
       end
-      if Wargroove.getTerrainMovementCostAt(target) > unit.unitClass.moveRange then
+      if Wargroove.getTerrainMovementCostAt(tile) > unit.unitClass.moveRange then
          reachedEnd = true
       end
       if movePoints<0 then
@@ -96,7 +114,22 @@ function AIManager.getNextPositionTowardsTarget(unitId, pos)
          target = tile
       end
    end
-	return target, reachedEnd
+   local dist = 0
+   for i,tile in pairs(path) do
+      if (Wargroove.getTerrainMovementCostAt(tile)<100) then
+         dist = dist+Wargroove.getTerrainMovementCostAt(tile)
+         if i == #path then
+            break
+         end
+         if Wargroove.getTerrainMovementCostAt(tile) > unit.unitClass.moveRange then
+            break
+         end
+      else
+         break
+      end
+   end
+   local distMoved = unit.unitClass.moveRange-movePoints
+	return target, distMoved, dist
 end
 
 function AIManager.getAITarget(unitId)
@@ -115,6 +148,13 @@ function AIManager.moveOrder(unitId, pos)
       return
    end
    AITargets[unitId] = {order = "move", pos = pos}
+end
+
+function AIManager.roadMoveOrder(unitId, pos)
+   if pos == nil then
+      return
+   end
+   AITargets[unitId] = {order = "road_move", pos = pos}
 end
 
 function AIManager.clearOrder(unitId)

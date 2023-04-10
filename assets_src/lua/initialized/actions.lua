@@ -63,6 +63,7 @@ function Actions.populate(dst)
 	dst["set_match_seed"] = Actions.setMatchSeed
 	dst["set_priority_target"] = Actions.setPriorityTarget
 	dst["set_hide_and_seek"] = Actions.setHideAndSeek
+    dst["set_position_as_goal"] = Actions.setPositionAsGoal
     dst["set_current_position_as_goal"] = Actions.setCurrentPositionAsGoal
 	--Hidden actions
 	dst["run_start_front_actions"] = Actions.runStartFrontActions
@@ -367,6 +368,16 @@ function Actions.setCurrentPositionAsGoal(context)
     end
 end
 
+function Actions.setPositionAsGoal(context)
+    -- "Make units of type {0} at location {1} owned by player {2} move towards {3}."
+    local units = context:gatherUnits(2, 0, 1)
+    local location = context:getLocation(3)
+    local center = findCentreOfLocation(location)
+    for i, unit in ipairs(units) do
+        StealthManager.setAIGoalPos(unit.id,center)
+    end
+end
+
 function Actions.setHideAndSeek(context)
     -- "Is hide and seek rules for player {1} enabled {0}"
     local active = context:getBoolean(0)
@@ -528,23 +539,35 @@ end
 
 
 function Actions.spawnUnitInsideTransport(context)
-    -- "Give units of type {0} at location {1} owned by player {2} unit type {3}."
+    -- "Give units of type {0} at location {1} owned by player {2} unit type {3} owned by player {4} with {5} hp."
     local units = context:gatherUnits(2, 0, 1)
     local unitClassId = context:getUnitClass(3)
+    local playerId = context:getPlayerId(4)
+    local hp = context:getInteger(5)
 
-    for i, transport in ipairs(units) do
+    for i, transport in pairs(units) do
+        print("transport")
+        print(dump(transport,0))
         print("Spawning in")
-        local unitId = Wargroove.spawnUnit(transport.playerId, {x=-100,y=-100}, unitClassId, false)
+        local pos = {x=-10,y=-10}
+        while Wargroove.getUnitAt(pos)~= nil do
+            pos.x = pos.x+1
+        end
+        local unitId = Wargroove.spawnUnit(playerId, pos, unitClassId, false)
         Wargroove.clearCaches()
-        print("Spawned")
-        Wargroove:waitFrame()
-        local unit = Wargroove:getUnitById(unitId)
-        print("Spawning in")
+        local unit = Wargroove.getUnitAt(pos)
+
         table.insert(transport.loadedUnits, unitId)
         unit.inTransport = true
         unit.transportedBy = transport.id
-        Wargroove.updateUnit(unit)
+        unit.health = hp
         Wargroove.updateUnit(transport)
+        unit.pos = { x = -100, y = -100 }
+        Wargroove.updateUnit(unit)
+        print("transport Post Update")
+        print(dump(transport,0))
+        print("unit Post Update")
+        print(dump(unit,0))
     end
 end
 

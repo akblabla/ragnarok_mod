@@ -20,6 +20,11 @@ local setupRan = false
 
 local VisionTracker = {}
 
+local function isInsideBounds(pos)
+	local mapSize = Wargroove.getMapSize()
+	return pos.x>=0 and pos.x<mapSize.x and pos.y>=0 and pos.y<mapSize.y
+end
+
 function VisionTracker.getSightRange(unit)
 	if Stats.sightRangeList[unit.unitClassId] == nil then
 		return 0
@@ -75,27 +80,51 @@ local numberOfViewers = {}
 local listOfViewers = {}
 
 local function getViewers(pos)
-	return listOfViewers[pos.x][pos.y]
+	if setupRan then
+		if isInsideBounds(pos) == false then
+			return {}
+		end
+		return listOfViewers[pos.x][pos.y]
+	end
+	return {}
 end
 
 local function getNumberOfViewers(player,pos)
-	return numberOfViewers[player][pos.x][pos.y]
+	if setupRan then
+		if isInsideBounds(pos) == false then
+			return 0
+		end
+		return numberOfViewers[player][pos.x][pos.y]
+	end
+	return 0
 end
 
 local function incrementNumberOfViewers(player,pos)
+	if isInsideBounds(pos) == false then
+		return
+	end
 	numberOfViewers[player][pos.x][pos.y] = numberOfViewers[player][pos.x][pos.y] + 1
 end
 
 local function addUnitToListOfViewers(unitId,pos)
+	if isInsideBounds(pos) == false then
+		return
+	end
 	listOfViewers[pos.x][pos.y][unitId] = unitId
 	incrementNumberOfViewers(Wargroove.getUnitById(unitId).playerId,pos)
 end
 
 local function decrementNumberOfViewers(player,pos)
+	if isInsideBounds(pos) == false then
+		return
+	end
 	numberOfViewers[player][pos.x][pos.y] = numberOfViewers[player][pos.x][pos.y] - 1
 end
 
 local function removeUnitFromListOfViewers(unitId,pos)
+	if isInsideBounds(pos) == false then
+		return
+	end
 	listOfViewers[pos.x][pos.y][unitId] = nil
 	decrementNumberOfViewers(Wargroove.getUnitById(unitId).playerId,pos)
 end
@@ -120,6 +149,9 @@ end
 
 function VisionTracker.addUnitToVisionMatrix(unit)
 	if setupRan then
+		if isInsideBounds(unit.pos) == false then
+			return
+		end
 		local visibleTiles = VisionTracker.calculateVisionOfUnit(unit)
 		local playerId = unit.playerId
 		for i, pos in pairs(visibleTiles) do
@@ -512,7 +544,7 @@ end
 
 function VisionTracker.calculateVisionOfUnit(unit)
 	local mapSize = Wargroove.getMapSize()
-	if unit.pos.x<0 or unit.pos.x>=mapSize.x or unit.pos.y<0 or unit.pos.y>=mapSize.y then
+	if isInsideBounds(unit.pos) == false then
 		return {}
 	end
 	--Wargroove.showMessage("Calculating vision of unit "..unit.id)

@@ -39,12 +39,16 @@ end
 
 function WaitAI:getScore(unitId, order)
     local unit = Wargroove.getUnitById(unitId)
-    local target,_ = AIManager.getNextPosition(unitId)
+    local target, distMoved, dist = AIManager.getNextPosition(unitId)
     if (target ~= nil) then
         print("getNextPosition")
         print("target "..tostring(target.x)..", "..tostring(target.y))
+        local score = 0
+        if dist>0 then
+            score = 100+((1.0*distMoved)/dist)*100.0
+        end
         if target.x == order.endPosition.x and target.y == order.endPosition.y then
-            return {score = 100, introspection = {}}
+            return {score = score, introspection = {}}
         else
             return {score = -1, introspection = {}}
         end

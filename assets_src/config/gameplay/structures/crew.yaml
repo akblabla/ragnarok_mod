@@ -18,14 +18,16 @@ unitClasses:
     tags:
       - structure
     sightRange: 0
+    loadCapacity: 1
+    transportTags: [ type.ground.light, type.amphibious, type.ground.hideout, type.sea, type.air ]
 
 units:
   - class: crew
     faction: neutral
     name: structure_name_city
     mapAnimation: units/crew/crew
-    smallPortrait: units/villager/cherrystone/portrait_villager_cherrystone_small.png
-    mediumPortrait: units/villager/cherrystone/portrait_villager_cherrystone_medium.png
+    smallPortrait: units/crew/portrait_crew_small.png
+    mediumPortrait: units/crew/portrait_crew_medium.png
     grabPos: [14, 15]
     sounds:
       hit: hitWood

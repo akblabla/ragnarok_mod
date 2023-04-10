@@ -21,6 +21,7 @@ en-GB:
   ui_unit_verbs_healing_potion: Use Potion
   ui_unit_verbs_claim: Retrieve
   ui_unit_verbs_rescue: Rescue
+  ui_unit_verbs_hire: Hire
   
   #biomes
   biome_name_tropical: Tropical
@@ -301,14 +302,18 @@ en-GB:
   trigger_action_description_set_hide_and_seek: "Set Hide and Seek."
   trigger_action_readable_set_hide_and_seek: "Is hide and seek rules for player {1} enabled {0}"
 
-  trigger_action_name_set_current_position_as_goal: "Stealth: Guard Position"
-  trigger_action_description_set_current_position_as_goal: "Set Guard Position."
+  trigger_action_name_set_position_as_goal: "Stealth: Set Target Position"
+  trigger_action_description_set_position_as_goal: "Set Target Position."
+  trigger_action_readable_set_position_as_goal: "Make units of type {0} at location {1} owned by player {2} move towards {3}."
+
+  trigger_action_name_set_current_position_as_goal: "Stealth: Guard Current Position"
+  trigger_action_description_set_current_position_as_goal: "Set Guard Current Position."
   trigger_action_readable_set_current_position_as_goal: "Make units of type {0} at location {1} owned by player {2} stand guard."
 
 
   trigger_action_name_spawn_unit_in_transport: "Unit: Spawn Inside Transport"
   trigger_action_description_spawn_unit_in_transport: "Spawn Inside Transport."
-  trigger_action_readable_spawn_unit_in_transport: "Give units of type {0} at location {1} owned by player {2} unit type {3}."
+  trigger_action_readable_spawn_unit_in_transport: "Give units of type {0} at location {1} owned by player {2} unit type {3} owned by player {4} with {5} hp."
 
   #backgrounds
   ui_cutscene_background_deck: "Ship Deck"

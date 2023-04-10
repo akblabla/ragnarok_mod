@@ -51,6 +51,8 @@ triggerActions:
       - type: location_star
       - type: player_neutral_star
       - type: unit_class
+      - type: player_neutral_star
+      - type: integer
 
   - id: spawn_unit_closest_to_location
     parameters:
@@ -175,6 +177,14 @@ triggerActions:
       - type: unit_class_star
       - type: location_star
       - type: player_neutral_star
+
+  - id: set_position_as_goal
+    parameters:
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+      - type: location_star
+
 
   - id: set_hide_and_seek
     parameters:

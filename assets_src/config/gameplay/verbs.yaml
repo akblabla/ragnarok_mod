@@ -153,6 +153,14 @@ verbs:
     directTarget: true
     scriptName: verbs/rescue
 
+  - id: hire
+    icon: ui/icons/grooves/unit_action_icon_inspire.png
+    name: ui_unit_verbs_hire
+    targetColour: target
+    targetOutlineColour: target_outline
+    preExecute: true
+    scriptName: verbs/hire
+
   - id: groove_golf
     icon: ui/icons/grooves/unit_action_icon_hammer.png
     name: groove_name_golf

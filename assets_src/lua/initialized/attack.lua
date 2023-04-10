@@ -66,7 +66,7 @@ function Attack:execute(unit, targetPos, strParam, path)
         Wargroove.waitTime(0.5)
     end
  	local flanked = Wargroove.getUnitAt(targetPos)
-	if Wargroove.hasAIRestriction(flanked.id, "cant_attack") == true then
+	if StealthManager.isActive(flanked.playerId) and StealthManager.isUnitAlerted(flanked.id) == false then
 		if flanked.unitClassId == "soldier" then
 			flanked.unitClassId = "soldier_flanked"
 			Wargroove.updateUnit(flanked)

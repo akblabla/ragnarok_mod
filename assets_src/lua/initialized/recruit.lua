@@ -9,7 +9,7 @@ local raiderShipBuilderList = {}
 function Recruit.init()
 	OldRecruit.getMaximumRange = Recruit.getMaximumRange
 	OldRecruit.canExecuteWithTarget = Recruit.canExecuteWithTarget
-	OldRecruit.canExecuteWithTarget = Recruit.canExecuteWithTarget
+	OldRecruit.preExecute = Recruit.preExecute
 	OldRecruit.execute = Recruit.execute
 end
 
@@ -40,10 +40,20 @@ function Recruit:allowAIToBuildRaiderShips(playerId)
 	raiderShipBuilderList[playerId] = true
 end
 
+function Recruit:preExecute(unit, targetPos, strParam, endPos)
+    if strParam == nil or strParam == "" then
+        return true
+    end
+	print("Recruit:preExecute")
+	print(strParam)
+end
+
 function Recruit:canExecuteWithTarget(unit, endPos, targetPos, strParam)
     if strParam == nil or strParam == "" then
         return true
     end
+	print("Recruit:canExecuteWithTarget")
+	print(strParam)
 
     -- Check if this can recruit that type of unit
     local ok = false

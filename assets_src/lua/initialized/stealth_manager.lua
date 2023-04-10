@@ -52,6 +52,10 @@ function StealthManager.setActive(playerId,isActive)
     end
 end
 
+function StealthManager.isActive(playerId)
+	return active[playerId] ~= nil
+end
+
 function StealthManager.setAIGoalPos(unitId,pos)
 	AIGoalPos[unitId] = pos
 end
@@ -64,7 +68,7 @@ function StealthManager.update(context)
         end
         for unitId,pos in pairs(AIGoalPos) do
             if active[Wargroove.getCurrentPlayerId()] ~= nil then
-                AIManager.moveOrder(unitId,pos)
+                AIManager.roadMoveOrder(unitId,pos)
             end
         end
         for id,awareness in pairs(awarenessMap) do
@@ -113,12 +117,20 @@ function StealthManager.makeUnitAlerted(unitId,tile)
     awarenessMap[unitId] = {alerted = true,src = tile}
 end
 
+function StealthManager.isUnitAlerted(unitId)
+    return awarenessMap[unitId] ~= nil and awarenessMap[unitId].alerted
+end
+
 function StealthManager.makeUnitSearching(unitId,tile, force)
     if force then
         awarenessMap[unitId] = {alerted = false,src = tile}
     elseif awarenessMap[unitId] == nil or (awarenessMap[unitId] ~= nil and awarenessMap[unitId].alerted == false) then
         awarenessMap[unitId] = {alerted = false,src = tile}
     end
+end
+
+function StealthManager.isUnitSearching(unitId)
+    return awarenessMap[unitId] ~= nil
 end
 
 function StealthManager.getWitnesses(unitId, path)
