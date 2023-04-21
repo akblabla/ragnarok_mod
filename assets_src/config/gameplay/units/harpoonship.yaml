@@ -59,8 +59,10 @@ unitClasses:
     tags:
       - harpoonship
       - type.sea
+      - sailing
     battleUnitCount: 1
     passiveMultiplier: 1.5
     sightRange: 5
+    deathVerbId: death
 
 ...

@@ -18,22 +18,7 @@ function Hire:recruitsContain(recruits, unit)
 end
 
 function Hire:getRecruitableTargets(unit)
-    local allUnits = Wargroove.getAllUnitsForPlayer(unit.playerId, true)
-    local recruitableUnits = {}
-    for i, unit in pairs(allUnits) do
-        for i, recruit in pairs(unit.recruits) do
-            
-            if not Hire.recruitsContain(self, recruitableUnits, recruit) then
-                recruitableUnits[#recruitableUnits + 1] = recruit
-            end
-        end
-    end
-
-    if #recruitableUnits == 0 then
-        recruitableUnits = defaultUnits
-    end
-
-    return recruitableUnits
+    return defaultUnits
 end
 
 
@@ -54,6 +39,7 @@ function Hire:canExecuteAnywhere(unit)
     return true
 end
 
+Hire.inPreExecute = true
 Hire.classToRecruit = nil
 
 function Hire:canExecuteWithTarget(unit, endPos, targetPos, strParam)
@@ -66,27 +52,29 @@ function Hire:canExecuteWithTarget(unit, endPos, targetPos, strParam)
         classToRecruit = strParam
     end
 
-    local u = Wargroove.getUnitAt(targetPos)
-    if (classToRecruit == "") then
+    if (Hire.inPreExecute) then
+        local u = Wargroove.getUnitAt(targetPos)
         return u ~= nil and u.unitClassId == "villager"
-    end
+    else
 
-    -- Check if this player can recruit this type of unit
-    local isDefault = false
-    for i, unitClass in ipairs(defaultUnits) do
-        if (unitClass == classToRecruit) then
-            isDefault = true
+        -- Check if this player can recruit this type of unit
+        local isDefault = false
+        for i, unitClass in ipairs(defaultUnits) do
+            if (unitClass == classToRecruit) then
+                isDefault = true
+            end
         end
-    end
-    if not isDefault and not Wargroove.canPlayerRecruit(unit.playerId, classToRecruit) then
-        return false
-    end
+        if not isDefault and not Wargroove.canPlayerRecruit(unit.playerId, classToRecruit) then
+            return false
+        end
 
-    local uc = Wargroove.getUnitClass(classToRecruit)
-    return (endPos.x ~= targetPos.x or endPos.y ~= targetPos.y) and ((u ~= nil and u.unitClassId == "villager")) and Wargroove.canStandAt(classToRecruit, targetPos) and Wargroove.getMoney(unit.playerId) >= getCost(uc.cost)
+        local uc = Wargroove.getUnitClass(classToRecruit)
+        return Wargroove.getMoney(unit.playerId) >= getCost(uc.cost)
+    end
 end
 
 function Hire:preExecute(unit, targetPos, strParam, endPos)
+    Hire.inPreExecute = false
     local recruitableUnits = Hire.getRecruitableTargets(self, unit);
 
     Wargroove.openRecruitMenu(unit.playerId, unit.id, unit.pos, unit.unitClassId, recruitableUnits, costMultiplier, defaultUnits, "outlaw");
@@ -97,20 +85,8 @@ function Hire:preExecute(unit, targetPos, strParam, endPos)
 
     Hire.classToRecruit = Wargroove.popRecruitedUnitClass();
 
+    Hire.inPreExecute = true
     if Hire.classToRecruit == nil then
-        return false, ""
-    end
-
-    Wargroove.selectTarget()
-
-    while Wargroove.waitingForSelectedTarget() do
-        coroutine.yield()
-    end
-
-    local target = Wargroove.getSelectedTarget()
-
-    if (target == nil) then
-        Hire.classToRecruit = nil
         return false, ""
     end
 
@@ -162,6 +138,7 @@ function Hire:execute(unit, targetPos, strParam, path)
 		print(strParam)
 		u.unitClassId = strParam
 		u.playerId = unit.playerId
+		u.hadTurn = true
 		Wargroove.updateUnit(u)
 	end
 

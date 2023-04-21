@@ -12,6 +12,7 @@ unitClasses:
     tags:
       - soldier
       - type.ground.light
+      - walking
     verbs:
       - rescue
       - capture
@@ -28,8 +29,8 @@ unitClasses:
     isSpawnable: false
     appearsInLists: false
     sightRange: 5
-    deathVerbId: death_drop_crown
-
+    deathVerbId: death
+    
 units:
   - class: soldier_flanked
     faction: cherrystone

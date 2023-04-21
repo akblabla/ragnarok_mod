@@ -52,6 +52,7 @@ unitClasses:
     tags:
       - ballista
       - type.ground.heavy
+      - wheels
     verbs:
       - rescue
       - load
@@ -62,4 +63,5 @@ unitClasses:
     battleUnitCount: 1
     passiveMultiplier: 1.5
     sightRange: 4
+    deathVerbId: death
 ...

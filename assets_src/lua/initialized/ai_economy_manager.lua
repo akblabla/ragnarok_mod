@@ -235,13 +235,15 @@ local function getUnitRatioModifier(unitClassId, playerId)
 	
 	local result = 1
 	local ratioScaling = currentUnitRatioScalingList[playerId][unitClassId]
-	if ratioScaling>0 then
-		result = (1-AIEconomyManager.unitRatioPenaltyPerUnit)^(ratioScaling)
-		if unitClassId == "soldier" then
-			result = result*0.5+0.5 --soldier has a lower cap, because soldier
+	if ratioScaling ~= nil then
+		if ratioScaling>0 then
+			result = (1-AIEconomyManager.unitRatioPenaltyPerUnit)^(ratioScaling)
+			if unitClassId == "soldier" then
+				result = result*0.5+0.5 --soldier has a lower cap, because soldier
+			end
+		else
+			result = 2-(1-AIEconomyManager.unitRatioPenaltyPerUnit)^(-ratioScaling)
 		end
-	else
-		result = 2-(1-AIEconomyManager.unitRatioPenaltyPerUnit)^(-ratioScaling)
 	end
 	-- print(result)
 	return result
@@ -378,7 +380,7 @@ function AIEconomyManager.spendRest(context)
 		local captureUnitCount = 0
 		for unitClassId, canCapture in pairs(captureUnitList) do
 			if canCapture == true then
-				if unitCountPlayerList[playerId][unitClassId] ~= nil then
+				if unitCountPlayerList[playerId] ~= nil and unitCountPlayerList[playerId][unitClassId] ~= nil then
 					captureUnitCount = captureUnitCount +  unitCountPlayerList[playerId][unitClassId]
 				end
 			end

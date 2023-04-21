@@ -15,6 +15,7 @@ unitClasses:
     tags:
       - pirate_ship
       - type.sea
+      - sailing
     verbs:
       - rescue
       - pick_up_crown

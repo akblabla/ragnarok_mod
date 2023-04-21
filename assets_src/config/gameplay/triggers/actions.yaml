@@ -54,13 +54,19 @@ triggerActions:
       - type: player_neutral_star
       - type: integer
 
-  - id: spawn_unit_closest_to_location
+  - id: spawn_unit_close
     parameters:
       - type: unit_class_star
       - type: location_star
       - type: player_neutral_star
       - type: boolean
+
+  - id: give_bounty
+    parameters:
+      - type: unit_class_star
       - type: location_star
+      - type: player_neutral_star
+
 
   - id: link_gizmo_state_with_activators
     parameters:
@@ -171,6 +177,7 @@ triggerActions:
       - type: location_star
       - type: player_neutral_star
       - type: location
+      - type: string
 
   - id: set_current_position_as_goal
     parameters:

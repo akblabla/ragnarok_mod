@@ -19,9 +19,11 @@ unitClasses:
       - throw_crown
       - healing_potion
       - wait_ai
+      - hire
     tags:
       - thief
       - type.ground.hideout
+      - walking
     battleUnitCount: 1
     sightRange: 5
     deathVerbId: death_give_gold 

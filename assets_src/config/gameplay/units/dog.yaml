@@ -57,12 +57,13 @@ unitClasses:
       - type.ground.light
       - animal
       - type.scout
+      - walking
     battleUnitCount: 4
     passiveMultiplier: 1.5
     sightRange: 5
     scout: true
     runsAway: true
-    deathVerbId: death_drop_crown
+    deathVerbId: death
     
 units:
   - class: dog

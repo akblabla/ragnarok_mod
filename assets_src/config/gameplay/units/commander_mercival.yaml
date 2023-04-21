@@ -55,10 +55,12 @@ unitClasses:
     tags:
       - commander
       - type.ground.light
+      - walking
     battleUnitCount: 1
     sightRange: 5
     isCommander: true
     grooveId: fish
+    deathVerbId: death
 
 
 units:

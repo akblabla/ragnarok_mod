@@ -47,11 +47,11 @@ verbs:
 #    directTarget: true
     scriptName: verbs/throw_crown
     
-  - id: death_drop_crown
+  - id: death
     icon: ui/icons/grooves/unit_action_icon_bomb.png
     name: ui_unit_verbs_explode
     splashOutlineColour: attack_target_outline
-    scriptName: verbs/death_drop_crown
+    scriptName: verbs/death
     
   - id: pirate_steal
     icon: ui/icons/unit_action_icon_steal.png
@@ -159,6 +159,8 @@ verbs:
     targetColour: target
     targetOutlineColour: target_outline
     preExecute: true
+    targetted: true
+    directTarget: true
     scriptName: verbs/hire
 
   - id: groove_golf

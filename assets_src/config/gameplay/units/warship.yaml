@@ -46,6 +46,7 @@ unitClasses:
     tags:
       - warship
       - type.sea
+      - sailing
     verbs:
       - rescue
       - pirate_claim
@@ -57,4 +58,5 @@ unitClasses:
     passiveMultiplier: 1.5
     sightRange: 5
     isHiddenInCutsceneEditor: true
+    deathVerbId: death
 ...

@@ -46,6 +46,7 @@ unitClasses:
     tags:
       - trebuchet
       - type.ground.heavy
+      - wheels
     verbs:
       - rescue
       - load
@@ -56,6 +57,7 @@ unitClasses:
     sightRange: 4
     battleUnitCount: 1
     passiveMultiplier: 1.5
+    deathVerbId: death
 
 
 units:

@@ -208,6 +208,14 @@ decorations:
     animation:
       undefined: decoration/bigDeco/field06Layer02
       
+#Buildings
+  - id: building01
+    layer: units
+    snapToGrid: true
+    snapOffset: [12, 12]
+    animation:
+      undefined: decoration/unit/building01
+
 #Normal Deco
   - id: orangeField
     layer: ground

@@ -1,3 +1,5 @@
+local Wargroove = require "wargroove/wargroove"
+
 local Stats = {}
 Stats.meleeUnits = {
 	commander_emeric = true,
@@ -57,7 +59,8 @@ Stats.sightRangeList = {
 	crew = 0,
 	gate_no_los_blocker = 1,
 	wagon = 3,
-	balloon = 4
+	balloon = 4,
+	villager = 3
 }
 
 Stats.scoutList = {
@@ -110,5 +113,132 @@ function Stats.isTerrainBlocking(terrainName)
 	return Stats.visionBlockingList[terrainName] ~= nil
 end
 
+Stats.terrainCost = {
+	plains = {
+		walking = 1,
+		riding = 1,
+		flying = 1,
+		hovering = 1,
+		wheels = 2,
+		amphibious = 2
+	},
+	plains_alt = {
+		walking = 1,
+		riding = 1,
+		flying = 1,
+		hovering = 1,
+		wheels = 2,
+		amphibious = 2
+	},
+	road = {
+		walking = 1,
+		riding = 1,
+		flying = 1,
+		hovering = 1,
+		wheels = 1,
+		amphibious = 2
+	},
+	forest = {
+		walking = 2,
+		riding = 3,
+		flying = 1,
+		hovering = 1,
+		amphibious = 4
+	},
+	mountain = {
+		walking = 3,
+		flying = 1,
+		hovering = 1,
+	},
+	cobblestone = {
+		walking = 1,
+		riding = 1,
+		hovering = 1,
+		amphibious = 2
+	},
+	wall = {
+	},
+	bridge = {
+		walking = 1,
+		riding = 1,
+		flying = 1,
+		hovering = 1,
+		wheels = 1,
+		amphibious = 1,
+		sailing = 1
+	},
+	sea = {
+		sailing = 1,
+		flying = 1,
+		hovering = 1,
+		amphibious = 1
+	},
+	sea_alt = {
+		sailing = 1,
+		flying = 1,
+		hovering = 1,
+		amphibious = 1
+	},
+	ocean = {
+		sailing = 1,
+		flying = 1,
+		hovering = 1,
+		amphibious = 1
+	},
+	reef = {
+		sailing = 2,
+		flying = 1,
+		hovering = 1,
+		amphibious = 1
+	},
+	river = {
+		walking = 2,
+		riding = 4,
+		flying = 1,
+		hovering = 1,
+		amphibious = 1,
+		sailing = 1
+	},
+	beach = {
+		walking = 1,
+		riding = 1,
+		flying = 1,
+		hovering = 1,
+		amphibious = 1,
+		sailing = 2
+	},
+	street = {
+		walking = 1,
+		riding = 1,
+		flying = 1,
+		hovering = 1,
+		wheels = 1,
+		amphibious = 2
+	}
+}
+
+function Stats.getTerrainCost(terrainName, unitClassId)
+	local unitClass = Wargroove.getUnitClass(unitClassId)
+	local validTags = {
+		walking = true,
+		riding = true,
+		wheels = true,
+		flying = true,
+		hovering = true,
+		amphibious = true,
+		sailing = true
+	}
+	if Stats.terrainCost[terrainName] == nil then
+		return 100
+	end
+	for i,tag in pairs(unitClass.tags) do
+		if validTags[tag] ~= nil then
+			if Stats.terrainCost[terrainName][tag] ~= nil then
+				return Stats.terrainCost[terrainName][tag]
+			end
+		end
+	end
+	return 100
+end
 
 return Stats

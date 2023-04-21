@@ -62,8 +62,8 @@ tilesets:
         iconSprite: terrain_icons_Bridge
         infoScreenOffset: 75
         fillColour: '#2a2542'
-    primaryConnect: [undefined, bridge]
-    secondaryConnect: [plains, rough, plains_alt, cave_wall, forest, forest_no_hiding, forest_alt, forest_alt_no_hiding, brush, brush_invis, mountain, road, cave_road, wall, wall_no_blocking, cobblestone, carpet]
+    primaryConnect: [undefined, road, cave_road, street, bridge]
+    secondaryConnect: [plains, rough, plains_alt, cave_wall, forest, forest_no_hiding, forest_alt, forest_alt_no_hiding, brush, brush_invis, mountain, wall, wall_no_blocking, cobblestone, carpet]
     decayTo: ":below"
     tiles:
       - { x: 0, y: 0, adj: "!w !e" }

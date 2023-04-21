@@ -52,6 +52,7 @@ unitClasses:
     tags:
       - archer
       - type.ground.light
+      - walking
     verbs:
       - rescue
       - load
@@ -60,10 +61,11 @@ unitClasses:
       - throw_crown
       - healing_potion
       - wait_ai
+      - hire
     battleUnitCount: 4
     passiveMultiplier: 1.35
     sightRange: 5
-    deathVerbId: death_drop_crown
+    deathVerbId: death
 
 units:
   - class: archer

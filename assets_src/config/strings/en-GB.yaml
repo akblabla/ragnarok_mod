@@ -60,7 +60,9 @@ en-GB:
   terrain_description_brush_invis: Fields provides limited defense. Cavalry and wheeled units are slowed.
   terrain_name_cave_road: Cave Road
   terrain_description_cave_road: Underground roads speeds along wheeled units, but only provide limited defense.
-  
+  terrain_name_street: Street
+  terrain_description_street: Urban roads provide full movement for wheeled units.
+
   #Fog of war gimmick tiles
   terrain_description_forest_no_hiding: Forests are slow going, but provide good defence and a means of avoiding vehicles
   terrain_description_forest_alt_no_hiding: Forests are slow going, but provide good defence and a means of avoiding vehicles
@@ -250,10 +252,14 @@ en-GB:
   trigger_action_description_set_threat_at_location: "Set threat level at location."
   trigger_action_readable_set_threat_at_location: "Sets the threat level of {0} to {1}, sourcing the owner as {2} at {3} owned by {4}"
   
-  trigger_action_name_spawn_unit_closest_to_location: "Unit: Spawn as close as possible"
-  trigger_action_description_spawn_unit_closest_to_location: "Spawn as close as possible to target location."
-  trigger_action_readable_spawn_unit_closest_to_location: "Spawn {0} at {1} as close as possible to {4} for {2} (silent = {3})"
-  
+  trigger_action_name_give_bounty: "Unit: Give Bounty"
+  trigger_action_description_give_bounty: "Give Units a bounty."
+  trigger_action_readable_give_bounty: "Give units of type {0} at location {1} owned by player {2} a bounty."
+
+  trigger_action_name_spawn_unit_close: "Unit: Spawn as close as possible"
+  trigger_action_description_spawn_unit_close: "Spawn as close as possible to target location."
+  trigger_action_readable_spawn_unit_close: "Spawn {0} at {1} as close as possible for {2} (silent = {3})"
+
   trigger_action_name_move_location_to_next_structure: "Location: Move location to Next"
   trigger_action_description_move_location_to_next_structure: "Move location to next unit on the right."
   trigger_action_readable_move_location_to_next_structure: "Move location {0} to next {1} owned by {2} at {3} to the right."
@@ -294,9 +300,9 @@ en-GB:
   trigger_action_description_set_match_seed: "Set Match Seed."
   trigger_action_readable_set_match_seed: "Set Match Seed to {0}."
   
-  trigger_action_name_set_priority_target: "Unit: Set Priority Target"
-  trigger_action_description_set_priority_target: "Set Priority Target."
-  trigger_action_readable_set_priority_target: "Give units of type {0} at location {1} owned by player {2} priority orders to go to location {3}."
+  trigger_action_name_set_priority_target: "AI: Give Order"
+  trigger_action_description_set_priority_target: "Give Order."
+  trigger_action_readable_set_priority_target: "Give units of type {0} at location {1} owned by player {2} {4} orders to go to location {3}."
 
   trigger_action_name_set_hide_and_seek: "Stealth: Set Hide and Seek"
   trigger_action_description_set_hide_and_seek: "Set Hide and Seek."

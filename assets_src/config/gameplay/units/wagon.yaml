@@ -13,6 +13,7 @@ unitClasses:
       - wagon
       - type.ground.heavy
       - transport
+      - wheels
     verbs:
       - load
       - unload
@@ -21,6 +22,7 @@ unitClasses:
     loadCapacity: 1
     sightRange: 3
     transportTags: [ type.ground.light, type.amphibious, type.ground.hideout ]
+    deathVerbId: death
 
 
 units:

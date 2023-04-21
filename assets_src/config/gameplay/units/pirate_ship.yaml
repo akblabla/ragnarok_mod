@@ -46,6 +46,7 @@ unitClasses:
     tags:
       - pirate_ship
       - type.sea
+      - sailing
     startingStates:
       - id: gold
         value: 0

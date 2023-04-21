@@ -135,6 +135,7 @@ function Ragnarok.init()
 	}
 	Ragnarok.addHiddenTrigger(endBackActionsTrigger,true)
 	
+	Ragnarok.addAction(Ragnarok.setupGizmos,"start_of_match",false)
 	Ragnarok.addAction(Ragnarok.updateGizmos,"repeating",false)
 	Ragnarok.addAction(Ragnarok.updateGizmos,"repeating",true)
 	Ragnarok.addAction(Ragnarok.regenerateCrownBearer,"repeating",true)
@@ -191,17 +192,6 @@ function Ragnarok.addAction(action,occurence,front)
 		else
 			table.insert(actions.repeating.back,action)
 		end
-	end
-end
-
-function Ragnarok.updateGizmos(context)
-    for i, gizmo in ipairs(Wargroove.getGizmosAtLocation(location)) do
-		if gizmo.type == "pressure_plate" then
-			Ragnarok.gizmoActivateWhenStoodOn(gizmo)
-		end
-    end
-	for i, linkedLocation in ipairs(Ragnarok.getLinkedLocations()) do
-		Ragnarok.linkGizmoStateWithActivators(linkedLocation)
 	end
 end
 
@@ -312,8 +302,8 @@ function Ragnarok.hasCrown(unit)
 end
 
 function Ragnarok.removeCrown()
-	print("removeCrown function starts here")
-	print(Ragnarok.crownBearerID)
+--	print("removeCrown function starts here")
+--	print(Ragnarok.crownBearerID)
 	if Ragnarok.crownID ~= nil then
 		local crown = Wargroove.getUnitById(Ragnarok.crownID)
 		if crown ~= nil then
@@ -323,7 +313,7 @@ function Ragnarok.removeCrown()
 	end
 	if Ragnarok.crownBearerID then
 		local crownBearer = Wargroove.getUnitById(Ragnarok.crownBearerID)
-		print(dump(crownBearer,0))
+--		print(dump(crownBearer,0))
 		if crownBearer ~= nil then
 			for i, _stateKey in ipairs(crownBearer.state) do
 				if (_stateKey.key == crownStateKey) then
@@ -353,7 +343,7 @@ function Ragnarok.dropCrown(targetPos)
 	Ragnarok.crownID = Wargroove.spawnUnit(-1, {x = targetPos.x-100, y = targetPos.y-100}, "crown", false)
 	Wargroove.setVisibleOverride(Ragnarok.crownID, true)
 	--print("Spawned Crown")
-	Wargroove.spawnUnitEffect(Ragnarok.crownID, crownOffsetAnimation, "idle", startAnimation, true, false)
+	Wargroove.spawnUnitEffect(Ragnarok.crownID, crownOffsetAnimation, "idle", nil, true, false)
 	--print("Added Crown Effect")
 	
 	Ragnarok.crownPos = targetPos
@@ -364,20 +354,15 @@ function Ragnarok.dropCrown(targetPos)
 end
 
 function Ragnarok.grabCrown(unit)
-	print("grabCrown function starts here")
+--	print("grabCrown function starts here")
 	Ragnarok.removeCrown()
 	Wargroove.setUnitState(unit, crownStateKey, "")
 	if not Wargroove.hasUnitEffect(unit.id, crownAnimation) then
-		Wargroove.spawnUnitEffect(unit.id, crownAnimation, "idle", startAnimation, true, false)
+		Wargroove.spawnUnitEffect(unit.id, crownAnimation, "idle", nil, true, false)
 	end
 	Ragnarok.crownBearerID = unit.id
 	Wargroove.updateUnit(unit)
 	return
-end
-
-function Ragnarok.cantAttackBuildings(playerId)
-	if cantAttackBuildingsSet[tostring(playerId)] then return true end
-	return false
 end
 
 local activator = {}
@@ -405,8 +390,35 @@ local gizmoSoundMapOff = {
 	["lever"] = "switch"
 }
 
--- local gizmoSoundMapOn = {["pressure_plate"] = "cutscene/stoneScrape1",["drawbridge_left"] = "cutscene/drawbridgeDrop",["drawbridge_right"] = "cutscene/drawbridgeDrop",["drawbridge_top"] = "cutscene/drawbridgeDrop",["drawbridge_down"] = "cutscene/drawbridgeDrop"}
--- local gizmoSoundMapOff = {["pressure_plate"] = "cutscene/stoneScrape2",["drawbridge_left"] = "cutscene/drawbridgeRaise",["drawbridge_right"] = "cutscene/drawbridgeRaise",["drawbridge_top"] = "cutscene/drawbridgeRaise",["drawbridge_down"] = "cutscene/drawbridgeRaise"}
+function Ragnarok.setupGizmos(context)
+--	print("Ragnarok.setupGizmos(context)")
+    for i, gizmo in pairs(Wargroove.getGizmosAtLocation(nil)) do
+		if gizmo.type == "pressure_plate" then
+--			print("Found pressure_plate")
+			gizmoModeList[Ragnarok.generateGizmoKey(gizmo)] = "stoodOn"
+		end
+		if gizmo.type == "lever" then
+--			print("Found lever")
+			gizmoModeList[Ragnarok.generateGizmoKey(gizmo)] = "stoodOn"
+		end
+    end
+end
+
+
+function Ragnarok.updateGizmos(context)
+--	print("Ragnarok.updateGizmos(context)")
+    for i, gizmo in pairs(Wargroove.getGizmosAtLocation(nil)) do
+		if gizmoModeList[Ragnarok.generateGizmoKey(gizmo)] ~= nil then
+			if gizmoModeList[Ragnarok.generateGizmoKey(gizmo)] == "stoodOn" then
+--				print("Gizmo type: " .. gizmo.type)
+				Ragnarok.gizmoActivateWhenStoodOn(gizmo)
+			end
+		end
+    end
+	for i, linkedLocation in ipairs(Ragnarok.getLinkedLocations()) do
+		Ragnarok.linkGizmoStateWithActivators(linkedLocation)
+	end
+end
 
 function Ragnarok.linkGizmoStateWithActivators(linkedLocation)
 	local isActivated = true
@@ -426,7 +438,7 @@ function Ragnarok.linkGizmoStateWithActivators(linkedLocation)
 		Wargroove.waitTime(0.1)
 		Wargroove.playMapSound("cutscene/swordSheath", actuators[1].pos)
 		Wargroove.waitTime(0.3)
-		Ragnarok.setStates(actuators, isActivated, playSound)
+		Ragnarok.setStates(actuators, isActivated, true)
 		if isActivated and linkedLocation.locked then
 			for i, gizmo in ipairs(Wargroove.getGizmosAtLocation(linkedLocation.location)) do
 				lockedGizmos[Ragnarok.generateGizmoKey(gizmo)] = true
@@ -437,16 +449,21 @@ function Ragnarok.linkGizmoStateWithActivators(linkedLocation)
 end
 
 function Ragnarok.setState(gizmo, state, playSound)
+	-- print("Ragnarok.setState(gizmo, state, playSound)") 
+	-- print("Gizmo type: " .. gizmo.type)
+	-- print("New State: " .. tostring(state))
 	if lockedGizmos[Ragnarok.generateGizmoKey(gizmo)] == true then
 		return {changedState = false, soundPlayed = false}
 	end
+	print("Wasnt Locked") 
 	if playSound == nil then playSound = true end
 	--print("Ragnarok.setState(gizmo,state) starts here")
 	--print(invertedVisualGizmos[Ragnarok.generateGizmoKey(gizmo)]) 
 	local changedState = Ragnarok.getInternalGizmoState(gizmo) ~= state
 	local soundPlayed
-	--print(changedState)
+--	print(changedState)
 	if changedState then
+--		print("changedState") 
 		local soundOn = gizmoSoundMapOn[gizmo.type]
 		local soundOff = gizmoSoundMapOff[gizmo.type]
 		if soundOn and state then
@@ -457,6 +474,7 @@ function Ragnarok.setState(gizmo, state, playSound)
 		end
 	end
 	if playSound then
+--		print("playSound") 
 		Wargroove.playMapSound(soundPlayed, gizmo.pos)
 	end
 	local key = Ragnarok.generateGizmoKey(gizmo)
@@ -481,7 +499,8 @@ function Ragnarok.wouldAnyStatesChange(gizmos, state)
 end
 
 function Ragnarok.setStates(gizmos, state, playSound)
-	--print("Ragnarok.setStates starts here") 
+--	print("Ragnarok.setStates starts here") 
+--	print(state) 
 	if playSound == nil then playSound = true end
 	local changedState = false
 	local soundsPlayed = {}
@@ -548,11 +567,14 @@ function Ragnarok.isActivator(gizmo)
 end
 
 function Ragnarok.gizmoActivateWhenStoodOn(gizmo)
+--	print("gizmoActivateWhenStoodOn()")
 	Ragnarok.setActivator(gizmo, true)
 	local unit = Wargroove.getUnitAt(gizmo.pos)
 	local pos = Ragnarok.getCrownPos()
 	local isCrown = pos and (pos.x == gizmo.pos.x) and (pos.y == gizmo.pos.y)
 	local isPressed = isCrown or unit ~= nil
+--	print(isPressed)
+--	print(gizmo.type)
 	Ragnarok.setState(gizmo,isPressed)
 end
 

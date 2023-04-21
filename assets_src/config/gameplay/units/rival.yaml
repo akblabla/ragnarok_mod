@@ -13,6 +13,7 @@ unitClasses:
     tags:
       - archer
       - type.ground.light
+      - walking
     verbs:
       - rescue
       - load
@@ -25,7 +26,7 @@ unitClasses:
     isRecruitable: false
     isHidden: true
     sightRange: 5
-    deathVerbId: death_drop_crown
+    deathVerbId: death
 
 units:
   - class: rival

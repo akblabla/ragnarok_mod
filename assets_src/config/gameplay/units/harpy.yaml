@@ -53,6 +53,7 @@ unitClasses:
     tags:
       - harpy
       - type.air
+      - flying
     verbs:
       - rescue
       - pick_up_crown
@@ -63,6 +64,7 @@ unitClasses:
     passiveMultiplier: 1.25
     sightRange: 6
     canSeeOverTerrain: true
+    deathVerbId: death
 
 
 units:

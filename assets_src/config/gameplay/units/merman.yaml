@@ -55,10 +55,11 @@ unitClasses:
     tags:
       - merman
       - type.amphibious
+      - amphibious
     battleUnitCount: 4
     passiveMultiplier: 2
     sightRange: 5
-    deathVerbId: death_drop_crown
+    deathVerbId: death
 
 
 units:

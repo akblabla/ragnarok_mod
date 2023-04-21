@@ -28,6 +28,7 @@ unitClasses:
       - witch
       - type.air
       - spellcaster
+      - flying
     verbs:
       - rescue
       - spell_hex
@@ -39,5 +40,6 @@ unitClasses:
     passiveMultiplier: 2.0
     sightRange: 6
     canSeeOverTerrain: true
+    deathVerbId: death
 
 ...

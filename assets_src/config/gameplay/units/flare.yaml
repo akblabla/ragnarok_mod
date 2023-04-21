@@ -15,6 +15,7 @@ unitClasses:
       - summon
       - type.air
       - type.scout
+      - flying
     battleUnitCount: 1
     canAttack: false
     canSeeOverTerrain: true
@@ -22,6 +23,7 @@ unitClasses:
     classIcon: unit_icons_summon
     scout: true
     sightRange: 5
+    deathVerbId: death
 
 
 units:

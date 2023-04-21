@@ -1,11 +1,10 @@
 local Wargroove = require "wargroove/wargroove"
-local Verb = require "wargroove/verb"
-local Combat = require "wargroove/combat"
-local Ragnarok = require "initialized/ragnarok"
+local Death = require "verbs/death"
 
-local DeathDropCrown = Verb:new()
+local DeathDropCrown = {}
 
-function DeathDropCrown:execute(unit, targetPos, strParam, path)
+local function execute(me, unit, targetPos, strParam, path)
+	local Ragnarok = require "initialized/ragnarok"
 	local crownPos = Ragnarok.getCrownPos()
 	if crownPos and crownPos.x == unit.pos.x and crownPos.y == unit.pos.y then
 		Wargroove.waitTime(0.3)
@@ -13,6 +12,12 @@ function DeathDropCrown:execute(unit, targetPos, strParam, path)
 		Wargroove.waitTime(0.2)
 	end
 end
+
+function DeathDropCrown.init()
+	Death.addDeathVerb(execute)
+end
+
+
 
 
 return DeathDropCrown

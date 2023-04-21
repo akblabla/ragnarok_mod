@@ -54,6 +54,7 @@ unitClasses:
     tags:
       - flagship
       - type.sea
+      - sailing
     battleUnitCount: 1
     passiveMultiplier: 1
     sightRange: 5
@@ -61,6 +62,7 @@ unitClasses:
     isCommander: true
     grooveId: groove_broadside
     isHiddenInCutsceneEditor: true
+    deathVerbId: death
 
 units:
   - class: commander_flagship_wulfar

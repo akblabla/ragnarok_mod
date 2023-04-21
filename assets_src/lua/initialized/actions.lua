@@ -6,6 +6,7 @@ local Recruit = require "initialized/recruit"
 local AIManager = require "initialized/ai_manager"
 local StealthManager = require "initialized/stealth_manager"
 local VisionTracker = require "initialized/vision_tracker"
+local Pathfinding = require "util/pathfinding"
 
 local Actions = {}
 
@@ -44,7 +45,7 @@ function Actions.populate(dst)
 	dst["set_threat_at_location"] = Actions.setThreatAtLocation
 	dst["spawn_unit"] = Actions.spawnUnit
 	dst["spawn_unit_in_transport"] = Actions.spawnUnitInsideTransport
-	dst["spawn_unit_closest_to_location"] = Actions.spawnUnitClosestToLocation
+	dst["spawn_unit_close"] = Actions.spawnUnitClose
 	dst["move_location_to_next_structure"] = Actions.moveLocationToNextStructure
 	dst["force_action"] = Actions.forceAction
 	dst["place_crown"] = Actions.placeCrown
@@ -65,6 +66,7 @@ function Actions.populate(dst)
 	dst["set_hide_and_seek"] = Actions.setHideAndSeek
     dst["set_position_as_goal"] = Actions.setPositionAsGoal
     dst["set_current_position_as_goal"] = Actions.setCurrentPositionAsGoal
+    dst["give_bounty"] = Actions.giveBounty
 	--Hidden actions
 	dst["run_start_front_actions"] = Actions.runStartFrontActions
 	dst["run_start_back_actions"] = Actions.runStartBackActions
@@ -72,8 +74,6 @@ function Actions.populate(dst)
 	dst["run_repeat_back_actions"] = Actions.runRepeatBackActions
 	dst["run_end_front_actions"] = Actions.runEndFrontActions
 	dst["run_end_back_actions"] = Actions.runEndBackActions
-	dst["setup_gizmos"] = Actions.setupGizmos
-	dst["update_gizmos"] = Actions.updateGizmos
 	dst["reset_occurence_list"] = Actions.resetOccurenceList
 	dst["reset_rescue_list"] = Actions.resetRescueList
 end
@@ -102,8 +102,17 @@ local function findCentreOfLocation(location)
     end
     centre.x = centre.x / #(location.positions)
     centre.y = centre.y / #(location.positions)
-
-    return centre
+    local bestSqrDist = 100^2
+    local bestPos = { x = 0, y = 0 }
+    for i, pos in ipairs(location.positions) do
+        local sqrDist = (pos.x-centre.x)^2+(pos.y-centre.y)^2
+        if sqrDist < bestSqrDist then
+            bestPos.x = pos.x
+            bestPos.y = pos.y
+            bestSqrDist = sqrDist
+        end
+    end
+    return bestPos
 end
 
 local function spawnUnitCompareBestLocation(a, b)
@@ -113,20 +122,6 @@ local function spawnUnitCompareBestLocation(a, b)
 	return a.pos.x < b.pos.x
 end
 --
-
-function Actions.setupGizmos(context)
-end
-
-function Actions.updateGizmos(context)
-    for i, gizmo in ipairs(Wargroove.getGizmosAtLocation(location)) do
-		if gizmo.type == "pressure_plate" then
-			Ragnarok.gizmoActivateWhenStoodOn(gizmo)
-		end
-    end
-	for i, linkedLocation in ipairs(Ragnarok.getLinkedLocations()) do
-		Ragnarok.linkGizmoStateWithActivators(linkedLocation)
-	end
-end
 
 function Actions.setNoBuildingAttacking(context)
     local targetPlayer = context:getPlayerId(0)
@@ -352,11 +347,50 @@ function Actions.setMatchSeed(context)
 	Wargroove.setMatchSeed(seed)
 end
 function Actions.setPriorityTarget(context)
-    -- "Give units of type {0} at location {1} owned by player {2} priority orders to go to location {3}."
+    -- "Give units of type {0} at location {1} owned by player {2} {4} orders to go to location {3}."
     local targetPos = findCentreOfLocation(context:getLocation(3))
+    local order = context:getString(4)
     local units = context:gatherUnits(2, 0, 1)
     for i, unit in ipairs(units) do
-        AIManager.moveOrder(unit.id,targetPos)
+        if order == "attack move" then
+            AIManager.attackMoveOrder(unit.id,targetPos)
+        end
+        if order == "move" then
+            AIManager.moveOrder(unit.id,targetPos)
+        end
+        if order == "road move" then
+            AIManager.roadMoveOrder(unit.id,targetPos)
+        end
+    end
+end
+
+local bountyMap = {
+    soldier = 50,
+    spearman = 100,
+    mage = 125,
+    archer = 150,
+    knight = 150,
+    rifleman = 200,
+    ballista = 200,
+    balloon = 100,
+    harpoonship = 150,
+    harpy = 150,
+    merman = 100,
+    travelboat = 50,
+    trebuchet = 200,
+    wagon = 100,
+    warship = 200,
+    witch = 150
+}
+
+function Actions.giveBounty(context)
+    -- "Give units of type {0} at location {1} owned by player {2} a bounty."
+    local units = context:gatherUnits(2, 0, 1)
+    for i, unit in ipairs(units) do
+        if bountyMap[unit.unitClassId] ~= nil then
+            Wargroove.setUnitState(unit, "gold", bountyMap[unit.unitClassId])
+            Wargroove.updateUnit(unit)
+        end
     end
 end
 
@@ -646,59 +680,25 @@ function Actions.spawnUnit(context)
     end
 end
 
-function Actions.spawnUnitClosestToLocation(context)
-    -- "Spawn {0} at {1} as close as possible to {4} for {2} (silent = {3})"
+function Actions.spawnUnitClose(context)
+    -- "Spawn {0} at {1} as close as possible for {2} (silent = {3})"
     local unitClassId = context:getUnitClass(0)
     local location = context:getLocation(1)
     local playerId = context:getPlayerId(2)
     local silent = context:getBoolean(3)
-    local targetLocation = context:getLocation(4)
 
-    local candidates = {}
-
-    local targetCenterPos = findCentreOfLocation(targetLocation)
-    if location == nil then
-        -- No location, use centre of map
-        local mapSize = Wargroove.getMapSize()
-        for x = 0, mapSize.x - 1 do
-            for y = 0, mapSize.y - 1 do
-                local pos = { x = x, y = y }
-                if Wargroove.getUnitIdAt(pos) == -1 and Wargroove.canStandAt(unitClassId, pos) then
-                    local dx = x - targetCenterPos.x
-                    local dy = y - targetCenterPos.y
-                    local dist = math.abs(dx) + math.abs(dy)
-                    table.insert(candidates, { pos = pos, dist = dist })
-                end
-            end
-        end
-    else
-
-        -- All candidates
-        for i, pos in ipairs(location.positions) do
-            if Wargroove.getUnitIdAt(pos) == -1 and Wargroove.canStandAt(unitClassId, pos) then
-                local dx = pos.x - targetCenterPos.x
-                local dy = pos.y - targetCenterPos.y
-                local dist = math.abs(dx) + math.abs(dy)
-                table.insert(candidates, { pos = pos, dist = dist })
-            end
-        end
-    end
-
-    -- Sort candidates
-    table.sort(candidates, spawnUnitCompareBestLocation)
-
-    -- Spawn at the best candidate
-    if #candidates > 0 then
-        local pos = candidates[1].pos
+    local targetCenterPos = findCentreOfLocation(location)
+    local pos = Pathfinding.findClosestOpenSpot(unitClassId,targetCenterPos)
+    if pos ~= nil then
         if not silent then
             Wargroove.trackCameraTo(pos)
         end
-		local mapSize = Wargroove.getMapSize()
-		if pos.x>(mapSize.x/2) then
-			pos.facing = 1
-		else
-			pos.facing = 0
-		end
+        local mapSize = Wargroove.getMapSize()
+        if pos.x>(mapSize.x/2) then
+            pos.facing = 1
+        else
+            pos.facing = 0
+        end
         Wargroove.spawnUnit(playerId, pos, unitClassId, false)
         Wargroove.clearCaches()
         if (not silent) and Wargroove.canCurrentlySeeTile(pos) then
@@ -767,16 +767,15 @@ function Actions.doForceAction(context, queue)
 end
 local unitExpressionMap = {}
 function Actions.dialogueBoxUnit(context)
-    -- "Display dialogue box from {0} at {1} for {2} being {3} saying {4} with colour {5}."
+    -- "Display dialogue box from {0} at {1} for {2} being {3} saying {4}"
     local units = context:gatherUnits(2, 0, 1)
-	local unitType = context:getString(0)
-	local colour = context:getPlayerColour(5)
 	local iter = pairs(units)
 	local unit = iter(units)
 	if unit ~= nil then
---		Wargroove.highlightLocation(context:getLocation(0).id, "arrow", context:getPlayerColour(5), false, false, false, false)
+ --       Wargroove.highlightLocation(location.id, "arrow", "red", false, false, false, false, false)
+        Wargroove.trackCameraTo(unit.pos)
 	end
-    Wargroove.showDialogueBox(context:getString(3), "mercia", context:getString(2), "")
+    Wargroove.showDialogueBox(context:getString(3), "mercia", context:getString(4), "")
 end
 
 return Actions

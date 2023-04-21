@@ -48,6 +48,7 @@ unitClasses:
       - turtle
       - type.sea
       - type.scout
+      - sailing
     verbs:
       - rescue
       - pick_up_crown
@@ -58,4 +59,5 @@ unitClasses:
     passiveMultiplier: 1.5
     sightRange: 5
     scout: true
+    deathVerbId: death
 ...

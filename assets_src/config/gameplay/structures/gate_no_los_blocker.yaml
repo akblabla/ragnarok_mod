@@ -9,7 +9,6 @@ unitClasses:
     isStructure: true
     canReinforce: false
     canBeReinforced: false
-    hostileNeutral: true
     damageMultiplier: 0.5
     movement: indoor_building
     garrisonUnit: ""

@@ -12,6 +12,7 @@ unitClasses:
       - travelboat
       - transport
       - type.sea
+      - sailing
     verbs:
       - rescue
       - unload
@@ -24,4 +25,5 @@ unitClasses:
     sightRange: 3
     transportTags: [ type.ground.light, type.ground.heavy, type.amphibious, type.ground.hideout ]
     isHiddenInCutsceneEditor: true
+    deathVerbId: death
 ...

@@ -53,6 +53,7 @@ unitClasses:
       - mage
       - type.ground.light
       - spellcaster
+      - walking
     verbs:
       - rescue
       - load
@@ -62,10 +63,12 @@ unitClasses:
       - throw_crown
       - healing_potion
       - wait_ai
+      - hire
     battleUnitCount: 4
     passiveMultiplier: 1.5
     sightRange: 5
     deathVerbId: death_drop_crown
+    deathVerbId: death
 
 units:
   - class: mage

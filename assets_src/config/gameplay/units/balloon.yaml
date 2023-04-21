@@ -12,6 +12,7 @@ unitClasses:
     tags:
       - balloon
       - type.air
+      - flying
     verbs:
       - rescue
       - unload
@@ -24,6 +25,7 @@ unitClasses:
     canSeeOverTerrain: true
     sightRange: 4
     transportTags: [ type.ground.light, type.amphibious, type.ground.hideout ]
+    deathVerbId: death
 
 
 units:

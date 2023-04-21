@@ -59,10 +59,12 @@ unitClasses:
       - commander
       - type.ground.light
       - tall
+      - walking
     battleUnitCount: 1
     sightRange: 5
     isCommander: true
     grooveId: golf
+    deathVerbId: death
 
 
 units:

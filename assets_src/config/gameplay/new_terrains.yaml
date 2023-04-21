@@ -15,7 +15,7 @@ terrains:
     visionBlocking: true
     fowCover: true
     tilesets:
-      0: [plains, plains_alt]
+      0: [plains, plains_alt, street]
       1: river
       2: mangrove
       
@@ -39,7 +39,7 @@ terrains:
     movementGroupType: water
     placeable: true
     tilesets:
-      0: [plains, plains_alt]
+      0: [plains, plains_alt, street]
       1: sea_alt
 
   - id: cave_road
@@ -367,7 +367,7 @@ terrains:
     placeable: true
     hidden: true
     tilesets:
-      0: [plains, rough, plains_alt]
+      0: [plains, rough, plains_alt, street]
       1: cobblestone
       2: wall_no_blocking
       
@@ -411,4 +411,35 @@ terrains:
     tilesets:
       0: [plains, plains_alt]
       1: forest_alt_no_hiding
+
+  - id: street
+    name: terrain_name_street
+    defenceBonus: 1
+    movementCost:
+      walking: 1
+      riding: 1
+      hovering: 1
+      flying: 1
+      wheels: 1
+      amphibious: 2
+      land_building: 1
+      indoor_building: 1
+    movementGroupType: land
+    placeable: true
+    tilesets:
+      0: street
+
+  - id: building
+    name: terrain_name_forest
+    defenceBonus: 0
+    movementCost:
+      flying: 1
+      hovering: 1
+    movementGroupType: land
+    placeable: true
+    visionBlocking: true
+    tilesets:
+      0: [plains, plains_alt, street]
+      1: building
+
 ...

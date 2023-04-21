@@ -22,29 +22,6 @@ local setupRan = false
 local AIManager = {}
 local AITargets = {}
 
-local function movementCost(pos, unitId)
-   local stranger = Wargroove.getUnitAt(pos)
-   local unit = Wargroove.getUnitById(unitId)
-   if stranger ~= nil and unit ~= nil and Wargroove.areEnemies(unit.playerId, stranger.playerId) then
-      return 1000
-   end
-   return Wargroove.getTerrainMovementCostAt(pos)
-end
-
-local function roadMovementCost(pos, unitId)
-   local stranger = Wargroove.getUnitAt(pos)
-   local unit = Wargroove.getUnitById(unitId)
-   if stranger ~= nil and unit ~= nil and Wargroove.areEnemies(unit.playerId, stranger.playerId) then
-      return 1000
-   end
-   local tileCost = Wargroove.getTerrainMovementCostAt(pos)
-   local terrainName = Wargroove.getTerrainNameAt(pos)
-   if not (terrainName == "road" or terrainName == "bridge") then
-      tileCost = tileCost+1
-   end
-   return tileCost
-end
-
 function AIManager.init()
 	Ragnarok.addAction(AIManager.update,"repeating",true)
 end
@@ -61,11 +38,11 @@ function AIManager.getNextPosition(unitId)
    end
    local unit = Wargroove.getUnitById(unitId)
    if AITargets[unitId].order == "road_move" then
-      local next, distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].pos,roadMovementCost)
+      local next, distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].pos,true)
 	   return next, distMoved, dist
    end
    if AITargets[unitId].order == "move" then
-      local next, distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].pos,movementCost)
+      local next, distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].pos,false)
 	   return next, distMoved, dist
    end
    if AITargets[unitId].order == "attack_move" then
@@ -81,30 +58,28 @@ function AIManager.getNextPosition(unitId)
          end
       end
       if canSeeEnemy then
-         print("can see enemy :)")
          return nil, false
       else
-         print("can't see enemy :(")
-         local next,distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].pos)
+         local next,distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].pos,false)
          return next, distMoved, dist
       end
    end
    return nil, 0,0
 end
 
-function AIManager.getNextPositionTowardsTarget(unitId, pos, mCost)
+function AIManager.getNextPositionTowardsTarget(unitId, pos, roadBoost)
    local unit = Wargroove.getUnitById(unitId)
-   local path = Pathfinding.AStar(unit.pos, pos, mCost, unitId)
+   local path = Pathfinding.AStar(unit.playerId, unit.unitClassId, unit.pos, pos, roadBoost)
    --path[1] = nil
    local movePoints = unit.unitClass.moveRange
    local target = unit.pos
    local reachedEnd = false
    for i,tile in pairs(path) do
-      movePoints = movePoints-movementCost(tile,unitId)
+      movePoints = movePoints-Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unit.unitClassId)
       if i == #path then
          reachedEnd = true
       end
-      if Wargroove.getTerrainMovementCostAt(tile) > unit.unitClass.moveRange then
+      if Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unit.unitClassId) > unit.unitClass.moveRange then
          reachedEnd = true
       end
       if movePoints<0 then
@@ -116,12 +91,12 @@ function AIManager.getNextPositionTowardsTarget(unitId, pos, mCost)
    end
    local dist = 0
    for i,tile in pairs(path) do
-      if (Wargroove.getTerrainMovementCostAt(tile)<100) then
-         dist = dist+Wargroove.getTerrainMovementCostAt(tile)
+      if Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unit.unitClassId)<100 then
+         dist = dist+Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unit.unitClassId)
          if i == #path then
             break
          end
-         if Wargroove.getTerrainMovementCostAt(tile) > unit.unitClass.moveRange then
+         if Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unit.unitClassId) > unit.unitClass.moveRange then
             break
          end
       else

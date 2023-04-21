@@ -1,0 +1,139 @@
+---
+
+unitClasses:
+  - id: villager
+    name: unit_class_name_villager
+    cost: 50
+    movement: walking
+    moveRange: 3
+    damageMultiplier: 1
+    canBeReinforced: false
+    aiPriority: 0.5
+    weapons: []
+    verbs:
+      - load
+      - wait_ai
+    tags:
+      - villager
+      - type.ground.light
+      - walking
+    battleUnitCount: 4
+    sightRange: 3
+    isRecruitable: false
+    palettePriority: 1
+    deathVerbId: death
+
+
+units:
+  - class: villager
+    faction: cherrystone
+    name: unit_name_villager_cherrystone
+    mapAnimation: units/villager/cherrystone/map_villager_cherrystone
+    battleAnimation: units/villager/cherrystone/battle_villager_cherrystone
+    battleAnimationRiver: fx/river_overlay/battle_villager_river
+    smallPortrait: units/villager/cherrystone/portrait_villager_cherrystone_small.png
+    mediumPortrait: units/villager/cherrystone/portrait_villager_cherrystone_medium.png
+    mapSpeed: 4.0
+    grabPos: [13, 14]
+    sounds:
+      death: soldierDieRed
+      deathMap: unitDie
+      run: infantryLightEntry
+      runMap: infantryLightMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    shouts:
+      villager_male_shout1: cutscene/villagerScreamMale1
+      villager_male_shout2: cutscene/villagerScreamMale2
+      villager_female_shout1: cutscene/villagerScreamFemale1
+      villager_female_shout2: cutscene/villagerScreamFemale2
+    emotes:
+      idle: idle
+      cower: emote_cower
+      idle_gold: emote_idle_gold
+      throw_gold: emote_throw_gold
+    alternativeRuns:
+      - id: run_gold
+
+
+  - class: villager
+    faction: felheim
+    name: unit_name_villager_felheim
+    mapAnimation: units/villager/felheim/map_villager_felheim
+    battleAnimation: units/villager/felheim/battle_villager_felheim
+    battleAnimationRiver: fx/river_overlay/battle_villager_river
+    smallPortrait: units/villager/felheim/portrait_villager_felheim_small.png
+    mediumPortrait: units/villager/felheim/portrait_villager_felheim_medium.png
+    mapSpeed: 4.0
+    grabPos: [13, 14]
+    sounds:
+      death: soldierDieBlue
+      deathMap: unitDie
+      run: infantryLightEntry
+      runMap: infantryLightMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    shouts:
+      soldier_blue_shout1: soldierShoutBlue1
+      soldier_blue_shout2: soldierShoutBlue2
+    emotes:
+      idle: idle
+      cower: emote_cower
+
+
+  - class: villager
+    faction: heavensong
+    name: unit_name_villager_heavensong
+    mapAnimation: units/villager/heavensong/map_villager_heavensong
+    battleAnimation: units/villager/heavensong/battle_villager_heavensong
+    battleAnimationRiver: fx/river_overlay/battle_villager_river
+    smallPortrait: units/villager/heavensong/portrait_villager_heavensong_small.png
+    mediumPortrait: units/villager/heavensong/portrait_villager_heavensong_medium.png
+    mapSpeed: 4.0
+    grabPos: [13, 14]
+    sounds:
+      death: soldierDieRed
+      deathMap: unitDie
+      run: infantryLightEntry
+      runMap: infantryLightMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    shouts:
+      villager_male_shout1: cutscene/villagerScreamMale1
+      villager_male_shout2: cutscene/villagerScreamMale2
+      villager_female_shout1: cutscene/villagerScreamFemale1
+      villager_female_shout2: cutscene/villagerScreamFemale2
+    emotes:
+      idle: idle
+      cower: emote_cower
+
+  - class: villager
+    faction: floran
+    name: unit_name_villager_floran
+    mapAnimation: units/villager/floran/map_villager_floran
+    battleAnimation: units/villager/floran/battle_villager_floran
+    battleAnimationRiver: fx/river_overlay/battle_villager_river
+    smallPortrait: units/villager/floran/portrait_villager_floran_small.png
+    mediumPortrait: units/villager/floran/portrait_villager_floran_medium.png
+    mapSpeed: 4.0
+    grabPos: [13, 14]
+    sounds:
+      death: soldierDieGreen
+      deathMap: unitDie
+      run: infantryLightEntry
+      runMap: infantryLightMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    shouts:
+      soldier_green_shout1: soldierShoutGreen1
+      soldier_green_shout2: soldierShoutGreen2
+      soldier_green_shout3: soldierShoutGreen3
+      soldier_green_shout4: soldierShoutGreen4
+      soldier_green_shout5: soldierShoutGreen5
+      soldier_green_shout6: soldierShoutGreen6
+    emotes:
+      idle: idle
+      cower: emote_cower
+
+
+...

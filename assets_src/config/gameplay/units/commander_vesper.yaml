@@ -54,14 +54,16 @@ unitClasses:
       - throw_crown
       - healing_potion
       - wait_ai
+      - hire
     tags:
       - commander
       - type.ground.light
+      - walking
     battleUnitCount: 1
     sightRange: 5
     isCommander: true
     grooveId: smoke_screen
-    deathVerbId: death_drop_crown
+    deathVerbId: death
 
 
 units:

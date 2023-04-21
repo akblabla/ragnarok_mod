@@ -50,12 +50,14 @@ unitClasses:
       - throw_crown
       - healing_potion
       - wait_ai
+      - hire
     tags:
       - spearman
       - type.ground.light
+      - walking
     battleUnitCount: 4
     sightRange: 4
-    deathVerbId: death_drop_crown
+    deathVerbId: death
     passiveMultiplier: 1.5
     
 units:

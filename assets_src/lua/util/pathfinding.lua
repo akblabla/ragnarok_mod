@@ -1,5 +1,5 @@
 local BinaryHeap = require "util/binary_heap"
-
+local Wargroove = require "wargroove/wargroove"
 local Pathfinding = {}
 
 Pathfinding.__index = Pathfinding
@@ -7,13 +7,35 @@ local function generatePosKey(pos)
 	return pos.x*1000+pos.y --Should work as long as people don't make maps taller than 1000 tiles.
 end
 local function revertPosKey(posKey)
-	return {x = math.floor(posKey/1000), y = posKey%1000} --Should work as long as people don't make maps taller than 1000 tiles.
+	return {x = math.floor(posKey/1000), y = math.floor(posKey%1000)} --Should work as long as people don't make maps taller than 1000 tiles.
 end
 local directions = {{x = 1,y = 0},{x = -1,y = 0},{x = 0,y = 1},{x = 0,y = -1}}
 
 function Pathfinding.guess(cur, dest)
-  return math.abs(cur.x-dest.x)+math.abs(cur.y-dest.y)
+  local newYorkDistance = math.abs(cur.x-dest.x)+math.abs(cur.y-dest.y)
+  return newYorkDistance*1
 end
+
+
+function Pathfinding.tileCost(unitClassId,pos, playerId, roadBoost)
+    local stranger = Wargroove.getUnitAt(pos)
+    local Stats = require "util/stats"
+    local Wargroove = require "wargroove/wargroove"
+    local mapSize = Wargroove.getMapSize()
+    if not (pos.x >= 0 and pos.y >= 0 and pos.x < mapSize.x and pos.y < mapSize.y) then
+        return 1000
+    end
+    if playerId ~= nil and stranger ~= nil and Wargroove.areEnemies(playerId, stranger.playerId) then
+        return 100
+    end
+    local tileCost = Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unitClassId)
+    local terrainName = Wargroove.getTerrainNameAt(pos)
+    if roadBoost and not (terrainName == "road" or terrainName == "bridge") then
+        tileCost = tileCost+1
+    end
+    return tileCost
+end
+
 
 function Pathfinding.reconstructPath(cameFrom, dest)
   local pathLength = 0
@@ -36,7 +58,7 @@ function Pathfinding.reconstructPath(cameFrom, dest)
   return path
 end
 
-function Pathfinding.AStar(start, dest, edgeFunc, data)
+function Pathfinding.AStar(playerId, unitClassId, start, dest, roadBoost)
   local openSet = BinaryHeap()
   local cameFrom = {}
   local startKey = generatePosKey(start)
@@ -58,7 +80,7 @@ function Pathfinding.AStar(start, dest, edgeFunc, data)
     for i,dir in ipairs(directions) do
       local newPos = {x = currentPos.x+dir.x,y = currentPos.y+dir.y}
       local newPosKey = generatePosKey(newPos)
-      local tentative_gScore = gScore[currentPosKey] + edgeFunc(newPos, data)
+      local tentative_gScore = gScore[currentPosKey] + Pathfinding.tileCost(unitClassId,newPos,playerId, roadBoost)
       if gScore[newPosKey] == nil or tentative_gScore<gScore[newPosKey] then
         cameFrom[newPosKey] = currentPos
         gScore[newPosKey] = tentative_gScore
@@ -74,5 +96,32 @@ function Pathfinding.AStar(start, dest, edgeFunc, data)
   return Pathfinding.reconstructPath(cameFrom, bestFScorePos.pos)
 end
 
+function Pathfinding.findClosestOpenSpot(unitClassId, start)
+  local openSet = BinaryHeap()
+  local startKey = generatePosKey(start)
+  local gScore = {}
+  gScore[startKey] = 0
+
+  openSet:insert(0,startKey)
+  while openSet:empty() == false do
+    local currentPosKey
+    _,currentPosKey = openSet:pop()
+    local currentPos = revertPosKey(currentPosKey)
+    if Wargroove.getUnitAt(currentPos) == nil then
+      return currentPos
+    end
+    for i,dir in ipairs(directions) do
+      local newPos = {x = currentPos.x+dir.x,y = currentPos.y+dir.y}
+      local newPosKey = generatePosKey(newPos)
+      local tentative_gScore = gScore[currentPosKey] + Pathfinding.tileCost(unitClassId,newPos,nil, false)
+      if gScore[newPosKey] == nil and newPos.x>=0 and newPos.y>=0 and newPos.x<Wargroove.getMapSize().x and newPos.y<Wargroove.getMapSize().y then
+        gScore[newPosKey] = tentative_gScore
+        openSet:insert(gScore[newPosKey],newPosKey)
+      end
+    end
+
+  end
+  return nil
+end
 
 return Pathfinding
