@@ -316,10 +316,13 @@ en-GB:
   trigger_action_description_set_current_position_as_goal: "Set Guard Current Position."
   trigger_action_readable_set_current_position_as_goal: "Make units of type {0} at location {1} owned by player {2} stand guard."
 
-
   trigger_action_name_spawn_unit_in_transport: "Unit: Spawn Inside Transport"
   trigger_action_description_spawn_unit_in_transport: "Spawn Inside Transport."
   trigger_action_readable_spawn_unit_in_transport: "Give units of type {0} at location {1} owned by player {2} unit type {3} owned by player {4} with {5} hp."
+
+  trigger_action_name_force_move: "Unit: Force Move"
+  trigger_action_description_force_move: "Force Move."
+  trigger_action_readable_force_move: "Move units of type {0} at location {1} owned by player {2} to location {3}."
 
   #backgrounds
   ui_cutscene_background_deck: "Ship Deck"

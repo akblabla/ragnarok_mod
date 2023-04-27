@@ -46,45 +46,90 @@ function Pathfinding.reconstructPath(cameFrom, dest)
     currentPos = cameFrom[currentPosKey]
     currentPosKey = generatePosKey(currentPos)
     pathLength = pathLength + 1
-  end
-  currentPos = dest
-  currentPosKey = generatePosKey(currentPos)
-  while cameFrom[currentPosKey] ~= nil do
     path[pathLength] = currentPos
-    pathLength = pathLength - 1
-    currentPos = cameFrom[currentPosKey]
-    currentPosKey = generatePosKey(currentPos)
   end
+  -- currentPos = dest
+  -- currentPosKey = generatePosKey(currentPos)
+  -- while cameFrom[currentPosKey] ~= nil do
+  --   path[pathLength] = currentPos
+  --   pathLength = pathLength - 1
+  --   currentPos = cameFrom[currentPosKey]
+  --   currentPosKey = generatePosKey(currentPos)
+  -- end
   return path
 end
 
-function Pathfinding.AStar(playerId, unitClassId, start, dest, roadBoost)
+function Pathfinding.forceMoveAlongPath(unitId, path, facing)
+  local unit = Wargroove.getUnitById(unitId)
+  local lastTile = unit.pos
+  for i,tile in ipairs(path) do
+    local delta = {x = tile.x-lastTile.x, y = tile.y-lastTile.y}
+    if delta.y == 1 then
+      Wargroove.playUnitAnimation(unitId,"run_down")
+    elseif delta.y == -1 then
+      Wargroove.playUnitAnimation(unitId,"run_up")
+    else
+      Wargroove.playUnitAnimation(unitId,"run")
+    end
+    if delta.x == 1 then
+      Wargroove.setFacingOverride(unitId,"right")
+    elseif delta.x == -1 then
+      Wargroove.setFacingOverride(unitId,"left")
+    end
+    print("tile")
+    print(i)
+    print(dump(tile,0))
+    Wargroove.moveUnitToOverride(unitId, unit.pos, tile.x-unit.pos.x, tile.y-unit.pos.y, 3)
+    while Wargroove.isLuaMoving(unitId) do
+      coroutine.yield()
+    end
+    lastTile = tile
+  end
+  unit.pos = { x = path[#path].x, y = path[#path].y }
+  Wargroove.unsetFacingOverride(unitId)
+  Wargroove.updateUnit(unit)
+  Wargroove.playUnitAnimation(unitId,"hit")
+end
+
+function Pathfinding.AStar(playerId, unitClassId, start, destList, roadBoost)
   local openSet = BinaryHeap()
+  if destList == nil then
+    return {start}
+  end
+  if destList.x ~= nil then
+    destList = {{x = destList.x, y = destList.y}}
+  end
   local cameFrom = {}
-  local startKey = generatePosKey(start)
-  local destKey = generatePosKey(dest)
   local gScore = {}
-  gScore[startKey] = 0
+  for i,dest in pairs(destList) do
+    gScore[generatePosKey(dest)] = 0
+  end
 
   local fScore = {}
-  fScore[startKey] = Pathfinding.guess(start, dest)
-  local bestFScorePos = {fScore = fScore[startKey],pos = start}
-  openSet:insert(fScore[startKey],startKey)
+  local bestFScorePos = {fScore = 100000,pos = nil}
+  for i,dest in pairs(destList) do
+    local destKey = generatePosKey(dest)
+    fScore[destKey] = Pathfinding.guess(start, dest)
+    openSet:insert(fScore[destKey],destKey)
+    if bestFScorePos.fScore < fScore[destKey] then
+      bestFScorePos = {fScore = fScore[destKey],pos = start}
+    end
+  end
   while openSet:empty() == false do
     local currentPosKey
     _,currentPosKey = openSet:pop()
     local currentPos = revertPosKey(currentPosKey)
-    if currentPos.x == dest.x and currentPos.y == dest.y then
+    if currentPos.x == start.x and currentPos.y == start.y then
       return Pathfinding.reconstructPath(cameFrom, currentPos)
     end
     for i,dir in ipairs(directions) do
       local newPos = {x = currentPos.x+dir.x,y = currentPos.y+dir.y}
       local newPosKey = generatePosKey(newPos)
-      local tentative_gScore = gScore[currentPosKey] + Pathfinding.tileCost(unitClassId,newPos,playerId, roadBoost)
+      local tentative_gScore = gScore[currentPosKey] + Pathfinding.tileCost(unitClassId,currentPos,playerId, roadBoost)
       if gScore[newPosKey] == nil or tentative_gScore<gScore[newPosKey] then
         cameFrom[newPosKey] = currentPos
         gScore[newPosKey] = tentative_gScore
-        fScore[newPosKey] = tentative_gScore+Pathfinding.guess(newPos, dest)
+        fScore[newPosKey] = tentative_gScore+Pathfinding.guess(newPos, start)
         if bestFScorePos.fScore < fScore[newPosKey] then
           bestFScorePos = {fScore = fScore[newPosKey],pos = newPos}
         end
@@ -95,6 +140,44 @@ function Pathfinding.AStar(playerId, unitClassId, start, dest, roadBoost)
   end
   return Pathfinding.reconstructPath(cameFrom, bestFScorePos.pos)
 end
+
+-- function Pathfinding.AStar2(playerId, unitClassId, start, dest, roadBoost)
+--   local openSet = BinaryHeap()
+--   local cameFrom = {}
+--   local startKey = generatePosKey(start)
+--   local destKey = generatePosKey(dest)
+--   local gScore = {}
+--   gScore[startKey] = 0
+
+--   local fScore = {}
+--   fScore[startKey] = Pathfinding.guess(start, dest)
+--   local bestFScorePos = {fScore = fScore[startKey],pos = start}
+--   openSet:insert(fScore[startKey],startKey)
+--   while openSet:empty() == false do
+--     local currentPosKey
+--     _,currentPosKey = openSet:pop()
+--     local currentPos = revertPosKey(currentPosKey)
+--     if currentPos.x == dest.x and currentPos.y == dest.y then
+--       return Pathfinding.reconstructPath(cameFrom, currentPos)
+--     end
+--     for i,dir in ipairs(directions) do
+--       local newPos = {x = currentPos.x+dir.x,y = currentPos.y+dir.y}
+--       local newPosKey = generatePosKey(newPos)
+--       local tentative_gScore = gScore[currentPosKey] + Pathfinding.tileCost(unitClassId,newPos,playerId, roadBoost)
+--       if gScore[newPosKey] == nil or tentative_gScore<gScore[newPosKey] then
+--         cameFrom[newPosKey] = currentPos
+--         gScore[newPosKey] = tentative_gScore
+--         fScore[newPosKey] = tentative_gScore+Pathfinding.guess(newPos, dest)
+--         if bestFScorePos.fScore < fScore[newPosKey] then
+--           bestFScorePos = {fScore = fScore[newPosKey],pos = newPos}
+--         end
+--         openSet:insert(fScore[newPosKey],newPosKey)
+--       end
+--     end
+
+--   end
+--   return Pathfinding.reconstructPath(cameFrom, bestFScorePos.pos)
+-- end
 
 function Pathfinding.findClosestOpenSpot(unitClassId, start)
   local openSet = BinaryHeap()

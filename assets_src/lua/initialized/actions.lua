@@ -67,6 +67,7 @@ function Actions.populate(dst)
     dst["set_position_as_goal"] = Actions.setPositionAsGoal
     dst["set_current_position_as_goal"] = Actions.setCurrentPositionAsGoal
     dst["give_bounty"] = Actions.giveBounty
+    dst["force_move"] = Actions.forceMove
 	--Hidden actions
 	dst["run_start_front_actions"] = Actions.runStartFrontActions
 	dst["run_start_back_actions"] = Actions.runStartBackActions
@@ -380,7 +381,8 @@ local bountyMap = {
     trebuchet = 200,
     wagon = 100,
     warship = 200,
-    witch = 150
+    witch = 150,
+    villager = 100
 }
 
 function Actions.giveBounty(context)
@@ -391,6 +393,18 @@ function Actions.giveBounty(context)
             Wargroove.setUnitState(unit, "gold", bountyMap[unit.unitClassId])
             Wargroove.updateUnit(unit)
         end
+    end
+end
+
+function Actions.forceMove(context)
+    -- "Move units of type {0} at location {1} owned by player {2} to location {3}."
+    local units = context:gatherUnits(2, 0, 1)
+    local location = context:getLocation(3)
+    local center = findCentreOfLocation(location)
+    for i, unit in ipairs(units) do
+        local path = Pathfinding.AStar(unit.playerId, unit.unitClassId, unit.pos, center)
+        print(dump(path,0))
+        Pathfinding.forceMoveAlongPath(unit.id, path)
     end
 end
 

@@ -60,4 +60,14 @@ function HealingPotion:execute(unit, targetPos, strParam, path)
     Wargroove.waitTime(1.0)
 end
 
+function HealingPotion:generateOrders(unitId, canMove)
+    local unit = Wargroove.getUnitById(unitId)
+    return {}
+end
+
+function HealingPotion:getScore(unitId, order)
+    local unit = Wargroove.getUnitById(unitId)
+    return {score = -1, introspection = {}}
+end
+
 return HealingPotion

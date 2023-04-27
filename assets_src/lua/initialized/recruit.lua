@@ -11,8 +11,15 @@ function Recruit.init()
 	OldRecruit.canExecuteWithTarget = Recruit.canExecuteWithTarget
 	OldRecruit.preExecute = Recruit.preExecute
 	OldRecruit.execute = Recruit.execute
+	OldRecruit.generateOrders = Recruit.generateOrders
+	OldRecruit.getScore = Recruit.getScore
+	OldRecruit.canExecuteAnywhere = Recruit.canExecuteAnywhere
 end
 
+
+function Recruit:canExecuteAnywhere(unit)
+    return Wargroove.isHuman(unit.playerId)
+end
 
 function Recruit:getMaximumRange(unit, endPos)
     return 100
@@ -187,5 +194,15 @@ function Recruit:execute(unit, targetPos, strParam, path)
 	--print(dump(unit,0))
 end
 
+
+function Recruit:generateOrders(unitId, canMove)
+    local unit = Wargroove.getUnitById(unitId)
+    return {}
+end
+
+function Recruit:getScore(unitId, order)
+    local unit = Wargroove.getUnitById(unitId)
+    return {score = -1, introspection = {}}
+end
 
 return Recruit

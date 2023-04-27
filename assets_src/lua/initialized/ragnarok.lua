@@ -455,7 +455,6 @@ function Ragnarok.setState(gizmo, state, playSound)
 	if lockedGizmos[Ragnarok.generateGizmoKey(gizmo)] == true then
 		return {changedState = false, soundPlayed = false}
 	end
-	print("Wasnt Locked") 
 	if playSound == nil then playSound = true end
 	--print("Ragnarok.setState(gizmo,state) starts here")
 	--print(invertedVisualGizmos[Ragnarok.generateGizmoKey(gizmo)]) 

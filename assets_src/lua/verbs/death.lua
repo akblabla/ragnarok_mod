@@ -1,6 +1,7 @@
 local Wargroove = require "wargroove/wargroove"
 local Verb = require "wargroove/verb"
 local Ragnarok = require "initialized/ragnarok"
+local StealthManager = require "initialized/stealth_manager"
 
 local Death = Verb:new()
 local deathVerbList = {}
@@ -48,6 +49,7 @@ function Death:execute(unit, targetPos, strParam, path)
 	-- 	self:deathVerb(unit, targetPos, strParam, path)
 	-- end
 	self:giveGold(unit, targetPos, strParam, path)
+    StealthManager.reportDeadUnit(unit.id)
 end
 
 

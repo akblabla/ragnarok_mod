@@ -9,6 +9,7 @@ local StealthManager = require "initialized/stealth_manager"
 local Verb = {}
 function Verb.init()
     OldVerb.executeEntry = Verb.executeEntry
+    OldVerb.generateOrders = Verb.generateOrders
 end
 
 function Verb:executeEntry(unitId, targetPos, strParam, path)
@@ -42,6 +43,10 @@ function Verb:executeEntry(unitId, targetPos, strParam, path)
         Wargroove.setMetaLocationArea("last_move_path", path)
         Wargroove.setMetaLocation("last_unit", unit.pos)
     end)
+end
+
+function Verb:generateOrders(unitId, canMove)
+    return {}
 end
 
 return Verb

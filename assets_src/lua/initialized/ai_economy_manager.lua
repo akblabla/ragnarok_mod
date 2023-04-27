@@ -9,7 +9,7 @@ function AIEconomyManager.init()
 end
 
 local function isProductionStucture(unit)
-	return next(unit.recruits) ~= nil -- and Wargroove.hasAIRestriction(unit.id, "cant_recruit") == false
+	return (next(unit.recruits) ~= nil) and (Wargroove.hasAIRestriction(unit.id, "cant_recruit") == false)
 end
 local function rotate(vector)
 	return {x = -vector.y, y = vector.x}

@@ -192,6 +192,12 @@ triggerActions:
       - type: player_neutral_star
       - type: location_star
 
+  - id: force_move
+    parameters:
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+      - type: location_star
 
   - id: set_hide_and_seek
     parameters:

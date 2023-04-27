@@ -38,11 +38,11 @@ function AIManager.getNextPosition(unitId)
    end
    local unit = Wargroove.getUnitById(unitId)
    if AITargets[unitId].order == "road_move" then
-      local next, distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].pos,true)
+      local next, distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].location,true)
 	   return next, distMoved, dist
    end
    if AITargets[unitId].order == "move" then
-      local next, distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].pos,false)
+      local next, distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].location,false)
 	   return next, distMoved, dist
    end
    if AITargets[unitId].order == "attack_move" then
@@ -60,26 +60,26 @@ function AIManager.getNextPosition(unitId)
       if canSeeEnemy then
          return nil, false
       else
-         local next,distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].pos,false)
+         local next,distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].location,false)
          return next, distMoved, dist
       end
    end
    return nil, 0,0
 end
 
-function AIManager.getNextPositionTowardsTarget(unitId, pos, roadBoost)
+function AIManager.getNextPositionTowardsTarget(unitId, location, roadBoost)
    local unit = Wargroove.getUnitById(unitId)
-   local path = Pathfinding.AStar(unit.playerId, unit.unitClassId, unit.pos, pos, roadBoost)
+   local path = Pathfinding.AStar(unit.playerId, unit.unitClassId, unit.pos, location, roadBoost)
    --path[1] = nil
    local movePoints = unit.unitClass.moveRange
    local target = unit.pos
    local reachedEnd = false
    for i,tile in pairs(path) do
-      movePoints = movePoints-Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unit.unitClassId)
+      movePoints = movePoints-Stats.getTerrainCost(Wargroove.getTerrainNameAt(tile),unit.unitClassId)
       if i == #path then
          reachedEnd = true
       end
-      if Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unit.unitClassId) > unit.unitClass.moveRange then
+      if Stats.getTerrainCost(Wargroove.getTerrainNameAt(tile),unit.unitClassId) > unit.unitClass.moveRange then
          reachedEnd = true
       end
       if movePoints<0 then
@@ -91,12 +91,12 @@ function AIManager.getNextPositionTowardsTarget(unitId, pos, roadBoost)
    end
    local dist = 0
    for i,tile in pairs(path) do
-      if Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unit.unitClassId)<100 then
-         dist = dist+Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unit.unitClassId)
+      if Stats.getTerrainCost(Wargroove.getTerrainNameAt(tile),unit.unitClassId)<100 then
+         dist = dist+Stats.getTerrainCost(Wargroove.getTerrainNameAt(tile),unit.unitClassId)
          if i == #path then
             break
          end
-         if Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unit.unitClassId) > unit.unitClass.moveRange then
+         if Stats.getTerrainCost(Wargroove.getTerrainNameAt(tile),unit.unitClassId) > unit.unitClass.moveRange then
             break
          end
       else
@@ -111,25 +111,34 @@ function AIManager.getAITarget(unitId)
 	return AITargets[unitId]
 end
 
-function AIManager.attackMoveOrder(unitId, pos)
-   if pos == nil then
+function AIManager.attackMoveOrder(unitId, location)
+   if location == nil then
       return
    end
-	AITargets[unitId] = {order = "attack_move", pos = pos}
+   if location.x ~= nil then
+      location = {location}
+   end
+	AITargets[unitId] = {order = "attack_move", location = location}
 end
 
-function AIManager.moveOrder(unitId, pos)
-   if pos == nil then
+function AIManager.moveOrder(unitId, location)
+   if location == nil then
       return
    end
-   AITargets[unitId] = {order = "move", pos = pos}
+   if location.x ~= nil then
+      location = {location}
+   end
+   AITargets[unitId] = {order = "move", location = location}
 end
 
-function AIManager.roadMoveOrder(unitId, pos)
-   if pos == nil then
+function AIManager.roadMoveOrder(unitId, location)
+   if location == nil then
       return
    end
-   AITargets[unitId] = {order = "road_move", pos = pos}
+   if location.x ~= nil then
+      location = {location}
+   end
+   AITargets[unitId] = {order = "road_move", location = location}
 end
 
 function AIManager.clearOrder(unitId)

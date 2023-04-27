@@ -3,15 +3,15 @@ en-GB:
 
   # STORY MAIN 1 Prologue
   # Cutscene: Start of match. Vesper stalks Emeric's ship
-  ragnarok_main1_cutscene_intro_1stMate_00: "We've been tracking them for days 'mam.[short_pause] Lets get 'em!"
-  ragnarok_main1_cutscene_intro_Vesper_00: "Yes, it is time for us to make our move."
+  ragnarok_main1_cutscene_intro_1stMate_00: "Finally! We've been trailing this damn ship for weeks, and now they're in sight![short_pause] Time for some action, let's get 'em!"
+  ragnarok_main1_cutscene_intro_Vesper_00: "Indeed, it's time for us to make our move."
   ragnarok_main1_cutscene_intro_Vesper_01: "Men! Raise the clan flag!"
   # Vesper catches up to Emeric's ship
-  ragnarok_main1_cutscene_intro_Emeric_00: "What is this Ruckus!"
-  ragnarok_main1_cutscene_intro_Emeric_01: "Oh, it is pirates.[short_pause] Crew, hand over the gold they are demanding so we can move along."
-  ragnarok_main1_cutscene_intro_Vesper_02: "Gold? No, I do not just want your gold.[short_pause] You have something far more valuable..."
-  ragnarok_main1_cutscene_intro_Emeric_02: "What?!"
-  ragnarok_main1_cutscene_intro_Vesper_03: "I know you won't hand over what I want just like this, so lets get the formalities over."
+  ragnarok_main1_cutscene_intro_Emeric_00: "What is this ruckus!"
+  ragnarok_main1_cutscene_intro_Emeric_01: "Ah, pirates.[short_pause] I expected we'd be accosted by ruffians at some point, but I had hoped we could avoid it for once. It's always so tiresome having to deal with these people... What are your demands?"
+  ragnarok_main1_cutscene_intro_Vesper_02: "Tiresome? You insult me! I am nothing if not exciting, and so is this heist! It's not every day you steal a king's crown!"
+  ragnarok_main1_cutscene_intro_Emeric_02: "What?! The crown?! No! We have gold and jewels you can take if you'll leave peacefully, but the crown stays. There *will* be bloodshed if you come for it. Surely, neither of us want that."
+  ragnarok_main1_cutscene_intro_Vesper_03: "I think not." 
   ragnarok_main1_cutscene_intro_Vesper_04: "Sic 'em!"
   # Boarding begins
   
@@ -19,19 +19,19 @@ en-GB:
   #When Emeric feels threatened and starts pushing with his spear line and himself
   ragnarok_main1_challenge_Emeric_00: "I won't let you take this ship so easily!"
   #When Emeric is about to lose
-  ragnarok_main1_panic_Emeric_00: "The cherryfleet will chase you down if you take it!"
-  
+  ragnarok_main1_panic_Emeric_00: "You won't get away this, you scoundrel! You *will* be held accountable, the Cherry Fleet will make sure of it."
+  #Vesper: "Hah! The [wavy]Cherry Fleet[wavy]! They'll catch me with what, their blueberry boats and banana barges?"  
   
   
   #Cutscene: Victory. Vesper confronts Emeric
   ragnarok_main1_cutscene_end_Vesper_00: "Well fought, monsieur."
-  ragnarok_main1_cutscene_end_Emeric_00: "You will not get past me."
+  ragnarok_main1_cutscene_end_Emeric_00: "You will not get past me. The crown stays."
   #Emeric charges up a lightning blast, but gets interrupted and stunned by Vesper. A cherrystone crownbearer gets spooked behind emeric.
-  ragnarok_main1_cutscene_end_Vesper_01: "Well, that was that."
-  ragnarok_main1_cutscene_end_Vesper_02: "I'll just take this."
+  ragnarok_main1_cutscene_end_Vesper_01: "Now, now, let's not make a scene."
+  ragnarok_main1_cutscene_end_Vesper_02: "I'll just be taking this. Thank you."
   ragnarok_main1_cutscene_end_Vesper_03: "Au revior!"
   #Emeric wakes up confused
-  ragnarok_main1_cutscene_end_Emeric_01: "Oh no, the crown is gone!"
+  ragnarok_main1_cutscene_end_Emeric_01: "...What was that... The crown! No!"
   
   #Cutscene: Interlude. Vesper and her crew are sailing south with the cherry fleet on their tail
   ragnarok_main1_cutscene_interlude_2ndMate_00: "Ma'am[slow]...[slow][short_pause] Pardon me...[short_pause] Mademoiselle, the Cherryfleet is trailing us."

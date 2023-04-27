@@ -149,5 +149,14 @@ function Hire:execute(unit, targetPos, strParam, path)
     strParam = ""
 end
 
+function Hire:generateOrders(unitId, canMove)
+    local unit = Wargroove.getUnitById(unitId)
+    return {}
+end
+
+function Hire:getScore(unitId, order)
+    local unit = Wargroove.getUnitById(unitId)
+    return {score = -1, introspection = {}}
+end
 
 return Hire

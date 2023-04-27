@@ -110,39 +110,6 @@ verbs:
     scriptName: verbs/groove_area_damage_rival
     splashOutlineColour: attack_target_outline
     splashRadius: 3
-    
-  - id: spawn_flare_1
-    icon: ui/icons/grooves/unit_action_icon_inspire.png
-    name: ui_unit_verbs_spawn_flare_1
-    targetColour: target
-    targetOutlineColour: target_outline
-    targetDisplayOutlineColour: attack_target_outline
-    targetted: true
-    scriptName: verbs/spawn_flare_1
-    splashOutlineColour: attack_target_outline
-    splashRadius: 5
-
-  - id: spawn_flare_2
-    icon: ui/icons/grooves/unit_action_icon_inspire.png
-    name: ui_unit_verbs_spawn_flare_2
-    targetColour: target
-    targetOutlineColour: target_outline
-    targetDisplayOutlineColour: attack_target_outline
-    targetted: true
-    scriptName: verbs/spawn_flare_2
-    splashOutlineColour: attack_target_outline
-    splashRadius: 5
-
-  - id: spawn_flare_many
-    icon: ui/icons/grooves/unit_action_icon_inspire.png
-    name: ui_unit_verbs_spawn_flare_many
-    targetColour: target
-    targetOutlineColour: target_outline
-    targetDisplayOutlineColour: attack_target_outline
-    targetted: true
-    scriptName: verbs/spawn_flare_many
-    splashOutlineColour: attack_target_outline
-    splashRadius: 5
 
   - id: rescue
     icon: ui/icons/grooves/unit_action_icon_inspire.png
