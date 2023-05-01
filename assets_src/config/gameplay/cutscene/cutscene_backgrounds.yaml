@@ -273,5 +273,9 @@ cutscene_backgrounds:
     spritesheet: backgrounds/sand_battlescreen_extendedbackgrounds
     foreground: sand_battlescreen_extendedbackgrounds_forest_foreground
     background: sand_battlescreen_extendedbackgrounds_forest_edited
+  - id: forge
+    spritesheet: backgrounds/map_backgrounds_RagnarokMod
+    foreground: heaven_song_smith_foreground
+    background: heaven_song_smith_background
 
 ...

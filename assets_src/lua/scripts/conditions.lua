@@ -16,6 +16,8 @@ function Conditions.populate(dst)
     dst["does_next_structure_exist"] = Conditions.doesNextStructureExist
     dst["did_it_occur"] = Conditions.didItOccur
     dst["is_rescued"] = Conditions.isRescued
+    dst["or_group"] = Conditions.orGroup
+    dst["end_group"] = Conditions.endGroup
 end
 
 function Conditions.state(context)
@@ -69,6 +71,14 @@ function Conditions.isRescued(context)
       end
     end
 	return false
+end
+
+function Conditions.orGroup(context)
+  return true
+end
+
+function Conditions.endGroup(context)
+  return true
 end
 
 return Conditions

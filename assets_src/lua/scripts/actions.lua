@@ -1,5 +1,7 @@
 local Wargroove = require "wargroove/wargroove"
+local Combat = require "wargroove/combat"
 local Events = require "wargroove/events"
+local Resumable = require"wargroove/resumable"
 local Ragnarok = require "initialized/ragnarok"
 local Rescue = require "verbs/rescue"
 local Recruit = require "initialized/recruit"
@@ -65,9 +67,14 @@ function Actions.populate(dst)
 	dst["set_priority_target"] = Actions.setPriorityTarget
 	dst["set_hide_and_seek"] = Actions.setHideAndSeek
     dst["set_position_as_goal"] = Actions.setPositionAsGoal
+    dst["update_awareness"] = Actions.updateAwareness
     dst["set_current_position_as_goal"] = Actions.setCurrentPositionAsGoal
     dst["give_bounty"] = Actions.giveBounty
     dst["force_move"] = Actions.forceMove
+    dst["force_attack"] = Actions.forceAttack
+    dst["run_group_sequentially"] = Actions.runGroupSequentially
+    dst["run_group_concurrently"] = Actions.runGroupConcurrently
+    dst["end_group"] = Actions.endGroup
 	--Hidden actions
 	dst["run_start_front_actions"] = Actions.runStartFrontActions
 	dst["run_start_back_actions"] = Actions.runStartBackActions
@@ -401,11 +408,78 @@ function Actions.forceMove(context)
     local units = context:gatherUnits(2, 0, 1)
     local location = context:getLocation(3)
     local center = findCentreOfLocation(location)
-    for i, unit in ipairs(units) do
-        local path = Pathfinding.AStar(unit.playerId, unit.unitClassId, unit.pos, center)
-        print(dump(path,0))
-        Pathfinding.forceMoveAlongPath(unit.id, path)
+    local coList = {}
+    for i, unit in pairs(units) do
+        coList[i] = coroutine.create(function (unit,location)
+            local path = Pathfinding.AStar(unit.playerId, unit.unitClassId, unit.pos, location.positions)
+            Pathfinding.forceMoveAlongPath(unit.id, path)
+            return true
+         end)
     end
+    while next(coList) ~= nil do
+        local toBeRemoved = {};
+        for i, co in pairs(coList) do
+            local errorFree, result = coroutine.resume(co,units[i],location)
+            if errorFree == false then
+                table.insert(toBeRemoved,i)
+            end
+        end
+        for i, id in ipairs(toBeRemoved) do
+            coList[id] = nil
+        end
+        coroutine.yield()
+    end
+end
+
+function Actions.forceAttack(context)
+    -- "Force units of type {0} at location {1} owned by player {2} to attack units of type {3} at location {4} owned by player {5}."
+    local units = context:gatherUnits(2, 0, 1)
+    local targets = context:gatherUnits(5, 3, 4)
+    local unit = units[1]
+    local target = targets[1]
+    if (unit == nil) or (target == nil) then
+        return
+    end
+    --- Telegraph
+    if (not Wargroove.isLocalPlayer(unit.playerId)) and Wargroove.canCurrentlySeeTile(target.pos) then
+        Wargroove.spawnMapAnimation(target.pos, 0, "ui/grid/selection_cursor", "target", "over_units", {x = -4, y = -4})
+        Wargroove.waitTime(0.5)
+    end
+    local originalPos = unit.pos
+    local dist = math.sqrt((target.pos.x-unit.pos.x)^2 + (target.pos.y-unit.pos.y)^2)
+    Wargroove.playMapSound("unitAttack",target.pos)
+    Wargroove.moveUnitToOverride(unit.id, unit.pos, 0.5*(target.pos.x-unit.pos.x)/dist, 0.5*(target.pos.y-unit.pos.y)/dist, 4)
+    while Wargroove.isLuaMoving(unit.id) do
+      coroutine.yield()
+    end
+    local results = Combat:solveCombat(unit.id, target.id, {originalPos}, "random")
+    unit.health = results.attackerHealth
+    
+    if target.health>results.defenderHealth then
+        Wargroove.playUnitAnimation(target.id,"hit")
+        Wargroove.playMapSound("hitOrganic",target.pos)
+    end
+    target.health = results.defenderHealth
+    --Wargroove.startCombat(unit, target, {unit.pos})
+    Wargroove.updateUnit(unit)
+    Wargroove.updateUnit(target)
+    Wargroove.moveUnitToOverride(unit.id, unit.pos, 0, 0, 4)
+    while Wargroove.isLuaMoving(unit.id) do
+      coroutine.yield()
+    end
+    Wargroove.waitTime(0.5)
+
+    Wargroove.setMetaLocationArea("last_move_path", {unit.pos})
+    Wargroove.setMetaLocation("last_unit", unit.pos)
+end
+
+function Actions.runGroupSequentially(context)
+end
+
+function Actions.runGroupConcurrently(context)
+end
+
+function Actions.endGroup(context)
 end
 
 function Actions.setCurrentPositionAsGoal(context)
@@ -424,6 +498,20 @@ function Actions.setPositionAsGoal(context)
     for i, unit in ipairs(units) do
         StealthManager.setAIGoalPos(unit.id,center)
     end
+end
+
+function Actions.updateAwareness(context)
+    -- "Update awareness."
+    print("Actions.updateAwareness(context)")
+    local units = Wargroove.getUnitsAtLocation();
+    print(dump(units,0))
+    for i, unit in ipairs(units) do
+        if unit.playerId == 0 then
+            StealthManager.awarenessCheck(unit.id,{unit.pos})
+        end
+    end
+    print("update all awareness")
+    StealthManager.updateAwarenessAll()
 end
 
 function Actions.setHideAndSeek(context)

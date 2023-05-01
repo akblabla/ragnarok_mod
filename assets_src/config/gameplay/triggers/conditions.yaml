@@ -25,4 +25,6 @@ triggerConditions:
     parameters:
       - type: location_star
       - type: player_neutral_star
+  - id: or_group
+  - id: end_group
 ...

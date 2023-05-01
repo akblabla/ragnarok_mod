@@ -11,7 +11,7 @@ weapons:
     tagDamage:
       archer: 0.65
       soldier: 0.7
-      villager: 0.7
+      villager: 0.9
       dog: 0.75
       spearman: 0.6
       balloon: 0.2

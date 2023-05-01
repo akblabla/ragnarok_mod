@@ -8,6 +8,7 @@ local originalGetMapTriggers = {}
 function WargrooveExtra.init()
 	originalGetMapTriggers = OldWargroove.getMapTriggers
 	OldWargroove.getMapTriggers = WargrooveExtra.getMapTriggers
+--	OldWargroove.waitTime = WargrooveExtra.waitTime
 	
 	-- originalSpawnUnit = OldWargroove.spawnUnit
 	-- OldWargroove.spawnUnit = WargrooveExtra.spawnUnit
@@ -69,6 +70,21 @@ end
 	-- end
     -- Wargroove.clearUnitPositionCache()
 -- end
+
+
+function WargrooveExtra.waitTime(time)
+	print("WargrooveExtra.waitTime(time)")
+	local currentTime = 0
+    local timeStamp = currentTime+ time
+	print("timeStamp")
+	print(timeStamp)
+    while currentTime < timeStamp do
+		print("now")
+		print(currentTime)
+		currentTime = currentTime +1.0/60.0
+        coroutine.yield()
+    end
+end
 
 function dump(o,level)
    if type(o) == 'table' then

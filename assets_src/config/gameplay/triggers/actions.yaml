@@ -192,6 +192,8 @@ triggerActions:
       - type: player_neutral_star
       - type: location_star
 
+  - id: update_awareness
+
   - id: force_move
     parameters:
       - type: unit_class_star
@@ -199,6 +201,18 @@ triggerActions:
       - type: player_neutral_star
       - type: location_star
 
+  - id: force_attack
+    parameters:
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+
+  - id: run_group_sequentially
+  - id: run_group_concurrently
+  - id: end_group
   - id: set_hide_and_seek
     parameters:
       - type: boolean

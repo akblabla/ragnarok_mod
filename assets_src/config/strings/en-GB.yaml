@@ -288,6 +288,14 @@ en-GB:
   trigger_condition_description_is_rescued: "Triggers when capsized crew is rescued."
   trigger_condition_readable_is_rescued: "If capsized crew at location {0} is rescued by player {1}."
   
+  trigger_condition_name_or_group: "Util: Or"
+  trigger_condition_description_or_group: "Or following actions."
+  trigger_condition_readable_or_group: "Or following actions."
+  
+  trigger_condition_name_end_group: "Util: End"
+  trigger_condition_description_end_group: "End group."
+  trigger_condition_readable_end_group: "End group."
+  
   trigger_action_name_dialogue_box_unit: "UI: Show Dialogue Box for Unit"
   trigger_action_description_dialogue_box_unit: "Triggers a dialogue box for a unit."
   trigger_action_readable_dialogue_box_unit: "Display dialogue box from {0} at {1} for {2} being {3} saying {4} with colour {5}."
@@ -316,6 +324,10 @@ en-GB:
   trigger_action_description_set_current_position_as_goal: "Set Guard Current Position."
   trigger_action_readable_set_current_position_as_goal: "Make units of type {0} at location {1} owned by player {2} stand guard."
 
+  trigger_action_name_update_awareness: "Stealth: Update Awareness"
+  trigger_action_description_update_awareness: "Update awareness."
+  trigger_action_readable_update_awareness: "Update awareness."
+
   trigger_action_name_spawn_unit_in_transport: "Unit: Spawn Inside Transport"
   trigger_action_description_spawn_unit_in_transport: "Spawn Inside Transport."
   trigger_action_readable_spawn_unit_in_transport: "Give units of type {0} at location {1} owned by player {2} unit type {3} owned by player {4} with {5} hp."
@@ -323,6 +335,22 @@ en-GB:
   trigger_action_name_force_move: "Unit: Force Move"
   trigger_action_description_force_move: "Force Move."
   trigger_action_readable_force_move: "Move units of type {0} at location {1} owned by player {2} to location {3}."
+
+  trigger_action_name_force_attack: "Unit: Force Attack"
+  trigger_action_description_force_attack: "Force Attack."
+  trigger_action_readable_force_attack: "Force units of type {0} at location {1} owned by player {2} to attack units of type {3} at location {4} owned by player {5}."
+
+  trigger_action_name_run_group_concurrently: "Util: Run Group Concurrently"
+  trigger_action_description_run_group_concurrently: "Run Group Concurrently."
+  trigger_action_readable_run_group_concurrently: "Run the following actions concurrently"
+  
+  trigger_action_name_run_group_sequentially: "Util: Run Group Sequentially"
+  trigger_action_description_run_group_sequentially: "Run Group Sequentially."
+  trigger_action_readable_run_group_sequentially: "Run the following actions sequentially"
+
+  trigger_action_name_end_group: "Util: End Group"
+  trigger_action_description_end_group: "End Group."
+  trigger_action_readable_end_group: "End grouped actions."
 
   #backgrounds
   ui_cutscene_background_deck: "Ship Deck"
@@ -334,6 +362,7 @@ en-GB:
   ui_cutscene_background_tropical_beach: "Tropical Beach"
   ui_cutscene_background_tropical_beach_telescope: "Tropical Beach Telescope"
   ui_cutscene_background_sand_cave: "Sand Cave"
+  ui_cutscene_background_forge: "Forge"
   
   #cutscene sound effects
   ui_cutscene_sfx_wulfar_hug: "Wulfar and Vesper Hug"
@@ -363,6 +392,8 @@ en-GB:
   ui_cutscene_prop_cherrystone_building_background: "Cherrystone Building Background"
   ui_cutscene_prop_cherrystone_building_foreground: "Cherrystone Building Foreground"
   ui_cutscene_prop_telescope: "Telescope"
+  ui_cutscene_prop_forge_flame: "Forge Flames"
+  ui_cutscene_prop_large_table: "Large Table"
 
   # MUSIC
   music_name_tavern_distant: "Distant Tavern"

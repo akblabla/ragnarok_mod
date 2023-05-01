@@ -212,13 +212,13 @@ decorations:
   - id: building01
     layer: units
     snapToGrid: true
-    snapOffset: [12, 12]
+    snapOffset: [12, 18]
     animation:
       undefined: decoration/unit/building01
   - id: building02
     layer: units
     snapToGrid: true
-    snapOffset: [12, 12]
+    snapOffset: [12, 18]
     animation:
       undefined: decoration/unit/building02
 
@@ -346,6 +346,18 @@ decorations:
     layer: units
     animation:
       undefined: decoration/unit/mangrove_big
+  - id: handCart
+    layer: units
+    animation:
+      undefined: decoration/unit/handCart
+  - id: handCartHay
+    layer: units
+    animation:
+      undefined: decoration/unit/handCartHay
+  - id: handCartHayFlipped
+    layer: units
+    animation:
+      undefined: decoration/unit/handCartHayFlipped
 
   # flags
   - id: flag_cyan

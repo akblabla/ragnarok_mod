@@ -40,6 +40,7 @@ function Verb:executeEntry(unitId, targetPos, strParam, path)
         for i,viewerId in pairs(viewers) do
             StealthManager.shareInfo(unitId,viewerId)
         end
+        StealthManager.updateAwarenessAll()
         Wargroove.setMetaLocationArea("last_move_path", path)
         Wargroove.setMetaLocation("last_unit", unit.pos)
     end)

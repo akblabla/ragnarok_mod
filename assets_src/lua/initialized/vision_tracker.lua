@@ -622,6 +622,7 @@ function VisionTracker.calculateLoSOfUnitRays(unit,sightRange)
 end
 
 function VisionTracker.getListOfViewerIds(pos)
+	VisionTracker.setup()
 	if setupRan then
 		return getViewers(pos)
 	end

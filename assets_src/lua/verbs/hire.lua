@@ -54,7 +54,7 @@ function Hire:canExecuteWithTarget(unit, endPos, targetPos, strParam)
 
     if (Hire.inPreExecute) then
         local u = Wargroove.getUnitAt(targetPos)
-        return u ~= nil and u.unitClassId == "villager"
+        return (u ~= nil) and (u.unitClassId == "villager") and not Wargroove.areEnemies(unit.playerId,u.playerId)
     else
 
         -- Check if this player can recruit this type of unit

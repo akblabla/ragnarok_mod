@@ -11,7 +11,7 @@ weapons:
       archer: 0.7
       soldier: 0.75
       villager: 0.75
-      spearman: 0.55
+      spearman: 0.85
       dog: 0.8
       wagon: 0.45
       knight: 0.7

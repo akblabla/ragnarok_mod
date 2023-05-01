@@ -76,10 +76,7 @@ function Pathfinding.forceMoveAlongPath(unitId, path, facing)
     elseif delta.x == -1 then
       Wargroove.setFacingOverride(unitId,"left")
     end
-    print("tile")
-    print(i)
-    print(dump(tile,0))
-    Wargroove.moveUnitToOverride(unitId, unit.pos, tile.x-unit.pos.x, tile.y-unit.pos.y, 3)
+    Wargroove.moveUnitToOverride(unitId, unit.pos, tile.x-unit.pos.x, tile.y-unit.pos.y, 2)
     while Wargroove.isLuaMoving(unitId) do
       coroutine.yield()
     end
@@ -88,7 +85,7 @@ function Pathfinding.forceMoveAlongPath(unitId, path, facing)
   unit.pos = { x = path[#path].x, y = path[#path].y }
   Wargroove.unsetFacingOverride(unitId)
   Wargroove.updateUnit(unit)
-  Wargroove.playUnitAnimation(unitId,"hit")
+--  Wargroove.playUnitAnimation(unitId,"hit")
 end
 
 function Pathfinding.AStar(playerId, unitClassId, start, destList, roadBoost)

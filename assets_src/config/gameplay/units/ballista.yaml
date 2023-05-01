@@ -17,7 +17,7 @@ weapons:
 
       archer: 0.3
       soldier: 0.4
-      villager: 0.4
+      villager: 0.5
       dog: 0.5
       spearman: 0.3
       wagon: 0.3                  
