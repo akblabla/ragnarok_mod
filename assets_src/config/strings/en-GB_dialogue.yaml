@@ -61,15 +61,18 @@ en-GB:
   
   #Ingame Dialogue:
   #Start of match after cutscene
-  ragnarok_main2_ingameIntro_Crew_00: "Madam! The town's being attacked! The streets are full of skeletons! And also a bunch of dead people!"
-  ragnarok_main2_ingameIntro_2ndMate_00: "No! Not the tavernkeep! Who's going to pour that delicious Garbhof bitter when I visit?"
+  ragnarok_main2_ingameIntro_Crew_00: "Madam! The town's being attacked! The streets are full of skeletons!"
+  ragnarok_main2_ingameIntro_Crew_01: "And also a bunch of dead people!"
+  ragnarok_main2_ingameIntro_2ndMate_00: "Wait no! The Tarvern!"
   ragnarok_main2_ingameIntro_Vesper_00: "Don't you worry about these silly xylophones. They should be easy enough to outmaneuver."
-  ragnarok_main2_ingameIntro_2ndMate_01: "But, but... my ale...?"
+  ragnarok_main2_ingameIntro_2ndMate_01: "No! Not the tavernkeep!"
+  ragnarok_main2_ingameIntro_2ndMate_02: "And the other tarvernkeep! Have they no mercy?!"
   ragnarok_main2_ingameIntro_Vesper_01: "Shush."
-  ragnarok_main2_ingameIntro_Vesper_02: "We just need to get the crown past them."
+  ragnarok_main2_ingameIntro_2ndMate_03: "But, but... my ale...?"
+  ragnarok_main2_ingameIntro_Vesper_02: "The undead are none of our concern. We just need to get the crown past them."
   #1st Mate lands via a barge with the crown
-  ragnarok_main2_ingameIntro_1stMate_01: "Wait,[short_pause] [wavy]*gasp*[wavy] the crown!"
-  ragnarok_main2_ingameIntro_Vesper_02: "Just pass it along. We don't have all day."
+  ragnarok_main2_ingameIntro_1stMate_00: "Wait,[short_pause] [wavy]*gasp*[wavy] the crown!"
+  ragnarok_main2_ingameIntro_Vesper_03: "Just pass it along. We don't have all day."
   
   #After you move the crownbearer for the first time
   ragnarok_main2_postThrow_Vesper_00: "Do keep yourself safe with the crown. I won't have you fight whilst holding it. It's fragile."

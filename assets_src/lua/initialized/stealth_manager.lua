@@ -59,6 +59,16 @@ function StealthManager.canBeAlerted(unit)
     return true
 end
 
+function StealthManager.canAlert(unit)
+    if unit==nil then
+        return false
+    end
+    if (unit.unitClassId == "reveal_all") or (unit.unitClassId == "reveal_all_but_hidden") or (unit.unitClassId == "reveal_all_but_over") then
+        return false
+    end
+    return true
+end
+
 function StealthManager.getFleeCountTarget(playerId)
     local playerValue = 0
     for id,awareness in pairs(awarenessMap) do
@@ -144,7 +154,7 @@ function StealthManager.update(context)
     end
     for id,lastKnownPos in pairs(lastKnownPosMap) do
         local unit = Wargroove.getUnitById(id)
-        if (unit ~= nil) and (not (unit.unitClassId == "villager")) then
+        if (unit ~= nil) then
             if StealthManager.isUnitAlerted(id) then
                 AIManager.attackMoveOrder(id,lastKnownPos.pos)
             elseif StealthManager.isUnitSearching(id) then
@@ -152,10 +162,11 @@ function StealthManager.update(context)
             elseif StealthManager.isUnitFleeing(id) then
                 local unawareAllyPos = {}
                 for i,ally in ipairs(units) do
-                    if (awarenessMap[ally.id] == nil) and (ally.playerId == unit.playerId) then
+                    if StealthManager.canBeAlerted(ally) and not (StealthManager.isUnitSearching(ally) or StealthManager.isUnitAlerted(ally) or StealthManager.isUnitFleeing(ally)) and (ally.playerId == unit.playerId) then
                         table.insert(unawareAllyPos,ally.pos)
                     end
                 end
+                print("unawareAllyPos")
                 print(dump(unawareAllyPos,0))
                 AIManager.moveOrder(id,unawareAllyPos)
             end
@@ -184,7 +195,7 @@ function StealthManager.update(context)
             end
         end
         for i,unit in pairs(units) do
-            if Wargroove.areEnemies(unit.playerId,Wargroove.getCurrentPlayerId()) then
+            if Wargroove.areEnemies(unit.playerId,Wargroove.getCurrentPlayerId()) and StealthManager.canAlert(unit) then
                 local viewerIds = VisionTracker.getListOfViewerIds(unit.pos)
                 for j,viewerId in pairs(viewerIds) do
                     local viewer = Wargroove.getUnitById(viewerId)
@@ -316,7 +327,10 @@ end
 function StealthManager.getWitnesses(unitId, path)
     local unit = Wargroove.getUnitById(unitId)
     if unit == nil then
-        return
+        return {}, {}
+    end
+    if not StealthManager.canAlert(unit) then
+        return {}, {}
     end
     local newAlertedList = {}
     local newSearchersList = {}

@@ -121,4 +121,53 @@ units:
       - id: run_ragged
       - id: run_2
 
+units:
+  - class: soldier
+    faction: outlaw
+    name: unit_name_soldier_outlaws
+    mapAnimation: units/soldier/outlaws/map_soldier_outlaws
+    battleAnimation: units/soldier/outlaws/battle_soldier_outlaws
+    battleAnimationRiver: fx/river_overlay/battle_soldier_cherrystone_river
+    smallPortrait: units/soldier/outlaws/portrait_soldier_outlaws_small.png
+    mediumPortrait: units/soldier/outlaws/portrait_soldier_outlaws_medium.png
+    mapSpeed: 4.0
+    grabPos: [13, 14]
+    sounds:
+      attack: soldierAttackRed
+      attackShout: soldierPreAttackRed
+      attackMap: unitAttack
+      captureShout: soldierPreAttackRed
+      death: soldierDieRed
+      deathMap: unitDie
+      run: infantryHeavyEntry
+      runMap: infantryHeavyMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [0.45, 0.8]
+    shouts:
+      soldier_shout1: soldierShoutRed1
+      soldier_shout2: soldierShoutRed2
+      soldier_shout3: soldierShoutRed3
+      soldier_shout4: soldierShoutRed4
+      soldier_shout5: soldierShoutRed5
+      soldier_shout6: soldierShoutRed6
+      soldier_shout7: soldierShoutRed7
+      soldier_shout8: soldierShoutRed8
+      soldier_shout9: soldierShoutRed9
+      soldier_hit1: soldierHitRed1
+      soldier_hit2: soldierHitRed2
+      soldier_hit3: soldierHitRed3
+      soldier_hit4: soldierHitRed4
+      soldier_hit5: soldierHitRed5
+      crownbearer_panting: cutscene/crownbearerPanting
+      crownbearer_yell: cutscene/crownbearerYell
+    emotes:
+      idle: idle
+      telescope: emote_telescope
+    alternativeRuns:
+      - id: run_2
+
 ...

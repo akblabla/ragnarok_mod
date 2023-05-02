@@ -42,7 +42,12 @@ function AIManager.getNextPosition(unitId)
 	   return next, distMoved, dist
    end
    if AITargets[unitId].order == "move" then
+      print("AITargets[unitId].order == move")
+      print(dump(AITargets[unitId].location,0));
       local next, distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].location,false)
+      print(dump(next,0));
+      print(dump(distMoved,0));
+      print(dump(dist,0));
 	   return next, distMoved, dist
    end
    if AITargets[unitId].order == "attack_move" then

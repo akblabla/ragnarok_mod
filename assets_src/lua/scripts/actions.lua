@@ -453,21 +453,36 @@ function Actions.forceAttack(context)
       coroutine.yield()
     end
     local results = Combat:solveCombat(unit.id, target.id, {originalPos}, "random")
-    unit.health = results.attackerHealth
+    unit:setHealth(results.attackerHealth,target.id)
+    if results.attackerHealth<= 0 then
+        Wargroove.playUnitDeathAnimation(unit.id)
+        if (unit.unitClass.isCommander) then
+            Wargroove.playMapSound("commanderDie", unit.pos)
+        end
+    end
     
     if target.health>results.defenderHealth then
         Wargroove.playUnitAnimation(target.id,"hit")
         Wargroove.playMapSound("hitOrganic",target.pos)
     end
-    target.health = results.defenderHealth
+    target:setHealth(results.defenderHealth,unit.id)
+    if results.defenderHealth<= 0 then
+        Wargroove.playUnitDeathAnimation(target.id)
+        if (target.unitClass.isCommander) then
+            Wargroove.playMapSound("commanderDie", target.pos)
+        end
+    end
     --Wargroove.startCombat(unit, target, {unit.pos})
     Wargroove.updateUnit(unit)
     Wargroove.updateUnit(target)
     Wargroove.moveUnitToOverride(unit.id, unit.pos, 0, 0, 4)
-    while Wargroove.isLuaMoving(unit.id) do
-      coroutine.yield()
+    Wargroove.waitTime(1)
+    if results.attackerHealth<= 0 then
+        Wargroove.removeUnit(unit.id)
     end
-    Wargroove.waitTime(0.5)
+    if results.defenderHealth<= 0 then
+        Wargroove.removeUnit(target.id)
+    end
 
     Wargroove.setMetaLocationArea("last_move_path", {unit.pos})
     Wargroove.setMetaLocation("last_unit", unit.pos)

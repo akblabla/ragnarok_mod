@@ -46,7 +46,7 @@ commanders:
     portraitOffset: [0, 20]
     themeSong: music/hostile
     skinColour: typeVI
-    unitClassId: knight
+    unitClassId: soldier
     dialogueBoxVoice: ui/dialogue/textScroll
 
   - id: generic_soldier2
@@ -62,7 +62,7 @@ commanders:
     portraitOffset: [0, 20]
     themeSong: music/hostile
     skinColour: typeII
-    unitClassId: knight
+    unitClassId: soldier
     dialogueBoxVoice: ui/dialogue/textScroll
 
   - id: generic_soldier3
@@ -77,7 +77,7 @@ commanders:
     portraitOffset: [0, 20]
     themeSong: music/hostile
     skinColour: typeII
-    unitClassId: knight
+    unitClassId: soldier
     dialogueBoxVoice: ui/dialogue/textScroll
 
   - id: generic_villager
@@ -93,7 +93,7 @@ commanders:
     portraitOffset: [0, 20]
     themeSong: music/hostile
     skinColour: typeII
-    unitClassId: knight
+    unitClassId: soldier
     dialogueBoxVoice: ui/dialogue/textScroll
     
   - id: empty
@@ -108,7 +108,7 @@ commanders:
     portraitOffset: [0, 0]
     themeSong: music/hostile
     skinColour: typeVI
-    unitClassId: knight
+    unitClassId: soldier
     dialogueBoxVoice: ui/dialogue/textScroll
 
   - id: wulfar_offset
@@ -182,7 +182,7 @@ commanders:
     portraitOffset: [0, 20]
     themeSong: music/hostile
     skinColour: typeII
-    unitClassId: knight
+    unitClassId: soldier
     dialogueBoxVoice: ui/dialogue/textScroll
     
   - id: vesper_gang
@@ -198,7 +198,7 @@ commanders:
     portraitOffset: [0, 20]
     themeSong: music/hostile
     skinColour: typeII
-    unitClassId: knight
+    unitClassId: soldier
     dialogueBoxVoice: ui/dialogue/textScroll
     
   - id: generic_floran
@@ -212,6 +212,6 @@ commanders:
     cutscenePortrait: portraits/commanders/big/floran_portrait
     themeSong: music/nuru
     skinColour: green
-    unitClassId: knight
+    unitClassId: soldier
     dialogueBoxVoice: ui/dialogue/textScroll
 ...
