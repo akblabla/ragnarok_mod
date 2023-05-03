@@ -177,9 +177,12 @@ function Attack:canExecuteWithTarget(unit, endPos, targetPos, strParam)
 	if relativeValue < 1 and Ragnarok.cantAttackBuildings(unit.playerId) then
 		return false
 	end
-    
-	if Stats.meleeUnits[unit.unitClassId] ~= nil and not Wargroove.canStandAt(unit.unitClassId, targetPos) then
-		return false
+	local result, _ = Stats.getTerrainCost("bridge", unit.unitClassId)
+	local isGroundUnit = result<100
+	if not (isGroundUnit and targetUnit.unitClass.isStructure) then
+		if (Stats.meleeUnits[unit.unitClassId] ~= nil) and (not Wargroove.canStandAt(unit.unitClassId, targetPos)) then
+			return false
+		end
 	end
 
     return Combat:getBaseDamage(unit, targetUnit, endPos) > 0

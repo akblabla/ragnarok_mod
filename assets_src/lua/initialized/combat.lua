@@ -123,8 +123,12 @@ function Combat:getDamage(attacker, defender, solveType, isCounter, attackerPos,
 	else
 		effectiveAttacker = attacker
 	end
-	if not isGroove and (Stats.meleeUnits[effectiveAttacker.unitClassId] ~= nil and not Wargroove.canStandAt(effectiveAttacker.unitClassId, defender.pos)) then
-		return nil, false
+	local result, _ = Stats.getTerrainCost("bridge", effectiveAttacker.unitClassId)
+	local isGroundUnit = result<100
+	if not (isGroundUnit and defender.unitClass.isStructure) then
+		if not isGroove and (Stats.meleeUnits[effectiveAttacker.unitClassId] ~= nil and not Wargroove.canStandAt(effectiveAttacker.unitClassId, defender.pos)) then
+			return nil, false
+		end
 	end
 	if Ragnarok.hasCrown(effectiveAttacker) then return nil, false end
 	

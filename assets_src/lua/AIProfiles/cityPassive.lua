@@ -1,6 +1,6 @@
 local CustomAI = require "initialized/ai_economy_manager"
 local DefaultAI = require "AIProfiles/default"
-local MangroveAI = {}
+local CityPassiveAI = {}
 
 
 local valueReductionPerUnitList = {
@@ -20,7 +20,10 @@ local valueReductionPerUnitList = {
 	trebuchet = 0.5,
 	turtle = 0.8,
 	warship = 0.8,
-	witch = 0.6
+	witch = 0.6,
+	wagon = 0.6,
+	travelboat = 0.6,
+	thief = 0.6
 }
 
 local idealUnitRatioList = {
@@ -40,23 +43,50 @@ local idealUnitRatioList = {
 	trebuchet = 0.3,
 	turtle = 1,
 	warship = 1,
-	witch = 1
+	witch = 1,
+	wagon = 1,
+	travelboat = 1,
+	thief = 1
 }
 
 local powerMultiplierList = {
-	archer = 1,
-	dog = 1.25,
-	ballista = 0.5,
-	dragon = 1.2,
-	harpy = 1.2,
-	knight = 0.5,
-	harpoonship = 0.5,
-	mage = 0.8,
-	soldier = 1.5,
+	archer = 0,
+	dog = 0,
+	ballista = 0,
+	dragon = 0,
+	harpy = 0,
+	knight = 0,
+	harpoonship = 0,
+	mage = 0,
+	soldier = 0,
+	witch = 0,
+	wagon = 1,
+	travelboat = 1,
+	thief = 1
+}
+
+local antiAirMultiplierList = {
+	archer = 0,
+	ballista = 0,
+	harpoonship = 0,
+	harpy = 0,
+	mage = 0,
 	witch = 0
 }
 
-function MangroveAI.setProfile()
+local bannedUnitList = {
+	pirate_ship = true,
+	balloon = true,
+	flare = true
+}
+local antiAirReluctance = 1000;
+local airThreatPerTower = 200;
+local baseLineOpportunityCost = 0.8
+local baseLineOpportunityCostScaling = 0.8
+local unitRatioResetPerUnit = 0.98
+local unitRatioPenaltyPerUnit = 0.2
+
+function CityPassiveAI.setProfile()
 	DefaultAI.setProfile()
 	CustomAI.valueReductionPerUnitList = valueReductionPerUnitList
 	CustomAI.idealUnitRatioList = idealUnitRatioList
@@ -71,4 +101,4 @@ function MangroveAI.setProfile()
 	CustomAI.unitRatioPenaltyPerUnit = unitRatioPenaltyPerUnit
 end
 
-return MangroveAI
+return CityPassiveAI

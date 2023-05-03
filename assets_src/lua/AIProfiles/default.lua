@@ -1,4 +1,4 @@
-local CustomAI = require "initialized/custom_AI"
+local CustomAI = require "initialized/ai_economy_manager"
 local Default = {}
 
 function Default.setProfile()

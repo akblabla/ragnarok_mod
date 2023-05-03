@@ -28,7 +28,7 @@ function Pathfinding.tileCost(unitClassId,pos, playerId, roadBoost)
     if playerId ~= nil and stranger ~= nil and Wargroove.areEnemies(playerId, stranger.playerId) then
         return 100
     end
-    local tileCost = Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unitClassId)
+    local tileCost, cantStop = Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unitClassId)
     local terrainName = Wargroove.getTerrainNameAt(pos)
     if roadBoost and not (terrainName == "road" or terrainName == "bridge") then
         tileCost = tileCost+1

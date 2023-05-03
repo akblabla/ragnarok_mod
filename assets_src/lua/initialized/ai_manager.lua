@@ -75,33 +75,50 @@ end
 function AIManager.getNextPositionTowardsTarget(unitId, location, roadBoost)
    local unit = Wargroove.getUnitById(unitId)
    local path = Pathfinding.AStar(unit.playerId, unit.unitClassId, unit.pos, location, roadBoost)
+   if (unit.unitClassId == "travelboat") then
+      print("AIManager.getNextPositionTowardsTarget(unitId, location, roadBoost)")
+      print("unit")
+      print(dump(unit,0))
+      print("path")
+      print(dump(path,0))
+   end
    --path[1] = nil
    local movePoints = unit.unitClass.moveRange
    local target = unit.pos
    local reachedEnd = false
    for i,tile in pairs(path) do
-      movePoints = movePoints-Stats.getTerrainCost(Wargroove.getTerrainNameAt(tile),unit.unitClassId)
+      local tileCost, cantStop = Stats.getTerrainCost(Wargroove.getTerrainNameAt(tile),unit.unitClassId)
+      if (unit.unitClassId == "travelboat") then
+         print("tileCost")
+         print(tileCost)
+         print("cantStop")
+         print(cantStop)
+         print("target")
+         print(dump(target,0))
+      end
+      movePoints = movePoints-tileCost
       if i == #path then
          reachedEnd = true
       end
-      if Stats.getTerrainCost(Wargroove.getTerrainNameAt(tile),unit.unitClassId) > unit.unitClass.moveRange then
+      if tileCost > unit.unitClass.moveRange then
          reachedEnd = true
       end
       if movePoints<0 then
          break
       end
-      if Wargroove.isAnybodyElseAt(unit,tile) == false then
+      if (Wargroove.isAnybodyElseAt(unit,tile) == false) and not cantStop then
          target = tile
       end
    end
    local dist = 0
    for i,tile in pairs(path) do
-      if Stats.getTerrainCost(Wargroove.getTerrainNameAt(tile),unit.unitClassId)<100 then
-         dist = dist+Stats.getTerrainCost(Wargroove.getTerrainNameAt(tile),unit.unitClassId)
+      local tileCost, cantStop = Stats.getTerrainCost(Wargroove.getTerrainNameAt(tile),unit.unitClassId)
+      if tileCost<100 then
+         dist = dist+tileCost
          if i == #path then
             break
          end
-         if Stats.getTerrainCost(Wargroove.getTerrainNameAt(tile),unit.unitClassId) > unit.unitClass.moveRange then
+         if tileCost > unit.unitClass.moveRange then
             break
          end
       else

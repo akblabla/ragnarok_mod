@@ -165,7 +165,8 @@ Stats.terrainCost = {
 		hovering = 1,
 		wheels = 1,
 		amphibious = 1,
-		sailing = 1
+		sailing = 1,
+		cantStop = {sailing = true}
 	},
 	sea = {
 		sailing = 1,
@@ -234,11 +235,15 @@ function Stats.getTerrainCost(terrainName, unitClassId)
 	for i,tag in pairs(unitClass.tags) do
 		if validTags[tag] ~= nil then
 			if Stats.terrainCost[terrainName][tag] ~= nil then
-				return Stats.terrainCost[terrainName][tag]
+				if (Stats.terrainCost[terrainName]["cantStop"] ~= nil) and (Stats.terrainCost[terrainName]["cantStop"][tag] == true) then
+					return Stats.terrainCost[terrainName][tag], true
+					
+				end
+				return Stats.terrainCost[terrainName][tag], false
 			end
 		end
 	end
-	return 100
+	return 100, false
 end
 
 return Stats
