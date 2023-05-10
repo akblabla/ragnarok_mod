@@ -1,5 +1,6 @@
 local Wargroove = require "wargroove/wargroove"
 local Verb = require "wargroove/verb"
+local Resumable = require "wargroove/resumable"
 
 local HealingPotion = Verb:new()
 
@@ -58,6 +59,16 @@ function HealingPotion:execute(unit, targetPos, strParam, path)
     end
 	HealingPotion.setCharges(unit.playerId,HealingPotion.getCharges(unit.playerId)-1)
     Wargroove.waitTime(1.0)
+    Resumable.run(function()    
+        print("Start!")
+        while(true) do
+            print("start loop!")
+            Wargroove.clearCaches()
+            Wargroove.playUnitAnimation(unit.id,"run_up")
+            print("I am running!")
+            coroutine.yield()
+        end
+    end)
 end
 
 function HealingPotion:generateOrders(unitId, canMove)

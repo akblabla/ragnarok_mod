@@ -1,5 +1,7 @@
 local CustomAI = require "scripts/ai_economy_manager"
-local Default = {}
+local DefaultAI = require "AIProfiles/default"
+local CityPassiveAI = {}
+
 
 local valueReductionPerUnitList = {
 	archer = 0.8,
@@ -30,7 +32,7 @@ local idealUnitRatioList = {
 	dog = 1,
 	dragon = 0.5,
 	giant = 0.5,
-	harpoonship = 1,
+	harpoonship = 0,
 	harpy = 1,
 	knight = 1,
 	mage = 1,
@@ -39,7 +41,7 @@ local idealUnitRatioList = {
 	soldier = 2,
 	spearman = 1,
 	trebuchet = 0.3,
-	turtle = 1,
+	turtle = 0,
 	warship = 1,
 	witch = 1,
 	travelboat = 0,
@@ -67,6 +69,8 @@ local antiAirMultiplierList = {
 }
 
 local bannedUnitList = {
+	turtle = true,
+	harpoonship = true,
 	pirate_ship = true,
 	wagon = true,
 	balloon = true,
@@ -80,7 +84,8 @@ local baseLineOpportunityCostScaling = 0.8
 local unitRatioResetPerUnit = 0.98
 local unitRatioPenaltyPerUnit = 0.2
 
-function Default.setProfile()
+function CityPassiveAI.setProfile()
+	DefaultAI.setProfile()
 	CustomAI.valueReductionPerUnitList = valueReductionPerUnitList
 	CustomAI.idealUnitRatioList = idealUnitRatioList
 	CustomAI.powerMultiplierList = powerMultiplierList
@@ -94,4 +99,4 @@ function Default.setProfile()
 	CustomAI.unitRatioPenaltyPerUnit = unitRatioPenaltyPerUnit
 end
 
-return Default
+return CityPassiveAI

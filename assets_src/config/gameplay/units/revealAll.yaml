@@ -3,7 +3,7 @@
 unitClasses:
   - id: reveal_all
     name: unit_class_name_area_heal
-    movement: walking
+    movement: hovering
     moveRange: 0
     damageMultiplier: 0
     aiPriority: 0

@@ -144,4 +144,7 @@ cutscene_props:
     path: backgrounds/props/forge_flames
   - id: large_table
     path: backgrounds/props/large_table
+  - id: large_table_servings
+    path: backgrounds/props/large_table_servings
+    
 ...

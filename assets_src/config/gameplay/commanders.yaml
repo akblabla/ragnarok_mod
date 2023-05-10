@@ -1,6 +1,25 @@
 ---
 
 commanders:
+  - id: duke
+    name: character_duke_name
+    title: character_duke_title
+    playable: true
+    faction: cherrystone
+    factionIndex: 3
+    portrait:
+      neutral: portraits/commanders/small/wulfar_portrait_small.png
+      happy: portraits/commanders/small/wulfar_portrait_happy.png
+      sad: portraits/commanders/small/wulfar_portrait_sad.png
+    cutscenePortrait: portraits/commanders/big/wulfar_portrait
+    portraitOffset: [50, -45]
+    namePlate: ui/character_select/charlabel/charlabel_outlaw.png
+    themeSong: music/hostile
+    skinColour: typeII
+    unitClassId: commander_duke
+    selectionSound: wulfar/wulfarShoutUpForTheTask
+    dialogueBoxVoice: ui/dialogue/textScrollWulfar
+
   - id: rival
     name: character_flagship_rival_name
     title: character_flagship_rival_title

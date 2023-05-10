@@ -1,6 +1,7 @@
 local OldWargroove = require "wargroove/wargroove"
 local Ragnarok = require "initialized/ragnarok"
 local VisionTracker = require "initialized/vision_tracker"
+local StealthManager = require "scripts/stealth_manager"
 local FIFOQueue = require "util/fifoQueue"
 
 local WargrooveVision = {}
@@ -59,9 +60,13 @@ end
 
 function WargrooveVision.spawnUnit(playerId, pos, unitType, turnSpent, startAnimation, startingState, factionOverride)  
 	local unitId = Original.spawnUnit(playerId, pos, unitType, turnSpent, startAnimation, startingState, factionOverride)  
+	OldWargroove.waitFrame()
+	OldWargroove.waitFrame()
 	local unit = OldWargroove.getUnitById(unitId)
 	VisionTracker.addUnitToVisionMatrix(unit)
 	--VisionTracker.getPrevPosList()[unitId] = pos
+	StealthManager.removeUnit(unit)
+	Original.updateUnit(unit)
     return unitId
 end
 

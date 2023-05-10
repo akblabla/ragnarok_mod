@@ -17,15 +17,18 @@ function Pathfinding.guess(cur, dest)
 end
 
 
-function Pathfinding.tileCost(unitClassId,pos, playerId, roadBoost)
+function Pathfinding.tileCost(unitClassId,pos, playerId, roadBoost, ignoreEnemies)
     local stranger = Wargroove.getUnitAt(pos)
     local Stats = require "util/stats"
     local Wargroove = require "wargroove/wargroove"
     local mapSize = Wargroove.getMapSize()
-    if not (pos.x >= 0 and pos.y >= 0 and pos.x < mapSize.x and pos.y < mapSize.y) then
+    if ignoreEnemies == nil then
+      ignoreEnemies = false
+    end
+    if not ((pos.x >= 0) and (pos.y >= 0) and (pos.x < mapSize.x) and (pos.y < mapSize.y)) then
         return 1000
     end
-    if playerId ~= nil and stranger ~= nil and Wargroove.areEnemies(playerId, stranger.playerId) then
+    if (playerId ~= nil) and (stranger ~= nil) and Wargroove.areEnemies(playerId, stranger.playerId) and (not ignoreEnemies) then
         return 100
     end
     local tileCost, cantStop = Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unitClassId)
@@ -122,7 +125,11 @@ function Pathfinding.AStar(playerId, unitClassId, start, destList, roadBoost)
     for i,dir in ipairs(directions) do
       local newPos = {x = currentPos.x+dir.x,y = currentPos.y+dir.y}
       local newPosKey = generatePosKey(newPos)
-      local tentative_gScore = gScore[currentPosKey] + Pathfinding.tileCost(unitClassId,currentPos,playerId, roadBoost)
+      local ignoreEnemies = true
+      if Pathfinding.guess(newPos, start) <= Wargroove.getUnitClass(unitClassId).moveRange then
+        ignoreEnemies = false
+      end
+      local tentative_gScore = gScore[currentPosKey] + Pathfinding.tileCost(unitClassId,currentPos,playerId, roadBoost,ignoreEnemies)
       if gScore[newPosKey] == nil or tentative_gScore<gScore[newPosKey] then
         cameFrom[newPosKey] = currentPos
         gScore[newPosKey] = tentative_gScore
@@ -194,7 +201,7 @@ function Pathfinding.findClosestOpenSpot(unitClassId, start)
       local newPos = {x = currentPos.x+dir.x,y = currentPos.y+dir.y}
       local newPosKey = generatePosKey(newPos)
       local tentative_gScore = gScore[currentPosKey] + Pathfinding.tileCost(unitClassId,newPos,nil, false)
-      if gScore[newPosKey] == nil and newPos.x>=0 and newPos.y>=0 and newPos.x<Wargroove.getMapSize().x and newPos.y<Wargroove.getMapSize().y then
+      if gScore[newPosKey] == nil and (newPos.x>=0) and (newPos.y>=0) and (newPos.x<Wargroove.getMapSize().x) and (newPos.y<Wargroove.getMapSize().y) then
         gScore[newPosKey] = tentative_gScore
         openSet:insert(gScore[newPosKey],newPosKey)
       end

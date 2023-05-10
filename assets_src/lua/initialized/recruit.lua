@@ -2,6 +2,7 @@ local Wargroove = require "wargroove/wargroove"
 local Ragnarok = require "initialized/ragnarok"
 local Verb = require "wargroove/verb"
 local OldRecruit = require "verbs/recruit"
+local StealthManager = require "scripts/stealth_manager"
 
 local Recruit = Verb:new()
 --local factionExclusiveUnits = {unitId = "pirate_ship", commanders = {"commander_wulfar","commander_vesper","commander_flagship_wulfar","commander_flagship_rival"}}
@@ -101,10 +102,19 @@ function Recruit:execute(unit, targetPos, strParam, path)
 	local uc = Wargroove.getUnitClass(strParam)
 	Wargroove.changeMoney(unit.playerId, -uc.cost)
 	if strParam ~= "flare" then
-		Wargroove.spawnUnit(unit.playerId, targetPos, strParam, true)
+		local spawnedId = Wargroove.spawnUnit(unit.playerId, targetPos, strParam, true)
 		Wargroove.spawnMapAnimation(targetPos, 0, "fx/mapeditor_unitdrop")
 		Wargroove.playMapSound("spawn", targetPos)
 		Wargroove.playPositionlessSound("recruit")
+		Wargroove.waitTime(0.2)
+		local spawn = Wargroove.getUnitById(spawnedId) 
+		if StealthManager.isUnitPermaAlerted(unit) then
+			StealthManager.makePermaAlerted(spawn)
+			StealthManager.updateAwareness(spawn,false)
+		else
+			StealthManager.removeUnit(spawn)
+			Wargroove.updateUnit(spawn)
+		end
 	else
 		--print("Deploy Flare!")
 		Wargroove.lockTrackCamera(unit.id)
@@ -118,7 +128,6 @@ function Recruit:execute(unit, targetPos, strParam, path)
 		--print("0")
 		local spawn = Wargroove.getUnitById(spawnedId)
 		--print("1")
-
 		local facingOverride = ""
 		if targetPos.x > unit.pos.x then
 			facingOverride = "right"

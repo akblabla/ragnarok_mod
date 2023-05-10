@@ -62,7 +62,7 @@ unitClasses:
       - wait_ai
     battleUnitCount: 4
     passiveMultiplier: 1.25
-    sightRange: 6
+    sightRange: 5
     canSeeOverTerrain: true
     deathVerbId: death
 

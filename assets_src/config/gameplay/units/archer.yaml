@@ -30,7 +30,7 @@ weapons:
       harpoonship: 0.35
       turtle: 0.3
       travelboat: 0.35
-      merman: 0.7
+      merman: 0.75
       rifleman: 0.8
       thief: 0.7
       pirate_ship: 0.3

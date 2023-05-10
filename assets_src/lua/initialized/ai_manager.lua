@@ -37,17 +37,18 @@ function AIManager.getNextPosition(unitId)
       return nil
    end
    local unit = Wargroove.getUnitById(unitId)
+   if unit == nil then
+      return nil
+   end
+   if not((unit.pos.x>=0) and (unit.pos.y>=0) and (unit.pos.x<Wargroove.getMapSize().x) and (unit.pos.y<Wargroove.getMapSize().y)) then
+      return nil
+   end
    if AITargets[unitId].order == "road_move" then
       local next, distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].location,true)
 	   return next, distMoved, dist
    end
    if AITargets[unitId].order == "move" then
-      print("AITargets[unitId].order == move")
-      print(dump(AITargets[unitId].location,0));
       local next, distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].location,false)
-      print(dump(next,0));
-      print(dump(distMoved,0));
-      print(dump(dist,0));
 	   return next, distMoved, dist
    end
    if AITargets[unitId].order == "attack_move" then
@@ -76,11 +77,6 @@ function AIManager.getNextPositionTowardsTarget(unitId, location, roadBoost)
    local unit = Wargroove.getUnitById(unitId)
    local path = Pathfinding.AStar(unit.playerId, unit.unitClassId, unit.pos, location, roadBoost)
    if (unit.unitClassId == "travelboat") then
-      print("AIManager.getNextPositionTowardsTarget(unitId, location, roadBoost)")
-      print("unit")
-      print(dump(unit,0))
-      print("path")
-      print(dump(path,0))
    end
    --path[1] = nil
    local movePoints = unit.unitClass.moveRange
@@ -88,14 +84,6 @@ function AIManager.getNextPositionTowardsTarget(unitId, location, roadBoost)
    local reachedEnd = false
    for i,tile in pairs(path) do
       local tileCost, cantStop = Stats.getTerrainCost(Wargroove.getTerrainNameAt(tile),unit.unitClassId)
-      if (unit.unitClassId == "travelboat") then
-         print("tileCost")
-         print(tileCost)
-         print("cantStop")
-         print(cantStop)
-         print("target")
-         print(dump(target,0))
-      end
       movePoints = movePoints-tileCost
       if i == #path then
          reachedEnd = true

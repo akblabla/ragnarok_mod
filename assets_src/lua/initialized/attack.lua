@@ -2,7 +2,7 @@ local Wargroove = require "wargroove/wargroove"
 local OldAttack = require "verbs/attack"
 local Combat = require "wargroove/combat"
 local Ragnarok = require "initialized/ragnarok"
-local StealthManager = require "initialized/stealth_manager"
+local StealthManager = require "scripts/stealth_manager"
 local Stats = require "util/stats"
 
 
@@ -41,11 +41,11 @@ function Attack.revertFlanked(context)
 	if flankedId ~= nil and context:checkState("endOfUnitTurn") then
 		local flanked = Wargroove.getUnitById(flankedId)
 		local flanker = Wargroove.getUnitById(flankerId)
-		if flanked ~= nil and flanked.unitClassId == "soldier_flanked" then
-			flanked.unitClassId = "soldier"
-			flanked.pos.facing = getFacing(flanked.pos, flanker.pos)
-			Wargroove.updateUnit(flanked)
-		end
+		-- if flanked ~= nil and flanked.unitClassId == "soldier_flanked" then
+		-- 	flanked.unitClassId = "soldier"
+		-- 	flanked.pos.facing = getFacing(flanked.pos, flanker.pos)
+		-- 	Wargroove.updateUnit(flanked)
+		-- end
 		Wargroove.waitFrame()
 		Wargroove.clearCaches()
         Wargroove.waitTime(0.5)
@@ -66,18 +66,18 @@ function Attack:execute(unit, targetPos, strParam, path)
         Wargroove.waitTime(0.5)
     end
  	local flanked = Wargroove.getUnitAt(targetPos)
-	if StealthManager.isActive(flanked.playerId) and StealthManager.isUnitAlerted(flanked.id) == false then
-		if flanked.unitClassId == "soldier" then
-			flanked.unitClassId = "soldier_flanked"
-			Wargroove.updateUnit(flanked)
-		end
-		Wargroove.waitFrame()
-		Wargroove.waitFrame()
-		Wargroove.clearCaches()
-		flanked = Wargroove.getUnitAt(targetPos)
-		flankedId = flanked.id
-		flankerId = unit.id
-	end
+	-- if StealthManager.isActive(flanked.playerId) and StealthManager.isUnitAlerted(flanked.id) == false then
+	-- 	if flanked.unitClassId == "soldier" then
+	-- 		flanked.unitClassId = "soldier_flanked"
+	-- 		Wargroove.updateUnit(flanked)
+	-- 	end
+	-- 	Wargroove.waitFrame()
+	-- 	Wargroove.waitFrame()
+	-- 	Wargroove.clearCaches()
+	-- 	flanked = Wargroove.getUnitAt(targetPos)
+	-- 	flankedId = flanked.id
+	-- 	flankerId = unit.id
+	-- end
     Wargroove.startCombat(unit, flanked, path)
 	print("Attack:execute")
 	print(dump(path,0))

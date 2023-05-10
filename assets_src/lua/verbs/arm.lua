@@ -2,13 +2,13 @@ local Wargroove = require "wargroove/wargroove"
 local Ragnarok = require "initialized/ragnarok"
 local Verb = require "wargroove/verb"
 
-local Hire = Verb:new()
+local Arm = Verb:new()
 
 local costMultiplier = 1
 
 local defaultUnits = {"soldier", "spearman", "archer", "mage"}
 
-function Hire:recruitsContain(recruits, unit)
+function Arm:recruitsContain(recruits, unit)
     for i, recruit in pairs(recruits) do
         if recruit == unit then 
            return true
@@ -17,13 +17,13 @@ function Hire:recruitsContain(recruits, unit)
      return false
 end
 
-function Hire:getRecruitableTargets(unit)
+function Arm:getRecruitableTargets(unit)
     return defaultUnits
 end
 
 
-function Hire:getMaximumRange(unit, endPos)
-	return 1
+function Arm:getMaximumRange(unit, endPos)
+	return 0
 end
 
 local function getCost(cost)
@@ -31,36 +31,35 @@ local function getCost(cost)
 end
 
 
-function Hire:getTargetType()
+function Arm:getTargetType()
     return "all"
 end
 
 local enabledPlayerList = {}
 
-function Hire.enableForPlayer(playerId)
+function Arm.enableForPlayer(playerId)
     enabledPlayerList[playerId] = true;
 end
 
-function Hire:canExecuteAnywhere(unit)
+function Arm:canExecuteAnywhere(unit)
     return (enabledPlayerList[unit.playerId] ~= nil) and (enabledPlayerList[unit.playerId] == true)
 end
 
-Hire.inPreExecute = true
-Hire.classToRecruit = nil
+Arm.inPreExecute = true
+Arm.classToRecruit = nil
 
-function Hire:canExecuteWithTarget(unit, endPos, targetPos, strParam)
+function Arm:canExecuteWithTarget(unit, endPos, targetPos, strParam)
     if not self:canSeeTarget(targetPos) then
         return false
     end
 
-    local classToRecruit = Hire.classToRecruit
+    local classToRecruit = Arm.classToRecruit
     if classToRecruit == nil then
         classToRecruit = strParam
     end
 
-    if (Hire.inPreExecute) then
-        local u = Wargroove.getUnitAt(targetPos)
-        return (u ~= nil) and (u.unitClassId == "villager") and Wargroove.isNeutral(u.playerId)
+    if (Arm.inPreExecute) then
+        return true
     else
 
         -- Check if this player can recruit this type of unit
@@ -79,9 +78,9 @@ function Hire:canExecuteWithTarget(unit, endPos, targetPos, strParam)
     end
 end
 
-function Hire:preExecute(unit, targetPos, strParam, endPos)
-    Hire.inPreExecute = false
-    local recruitableUnits = Hire.getRecruitableTargets(self, unit);
+function Arm:preExecute(unit, targetPos, strParam, endPos)
+    Arm.inPreExecute = false
+    local recruitableUnits = Arm.getRecruitableTargets(self, unit);
 
     Wargroove.openRecruitMenu(unit.playerId, unit.id, unit.pos, unit.unitClassId, recruitableUnits, costMultiplier, defaultUnits, "outlaw");
 
@@ -89,42 +88,28 @@ function Hire:preExecute(unit, targetPos, strParam, endPos)
         coroutine.yield()
     end
 
-    Hire.classToRecruit = Wargroove.popRecruitedUnitClass();
+    Arm.classToRecruit = Wargroove.popRecruitedUnitClass();
 
-    Hire.inPreExecute = true
-    if Hire.classToRecruit == nil then
+    Arm.inPreExecute = true
+    if Arm.classToRecruit == nil then
         return false, ""
     end
 
-    return true, Hire.classToRecruit
+    return true, Arm.classToRecruit
 end
 
-function Hire:execute(unit, targetPos, strParam, path)
+function Arm:execute(unit, targetPos, strParam, path)
 
-    Hire.classToRecruit = nil
+    Arm.classToRecruit = nil
 
     if strParam == nil then
-        print("Hire strParam is nil.")
+        print("Arm strParam is nil.")
         return
     end
     if strParam == "" then
-        print("Hire was not given a class to recruit.")
+        print("Arm was not given a class to recruit.")
         return
     end
-
-    local facingOverride = ""
-    if targetPos.x > unit.pos.x then
-        facingOverride = "right"
-    elseif targetPos.x < unit.pos.x then
-        facingOverride = "left"
-    end
-
-    if facingOverride ~= "" then
-        Wargroove.setFacingOverride(unit.id, facingOverride)
-    end
-
-    Wargroove.updateUnit(unit)
-    Wargroove.playMapSound("wulfarShoutFollowMe",targetPos)
 
     Wargroove.waitTime(0.2)
     Wargroove.playMapSound("thiefGoldReleased", targetPos)
@@ -140,29 +125,23 @@ function Hire:execute(unit, targetPos, strParam, path)
 
 	local u = Wargroove.getUnitAt(targetPos)
 
-	if u then
-		print(strParam)
-		u.unitClassId = strParam
-		u.playerId = unit.playerId
-		u.hadTurn = true
-		Wargroove.updateUnit(u)
-	end
+    unit.unitClassId = strParam
+    unit.hadTurn = true
+    Wargroove.updateUnit(unit)
 
     Wargroove.waitTime(0.2)
-
-    Wargroove.unsetFacingOverride(unit.id)
 
     strParam = ""
 end
 
-function Hire:generateOrders(unitId, canMove)
+function Arm:generateOrders(unitId, canMove)
     local unit = Wargroove.getUnitById(unitId)
     return {}
 end
 
-function Hire:getScore(unitId, order)
+function Arm:getScore(unitId, order)
     local unit = Wargroove.getUnitById(unitId)
     return {score = -1, introspection = {}}
 end
 
-return Hire
+return Arm

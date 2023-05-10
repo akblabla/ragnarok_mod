@@ -1,0 +1,41 @@
+---
+
+aiProfiles:
+  - id: city_war
+    name: ai_profile_city_war
+    attackLookAhead: 3
+    captureLookAhead: 5
+    captureBias: 1.5
+    attackBias: 1.5
+    braveryBonus: 0.0
+    recklessness: 0.1
+    moveBias: 0.3
+    lookAheadBias: 0.5
+    baseDoomPenalty: 100.0
+    additionalDoomPenalty: 1000.0
+    attackThreshold:
+      commander: 0.25
+      hq: 0.25
+    strategicValue:
+      commander:
+        enemy: 1.5
+      hq:
+        enemy: 0.8
+      structure:
+        enemy: 0.5
+      thief:
+        enemy: 0.5
+      thief_with_gold:
+        enemy: 1.0
+    stealValue:
+      hq: 0.6
+      structure: 0.3
+    depositValue:
+      hq: 1.0
+      structure: 1.0
+    recruitBonus:
+      thief: 0.1
+    recruitLimit:
+      thief: 1
+      witch: 3
+...

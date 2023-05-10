@@ -206,7 +206,7 @@ function Broadside:isInCone(origin, direction, pos)
   return true
 end
 
-function dump(o,level)
+local function dump(o,level)
    if type(o) == 'table' then
       local s = '\n' .. string.rep("   ", level) .. '{\n'
       for k,v in pairs(o) do

@@ -1,0 +1,195 @@
+---
+
+# This is the string configuration file for English.
+en-GB:
+  # Actions
+  trigger_action_name_ai_set_no_building_attacking: "AI: Set no building attacking"
+  trigger_action_description_ai_set_no_building_attacking: "Prevents AI from attacking buildings."
+  trigger_action_readable_ai_set_no_building_attacking: "Prevent AI controlled by player {0} from attacking buildings."
+
+  trigger_action_name_enable_hiring: "Player: Let player hire"
+  trigger_action_description_enable_hiring: "Let player hire."
+  trigger_action_readable_enable_hiring: "Let player {0} hire villagers."
+  
+  trigger_action_name_allow_pirate_ships: "AI: Allow Raider Ship Recruitment"
+  trigger_action_description_allow_pirate_ships: "Let AI build raider ships."
+  trigger_action_readable_allow_pirate_ships: "Let AI of player {0} build raider ships."
+  
+  trigger_action_name_enable_AI_fog_limitations: "AI: Enable AI fog Limitations"
+  trigger_action_description_enable_AI_fog_limitations: "Enables AI fog Limitations."
+  trigger_action_readable_enable_AI_fog_limitations: "Enable AI fog Limitations."
+  
+  trigger_action_name_set_state: "Unit: Set State"
+  trigger_action_description_set_state: "Sets the unit state."
+  trigger_action_readable_set_state: "Add set state {3} to {4} for unit type(s) {0} at location {1} owned by player {2}."
+  
+  trigger_action_name_give_crown: "Unit: Give Crown"
+  trigger_action_description_give_crown: "Gives unit the Crown."
+  trigger_action_readable_give_crown: "Give the crown to units of type {0} at location {1} owned by player {2}."
+  
+  trigger_action_name_place_crown: "Map: Place Crown"
+  trigger_action_description_place_crown: "Place crown at center of location."
+  trigger_action_readable_place_crown: "Place the crown location {0}."
+  
+  trigger_action_name_change_objective_with_3_counters: "Map: Change Objective with 3 Counters"
+  trigger_action_description_change_objective_with_3_counters: "Change objective with 3 counters."
+  trigger_action_readable_change_objective_with_3_counters: "Sets the map objective to {0} ({1}) {2} ({3}) {4}."
+  
+  trigger_action_name_dialogue_box_with_counter: "Map: Display dialog with counter"
+  trigger_action_description_dialogue_box_with_counter: "Display dialog with counter."
+  trigger_action_readable_dialogue_box_with_counter: "Display dialogue box with {0} {1} saying \"{2}\" with shout: {3}. Use counter {4}."
+  
+  trigger_action_name_message_counter: "Data: Display message with counter"
+  trigger_action_description_message_counter: "Display message with counter."
+  trigger_action_readable_message_counter: "Display message: \"{0}\" and then counter {1}."
+
+  trigger_action_name_reveal_all: "Player: Reveal all"
+  trigger_action_description_reveal_all: "Reveals all tiles for a player."
+  trigger_action_readable_reveal_all: "Spawn an eye at location {1} for player {0} seeing all."
+  
+  trigger_action_name_reveal_all_but_hidden: "Player: Reveal all but hidden"
+  trigger_action_description_reveal_all_but_hidden: "Reveals all tiles except hidden tiles for a player."
+  trigger_action_readable_reveal_all_but_hidden: "Spawn an eye at location {1} for player {0} seeing all except hidden tiles."
+  
+  trigger_action_name_reveal_all_but_over: "Player: Reveal all but over"
+  trigger_action_description_reveal_all_but_over: "Reveals all tiles for a player, but limited to LOS."
+  trigger_action_readable_reveal_all_but_over: "Spawn an eye at location {1} for player {0} seeing all things it has direct line of sight to."
+  
+  trigger_action_name_transfer_gold_robbed: "Data: Transfer Gold Robbed"
+  trigger_action_description_transfer_gold_robbed: "Sets/Gets gold robbed by player."
+  trigger_action_readable_transfer_gold_robbed: "Transfer gold robbed by {0}: {1} {2}" 
+  
+  trigger_action_name_link_gizmo_state_with_activators: "Gizmo: Link Gizmo State with Activators"
+  trigger_action_description_link_gizmo_state_with_activators: "Activate all gizmos when all activator gizmos are triggered."
+  trigger_action_readable_link_gizmo_state_with_activators: "Link all gizmos with the activators at location {0}. (Lock when activated? = {1})"
+  
+  trigger_action_name_gizmo_active_when_stood_on: "Gizmo: Activate when stood on"
+  trigger_action_description_gizmo_active_when_stood_on: "Activate Gizmos at location when stood on."
+  trigger_action_readable_gizmo_active_when_stood_on: "Activate Gizmos at location {0} if a unit or crown stands on them. (Invert? = {1})"
+  
+  trigger_action_name_gizmo_toggle_when_stood_on: "Gizmo: Toggle when stood on"
+  trigger_action_description_gizmo_toggle_when_stood_on: "Gizmos toggle at location when stood on."
+  trigger_action_readable_gizmo_toggle_when_stood_on: "Gizmos toggle when unit moves to location {0}."
+  
+  trigger_action_name_invert_gizmo: "Gizmo: Invert Active State"
+  trigger_action_description_invert_gizmo: "Invert active states of gizmos."
+  trigger_action_readable_invert_gizmo: "Invert active states of gizmos at location {0} (only output? = {1})"
+  
+  trigger_action_name_set_threat_at_location: "AI: Set Threat at Location"
+  trigger_action_description_set_threat_at_location: "Set threat level at location."
+  trigger_action_readable_set_threat_at_location: "Sets the threat level of {0} to {1}, sourcing the owner as {2} at {3} owned by {4}"
+  
+  trigger_action_name_give_bounty: "Unit: Give Bounty"
+  trigger_action_description_give_bounty: "Give Units a bounty."
+  trigger_action_readable_give_bounty: "Give units of type {0} at location {1} owned by player {2} a bounty."
+
+  trigger_action_name_spawn_unit_close: "Unit: Spawn as close as possible"
+  trigger_action_description_spawn_unit_close: "Spawn as close as possible to target location."
+  trigger_action_readable_spawn_unit_close: "Spawn {0} at {1} as close as possible for {2} (silent = {3})"
+
+  trigger_action_name_split_into: "Unit: Split"
+  trigger_action_description_split_into: "Split units at full hp."
+  trigger_action_readable_split_into: "Split {0} at {1} for {2} if on full health into {3}"
+
+  trigger_action_name_move_location_to_next_structure: "Location: Move location to Next"
+  trigger_action_description_move_location_to_next_structure: "Move location to next unit on the right."
+  trigger_action_readable_move_location_to_next_structure: "Move location {0} to next {1} owned by {2} at {3} to the right."
+  
+  trigger_action_name_modify_flare_count: "Player: Modify Flare Count"
+  trigger_action_description_modify_flare_count: "Modifies the amount of flares available to a player."
+  trigger_action_readable_modify_flare_count: "Modify the number of flares owned by {0}: {1} {2}"
+  
+  trigger_action_name_modify_healing_potion_count: "Player: Modify Potion Count"
+  trigger_action_description_modify_healing_potion_count: "Modifies the amount of healing potions available to a player."
+  trigger_action_readable_modify_healing_potion_count: "Modify the number of healing potions owned by {0}: {1} {2}"
+  
+  trigger_action_name_set_location_to_vision: "Location: Set to Vision" 
+  trigger_action_description_set_location_to_vision: "Set location to the vision of a player"
+  trigger_action_readable_set_location_to_vision: "Set location {0} to the vision of player {1}."
+  
+  trigger_action_name_dialogue_box_unit: "UI: Show Dialogue Box for Unit"
+  trigger_action_description_dialogue_box_unit: "Triggers a dialogue box for a unit."
+  trigger_action_readable_dialogue_box_unit: "Display dialogue box from {0} at {1} for {2} being {3} saying {4} with colour {5}."
+
+  trigger_action_name_log_message: "Dev: Write to Log"
+  trigger_action_description_log_message: "Write message to log."
+  trigger_action_readable_log_message: "Write to log message: {0}"
+  
+  trigger_action_name_set_match_seed: "Map: Set Match Seed"
+  trigger_action_description_set_match_seed: "Set Match Seed."
+  trigger_action_readable_set_match_seed: "Set Match Seed to {0}."
+  
+  trigger_action_name_set_priority_target: "AI: Give Order"
+  trigger_action_description_set_priority_target: "Give Order."
+  trigger_action_readable_set_priority_target: "Give units of type {0} at location {1} owned by player {2} {4} orders to go to location {3}."
+
+  trigger_action_name_set_hide_and_seek: "Stealth: Set Hide and Seek"
+  trigger_action_description_set_hide_and_seek: "Set Hide and Seek."
+  trigger_action_readable_set_hide_and_seek: "Is hide and seek rules for player {1} enabled {0}"
+
+  trigger_action_name_set_position_as_goal: "Stealth: Set Target Position"
+  trigger_action_description_set_position_as_goal: "Set Target Position."
+  trigger_action_readable_set_position_as_goal: "Make units of type {0} at location {1} owned by player {2} move towards {3}."
+
+  trigger_action_name_set_current_position_as_goal: "Stealth: Guard Current Position"
+  trigger_action_description_set_current_position_as_goal: "Set Guard Current Position."
+  trigger_action_readable_set_current_position_as_goal: "Make units of type {0} at location {1} owned by player {2} stand guard."
+
+  trigger_action_name_set_awareness: "Stealth: Set Awareness"
+  trigger_action_description_set_awarenesss: "Set awareness."
+  trigger_action_readable_set_awareness: "Sets awareness of units of type {0} at location {1} owned by player {2} to {3} from {5}. (Force = {4})"
+
+  trigger_action_name_update_awareness: "Stealth: Update Awareness"
+  trigger_action_description_update_awareness: "Update awareness."
+  trigger_action_readable_update_awareness: "Update awareness with center at {0}."
+
+  trigger_action_name_spawn_unit_in_transport: "Unit: Spawn Inside Transport"
+  trigger_action_description_spawn_unit_in_transport: "Spawn Inside Transport."
+  trigger_action_readable_spawn_unit_in_transport: "Give units of type {0} at location {1} owned by player {2} unit type {3} owned by player {4} with {5} hp."
+
+  trigger_action_name_force_move: "Unit: Force Move"
+  trigger_action_description_force_move: "Force Move."
+  trigger_action_readable_force_move: "Move units of type {0} at location {1} owned by player {2} to location {3}."
+
+  trigger_action_name_force_attack: "Unit: Force Attack"
+  trigger_action_description_force_attack: "Force Attack."
+  trigger_action_readable_force_attack: "Force units of type {0} at location {1} owned by player {2} to attack units of type {3} at location {4} owned by player {5}."
+
+  trigger_action_name_run_group_concurrently: "Util: Run Group Concurrently"
+  trigger_action_description_run_group_concurrently: "Run Group Concurrently."
+  trigger_action_readable_run_group_concurrently: "Run the following actions concurrently"
+  
+  trigger_action_name_run_group_sequentially: "Util: Run Group Sequentially"
+  trigger_action_description_run_group_sequentially: "Run Group Sequentially."
+  trigger_action_readable_run_group_sequentially: "Run the following actions sequentially"
+
+  trigger_action_name_end_group: "Util: End Group"
+  trigger_action_description_end_group: "End Group."
+  trigger_action_readable_end_group: "End grouped actions."
+
+#Conditions
+  trigger_condition_name_state: "Has State"
+  trigger_condition_description_state: "Triggers if a unit has a particular state."
+  trigger_condition_readable_state: "If unit type(s) {0} at location {1} owned by player {2} have state {3} equal to {4}."
+  
+  trigger_condition_name_does_next_structure_exist: "Location: Next Exists"
+  trigger_condition_description_does_next_structure_exist: "Triggers if a unit to the right of location exists."
+  trigger_condition_readable_does_next_structure_exist: "If there are more {1} owned by {2} at {3} to the right of location {0}"
+  
+  trigger_condition_name_did_it_occur: "Dev: Did it Occur"
+  trigger_condition_description_did_it_occur: "Triggers when an occation occurs."
+  trigger_condition_readable_did_it_occur: "If {0} occured"
+  
+  trigger_condition_name_is_rescued: "Gizmo: Is Rescued"
+  trigger_condition_description_is_rescued: "Triggers when capsized crew is rescued."
+  trigger_condition_readable_is_rescued: "If capsized crew at location {0} is rescued by player {1}."
+  
+  trigger_condition_name_or_group: "Util: Or"
+  trigger_condition_description_or_group: "Or following actions."
+  trigger_condition_readable_or_group: "Or following actions."
+  
+  trigger_condition_name_end_group: "Util: End"
+  trigger_condition_description_end_group: "End group."
+  trigger_condition_readable_end_group: "End group."
+
+...

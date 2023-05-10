@@ -1,4 +1,4 @@
-local CustomAI = require "initialized/ai_economy_manager"
+local CustomAI = require "scripts/ai_economy_manager"
 local DefaultAI = require "AIProfiles/default"
 local MangroveAI = {}
 
@@ -61,14 +61,14 @@ function MangroveAI.setProfile()
 	CustomAI.valueReductionPerUnitList = valueReductionPerUnitList
 	CustomAI.idealUnitRatioList = idealUnitRatioList
 	CustomAI.powerMultiplierList = powerMultiplierList
-	CustomAI.antiAirMultiplierList = antiAirMultiplierList
-	CustomAI.bannedUnitList = bannedUnitList
-	CustomAI.antiAirReluctance = antiAirReluctance
-	CustomAI.airThreatPerTower = airThreatPerTower
-	CustomAI.baseLineOpportunityCost = baseLineOpportunityCost
-	CustomAI.baseLineOpportunityCostScaling = baseLineOpportunityCostScaling
-	CustomAI.unitRatioResetPerUnit = unitRatioResetPerUnit
-	CustomAI.unitRatioPenaltyPerUnit = unitRatioPenaltyPerUnit
+	-- CustomAI.antiAirMultiplierList = antiAirMultiplierList
+	-- CustomAI.bannedUnitList = bannedUnitList
+	-- CustomAI.antiAirReluctance = antiAirReluctance
+	-- CustomAI.airThreatPerTower = airThreatPerTower
+	-- CustomAI.baseLineOpportunityCost = baseLineOpportunityCost
+	-- CustomAI.baseLineOpportunityCostScaling = baseLineOpportunityCostScaling
+	-- CustomAI.unitRatioResetPerUnit = unitRatioResetPerUnit
+	-- CustomAI.unitRatioPenaltyPerUnit = unitRatioPenaltyPerUnit
 end
 
 return MangroveAI
