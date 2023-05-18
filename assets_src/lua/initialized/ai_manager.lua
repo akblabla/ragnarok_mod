@@ -20,7 +20,6 @@ end
 local setupRan = false
 
 local AIManager = {}
-local AITargets = {}
 
 function AIManager.init()
 	Ragnarok.addAction(AIManager.update,"repeating",true)
@@ -33,25 +32,30 @@ function AIManager.update(context)
 end
 
 function AIManager.getNextPosition(unitId)
-   if AITargets[unitId] == nil then
-      return nil
-   end
    local unit = Wargroove.getUnitById(unitId)
    if unit == nil then
       return nil
    end
-   if not((unit.pos.x>=0) and (unit.pos.y>=0) and (unit.pos.x<Wargroove.getMapSize().x) and (unit.pos.y<Wargroove.getMapSize().y)) then
+   local order = Wargroove.getUnitState(unit, "order")
+   if order == nil then
       return nil
    end
-   if AITargets[unitId].order == "road_move" then
-      local next, distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].location,true)
+   if order.location == nil then
+      return nil
+   end
+   if not Pathfinding.withinBounds(unit.pos) then
+      return nil
+   end
+   if order.type == "road_move" then
+      local next, distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, order.location,order.maxSpeed, true)
 	   return next, distMoved, dist
    end
-   if AITargets[unitId].order == "move" then
-      local next, distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].location,false)
+   if order.type == "move" then
+      local next, distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, order.location,order.maxSpeed, false)
 	   return next, distMoved, dist
    end
-   if AITargets[unitId].order == "attack_move" then
+   if order.type == "attack_move" then
+      print("attack_move")
       local tileList = Wargroove.getTargetsInRange(unit.pos, VisionTracker.getSightRange(unit), "all")
       local canSeeEnemy = false
       for i,tile in pairs(tileList) do
@@ -63,37 +67,46 @@ function AIManager.getNextPosition(unitId)
             end
          end
       end
+      print("can see enemy")
+      print(canSeeEnemy)
       if canSeeEnemy then
          return nil, false
       else
-         local next,distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].location,false)
+         local next,distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, order.location,order.maxSpeed,false)
          return next, distMoved, dist
       end
    end
    return nil, 0,0
 end
 
-function AIManager.getNextPositionTowardsTarget(unitId, location, roadBoost)
+function AIManager.getNextPositionTowardsTarget(unitId, location, maxSpeed, roadBoost)
    local unit = Wargroove.getUnitById(unitId)
    local path = Pathfinding.AStar(unit.playerId, unit.unitClassId, unit.pos, location, roadBoost)
-   if (unit.unitClassId == "travelboat") then
-   end
+
    --path[1] = nil
    local movePoints = unit.unitClass.moveRange
+   if maxSpeed == nil then
+      maxSpeed = 1000
+   end
+   local tiles = maxSpeed
    local target = unit.pos
    local reachedEnd = false
    for i,tile in pairs(path) do
       local tileCost, cantStop = Stats.getTerrainCost(Wargroove.getTerrainNameAt(tile),unit.unitClassId)
-      movePoints = movePoints-tileCost
       if i == #path then
          reachedEnd = true
       end
       if tileCost > unit.unitClass.moveRange then
          reachedEnd = true
       end
-      if movePoints<0 then
+      if movePoints<=0 then
          break
       end
+      if tiles<=0 then
+         break
+      end
+      movePoints = movePoints-tileCost
+      tiles = tiles-1
       if (Wargroove.isAnybodyElseAt(unit,tile) == false) and not cantStop then
          target = tile
       end
@@ -113,46 +126,63 @@ function AIManager.getNextPositionTowardsTarget(unitId, location, roadBoost)
          break
       end
    end
-   local distMoved = unit.unitClass.moveRange-movePoints
+   local distMoved = maxSpeed-tiles
 	return target, distMoved, dist
 end
 
-function AIManager.getAITarget(unitId)
-	return AITargets[unitId]
-end
-
-function AIManager.attackMoveOrder(unitId, location)
+function AIManager.attackMoveOrder(unitId, location, maxSpeed)
    if location == nil then
       return
+   end
+   if maxSpeed == nil then
+      maxSpeed = 10000;
    end
    if location.x ~= nil then
       location = {location}
    end
-	AITargets[unitId] = {order = "attack_move", location = location}
+   local unit = Wargroove.getUnitById(unitId)
+   if unit ~= nil then
+      Wargroove.setUnitState(unit, "order", {type = "attack_move", location = location, maxSpeed = maxSpeed})
+   end
 end
 
-function AIManager.moveOrder(unitId, location)
+function AIManager.moveOrder(unitId, location, maxSpeed)
    if location == nil then
       return
+   end
+   if maxSpeed == nil then
+      maxSpeed = 10000;
    end
    if location.x ~= nil then
       location = {location}
    end
-   AITargets[unitId] = {order = "move", location = location}
+   local unit = Wargroove.getUnitById(unitId)
+   if unit ~= nil then
+      Wargroove.setUnitState(unit, "order", {type = "move", location = location, maxSpeed = maxSpeed})
+   end
 end
 
-function AIManager.roadMoveOrder(unitId, location)
+function AIManager.roadMoveOrder(unitId, location, maxSpeed)
    if location == nil then
       return
+   end
+   if maxSpeed == nil then
+      maxSpeed = 10000;
    end
    if location.x ~= nil then
       location = {location}
    end
-   AITargets[unitId] = {order = "road_move", location = location}
+   local unit = Wargroove.getUnitById(unitId)
+   if unit ~= nil then
+      Wargroove.setUnitState(unit, "order", {type = "road_move", location = location, maxSpeed = maxSpeed})
+   end
 end
 
 function AIManager.clearOrder(unitId)
-	AITargets[unitId] = nil
+   local unit = Wargroove.getUnitById(unitId)
+   if unit ~= nil then
+      Wargroove.setUnitState(unit, "order", nil)
+   end
 end
 
 return AIManager

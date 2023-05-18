@@ -113,6 +113,11 @@ decorations:
     snapToGrid: true
     animation:
       undefined: decoration/bigDeco/map6VoidMap
+  - id: fog
+    layer: ground
+    snapToGrid: true
+    animation:
+      undefined: decoration/bigDeco/fog
       
 #Field 1
   - id: field01

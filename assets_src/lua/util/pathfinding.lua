@@ -1,64 +1,115 @@
 local BinaryHeap = require "util/binary_heap"
 local Wargroove = require "wargroove/wargroove"
+local Stats = require "util/stats"
+local PosKey = require "util/posKey"
 local Pathfinding = {}
 
 Pathfinding.__index = Pathfinding
-local function generatePosKey(pos)
-	return pos.x*1000+pos.y --Should work as long as people don't make maps taller than 1000 tiles.
-end
-local function revertPosKey(posKey)
-	return {x = math.floor(posKey/1000), y = math.floor(posKey%1000)} --Should work as long as people don't make maps taller than 1000 tiles.
-end
 local directions = {{x = 1,y = 0},{x = -1,y = 0},{x = 0,y = 1},{x = 0,y = -1}}
 
+local function dump(o,level)
+  if type(o) == 'table' then
+     local s = '\n' .. string.rep("   ", level) .. '{\n'
+     for k,v in pairs(o) do
+        if type(k) ~= 'number' then k = '"'..k..'"' end
+        s = s .. string.rep("   ", level+1) .. '['..k..'] = ' .. dump(v,level+1) .. ',\n'
+     end
+     return s .. string.rep("   ", level) .. '}'
+  else
+     return tostring(o)
+  end
+end
+
+function Pathfinding.guessList(cur, destList)
+  local shortest = 100000
+  for i,dest in pairs(destList) do
+    local dist = Pathfinding.guess(cur, dest)
+    if dist<shortest then
+      shortest = dist
+    end
+  end
+  return shortest
+end
 function Pathfinding.guess(cur, dest)
   local newYorkDistance = math.abs(cur.x-dest.x)+math.abs(cur.y-dest.y)
   return newYorkDistance*1
 end
+function Pathfinding.withinBounds(pos)
+  local mapSize = Wargroove.getMapSize()
+  return (pos.x >= 0) and (pos.y >= 0) and (pos.x < mapSize.x) and (pos.y < mapSize.y)
+end
 
-
-function Pathfinding.tileCost(unitClassId,pos, playerId, roadBoost, ignoreEnemies)
+function Pathfinding.tileCost(unitClassId,pos, playerId, ignoreUnits)
     local stranger = Wargroove.getUnitAt(pos)
-    local Stats = require "util/stats"
-    local Wargroove = require "wargroove/wargroove"
     local mapSize = Wargroove.getMapSize()
-    if ignoreEnemies == nil then
-      ignoreEnemies = false
+    if ignoreUnits == nil then
+      ignoreUnits = false
     end
-    if not ((pos.x >= 0) and (pos.y >= 0) and (pos.x < mapSize.x) and (pos.y < mapSize.y)) then
+    if not Pathfinding.withinBounds(pos) then
         return 1000
     end
-    if (playerId ~= nil) and (stranger ~= nil) and Wargroove.areEnemies(playerId, stranger.playerId) and (not ignoreEnemies) then
+    if (playerId ~= nil) and (stranger ~= nil) and Wargroove.areEnemies(playerId, stranger.playerId) and (not ignoreUnits) then
         return 100
     end
-    local tileCost, cantStop = Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unitClassId)
-    local terrainName = Wargroove.getTerrainNameAt(pos)
-    if roadBoost and not (terrainName == "road" or terrainName == "bridge") then
-        tileCost = tileCost+1
-    end
+    local tileCost = Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unitClassId)
     return tileCost
 end
 
+
+function Pathfinding.roadBoost(unitClassId,pos)
+  local terrainName = Wargroove.getTerrainNameAt(pos)
+  local movementType = Stats.getMovementType(unitClassId);
+  if (movementType == "walking") or (movementType == "riding") or (movementType == "wheels") then
+    if not (terrainName == "road" or terrainName == "bridge") then
+        return Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unitClassId)
+    end
+  end
+  if (movementType == "amphibious") or (movementType == "sailing") then
+    if not (terrainName == "sea" or terrainName == "river" or terrainName == "ocean") then
+      return Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unitClassId)
+    end
+  end
+  return 0
+end
+
+function Pathfinding.canStop(unitClassId,pos,ignoreUnits)
+  local stranger = Wargroove.getUnitAt(pos)
+  local mapSize = Wargroove.getMapSize()
+  if ignoreUnits == nil then
+    ignoreUnits = false
+  end
+  if (stranger ~= nil) and not ignoreUnits then
+    return false
+  end
+  return Stats.canStopOnTerrain(Wargroove.getTerrainNameAt(pos),unitClassId)
+end
 
 function Pathfinding.reconstructPath(cameFrom, dest)
   local pathLength = 0
   local path = {}
   local currentPos = dest
-  local currentPosKey = generatePosKey(currentPos)
+  if cameFrom == nil then
+    return path
+  end
+  if dest == nil then
+    return path
+  end
+
+  local currentPosKey = PosKey.generatePosKey(currentPos)
   while cameFrom[currentPosKey] ~= nil do
     currentPos = cameFrom[currentPosKey]
-    currentPosKey = generatePosKey(currentPos)
+    currentPosKey = PosKey.generatePosKey(currentPos)
     pathLength = pathLength + 1
-    path[pathLength] = currentPos
+--    path[pathLength] = currentPos
   end
-  -- currentPos = dest
-  -- currentPosKey = generatePosKey(currentPos)
-  -- while cameFrom[currentPosKey] ~= nil do
-  --   path[pathLength] = currentPos
-  --   pathLength = pathLength - 1
-  --   currentPos = cameFrom[currentPosKey]
-  --   currentPosKey = generatePosKey(currentPos)
-  -- end
+  currentPos = dest
+  currentPosKey = PosKey.generatePosKey(currentPos)
+  while cameFrom[currentPosKey] ~= nil do
+    path[pathLength] = currentPos
+    pathLength = pathLength - 1
+    currentPos = cameFrom[currentPosKey]
+    currentPosKey = PosKey.generatePosKey(currentPos)
+  end
   return path
 end
 
@@ -91,54 +142,127 @@ function Pathfinding.forceMoveAlongPath(unitId, path, facing)
 --  Wargroove.playUnitAnimation(unitId,"hit")
 end
 
+function Pathfinding.isBetter(gScore, tentative_gScore, uScore, tentative_uScore, dScore, tentative_dScore)
+  if (tentative_gScore + tentative_dScore<gScore+dScore) then
+    return true
+  else
+    return tentative_uScore<uScore
+  end
+end
+
 function Pathfinding.AStar(playerId, unitClassId, start, destList, roadBoost)
-  local openSet = BinaryHeap()
+  print("Astar")
   if destList == nil then
     return {start}
   end
+  if next(destList) == nil then
+    return {start}
+  end
+  print("start")
+  print(dump(start,0))
+  print("destList")
+  print(dump(destList,0))
+  local openSet = BinaryHeap()
+  local unitClass = Wargroove.getUnitClass(unitClassId)
   if destList.x ~= nil then
     destList = {{x = destList.x, y = destList.y}}
   end
   local cameFrom = {}
   local gScore = {}
-  for i,dest in pairs(destList) do
-    gScore[generatePosKey(dest)] = 0
-  end
-
+  local uScore = {}
+  local dScore = {}
   local fScore = {}
   local bestFScorePos = {fScore = 100000,pos = nil}
-  for i,dest in pairs(destList) do
-    local destKey = generatePosKey(dest)
-    fScore[destKey] = Pathfinding.guess(start, dest)
-    openSet:insert(fScore[destKey],destKey)
-    if bestFScorePos.fScore < fScore[destKey] then
-      bestFScorePos = {fScore = fScore[destKey],pos = start}
-    end
-  end
+  local startKey = PosKey.generatePosKey(start)
+  fScore[startKey] = Pathfinding.guessList(start, destList)
+  bestFScorePos = {fScore = fScore[startKey],pos = start}
+  gScore[startKey] = 0
+  uScore[startKey] = 0
+  dScore[startKey] = 0
+  openSet:insert(fScore[startKey],startKey)
+  local i = 0
   while openSet:empty() == false do
+    print("1")
     local currentPosKey
     _,currentPosKey = openSet:pop()
-    local currentPos = revertPosKey(currentPosKey)
-    if currentPos.x == start.x and currentPos.y == start.y then
-      return Pathfinding.reconstructPath(cameFrom, currentPos)
+    local currentPos = PosKey.revertPosKey(currentPosKey)
+    for i,dest in ipairs(destList) do
+      if currentPos.x == dest.x and currentPos.y == dest.y then
+        return Pathfinding.reconstructPath(cameFrom, currentPos)
+      end
     end
     for i,dir in ipairs(directions) do
+      print("2")
       local newPos = {x = currentPos.x+dir.x,y = currentPos.y+dir.y}
-      local newPosKey = generatePosKey(newPos)
-      local ignoreEnemies = true
-      if Pathfinding.guess(newPos, start) <= Wargroove.getUnitClass(unitClassId).moveRange then
-        ignoreEnemies = false
+      local newPosKey = PosKey.generatePosKey(newPos)
+      local ignoreUnits = true
+      if Pathfinding.guessList(newPos, destList) <= unitClass.moveRange then
+        ignoreUnits = false
       end
-      local tentative_gScore = gScore[currentPosKey] + Pathfinding.tileCost(unitClassId,currentPos,playerId, roadBoost,ignoreEnemies)
-      if gScore[newPosKey] == nil or tentative_gScore<gScore[newPosKey] then
+      print("3")
+      local turnMovePoints = unitClass.moveRange-(gScore[currentPosKey]%unitClass.moveRange)
+      local tileCost = Pathfinding.tileCost(unitClassId,newPos,playerId,ignoreUnits)
+      local moveCost = tileCost
+      local canStand = Pathfinding.canStop(unitClassId,newPos, ignoreUnits)
+      if canStand then
+        turnMovePoints = turnMovePoints-uScore[currentPosKey]
+      end
+      print("4")
+      if tileCost>turnMovePoints then --unit have to wait til next turn :(
+        moveCost = tileCost+(unitClass.moveRange-turnMovePoints)
+      end 
+      if tileCost>unitClass.moveRange then --unit can never cross this :(
+        moveCost = 100
+      end
+      if gScore[newPosKey] == nil then
+        gScore[newPosKey] = 10000
+      end
+      if uScore[newPosKey] == nil then
+        uScore[newPosKey] = 10000
+      end
+      if dScore[newPosKey] == nil then
+        dScore[newPosKey] = 10000
+      end
+      print("5")
+      local tentative_uScore = 0
+      local tentative_gScore = gScore[currentPosKey]
+      local tentative_dScore = dScore[currentPosKey]
+      if canStand then
+        tentative_gScore = gScore[currentPosKey]+moveCost
+      else
+        tentative_uScore = uScore[currentPosKey]+moveCost
+      end
+      if tentative_gScore%unitClass.moveRange == 0 then
+--        tentative_dScore = dScore[currentPosKey]+4-Wargroove.getTerrainDefenceAt(newPos)
+      end
+      if roadBoost then
+        tentative_dScore = tentative_dScore+Pathfinding.roadBoost(unitClassId,newPos)
+      end
+      print("6")
+      if Pathfinding.isBetter(gScore[newPosKey], tentative_gScore, uScore[newPosKey], tentative_uScore, dScore[newPosKey], tentative_dScore) then
+        dScore[newPosKey] = tentative_dScore
+        if canStand then
+          gScore[newPosKey] = tentative_gScore
+          uScore[newPosKey] = 0
+          fScore[newPosKey] = tentative_gScore+Pathfinding.guessList(newPos, destList)
+        else
+          gScore[newPosKey] = gScore[currentPosKey]
+          uScore[newPosKey] = tentative_uScore
+          fScore[newPosKey] = gScore[currentPosKey]+tentative_uScore*(1+0.0000001)+Pathfinding.guessList(newPos, destList)
+        end
+        print("7")
+        fScore[newPosKey] = fScore[newPosKey]+tentative_dScore
         cameFrom[newPosKey] = currentPos
-        gScore[newPosKey] = tentative_gScore
-        fScore[newPosKey] = tentative_gScore+Pathfinding.guess(newPos, start)
         if bestFScorePos.fScore < fScore[newPosKey] then
           bestFScorePos = {fScore = fScore[newPosKey],pos = newPos}
         end
         openSet:insert(fScore[newPosKey],newPosKey)
       end
+    end
+    print("Incrementing an I")
+    i = i+1
+    if i>1000 then
+      break
     end
 
   end
@@ -185,7 +309,7 @@ end
 
 function Pathfinding.findClosestOpenSpot(unitClassId, start)
   local openSet = BinaryHeap()
-  local startKey = generatePosKey(start)
+  local startKey = PosKey.generatePosKey(start)
   local gScore = {}
   gScore[startKey] = 0
 
@@ -193,15 +317,15 @@ function Pathfinding.findClosestOpenSpot(unitClassId, start)
   while openSet:empty() == false do
     local currentPosKey
     _,currentPosKey = openSet:pop()
-    local currentPos = revertPosKey(currentPosKey)
+    local currentPos = PosKey.revertPosKey(currentPosKey)
     if Wargroove.getUnitAt(currentPos) == nil then
       return currentPos
     end
     for i,dir in ipairs(directions) do
       local newPos = {x = currentPos.x+dir.x,y = currentPos.y+dir.y}
-      local newPosKey = generatePosKey(newPos)
+      local newPosKey = PosKey.generatePosKey(newPos)
       local tentative_gScore = gScore[currentPosKey] + Pathfinding.tileCost(unitClassId,newPos,nil, false)
-      if gScore[newPosKey] == nil and (newPos.x>=0) and (newPos.y>=0) and (newPos.x<Wargroove.getMapSize().x) and (newPos.y<Wargroove.getMapSize().y) then
+      if gScore[newPosKey] == nil and Pathfinding.withinBounds(newPos) then
         gScore[newPosKey] = tentative_gScore
         openSet:insert(gScore[newPosKey],newPosKey)
       end

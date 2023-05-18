@@ -31,10 +31,10 @@ weapons:
       rifleman: 0.95
       thief: 0.85
 
-      warship: 0.3
-      harpoonship: 0.4
-      turtle: 0.35
-      travelboat: 0.35
+      warship: 0.4
+      harpoonship: 0.6
+      turtle: 0.5
+      travelboat: 0.5
       pirate_ship: 0.35
       flagship: 0.15
 
@@ -67,7 +67,6 @@ unitClasses:
     battleUnitCount: 4
     passiveMultiplier: 1.5
     sightRange: 5
-    deathVerbId: death_drop_crown
     deathVerbId: death
 
 units:

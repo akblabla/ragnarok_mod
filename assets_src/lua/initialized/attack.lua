@@ -79,8 +79,9 @@ function Attack:execute(unit, targetPos, strParam, path)
 	-- 	flankerId = unit.id
 	-- end
     Wargroove.startCombat(unit, flanked, path)
-	print("Attack:execute")
-	print(dump(path,0))
+	StealthManager.setLastKnownLocation(flanked.id, unit.pos)
+	StealthManager.makeAlerted(flanked)
+	StealthManager.spreadInfo(flanked)
 end
 
 

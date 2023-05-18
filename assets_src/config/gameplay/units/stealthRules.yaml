@@ -1,0 +1,47 @@
+---
+
+unitClasses:
+  - id: stealth_rules
+    name: unit_class_name_area_heal
+    movement: hovering
+    moveRange: 0
+    damageMultiplier: 0
+    aiPriority: 0
+    battleUnitCount: 1
+    passiveMultiplier: 1.25
+    sightRange: 0
+    classIcon: unit_icons_summon
+    isHidden: true
+    hasTurn: false
+    isRecruitable: false
+    isSpawnable: false
+    hasDeathAnimation: false
+    appearsInLists: false
+    deathVerbId: death_stealth_rules
+    tags:
+      - summon
+
+
+units:
+  - class: stealth_rules
+    faction: outlaw
+    name: unit_class_name_area_heal
+    mapAnimation: units/commanders/emeric/crystal
+    battleAnimation: units/commanders/emeric/battle_crystal
+    smallPortrait: units/balloon/heavensong/portrait_balloon_heavensong_small.png
+    mediumPortrait: units/commanders/emeric/portrait_crystal_medium.png
+    mapSpeed: 4.0
+    grabPos: [13, 14]
+    runsIn: false
+    hasUnitInfo: false
+    hasBattleScreen: false
+    deathMoveMin: 0
+    deathMoveMax: 0
+    sounds:
+      death: emeric/emericCrystalDie
+      deathMap: unitDie
+      deathMapNoBattle: emeric/emericCrystalDie
+      hit: hitStone
+      hitMap: hitStone
+
+...

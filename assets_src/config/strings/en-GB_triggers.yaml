@@ -127,6 +127,10 @@ en-GB:
   trigger_action_description_set_hide_and_seek: "Set Hide and Seek."
   trigger_action_readable_set_hide_and_seek: "Is hide and seek rules for player {1} enabled {0}"
 
+  trigger_action_name_limit_bounds: "Map: Limit Bounds"
+  trigger_action_description_limit_bounds: "Limit Bounds."
+  trigger_action_readable_limit_bounds: "Limit playable area for player {1} enabled {0}"
+
   trigger_action_name_set_position_as_goal: "Stealth: Set Target Position"
   trigger_action_description_set_position_as_goal: "Set Target Position."
   trigger_action_readable_set_position_as_goal: "Make units of type {0} at location {1} owned by player {2} move towards {3}."

@@ -61,7 +61,7 @@ function Verb:executeEntry(unitId, targetPos, strParam, path)
         printNextNumber()
         for i,tile in pairs(tiles) do
             local otherUnit = Wargroove.getUnitAt(tile)
-            if (otherUnit~=nil) and (StealthManager.canAlert(otherUnit.unitClassId)) and Wargroove.areEnemies(unit.playerId,otherUnit.playerId) then
+            if (otherUnit~=nil) and (StealthManager.canAlert(otherUnit)) and Wargroove.areEnemies(unit.playerId,otherUnit.playerId) then
                 StealthManager.makeAlerted(unit)
                 break
             end

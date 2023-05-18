@@ -24,6 +24,7 @@ en-GB:
   ui_unit_verbs_claim: Retrieve
   ui_unit_verbs_rescue: Rescue
   ui_unit_verbs_hire: Hire
+  ui_unit_verbs_arm: Arm
   
   #biomes
   biome_name_tropical: Tropical
@@ -89,6 +90,7 @@ en-GB:
   unit_name_flagship_rival: "Rival's Flagship"
   unit_description_commander_flagship_rival: "Flagship of Rival"
   
+
   # Commander
   character_flagship_wulfar_name: "Wulfar's Flagship"
   character_flagship_wulfar_title: "Captain Wulfar"
@@ -168,7 +170,7 @@ en-GB:
   unit_description_spearman: "[MELEE] Slower, more powerful infantry. Critical hit when adjacent to another spearman."
   unit_description_archer: "Ranged ground units able to move and attack in the same turn. Critical hit when stationary."
   unit_description_dog: "[MELEE] A quick unit. Critical hit when another dog unit is adjacent to the target."
-  unit_description_mage: "A powerful unit built to combat air threats. Critical hit when defence is 3 or above. Able to heal allied targets by 20%."
+  unit_description_mage: "A powerful unit built to combat naval and air units. Critical hit when defence is 3 or above. Able to heal allied targets by 20%."
   unit_description_warship: "An immensely powerful long range unit. Critical hit when on beach."
   unit_description_harpoonship: "Ranged anti-air water unit. Does half damage to enemies on land. Critical hit when in reef."
   unit_description_dragon: "Incredibly powerful air-to-ground unit. Critical hit when target is standing on a road."

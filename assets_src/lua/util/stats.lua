@@ -130,6 +130,14 @@ Stats.terrainCost = {
 		wheels = 2,
 		amphibious = 2
 	},
+	brush = {
+		walking = 1,
+		riding = 2,
+		flying = 1,
+		hovering = 1,
+		wheels = 3,
+		amphibious = 3
+	},
 	road = {
 		walking = 1,
 		riding = 1,
@@ -217,8 +225,7 @@ Stats.terrainCost = {
 		amphibious = 2
 	}
 }
-
-function Stats.getTerrainCost(terrainName, unitClassId)
+function Stats.getMovementType(unitClassId)
 	local unitClass = Wargroove.getUnitClass(unitClassId)
 	local validTags = {
 		walking = true,
@@ -229,21 +236,34 @@ function Stats.getTerrainCost(terrainName, unitClassId)
 		amphibious = true,
 		sailing = true
 	}
+	for i,tag in pairs(unitClass.tags) do
+		if validTags[tag] ~= nil then
+			return tag
+		end
+	end
+	return nil
+end
+function Stats.getTerrainCost(terrainName, unitClassId)
+	local unitClass = Wargroove.getUnitClass(unitClassId)
 	if Stats.terrainCost[terrainName] == nil then
 		return 100
 	end
-	for i,tag in pairs(unitClass.tags) do
-		if validTags[tag] ~= nil then
-			if Stats.terrainCost[terrainName][tag] ~= nil then
-				if (Stats.terrainCost[terrainName]["cantStop"] ~= nil) and (Stats.terrainCost[terrainName]["cantStop"][tag] == true) then
-					return Stats.terrainCost[terrainName][tag], true
-					
-				end
-				return Stats.terrainCost[terrainName][tag], false
-			end
-		end
+	local movementType = Stats.getMovementType(unitClassId)
+	if Stats.terrainCost[terrainName][movementType] ~= nil then
+		return Stats.terrainCost[terrainName][movementType]
 	end
-	return 100, false
+	return 100
+end
+function Stats.canStopOnTerrain(terrainName, unitClassId)
+	local unitClass = Wargroove.getUnitClass(unitClassId)
+	if Stats.terrainCost[terrainName] == nil then
+		return false
+	end
+	local movementType = Stats.getMovementType(unitClassId)
+	if Stats.terrainCost[terrainName][movementType] ~= nil then
+		return not ((Stats.terrainCost[terrainName]["cantStop"] ~= nil) and (Stats.terrainCost[terrainName]["cantStop"][movementType] == true))
+	end
+	return false
 end
 
 return Stats

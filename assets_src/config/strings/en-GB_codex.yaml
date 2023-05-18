@@ -59,6 +59,8 @@ en-GB:
   codex_rules_changes_dragon_text: "Crit multiplier: 200% -> 150%"
   codex_rules_changes_travelboat_title: "Barge Changes"
   codex_rules_changes_travelboat_text: "Can now load and unload amphibians from any tile.\nMovespeed: 10 -> 8"
+  codex_rules_changes_merfolk_title: "Merfolk Changes"
+  codex_rules_changes_merfolk_text: "Deals 5% less base damage to all ground units."
   codex_rules_changes_turtle_title: "Turtle Changes"
   codex_rules_changes_turtle_text: "Is now Melee\nCan now deal Damage to Ground Units (Check Damage Matrix)\nMovespeed: 12 -> 8"
   codex_rules_changes_harpoonship_title: "Harpoon Ship Changes"

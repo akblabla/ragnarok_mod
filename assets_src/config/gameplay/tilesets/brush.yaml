@@ -72,7 +72,7 @@ tilesets:
         iconSprite: ":img:ui/codex/icons/icon_terrain_brush.png"
         fillColour: '#6d5e56'
        
-    primaryConnect: [undefined, brush]
+    primaryConnect: [undefined, brush, brush_invis]
     decayTo: ":below"
     tiles:
       - { x: 0, y: 0, adj: "e s se" }

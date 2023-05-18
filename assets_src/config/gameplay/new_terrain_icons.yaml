@@ -1,6 +1,6 @@
 ---
 terrains:
-  - id: brush_invis
+  - id: brush_invis_icon
     name: terrain_name_brush
     defenceBonus: 0
     movementCost: {}

@@ -9,6 +9,7 @@ local AIManager = require "initialized/ai_manager"
 local StealthManager = require "scripts/stealth_manager"
 local VisionTracker = require "initialized/vision_tracker"
 local Pathfinding = require "util/pathfinding"
+local Corners = require "scripts/corners"
 
 local Actions = {}
 
@@ -70,6 +71,7 @@ function Actions.populate(dst)
 	dst["set_hide_and_seek"] = Actions.setHideAndSeek
     dst["set_position_as_goal"] = Actions.setPositionAsGoal
     dst["set_awareness"] = Actions.setAwareness
+    dst["limit_bounds"] = Actions.limitBounds
 --    dst["set_awareness_wave"] = Actions.setAwarenessWave
     dst["update_awareness"] = Actions.updateAwareness
     dst["set_current_position_as_goal"] = Actions.setCurrentPositionAsGoal
@@ -580,12 +582,38 @@ function Actions.updateAwareness(context)
     print("update all awareness")
     StealthManager.updateAwarenessAll()
 end
-
 function Actions.setHideAndSeek(context)
     -- "Is hide and seek rules for player {1} enabled {0}"
     local active = context:getBoolean(0)
     local player = context:getPlayerId(1)
     StealthManager.setActive(player,active)
+    for x = 0,Wargroove.getMapSize().x do
+        for y = 0,Wargroove.getMapSize().y do
+            local unitId = Wargroove.spawnUnit(player,{x=-200+x,y=-200+y},"stealth_rules",false)
+            
+            local corners = Corners.getVisionCorner(player, {x=x,y=y})
+            local cornerName = Corners.getCornerName(corners)
+            if Corners.cornerList[unitId] ~= cornerName then
+                if (cornerName~=nil) and (cornerName ~= "") and (cornerName ~= "NE_NW_SE_SW") then
+                    Wargroove.displayBuffVisualEffectAtPosition(unitId, {x=x-1,y=y+100-1}, player, "units/LoSBorder/"..Corners.getCornerName(corners), "", 0.5, nil, nil, {x = 0, y = 0},true)
+                end
+                Corners.cornerList[unitId] = cornerName
+            end
+        end
+    end
+    for i,unit in ipairs(Wargroove.getUnitsAtLocation(nil)) do
+        if not StealthManager.isCivilian(unit.unitClassId) then
+            StealthManager.setAIGoalPos(unit.id,unit.pos)
+        end
+    end
+end
+function Actions.limitBounds(context)
+    -- "Limit playable area for player {1} enabled {0}"
+    local active = context:getBoolean(0)
+    local player = context:getPlayerId(1)
+ 
+    local unitId = Wargroove.spawnUnit(player,{x=0,y=-200},"fog",false)
+--    Wargroove.displayBuffVisualEffectAtPosition(unitId, {x=0,y=0}, player, "units/fog/fog", "", 0.75, nil, nil, {x = 0, y = 2400},true)
 end
 
 function Actions.transferGoldRobbed(context)
@@ -910,24 +938,102 @@ function Actions.spawnUnitClose(context)
     local playerId = context:getPlayerId(2)
     local silent = context:getBoolean(3)
 
-    local targetCenterPos = findCentreOfLocation(location)
-    local pos = Pathfinding.findClosestOpenSpot(unitClassId,targetCenterPos)
-    if pos ~= nil then
+    local candidates = {}
+
+    if location == nil then
+        -- No location, use centre of map
+        local mapSize = Wargroove.getMapSize()
+        local cX = math.floor(mapSize.x / 2)
+        local cY = math.floor(mapSize.y / 2)
+        for x = 0, mapSize.x - 1 do
+            for y = 0, mapSize.y - 1 do
+                local pos = { x = x, y = y }
+                if Wargroove.getUnitIdAt(pos) == -1 and Wargroove.canStandAt(unitClassId, pos) then
+                    local dx = x - cX
+                    local dy = y - cY
+                    local dist = math.abs(dx) + math.abs(dy)
+                    table.insert(candidates, { pos = pos, dist = dist })
+                end
+            end
+        end
+    else
+        -- Find the centre of the location
+        local centre = findCentreOfLocation(location)
+
+        -- All candidates
+        for i, pos in ipairs(location.positions) do
+            if Wargroove.getUnitIdAt(pos) == -1 and Wargroove.canStandAt(unitClassId, pos) then
+                local dx = pos.x - centre.x
+                local dy = pos.y - centre.y
+                local dist = math.abs(dx) + math.abs(dy)
+                table.insert(candidates, { pos = pos, dist = dist })
+            end
+        end
+    end
+
+    -- Sort candidates
+    table.sort(candidates, spawnUnitCompareBestLocation)
+
+    -- Spawn at the best candidate
+    if #candidates > 0 then
+        local pos = candidates[1].pos
         if not silent then
             Wargroove.trackCameraTo(pos)
         end
-        local mapSize = Wargroove.getMapSize()
-        if pos.x>(mapSize.x/2) then
-            pos.facing = 1
-        else
-            pos.facing = 0
-        end
-        Wargroove.spawnUnit(playerId, pos, unitClassId, false)
+        local unitId = Wargroove.spawnUnit(playerId, pos, unitClassId, false)
+		local spawnedUnit = Wargroove.getUnitById(unitId);
+		local mapSize = Wargroove.getMapSize()
+		if pos.x>(mapSize.x/2) then
+			-- spawnedUnit.startPos.facing = 1
+			-- spawnedUnit.pos.facing = 1
+			Wargroove.setFacingOverride(unitId, "left")
+		else
+			-- spawnedUnit.startPos.facing = 0
+			-- spawnedUnit.pos.facing = 0
+			Wargroove.setFacingOverride(unitId, "right")
+		end
+		--Wargroove.updateUnit(spawnedUnit)
         Wargroove.clearCaches()
-        if (not silent) and Wargroove.canCurrentlySeeTile(pos) then
+        if silent or (not Wargroove.canCurrentlySeeTile(pos)) then
+            -- Need to wait two frames to prevent being able to spawn on top of other units
+            Wargroove.waitFrame()
+            Wargroove.waitFrame()
+        else
             Wargroove.spawnMapAnimation(pos, 0, "fx/mapeditor_unitdrop")
             Wargroove.playMapSound("spawn", pos)
             Wargroove.waitTime(0.5)
+        end
+    else
+
+        local targetCenterPos = findCentreOfLocation(location)
+        local pos = Pathfinding.findClosestOpenSpot(unitClassId,targetCenterPos)
+        if pos ~= nil then
+            if not silent then
+                Wargroove.trackCameraTo(pos)
+            end
+            local mapSize = Wargroove.getMapSize()
+            if pos.x>(mapSize.x/2) then
+                pos.facing = 1
+            else
+                pos.facing = 0
+            end
+            local unitId = Wargroove.spawnUnit(playerId, pos, unitClassId, false)
+            local mapSize = Wargroove.getMapSize()
+            if pos.x>(mapSize.x/2) then
+                -- spawnedUnit.startPos.facing = 1
+                -- spawnedUnit.pos.facing = 1
+                Wargroove.setFacingOverride(unitId, "left")
+            else
+                -- spawnedUnit.startPos.facing = 0
+                -- spawnedUnit.pos.facing = 0
+                Wargroove.setFacingOverride(unitId, "right")
+            end
+            Wargroove.clearCaches()
+            if (not silent) and Wargroove.canCurrentlySeeTile(pos) then
+                Wargroove.spawnMapAnimation(pos, 0, "fx/mapeditor_unitdrop")
+                Wargroove.playMapSound("spawn", pos)
+                Wargroove.waitTime(0.5)
+            end
         end
     end
 end

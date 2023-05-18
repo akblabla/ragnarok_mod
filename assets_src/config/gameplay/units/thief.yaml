@@ -26,7 +26,7 @@ unitClasses:
       - walking
     battleUnitCount: 1
     sightRange: 5
-    deathVerbId: death_give_gold 
+    deathVerbId: death
     startingStates:
       - id: gold
         value: 0

@@ -28,7 +28,7 @@ unitClasses:
     appearsInLists: false
     inPalette: false
     sightRange: 5
-    deathVerbId: death_give_gold 
+    deathVerbId: death
     codexClass: thief
 
 

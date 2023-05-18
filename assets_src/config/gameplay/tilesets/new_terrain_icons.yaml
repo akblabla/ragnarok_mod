@@ -1,6 +1,6 @@
 ---
 tilesets:
-  - id: brush_invis
+  - id: brush_invis_icon
     biomes:
       - types: [grass,tropical,ice,desert,volcano]
         iconSpriteSheet: ui_RagnarokMod

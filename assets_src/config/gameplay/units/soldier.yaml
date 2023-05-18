@@ -58,6 +58,7 @@ unitClasses:
     battleUnitCount: 4
     passiveMultiplier: 1.5
     sightRange: 5
+    deathVerbId: death
 
 
 units:

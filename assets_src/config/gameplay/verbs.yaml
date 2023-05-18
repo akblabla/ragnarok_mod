@@ -53,6 +53,12 @@ verbs:
     splashOutlineColour: attack_target_outline
     scriptName: verbs/death
     
+  - id: death_stealth_rules
+    icon: ui/icons/grooves/unit_action_icon_bomb.png
+    name: ui_unit_verbs_explode
+    splashOutlineColour: attack_target_outline
+    scriptName: verbs/death_stealth_rules
+
   - id: pirate_steal
     icon: ui/icons/unit_action_icon_steal.png
     name: ui_unit_verbs_steal
@@ -143,7 +149,7 @@ verbs:
 
   - id: arm
     icon: ui/icons/grooves/unit_action_icon_inspire.png
-    name: ui_unit_verbs_hire
+    name: ui_unit_verbs_arm
     targetColour: target
     targetOutlineColour: target_outline
     preExecute: true

@@ -118,15 +118,17 @@ local function decrementNumberOfViewers(player,pos)
 	if isInsideBounds(pos) == false then
 		return
 	end
-	numberOfViewers[player][pos.x][pos.y] = numberOfViewers[player][pos.x][pos.y] - 1
+	numberOfViewers[player][pos.x][pos.y] = math.max(numberOfViewers[player][pos.x][pos.y] - 1,0)
 end
 
 local function removeUnitFromListOfViewers(unit,pos)
 	if isInsideBounds(pos) == false then
 		return
 	end
+	if (listOfViewers[pos.x][pos.y][unit.id]~=nil) then
+		decrementNumberOfViewers(unit.playerId,pos)
+	end
 	listOfViewers[pos.x][pos.y][unit.id] = nil
-	decrementNumberOfViewers(unit.playerId,pos)
 end
 
 local teamPlayers = {}

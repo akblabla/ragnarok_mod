@@ -136,6 +136,12 @@ codex:
     text: codex_rules_changes_turtle_text
   - pageType: page
     layoutType: unit_sprite
+    unitClass: merfolk
+    faction: outlaw
+    title: codex_rules_changes_merfolk_title
+    text: codex_rules_changes_merfolk_text
+  - pageType: page
+    layoutType: unit_sprite
     unitClass: harpoonship
     faction: outlaw
     title: codex_rules_changes_harpoonship_title

@@ -41,13 +41,11 @@ function AreaAlert:execute(unit, targetPos, strParam, path)
     Wargroove.updateUnit(unit)
     
     Wargroove.playPositionlessSound("battleStart")
-    Wargroove.playGrooveCutscene(unit.id, "area_alert", "caesar")
+    Wargroove.playGrooveCutscene(unit.id)
         
     --Wargroove.playUnitAnimation(unit.id, "groove2")
-    Wargroove.playMapSound("twins/orlaGroove", unit.pos)
     Wargroove.waitTime(1.9)
 	Wargroove.trackCameraTo(targetPos)
-    Wargroove.playMapSound("twins/orlaGrooveEffect", targetPos)
     Wargroove.spawnMapAnimation(targetPos, 2, "fx/groove/orla_groove_fx", "idle", "behind_units", {x = 12, y = 12})
 
     Wargroove.playGrooveEffect()

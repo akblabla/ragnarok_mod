@@ -237,6 +237,10 @@ triggerActions:
     parameters:
       - type: boolean
       - type: player
+  - id: limit_bounds
+    parameters:
+      - type: boolean
+      - type: player
 
 #Normally hidden triggers
   - id: set_conditional_location_highlight

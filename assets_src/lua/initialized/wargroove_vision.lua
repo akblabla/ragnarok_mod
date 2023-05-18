@@ -60,13 +60,15 @@ end
 
 function WargrooveVision.spawnUnit(playerId, pos, unitType, turnSpent, startAnimation, startingState, factionOverride)  
 	local unitId = Original.spawnUnit(playerId, pos, unitType, turnSpent, startAnimation, startingState, factionOverride)  
-	OldWargroove.waitFrame()
-	OldWargroove.waitFrame()
-	local unit = OldWargroove.getUnitById(unitId)
-	VisionTracker.addUnitToVisionMatrix(unit)
-	--VisionTracker.getPrevPosList()[unitId] = pos
-	StealthManager.removeUnit(unit)
-	Original.updateUnit(unit)
+	if (pos.x>=0) and (pos.x<OldWargroove.getMapSize().x) and (pos.y>=0) and (pos.y<OldWargroove.getMapSize().y) then
+		OldWargroove.waitFrame()
+		OldWargroove.waitFrame()
+		local unit = OldWargroove.getUnitById(unitId)
+		VisionTracker.addUnitToVisionMatrix(unit)
+		--VisionTracker.getPrevPosList()[unitId] = pos
+		StealthManager.removeUnit(unit)
+		Original.updateUnit(unit)
+	end
     return unitId
 end
 
