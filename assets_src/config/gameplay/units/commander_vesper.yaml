@@ -127,7 +127,6 @@ units:
       dance: emote_dance
       hug: emote_hug
       hug_idle: emote_hug_idle
-      invis: emote_invis
     shouts: 
       vesper_aurevoir: vesper/vesperShoutAuRevoir
       vesper_beautifullyappointed: vesper/vesperShoutBeautifullyAppointed

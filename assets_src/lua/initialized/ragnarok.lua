@@ -153,15 +153,6 @@ local flareCountTable = {}
 local fogOfWarRulesEnabled = false
 local occurences = {}
 
-
-function Ragnarok.isCombatUnit(unit)
-	local weapons = unit.unitClass.weapons
-	if next(weapons)~=nil then
-		return true
-	end
-	return false
-end
-
 function Ragnarok.getActions()
 	return actions
 end
@@ -573,7 +564,6 @@ function Ragnarok.isActivator(gizmo)
 	local key = Ragnarok.generateGizmoKey(gizmo)
 	return activator[key] == true
 end
-
 
 function Ragnarok.gizmoActivateWhenStoodOn(gizmo)
 --	print("gizmoActivateWhenStoodOn()")

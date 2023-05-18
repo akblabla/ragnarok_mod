@@ -10,8 +10,8 @@ weapons:
     tagDamage:
       archer: 0.7
       soldier: 0.75
-      villager: 0.85
-      spearman: 0.55
+      villager: 0.75
+      spearman: 0.85
       dog: 0.8
       wagon: 0.45
       knight: 0.7
@@ -56,7 +56,7 @@ unitClasses:
       - type.ground.light
       - walking
     battleUnitCount: 4
-    sightRange: 5
+    sightRange: 4
     deathVerbId: death
     passiveMultiplier: 1.5
     

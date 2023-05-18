@@ -1,5 +1,4 @@
 ---
-
 weapons:
   - id: sword
     rangeMin: 1
@@ -21,10 +20,11 @@ weapons:
       mage: 0.55
       structure: 0.35
       commander: 0.10
-      ballista: 0.35
+      ballista: 0.45
       giant: 0.05
       rifleman: 0.65
       thief: 0.95
+
       warship: 0.2
       harpoonship: 0.3
       turtle: 0.25
@@ -32,6 +32,7 @@ weapons:
       pirate_ship: 0.25
       flagship: 0.05
       
+
 unitClasses:
   - id: soldier
     name: unit_class_name_soldier
@@ -59,7 +60,10 @@ unitClasses:
     passiveMultiplier: 1.5
     sightRange: 5
     deathVerbId: death
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 4ab1098 (Revolution map ready for balance testing)
 
 units:
   - class: soldier
@@ -112,65 +116,32 @@ units:
       cushion: emote_cushion
       idle_cushion: emote_idle_cushion
       crown_surprise: emote_crown_surprise
+      crown_surprise_clean: emote_crown_surprise_clean
+      cushion_surprise_clean: emote_cushion_surprise_clean
       telescope: emote_telescope
       dance: emote_dance
-      cushion_surprise_clean: emote_cushion_surprise_clean
-      crown_surprise_clean: emote_crown_surprise_clean
     alternativeRuns:
-      - id: run_cushion
       - id: run_crown
       - id: run_ragged
       - id: run_2
 
+units:
   - class: soldier
-    faction: felheim
-    name: unit_name_soldier_felheim
-    mapAnimation: units/soldier/felheim/map_soldier_felheim
-    battleAnimation: units/soldier/felheim/battle_soldier_felheim
-    battleAnimationRiver: fx/river_overlay/battle_soldier_felheim_river
-    smallPortrait: units/soldier/felheim/portrait_soldier_felheim_small.png
-    mediumPortrait: units/soldier/felheim/portrait_soldier_felheim_medium.png
+    faction: outlaw
+    name: unit_name_soldier_outlaws
+    mapAnimation: units/soldier/outlaws/map_soldier_outlaws
+    battleAnimation: units/soldier/outlaws/battle_soldier_outlaws
+    battleAnimationRiver: fx/river_overlay/battle_soldier_cherrystone_river
+    smallPortrait: units/soldier/outlaws/portrait_soldier_outlaws_small.png
+    mediumPortrait: units/soldier/outlaws/portrait_soldier_outlaws_medium.png
     mapSpeed: 4.0
-    grabPos: [18, 10]
+    grabPos: [13, 14]
     sounds:
-      attack: soldierAttackBlue
-      attackShout: soldierPreAttackBlue
+      attack: soldierAttackRed
+      attackShout: soldierPreAttackRed
       attackMap: unitAttack
-      captureShout: soldierPreAttackBlue
-      death: soldierDieBlue
-      deathMap: unitDie
-      run: infantrySkeletonEntry
-      runMap: infantrySkeletonMapEntry
-      hit: hitBone
-      hitMap: hitBone
-    attacks:
-      - id: primary
-        hitSpark: fx/bs_stab_attack
-        hitDelay: [0.25, 0.75]
-    shouts:
-      soldier_blue_shout1: soldierShoutBlue1
-      soldier_blue_shout2: soldierShoutBlue2
-    emotes:
-      idle: idle
-      surprise: emote_surprise 
-      negative: emote_negative      
-
-  - class: soldier
-    faction: heavensong
-    name: unit_name_soldier_heavensong
-    mapAnimation: units/soldier/heavensong/map_soldier_heavensong
-    battleAnimation: units/soldier/heavensong/battle_soldier_heavensong
-    battleAnimationRiver: fx/river_overlay/battle_soldier_heavensong_river
-    smallPortrait: units/soldier/heavensong/portrait_soldier_heavensong_small.png
-    mediumPortrait: units/soldier/heavensong/portrait_soldier_heavensong_medium.png
-    mapSpeed: 4.0
-    grabPos: [12, 10]
-    sounds:
-      attack: soldierAttackYellow
-      attackShout: soldierPreAttackYellow
-      attackMap: unitAttack
-      captureShout: soldierPreAttackYellow
-      death: soldierDieYellow
+      captureShout: soldierPreAttackRed
+      death: soldierDieRed
       deathMap: unitDie
       run: infantryHeavyEntry
       runMap: infantryHeavyMapEntry
@@ -179,65 +150,28 @@ units:
     attacks:
       - id: primary
         hitSpark: fx/bs_stab_attack
-        hitDelay: [0.85]
+        hitDelay: [0.45, 0.8]
     shouts:
-      soldier_yellow_shout1: soldierShoutYellow1
-      soldier_yellow_shout2: soldierShoutYellow2
-      soldier_yellow_shout3: soldierShoutYellow3
-      soldier_yellow_shout4: soldierShoutYellow4
-      soldier_yellow_shout5: soldierShoutYellow5
-      soldier_yellow_hit1: soldierHitYellow1
-      soldier_yellow_hit2: soldierHitYellow2
-      soldier_yellow_hit3: soldierHitYellow3
-      soldier_yellow_hit4: soldierHitYellow4
-    hidden:
-      shouts:
-        - soldier_yellow_shout2
-        - soldier_yellow_shout5
+      soldier_shout1: soldierShoutRed1
+      soldier_shout2: soldierShoutRed2
+      soldier_shout3: soldierShoutRed3
+      soldier_shout4: soldierShoutRed4
+      soldier_shout5: soldierShoutRed5
+      soldier_shout6: soldierShoutRed6
+      soldier_shout7: soldierShoutRed7
+      soldier_shout8: soldierShoutRed8
+      soldier_shout9: soldierShoutRed9
+      soldier_hit1: soldierHitRed1
+      soldier_hit2: soldierHitRed2
+      soldier_hit3: soldierHitRed3
+      soldier_hit4: soldierHitRed4
+      soldier_hit5: soldierHitRed5
+      crownbearer_panting: cutscene/crownbearerPanting
+      crownbearer_yell: cutscene/crownbearerYell
     emotes:
       idle: idle
-      surprise: emote_surprise 
-      dead: emote_dead 
-
-  - class: soldier
-    faction: floran
-    name: unit_name_soldier_floran
-    mapAnimation: units/soldier/floran/map_soldier_floran
-    battleAnimation: units/soldier/floran/battle_soldier_floran
-    battleAnimationRiver: fx/river_overlay/battle_soldier_floran_river
-    smallPortrait: units/soldier/floran/portrait_soldier_floran_small.png
-    mediumPortrait: units/soldier/floran/portrait_soldier_floran_medium.png
-    mapSpeed: 4.0
-    grabPos: [18, 18]
-    sounds:
-      attack: soldierAttackGreen
-      attackShout: soldierPreAttackGreen
-      attackMap: unitAttack
-      captureShout: soldierPreAttackGreen
-      death: soldierDieGreen
-      deathMap: unitDie
-      run: infantryLightEntry
-      runMap: infantryLightMapEntry
-      hit: hitOrganic
-      hitMap: hitOrganic
-    attacks:
-      - id: primary
-        hitSpark: fx/bs_stab_attack
-        hitDelay: [0.5, 0.85]
-    shouts:
-      soldier_green_shout1: soldierShoutGreen1
-      soldier_green_shout2: soldierShoutGreen2
-      soldier_green_shout3: soldierShoutGreen3
-      soldier_green_shout4: soldierShoutGreen4
-      soldier_green_shout5: soldierShoutGreen5
-      soldier_green_shout6: soldierShoutGreen6
-      soldier_green_hit1: soldierHitGreen1
-      soldier_green_hit2: soldierHitGreen2
-      soldier_green_hit3: soldierHitGreen3
-    hidden:
-      shouts:
-        - soldier_green_shout2
-        - soldier_green_shout4
-        - soldier_green_shout5
+      telescope: emote_telescope
+    alternativeRuns:
+      - id: run_2
 
 ...

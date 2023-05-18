@@ -24,16 +24,4 @@ grooves:
       counter: 10                             #   The commander is attacked by an enemy unit.
       kill: 10                                #   The commander kills an enemy unit.
     verb: groove_area_damage_rival                      #   The verb associated with the groove. This should match the id of the verb in verbs.yaml.
-    
-  - id: groove_alert_area                     # The groove id
-    name: groove_name_alert_area                 # The groove name (looks up the string in the string yaml file)
-    description: groove_description_alert_area   # The groove description (looks up the string in the string yaml file)
-    maxCharge: 50
-    chargePerUse: 50
-    chargeBy:
-      endOfTurn: 10
-      attack: 20
-      counter: 10
-      kill: 30
-    verb: groove_alert_area                      #   The verb associated with the groove. This should match the id of the verb in verbs.yaml.
 ...

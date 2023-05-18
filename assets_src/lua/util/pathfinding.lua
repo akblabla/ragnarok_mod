@@ -39,9 +39,15 @@ function Pathfinding.withinBounds(pos)
   return (pos.x >= 0) and (pos.y >= 0) and (pos.x < mapSize.x) and (pos.y < mapSize.y)
 end
 
+<<<<<<< HEAD
 function Pathfinding.tileCost(unitClassId,pos, playerId, ignoreUnits)
+=======
+
+function Pathfinding.tileCost(unitClassId,pos, playerId, roadBoost)
+>>>>>>> parent of 4ab1098 (Revolution map ready for balance testing)
     local stranger = Wargroove.getUnitAt(pos)
     local mapSize = Wargroove.getMapSize()
+<<<<<<< HEAD
     if ignoreUnits == nil then
       ignoreUnits = false
     end
@@ -49,6 +55,12 @@ function Pathfinding.tileCost(unitClassId,pos, playerId, ignoreUnits)
         return 1000
     end
     if (playerId ~= nil) and (stranger ~= nil) and Wargroove.areEnemies(playerId, stranger.playerId) and (not ignoreUnits) then
+=======
+    if not (pos.x >= 0 and pos.y >= 0 and pos.x < mapSize.x and pos.y < mapSize.y) then
+        return 1000
+    end
+    if playerId ~= nil and stranger ~= nil and Wargroove.areEnemies(playerId, stranger.playerId) then
+>>>>>>> parent of 4ab1098 (Revolution map ready for balance testing)
         return 100
     end
     local tileCost = Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unitClassId)
@@ -194,6 +206,7 @@ function Pathfinding.AStar(playerId, unitClassId, start, destList, roadBoost)
     for i,dir in ipairs(directions) do
       print("2")
       local newPos = {x = currentPos.x+dir.x,y = currentPos.y+dir.y}
+<<<<<<< HEAD
       local newPosKey = PosKey.generatePosKey(newPos)
       local ignoreUnits = true
       if Pathfinding.guessList(newPos, destList) <= unitClass.moveRange then
@@ -252,6 +265,11 @@ function Pathfinding.AStar(playerId, unitClassId, start, destList, roadBoost)
         end
         print("7")
         fScore[newPosKey] = fScore[newPosKey]+tentative_dScore
+=======
+      local newPosKey = generatePosKey(newPos)
+      local tentative_gScore = gScore[currentPosKey] + Pathfinding.tileCost(unitClassId,currentPos,playerId, roadBoost)
+      if gScore[newPosKey] == nil or tentative_gScore<gScore[newPosKey] then
+>>>>>>> parent of 4ab1098 (Revolution map ready for balance testing)
         cameFrom[newPosKey] = currentPos
         if bestFScorePos.fScore < fScore[newPosKey] then
           bestFScorePos = {fScore = fScore[newPosKey],pos = newPos}
@@ -325,7 +343,11 @@ function Pathfinding.findClosestOpenSpot(unitClassId, start)
       local newPos = {x = currentPos.x+dir.x,y = currentPos.y+dir.y}
       local newPosKey = PosKey.generatePosKey(newPos)
       local tentative_gScore = gScore[currentPosKey] + Pathfinding.tileCost(unitClassId,newPos,nil, false)
+<<<<<<< HEAD
       if gScore[newPosKey] == nil and Pathfinding.withinBounds(newPos) then
+=======
+      if gScore[newPosKey] == nil and newPos.x>=0 and newPos.y>=0 and newPos.x<Wargroove.getMapSize().x and newPos.y<Wargroove.getMapSize().y then
+>>>>>>> parent of 4ab1098 (Revolution map ready for balance testing)
         gScore[newPosKey] = tentative_gScore
         openSet:insert(gScore[newPosKey],newPosKey)
       end

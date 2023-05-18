@@ -1,7 +1,6 @@
 local OldWargroove = require "wargroove/wargroove"
 local Ragnarok = require "initialized/ragnarok"
 local VisionTracker = require "initialized/vision_tracker"
-local StealthManager = require "scripts/stealth_manager"
 local FIFOQueue = require "util/fifoQueue"
 
 local WargrooveVision = {}
@@ -60,6 +59,7 @@ end
 
 function WargrooveVision.spawnUnit(playerId, pos, unitType, turnSpent, startAnimation, startingState, factionOverride)  
 	local unitId = Original.spawnUnit(playerId, pos, unitType, turnSpent, startAnimation, startingState, factionOverride)  
+<<<<<<< HEAD
 	if (pos.x>=0) and (pos.x<OldWargroove.getMapSize().x) and (pos.y>=0) and (pos.y<OldWargroove.getMapSize().y) then
 		OldWargroove.waitFrame()
 		OldWargroove.waitFrame()
@@ -69,6 +69,11 @@ function WargrooveVision.spawnUnit(playerId, pos, unitType, turnSpent, startAnim
 		StealthManager.removeUnit(unit)
 		Original.updateUnit(unit)
 	end
+=======
+	local unit = OldWargroove.getUnitById(unitId)
+	VisionTracker.addUnitToVisionMatrix(unit)
+	--VisionTracker.getPrevPosList()[unitId] = pos
+>>>>>>> parent of 4ab1098 (Revolution map ready for balance testing)
     return unitId
 end
 

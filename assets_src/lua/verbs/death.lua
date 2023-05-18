@@ -1,7 +1,7 @@
 local Wargroove = require "wargroove/wargroove"
 local Verb = require "wargroove/verb"
 local Ragnarok = require "initialized/ragnarok"
-local StealthManager = require "scripts/stealth_manager"
+local StealthManager = require "initialized/stealth_manager"
 
 local Death = Verb:new()
 local deathVerbList = {}

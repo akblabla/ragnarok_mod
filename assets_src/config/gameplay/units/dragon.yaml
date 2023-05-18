@@ -57,7 +57,7 @@ unitClasses:
       - flying
     battleUnitCount: 1
     passiveMultiplier: 1.5
-    sightRange: 5
+    sightRange: 6
     canSeeOverTerrain: true
     deathVerbId: death
 

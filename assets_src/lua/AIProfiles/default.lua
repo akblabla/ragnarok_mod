@@ -1,5 +1,19 @@
-local CustomAI = require "scripts/ai_economy_manager"
+local CustomAI = require "initialized/ai_economy_manager"
 local Default = {}
+
+function Default.setProfile()
+	CustomAI.valueReductionPerUnitList = valueReductionPerUnitList
+	CustomAI.idealUnitRatioList = idealUnitRatioList
+	CustomAI.powerMultiplierList = powerMultiplierList
+	CustomAI.antiAirMultiplierList = antiAirMultiplierList
+	CustomAI.bannedUnitList = bannedUnitList
+	CustomAI.antiAirReluctance = antiAirReluctance
+	CustomAI.airThreatPerTower = airThreatPerTower
+	CustomAI.baseLineOpportunityCost = baseLineOpportunityCost
+	CustomAI.baseLineOpportunityCostScaling = baseLineOpportunityCostScaling
+	CustomAI.unitRatioResetPerUnit = unitRatioResetPerUnit
+	CustomAI.unitRatioPenaltyPerUnit = unitRatioPenaltyPerUnit
+end
 
 local valueReductionPerUnitList = {
 	archer = 0.8,
@@ -18,10 +32,7 @@ local valueReductionPerUnitList = {
 	trebuchet = 0.5,
 	turtle = 0.8,
 	warship = 0.8,
-	witch = 0.6,
-	travelboat = 1,
-	balloon = 1,
-	thief = 1
+	witch = 0.6
 }
 
 local idealUnitRatioList = {
@@ -41,10 +52,7 @@ local idealUnitRatioList = {
 	trebuchet = 0.3,
 	turtle = 1,
 	warship = 1,
-	witch = 1,
-	travelboat = 0,
-	balloon = 0,
-	thief = 0
+	witch = 1
 }
 
 local powerMultiplierList = {
@@ -80,18 +88,5 @@ local baseLineOpportunityCostScaling = 0.8
 local unitRatioResetPerUnit = 0.98
 local unitRatioPenaltyPerUnit = 0.2
 
-function Default.setProfile()
-	CustomAI.valueReductionPerUnitList = valueReductionPerUnitList
-	CustomAI.idealUnitRatioList = idealUnitRatioList
-	CustomAI.powerMultiplierList = powerMultiplierList
-	CustomAI.antiAirMultiplierList = antiAirMultiplierList
-	CustomAI.bannedUnitList = bannedUnitList
-	CustomAI.antiAirReluctance = antiAirReluctance
-	CustomAI.airThreatPerTower = airThreatPerTower
-	CustomAI.baseLineOpportunityCost = baseLineOpportunityCost
-	CustomAI.baseLineOpportunityCostScaling = baseLineOpportunityCostScaling
-	CustomAI.unitRatioResetPerUnit = unitRatioResetPerUnit
-	CustomAI.unitRatioPenaltyPerUnit = unitRatioPenaltyPerUnit
-end
 
 return Default

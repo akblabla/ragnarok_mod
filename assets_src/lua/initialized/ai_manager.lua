@@ -33,6 +33,7 @@ end
 
 function AIManager.getNextPosition(unitId)
    local unit = Wargroove.getUnitById(unitId)
+<<<<<<< HEAD
    if unit == nil then
       return nil
    end
@@ -52,6 +53,19 @@ function AIManager.getNextPosition(unitId)
    end
    if order.type == "move" then
       local next, distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, order.location,order.maxSpeed, false)
+=======
+   if AITargets[unitId].order == "road_move" then
+      local next, distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].location,true)
+	   return next, distMoved, dist
+   end
+   if AITargets[unitId].order == "move" then
+      print("AITargets[unitId].order == move")
+      print(dump(AITargets[unitId].location,0));
+      local next, distMoved, dist = AIManager.getNextPositionTowardsTarget(unitId, AITargets[unitId].location,false)
+      print(dump(next,0));
+      print(dump(distMoved,0));
+      print(dump(dist,0));
+>>>>>>> parent of 4ab1098 (Revolution map ready for balance testing)
 	   return next, distMoved, dist
    end
    if order.type == "attack_move" then
@@ -82,7 +96,17 @@ end
 function AIManager.getNextPositionTowardsTarget(unitId, location, maxSpeed, roadBoost)
    local unit = Wargroove.getUnitById(unitId)
    local path = Pathfinding.AStar(unit.playerId, unit.unitClassId, unit.pos, location, roadBoost)
+<<<<<<< HEAD
 
+=======
+   if (unit.unitClassId == "travelboat") then
+      print("AIManager.getNextPositionTowardsTarget(unitId, location, roadBoost)")
+      print("unit")
+      print(dump(unit,0))
+      print("path")
+      print(dump(path,0))
+   end
+>>>>>>> parent of 4ab1098 (Revolution map ready for balance testing)
    --path[1] = nil
    local movePoints = unit.unitClass.moveRange
    if maxSpeed == nil then
@@ -93,6 +117,18 @@ function AIManager.getNextPositionTowardsTarget(unitId, location, maxSpeed, road
    local reachedEnd = false
    for i,tile in pairs(path) do
       local tileCost, cantStop = Stats.getTerrainCost(Wargroove.getTerrainNameAt(tile),unit.unitClassId)
+<<<<<<< HEAD
+=======
+      if (unit.unitClassId == "travelboat") then
+         print("tileCost")
+         print(tileCost)
+         print("cantStop")
+         print(cantStop)
+         print("target")
+         print(dump(target,0))
+      end
+      movePoints = movePoints-tileCost
+>>>>>>> parent of 4ab1098 (Revolution map ready for balance testing)
       if i == #path then
          reachedEnd = true
       end

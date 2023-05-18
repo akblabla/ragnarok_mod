@@ -3,7 +3,6 @@ local OldEvents = require("wargroove/events")
 local Wargroove = require("wargroove/wargroove")
 local TriggerContext = require("triggers/trigger_context")
 local Resumable = require("wargroove/resumable")
-local StealthManager = require("scripts/stealth_manager")
 
 local Events = {}
 local Original = {}
@@ -247,9 +246,6 @@ function Events.groupActions(actions)
     local currentGroup = {}
     local currentMode = nil
 	local level = 0
-    if actions == nil then
-        return
-    end
     for i, action in pairs(actions) do
 		if action.id == "end_group" then
 			print("group mode ends")
@@ -327,14 +323,13 @@ function Events.runConcurrently(currentId, actions)
             coList[id] = nil
         end
         time = coroutine.yield()
+        print("TIME")
+        print(time)
     end
 end
 
 function Events.runActions(currentId, actions)
 	local groupedActions,groupedModes = Events.groupActions(actions)
-    if groupedActions == nil then
-        return
-    end
     for i, actionGroup in ipairs(groupedActions) do
         if (groupedModes[i] == nil) or (groupedModes[i] == "single") then
             triggerContext.triggerInstanceActionId = currentId
@@ -430,7 +425,6 @@ function Events.reportUnitDeath(id, attackerUnitId, attackerPlayerId, attackerUn
 	local unit = Wargroove.getUnitById(id)
 	VisionTracker.removeUnitFromVisionMatrix(unit)
 	Wargroove.updateFogOfWar()
-    StealthManager.reportDeadUnit(id)
 	Original.reportUnitDeath(id, attackerUnitId, attackerPlayerId, attackerUnitClass)
 end
 

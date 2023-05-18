@@ -117,17 +117,6 @@ verbs:
     splashOutlineColour: attack_target_outline
     splashRadius: 3
 
-  - id: groove_alert_area
-    icon: ui/icons/grooves/unit_action_icon_shield.png
-    name: groove_name_alert_area
-    targetColour: target
-    targetOutlineColour: target_outline
-    targetDisplayOutlineColour: attack_target_outline
-    targetted: true
-    scriptName: verbs/groove_alert_area
-    splashOutlineColour: attack_target_outline
-    splashRadius: 2
-
   - id: rescue
     icon: ui/icons/grooves/unit_action_icon_inspire.png
     name: ui_unit_verbs_rescue
@@ -147,6 +136,7 @@ verbs:
     directTarget: true
     scriptName: verbs/hire
 
+<<<<<<< HEAD
   - id: arm
     icon: ui/icons/grooves/unit_action_icon_inspire.png
     name: ui_unit_verbs_arm
@@ -156,6 +146,8 @@ verbs:
     targetted: false
     scriptName: verbs/arm
 
+=======
+>>>>>>> parent of 4ab1098 (Revolution map ready for balance testing)
   - id: groove_golf
     icon: ui/icons/grooves/unit_action_icon_hammer.png
     name: groove_name_golf
