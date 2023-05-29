@@ -52,7 +52,8 @@ local triggerContext = TriggerContext:new({
     mapCounters = {},
     party = {},
     campaignCutscenes = {},
-    creditsToPlay = ""
+    creditsToPlay = "",
+    spawnedUnits = {}
 })
 
 local triggerList = nil
@@ -330,24 +331,31 @@ function Events.runConcurrently(currentId, actions)
     end
 end
 
-function Events.runActions(currentId, actions)
-	local groupedActions,groupedModes = Events.groupActions(actions)
-    if groupedActions == nil then
-        return
-    end
-    for i, actionGroup in ipairs(groupedActions) do
-        if (groupedModes[i] == nil) or (groupedModes[i] == "single") then
-            triggerContext.triggerInstanceActionId = currentId
-            Events.runAction(actionGroup)
-        elseif groupedModes[i] == "concurrent" then
-            Events.runConcurrently(currentId, actionGroup)
-        elseif groupedModes[i] == "sequential" then
-            Events.runActions(currentId, actionGroup)
-        end
-        currentId = currentId+1;
-	end
-end
+-- function Events.runActions(currentId, actions)
+-- 	local groupedActions,groupedModes = Events.groupActions(actions)
+--     if groupedActions == nil then
+--         return
+--     end
+--     for i, actionGroup in ipairs(groupedActions) do
+--         if (groupedModes[i] == nil) or (groupedModes[i] == "single") then
+--             triggerContext.triggerInstanceActionId = currentId
+--             Events.runAction(actionGroup)
+--         elseif groupedModes[i] == "concurrent" then
+--             Events.runConcurrently(currentId, actionGroup)
+--         elseif groupedModes[i] == "sequential" then
+--             Events.runActions(currentId, actionGroup)
+--         end
+--         currentId = currentId+1;
+-- 	end
+-- end
 
+
+function Events.runActions(actions)
+    for i, action in ipairs(actions) do
+        triggerContext.triggerInstanceActionId = i
+        Events.runAction(action)
+    end
+end
 
 function Events.setMapFlag(flagId, value)
     triggerContext:setMapFlagById(flagId, value)
@@ -399,7 +407,8 @@ end
 
 function Events.executeTrigger(trigger)
     triggerContext.fired[Events.getTriggerKey(trigger)] = true
-    Events.runActions(1,trigger.actions)
+    triggerContext.spawnedUnits = {}
+    Events.runActions(trigger.actions)
 end
 
 
@@ -412,7 +421,6 @@ function Events.isConditionTrue(condition)
        return f(triggerContext)
     end
 end
-
 
 function Events.runAction(action)
     local f = triggerActions[action.id]

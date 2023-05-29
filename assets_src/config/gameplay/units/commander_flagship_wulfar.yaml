@@ -57,7 +57,7 @@ unitClasses:
       - sailing
     battleUnitCount: 1
     passiveMultiplier: 1
-    sightRange: 5
+    sightRange: 4
     regeneration: 5
     isCommander: true
     grooveId: groove_broadside

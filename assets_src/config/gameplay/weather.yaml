@@ -38,10 +38,6 @@ weather:
         operation: Add
         value: 1
         tags: [type.ground.light, type.ground.heavy]
-      - stat: SightRange
-        operation: Subtract
-        value: 1
-        tags: [type.ground.light, type.ground.heavy, type.sea, type.air, type.amphibious]
 
   - id: rain
     iconSpriteSheet: ui
@@ -62,7 +58,7 @@ weather:
         tags: [type.ground.light, type.ground.heavy]
       - stat: SightRange
         operation: Subtract
-        value: 2
+        value: 1
         tags: [type.ground.light, type.ground.heavy, type.sea, type.air, type.amphibious]
 
   - id: sandstorm

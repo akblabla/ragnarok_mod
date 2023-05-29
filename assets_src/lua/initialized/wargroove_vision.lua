@@ -49,6 +49,12 @@ function WargrooveVision.init()
 	
 	Original.setWeather = OldWargroove.setWeather
 	OldWargroove.setWeather = WargrooveVision.setWeather
+	
+	Original.setUnitState = OldWargroove.setUnitState
+	OldWargroove.setUnitStateObject = WargrooveVision.setUnitStateObject
+	
+	Original.getUnitState = OldWargroove.getUnitState
+	OldWargroove.getUnitStateObject = WargrooveVision.getUnitStateObject
 end
 
 function WargrooveVision.startCapture(attacker, defender, attackerPos)
@@ -121,6 +127,100 @@ function WargrooveVision.setWeather(weatherFrequency, daysAhead)
 	if daysAhead == 0 then
 		VisionTracker.reset()
 	end
+end
+
+local function deepSetUnitState(unit, key, value)
+    local value_type = type(value)
+    if value_type == 'table' then
+        for orig_key, orig_value in next, value, nil do
+            deepSetUnitState(unit, tostring(key).."_"..tostring(orig_key), orig_value)
+        end
+    else -- number, string, boolean, etc
+        Original.setUnitState(unit, key, value)
+    end
+end
+
+local unitStateObjects = {}
+
+function WargrooveVision.setUnitStateObject(unit, key, value)
+    -- deepSetUnitState(unit, key, value)
+	-- WargrooveVision.clearUnitStateObjectCache(unit.id, key)
+	if unitStateObjects[unit.id]==nil then
+		unitStateObjects[unit.id] = {}
+	end
+	unitStateObjects[unit.id][key] = value
+end
+
+
+local function deepGetUnitState(unit, key, state)
+	local retValue = {}
+	local trimmedState = {}
+	local found = false
+	for id, stateKey in pairs(state) do
+		if (string.find(stateKey.key,"^"..key) ~= nil) then
+			found = true
+			table.insert(trimmedState,stateKey)
+		else
+			if found then
+				break
+			end
+		end
+	end
+	for id, stateKey in pairs(trimmedState) do
+		if stateKey.key == key then
+			local value = Original.getUnitState(unit, key)
+			return value
+		end
+		local noPrefix = string.sub(stateKey.key,string.len(key)+2,-1)
+		local i,j = string.find(noPrefix,"_")
+		if i == nil then
+			i = string.len(noPrefix)+1
+		end
+		local newKey = string.sub(stateKey.key,1,string.len(key)+i)
+		local internalKey = string.sub(stateKey.key,string.len(key)+2,string.len(key)+i)
+		
+		retValue[internalKey] = deepGetUnitState(unit, newKey, trimmedState)
+	end
+	return retValue
+end
+
+local cache = {}
+
+function WargrooveVision.clearUnitStateObjectCache(unitId, key)
+	if unitId == nil then
+		cache = {}
+		return
+	end
+	if (key == nil) and (cache~=nil) then
+		cache[unitId] = {}
+		return
+	end
+	if (cache~=nil) and (cache[unitId]~=nil) then
+		cache[unitId][key] = nil
+		return
+	end
+end
+function WargrooveVision.getUnitStateObject(unit, key)
+	if unitStateObjects[unit.id]~=nil then
+		return unitStateObjects[unit.id][key]
+	else
+		return nil
+	end
+	-- if cache[unit.id]~=nil then
+	-- 	if cache[unit.id][key]~=nil then
+	-- 		return cache[unit.id][key]
+	-- 	end
+	-- else
+	-- 	cache[unit] = {}
+	-- end
+	-- -- print("WargrooveVision.getUnitState(unit, key)")
+	-- table.sort(unit.state, function(a,b) return a.key<b.key end)
+	-- -- print(dump(unit.state,0))
+	-- local value = deepGetUnitState(unit, key, unit.state)
+	-- -- print("value table")
+	-- -- print(dump(value,0))
+	-- cache[unit][key] = value
+    -- return value
 end
 
 return WargrooveVision

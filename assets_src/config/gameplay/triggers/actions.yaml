@@ -42,13 +42,6 @@ triggerActions:
       - type: string
       - type: string
 
-  - id: move_location_to_next_structure
-    parameters:
-      - type: location_star
-      - type: unit_class_star
-      - type: player_neutral_star
-      - type: location_star
-
   - id: spawn_unit_in_transport
     parameters:
       - type: unit_class_star
@@ -121,6 +114,9 @@ triggerActions:
       - type: location
       - type: player_neutral_star
       
+  - id: set_location_to_spawned
+    parameters:
+      - type: location
       
   - id: transfer_gold_robbed
     parameters:
@@ -190,6 +186,14 @@ triggerActions:
       - type: location
       - type: string
 
+  - id: display_path
+    parameters:
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+
+  - id: let_neutral_units_move
+
   - id: set_current_position_as_goal
     parameters:
       - type: unit_class_star
@@ -202,6 +206,8 @@ triggerActions:
       - type: location_star
       - type: player_neutral_star
       - type: location_star
+      - type: integer
+      - type: string
 
   - id: set_awareness
     parameters:
@@ -237,9 +243,13 @@ triggerActions:
     parameters:
       - type: boolean
       - type: player
+  - id: set_hide_and_seek_bravery
+    parameters:
+      - type: integer
+      - type: player
   - id: limit_bounds
     parameters:
-      - type: boolean
+      - type: location
       - type: player
 
 #Normally hidden triggers

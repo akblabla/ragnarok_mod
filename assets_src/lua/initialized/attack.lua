@@ -12,7 +12,7 @@ function Attack.init()
 	Ragnarok.addAction(Attack.revertFlanked,"repeating",true)
 	OldAttack.canExecuteWithTarget = Attack.canExecuteWithTarget
 	OldAttack.execute = Attack.execute
---	OldAttack.onPostUpdateUnit = Attack.onPostUpdateUnit
+	OldAttack.onPostUpdateUnit = Attack.onPostUpdateUnit
 	
 end
 
@@ -57,6 +57,7 @@ function Attack.revertFlanked(context)
 end
 
 function Attack:onPostUpdateUnit(unit, targetPos, strParam, path)
+
 end
 
 function Attack:execute(unit, targetPos, strParam, path)
@@ -66,18 +67,6 @@ function Attack:execute(unit, targetPos, strParam, path)
         Wargroove.waitTime(0.5)
     end
  	local flanked = Wargroove.getUnitAt(targetPos)
-	-- if StealthManager.isActive(flanked.playerId) and StealthManager.isUnitAlerted(flanked.id) == false then
-	-- 	if flanked.unitClassId == "soldier" then
-	-- 		flanked.unitClassId = "soldier_flanked"
-	-- 		Wargroove.updateUnit(flanked)
-	-- 	end
-	-- 	Wargroove.waitFrame()
-	-- 	Wargroove.waitFrame()
-	-- 	Wargroove.clearCaches()
-	-- 	flanked = Wargroove.getUnitAt(targetPos)
-	-- 	flankedId = flanked.id
-	-- 	flankerId = unit.id
-	-- end
     Wargroove.startCombat(unit, flanked, path)
 	StealthManager.setLastKnownLocation(flanked.id, unit.pos)
 	StealthManager.makeAlerted(flanked)

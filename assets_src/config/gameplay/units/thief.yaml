@@ -25,7 +25,7 @@ unitClasses:
       - type.ground.hideout
       - walking
     battleUnitCount: 1
-    sightRange: 5
+    sightRange: 4
     deathVerbId: death
     startingStates:
       - id: gold

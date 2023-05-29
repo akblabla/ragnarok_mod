@@ -10,7 +10,7 @@ local Source = {}
 
 -- This is called by the game when the map is loaded.
 function Source.init()
---    Events.init()
+    Events.init()
     Actions.init()
     Conditions.init()
     AIEconomyManager.init()

@@ -1,11 +1,12 @@
 ---
 
 unitClasses:
-  - id: wagon
-    name: unit_class_name_wagon
+  - id: cart
+    name: unit_class_name_cart
+    classIconSpritesheet: ui_RagnarokMod
     cost: 300
     movement: wheels
-    moveRange: 12
+    moveRange: 8
     damageMultiplier: 1
     aiPriority: 1.5
     weapons: []
@@ -23,6 +24,7 @@ unitClasses:
     sightRange: 4
     transportTags: [ type.ground.light, type.amphibious, type.ground.hideout ]
     deathVerbId: death
+    isRecruitable: false
     startingStates:
       - id: awareness
         value: unaware
@@ -30,14 +32,14 @@ unitClasses:
         value: unaware
 
 units:
-  - class: wagon
+  - class: cart
     faction: cherrystone
-    name: unit_name_wagon_cherrystone
+    name: unit_name_cart_cherrystone
     mapAnimation: units/wagon/cherrystone/map_wagon_cherrystone
     battleAnimation: units/wagon/cherrystone/battle_wagon_cherrystone
     smallPortrait: units/wagon/cherrystone/portrait_wagon_cherrystone_small.png
     mediumPortrait: units/wagon/cherrystone/portrait_wagon_cherrystone_medium.png
-    mapSpeed: 6.0
+    mapSpeed: 4.0
     grabPos: [15, 14]
     deathMoveMin: 0
     deathMoveMax: 0
@@ -50,7 +52,7 @@ units:
       hit: hitWood
       hitMap: hitWood
 
-  - class: wagon
+  - class: cart
     faction: felheim
     name: unit_name_wagon_felheim
     mapAnimation: units/wagon/felheim/map_wagon_felheim
@@ -70,7 +72,7 @@ units:
       hit: hitWood
       hitMap: hitWood
 
-  - class: wagon
+  - class: cart
     faction: heavensong
     name: unit_name_wagon_heavensong
     mapAnimation: units/wagon/heavensong/map_wagon_heavensong
@@ -90,7 +92,7 @@ units:
       hit: hitWood
       hitMap: hitWood
 
-  - class: wagon
+  - class: cart
     faction: floran
     name: unit_name_wagon_floran
     mapAnimation: units/wagon/floran/map_wagon_floran

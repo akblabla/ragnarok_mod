@@ -27,7 +27,7 @@ unitClasses:
     isRecruitable: false
     appearsInLists: false
     inPalette: false
-    sightRange: 5
+    sightRange: 4
     deathVerbId: death
     codexClass: thief
 

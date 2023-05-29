@@ -443,10 +443,10 @@ function AIEconomyManager.spendRest(context)
 					for i, recruit in ipairs(unit.recruits) do 
 						print("Attempting to recruit: " .. recruit)
 						if StealthManager.isActive(unit.playerId) then
-							if ((StealthManager.hasJob(recruit) and not StealthManager.isUnitPermaAlerted(unit))) then
+							if ((StealthManager.isCivilian(recruit) and not StealthManager.isUnitPermaAlerted(unit))) then
 								AIEconomyManager.addUnitOption(recruit,unit,spawnPos,productionOptions,playerId)
 							end
-							if ((not StealthManager.hasJob(recruit) and StealthManager.isUnitPermaAlerted(unit))) then
+							if ((not StealthManager.isCivilian(recruit) and StealthManager.isUnitPermaAlerted(unit))) then
 								AIEconomyManager.addUnitOption(recruit,unit,spawnPos,productionOptions,playerId)
 							end
 						else

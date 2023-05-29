@@ -2,13 +2,13 @@ local Wargroove = require "wargroove/wargroove"
 local Ragnarok = require "initialized/ragnarok"
 local Verb = require "wargroove/verb"
 
-local Arm = Verb:new()
+local Upgrade = Verb:new()
 
 local costMultiplier = 1
 
-local defaultUnits = {"soldier", "spearman", "archer", "mage"}
+local defaultUnits = {"soldier", "dog", "spearman", "mage", "archer", "knight"}
 
-function Arm:recruitsContain(recruits, unit)
+function Upgrade:recruitsContain(recruits, unit)
     for i, recruit in pairs(recruits) do
         if recruit == unit then 
            return true
@@ -17,12 +17,18 @@ function Arm:recruitsContain(recruits, unit)
      return false
 end
 
-function Arm:getRecruitableTargets(unit)
-    return defaultUnits
+function Upgrade:getRecruitableTargets(unit)
+    local recruits = {}
+    for i,recruit in pairs(defaultUnits) do
+        if recruit~=unit.unitClassId then
+            table.insert(recruits,recruit)
+        end
+    end
+    return recruits
 end
 
 
-function Arm:getMaximumRange(unit, endPos)
+function Upgrade:getMaximumRange(unit, endPos)
 	return 0
 end
 
@@ -31,34 +37,41 @@ local function getCost(cost)
 end
 
 
-function Arm:getTargetType()
+function Upgrade:getTargetType()
     return "all"
 end
 
-local enabledPlayerList = {}
-
-function Arm.enableForPlayer(playerId)
-    enabledPlayerList[playerId] = true;
+function Upgrade:canExecuteAnywhere(unit)
+    return true
 end
 
-function Arm:canExecuteAnywhere(unit)
-    return (enabledPlayerList[unit.playerId] ~= nil) and (enabledPlayerList[unit.playerId] == true)
-end
+Upgrade.inPreExecute = true
+Upgrade.classToRecruit = nil
 
-Arm.inPreExecute = true
-Arm.classToRecruit = nil
-
-function Arm:canExecuteWithTarget(unit, endPos, targetPos, strParam)
+function Upgrade:canExecuteWithTarget(unit, endPos, targetPos, strParam)
     if not self:canSeeTarget(targetPos) then
         return false
     end
+    if (unit.unitClassId~="villager") then
+        local neighbours = Wargroove.getTargetsInRange(targetPos, 1, "unit");
+        local isTavern = false;
+        for i,tile in pairs(neighbours) do
+            local neighbour = Wargroove.getUnitAt(tile)
+            if (neighbour~=nil) and (neighbour.unitClassId == "tavern") then
+                isTavern = true
+            end
+        end
+        if isTavern == false then
+            return false
+        end
+    end
 
-    local classToRecruit = Arm.classToRecruit
+    local classToRecruit = Upgrade.classToRecruit
     if classToRecruit == nil then
         classToRecruit = strParam
     end
 
-    if (Arm.inPreExecute) then
+    if (Upgrade.inPreExecute) then
         return true
     else
 
@@ -78,9 +91,9 @@ function Arm:canExecuteWithTarget(unit, endPos, targetPos, strParam)
     end
 end
 
-function Arm:preExecute(unit, targetPos, strParam, endPos)
-    Arm.inPreExecute = false
-    local recruitableUnits = Arm.getRecruitableTargets(self, unit);
+function Upgrade:preExecute(unit, targetPos, strParam, endPos)
+    Upgrade.inPreExecute = false
+    local recruitableUnits = Upgrade.getRecruitableTargets(self, unit);
 
     Wargroove.openRecruitMenu(unit.playerId, unit.id, unit.pos, unit.unitClassId, recruitableUnits, costMultiplier, defaultUnits, "outlaw");
 
@@ -88,26 +101,26 @@ function Arm:preExecute(unit, targetPos, strParam, endPos)
         coroutine.yield()
     end
 
-    Arm.classToRecruit = Wargroove.popRecruitedUnitClass();
+    Upgrade.classToRecruit = Wargroove.popRecruitedUnitClass();
 
-    Arm.inPreExecute = true
-    if Arm.classToRecruit == nil then
+    Upgrade.inPreExecute = true
+    if Upgrade.classToRecruit == nil then
         return false, ""
     end
 
-    return true, Arm.classToRecruit
+    return true, Upgrade.classToRecruit
 end
 
-function Arm:execute(unit, targetPos, strParam, path)
+function Upgrade:execute(unit, targetPos, strParam, path)
 
-    Arm.classToRecruit = nil
+    Upgrade.classToRecruit = nil
 
     if strParam == nil then
-        print("Arm strParam is nil.")
+        print("Upgrade strParam is nil.")
         return
     end
     if strParam == "" then
-        print("Arm was not given a class to recruit.")
+        print("Upgrade was not given a class to recruit.")
         return
     end
 
@@ -123,9 +136,8 @@ function Arm:execute(unit, targetPos, strParam, path)
     Wargroove.changeMoney(unit.playerId, -getCost(uc.cost))
  --   Wargroove.spawnUnit(unit.playerId, targetPos, strParam, false, "", "", "floran")
 
-	local u = Wargroove.getUnitAt(targetPos)
-
     unit.unitClassId = strParam
+    unit:setHealth(100,-1)
     unit.hadTurn = true
     Wargroove.updateUnit(unit)
 
@@ -134,14 +146,14 @@ function Arm:execute(unit, targetPos, strParam, path)
     strParam = ""
 end
 
-function Arm:generateOrders(unitId, canMove)
+function Upgrade:generateOrders(unitId, canMove)
     local unit = Wargroove.getUnitById(unitId)
     return {}
 end
 
-function Arm:getScore(unitId, order)
+function Upgrade:getScore(unitId, order)
     local unit = Wargroove.getUnitById(unitId)
     return {score = -1, introspection = {}}
 end
 
-return Arm
+return Upgrade

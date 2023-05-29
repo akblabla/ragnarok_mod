@@ -55,7 +55,7 @@ unitClasses:
       - commander
       - type.ground.light
     battleUnitCount: 1
-    sightRange: 5
+    sightRange: 4
     isCommander: true
     grooveId: groove_alert_area
 

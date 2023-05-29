@@ -248,7 +248,7 @@ end
 function heap.__tostring(self)
   local out = ''
   for k in ipairs(self._heap) do
-    out = out.. (('Element %d - Value : %s\n'):format(k,tostring(self._heap[k].value)))
+    out = out.. (('Element %d - Value : %s - Data : %s\n'):format(k,tostring(self._heap[k].value),tostring(self._heap[k].data)))
   end
   return out
 end

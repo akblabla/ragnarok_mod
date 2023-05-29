@@ -51,12 +51,13 @@ unitClasses:
       - healing_potion
       - wait_ai
       - hire
+      - upgrade
     tags:
       - spearman
       - type.ground.light
       - walking
     battleUnitCount: 4
-    sightRange: 5
+    sightRange: 4
     deathVerbId: death
     passiveMultiplier: 1.5
     

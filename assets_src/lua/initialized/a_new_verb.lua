@@ -5,6 +5,7 @@ local Resumable = require "wargroove/resumable"
 local VisionTracker = require "initialized/vision_tracker"
 local AIManager = require "initialized/ai_manager"
 local StealthManager = require "scripts/stealth_manager"
+local PosKey = require "util/posKey"
 local function dump(o,level)
     if type(o) == 'table' then
        local s = '\n' .. string.rep("   ", level) .. '{\n'
@@ -20,45 +21,42 @@ local function dump(o,level)
 
 local Verb = {}
 function Verb.init()
+    OldVerb.canExecuteAt = Verb.canExecuteAt
     OldVerb.executeEntry = Verb.executeEntry
     OldVerb.generateOrders = Verb.generateOrders
 end
-local nextNumber = 1
-local function printNextNumber()
-    print(nextNumber)
-    nextNumber = nextNumber +1
+local borderLandPlayerList = {}
+function Verb.setBorderLands(location, playerId)
+    borderLandPlayerList[playerId] = {}
+    for i, tile in pairs(location.positions) do
+        borderLandPlayerList[playerId][PosKey.generatePosKey(tile)] = true
+    end 
 end
+function Verb:canExecuteAt(unit, endPos)
+    if borderLandPlayerList[unit.playerId]~=nil then
+        if borderLandPlayerList[unit.playerId][PosKey.generatePosKey(endPos)]~=nil then
+            return false
+        end
+    end
+    return (not Wargroove.canPlayerSeeTile(-1, endPos)) or (not Wargroove.isAnybodyElseAt(unit, endPos))
+end
+
 function Verb:executeEntry(unitId, targetPos, strParam, path)
     return Resumable.run(function ()
-        nextNumber = 1
         Wargroove.clearCaches()
-        print("Verb:executeEntry(unitId, targetPos, strParam, path)")
         local unit = Wargroove.getUnitById(unitId)
-        printNextNumber()
         local preMovePos = {x = unit.pos.x, y = unit.pos.y}
-        printNextNumber()
         StealthManager.awarenessCheck(unitId, path)
-        printNextNumber()
         self:execute(unit, targetPos, strParam, path)
-        printNextNumber()
         self:updateSelfUnit(unit, targetPos, path)
-        printNextNumber()
         self:onPostUpdateUnit(unit, targetPos, strParam, path)
-        printNextNumber()
         Wargroove.updateUnit(unit)
-        printNextNumber()
-        local next,_ = AIManager.getNextPosition(unitId)
-        printNextNumber()
-        if next == nil then
-            AIManager.clearOrder(unitId)
-        elseif next.x == unit.pos.x and next.y == unit.pos.y then
+        local next,distMoved,dist = AIManager.getNextPosition(unitId)
+        if (dist == nil) or (dist <= 1) then
             AIManager.clearOrder(unitId)
         end
-        printNextNumber()
         StealthManager.awarenessCheck(unitId, {path[#path]})
-        printNextNumber()
         local tiles = VisionTracker.calculateVisionOfUnit(unit)
-        printNextNumber()
         for i,tile in pairs(tiles) do
             local otherUnit = Wargroove.getUnitAt(tile)
             if (otherUnit~=nil) and (StealthManager.canAlert(otherUnit)) and Wargroove.areEnemies(unit.playerId,otherUnit.playerId) then
@@ -66,7 +64,6 @@ function Verb:executeEntry(unitId, targetPos, strParam, path)
                 break
             end
         end
-        printNextNumber()
         -- if StealthManager.isUnitAlerted(unit) then
         --     local viewers = VisionTracker.getListOfViewerIds(preMovePos)
         --     for i,viewerId in pairs(viewers) do
@@ -80,11 +77,8 @@ function Verb:executeEntry(unitId, targetPos, strParam, path)
         --     end
         -- end
         StealthManager.updateAwarenessAll()
-        printNextNumber()
         Wargroove.setMetaLocationArea("last_move_path", path)
-        printNextNumber()
         Wargroove.setMetaLocation("last_unit", unit.pos)
-        printNextNumber()
     end)
 end
 

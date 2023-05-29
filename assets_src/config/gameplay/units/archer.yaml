@@ -62,9 +62,10 @@ unitClasses:
       - healing_potion
       - wait_ai
       - hire
+      - upgrade
     battleUnitCount: 4
     passiveMultiplier: 1.35
-    sightRange: 5
+    sightRange: 4
     deathVerbId: death
 
 units:

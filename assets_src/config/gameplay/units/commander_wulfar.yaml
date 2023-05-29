@@ -61,7 +61,7 @@ unitClasses:
       - tall
       - walking
     battleUnitCount: 1
-    sightRange: 5
+    sightRange: 4
     isCommander: true
     grooveId: golf
     deathVerbId: death

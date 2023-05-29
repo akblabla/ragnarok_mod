@@ -51,7 +51,9 @@ unitClasses:
       - pick_up_crown
       - throw_crown
       - healing_potion
+      - hire
       - wait_ai
+      - upgrade
     tags:
       - dog
       - type.ground.light
@@ -60,7 +62,7 @@ unitClasses:
       - walking
     battleUnitCount: 4
     passiveMultiplier: 1.5
-    sightRange: 5
+    sightRange: 4
     scout: true
     runsAway: true
     deathVerbId: death

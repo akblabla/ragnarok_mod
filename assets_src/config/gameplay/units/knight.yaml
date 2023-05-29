@@ -57,7 +57,7 @@ unitClasses:
       - hire
     battleUnitCount: 4
     passiveMultiplier: 1.5
-    sightRange: 5
+    sightRange: 4
     deathVerbId: death_drop_crown
     deathVerbId: death
 ...

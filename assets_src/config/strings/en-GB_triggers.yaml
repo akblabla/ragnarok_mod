@@ -90,10 +90,6 @@ en-GB:
   trigger_action_name_split_into: "Unit: Split"
   trigger_action_description_split_into: "Split units at full hp."
   trigger_action_readable_split_into: "Split {0} at {1} for {2} if on full health into {3}"
-
-  trigger_action_name_move_location_to_next_structure: "Location: Move location to Next"
-  trigger_action_description_move_location_to_next_structure: "Move location to next unit on the right."
-  trigger_action_readable_move_location_to_next_structure: "Move location {0} to next {1} owned by {2} at {3} to the right."
   
   trigger_action_name_modify_flare_count: "Player: Modify Flare Count"
   trigger_action_description_modify_flare_count: "Modifies the amount of flares available to a player."
@@ -107,6 +103,10 @@ en-GB:
   trigger_action_description_set_location_to_vision: "Set location to the vision of a player"
   trigger_action_readable_set_location_to_vision: "Set location {0} to the vision of player {1}."
   
+  trigger_action_name_set_location_to_spawned: "Location: Set to Spawned Units" 
+  trigger_action_description_set_location_to_spawned: "Set to Spawned Units"
+  trigger_action_readable_set_location_to_spawned: "Set location {0} to the spawned units in this trigger."
+
   trigger_action_name_dialogue_box_unit: "UI: Show Dialogue Box for Unit"
   trigger_action_description_dialogue_box_unit: "Triggers a dialogue box for a unit."
   trigger_action_readable_dialogue_box_unit: "Display dialogue box from {0} at {1} for {2} being {3} saying {4} with colour {5}."
@@ -122,18 +122,31 @@ en-GB:
   trigger_action_name_set_priority_target: "AI: Give Order"
   trigger_action_description_set_priority_target: "Give Order."
   trigger_action_readable_set_priority_target: "Give units of type {0} at location {1} owned by player {2} {4} orders to go to location {3}."
+  
+  trigger_action_name_display_path: "AI: Display Path"
+  trigger_action_description_display_path: "Display path."
+  trigger_action_readable_display_path: "Display path for units of type {0} at location {1} owned by player {2}"
+
+
+  trigger_action_name_let_neutral_units_move: "AI: Let Neutral Move"
+  trigger_action_description_let_neutral_units_move: "Let Neutral Move."
+  trigger_action_readable_let_neutral_units_move: "Let neutral units move following orders"
 
   trigger_action_name_set_hide_and_seek: "Stealth: Set Hide and Seek"
   trigger_action_description_set_hide_and_seek: "Set Hide and Seek."
-  trigger_action_readable_set_hide_and_seek: "Is hide and seek rules for player {1} enabled {0}"
+  trigger_action_readable_set_hide_and_seek: "Set hide and seek rules for player {1} enabled {0}"
+
+  trigger_action_name_set_hide_and_seek_bravery: "Stealth: Set Bravery"
+  trigger_action_description_set_hide_and_seek_bravery: "Set Bravery."
+  trigger_action_readable_set_hide_and_seek_bravery: "Is hide and seek rules for player {1} enabled {0}"
 
   trigger_action_name_limit_bounds: "Map: Limit Bounds"
   trigger_action_description_limit_bounds: "Limit Bounds."
-  trigger_action_readable_limit_bounds: "Limit playable area for player {1} enabled {0}"
+  trigger_action_readable_limit_bounds: "Limit playable area for player {1} to {0}"
 
   trigger_action_name_set_position_as_goal: "Stealth: Set Target Position"
   trigger_action_description_set_position_as_goal: "Set Target Position."
-  trigger_action_readable_set_position_as_goal: "Make units of type {0} at location {1} owned by player {2} move towards {3}."
+  trigger_action_readable_set_position_as_goal: "Make units of type {0} at location {1} owned by player {2} {5} towards {3} at {4} tiles per turn."
 
   trigger_action_name_set_current_position_as_goal: "Stealth: Guard Current Position"
   trigger_action_description_set_current_position_as_goal: "Set Guard Current Position."
@@ -175,10 +188,6 @@ en-GB:
   trigger_condition_name_state: "Has State"
   trigger_condition_description_state: "Triggers if a unit has a particular state."
   trigger_condition_readable_state: "If unit type(s) {0} at location {1} owned by player {2} have state {3} equal to {4}."
-  
-  trigger_condition_name_does_next_structure_exist: "Location: Next Exists"
-  trigger_condition_description_does_next_structure_exist: "Triggers if a unit to the right of location exists."
-  trigger_condition_readable_does_next_structure_exist: "If there are more {1} owned by {2} at {3} to the right of location {0}"
   
   trigger_condition_name_did_it_occur: "Dev: Did it Occur"
   trigger_condition_description_did_it_occur: "Triggers when an occation occurs."

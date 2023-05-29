@@ -24,7 +24,7 @@ unitClasses:
     battleUnitCount: 1
     passiveMultiplier: 1.35
     isRecruitable: false
-    sightRange: 5
+    sightRange: 4
     deathVerbId: death
 
 units:

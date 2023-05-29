@@ -13,13 +13,14 @@ unitClasses:
     verbs:
       - load
       - wait_ai
-      - arm
+      - upgrade
+      - hire
     tags:
       - villager
       - type.ground.light
       - walking
     battleUnitCount: 4
-    sightRange: 5
+    sightRange: 4
     isRecruitable: false
     palettePriority: 1
     deathVerbId: death

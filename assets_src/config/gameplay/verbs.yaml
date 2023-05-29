@@ -147,14 +147,14 @@ verbs:
     directTarget: true
     scriptName: verbs/hire
 
-  - id: arm
+  - id: upgrade
     icon: ui/icons/grooves/unit_action_icon_inspire.png
-    name: ui_unit_verbs_arm
+    name: ui_unit_verbs_upgrade
     targetColour: target
     targetOutlineColour: target_outline
     preExecute: true
     targetted: false
-    scriptName: verbs/arm
+    scriptName: verbs/upgrade
 
   - id: groove_golf
     icon: ui/icons/grooves/unit_action_icon_hammer.png

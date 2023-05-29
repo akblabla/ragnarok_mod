@@ -238,7 +238,7 @@ terrains:
     movementCost:
       sailing: 2
       walking: 1
-      riding: 1
+      riding: 2
       flying: 1
       hovering: 1
       amphibious: 1
