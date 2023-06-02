@@ -6,10 +6,11 @@ local Ragnarok = require "initialized/ragnarok"
 local Rescue = require "verbs/rescue"
 local Recruit = require "initialized/recruit"
 local AIManager = require "initialized/ai_manager"
-local StealthManager = require "initialized/stealth_manager"
+local StealthManager = require "scripts/stealth_manager"
 local VisionTracker = require "initialized/vision_tracker"
 local Pathfinding = require "util/pathfinding"
 local Corners = require "scripts/corners"
+local Stats = require "util/stats"
 
 local Actions = {}
 
@@ -34,6 +35,7 @@ end
 
 function Actions.populate(dst)
     dst["ai_set_no_building_attacking"] = Actions.setNoBuildingAttacking
+    dst["enable_hiring"] = Actions.enableHiring
     dst["set_state"] = Actions.setState
     dst["transfer_gold_robbed"] = Actions.transferGoldRobbed
 	dst["log_message"] = Actions.logMessage
@@ -47,9 +49,9 @@ function Actions.populate(dst)
 	dst["invert_gizmo"] = Actions.invertGizmo
 	dst["set_threat_at_location"] = Actions.setThreatAtLocation
 	dst["spawn_unit"] = Actions.spawnUnit
+	dst["split_into"] = Actions.splitInto
 	dst["spawn_unit_in_transport"] = Actions.spawnUnitInsideTransport
 	dst["spawn_unit_close"] = Actions.spawnUnitClose
-	dst["move_location_to_next_structure"] = Actions.moveLocationToNextStructure
 	dst["force_action"] = Actions.forceAction
 	dst["place_crown"] = Actions.placeCrown
 	dst["modify_flare_count"] = Actions.modifyFlareCount
@@ -63,22 +65,24 @@ function Actions.populate(dst)
 	dst["allow_pirate_ships"] = Actions.allowPirateShips
     dst["ai_set_restriction"] = Actions.aiSetRestriction
 	dst["set_location_to_vision"] = Actions.setLocationToVision
+	dst["set_location_to_spawned"] = Actions.setLocationToSpawned
 	dst["dialogue_box_unit"] = Actions.dialogueBoxUnit
 	dst["set_match_seed"] = Actions.setMatchSeed
 	dst["set_priority_target"] = Actions.setPriorityTarget
+    dst["display_path"] = Actions.displayPath
+    dst["let_neutral_units_move"] = Actions.letNeutralUnitsMove
 	dst["set_hide_and_seek"] = Actions.setHideAndSeek
+    dst["set_hide_and_seek_bravery"] = Actions.setHideAndSeekBravery
     dst["set_position_as_goal"] = Actions.setPositionAsGoal
-<<<<<<< HEAD
     dst["set_awareness"] = Actions.setAwareness
     dst["limit_bounds"] = Actions.limitBounds
 --    dst["set_awareness_wave"] = Actions.setAwarenessWave
-=======
->>>>>>> parent of 4ab1098 (Revolution map ready for balance testing)
     dst["update_awareness"] = Actions.updateAwareness
     dst["set_current_position_as_goal"] = Actions.setCurrentPositionAsGoal
     dst["give_bounty"] = Actions.giveBounty
     dst["force_move"] = Actions.forceMove
     dst["force_attack"] = Actions.forceAttack
+    dst["ai_set_profile"] = Actions.setAIProfileWithBuild
     dst["run_group_sequentially"] = Actions.runGroupSequentially
     dst["run_group_concurrently"] = Actions.runGroupConcurrently
     dst["end_group"] = Actions.endGroup
@@ -98,6 +102,7 @@ end
 function Actions.aiSetRestriction(context)
     -- "Set AI restriction of {0} at {1} for {2}: Set {3} to {4}"
     local restriction = context:getString(3)
+    print(restriction)
     local value = context:getBoolean(4)
     local units = context:gatherUnits(2, 0, 1)
 
@@ -141,6 +146,13 @@ end
 function Actions.setNoBuildingAttacking(context)
     local targetPlayer = context:getPlayerId(0)
 	Ragnarok.addAIToCantAttackBuildings(targetPlayer)
+end
+
+function Actions.enableHiring(context)
+    -- "Let player {0} hire villagers."
+    local playerId = context:getPlayerId(0)
+	local Hire = require "verbs/hire"
+    Hire.enableForPlayer(playerId)
 end
 
 function Actions.allowPirateShips(context)
@@ -325,6 +337,14 @@ function Actions.setLocationToVision(context)
 	location:setArea(visibleTiles)
 end
 
+function Actions.setLocationToSpawned(context)
+    -- "Set location {0} to the spawned units this update."
+    local location = context:getLocation(0)
+    print("Actions.setLocationToSpawned(context)")
+    print(dump(context.spawnedUnits,0))
+	location:setArea(context.spawnedUnits)
+end
+
 function Actions.setState(context)
     -- "Add set state {3} to {4} for unit type(s) {0} at location {1} owned by player {2}."
 
@@ -367,6 +387,11 @@ function Actions.setPriorityTarget(context)
     local order = context:getString(4)
     local units = context:gatherUnits(2, 0, 1)
     for i, unit in ipairs(units) do
+        print("new order")
+        print(order)
+        print(unit.playerId) 
+        print(unit.id) 
+        print(unit.unitClassId) 
         if order == "attack move" then
             AIManager.attackMoveOrder(unit.id,targetPos)
         end
@@ -376,7 +401,60 @@ function Actions.setPriorityTarget(context)
         if order == "road move" then
             AIManager.roadMoveOrder(unit.id,targetPos)
         end
+        if order == "road move left" then
+            AIManager.roadMoveLeftOrder(unit.id,targetPos)
+        end
+        if order == "road move right" then
+            AIManager.roadMoveRightOrder(unit.id,targetPos)
+        end
+        if order == "retreat" then
+            AIManager.retreatOrder(unit.id)
+        end
+        if order == "clear" then
+            AIManager.clearOrder(unit.id)
+        end
+        print(dump(AIManager.getOrder(unit.id),0)) 
     end
+end
+
+function Actions.displayPath(context)
+    -- "Display path for units of type {0} at location {1} owned by player {2}"
+    local units = context:gatherUnits(2, 0, 1)
+    for i, unit in ipairs(units) do
+        local path = AIManager.getPath(unit.id)
+        local playerId = unit.playerId
+        if playerId ==-1 then
+            playerId = 0
+        end
+        if path~=nil then
+            Wargroove.trackCameraTo(path[#path])
+            local lastTile = nil
+            for j, tile in ipairs(path) do
+                local nextTile = path[j+1]
+                if lastTile~=nil then
+                    if nextTile~=nil then
+                        local cornerPos = {x = 24*(lastTile.x+nextTile.x-2*tile.x)/8,y = 24*(lastTile.y+nextTile.y-2*tile.y)/8}
+                        Wargroove.displayBuffVisualEffectAtPosition(unit.id, tile, playerId, "units/PathArrows/C", "spawn", 1, nil, nil, cornerPos)
+                        Wargroove.waitTime(0.05)    
+                    else
+                        Wargroove.displayBuffVisualEffectAtPosition(unit.id, tile, playerId, "units/PathArrows/X", "spawn", 1)
+                    end
+                else
+                    Wargroove.displayBuffVisualEffectAtPosition(unit.id, tile, playerId, "units/PathArrows/C", "spawn", 1)
+                    Wargroove.waitTime(0.05)
+                end
+                lastTile = tile
+            end
+            Wargroove.waitTime(0.5)
+            Wargroove.clearBuffVisualEffect(unit.id)
+            break
+        end
+    end
+end
+
+function Actions.letNeutralUnitsMove(context)
+    -- "Let neutral units move using orders"
+    AIManager.letNeutralUnitsMove()
 end
 
 local bountyMap = {
@@ -391,9 +469,10 @@ local bountyMap = {
     harpoonship = 150,
     harpy = 150,
     merman = 100,
-    travelboat = 50,
+    thief = 150,
+    travelboat = 400,
     trebuchet = 200,
-    wagon = 100,
+    wagon = 400,
     warship = 200,
     witch = 150,
     villager = 100
@@ -417,8 +496,8 @@ function Actions.forceMove(context)
     local center = findCentreOfLocation(location)
     local coList = {}
     for i, unit in pairs(units) do
-        coList[i] = coroutine.create(function (unit,location)
-            local path = Pathfinding.AStar(unit.playerId, unit.unitClassId, unit.pos, location.positions)
+        coList[i] = coroutine.create(function ()
+            local path = Pathfinding.AStar(unit, center)
             Pathfinding.forceMoveAlongPath(unit.id, path)
             return true
          end)
@@ -426,7 +505,7 @@ function Actions.forceMove(context)
     while next(coList) ~= nil do
         local toBeRemoved = {};
         for i, co in pairs(coList) do
-            local errorFree, result = coroutine.resume(co,units[i],location)
+            local errorFree, result = coroutine.resume(co)
             if errorFree == false then
                 table.insert(toBeRemoved,i)
             end
@@ -508,31 +587,67 @@ function Actions.setCurrentPositionAsGoal(context)
     -- "Make units of type {0} at location {1} owned by player {2} stand guard."
     local units = context:gatherUnits(2, 0, 1)
     for i, unit in ipairs(units) do
-        StealthManager.setAIGoalPos(unit.id,unit.pos)
+        StealthManager.setAIGoalPos("road_move",unit.id,unit.pos)
     end
 end
 
 function Actions.setPositionAsGoal(context)
-    -- "Make units of type {0} at location {1} owned by player {2} move towards {3}."
+    -- "Make units of type {0} at location {1} owned by player {2} {5} towards {3} at {4} tiles per turn."
     local units = context:gatherUnits(2, 0, 1)
     local location = context:getLocation(3)
+    local maxSpeed = context:getInteger(4)
+    local order = context:getString(5)
     local center = findCentreOfLocation(location)
     for i, unit in ipairs(units) do
-        StealthManager.setAIGoalPos(unit.id,center)
+        AIManager.order(order, unit.id, center, maxSpeed)
+        StealthManager.setAIGoalPos(order, unit.id,center,maxSpeed)
+    end
+end
+
+function Actions.setAwareness(context)
+    -- "Sets awareness of units of type {0} at location {1} owned by player {2} to {3} from {5}. (Force = {4})"
+    local units = context:gatherUnits(2, 0, 1)
+    local string = context:getString(3)
+    local force = context:getBoolean(4)
+    local location = context:getLocation(5)
+    local center = findCentreOfLocation(location)
+    for i, unit in ipairs(units) do
+        StealthManager.setLastKnownLocation(unit.id, center)
+        if string == "fleeing" then
+            StealthManager.makeFleeing(unit.id)
+        elseif string == "alerted" then
+            StealthManager.makeAlerted(unit.id,force)
+        elseif string == "searching" then
+            StealthManager.makeSearching(unit.id,force)
+        elseif string == "unaware" then
+            StealthManager.makeUnaware(unit.id)
+        end
+    end
+    local function comp(a, b)
+        local sqrDistA = (a.pos.x-center.x)^2+(a.pos.y-center.y)^2
+        local sqrDistB = (b.pos.x-center.x)^2+(b.pos.y-center.y)^2
+        return sqrDistA<sqrDistB
+    end
+    table.sort(units, comp)
+    local lastDist = nil
+    for i, unit in ipairs(units) do
+        local dist = math.sqrt((unit.pos.x-center.x)^2+(unit.pos.y-center.y)^2)
+        if lastDist~= nil then
+           Wargroove.waitTime((dist-lastDist)/20) 
+        end
+        StealthManager.updateAwareness(unit.id)
+        lastDist = dist
     end
 end
 
 function Actions.updateAwareness(context)
-    -- "Update awareness."
-    print("Actions.updateAwareness(context)")
+    -- "Update awareness"
     local units = Wargroove.getUnitsAtLocation();
-    print(dump(units,0))
     for i, unit in ipairs(units) do
         if unit.playerId == 0 then
             StealthManager.awarenessCheck(unit.id,{unit.pos})
         end
     end
-    print("update all awareness")
     StealthManager.updateAwarenessAll()
 end
 function Actions.setHideAndSeek(context)
@@ -560,13 +675,19 @@ function Actions.setHideAndSeek(context)
         end
     end
 end
+function Actions.setHideAndSeekBravery(context)
+    -- "Set hide and seek bravery for player {1} to {0}"
+    local bravery = context:getInteger(0)
+    local player = context:getPlayerId(1)
+    StealthManager.setBravery(player, bravery)
+end
 function Actions.limitBounds(context)
-    -- "Limit playable area for player {1} enabled {0}"
-    local active = context:getBoolean(0)
+    -- "Limit playable area for player {1} to {0}"
+    local location = context:getLocation(0)
     local player = context:getPlayerId(1)
  
-    local unitId = Wargroove.spawnUnit(player,{x=0,y=-200},"fog",false)
---    Wargroove.displayBuffVisualEffectAtPosition(unitId, {x=0,y=0}, player, "units/fog/fog", "", 0.75, nil, nil, {x = 0, y = 2400},true)
+    local Verb = require "initialized/a_new_verb"
+    Verb.setBorderLands(location, player)
 end
 
 function Actions.transferGoldRobbed(context)
@@ -588,6 +709,27 @@ function Actions.modifyHealingPotionCount(context)
     local value = context:getInteger(2)
     local previous = HealingPotion.getCharges(playerId)
 	HealingPotion.setCharges(playerId, operation(previous, value))
+end
+
+
+function Actions.setAIProfileWithBuild(context)
+    -- "Set the AI profile with a custom build order for {0} to {1}."
+    local targetPlayer = context:getPlayerId(0)
+    local profile = context:getString(1)
+    if profile == "mangrove_madness" then
+        local AIProfile = require "AIProfiles/mangroveMadness"
+        AIProfile.setProfile()
+    end
+    if profile == "city_passive" then
+        local AIProfile = require "AIProfiles/cityPassive"
+        AIProfile.setProfile()
+    end
+    if profile == "city_war" then
+        local AIProfile = require "AIProfiles/cityWar"
+        AIProfile.setProfile()
+    end
+    
+    Wargroove.setAIProfile(targetPlayer, profile)
 end
 
 function Actions.modifyFlareCount(context)
@@ -805,6 +947,9 @@ function Actions.spawnUnit(context)
             Wargroove.trackCameraTo(pos)
         end
         local unitId = Wargroove.spawnUnit(playerId, pos, unitClassId, false)
+        table.insert(context.spawnedUnits,pos)
+        print("spawned unit")
+        print(dump(context.spawnedUnits,0))
 		local spawnedUnit = Wargroove.getUnitById(unitId);
 		local mapSize = Wargroove.getMapSize()
 		if pos.x>(mapSize.x/2) then
@@ -826,6 +971,39 @@ function Actions.spawnUnit(context)
             Wargroove.spawnMapAnimation(pos, 0, "fx/mapeditor_unitdrop")
             Wargroove.playMapSound("spawn", pos)
             Wargroove.waitTime(0.5)
+        end
+    end
+end
+
+function Actions.splitInto(context)
+    -- "Split {0} at {1} for {2} if on full health into {3}"
+    local units = context:gatherUnits(2,0,1)
+    local unitClassId = context:getUnitClass(3)
+    for i,unit in pairs(units) do
+        if unit.health == 100 then
+            local pos = Pathfinding.findClosestOpenSpot(unitClassId,unit.pos)
+            if pos ~= nil then
+                Wargroove.trackCameraTo(pos)
+                unit.health = 50
+                Wargroove.updateUnit(unit)
+                local unitId = Wargroove.spawnUnit(unit.playerId, pos, unitClassId, false)
+                local mapSize = Wargroove.getMapSize()
+                if pos.x>(mapSize.x/2) then
+                    Wargroove.setFacingOverride(unitId, "left")
+                else
+                    Wargroove.setFacingOverride(unitId, "right")
+                end
+                Wargroove.clearCaches()
+                if (not Wargroove.canCurrentlySeeTile(pos)) then
+                    -- Need to wait two frames to prevent being able to spawn on top of other units
+                    Wargroove.waitFrame()
+                    Wargroove.waitFrame()
+                else
+                    Wargroove.spawnMapAnimation(pos, 0, "fx/mapeditor_unitdrop")
+                    Wargroove.playMapSound("spawn", pos)
+                    Wargroove.waitTime(0.5)
+                end
+            end
         end
     end
 end
@@ -880,6 +1058,7 @@ function Actions.spawnUnitClose(context)
             Wargroove.trackCameraTo(pos)
         end
         local unitId = Wargroove.spawnUnit(playerId, pos, unitClassId, false)
+        table.insert(context.spawnedUnits,pos)
 		local spawnedUnit = Wargroove.getUnitById(unitId);
 		local mapSize = Wargroove.getMapSize()
 		if pos.x>(mapSize.x/2) then
@@ -917,6 +1096,7 @@ function Actions.spawnUnitClose(context)
                 pos.facing = 0
             end
             local unitId = Wargroove.spawnUnit(playerId, pos, unitClassId, false)
+            table.insert(context.spawnedUnits,pos)
             local mapSize = Wargroove.getMapSize()
             if pos.x>(mapSize.x/2) then
                 -- spawnedUnit.startPos.facing = 1
@@ -935,23 +1115,6 @@ function Actions.spawnUnitClose(context)
             end
         end
     end
-end
-
-function Actions.moveLocationToNextStructure(context)
-    -- "Move location {0} to next {1} owned by {2} at {3} to the right."
-    location = context:getLocation(0)
-    units = context:gatherUnits(2, 1, 3)
-    local centerPos = findCentreOfLocation(location)
-	nextLocation = {x = 1000, y = 0}
-    for i, unit in ipairs(units) do
-		if unit.pos.x<nextLocation.x and unit.pos.x>centerPos.x then
-			nextLocation = unit.pos
-		end
-    end
-	if nextLocation.x~=1000 then
-		nextLocation.x = nextLocation.x+1
-		Wargroove.moveLocationTo(location.id, nextLocation)
-	end
 end
 
 function Actions.forceAction(context)

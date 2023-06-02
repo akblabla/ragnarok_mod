@@ -4,6 +4,10 @@ triggerActions:
   - id: ai_set_no_building_attacking
     parameters:
       - type: player
+
+  - id: enable_hiring
+    parameters:
+      - type: player
       
   - id: allow_pirate_ships
     parameters:
@@ -38,13 +42,6 @@ triggerActions:
       - type: string
       - type: string
 
-  - id: move_location_to_next_structure
-    parameters:
-      - type: location_star
-      - type: unit_class_star
-      - type: player_neutral_star
-      - type: location_star
-
   - id: spawn_unit_in_transport
     parameters:
       - type: unit_class_star
@@ -60,6 +57,13 @@ triggerActions:
       - type: location_star
       - type: player_neutral_star
       - type: boolean
+
+  - id: split_into
+    parameters:
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+      - type: unit_class_star
 
   - id: give_bounty
     parameters:
@@ -110,6 +114,9 @@ triggerActions:
       - type: location
       - type: player_neutral_star
       
+  - id: set_location_to_spawned
+    parameters:
+      - type: location
       
   - id: transfer_gold_robbed
     parameters:
@@ -179,6 +186,14 @@ triggerActions:
       - type: location
       - type: string
 
+  - id: display_path
+    parameters:
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+
+  - id: let_neutral_units_move
+
   - id: set_current_position_as_goal
     parameters:
       - type: unit_class_star
@@ -191,7 +206,18 @@ triggerActions:
       - type: location_star
       - type: player_neutral_star
       - type: location_star
+      - type: integer
+      - type: string
 
+  - id: set_awareness
+    parameters:
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+      - type: string
+      - type: boolean
+      - type: location_star
+      
   - id: update_awareness
 
   - id: force_move
@@ -217,14 +243,15 @@ triggerActions:
     parameters:
       - type: boolean
       - type: player
-<<<<<<< HEAD
+  - id: set_hide_and_seek_bravery
+    parameters:
+      - type: integer
+      - type: player
   - id: limit_bounds
     parameters:
-      - type: boolean
+      - type: location
       - type: player
 
-=======
->>>>>>> parent of 4ab1098 (Revolution map ready for balance testing)
 #Normally hidden triggers
   - id: set_conditional_location_highlight
     parameters:

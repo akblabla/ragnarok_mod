@@ -153,7 +153,7 @@ terrains:
     movementCost:
       sailing: 2
       walking: 1
-      riding: 1
+      riding: 2
       hovering: 1
       amphibious: 1
       sea_building: 1
@@ -226,6 +226,23 @@ terrains:
     tilesets:
       0: [plains, plains_alt]
       1: brush_invis
+
+  - id: forest_invis
+    name: terrain_name_forest
+    defenceBonus: 3
+    movementCost:
+      walking: 2
+      riding: 3
+      flying: 1
+      hovering: 1
+      amphibious: 4
+    movementGroupType: land
+    placeable: true
+    visionBlocking: true
+    fowCover: true
+    tilesets:
+      0: [plains, plains_alt]
+      1: forest_invis
 
   - id: forest_alt
     name: terrain_name_forest

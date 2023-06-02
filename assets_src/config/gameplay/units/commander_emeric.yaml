@@ -56,7 +56,7 @@ unitClasses:
       - type.ground.light
       - walking
     battleUnitCount: 1
-    sightRange: 5
+    sightRange: 4
     isCommander: true
     grooveId: cherrystone_defence
     deathVerbId: death

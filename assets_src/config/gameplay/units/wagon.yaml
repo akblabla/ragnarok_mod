@@ -20,10 +20,14 @@ unitClasses:
       - wait_ai
     battleUnitCount: 1
     loadCapacity: 1
-    sightRange: 3
+    sightRange: 4
     transportTags: [ type.ground.light, type.amphibious, type.ground.hideout ]
     deathVerbId: death
-
+    startingStates:
+      - id: awareness
+        value: unaware
+      - id: visual_awareness
+        value: unaware
 
 units:
   - class: wagon

@@ -67,7 +67,7 @@ tilesets:
         iconSprite: terrain_icons_Coast
         infoScreenOffset: 75
         fillColour: '#6d5e56'
-    primaryConnect: [undefined, plains, rough, plains_alt, street, mountain, mountain_no_blocking, forest, forest_no_hiding, forest_alt, forest_alt_no_hiding, brush, brush_invis, road, cave_road, wall, wall_no_blocking,  cobblestone, carpet, rough, cave_wall]
+    primaryConnect: [undefined, plains, rough, plains_alt, street, mountain, mountain_no_blocking, forest, forest_invis, forest_no_hiding, forest_alt, forest_alt_no_hiding, brush, brush_invis, road, cave_road, wall, wall_no_blocking,  cobblestone, carpet, rough, cave_wall]
     secondaryConnect: [beach, cave_beach]
     tertiaryConnect: [sea_alt, cave_sea, ocean, reef, reef_no_hiding, cave_reef, bridge, cave_bridge, river, mangrove, cave_river]
     decayTo: sea_alt

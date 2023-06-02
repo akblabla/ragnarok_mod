@@ -74,7 +74,7 @@ unitClasses:
       - hire
     battleUnitCount: 4
     passiveMultiplier: 1.5
-    sightRange: 6
+    sightRange: 4
     deathVerbId: death
     startingStates:
       - id: ammo

@@ -22,7 +22,7 @@ en-GB:
   ui_unit_verbs_claim: Retrieve
   ui_unit_verbs_rescue: Rescue
   ui_unit_verbs_hire: Hire
-  ui_unit_verbs_arm: Arm
+  ui_unit_verbs_upgrade: Upgrade
   
   #biomes
   biome_name_tropical: Tropical
@@ -113,6 +113,10 @@ en-GB:
   unit_description_pirate_ship: "Can steal gold from structures. It can't attack whilst loaded. Critical hits whilst fighting adjancent to land tiles."
   unit_name_pirate_ship_outlaws: Pirate Ship
   
+  unit_class_name_cart: Cart
+  unit_description_cart: "A humble cart."
+  unit_name_cart_cherrystone: Cart
+  
   unit_class_name_flare: Flare
   unit_description_flare: Reveals hidden units in an area. It expires at the end of the turn.
   unit_name_flare: Flare
@@ -154,6 +158,7 @@ en-GB:
   unit_name_rifleman_outlaws: Sharpshooter 
   unit_name_rival_outlaws: Poacher 
 
+  structure_name_tavern: "Tavern"
 
   # UNIT DESCRIPTIONS
   unit_description_soldier: "[MELEE] Basic infantry, useful for capturing structures. Critical hit when adjacent to its commander."

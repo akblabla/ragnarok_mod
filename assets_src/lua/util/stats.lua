@@ -14,40 +14,43 @@ Stats.meleeUnits = {
 	turtle = true,
 }
 Stats.sightRangeList = {
-	archer = 5,
-	rival = 5,
+	archer = 4,
+	rival = 4,
 	ballista = 4,
-	commander_emeric = 5,
-	commander_flagship_rival = 5,
-	commander_flagship_wulfar = 5,
-	commander_mercival = 5,
-	commander_vesper = 5,
-	commander_wulfar = 5,
-	dog = 5,
-	dragon = 6,
-	flare = 5,
+	commander_emeric = 4,
+	commander_flagship_rival = 4,
+	commander_flagship_wulfar = 4,
+	commander_mercival = 4,
+	commander_vesper = 4,
+	commander_wulfar = 4,
+	dog = 4,
+	dragon = 4,
+	flare = 4,
 	giant = 4,
-	harpoonship = 5,
-	harpy = 6,
-	knight = 3,
-	mage = 5,
-	merman = 5,
-	pirate_ship = 5,
-	pirate_ship_loaded = 5,
+	harpoonship = 4,
+	harpy = 4,
+	knight = 4,
+	mage = 4,
+	merman = 4,
+	pirate_ship = 4,
+	pirate_ship_loaded = 4,
+	wagon = 4,
+	balloon = 4,
+	villager = 4,
+	rifleman = 4,
+	soldier = 4,
+	soldier_flanked = 4,
+	spearman = 4,
+	trebuchet = 4,
+	thief = 4,
+	thief_with_gold = 4,
+	travelboat = 4,
+	turtle = 4,
+	warship = 4,
+	witch = 4,
 	reveal_all = 200,
 	reveal_all_but_hidden = 200,
 	reveal_all_but_over = 200,
-	rifleman = 6,
-	soldier = 5,
-	soldier_flanked = 5,
-	spearman = 4,
-	trebuchet = 4,
-	thief = 5,
-	thief_with_gold = 5,
-	travelboat = 3,
-	turtle = 5,
-	warship = 5,
-	witch = 6,
 	barracks = 1,
 	city = 1,
 	gate = 1,
@@ -57,10 +60,7 @@ Stats.sightRangeList = {
 	tower = 1,
 	water_city = 1,
 	crew = 0,
-	gate_no_los_blocker = 1,
-	wagon = 3,
-	balloon = 4,
-	villager = 3
+	gate_no_los_blocker = 1
 }
 
 Stats.scoutList = {
@@ -210,7 +210,7 @@ Stats.terrainCost = {
 	},
 	beach = {
 		walking = 1,
-		riding = 1,
+		riding = 2,
 		flying = 1,
 		hovering = 1,
 		amphibious = 1,
@@ -244,7 +244,6 @@ function Stats.getMovementType(unitClassId)
 	return nil
 end
 function Stats.getTerrainCost(terrainName, unitClassId)
-	local unitClass = Wargroove.getUnitClass(unitClassId)
 	if Stats.terrainCost[terrainName] == nil then
 		return 100
 	end
@@ -255,7 +254,6 @@ function Stats.getTerrainCost(terrainName, unitClassId)
 	return 100
 end
 function Stats.canStopOnTerrain(terrainName, unitClassId)
-	local unitClass = Wargroove.getUnitClass(unitClassId)
 	if Stats.terrainCost[terrainName] == nil then
 		return false
 	end

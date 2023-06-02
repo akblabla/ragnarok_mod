@@ -13,7 +13,6 @@ end
 
 function Conditions.populate(dst)
     dst["state"] = Conditions.state
-    dst["does_next_structure_exist"] = Conditions.doesNextStructureExist
     dst["did_it_occur"] = Conditions.didItOccur
     dst["is_rescued"] = Conditions.isRescued
     dst["or_group"] = Conditions.orGroup
@@ -36,20 +35,6 @@ function Conditions.state(context)
     end
 
     return false
-end
-
-function Conditions.doesNextStructureExist(context)
-    -- "If there are more {1} owned by {2} at {3} to the right of location {0}"
-    local location = context:getLocation(0)
-    local units = context:gatherUnits(2, 1, 3)
-    local center = findCentreOfLocation(location)
-	nextLocation = {x = 1000, y = 0}
-    for i, unit in ipairs(units) do
-		if unit.pos.x<nextLocation.x and unit.pos.x>center.x then
-			nextLocation = unit.pos
-		end
-    end
-	return nextLocation.x~=1000
 end
 
 function Conditions.didItOccur(context)

@@ -3,6 +3,7 @@ local OldEvents = require("wargroove/events")
 local Wargroove = require("wargroove/wargroove")
 local TriggerContext = require("triggers/trigger_context")
 local Resumable = require("wargroove/resumable")
+local StealthManager = require("scripts/stealth_manager")
 
 local Events = {}
 local Original = {}
@@ -51,7 +52,8 @@ local triggerContext = TriggerContext:new({
     mapCounters = {},
     party = {},
     campaignCutscenes = {},
-    creditsToPlay = ""
+    creditsToPlay = "",
+    spawnedUnits = {}
 })
 
 local triggerList = nil
@@ -246,6 +248,9 @@ function Events.groupActions(actions)
     local currentGroup = {}
     local currentMode = nil
 	local level = 0
+    if actions == nil then
+        return
+    end
     for i, action in pairs(actions) do
 		if action.id == "end_group" then
 			print("group mode ends")
@@ -323,26 +328,34 @@ function Events.runConcurrently(currentId, actions)
             coList[id] = nil
         end
         time = coroutine.yield()
-        print("TIME")
-        print(time)
     end
 end
 
-function Events.runActions(currentId, actions)
-	local groupedActions,groupedModes = Events.groupActions(actions)
-    for i, actionGroup in ipairs(groupedActions) do
-        if (groupedModes[i] == nil) or (groupedModes[i] == "single") then
-            triggerContext.triggerInstanceActionId = currentId
-            Events.runAction(actionGroup)
-        elseif groupedModes[i] == "concurrent" then
-            Events.runConcurrently(currentId, actionGroup)
-        elseif groupedModes[i] == "sequential" then
-            Events.runActions(currentId, actionGroup)
-        end
-        currentId = currentId+1;
-	end
-end
+-- function Events.runActions(currentId, actions)
+-- 	local groupedActions,groupedModes = Events.groupActions(actions)
+--     if groupedActions == nil then
+--         return
+--     end
+--     for i, actionGroup in ipairs(groupedActions) do
+--         if (groupedModes[i] == nil) or (groupedModes[i] == "single") then
+--             triggerContext.triggerInstanceActionId = currentId
+--             Events.runAction(actionGroup)
+--         elseif groupedModes[i] == "concurrent" then
+--             Events.runConcurrently(currentId, actionGroup)
+--         elseif groupedModes[i] == "sequential" then
+--             Events.runActions(currentId, actionGroup)
+--         end
+--         currentId = currentId+1;
+-- 	end
+-- end
 
+
+function Events.runActions(actions)
+    for i, action in ipairs(actions) do
+        triggerContext.triggerInstanceActionId = i
+        Events.runAction(action)
+    end
+end
 
 function Events.setMapFlag(flagId, value)
     triggerContext:setMapFlagById(flagId, value)
@@ -394,7 +407,8 @@ end
 
 function Events.executeTrigger(trigger)
     triggerContext.fired[Events.getTriggerKey(trigger)] = true
-    Events.runActions(1,trigger.actions)
+    triggerContext.spawnedUnits = {}
+    Events.runActions(trigger.actions)
 end
 
 
@@ -407,7 +421,6 @@ function Events.isConditionTrue(condition)
        return f(triggerContext)
     end
 end
-
 
 function Events.runAction(action)
     local f = triggerActions[action.id]
@@ -425,6 +438,7 @@ function Events.reportUnitDeath(id, attackerUnitId, attackerPlayerId, attackerUn
 	local unit = Wargroove.getUnitById(id)
 	VisionTracker.removeUnitFromVisionMatrix(unit)
 	Wargroove.updateFogOfWar()
+    StealthManager.reportDeadUnit(id)
 	Original.reportUnitDeath(id, attackerUnitId, attackerPlayerId, attackerUnitClass)
 end
 

@@ -40,6 +40,7 @@ end
 function WaitAI:getScore(unitId, order)
     local unit = Wargroove.getUnitById(unitId)
     local target, distMoved, dist = AIManager.getNextPosition(unitId)
+
     if (target ~= nil) then
         local score = 0
         if dist>0 then

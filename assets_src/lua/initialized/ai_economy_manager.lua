@@ -1,11 +1,11 @@
 local Wargroove = require "wargroove/wargroove"
 local Ragnarok = require "initialized/ragnarok"
 local Recruit = require "verbs/recruit"
-local Events = require "wargroove/events"
+local StealthManager = require "scripts/stealth_manager"
 
 local AIEconomyManager = {}
 function AIEconomyManager.init()
-	Ragnarok.addAction(AIEconomyManager.spendRest,"repeating",false)
+	Ragnarok.addAction(AIEconomyManager.spendRest,"repeating",true)
 end
 
 local function isProductionStucture(unit)
@@ -41,7 +41,10 @@ AIEconomyManager.valueReductionPerUnitList = {
 	trebuchet = 0.5,
 	turtle = 0.8,
 	warship = 0.8,
-	witch = 0.6
+	witch = 0.6,
+	travelboat = 1,
+	balloon = 1,
+	thief = 1
 }
 
 AIEconomyManager.idealUnitRatioList = {
@@ -61,7 +64,10 @@ AIEconomyManager.idealUnitRatioList = {
 	trebuchet = 0.3,
 	turtle = 1,
 	warship = 1,
-	witch = 1
+	witch = 1,
+	travelboat = 0,
+	balloon = 0,
+	thief = 0
 }
 
 local currentUnitRatioScalingList = {}
@@ -150,8 +156,11 @@ AIEconomyManager.airThreatPerTower = 200;
 
 local function getIncome(playerId)
 	local income = 0
-	if unitCountPlayerList[playerId]["village"] ~= nil then
-		income = income + unitCountPlayerList[playerId]["village"]*100
+	if unitCountPlayerList[playerId]["city"] ~= nil then
+		income = income + unitCountPlayerList[playerId]["city"]*100
+	end
+	if unitCountPlayerList[playerId]["water_city"] ~= nil then
+		income = income + unitCountPlayerList[playerId]["water_city"]*100
 	end
 	if unitCountPlayerList[playerId]["hq"] ~= nil then
 		income = income + unitCountPlayerList[playerId]["hq"]*100
@@ -225,7 +234,11 @@ local function getUnitRatioModifier(unitClassId, playerId)
 			trebuchet = 0,
 			turtle = 0,
 			warship = 0,
-			witch = 0
+			witch = 0,
+			wagon = 0,
+			travelboat = 0,
+			balloon = 0,
+			thief = 0
 		}
 	end
 	-- print("currentUnitRatioScalingList")
@@ -333,6 +346,14 @@ local function getProducedUnitValue(producer, unitClassId, playerId)
 end
 
 
+function AIEconomyManager.addUnitOption(recruit,unit,spawnPos,productionOptions,playerId)
+	if not isUnitClassBanned(recruit) and Recruit:canExecuteWithTarget(unit, unit.pos,spawnPos, recruit) then
+		print("Could recruit: " .. recruit)
+		local convertedCost = calculateConvertedCost(unit, recruit)
+		local score = getProducedUnitValue(unit, recruit, playerId)
+		table.insert(productionOptions,{producerId = unit.id, spawnPos = spawnPos, convertedCost = convertedCost, score = score, recruit = recruit })
+	end
+end
 function AIEconomyManager.spendRest(context)
 	if context:checkState("endOfTurn") then
 		--print("spendRest starts here")
@@ -370,7 +391,13 @@ function AIEconomyManager.spendRest(context)
 					relPos = rotate(relPos);
 					local spawnPos = {x = relPos.x+unit.pos.x, y = relPos.y+unit.pos.y}
 					if unit.hadTurn == false and Wargroove.getUnitAt(spawnPos) == nil and Recruit:canExecuteWithTarget(unit, unit.pos,spawnPos, "soldier") then
-						barracksCount = barracksCount + 1
+						if StealthManager.isActive(unit.playerId) then
+							if StealthManager.isUnitPermaAlerted(unit) then
+								barracksCount = barracksCount + 1
+							end
+						else
+							barracksCount = barracksCount + 1
+						end
 						break
 					end
 				end
@@ -415,12 +442,17 @@ function AIEconomyManager.spendRest(context)
 					print("valid spawnPoint")
 					for i, recruit in ipairs(unit.recruits) do 
 						print("Attempting to recruit: " .. recruit)
-						if not isUnitClassBanned(recruit) and Recruit:canExecuteWithTarget(unit, unit.pos,spawnPos, recruit) then
-							print("Could recruit: " .. recruit)
-							local convertedCost = calculateConvertedCost(unit, recruit)
-							local score = getProducedUnitValue(unit, recruit, playerId)
-							table.insert(productionOptions,{producerId = unit.id, spawnPos = spawnPos, convertedCost = convertedCost, score = score, recruit = recruit })
+						if StealthManager.isActive(unit.playerId) then
+							if ((StealthManager.isCivilian(recruit) and not StealthManager.isUnitPermaAlerted(unit))) then
+								AIEconomyManager.addUnitOption(recruit,unit,spawnPos,productionOptions,playerId)
+							end
+							if ((not StealthManager.isCivilian(recruit) and StealthManager.isUnitPermaAlerted(unit))) then
+								AIEconomyManager.addUnitOption(recruit,unit,spawnPos,productionOptions,playerId)
+							end
+						else
+							AIEconomyManager.addUnitOption(recruit,unit,spawnPos,productionOptions,playerId)
 						end
+
 					end
 				end
 			end

@@ -2,18 +2,39 @@ local Wargroove = require "wargroove/wargroove"
 local OldAttack = require "verbs/attack"
 local Combat = require "wargroove/combat"
 local Ragnarok = require "initialized/ragnarok"
-local StealthManager = require "initialized/stealth_manager"
+local StealthManager = require "scripts/stealth_manager"
 local Stats = require "util/stats"
+local Verb = require "initialized/a_new_verb"
 
 
 local Attack = {}
 local OldAttackGetScore;
+local OriginalAttack = {};
 function Attack.init()
 	Ragnarok.addAction(Attack.revertFlanked,"repeating",true)
 	OldAttack.canExecuteWithTarget = Attack.canExecuteWithTarget
 	OldAttack.execute = Attack.execute
---	OldAttack.onPostUpdateUnit = Attack.onPostUpdateUnit
+	OldAttack.onPostUpdateUnit = Attack.onPostUpdateUnit
+	OriginalAttack.canExecuteAt = OldAttack.canExecuteAt
+	OldAttack.canExecuteAt = Attack.canExecuteAt
 	
+end
+
+
+function Attack:canExecuteAt(unit, endPos)
+    if Verb.inInBorderlands(endPos, unit.playerId) then
+        return false
+    end
+    local weapons = unit.unitClass.weapons
+
+    if #weapons == 1 and not weapons[1].canMoveAndAttack then
+        local moved = endPos.x ~= unit.startPos.x or endPos.y ~= unit.startPos.y
+        if moved then
+            return false
+        end
+    end
+
+    return true
 end
 
 local function getFacing(from, to)
@@ -41,11 +62,11 @@ function Attack.revertFlanked(context)
 	if flankedId ~= nil and context:checkState("endOfUnitTurn") then
 		local flanked = Wargroove.getUnitById(flankedId)
 		local flanker = Wargroove.getUnitById(flankerId)
-		if flanked ~= nil and flanked.unitClassId == "soldier_flanked" then
-			flanked.unitClassId = "soldier"
-			flanked.pos.facing = getFacing(flanked.pos, flanker.pos)
-			Wargroove.updateUnit(flanked)
-		end
+		-- if flanked ~= nil and flanked.unitClassId == "soldier_flanked" then
+		-- 	flanked.unitClassId = "soldier"
+		-- 	flanked.pos.facing = getFacing(flanked.pos, flanker.pos)
+		-- 	Wargroove.updateUnit(flanked)
+		-- end
 		Wargroove.waitFrame()
 		Wargroove.clearCaches()
         Wargroove.waitTime(0.5)
@@ -57,6 +78,7 @@ function Attack.revertFlanked(context)
 end
 
 function Attack:onPostUpdateUnit(unit, targetPos, strParam, path)
+
 end
 
 function Attack:execute(unit, targetPos, strParam, path)
@@ -66,18 +88,6 @@ function Attack:execute(unit, targetPos, strParam, path)
         Wargroove.waitTime(0.5)
     end
  	local flanked = Wargroove.getUnitAt(targetPos)
-	if StealthManager.isActive(flanked.playerId) and StealthManager.isUnitAlerted(flanked.id) == false then
-		if flanked.unitClassId == "soldier" then
-			flanked.unitClassId = "soldier_flanked"
-			Wargroove.updateUnit(flanked)
-		end
-		Wargroove.waitFrame()
-		Wargroove.waitFrame()
-		Wargroove.clearCaches()
-		flanked = Wargroove.getUnitAt(targetPos)
-		flankedId = flanked.id
-		flankerId = unit.id
-	end
     Wargroove.startCombat(unit, flanked, path)
 	StealthManager.setLastKnownLocation(flanked.id, unit.pos)
 	StealthManager.makeAlerted(flanked)

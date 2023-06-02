@@ -6,7 +6,7 @@ local Hire = Verb:new()
 
 local costMultiplier = 1
 
-local defaultUnits = {"soldier", "spearman", "archer", "mage"}
+local defaultUnits = {"soldier", "dog", "spearman", "mage", "archer", "knight",}
 
 function Hire:recruitsContain(recruits, unit)
     for i, recruit in pairs(recruits) do

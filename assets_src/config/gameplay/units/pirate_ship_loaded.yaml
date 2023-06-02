@@ -26,7 +26,7 @@ unitClasses:
     isRecruitable: false
     isPlaceable: false
     passiveMultiplier: 1.5
-    sightRange: 5
+    sightRange: 4
     isHiddenInCutsceneEditor: true
     deathVerbId: death_give_gold 
 

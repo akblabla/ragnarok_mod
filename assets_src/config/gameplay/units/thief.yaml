@@ -25,7 +25,7 @@ unitClasses:
       - type.ground.hideout
       - walking
     battleUnitCount: 1
-    sightRange: 5
+    sightRange: 4
     deathVerbId: death
     startingStates:
       - id: gold
@@ -37,7 +37,7 @@ units:
     faction: cherrystone
     name: unit_name_thief_cherrystone
     mapAnimation: units/thief/cherrystone/map_thief_cherrystone
-    battleAnimation: units/thief/cherrystone/battle_thief_cherrystone
+    battleAnimation: units/thief/cherrystone/battle_thief_cherrystone2
     battleAnimationRiver: fx/river_overlay/battle_thief_river
     smallPortrait: units/thief/cherrystone/portrait_thief_cherrystone_small.png
     mediumPortrait: units/thief/cherrystone/portrait_thief_cherrystone_medium.png

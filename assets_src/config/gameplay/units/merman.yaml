@@ -58,7 +58,7 @@ unitClasses:
       - amphibious
     battleUnitCount: 4
     passiveMultiplier: 2
-    sightRange: 5
+    sightRange: 4
     deathVerbId: death
 
 
