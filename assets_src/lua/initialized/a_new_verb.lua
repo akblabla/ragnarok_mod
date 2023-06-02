@@ -32,11 +32,17 @@ function Verb.setBorderLands(location, playerId)
         borderLandPlayerList[playerId][PosKey.generatePosKey(tile)] = true
     end 
 end
-function Verb:canExecuteAt(unit, endPos)
-    if borderLandPlayerList[unit.playerId]~=nil then
-        if borderLandPlayerList[unit.playerId][PosKey.generatePosKey(endPos)]~=nil then
-            return false
+function Verb.inInBorderlands(pos, playerId)
+    if borderLandPlayerList[playerId]~=nil then
+        if borderLandPlayerList[playerId][PosKey.generatePosKey(pos)]~=nil then
+            return true
         end
+    end
+    return false
+end
+function Verb:canExecuteAt(unit, endPos)
+    if Verb.inInBorderlands(endPos, unit.playerId) then
+        return false
     end
     return (not Wargroove.canPlayerSeeTile(-1, endPos)) or (not Wargroove.isAnybodyElseAt(unit, endPos))
 end

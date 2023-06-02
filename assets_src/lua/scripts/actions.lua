@@ -401,6 +401,12 @@ function Actions.setPriorityTarget(context)
         if order == "road move" then
             AIManager.roadMoveOrder(unit.id,targetPos)
         end
+        if order == "road move left" then
+            AIManager.roadMoveLeftOrder(unit.id,targetPos)
+        end
+        if order == "road move right" then
+            AIManager.roadMoveRightOrder(unit.id,targetPos)
+        end
         if order == "retreat" then
             AIManager.retreatOrder(unit.id)
         end
@@ -463,10 +469,10 @@ local bountyMap = {
     harpoonship = 150,
     harpy = 150,
     merman = 100,
-    thief = 100,
-    travelboat = 300,
+    thief = 150,
+    travelboat = 400,
     trebuchet = 200,
-    wagon = 300,
+    wagon = 400,
     warship = 200,
     witch = 150,
     villager = 100

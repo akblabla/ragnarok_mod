@@ -149,6 +149,22 @@ function Pathfinding.isBetter(gScore, tentative_gScore)
   end
 end
 
+local cameFromCache = {}
+local gScoreCache = {}
+local penaltyFunction = {}
+
+function Pathfinding.clearCache(unitId)
+  cameFromCache[unitId] = nil
+  gScoreCache[unitId] = nil
+  penaltyFunction[unitId] = nil
+end
+function Pathfinding.clearCaches()
+  cameFromCache = {}
+  gScoreCache = {}
+  penaltyFunction = {}
+end
+
+
 function Pathfinding.AStar(unit, destList, penaltyFunctions)
   if penaltyFunctions == nil then
     penaltyFunctions = {}
@@ -166,19 +182,42 @@ function Pathfinding.AStar(unit, destList, penaltyFunctions)
   end
   local cameFrom = {}
   local gScore = {}
-  local fScore = {}
+
+  if penaltyFunction[unit.id] == nil then
+    penaltyFunction[unit.id] = {}
+  end
+  if penaltyFunction.pathPenalty ~= penaltyFunction[unit.id].pathPenalty then
+    Pathfinding.clearCache(unit.id)
+  end
+  if penaltyFunction.posPenalty ~= penaltyFunction[unit.id].posPenalty then
+    Pathfinding.clearCache(unit.id)
+  end
+
+  if cameFromCache[unit.id] ~= nil then
+    cameFrom = cameFromCache[unit.id]
+  end
+  if gScoreCache[unit.id] ~= nil then
+    gScore = gScoreCache[unit.id]
+  end
   local bestFScorePos = {fScore = 100000,pos = nil}
   local startKey = PosKey.generatePosKey(unit.pos)
-  fScore[startKey] = Pathfinding.guessList(unit.pos, destList)
-  bestFScorePos = {fScore = fScore[startKey],pos = unit.pos}
   gScore[startKey] = {dist = 0,nWait = 0, bonus = 0}
-  openSet:insert(fScore[startKey],startKey)
+  for posKey,g in pairs(gScore) do
+      
+    local fScore = Pathfinding.guessList(unit.pos, destList) +g.dist+g.bonus
+    if bestFScorePos.fScore < fScore then
+      bestFScorePos = {fScore = fScore,pos = PosKey.revertPosKey(posKey)}
+    end
+    openSet:insert(fScore,posKey)
+  end
   local plzStop = 0
   while (openSet:empty() == false) do
     local currentScore,currentPosKey = openSet:pop()
     local currentPos = PosKey.revertPosKey(currentPosKey)
     for i,dest in ipairs(destList) do
       if (currentPos.x == dest.x) and (currentPos.y == dest.y) then
+        cameFromCache[unit.id] = cameFrom
+        gScoreCache[unit.id] = gScore
         return Pathfinding.reconstructPath(cameFrom, currentPos)
       end
     end
@@ -227,17 +266,19 @@ function Pathfinding.AStar(unit, destList, penaltyFunctions)
           gScore[newPosKey].dist = tentative_gScore.dist
           gScore[newPosKey].bonus = tentative_gScore.bonus
           gScore[newPosKey].nWait = tentative_gScore.nWait
-          fScore[newPosKey] = tentative_gScore.dist+tentative_gScore.bonus+Pathfinding.guessList(newPos, destList)
+          fScore = tentative_gScore.dist+tentative_gScore.bonus+Pathfinding.guessList(newPos, destList)
           cameFrom[newPosKey] = currentPos
-          if bestFScorePos.fScore < fScore[newPosKey] then
-            bestFScorePos = {fScore = fScore[newPosKey],pos = newPos}
+          if bestFScorePos.fScore < fScore then
+            bestFScorePos = {fScore = fScore,pos = newPos}
           end
-          openSet:insert(fScore[newPosKey],newPosKey)
+          openSet:insert(fScore,newPosKey)
         end
       end
     end
 
   end
+  cameFromCache[unit.id] = cameFrom
+  gScoreCache[unit.id] = gScore
   return Pathfinding.reconstructPath(cameFrom, bestFScorePos.pos)
 end
 

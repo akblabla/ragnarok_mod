@@ -3,6 +3,7 @@ local Ragnarok = require "initialized/ragnarok"
 local VisionTracker = require "initialized/vision_tracker"
 local StealthManager = require "scripts/stealth_manager"
 local FIFOQueue = require "util/fifoQueue"
+local Pathfinding = require "util/pathfinding"
 
 local WargrooveVision = {}
 local Original = {}
@@ -23,6 +24,9 @@ local function dump(o,level)
 end
 
 function WargrooveVision.init()
+	Original.clearCaches = OldWargroove.clearCaches
+	OldWargroove.clearCaches = WargrooveVision.clearCaches
+
 	Original.setPlayerTeam = OldWargroove.setPlayerTeam
 	OldWargroove.setPlayerTeam = WargrooveVision.setPlayerTeam
 	
@@ -57,6 +61,11 @@ function WargrooveVision.init()
 	OldWargroove.getUnitStateObject = WargrooveVision.getUnitStateObject
 end
 
+function WargrooveVision.clearCaches()
+    Original.clearCaches()
+	Pathfinding.clearCaches()
+end
+
 function WargrooveVision.startCapture(attacker, defender, attackerPos)
 	VisionTracker.removeUnitFromVisionMatrix(defender)
 	Original.startCapture(attacker, defender, attackerPos)
@@ -66,7 +75,7 @@ end
 
 function WargrooveVision.spawnUnit(playerId, pos, unitType, turnSpent, startAnimation, startingState, factionOverride)  
 	local unitId = Original.spawnUnit(playerId, pos, unitType, turnSpent, startAnimation, startingState, factionOverride)  
-	if (pos.x>=0) and (pos.x<OldWargroove.getMapSize().x) and (pos.y>=0) and (pos.y<OldWargroove.getMapSize().y) then
+	if Pathfinding.withinBounds(pos) then
 		OldWargroove.waitFrame()
 		OldWargroove.waitFrame()
 		local unit = OldWargroove.getUnitById(unitId)

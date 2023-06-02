@@ -61,12 +61,13 @@ en-GB:
   
   #Ingame Dialogue:
   #Start of match after cutscene
-  ragnarok_main2_ingameIntro_Crew_00: "Madam! The town's being attacked! The streets are full of skeletons!"
-  ragnarok_main2_ingameIntro_Crew_01: "And also a bunch of dead people!"
+  ragnarok_main2_ingameIntro_Crew_00: "Madam!"
+  ragnarok_main2_ingameIntro_Crew_01: "The town's being attacked! The streets are full of skeletons!"
+  ragnarok_main2_ingameIntro_Crew_02: "And also a bunch of dead people!"
   ragnarok_main2_ingameIntro_2ndMate_00: "Wait no! The Tarvern!"
   ragnarok_main2_ingameIntro_Vesper_00: "Don't you worry about these silly xylophones. They should be easy enough to outmaneuver."
   ragnarok_main2_ingameIntro_2ndMate_01: "No! Not the tavernkeep!"
-  ragnarok_main2_ingameIntro_2ndMate_02: "And the other tarvernkeep! Have they no mercy?!"
+  ragnarok_main2_ingameIntro_2ndMate_02: "And the innkeeper! Have they no mercy?!"
   ragnarok_main2_ingameIntro_Vesper_01: "Shush."
   ragnarok_main2_ingameIntro_2ndMate_03: "But, but... my ale...?"
   ragnarok_main2_ingameIntro_Vesper_02: "The undead are none of our concern. We just need to get the crown past them."

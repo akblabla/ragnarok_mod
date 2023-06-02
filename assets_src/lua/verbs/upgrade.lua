@@ -6,7 +6,7 @@ local Upgrade = Verb:new()
 
 local costMultiplier = 1
 
-local defaultUnits = {"soldier", "dog", "spearman", "mage", "archer", "knight"}
+local defaultUnits = {"soldier", "dog", "spearman", "mage", "archer", "knight", "rifleman"}
 
 function Upgrade:recruitsContain(recruits, unit)
     for i, recruit in pairs(recruits) do

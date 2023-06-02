@@ -4,16 +4,37 @@ local Combat = require "wargroove/combat"
 local Ragnarok = require "initialized/ragnarok"
 local StealthManager = require "scripts/stealth_manager"
 local Stats = require "util/stats"
+local Verb = require "initialized/a_new_verb"
 
 
 local Attack = {}
 local OldAttackGetScore;
+local OriginalAttack = {};
 function Attack.init()
 	Ragnarok.addAction(Attack.revertFlanked,"repeating",true)
 	OldAttack.canExecuteWithTarget = Attack.canExecuteWithTarget
 	OldAttack.execute = Attack.execute
 	OldAttack.onPostUpdateUnit = Attack.onPostUpdateUnit
+	OriginalAttack.canExecuteAt = OldAttack.canExecuteAt
+	OldAttack.canExecuteAt = Attack.canExecuteAt
 	
+end
+
+
+function Attack:canExecuteAt(unit, endPos)
+    if Verb.inInBorderlands(endPos, unit.playerId) then
+        return false
+    end
+    local weapons = unit.unitClass.weapons
+
+    if #weapons == 1 and not weapons[1].canMoveAndAttack then
+        local moved = endPos.x ~= unit.startPos.x or endPos.y ~= unit.startPos.y
+        if moved then
+            return false
+        end
+    end
+
+    return true
 end
 
 local function getFacing(from, to)

@@ -4,16 +4,18 @@ unitClasses:
   - id: tavern
     name: structure_name_tavern
     aiPriority: 3.0
+    verbs:
+      - recruit
     cargoSpace: 1
     battleUnitCount: 1
     isStructure: true
     canReinforce: true
     canBeReinforced: false
-    damageMultiplier: 0.5
-    movement: indoor_building
+    damageMultiplier: 0
+    movement: land_building
     garrisonUnit: ""
+    recruitTags: [type.ground.light, knight, rifleman]
     cost: 500
-    isLineOfSightBlocker: false
     tags:
       - structure
     sightRange: 1

@@ -37,7 +37,7 @@ units:
     faction: cherrystone
     name: unit_name_thief_with_gold_cherrystone
     mapAnimation: units/thief/cherrystone/map_thief_gold_cherrystone
-    battleAnimation: units/thief/cherrystone/battle_thief_gold_cherrystone
+    battleAnimation: units/thief/cherrystone/battle_thief_gold_cherrystone2
     battleAnimationRiver: fx/river_overlay/battle_thief_river
     smallPortrait: units/thief/cherrystone/portrait_thief_cherrystone_small.png
     mediumPortrait: units/thief/cherrystone/portrait_thief_cherrystone_medium.png

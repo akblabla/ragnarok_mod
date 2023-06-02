@@ -30,6 +30,9 @@ local function getSurroundingPirates(unit, pos)
 end
 
 function pirate_claim:canExecuteAt(unit, endPos)
+    if not Verb:canExecuteAt(unit, endPos) then
+		return false
+	end
     local pirates = getSurroundingPirates(unit, endPos)
 	for i, pirate in pairs(pirates) do
 		return true
