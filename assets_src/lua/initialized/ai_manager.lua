@@ -32,16 +32,10 @@ end
 function AIManager.letNeutralUnitsMove()
    for i,unit in ipairs(Wargroove.getUnitsAtLocation(nil)) do
        if Pathfinding.withinBounds(unit.pos) and Wargroove.isNeutral(unit.playerId) then
-         print("letNeutralUnitsMove")
-         print(dump(AIManager.getOrder(unit.id),0))
          local nextTile, distMoved, dist = AIManager.getNextPosition(unit.id)
          if nextTile ~= nil then 
-            print("nextTile")
-            print(dump(nextTile,0))
             local path = Pathfinding.AStar(unit, nextTile)
             if (path~=nil) and (next(path)~=nil) then
-               print("path")
-               print(dump(path,0))
                Pathfinding.forceMoveAlongPath(unit.id, path)
             end
          end
@@ -86,7 +80,7 @@ function AIManager.getPath(unitId)
             return 4-Wargroove.getSkyDefenceAt(pos) + math.max(10-safetyMap[PosKey.generatePosKey(pos)],0)*2
          end
          return 4-Wargroove.getTerrainDefenceAt(pos) + math.max(10-safetyMap[PosKey.generatePosKey(pos)],0)*2
-      end})
+      end, posPenaltyId = "defense_and_safety"})
 	   return path
    end
    if order.type == "road_move" then
@@ -116,7 +110,7 @@ function AIManager.getPath(unitId)
            end
          end
          return 0
-      end})
+      end, pathPenaltyId = "roads"})
 	   return path
    end
    if order.type == "road_move_left" then
@@ -147,7 +141,7 @@ function AIManager.getPath(unitId)
            end
          end
          return positionalBonus
-      end})
+      end, pathPenaltyId = "roads_and_left"})
 	   return path
    end
    if order.type == "road_move_right" then
@@ -178,7 +172,7 @@ function AIManager.getPath(unitId)
            end
          end
          return positionalBonus
-      end})
+      end, pathPenaltyId = "roads_and_right"})
 	   return path
    end
    if order.type == "move" then
@@ -225,7 +219,7 @@ function AIManager.getPath(unitId)
                return 4-Wargroove.getSkyDefenceAt(pos)
             end
             return 4-Wargroove.getTerrainDefenceAt(pos)
-         end})
+         end, posPenaltyId = "defense"})
          return path
       end
    end
@@ -247,6 +241,7 @@ function AIManager.getNextPosition(unitId)
    if not Pathfinding.withinBounds(unit.pos) then
       return nil
    end
+
    local path = AIManager.getPath(unitId);
    local nextTile, distMoved, dist = AIManager.getNextPositionTowardsTarget(unit, path,order.maxSpeed)
    if order.type == "attack_move" then

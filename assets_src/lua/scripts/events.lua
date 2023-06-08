@@ -6,7 +6,6 @@ local Resumable = require("wargroove/resumable")
 local StealthManager = require("scripts/stealth_manager")
 
 local Events = {}
-local Original = {}
 
 
 local function dump(o,level)
@@ -24,7 +23,6 @@ local function dump(o,level)
  
 
 function Events.init()
-	Original.reportUnitDeath = OldEvents.reportUnitDeath
 	OldEvents.reportUnitDeath = Events.reportUnitDeath
 	OldEvents.startSession = Events.startSession
 	OldEvents.getMatchState = Events.getMatchState
@@ -211,36 +209,45 @@ function Events.checkEvents(state)
 end
 
 function Events.checkConditions(conditions)
-	local orMode = false;
-	local isTrue = false;
     for i, cond in ipairs(conditions) do
-		if cond.id == "or_group" then
-			orMode = true
-			isTrue = false
-		elseif cond.id == "end_group" then
-			orMode = false
-			if isTrue == false then
-				return false
-			end
-		else
-			if orMode then
-				if Events.isConditionTrue(cond) then
-					isTrue = true
-				end
-			else
-				if not Events.isConditionTrue(cond) then
-					return false
-				end
-			end
-		end
+        if not Events.isConditionTrue(cond) then
+            return false
+        end
     end
-	if orMode == true then
-		if isTrue == false then
-			return false
-		end
-	end
     return true
 end
+
+-- function Events.checkConditions(conditions)
+-- 	local orMode = false;
+-- 	local isTrue = false;
+--     for i, cond in ipairs(conditions) do
+-- 		if cond.id == "or_group" then
+-- 			orMode = true
+-- 			isTrue = false
+-- 		elseif cond.id == "end_group" then
+-- 			orMode = false
+-- 			if isTrue == false then
+-- 				return false
+-- 			end
+-- 		else
+-- 			if orMode then
+-- 				if Events.isConditionTrue(cond) then
+-- 					isTrue = true
+-- 				end
+-- 			else
+-- 				if not Events.isConditionTrue(cond) then
+-- 					return false
+-- 				end
+-- 			end
+-- 		end
+--     end
+-- 	if orMode == true then
+-- 		if isTrue == false then
+-- 			return false
+-- 		end
+-- 	end
+--     return true
+-- end
 
 function Events.groupActions(actions)
 	local groupedActions = {}
@@ -439,7 +446,11 @@ function Events.reportUnitDeath(id, attackerUnitId, attackerPlayerId, attackerUn
 	VisionTracker.removeUnitFromVisionMatrix(unit)
 	Wargroove.updateFogOfWar()
     StealthManager.reportDeadUnit(id)
-	Original.reportUnitDeath(id, attackerUnitId, attackerPlayerId, attackerUnitClass)
+    local unit = Wargroove.getUnitById(id)
+    unit.attackerId = attackerUnitId
+    unit.attackerPlayerId = attackerPlayerId
+    unit.attackerUnitClass = attackerUnitClass
+    table.insert(pendingDeadUnits, unit)
 end
 
 return Events

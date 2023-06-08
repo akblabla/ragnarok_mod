@@ -6,7 +6,7 @@ local Hire = Verb:new()
 
 local costMultiplier = 1
 
-local defaultUnits = {"soldier", "dog", "spearman", "mage", "archer", "knight",}
+local defaultUnits = {"soldier", "dog", "spearman", "mage", "archer", "knight","rifleman"}
 
 function Hire:recruitsContain(recruits, unit)
     for i, recruit in pairs(recruits) do
@@ -145,6 +145,9 @@ function Hire:execute(unit, targetPos, strParam, path)
 		u.unitClassId = strParam
 		u.playerId = unit.playerId
 		u.hadTurn = true
+        if (strParam=="rifleman") then
+            Wargroove.setUnitState("ammo",3)
+        end
 		Wargroove.updateUnit(u)
 	end
 

@@ -205,12 +205,9 @@ function StealthManager.update(context)
         if (active[unit.playerId]~=nil) then
             AIManager.roadMoveOrder(unit.id,unit.pos)
             if StealthManager.isUnitFleeing(unit) then
-                print("isFleeing")
                 if AIGoalPos[unit.id]~=nil then
-                    print("has a goal")
                     AIManager.safeMoveOrder(unit.id,AIGoalPos[unit.id])
                 else
-                    print("Does not have a goal find friend!")
                     local unawareAllyPos = {}
                     for i,ally in ipairs(units) do
                         if StealthManager.canBeAlerted(ally) and StealthManager.isUnitUnaware(ally) and (ally.playerId == unit.playerId) and (unit.id~=ally.id) and (Ragnarok.isCombatUnit(ally)) then
@@ -218,10 +215,8 @@ function StealthManager.update(context)
                         end
                     end
                     if next(unawareAllyPos) ~=nil then
-                        print("Friend!")
                         AIManager.moveOrder(unit.id,unawareAllyPos)
                     else
-                        print("No friends")
                         AIManager.retreatOrder(unit.id)
                     end
                 end
@@ -229,12 +224,9 @@ function StealthManager.update(context)
         end
         StealthManager.awarenessCheck(unit.id, {unit.pos})
     end
-    print("stealth goal list")
     for unitId,pos in pairs(AIGoalPos) do
         local unit = Wargroove.getUnitById(unitId)
         if (unit ~= nil) and not StealthManager.isUnitPermaAlerted(unit) then
-            print(unit.unitClassId)
-            print(dump(unit.pos,0))
             if AIOrder[unitId]==nil then
                 AIOrder[unitId] = "road_move"
             end
@@ -251,12 +243,16 @@ function StealthManager.update(context)
             end
         end
     end
-    if (context:checkState("endOfTurn")) and (active[Wargroove.getCurrentPlayerId()] ~= nil) then
+    if (context:checkState("endOfTurn")) then
         StealthManager.endOfTurnCleanUp(Wargroove.getCurrentPlayerId())
     end
 end
 
 function StealthManager.endOfTurnCleanUp(playerId)
+    Pathfinding.printIterations()
+    if (active[Wargroove.getCurrentPlayerId()] == nil) then
+        return
+    end
     local units = {}
     for i,unit in ipairs(Wargroove.getUnitsAtLocation(nil)) do
         if Pathfinding.withinBounds(unit.pos) then

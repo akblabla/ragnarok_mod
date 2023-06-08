@@ -231,12 +231,13 @@ function Buffs.thief_with_gold(Wargroove, unit)
 end
 function Buffs.stealth_rules(Wargroove, unit)
     if (not Wargroove.isSimulating()) then
-        local corners = Corners.getVisionCorner(unit.playerId, {x=200+unit.pos.x,y=200+unit.pos.y})
+        local playerId = tonumber(Wargroove.getUnitState(unit, "playerId"))
+        local corners = Corners.getVisionCorner(playerId, {x=200+unit.pos.x,y=200+unit.pos.y})
         local cornerName = Corners.getCornerName(corners)
         if Corners.cornerList[unit.id] ~= cornerName then
             Wargroove.clearBuffVisualEffect(unit.id)
             if (cornerName~=nil) and (cornerName ~= "") and (cornerName ~= "NE_NW_SE_SW") then
-                Wargroove.displayBuffVisualEffectAtPosition(unit.id, {x=unit.pos.x+200-1,y=unit.pos.y+300-1}, unit.playerId, "units/LoSBorder/"..Corners.getCornerName(corners), "", 0.5, nil, nil, {x = 0, y = 0},true)
+                Wargroove.displayBuffVisualEffectAtPosition(unit.id, {x=unit.pos.x+200-1,y=unit.pos.y+300-1}, playerId, "units/LoSBorder/"..Corners.getCornerName(corners), "", 0.5, nil, nil, {x = 0, y = 0},true)
             end
             Corners.cornerList[unit.id] = cornerName
         end
@@ -248,8 +249,9 @@ function Buffs.fog(Wargroove, unit)
     end
 end
 
---function ClearBuffs.stealth_rules(Wargroove, unit)
---end
+function ClearBuffs.stealth_rules(Wargroove, unit)
+    Wargroove.clearBuffVisualEffect(unit.id)
+end
 
 function UnitBuffs:getBuffs()
     return Buffs

@@ -699,6 +699,41 @@ codex:
     title: ui_codex_damage_matrix
     unitClass: thief
     
+- id: unit_thief_cherrystone
+  category: units
+  faction: cherrystone
+  name: unit_name_thief_cherrystone
+  icon:
+    spritesheet: units/portraits_RagnarokMod
+    image: units/thief/cherrystone/portrait_thief_cherrystone_small2.png
+    paletteSwap: true
+    colour: red
+    skinColour: typeIII
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: thief
+    faction: cherrystone
+    title: unit_name_thief_cherrystone
+    text: codex_unit_thief_cherrystone_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: thief
+    faction: cherrystone
+    title: unit_name_thief_cherrystone
+    text: codex_unit_thief_critical_text
+  - pageType: stats
+    layoutType: unit_sprite
+    unitClass: thief
+    faction: cherrystone
+    title: unit_name_thief_cherrystone
+    text: unit_description_thief
+    unitClass: thief
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: thief
+
 - id: unit_rifleman_outlaw
   category: units
   faction: outlaw
@@ -738,6 +773,7 @@ codex:
   faction: cherrystone
   name: unit_name_pirate_ship_outlaws
   icon:
+    spritesheet: units/portraits_RagnarokMod
     image: units/raider/cherrystone/portrait_raider_cherrystone_small.png
     paletteSwap: true
     colour: red
@@ -771,6 +807,7 @@ codex:
   faction: felheim
   name: unit_name_pirate_ship_outlaws
   icon:
+    spritesheet: units/portraits_RagnarokMod
     image: units/raider/cherrystone/portrait_raider_cherrystone_small.png
     paletteSwap: true
     colour: blue
@@ -804,6 +841,7 @@ codex:
   faction: floran
   name: unit_name_pirate_ship_outlaws
   icon:
+    spritesheet: units/portraits_RagnarokMod
     image: units/raider/cherrystone/portrait_raider_cherrystone_small.png
     paletteSwap: true
     colour: green
@@ -837,6 +875,7 @@ codex:
   faction: heavensong
   name: unit_name_pirate_ship_outlaws
   icon:
+    spritesheet: units/portraits_RagnarokMod
     image: units/raider/cherrystone/portrait_raider_cherrystone_small.png
     paletteSwap: true
     colour: yellow
@@ -870,6 +909,7 @@ codex:
   faction: outlaw
   name: unit_name_pirate_ship_outlaws
   icon:
+    spritesheet: units/portraits_RagnarokMod
     image: units/raider/cherrystone/portrait_raider_cherrystone_small.png
     paletteSwap: true
     colour: black

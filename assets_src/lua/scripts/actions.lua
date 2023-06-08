@@ -66,6 +66,7 @@ function Actions.populate(dst)
     dst["ai_set_restriction"] = Actions.aiSetRestriction
 	dst["set_location_to_vision"] = Actions.setLocationToVision
 	dst["set_location_to_spawned"] = Actions.setLocationToSpawned
+	dst["set_location_to_group"] = Actions.setLocationToGroup
 	dst["dialogue_box_unit"] = Actions.dialogueBoxUnit
 	dst["set_match_seed"] = Actions.setMatchSeed
 	dst["set_priority_target"] = Actions.setPriorityTarget
@@ -345,6 +346,20 @@ function Actions.setLocationToSpawned(context)
 	location:setArea(context.spawnedUnits)
 end
 
+function Actions.setLocationToGroup(context)
+    -- "Set location {0} to the spawned units this update."
+    local location = context:getLocation(0)
+    print("Actions.setLocationToSpawned(context)")
+    print(dump(context.spawnedUnits,0))
+	location:setArea(context.spawnedUnits)
+end
+
+function Actions.setGroup(context)
+    -- "Set group {0} to for unit type(s) {1} at location {2} owned by player {3}."
+    local units = context:gatherUnits(3, 1, 2)  -- A useful function for gathering units of type, location, and player
+    local groupIndex = context:getInteger(0) 
+end
+
 function Actions.setState(context)
     -- "Add set state {3} to {4} for unit type(s) {0} at location {1} owned by player {2}."
 
@@ -445,7 +460,7 @@ function Actions.displayPath(context)
                 end
                 lastTile = tile
             end
-            Wargroove.waitTime(0.5)
+            Wargroove.waitTime(1)
             Wargroove.clearBuffVisualEffect(unit.id)
             break
         end
@@ -469,10 +484,10 @@ local bountyMap = {
     harpoonship = 150,
     harpy = 150,
     merman = 100,
-    thief = 150,
-    travelboat = 400,
+    thief = 100,
+    travelboat = 300,
     trebuchet = 200,
-    wagon = 400,
+    wagon = 300,
     warship = 200,
     witch = 150,
     villager = 100
@@ -657,7 +672,10 @@ function Actions.setHideAndSeek(context)
     StealthManager.setActive(player,active)
     for x = 0,Wargroove.getMapSize().x do
         for y = 0,Wargroove.getMapSize().y do
-            local unitId = Wargroove.spawnUnit(player,{x=-200+x,y=-200+y},"stealth_rules",false)
+            local startingState = {}
+            local playerState = {key = "playerId", value = player}
+            table.insert(startingState, playerState)
+            local unitId = Wargroove.spawnUnit(-1,{x=-200+x,y=-200+y},"stealth_rules",false,"",startingState)
             
             local corners = Corners.getVisionCorner(player, {x=x,y=y})
             local cornerName = Corners.getCornerName(corners)

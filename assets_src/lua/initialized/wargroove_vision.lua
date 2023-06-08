@@ -48,9 +48,6 @@ function WargrooveVision.init()
 	Original.canPlayerSeeTile = OldWargroove.canPlayerSeeTile
 	OldWargroove.canPlayerSeeTile = WargrooveVision.canPlayerSeeTile
 	
-	Original.canCurrentlySeeTile = OldWargroove.canCurrentlySeeTile
-	OldWargroove.canCurrentlySeeTile = WargrooveVision.canCurrentlySeeTile
-	
 	Original.setWeather = OldWargroove.setWeather
 	OldWargroove.setWeather = WargrooveVision.setWeather
 	
@@ -119,16 +116,6 @@ function WargrooveVision.canPlayerSeeTile(player, tile)
 		return VisionTracker.canSeeTile(player,tile)
 	end
     return Original.canPlayerSeeTile(player, tile)
-end
-
-function WargrooveVision.canCurrentlySeeTile(tile)
-	if Ragnarok.usingFogOfWarRules() then
-		local player = OldWargroove.getCurrentPlayerId()
-		if not OldWargroove.isHuman(player) then
-			return VisionTracker.canSeeTile(player,tile)
-		end
-	end
-    return Original.canCurrentlySeeTile(tile)
 end
 
 function WargrooveVision.setWeather(weatherFrequency, daysAhead)

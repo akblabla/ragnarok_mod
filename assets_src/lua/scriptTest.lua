@@ -3,15 +3,6 @@ local VectorMath = require "util/vectorMath"
 
 local t = Tree:new()
 
-print(math.atan2(0,1))
-print(math.atan2(1,1))
-print(math.atan2(1,0))
-print(math.atan2(1,-1))
-print(math.atan2(0,-1))
-print(math.atan2(-1,-1))
-print(math.atan2(-1,0))
-print(math.atan2(-1,1))
-print(" ")
 
 t:insert(2, "bob")
 t:insert(5, "fisk")
