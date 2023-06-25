@@ -11,6 +11,7 @@ local VisionTracker = require "initialized/vision_tracker"
 local Pathfinding = require "util/pathfinding"
 local Corners = require "scripts/corners"
 local Stats = require "util/stats"
+local PosKey = require "util/posKey"
 
 local Actions = {}
 
@@ -341,17 +342,21 @@ end
 function Actions.setLocationToSpawned(context)
     -- "Set location {0} to the spawned units this update."
     local location = context:getLocation(0)
-    print("Actions.setLocationToSpawned(context)")
-    print(dump(context.spawnedUnits,0))
-	location:setArea(context.spawnedUnits)
+    local newLocation = {}
+    for posKey,value in pairs(context.spawnedUnits) do
+        table.insert(newLocation,PosKey.revertPosKey(posKey))
+    end
+	location:setArea(newLocation)
 end
 
 function Actions.setLocationToGroup(context)
     -- "Set location {0} to the spawned units this update."
     local location = context:getLocation(0)
-    print("Actions.setLocationToSpawned(context)")
-    print(dump(context.spawnedUnits,0))
-	location:setArea(context.spawnedUnits)
+    local newLocation = {}
+    for posKey,value in pairs(context.spawnedUnits) do
+        table.insert(newLocation,PosKey.revertPosKey(posKey))
+    end
+	location:setArea(newLocation)
 end
 
 function Actions.setGroup(context)
@@ -428,7 +433,6 @@ function Actions.setPriorityTarget(context)
         if order == "clear" then
             AIManager.clearOrder(unit.id)
         end
-        print(dump(AIManager.getOrder(unit.id),0)) 
     end
 end
 
@@ -542,6 +546,15 @@ function Actions.forceAttack(context)
         return
     end
     --- Telegraph
+    if unit.pos.x>target.pos.x then
+        -- spawnedUnit.startPos.facing = 1
+        -- spawnedUnit.pos.facing = 1
+        Wargroove.setFacingOverride(unit.id, "left")
+    elseif unit.pos.x<target.pos.x then
+        -- spawnedUnit.startPos.facing = 0
+        -- spawnedUnit.pos.facing = 0
+        Wargroove.setFacingOverride(unit.id, "right")
+    end
     if (not Wargroove.isLocalPlayer(unit.playerId)) and Wargroove.canCurrentlySeeTile(target.pos) then
         Wargroove.spawnMapAnimation(target.pos, 0, "ui/grid/selection_cursor", "target", "over_units", {x = -4, y = -4})
         Wargroove.waitTime(0.5)
@@ -584,7 +597,7 @@ function Actions.forceAttack(context)
     if results.defenderHealth<= 0 then
         Wargroove.removeUnit(target.id)
     end
-
+    Wargroove.unsetFacingOverride(unit.id)
     Wargroove.setMetaLocationArea("last_move_path", {unit.pos})
     Wargroove.setMetaLocation("last_unit", unit.pos)
 end
@@ -629,36 +642,38 @@ function Actions.setAwareness(context)
     for i, unit in ipairs(units) do
         StealthManager.setLastKnownLocation(unit.id, center)
         if string == "fleeing" then
-            StealthManager.makeFleeing(unit.id)
+            StealthManager.makeFleeing(unit)
         elseif string == "alerted" then
-            StealthManager.makeAlerted(unit.id,force)
+            StealthManager.makeAlerted(unit,force)
         elseif string == "searching" then
-            StealthManager.makeSearching(unit.id,force)
+            StealthManager.makeSearching(unit,force)
         elseif string == "unaware" then
-            StealthManager.makeUnaware(unit.id)
+            StealthManager.makeUnaware(unit)
+        elseif string == "perma alerted" then
+            StealthManager.makePermaAlerted(unit)
         end
     end
-    local function comp(a, b)
-        local sqrDistA = (a.pos.x-center.x)^2+(a.pos.y-center.y)^2
-        local sqrDistB = (b.pos.x-center.x)^2+(b.pos.y-center.y)^2
-        return sqrDistA<sqrDistB
-    end
-    table.sort(units, comp)
-    local lastDist = nil
-    for i, unit in ipairs(units) do
-        local dist = math.sqrt((unit.pos.x-center.x)^2+(unit.pos.y-center.y)^2)
-        if lastDist~= nil then
-           Wargroove.waitTime((dist-lastDist)/20) 
-        end
-        StealthManager.updateAwareness(unit.id)
-        lastDist = dist
-    end
+    StealthManager.updateAwarenessAll()
+    -- local function comp(a, b)
+    --     local sqrDistA = (a.pos.x-center.x)^2+(a.pos.y-center.y)^2
+    --     local sqrDistB = (b.pos.x-center.x)^2+(b.pos.y-center.y)^2
+    --     return sqrDistA<sqrDistB
+    -- end
+    -- table.sort(units, comp)
+    -- local lastDist = nil
+    -- for i, unit in ipairs(units) do
+    --     local dist = math.sqrt((unit.pos.x-center.x)^2+(unit.pos.y-center.y)^2)
+    --     if lastDist~= nil then
+    --        Wargroove.waitTime((dist-lastDist)/20) 
+    --     end
+    --     StealthManager.updateAwareness(unit.id)
+    --     lastDist = dist
+    -- end
 end
 
 function Actions.updateAwareness(context)
-    -- "Update awareness"
-    local units = Wargroove.getUnitsAtLocation();
-    for i, unit in ipairs(units) do
+    -- "Update awareness of units of type {0} at location {1} owned by player {2}"
+    for i, unit in ipairs(Wargroove.getUnitsAtLocation()) do
         if unit.playerId == 0 then
             StealthManager.awarenessCheck(unit.id,{unit.pos})
         end
@@ -890,9 +905,6 @@ function Actions.spawnUnitInsideTransport(context)
     local hp = context:getInteger(5)
 
     for i, transport in pairs(units) do
-        print("transport")
-        print(dump(transport,0))
-        print("Spawning in")
         local pos = {x=-10,y=-10}
         while Wargroove.getUnitAt(pos)~= nil do
             pos.x = pos.x+1
@@ -908,10 +920,6 @@ function Actions.spawnUnitInsideTransport(context)
         Wargroove.updateUnit(transport)
         unit.pos = { x = -100, y = -100 }
         Wargroove.updateUnit(unit)
-        print("transport Post Update")
-        print(dump(transport,0))
-        print("unit Post Update")
-        print(dump(unit,0))
     end
 end
 
@@ -965,9 +973,7 @@ function Actions.spawnUnit(context)
             Wargroove.trackCameraTo(pos)
         end
         local unitId = Wargroove.spawnUnit(playerId, pos, unitClassId, false)
-        table.insert(context.spawnedUnits,pos)
-        print("spawned unit")
-        print(dump(context.spawnedUnits,0))
+        context.spawnedUnits[PosKey.generatePosKey(pos)] = true
 		local spawnedUnit = Wargroove.getUnitById(unitId);
 		local mapSize = Wargroove.getMapSize()
 		if pos.x>(mapSize.x/2) then
@@ -1029,6 +1035,8 @@ end
 function Actions.spawnUnitClose(context)
     -- "Spawn {0} at {1} as close as possible for {2} (silent = {3})"
     local unitClassId = context:getUnitClass(0)
+    print("Actions.spawnUnitClose(context)")
+    print(unitClassId)
     local location = context:getLocation(1)
     local playerId = context:getPlayerId(2)
     local silent = context:getBoolean(3)
@@ -1076,16 +1084,11 @@ function Actions.spawnUnitClose(context)
             Wargroove.trackCameraTo(pos)
         end
         local unitId = Wargroove.spawnUnit(playerId, pos, unitClassId, false)
-        table.insert(context.spawnedUnits,pos)
-		local spawnedUnit = Wargroove.getUnitById(unitId);
+        context.spawnedUnits[PosKey.generatePosKey(pos)] = true
 		local mapSize = Wargroove.getMapSize()
 		if pos.x>(mapSize.x/2) then
-			-- spawnedUnit.startPos.facing = 1
-			-- spawnedUnit.pos.facing = 1
 			Wargroove.setFacingOverride(unitId, "left")
 		else
-			-- spawnedUnit.startPos.facing = 0
-			-- spawnedUnit.pos.facing = 0
 			Wargroove.setFacingOverride(unitId, "right")
 		end
 		--Wargroove.updateUnit(spawnedUnit)
@@ -1114,7 +1117,7 @@ function Actions.spawnUnitClose(context)
                 pos.facing = 0
             end
             local unitId = Wargroove.spawnUnit(playerId, pos, unitClassId, false)
-            table.insert(context.spawnedUnits,pos)
+            context.spawnedUnits[PosKey.generatePosKey(pos)] = true
             local mapSize = Wargroove.getMapSize()
             if pos.x>(mapSize.x/2) then
                 -- spawnedUnit.startPos.facing = 1

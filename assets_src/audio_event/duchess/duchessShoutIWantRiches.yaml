@@ -1,0 +1,7 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/vesper/vesperIWantRiches.ogg ]
+    pitch: 0.9
+    group: voice
+...

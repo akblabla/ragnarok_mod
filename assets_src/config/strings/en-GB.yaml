@@ -102,8 +102,8 @@ en-GB:
   character_flagship_rival_name: "Rival"
   character_flagship_rival_title: "Captain Rival  "
   
-  character_duke_name: "Sir lancelot"
-  character_duke_title: "Duke"
+  character_duke_name: "The Duchess"
+  character_duke_title: "The Duchess of Dorne"
 
   groove_name_alert_area: "Martial Law"
   groove_description_alert_area: "Permanently alerts allies in a radius of 2."
@@ -169,6 +169,8 @@ en-GB:
   unit_name_rival_outlaws: Poacher 
 
   structure_name_tavern: "Tavern"
+  unit_description_tavern: "Neutral building where anyone can reinforce and retrain their units."  
+
 
   # UNIT DESCRIPTIONS
   unit_description_soldier: "[MELEE] Basic infantry, useful for capturing structures. Critical hit when adjacent to its commander."

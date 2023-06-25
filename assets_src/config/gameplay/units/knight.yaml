@@ -24,7 +24,7 @@ weapons:
       giant: 0.25
       commander: 0.25
       rifleman: 1.0
-      thief: 0.9
+      thief: 1.0
 
       warship: 0.2
       harpoonship: 0.3

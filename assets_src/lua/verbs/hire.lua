@@ -146,7 +146,7 @@ function Hire:execute(unit, targetPos, strParam, path)
 		u.playerId = unit.playerId
 		u.hadTurn = true
         if (strParam=="rifleman") then
-            Wargroove.setUnitState("ammo",3)
+            Wargroove.setUnitState(u, "ammo",3)
         end
 		Wargroove.updateUnit(u)
 	end

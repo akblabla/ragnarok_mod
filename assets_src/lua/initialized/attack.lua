@@ -8,14 +8,11 @@ local Verb = require "initialized/a_new_verb"
 
 
 local Attack = {}
-local OldAttackGetScore;
-local OriginalAttack = {};
 function Attack.init()
 	Ragnarok.addAction(Attack.revertFlanked,"repeating",true)
 	OldAttack.canExecuteWithTarget = Attack.canExecuteWithTarget
 	OldAttack.execute = Attack.execute
 	OldAttack.onPostUpdateUnit = Attack.onPostUpdateUnit
-	OriginalAttack.canExecuteAt = OldAttack.canExecuteAt
 	OldAttack.canExecuteAt = Attack.canExecuteAt
 	
 end
@@ -34,7 +31,7 @@ function Attack:canExecuteAt(unit, endPos)
         end
     end
 
-    return true
+    return not Wargroove.isAnybodyElseAt(unit, endPos)
 end
 
 local function getFacing(from, to)
@@ -108,45 +105,8 @@ function dump(o,level)
    end
 end
 
-local function bruteForceCheckIfVisibleInStealthyTile(playerId, targetPos)
-	if Wargroove.canPlayerSeeTile(playerId, targetPos) == false then
-		return false
-	end
-	local terrainName = Wargroove.getTerrainNameAt(targetPos)
-	if terrainName and (terrainName == "forest" or terrainName == "reef" or terrainName == "forest_alt" or terrainName == "cave_reef" or terrainName == "mangrove") then
-		local maxDist = 6
-		for yOffset = -maxDist, maxDist do
-			for xOffset = -maxDist, maxDist do
-				local x = targetPos.x + xOffset
-				local y = targetPos.y + yOffset
-				local spotterUnit = Wargroove.getUnitAtXY(x, y)
-				local dist = math.abs(xOffset) + math.abs(yOffset)
-				if spotterUnit then
-					if Wargroove.areAllies(playerId, spotterUnit.playerId) then
-						if dist <= 6 and (spotterUnit.unitClassId == "dog" or Wargroove.getTerrainNameAt(spotterUnit.pos) == "mountain") then
-							return true
-						end
-						if dist <= 5 and (spotterUnit.unitClassId == "flare") then
-							return true
-						end
-						if dist <= 4 and (spotterUnit.unitClassId == "dog" or spotterUnit.unitClassId == "turtle") then
-							return true
-						end
-						if dist <= 1 then
-							return true
-						end
-					end
-				end
-			end
-		end
-		return false
-	else
-		return true
-	end
-end
-
 function Attack:canExecuteWithTarget(unit, endPos, targetPos, strParam)
-    if not self:canSeeTarget(targetPos) then
+    if not Wargroove.canPlayerSeeTile(unit.playerId, targetPos) then
         return false
     end
 

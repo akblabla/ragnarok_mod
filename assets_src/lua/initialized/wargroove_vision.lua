@@ -51,10 +51,8 @@ function WargrooveVision.init()
 	Original.setWeather = OldWargroove.setWeather
 	OldWargroove.setWeather = WargrooveVision.setWeather
 	
-	Original.setUnitState = OldWargroove.setUnitState
 	OldWargroove.setUnitStateObject = WargrooveVision.setUnitStateObject
 	
-	Original.getUnitState = OldWargroove.getUnitState
 	OldWargroove.getUnitStateObject = WargrooveVision.getUnitStateObject
 end
 
@@ -71,16 +69,21 @@ function WargrooveVision.startCapture(attacker, defender, attackerPos)
 end
 
 function WargrooveVision.spawnUnit(playerId, pos, unitType, turnSpent, startAnimation, startingState, factionOverride)  
+	print("WargrooveVision.spawnUnit(p")
 	local unitId = Original.spawnUnit(playerId, pos, unitType, turnSpent, startAnimation, startingState, factionOverride)  
+	print("1")
 	if Pathfinding.withinBounds(pos) then
-		OldWargroove.waitFrame()
-		OldWargroove.waitFrame()
-		local unit = OldWargroove.getUnitById(unitId)
+		print("2")
+		print("3")
+		local unit = {id = unitId,pos = pos, playerId=playerId, unitClassId = unitType, unitClass = OldWargroove.getUnitClass(unitType)}
+		print("4")
 		VisionTracker.addUnitToVisionMatrix(unit)
+		print("5")
 		--VisionTracker.getPrevPosList()[unitId] = pos
-		StealthManager.removeUnit(unit)
-		Original.updateUnit(unit)
+		-- StealthManager.removeUnit(unit)
+		-- Original.updateUnit(unit)
 	end
+	print("6")
     return unitId
 end
 
@@ -105,6 +108,7 @@ function WargrooveVision.removeUnit(unitId)
 	local unit = OldWargroove.getUnitById(unitId)
 	--local oldUnit = {playerId = unit.playerId, unitClassId = unit.unitClassId, pos = VisionTracker.getPrevPosList()[unitId], unitClass = unit.unitClass}
 	VisionTracker.removeUnitFromVisionMatrix(unit)
+	StealthManager.removeUnit(unit)
 	Original.removeUnit(unitId)
 end
 
@@ -202,21 +206,6 @@ function WargrooveVision.getUnitStateObject(unit, key)
 	else
 		return nil
 	end
-	-- if cache[unit.id]~=nil then
-	-- 	if cache[unit.id][key]~=nil then
-	-- 		return cache[unit.id][key]
-	-- 	end
-	-- else
-	-- 	cache[unit] = {}
-	-- end
-	-- -- print("WargrooveVision.getUnitState(unit, key)")
-	-- table.sort(unit.state, function(a,b) return a.key<b.key end)
-	-- -- print(dump(unit.state,0))
-	-- local value = deepGetUnitState(unit, key, unit.state)
-	-- -- print("value table")
-	-- -- print(dump(value,0))
-	-- cache[unit][key] = value
-    -- return value
 end
 
 return WargrooveVision

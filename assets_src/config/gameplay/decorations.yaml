@@ -257,6 +257,17 @@ decorations:
     snapToGrid: true
     animation:
       undefined: decoration/ground/tileCover
+  - id: fountain
+    layer: ground
+    snapToGrid: true
+    animation:
+      undefined: decoration/ground/fountain
+  - id: fountain_deco
+    layer: units
+    snapToGrid: true
+    snapOffset: [12, 12]
+    animation:
+      undefined: decoration/unit/fountainDeco
       
   - id: NWCaveCorner
     layer: ground
@@ -319,6 +330,26 @@ decorations:
     layer: units
     animation:
       undefined: decoration/unit/marketStand05
+  - id: cherrystone_market_stand01
+    layer: units
+    animation:
+      undefined: decoration/unit/cherrystoneMarketStand01
+  - id: cherrystone_market_stand02
+    layer: units
+    animation:
+      undefined: decoration/unit/cherrystoneMarketStand02
+  - id: cherrystone_market_stand03
+    layer: units
+    animation:
+      undefined: decoration/unit/cherrystoneMarketStand03
+  - id: cherrystone_market_stand04
+    layer: units
+    animation:
+      undefined: decoration/unit/cherrystoneMarketStand04
+  - id: cherrystone_market_stand05
+    layer: units
+    animation:
+      undefined: decoration/unit/cherrystoneMarketStand05
   - id: anvil
     layer: units
     animation:

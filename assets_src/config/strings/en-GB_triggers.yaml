@@ -158,7 +158,7 @@ en-GB:
 
   trigger_action_name_update_awareness: "Stealth: Update Awareness"
   trigger_action_description_update_awareness: "Update awareness."
-  trigger_action_readable_update_awareness: "Update awareness with center at {0}."
+  trigger_action_readable_update_awareness: "Update awareness of units of type {0} at location {1} owned by player {2}"
 
   trigger_action_name_spawn_unit_in_transport: "Unit: Spawn Inside Transport"
   trigger_action_description_spawn_unit_in_transport: "Spawn Inside Transport."

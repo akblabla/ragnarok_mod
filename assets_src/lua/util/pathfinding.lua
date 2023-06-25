@@ -150,17 +150,30 @@ function Pathfinding.isBetter(gScore, tentative_gScore)
 end
 
 local unitIdCache = -1
+local pathCache = {}
 local cameFromCache = {}
 local gScoreCache = {}
 local penaltyFunctionCache = {}
 local edgeCache = {}
 
+function Pathfinding.reportDeadUnit(unitId)
+  local unit = Wargroove.getUnitById(unitId)
+  for i,other in pairs(Wargroove.getUnitsAtLocation()) do
+    local dist = Pathfinding.newYorkDistance(unit.pos,other.pos)
+    if dist<=unit.unitClass.moveRange then
+      Pathfinding.clearCache(other.id)
+    end
+  end
+end
+
 function Pathfinding.clearCache(unitId)
   print("Pathfinding.clearCache("..tostring(unitId)..")")
-  cameFromCache[unitId] = {}
-  gScoreCache[unitId] = {}
-  penaltyFunctionCache[unitId] = {}
-  edgeCache[unitId] = nil
+  pathCache = {}
+  pathCache[unitId] = nil
+  cameFromCache = {}
+  gScoreCache = {}
+  penaltyFunctionCache = {}
+  edgeCache = nil
 end
 function Pathfinding.clearCaches()
   print("Pathfinding.clearCaches()")
@@ -168,7 +181,7 @@ function Pathfinding.clearCaches()
   cameFromCache = {}
   gScoreCache = {}
   penaltyFunctionCache = {}
-  edgeCache = {}
+  edgeCache = nil
 end
 
 
@@ -199,30 +212,26 @@ function Pathfinding.AStar(unit, destList, penaltyFunctions)
   if cameFromCache == nil then
     cameFromCache = {}
   end
-  if cameFromCache[unit.id] == nil then
-    cameFromCache[unit.id] = {}
-  end
   if gScoreCache == nil then
     gScoreCache = {}
   end
-  if gScoreCache[unit.id] == nil then
-    gScoreCache[unit.id] = {}
+  if penaltyFunctionCache == nil then
+    penaltyFunctionCache = {}
   end
-  if penaltyFunctionCache[unit.id] == nil then
-    penaltyFunctionCache[unit.id] = {}
-  end
-  if penaltyFunctions.pathPenaltyId ~= penaltyFunctionCache[unit.id].pathPenaltyId then
+  if penaltyFunctions.pathPenaltyId ~= penaltyFunctionCache.pathPenaltyId then
     Pathfinding.clearCache(unit.id)
-  elseif penaltyFunctions.posPenaltyId ~= penaltyFunctionCache[unit.id].posPenaltyId then
+  elseif penaltyFunctions.posPenaltyId ~= penaltyFunctionCache.posPenaltyId then
     Pathfinding.clearCache(unit.id)
   end
-  penaltyFunctionCache[unit.id].pathPenaltyId = penaltyFunctions.pathPenaltyId
-  penaltyFunctionCache[unit.id].posPenaltyId = penaltyFunctions.posPenaltyId
+  if pathCache[unit.id]~=nil then
+    return pathCache[unit.id]
+  end
+  penaltyFunctionCache.pathPenaltyId = penaltyFunctions.pathPenaltyId
+  penaltyFunctionCache.posPenaltyId = penaltyFunctions.posPenaltyId
 
   local bestPos = {dist = 100000,pos = nil}
   
-  print("fScore so far")
-  for key,gscore in pairs(gScoreCache[unit.id]) do
+  for key,gscore in pairs(gScoreCache) do
     local pos = PosKey.revertPosKey(key)
     local dist = Pathfinding.guessList(pos, destList)
     if dist < bestPos.dist then
@@ -232,17 +241,13 @@ function Pathfinding.AStar(unit, destList, penaltyFunctions)
   local startKey = PosKey.generatePosKey(unit.pos)
   if edgeCache == nil then
     edgeCache = {}
+    edgeCache[startKey] = true
   end
-  if edgeCache[unit.id] == nil then
-    edgeCache[unit.id] = {}
-    edgeCache[unit.id][startKey] = true
-  end
-  gScoreCache[unit.id][startKey] = {dist = 0,nWait = 0, bonus = 0}
+  gScoreCache[startKey] = {dist = 0,nWait = 0, bonus = 0}
   local openSet = BinaryHeap()
-  print(dump(edgeCache[unit.id],0))
-  for key,value in pairs(edgeCache[unit.id]) do
+  for key,value in pairs(edgeCache) do
     local pos = PosKey.revertPosKey(key)
-    openSet:insert(Pathfinding.guessList(pos, destList)+gScoreCache[unit.id][startKey].dist+gScoreCache[unit.id][startKey].bonus,startKey)
+    openSet:insert(Pathfinding.guessList(pos, destList)+gScoreCache[startKey].dist+gScoreCache[startKey].bonus,startKey)
   end
   local plzStop = 0
   while (openSet:empty() == false) do
@@ -252,8 +257,8 @@ function Pathfinding.AStar(unit, destList, penaltyFunctions)
     local currentPos = PosKey.revertPosKey(currentPosKey)
     for i,dest in ipairs(destList) do
       if (currentPos.x == dest.x) and (currentPos.y == dest.y) then
-        local path = Pathfinding.reconstructPath(cameFromCache[unit.id], currentPos)
-        print(dump(path,0))
+        local path = Pathfinding.reconstructPath(cameFromCache, currentPos)
+        pathCache[unit.id] = path
         return path
       end
     end
@@ -262,15 +267,15 @@ function Pathfinding.AStar(unit, destList, penaltyFunctions)
       if Pathfinding.withinBounds(newPos) then
         local newPosKey = PosKey.generatePosKey(newPos)
         local ignoreUnits = true
-        if gScoreCache[unit.id][currentPosKey].dist <= unitClass.moveRange then
+        if gScoreCache[currentPosKey].dist <= unitClass.moveRange then
           ignoreUnits = false
         end
-        local turnMovePoints = unitClass.moveRange-(gScoreCache[unit.id][currentPosKey].dist%unitClass.moveRange)
+        local turnMovePoints = unitClass.moveRange-(gScoreCache[currentPosKey].dist%unitClass.moveRange)
         local tileCost = Pathfinding.tileCost(unit.unitClassId,newPos,unit.playerId,ignoreUnits)
         local moveCost = tileCost
         local canStand = Pathfinding.canStop(unit.unitClassId,newPos,unit.playerId, ignoreUnits)
         if canStand then
-          turnMovePoints = turnMovePoints-gScoreCache[unit.id][currentPosKey].nWait
+          turnMovePoints = turnMovePoints-gScoreCache[currentPosKey].nWait
         end
         if tileCost>turnMovePoints then --unit have to wait til next turn :(
           moveCost = tileCost+(unitClass.moveRange-turnMovePoints)
@@ -278,17 +283,17 @@ function Pathfinding.AStar(unit, destList, penaltyFunctions)
         if tileCost>unitClass.moveRange then --unit can never cross this :(
           moveCost = 100
         end
-        if gScoreCache[unit.id][newPosKey] == nil then
-          gScoreCache[unit.id][newPosKey] = {dist = 100000,nWait = 100000, bonus = 100000}
+        if gScoreCache[newPosKey] == nil then
+          gScoreCache[newPosKey] = {dist = 100000,nWait = 100000, bonus = 100000}
         end
         local tentative_gScore = {}
-        tentative_gScore.dist = gScoreCache[unit.id][currentPosKey].dist+moveCost
-        tentative_gScore.bonus = gScoreCache[unit.id][currentPosKey].bonus
-        tentative_gScore.nWait = gScoreCache[unit.id][currentPosKey].nWait
+        tentative_gScore.dist = gScoreCache[currentPosKey].dist+moveCost
+        tentative_gScore.bonus = gScoreCache[currentPosKey].bonus
+        tentative_gScore.nWait = gScoreCache[currentPosKey].nWait
         if canStand then
           tentative_gScore.nWait = 0
         else
-          tentative_gScore.nWait = gScoreCache[unit.id][currentPosKey].nWait+moveCost
+          tentative_gScore.nWait = gScoreCache[currentPosKey].nWait+moveCost
         end
         if (tentative_gScore.dist%unitClass.moveRange) == 0 then
           if penaltyFunctions["posPenalty"]~=nil then
@@ -298,26 +303,26 @@ function Pathfinding.AStar(unit, destList, penaltyFunctions)
         if penaltyFunctions["pathPenalty"]~=nil then
           tentative_gScore.bonus = tentative_gScore.bonus+penaltyFunctions["pathPenalty"](unit,newPos)
         end
-        if Pathfinding.isBetter(gScoreCache[unit.id][newPosKey], tentative_gScore) then
-          gScoreCache[unit.id][newPosKey].dist = tentative_gScore.dist
-          gScoreCache[unit.id][newPosKey].bonus = tentative_gScore.bonus
-          gScoreCache[unit.id][newPosKey].nWait = tentative_gScore.nWait
+        if Pathfinding.isBetter(gScoreCache[newPosKey], tentative_gScore) then
+          gScoreCache[newPosKey].dist = tentative_gScore.dist
+          gScoreCache[newPosKey].bonus = tentative_gScore.bonus
+          gScoreCache[newPosKey].nWait = tentative_gScore.nWait
           local fScore = tentative_gScore.dist+tentative_gScore.bonus+Pathfinding.guessList(newPos, destList)
-          cameFromCache[unit.id][newPosKey] = currentPos
+          cameFromCache[newPosKey] = currentPos
           local dist = Pathfinding.guessList(newPos, destList)
           if dist < bestPos.dist then
             bestPos = {dist = dist,pos = newPos}
           end
-          edgeCache[unit.id][newPosKey] = true
+          edgeCache[newPosKey] = true
           openSet:insert(fScore,newPosKey)
         end
       end
     end
-    edgeCache[unit.id][currentPosKey] = nil
+    edgeCache[currentPosKey] = nil
 
   end
-  local path = Pathfinding.reconstructPath(cameFromCache[unit.id], bestPos.pos)
-  print(dump(path,0))
+  local path = Pathfinding.reconstructPath(cameFromCache, bestPos.pos)
+  pathCache[unit.id] = path
   return path
 end
 

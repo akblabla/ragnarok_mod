@@ -1,0 +1,7 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/vesper/vesperHowDelightful.ogg ]
+    pitch: 0.9
+    group: voice
+...

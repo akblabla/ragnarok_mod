@@ -241,10 +241,6 @@ local function getUnitRatioModifier(unitClassId, playerId)
 			thief = 0
 		}
 	end
-	-- print("currentUnitRatioScalingList")
-	-- print(unitRatioPenaltyPerUnit)
-	-- print(currentUnitRatioScalingList[playerId][unitClassId])
-	-- print(result)
 	
 	local result = 1
 	local ratioScaling = currentUnitRatioScalingList[playerId][unitClassId]
@@ -258,7 +254,6 @@ local function getUnitRatioModifier(unitClassId, playerId)
 			result = 2-(1-AIEconomyManager.unitRatioPenaltyPerUnit)^(-ratioScaling)
 		end
 	end
-	-- print(result)
 	return result
 end
 local soldierClass = Wargroove.getUnitClass("soldier")
@@ -289,17 +284,12 @@ local function getUnitCountPenalty(playerId)
 end
 
 local function getUnitValue(unitClassId, playerId)
-	--print("getUnitValue(unitClassId) starts here")
-	--print("class: " .. unitClassId)
 	local value = Wargroove.getUnitClass(unitClassId).cost+50
 	if AIEconomyManager.powerMultiplierList[unitClassId] ~= nil then
 		value = value*AIEconomyManager.powerMultiplierList[unitClassId]
 	end
-	--print("base value: " .. tostring(value))
 	local enemyUnitCountList = {}
-	-- print("Summing Up Enemy Units")
 	for _playerId, unitCountList in ipairs(unitCountPlayerList) do
-		--print("_playerId: " .. _playerId)
 		if Wargroove.areEnemies(_playerId, playerId) then
 			for unitClassId, unitCount in ipairs(unitCountList) do
 				if enemyUnitCountList[unitClassId] == nil then
@@ -309,36 +299,25 @@ local function getUnitValue(unitClassId, playerId)
 			end
 		end
 	end
-	-- print("value: " .. tostring(value))
 	local enemyAirPower = getAirUnitPower(enemyUnitCountList)
-	-- print("enemyAirPower: " .. tostring(enemyAirPower))
 	local friendlyAntiAirPower = getAntiAirUnitPower(unitCountPlayerList[playerId])
-	-- print("friendlyAntiAirPower: " .. tostring(friendlyAntiAirPower))
 	local enemyTowerCount = 0
 	if enemyUnitCountList["tower"] ~= nil then
 		enemyTowerCount = enemyUnitCountList["tower"]
 	end
 	local antiAirCounterBonus = calculateCounterBonus(unitClassId, enemyAirPower+enemyTowerCount*AIEconomyManager.airThreatPerTower, friendlyAntiAirPower, AIEconomyManager.antiAirReluctance, AIEconomyManager.antiAirMultiplierList);
 	value = value + antiAirCounterBonus
-	--print("value after anti-air bonus: " .. tostring(value))
-	--print("antiAirCounterBonus: " .. tostring(antiAirCounterBonus))
 	if AIEconomyManager.valueReductionPerUnitList[unitClassId] ~= nil and unitCountPlayerList[playerId][unitClassId] ~= nil then
 		value = value*AIEconomyManager.valueReductionPerUnitList[unitClassId]^unitCountPlayerList[playerId][unitClassId]
 	end
 	value = value*getUnitRatioModifier(unitClassId, playerId)
-	--print("value after ratio modifier: " .. tostring(value))
-	--print("ratio modifier for unit class '"..unitClassId.."' is: ".. tostring(getUnitRatioModifier(unitClassId, playerId)))
-	--print(dump(currentUnitRatioScalingList[playerId],0))
 	value = value-getUnitCountPenalty(playerId)
-	--print("value after subtracting unit count penalty: " .. tostring(value))
-	--print("final value: " .. tostring(value))
 	return value
 end
 
 local function getProducedUnitValue(producer, unitClassId, playerId)
 	local value = getUnitValue(unitClassId, playerId)
 	value = value-getOpportunityCost(producer, unitClassId, playerId)
-	--print("value after subtracting opportunity cost: " .. tostring(value))
 	if unitClassId == "soldier" and value<=0 then
 		value = 1 --Always worth buying a soldier if you have money left over
 	end
@@ -356,15 +335,10 @@ function AIEconomyManager.addUnitOption(recruit,unit,spawnPos,productionOptions,
 end
 function AIEconomyManager.spendRest(context)
 	if context:checkState("endOfTurn") then
-		--print("spendRest starts here")
-		--print("it is the end of the turn")
 		local playerId = Wargroove.getCurrentPlayerId();
-		--print("Player of the day is: " .. tostring(playerId))
 		if Wargroove.isHuman(playerId) == true then
-			--print("Is Human")
 			return
 		end
-		-- print("Is AI")
 		unitCountPlayerList = {}
 		local barracksCount = 0
 		for i, unit in ipairs(Wargroove.getUnitsAtLocation(nil)) do
@@ -425,19 +399,11 @@ function AIEconomyManager.spendRest(context)
 				end
 			end
 		end
-		-- print("ProductionBuildings detected")
-		for i, unit in ipairs(productionBuildings) do
-			-- print(unit.unitClassId)
-		end
-		-- print("ProductionBuildings processing initiated")
 		for i, unit in pairs(productionBuildings) do
-			-- print("productionBuilding: " .. unit.unitClassId)
 			local relPos = {x = 0, y = 1}
 			for i = 1,4 do
 				relPos = rotate(relPos);
-				--print("Relative Spawn Position: (" .. tostring(relPos.x) .. ", " .. tostring(relPos.y) .. ")")
 				local spawnPos = {x = relPos.x+unit.pos.x, y = relPos.y+unit.pos.y}
-				--print("Actual Spawn Position: (" .. tostring(spawnPos.x) .. ", " .. tostring(spawnPos.y) .. ")")
 				if unit.hadTurn == false and Wargroove.getUnitAt(spawnPos) == nil then
 					print("valid spawnPoint")
 					for i, recruit in ipairs(unit.recruits) do 
@@ -458,14 +424,8 @@ function AIEconomyManager.spendRest(context)
 			end
 		end
 		
-		--print("Production selection starts here")
 		table.sort(productionOptions, function (k1, k2) return k1.score > k2.score end )
-		--print(dump(productionOptions,0))
 		while next(productionOptions) ~= nil do
---			print("productionOptions before culling")
-			-- print(dump(productionOptions,0))
-			-- print("budget before culling: " .. tostring(budget))
-			-- print("reserve before culling: " .. tostring(reserve))
 			for i = #productionOptions, 1, -1 do
 				local production = productionOptions[i]
 				if (production.convertedCost>budget and production.convertedCost>0) then
@@ -477,11 +437,7 @@ function AIEconomyManager.spendRest(context)
 			if next(productionOptions) == nil then
 				break;
 			end
-			-- print("productionOptions")
 			table.sort(productionOptions, function (k1, k2) return k1.score > k2.score end )
---			print(dump(productionOptions,0))
---			print("budget: " .. tostring(budget))
---			print("reserve: " .. tostring(reserve))
 			table.sort(productionOptions, function (k1, k2) return k1.score > k2.score end )
 			local chosenProduction = productionOptions[1]
 			local chosenProducer = Wargroove.getUnitById(chosenProduction.producerId)
@@ -500,8 +456,6 @@ function AIEconomyManager.spendRest(context)
 			else
 				unitCountPlayerList[playerId][chosenProduction.recruit] = unitCountPlayerList[playerId][chosenProduction.recruit] + 1
 			end
---			print("budget after buying: " .. tostring(budget))
---			print("reserve after culling: " .. tostring(reserve))
 			for i = #productionOptions, 1, -1 do
 				local production = productionOptions[i]
 				if (production.spawnPos.x==chosenProduction.spawnPos.x and production.spawnPos.y==chosenProduction.spawnPos.y) or production.producerId == chosenProduction.producerId then
