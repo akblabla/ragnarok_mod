@@ -14,8 +14,6 @@ tilesets:
         iconSprite: ":img:ui/codex/icons/icon_terrain_brush.png"
         fillColour: '#7fa33b'
       - types: [tropical]
-        minRandomElements: 3
-        maxRandomElements: 4
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_forest
         battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
@@ -24,14 +22,8 @@ tilesets:
         iconSpriteSheet: ui_RagnarokMod
         iconSprite: ":img:ui/codex/icons/icon_terrain_brush.png"
         fillColour: '#7fa33b'
-        randomElements:
-          - sprite: terrain/trees/desert/shrub_medium
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_small
 
       - types: [ice]
-        minRandomElements: 3
-        maxRandomElements: 4
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_snow_forest
         battleBackgroundSpriteSheet: backgrounds/snow_battlescreen_extendedbackgrounds
@@ -40,14 +32,8 @@ tilesets:
         iconSpriteSheet: ui_RagnarokMod
         iconSprite: ":img:ui/codex/icons/icon_terrain_brush.png"
         fillColour: '#aec6e3'
-        randomElements:
-          - sprite: terrain/trees/desert/shrub_medium
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_small
 
       - types: [desert]
-        minRandomElements: 3
-        maxRandomElements: 4
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_sand_forest
         battleBackgroundSpriteSheet: backgrounds/sand_battlescreen_extendedbackgrounds
@@ -56,13 +42,7 @@ tilesets:
         iconSpriteSheet: ui_RagnarokMod
         iconSprite: ":img:ui/codex/icons/icon_terrain_brush.png"
         fillColour: '#987647'
-        randomElements:
-          - sprite: terrain/trees/desert/shrub_medium
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_small
       - types: [volcano]
-        minRandomElements: 3
-        maxRandomElements: 4
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_sand_forest
         battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
@@ -71,8 +51,4 @@ tilesets:
         iconSpriteSheet: ui_RagnarokMod
         iconSprite: ":img:ui/codex/icons/icon_terrain_brush.png"
         fillColour: '#6d5e56'
-        randomElements:
-          - sprite: terrain/trees/desert/shrub_medium
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_small
 ...

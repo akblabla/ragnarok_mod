@@ -219,6 +219,10 @@ triggerActions:
       - type: location_star
       
   - id: update_awareness
+    parameters:
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
 
   - id: force_move
     parameters:

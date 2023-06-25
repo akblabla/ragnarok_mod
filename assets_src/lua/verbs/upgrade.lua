@@ -139,6 +139,9 @@ function Upgrade:execute(unit, targetPos, strParam, path)
     unit.unitClassId = strParam
     unit:setHealth(100,-1)
     unit.hadTurn = true
+    if (strParam=="rifleman") then
+        Wargroove.setUnitState(unit, "ammo",3)
+    end
     Wargroove.updateUnit(unit)
 
     Wargroove.waitTime(0.2)

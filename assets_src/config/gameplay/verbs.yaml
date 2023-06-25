@@ -152,6 +152,8 @@ verbs:
     name: ui_unit_verbs_upgrade
     targetColour: target
     targetOutlineColour: target_outline
+    targetDisplayColour: target
+    targetDisplayOutlineColour: target_outline
     preExecute: true
     targetted: false
     scriptName: verbs/upgrade

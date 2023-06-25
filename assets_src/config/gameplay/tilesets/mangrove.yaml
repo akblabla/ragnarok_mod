@@ -24,36 +24,6 @@ tilesets:
         iconSprite: ":img:ui/codex/icons/icon_terrain_mangrove.png"
         infoScreenOffset: 70
         fillColour: '#1659a8'
-        minRandomElements: 2
-        maxRandomElements: 3
-        randomElements:
-          - sprite: terrain/trees/desert/palm_small
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_small
-
-          - sprite: terrain/trees/desert/palm_medium
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_medium
-
-          - sprite: terrain/trees/desert/palm_big
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_large
-
-          - sprite: terrain/trees/grass/round_small
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_small
-
-          - sprite: terrain/trees/grass/round_medium
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_medium
-
-          - sprite: terrain/trees/grass/round_big
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_large
-
-          - sprite: terrain/trees/desert/shrub_medium
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_small
       - types: [desert]
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_sand_river
@@ -64,36 +34,6 @@ tilesets:
         iconSprite: ":img:ui/codex/icons/icon_terrain_mangrove.png"
         infoScreenOffset: 70
         fillColour: '#1659a8'
-        minRandomElements: 2
-        maxRandomElements: 4
-        randomElements:
-          - sprite: terrain/trees/desert/palm_small
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_small
-
-          - sprite: terrain/trees/desert/palm_medium
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_medium
-
-          - sprite: terrain/trees/desert/palm_big
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_large
-
-          - sprite: terrain/trees/grass/round_small
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_small
-
-          - sprite: terrain/trees/grass/round_medium
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_medium
-
-          - sprite: terrain/trees/grass/round_big
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_large
-
-          - sprite: terrain/trees/desert/shrub_medium
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_small
       - types: [volcano]
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_sand_river
@@ -103,34 +43,4 @@ tilesets:
         iconSprite: ":img:ui/codex/icons/icon_terrain_mangrove.png"
         infoScreenOffset: 70
         fillColour: '#76231c'
-        minRandomElements: 2
-        maxRandomElements: 4
-        randomElements:
-          - sprite: terrain/trees/desert/palm_small
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_small
-
-          - sprite: terrain/trees/desert/palm_medium
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_medium
-
-          - sprite: terrain/trees/desert/palm_big
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_large
-
-          - sprite: terrain/trees/grass/round_small
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_small
-
-          - sprite: terrain/trees/grass/round_medium
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_medium
-
-          - sprite: terrain/trees/grass/round_big
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_large
-
-          - sprite: terrain/trees/desert/shrub_medium
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_small
 ...

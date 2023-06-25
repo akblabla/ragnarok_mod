@@ -96,8 +96,6 @@ end
 
 
 function Recruit:execute(unit, targetPos, strParam, path)
-	--print("Recruit Execute starts here")
-	--print(dump(unit,0))
 	local uc = Wargroove.getUnitClass(strParam)
 	Wargroove.changeMoney(unit.playerId, -uc.cost)
 	if strParam ~= "flare" then
@@ -167,7 +165,6 @@ function Recruit:execute(unit, targetPos, strParam, path)
 		--print("5")
 		local dist = math.sqrt((spawn.pos.x - targetPos.x)^2+(spawn.pos.y - targetPos.y)^2)
 		Ragnarok.moveInArch(spawnedId, unit.pos, targetPos, numSteps, 5+math.sqrt(dist)*2, 10,3,2,{eventPackage1, eventPackage2})
-		--print("6")
 		Wargroove.unsetShadowVisible(spawnedId)
 		Wargroove.unlockTrackCamera()
 		Wargroove.unsetVisibleOverride(spawnedId)
@@ -181,17 +178,13 @@ function Recruit:execute(unit, targetPos, strParam, path)
 	end
 	Wargroove.notifyEvent("unit_recruit", unit.playerId)
 	Wargroove.setMetaLocation("last_recruit", targetPos)
-	--print(dump(unit.recruits,0))
 	for i,recruit in ipairs(unit.recruits) do
 		if recruit==strParam then
 			table.remove(unit.recruits,i)
 			break
 		end
 	end
-	--print(dump(unit.recruits,0))
 	Wargroove.updateUnit(unit)
-	--print("post update")
-	--print(dump(unit,0))
 end
 
 

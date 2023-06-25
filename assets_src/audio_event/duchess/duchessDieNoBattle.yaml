@@ -1,0 +1,11 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/commanderDie.ogg ]
+    group: sfx
+  - type: play
+    clips: [ sfx/vesper/vesperHit3.ogg, sfx/vesper/vesperHit4.ogg ]
+    
+    pitch: 0.9
+    group: voice
+...

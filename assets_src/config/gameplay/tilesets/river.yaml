@@ -53,7 +53,7 @@ tilesets:
         iconSprite: terrain_icons_River
         infoScreenOffset: 70
         fillColour: '#76231c'
-    primaryConnect: [undefined, river, mangrove, cave_river, bridge, sea_alt, ocean, cave_sea, beach, cave_beach]
+    primaryConnect: [undefined, river, mangrove, cave_river, bridge, sea_alt, quay,ocean, cave_sea, beach, cave_beach]
     decayTo: ":below"
     tiles:
       - { x: 0, y: 0, adj: "e se s" }

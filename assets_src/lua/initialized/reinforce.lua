@@ -132,7 +132,6 @@ end
 
 
 function Reinforce:canExecuteAt(unit, endPos)
-    print("I need healing")
     local desiredHealing = maxUnitHealth - unit.health
     if desiredHealing == 0 then
         return false

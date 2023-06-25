@@ -11,6 +11,7 @@ unitClasses:
     isStructure: true
     canReinforce: true
     canBeReinforced: false
+    hostileNeutral: true
     damageMultiplier: 0
     movement: land_building
     garrisonUnit: ""

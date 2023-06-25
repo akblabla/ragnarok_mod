@@ -4,9 +4,9 @@ local Wargroove = require("wargroove/wargroove")
 local TriggerContext = require("triggers/trigger_context")
 local Resumable = require("wargroove/resumable")
 local StealthManager = require("scripts/stealth_manager")
+local Pathfinding = require("util/pathfinding")
 
 local Events = {}
-local Original = {}
 
 
 local function dump(o,level)
@@ -24,7 +24,6 @@ local function dump(o,level)
  
 
 function Events.init()
-	Original.reportUnitDeath = OldEvents.reportUnitDeath
 	OldEvents.reportUnitDeath = Events.reportUnitDeath
 	OldEvents.startSession = Events.startSession
 	OldEvents.getMatchState = Events.getMatchState
@@ -43,7 +42,6 @@ function Events.init()
 	OldEvents.runAction = Events.runAction
 end
 
-
 local triggerContext = TriggerContext:new({
     state = "",
     fired = {},
@@ -52,8 +50,7 @@ local triggerContext = TriggerContext:new({
     mapCounters = {},
     party = {},
     campaignCutscenes = {},
-    creditsToPlay = "",
-    spawnedUnits = {}
+    creditsToPlay = ""
 })
 
 local triggerList = nil
@@ -211,144 +208,13 @@ function Events.checkEvents(state)
 end
 
 function Events.checkConditions(conditions)
-	local orMode = false;
-	local isTrue = false;
     for i, cond in ipairs(conditions) do
-		if cond.id == "or_group" then
-			orMode = true
-			isTrue = false
-		elseif cond.id == "end_group" then
-			orMode = false
-			if isTrue == false then
-				return false
-			end
-		else
-			if orMode then
-				if Events.isConditionTrue(cond) then
-					isTrue = true
-				end
-			else
-				if not Events.isConditionTrue(cond) then
-					return false
-				end
-			end
-		end
+        if not Events.isConditionTrue(cond) then
+            return false
+        end
     end
-	if orMode == true then
-		if isTrue == false then
-			return false
-		end
-	end
     return true
 end
-
-function Events.groupActions(actions)
-	local groupedActions = {}
-	local groupedModes = {}
-    local currentGroup = {}
-    local currentMode = nil
-	local level = 0
-    if actions == nil then
-        return
-    end
-    for i, action in pairs(actions) do
-		if action.id == "end_group" then
-			print("group mode ends")
-			level = level - 1
-            if level == 0 then
-                table.insert(groupedActions, currentGroup)
-                table.insert(groupedModes, currentMode)
-                currentGroup = {}
-			    currentMode = nil
-            end
-		end
-		if level == 0 then
-			table.insert(groupedActions, action)
-            table.insert(groupedModes, "single")
-		else
-			table.insert(currentGroup,action)
-		end
-		if action.id == "run_group_concurrently" then
-            if level == 0 then
-			    currentMode = "concurrent"
-            end
-			level = level + 1
-		end
-		if action.id == "run_group_sequentially" then
-            if level == 0 then
-			    currentMode = "sequential"
-            end
-			level = level + 1
-		end
-    end
-	if level>0 then
-        table.insert(groupedActions,{mode = currentMode, actions = currentGroup})
-        currentMode = nil
-	end
-    return groupedActions, groupedModes
-end
-function Events.runConcurrently(currentId, actions)
-	print("Events.runConcurrently(actions)")
-	local groupedActions,groupedModes = Events.groupActions(actions)
-    local coList = {}
-    local currentIdList = {}
-    for i, actionGroup in ipairs(groupedActions) do
-        print("actionGroup")
-        print(dump(actionGroup,0))
-        print(dump(groupedModes[i],0))
-        currentIdList[i] = currentId
-        coList[i] = coroutine.create(function (time)
-            if (groupedModes[i] == nil) or (groupedModes[i] == "single") then
-                Events.runActions(currentId, {actionGroup})
-            else
-                Events.runActions(currentId, actionGroup)
-            end
-            return true
-         end)
-         currentId = currentId+1
-    end
-    local first = true
-    local time = 0
-    while next(coList) ~= nil do
-        local toBeRemoved = {};
-        for i, co in pairs(coList) do
-            local errorFree, result
-            if first then
-                errorFree, result = coroutine.resume(co,time)
-            else
-                errorFree, result = coroutine.resume(co,time)
-
-            end
-            first = false
-            if errorFree == false then
-                table.insert(toBeRemoved,i)
-            end
-        end
-        for i, id in ipairs(toBeRemoved) do
-            coList[id] = nil
-        end
-        time = coroutine.yield()
-    end
-end
-
--- function Events.runActions(currentId, actions)
--- 	local groupedActions,groupedModes = Events.groupActions(actions)
---     if groupedActions == nil then
---         return
---     end
---     for i, actionGroup in ipairs(groupedActions) do
---         if (groupedModes[i] == nil) or (groupedModes[i] == "single") then
---             triggerContext.triggerInstanceActionId = currentId
---             Events.runAction(actionGroup)
---         elseif groupedModes[i] == "concurrent" then
---             Events.runConcurrently(currentId, actionGroup)
---         elseif groupedModes[i] == "sequential" then
---             Events.runActions(currentId, actionGroup)
---         end
---         currentId = currentId+1;
--- 	end
--- end
-
 
 function Events.runActions(actions)
     for i, action in ipairs(actions) do
@@ -356,6 +222,7 @@ function Events.runActions(actions)
         Events.runAction(action)
     end
 end
+
 
 function Events.setMapFlag(flagId, value)
     triggerContext:setMapFlagById(flagId, value)
@@ -422,6 +289,7 @@ function Events.isConditionTrue(condition)
     end
 end
 
+
 function Events.runAction(action)
     local f = triggerActions[action.id]
     if f == nil then
@@ -435,11 +303,22 @@ end
 
 
 function Events.reportUnitDeath(id, attackerUnitId, attackerPlayerId, attackerUnitClass)
+    print("ReportUnitDeath")
 	local unit = Wargroove.getUnitById(id)
+    print(1)
 	VisionTracker.removeUnitFromVisionMatrix(unit)
+    print(2)
 	Wargroove.updateFogOfWar()
+    print(3)
     StealthManager.reportDeadUnit(id)
-	Original.reportUnitDeath(id, attackerUnitId, attackerPlayerId, attackerUnitClass)
+    print(4)
+--    Pathfinding.reportDeadUnit(id)
+    unit.attackerId = attackerUnitId
+    unit.attackerPlayerId = attackerPlayerId
+    unit.attackerUnitClass = attackerUnitClass
+    table.insert(pendingDeadUnits, unit)
 end
+
+
 
 return Events

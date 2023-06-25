@@ -100,6 +100,13 @@ en-GB:
   character_flagship_rival_name: "Rival"
   character_flagship_rival_title: "Captain Rival  "
   
+  character_duke_name: "The Duchess"
+  character_duke_title: "The Duchess of Dorne"
+
+  groove_name_alert_area: "Martial Law"
+  groove_description_alert_area: "Permanently alerts allies in a radius of 2."
+  groove_name_all_caps_groove_alert_area: "MARTIAL LAW"
+
   character_generic_outlaw_gang_name: "Generic Outlaws Gang"
   character_generic_vesper_gang_name: "Generic Vespers Gang"
   
@@ -154,11 +161,14 @@ en-GB:
   unit_name_ballista_outlaws: Ballista 
   unit_name_travelboat_outlaws: Barge
   unit_name_villager_outlaws: Beggar 
+  unit_name_thief_cherrystone: Tax Collector
   unit_name_thief_outlaws: Smuggler
   unit_name_rifleman_outlaws: Sharpshooter 
   unit_name_rival_outlaws: Poacher 
 
   structure_name_tavern: "Tavern"
+  unit_description_tavern: "Neutral building where anyone can reinforce and retrain their units."  
+
 
   # UNIT DESCRIPTIONS
   unit_description_soldier: "[MELEE] Basic infantry, useful for capturing structures. Critical hit when adjacent to its commander."

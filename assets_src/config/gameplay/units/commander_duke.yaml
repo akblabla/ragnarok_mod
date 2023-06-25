@@ -64,11 +64,11 @@ units:
   - class: commander_duke
     faction: cherrystone
     name: character_duke_name
-    mapAnimation: units/commanders/caesar/map_caesar
-    battleAnimation: units/commanders/caesar/battle_caesar
+    mapAnimation: units/commanders/duchess/map_duchess
+    battleAnimation: units/commanders/duchess/battle_duchess
     battleAnimationRiver: fx/river_overlay/battle_caesar_river
-    smallPortrait: units/commanders/caesar/portrait_caesar_small.png
-    mediumPortrait: units/commanders/caesar/portrait_caesar_medium.png
+    smallPortrait: units/commanders/duchess/portrait_duchess_small.png
+    mediumPortrait: units/commanders/duchess/portrait_duchess_medium.png
     menuIdleSequence: capture_idle
     mapSpeed: 4.0
     skinColour: typeV
@@ -77,22 +77,18 @@ units:
     deathMoveMax: 0
     sounds:
       attackMap: unitAttack
-      attack1: caesar/caesarAttack1
-      attack2: caesar/caesarAttack2
-      attack3: caesar/caesarAttack3
-      counter: caesar/caesarCounterAttack
-      captureShout: caesar/caesarShoutExcited
-      death: caesar/caesarDie
-      deathMap: caesar/caesarDieGhost
-      deathMapNoBattle: caesar/caesarDieNoBattle
-      preIdle: caesar/caesarPreIdle
-      run: dogEntry
-      runMap: dogEntry
-      firstHit: caesar/caesarHit
+      attack: duchess/duchessAttack
+      counter: duchess/duchessCounterAttack
+      captureShout: duchess/duchessCapture
+      death: duchess/duchessDie
+      deathMap: duchess/duchessDieGhost
+      deathMapNoBattle: duchess/duchessDieNoBattle
+      run: infantryHeavyEntry
+      runMap: infantryHeavyMapEntry
+      firstHit: duchess/duchessHit
       hit: hitOrganic
       hitMap: hitOrganic
-      groove: caesar/caesarGrooveIntro
-      cutsceneAttack: caesar/caesarAttackBarking
+      groove: duchess/duchessGrooveIntro
     attacks:
       - id: primary
         attackAnimationSequence: counter
@@ -101,28 +97,13 @@ units:
         samePanel: true
         attackSound: counter
       - id: secondary
-        attackAnimationSequence: [attack, attack2, attack3]
+        attackAnimationSequence: [attack]
         hitSpark: fx/bs_stab_attack
-        effect: fx/bs_caesar_attack
-        effectDelay: 0.7
-        hitDelay: [0.9, 1.1]
+        effect: fx/bs_duchess_attack
+        effectDelay: 1.4
+        hitDelay: 1.4
         ranged: true
-        attackSound: [attack1, attack2, attack3]
-        postAttackAnimationSequence: post_attack_idle
-        postAttackHitSequence: post_attack_hit
-        postAttackDeathSequence: post_attack_death
-      - id: cutscene
-        attackAnimationSequence: [cutscene_attack]
-        hitSpark: fx/bs_stab_attack
-        effect: fx/bs_caesar_attack
-        effectDelay: 0.7
-        hitDelay: [0.9, 1.1]
-        ranged: true
-        attackSound: cutsceneAttack
-        postAttackAnimationSequence: post_attack_idle
-        postAttackHitSequence: post_attack_hit
-        postAttackDeathSequence: post_attack_death
-        cutsceneOnly: true
+        attackSound: [attack]
     cutscenePreIdle: ""
     cutsceneIdle: capture_idle
     cutsceneHit: hit_foot
@@ -140,35 +121,91 @@ units:
       dance: emote_dance
       sleep: emote_sleep
     shouts:
-      caesar_bark1: caesar/caesarShoutBark1
-      caesar_bark2: caesar/caesarShoutBark2
-      caesar_bark3: caesar/caesarShoutBark3
-      caesar_bark4: caesar/caesarShoutBark4
-      caesar_bark5: caesar/caesarShoutBark5
-      caesar_bark6: caesar/caesarShoutBark6
-      caesar_barktwice: caesar/caesarShoutBarkTwice
-      caesar_excited: caesar/caesarShoutExcited
-      caesar_growl: caesar/caesarShoutGrowl
-      caesar_grumble: caesar/caesarShoutGrumble
-      caesar_howl: caesar/caesarShoutHowl
-      caesar_panting: caesar/caesarShoutPanting
-      caesar_hit1: caesar/caesarShoutHit1
-      caesar_hit2: caesar/caesarShoutHit2
-      caesar_hit3: caesar/caesarShoutHit3
-      caesar_hit4: caesar/caesarShoutHit4
-      caesar_whimper: caesar/caesarShoutWhimper
-
-    alternativeRuns:
-      - id: run_sniff
-
-    hidden:
-      shouts:
-        - caesar_bark2
-        - caesar_bark4
-        - caesar_bark5
-        - caesar_bark6
-        - caesar_hit2
-        - caesar_hit3
-      alternativeRuns:
-        - angry_run
+      duchess_aurevoir: duchess/duchessShoutAuRevoir
+      duchess_beautifullyappointed: duchess/duchessShoutBeautifullyAppointed
+      duchess_bonnechance: duchess/duchessShoutBonneChance
+      duchess_caesar: duchess/duchessShoutCaesar
+      duchess_canefaitrien: duchess/duchessShoutCaNeFaitRien
+      duchess_cestlaguerre: duchess/duchessShoutCestLaGuerre
+      duchess_commanderryota: duchess/duchessShoutCommanderRyota
+      duchess_dog: duchess/duchessShoutDog
+      duchess_empresstenri: duchess/duchessShoutEmpressTenri
+      duchess_enid: duchess/duchessShoutEnid
+      duchess_errol: duchess/duchessShoutErrol
+      duchess_errorandawful: duchess/duchessShoutErrorAndAwful
+      duchess_felllord: duchess/duchessShoutFellLord
+      duchess_floran: duchess/duchessShoutFloran
+      duchess_flymypretty: duchess/duchessShoutFlyMyPretty
+      duchess_greenfingerzawan: duchess/duchessShoutGreenfingerZawan
+      duchess_hardlysurprising: duchess/duchessShoutHardlySurprising
+      duchess_hellowulfar: duchess/duchessShoutHelloWulfar
+      duchess_hit1: duchess/duchessShoutHit1
+      duchess_hit2: duchess/duchessShoutHit2
+      duchess_hit3: duchess/duchessShoutHit3
+      duchess_hit4: duchess/duchessShoutHit4
+      duchess_hit5: duchess/duchessShoutHit5
+      duchess_hm: duchess/duchessShoutHm
+      duchess_hmm1: duchess/duchessShoutHmm1
+      duchess_hmm2: duchess/duchessShoutHmm2
+      duchess_hmm3: duchess/duchessShoutHmm3
+      duchess_hmph: duchess/duchessShoutHmph
+      duchess_howdareyou: duchess/duchessShoutHowDareYou
+      duchess_howdelightful: duchess/duchessShoutHowDelightful
+      duchess_huh: duchess/duchessShoutHuh
+      duchess_icastalongshadow: duchess/duchessShoutICastALongShadow
+      duchess_illjustbeonmywaynow: duchess/duchessShoutIllJustBeOnMyWayNow
+      duchess_illwinthisgame: duchess/duchessShoutIllWinThisGame
+      duchess_introduction: duchess/duchessShoutIntroduction
+      duchess_itsduchessdarling: duchess/duchessShoutItsduchessDarling
+      duchess_iwantriches: duchess/duchessShoutIWantRiches
+      duchess_justajoke: duchess/duchessShoutJustAJoke
+      duchess_justhereforthegold: duchess/duchessShoutJustHereForTheGold
+      duchess_justwhatineeded: duchess/duchessShoutJustWhatINeeded
+      duchess_laugh1: duchess/duchessShoutLaugh1
+      duchess_laugh2: duchess/duchessShoutLaugh2
+      duchess_laugh3: duchess/duchessShoutLaugh3
+      duchess_laugh4: duchess/duchessShoutLaugh4
+      duchess_laugh5: duchess/duchessShoutLaugh5
+      duchess_nestcepas: duchess/duchessShoutNestcePas
+      duchess_no1: duchess/duchessShoutNo1
+      duchess_no2: duchess/duchessShoutNo2
+      duchess_noangry: duchess/duchessShoutNoAngry
+      duchess_noupset: duchess/duchessShoutNoUpset
+      duchess_nosmokewithoutfire: duchess/duchessShoutNoSmokeWithoutFire
+      duchess_nuru: duchess/duchessShoutNuru
+      duchess_oopsie: duchess/duchessShoutOopsie
+      duchess_orla: duchess/duchessShoutOrla
+      duchess_pluscachange: duchess/duchessShoutPlusCaChange
+      duchess_princekoji: duchess/duchessShoutPrinceKoji
+      duchess_queenmercia: duchess/duchessShoutQueenMercia
+      duchess_queldommage: duchess/duchessShoutQuelDommage
+      duchess_quitethecoupdetheatre: duchess/duchessShoutQuiteTheCoupDeTheatre
+      duchess_ragna: duchess/duchessShoutRagna
+      duchess_sedge: duchess/duchessShoutSedge
+      duchess_shesclearlyamoron: duchess/duchessShoutShesClearlyAMoron
+      duchess_shh: duchess/duchessShoutShh
+      duchess_shush: duchess/duchessShoutShush
+      duchess_sicem: duchess/duchessShoutSicEm
+      duchess_sigh: duchess/duchessShoutSigh
+      duchess_sighannoyed: duchess/duchessShoutSighAnnoyed
+      duchess_sigrid: duchess/duchessShoutSigrid
+      duchess_siremeric: duchess/duchessShoutSirEmeric
+      duchess_smokeandshadows: duchess/duchessShoutSmokeAndShadows
+      duchess_sosad: duchess/duchessShoutSoSad
+      duchess_thankyou: duchess/duchessShoutThankYou
+      duchess_theloot: duchess/duchessShoutTheLoot
+      duchess_thishasbeenentertaining: duchess/duchessShoutThisHasBeenEntertaining
+      duchess_turnthatfrown: duchess/duchessShoutTurnThatFrown
+      duchess_valder: duchess/duchessShoutValder
+      duchess_vampire: duchess/duchessShoutVampire
+      duchess_watchthis: duchess/duchessShoutWatchThis
+      duchess_welcometothedarkness: duchess/duchessShoutWelcomeToTheDarkness
+      duchess_welldoneme: duchess/duchessShoutWellDoneMe
+      duchess_what: duchess/duchessShoutWhat
+      duchess_whatsalittleturpitude: duchess/duchessShoutWhatsALittleTurpitude
+      duchess_wonderful: duchess/duchessShoutWonderful
+      duchess_wulfar: duchess/duchessShoutWulfar
+      duchess_yes1: duchess/duchessShoutYes1
+      duchess_yes2: duchess/duchessShoutYes2
+      duchess_youwillchoke: duchess/duchessShoutYouWillChoke
 ...

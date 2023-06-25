@@ -1,0 +1,147 @@
+---
+
+unitClasses:
+  - id: statue
+    name: structure_name_hq
+    aiPriority: 5.0
+    isStructure: true
+    canReinforce: false
+    canBeReinforced: false
+    battleUnitCount: 1
+    damageMultiplier: 0.5
+    movement: land_building
+    cost: 3000
+    regeneration: 10
+    garrisonUnit: ""
+    tags:
+      - structure
+    sightRange: 0
+      
+units:
+  - class: statue
+    faction: neutral
+    name: structure_name_hq
+    mapAnimation: [structures/statue/statue, structures/statue/statue2]
+    smallPortrait: portraits/small/portrait_structure_small.png
+    mediumPortrait: portraits/medium/red_hq.png
+    grabPos: [29, 10]
+    sounds:
+      hit: hitWood
+      hitMap: hitStone
+      death: gateDie
+      deathMap: strongholdDieRed
+    structureImage:
+      spriteSheet: backgrounds/cherrystonehq/cherrystonehq_background_full
+      farBackground: cherrystonehq_background_full_background_2
+      nearBackground: cherrystonehq_background_full_background_1
+      foreground: cherrystonehq_background_full_foreground
+      bannerForeground: backgrounds/cherrystonehq/cherrystonehq_banner_foreground
+      keeperPosition: [66, 69]
+      hasBanners: false
+    hasBattleScreen: false
+  - class: statue
+    faction: cherrystone
+    name: structure_name_hq
+    mapAnimation: [structures/statue/statue, structures/statue/statue2]
+    smallPortrait: portraits/small/portrait_structure_small.png
+    mediumPortrait: portraits/medium/red_hq.png
+    grabPos: [29, 10]
+    sounds:
+      hit: hitWood
+      hitMap: hitStone
+      death: gateDie
+      deathMap: strongholdDieRed
+    structureImage:
+      spriteSheet: backgrounds/cherrystonehq/cherrystonehq_background_full
+      farBackground: cherrystonehq_background_full_background_2
+      nearBackground: cherrystonehq_background_full_background_1
+      foreground: cherrystonehq_background_full_foreground
+      bannerForeground: backgrounds/cherrystonehq/cherrystonehq_banner_foreground
+      keeperPosition: [66, 69]
+      hasBanners: false
+    hasBattleScreen: false
+  - class: statue
+    faction: felheim
+    name: structure_name_hq
+    mapAnimation: structures/statue/statue
+    smallPortrait: portraits/small/portrait_structure_small.png
+    mediumPortrait: portraits/medium/red_hq.png
+    grabPos: [29, 10]
+    sounds:
+      hit: hitWood
+      hitMap: hitStone
+      death: gateDie
+      deathMap: strongholdDieRed
+    structureImage:
+      spriteSheet: backgrounds/cherrystonehq/cherrystonehq_background_full
+      farBackground: cherrystonehq_background_full_background_2
+      nearBackground: cherrystonehq_background_full_background_1
+      foreground: cherrystonehq_background_full_foreground
+      bannerForeground: backgrounds/cherrystonehq/cherrystonehq_banner_foreground
+      keeperPosition: [66, 69]
+      hasBanners: false
+    hasBattleScreen: false
+  - class: statue
+    faction: heavensong
+    name: structure_name_hq
+    mapAnimation: structures/statue/statue
+    smallPortrait: portraits/small/portrait_structure_small.png
+    mediumPortrait: portraits/medium/red_hq.png
+    grabPos: [29, 10]
+    sounds:
+      hit: hitWood
+      hitMap: hitStone
+      death: gateDie
+      deathMap: strongholdDieRed
+    structureImage:
+      spriteSheet: backgrounds/cherrystonehq/cherrystonehq_background_full
+      farBackground: cherrystonehq_background_full_background_2
+      nearBackground: cherrystonehq_background_full_background_1
+      foreground: cherrystonehq_background_full_foreground
+      bannerForeground: backgrounds/cherrystonehq/cherrystonehq_banner_foreground
+      keeperPosition: [66, 69]
+      hasBanners: false
+    hasBattleScreen: false
+  - class: statue
+    faction: floran
+    name: structure_name_hq
+    mapAnimation: structures/statue/statue
+    smallPortrait: portraits/small/portrait_structure_small.png
+    mediumPortrait: portraits/medium/red_hq.png
+    grabPos: [29, 10]
+    sounds:
+      hit: hitWood
+      hitMap: hitStone
+      death: gateDie
+      deathMap: strongholdDieRed
+    structureImage:
+      spriteSheet: backgrounds/cherrystonehq/cherrystonehq_background_full
+      farBackground: cherrystonehq_background_full_background_2
+      nearBackground: cherrystonehq_background_full_background_1
+      foreground: cherrystonehq_background_full_foreground
+      bannerForeground: backgrounds/cherrystonehq/cherrystonehq_banner_foreground
+      keeperPosition: [66, 69]
+      hasBanners: false
+    hasBattleScreen: false
+  - class: statue
+    faction: outlaw
+    name: structure_name_hq
+    mapAnimation: structures/statue/statue
+    smallPortrait: portraits/small/portrait_structure_small.png
+    mediumPortrait: portraits/medium/red_hq.png
+    grabPos: [29, 10]
+    sounds:
+      hit: hitWood
+      hitMap: hitStone
+      death: gateDie
+      deathMap: strongholdDieRed
+    structureImage:
+      spriteSheet: backgrounds/cherrystonehq/cherrystonehq_background_full
+      farBackground: cherrystonehq_background_full_background_2
+      nearBackground: cherrystonehq_background_full_background_1
+      foreground: cherrystonehq_background_full_foreground
+      bannerForeground: backgrounds/cherrystonehq/cherrystonehq_banner_foreground
+      keeperPosition: [66, 69]
+      hasBanners: false
+    hasBattleScreen: false
+...

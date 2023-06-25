@@ -67,7 +67,7 @@ function StealthManager.canAlert(unit)
     if not Pathfinding.withinBounds(unit.pos) then
         return false
     end
-    if (unit.unitClassId == "reveal_all") or (unit.unitClassId == "reveal_all_but_hidden") or (unit.unitClassId == "reveal_all_but_over") or (unit.canBeAttacked == false) then
+    if (unit.unitClassId == "tavern") or (unit.unitClassId == "gate") or (unit.unitClassId == "reveal_all") or (unit.unitClassId == "reveal_all_but_hidden") or (unit.unitClassId == "reveal_all_but_over") or (unit.canBeAttacked == false) then
         return false
     end
     return true
@@ -137,18 +137,19 @@ function StealthManager.reportDeadUnit(unitId)
             end
         end
     end
-	VisionTracker.removeUnitFromVisionMatrix(unit)
-    StealthManager.removeUnit(unit)
+    StealthManager.removeUnit(unit, true)
 end
 
-function StealthManager.removeUnit(unit)
+function StealthManager.removeUnit(unit, noUpdate)
     AIGoalPos[unit.id] = nil
     AIOrder[unit.id] = nil
     AISpeed[unit.id] = nil
     StealthManager.setLastKnownLocation(unit.id, nil)
-    Wargroove.setUnitState(unit,"awareness","unaware")
-    Wargroove.setUnitState(unit,"visual_awareness","unaware")
-    Wargroove.updateUnit(unit)
+    if not((noUpdate ~= nil) and noUpdate) then
+        Wargroove.setUnitState(unit,"awareness","unaware")
+        Wargroove.setUnitState(unit,"visual_awareness","unaware")
+        Wargroove.updateUnit(unit)
+    end
 end
 
 function StealthManager.setActive(playerId,isActive)
@@ -205,12 +206,9 @@ function StealthManager.update(context)
         if (active[unit.playerId]~=nil) then
             AIManager.roadMoveOrder(unit.id,unit.pos)
             if StealthManager.isUnitFleeing(unit) then
-                print("isFleeing")
                 if AIGoalPos[unit.id]~=nil then
-                    print("has a goal")
                     AIManager.safeMoveOrder(unit.id,AIGoalPos[unit.id])
                 else
-                    print("Does not have a goal find friend!")
                     local unawareAllyPos = {}
                     for i,ally in ipairs(units) do
                         if StealthManager.canBeAlerted(ally) and StealthManager.isUnitUnaware(ally) and (ally.playerId == unit.playerId) and (unit.id~=ally.id) and (Ragnarok.isCombatUnit(ally)) then
@@ -218,10 +216,8 @@ function StealthManager.update(context)
                         end
                     end
                     if next(unawareAllyPos) ~=nil then
-                        print("Friend!")
                         AIManager.moveOrder(unit.id,unawareAllyPos)
                     else
-                        print("No friends")
                         AIManager.retreatOrder(unit.id)
                     end
                 end
@@ -229,12 +225,9 @@ function StealthManager.update(context)
         end
         StealthManager.awarenessCheck(unit.id, {unit.pos})
     end
-    print("stealth goal list")
     for unitId,pos in pairs(AIGoalPos) do
         local unit = Wargroove.getUnitById(unitId)
         if (unit ~= nil) and not StealthManager.isUnitPermaAlerted(unit) then
-            print(unit.unitClassId)
-            print(dump(unit.pos,0))
             if AIOrder[unitId]==nil then
                 AIOrder[unitId] = "road_move"
             end
@@ -251,12 +244,18 @@ function StealthManager.update(context)
             end
         end
     end
-    if (context:checkState("endOfTurn")) and (active[Wargroove.getCurrentPlayerId()] ~= nil) then
+    if (context:checkState("endOfTurn")) then
         StealthManager.endOfTurnCleanUp(Wargroove.getCurrentPlayerId())
     end
 end
 
 function StealthManager.endOfTurnCleanUp(playerId)
+    for i,other in pairs(Wargroove.getUnitsAtLocation()) do
+        Pathfinding.clearCache(other.id)
+    end
+    if (active[Wargroove.getCurrentPlayerId()] == nil) then
+        return
+    end
     local units = {}
     for i,unit in ipairs(Wargroove.getUnitsAtLocation(nil)) do
         if Pathfinding.withinBounds(unit.pos) then
@@ -511,23 +510,25 @@ function StealthManager.getWitnesses(unitId, path)
     local newSearchersList = {}
     if #path > 1 then
         for i,tile in ipairs(path) do
-            local viewerPosList = VisionTracker.getListOfViewerIds(tile);
-            for viewerId, pos in pairs(viewerPosList) do
-                local viewer = Wargroove.getUnitAt(pos)
-                if (viewer ~= nil) and (active[viewer.playerId] ~= nil) and (viewer.health>0) then
-                    if Wargroove.areEnemies(unit.playerId,viewer.playerId) then
-                        if (newSearchersList[viewerId]~=nil) then
-                            if i<#path then
-                                newAlertedList[viewerId] = path[i+1]
-                            else
-                                newAlertedList[viewerId] = path[#path]
+            if Pathfinding.withinBounds(tile) then
+                local viewerPosList = VisionTracker.getListOfViewerIds(tile);
+                for viewerId, pos in pairs(viewerPosList) do
+                    local viewer = Wargroove.getUnitAt(pos)
+                    if (viewer ~= nil) and (active[viewer.playerId] ~= nil) and (viewer.health>0) then
+                        if Wargroove.areEnemies(unit.playerId,viewer.playerId) then
+                            if (newSearchersList[viewerId]~=nil) then
+                                if i<#path then
+                                    newAlertedList[viewerId] = path[i+1]
+                                else
+                                    newAlertedList[viewerId] = path[#path]
+                                end
                             end
-                        end
-                        if (newAlertedList[viewerId]==nil) and (i~=#path) then
-                            if i<#path then
-                                newSearchersList[viewerId] = path[i+1]
-                            else
-                                newSearchersList[viewerId] = path[#path]
+                            if (newAlertedList[viewerId]==nil) and (i~=#path) then
+                                if i<#path then
+                                    newSearchersList[viewerId] = path[i+1]
+                                else
+                                    newSearchersList[viewerId] = path[#path]
+                                end
                             end
                         end
                     end
@@ -536,7 +537,7 @@ function StealthManager.getWitnesses(unitId, path)
         end
     else
         local endPos = path[#path]
-        if endPos ~= nil then
+        if endPos ~= nil and Pathfinding.withinBounds(endPos) then
             local viewerPosList = VisionTracker.getListOfViewerIds(endPos);
             for viewerId, pos in pairs(viewerPosList) do
                 local viewer = Wargroove.getUnitAt(pos)
@@ -553,20 +554,24 @@ end
 
 function StealthManager.awarenessCheck(unitId, path)
     local newAlertedList,newSearchersList = StealthManager.getWitnesses(unitId, path)
-    for viewerId,tile in pairs(newAlertedList) do
-        local viewer = Wargroove.getUnitById(viewerId)
-        newSearchersList[viewerId] = nil
-        if (viewer ~= nil) and (active[viewer.playerId] ~= nil) then
-            StealthManager.setLastKnownLocation(viewerId,tile)
-            StealthManager.makeAlerted(viewer)
-            StealthManager.spreadInfo(viewer)
+    if next(newAlertedList)~=nil then
+        for viewerId,tile in pairs(newAlertedList) do
+            local viewer = Wargroove.getUnitById(viewerId)
+            newSearchersList[viewerId] = nil
+            if (viewer ~= nil) and (active[viewer.playerId] ~= nil) then
+                StealthManager.setLastKnownLocation(viewerId,tile)
+                StealthManager.makeAlerted(viewer)
+                StealthManager.spreadInfo(viewer)
+            end
         end
     end
-    for viewerId,tile in pairs(newSearchersList) do
-        local viewer = Wargroove.getUnitById(viewerId)
-        if (viewer ~= nil) and (active[viewer.playerId] ~= nil) then
-            StealthManager.setLastKnownLocation(viewerId,tile)
-            StealthManager.makeSearching(viewer)
+    if next(newSearchersList)~=nil then
+        for viewerId,tile in pairs(newSearchersList) do
+            local viewer = Wargroove.getUnitById(viewerId)
+            if (viewer ~= nil) and (active[viewer.playerId] ~= nil) then
+                StealthManager.setLastKnownLocation(viewerId,tile)
+                StealthManager.makeSearching(viewer)
+            end
         end
     end
     StealthManager.updateAwarenessAll()

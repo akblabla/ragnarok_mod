@@ -213,6 +213,25 @@ en-GB:
   ragnarok_main3_cutscene_interlude_Farnsworth_00: "Plip plip!"
   # Farnsworth jumps in the sea with an audible splash
   
+  #-----------------------------------------------------------------------------------------------#
+
+  # STORY MAIN 3.1 Highway Robbery
+  # Cutscene: Start of match. Wulfar and Vesper meets up with some newbies along the crossroads
+  ragnarok_main3_1_cutscene_start_Wulfar_00: "The royal bastards at Dorne are having a feast tomorrow."
+  ragnarok_main3_1_cutscene_start_Wulfar_01: "So merchants with scran and swally are coming through in droves."
+  ragnarok_main3_1_cutscene_start_Vesper_00: "Hey, maybe you could use the oppotunity to train the neophytes?"
+  ragnarok_main3_1_cutscene_start_Wulfar_02: "'Ey laddies!"
+  ragnarok_main3_1_cutscene_start_Wulfar_03: "Ya need a bit of experience no?"
+  ragnarok_main3_1_cutscene_start_Wulfar_04: "Vesper will teach ya the ways of highway robbery!"
+  ragnarok_main3_1_cutscene_start_Vesper_01: "You can't be serious!"
+  ragnarok_main3_1_cutscene_start_Wulfar_05: "It'll be fun lassie!"
+  ragnarok_main3_1_cutscene_start_Vesper_02: "..."
+  ragnarok_main3_1_cutscene_start_Wulfar_06: "I am ye chief afterall now!"
+  ragnarok_main3_1_cutscene_start_Vesper_03: "Fine. Let's get this over and done for."
+  ragnarok_main3_1_cutscene_start_Wulfar_07: "Now that's tha spirit!"
+  ragnarok_main3_1_cutscene_start_Wulfar_08: "Have fun with the training!"
+  ragnarok_main3_1_cutscene_start_Wulfar_09: "I'ma head to tavern for a wee pint."
+
   
  #-----------------------------------------------------------------------------------------------#
 

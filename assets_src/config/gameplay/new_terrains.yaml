@@ -42,6 +42,29 @@ terrains:
       0: [plains, plains_alt, street]
       1: sea_alt
 
+  - id: quay
+    name: terrain_name_sea
+    biomeNames:
+      volcano: terrain_name_sea_lava
+    biomeDescriptions:
+      volcano: terrain_description_lava
+    defenceBonus: 1
+    movementCost:
+      sailing: 1
+      flying: 1
+      hovering: 1
+      amphibious: 1
+      sea_building: 1
+    biomeMovementCosts:
+      volcano:
+        flying: 1
+        hovering: 1
+    movementGroupType: water
+    placeable: true
+    tilesets:
+      0: [plains, plains_alt, street]
+      1: quay
+
   - id: cave_road
     name: terrain_name_cave_road
     defenceBonus: 1
@@ -410,7 +433,7 @@ terrains:
     hidden: true
     tilesets: 
       0: [plains, plains_alt]
-      1: sea_alt
+      1: [sea_alt, quay]
       2: reef_no_hiding
       
   - id: forest_alt_no_hiding

@@ -134,7 +134,7 @@ terrains:
     placeable: true
     tilesets: 
       0: [plains, plains_alt, street]
-      1: [sea_alt, river, cave_river, cave_sea]
+      1: [sea_alt, quay, river, cave_river, cave_sea]
       2: bridge
 
   - id: sea
@@ -204,7 +204,7 @@ terrains:
     fowCover: true
     tilesets: 
       0: [plains, plains_alt, street]
-      1: sea_alt
+      1: [sea_alt, quay]
       2: reef
 
   - id: river

@@ -1,0 +1,8 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/vesper/vesperEnid.ogg ]
+    
+    pitch: 0.9
+    group: voice
+...

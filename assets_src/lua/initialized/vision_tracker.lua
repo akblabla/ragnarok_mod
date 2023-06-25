@@ -38,11 +38,8 @@ function VisionTracker.getSightRange(unit)
 			break
 		end
 	end
-	if weather == "windy" and Stats.scoutList[unit.unitClassId]==nil and not isStructure then
-		sightRange = sightRange-1
-	end
 	if (weather == "rain" or weather == "sandstorm" or weather == "snow" or weather == "ash") and not isStructure then
-		sightRange = sightRange-2
+		sightRange = sightRange-1
 	end
 	sightRange = math.max(sightRange,0)
 	return sightRange

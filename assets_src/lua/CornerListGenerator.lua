@@ -21,20 +21,14 @@ for centerCorner = 1,4 do
 				if not ((indexCW == 3 or indexCCW == 3) and opposingCornerIndex == 3) then
 					local newCombination = {[1] = "C", [2] = "C", [3] = "C", [4] = "C"}
 					local currentCorner = centerCorner
-					print("Center: "..tostring(currentCorner))
 					currentCorner = getNextCornerCW(currentCorner)
-					print("CW: "..tostring(currentCorner))
 					newCombination[currentCorner] = cornerTypes[indexCW]
 					currentCorner = getNextCornerCW(currentCorner)
-					print("Opposing: "..tostring(currentCorner))
 					newCombination[currentCorner] = cornerTypes[opposingCornerIndex]
 					currentCorner = getNextCornerCW(currentCorner)
-					print("CCW: "..tostring(currentCorner))
 					newCombination[currentCorner] = cornerTypes[indexCCW]
 
 					table.insert(combinations, newCombination)
-					print(tostring(newCombination[1])..", "..tostring(newCombination[2]).."\n")
-					print(tostring(newCombination[3])..", "..tostring(newCombination[4]).."\n")
 					i = i +1
 				end
 			end
