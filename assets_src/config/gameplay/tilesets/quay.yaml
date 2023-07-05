@@ -2,10 +2,34 @@
 tilesets:
   - id: quay
     biomes:
-      - types: [grass,tropical, ice, desert]
+      - types: [grass,tropical]
         spriteSheet: terrain_tilesets
-        spriteBase: quay_tileset_000
-        waterSpriteBase: quay_tileset_001
+        spriteBase: grass_quay_tileset_000
+        waterSpriteBase: grass_quay_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: sea_background
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_ocean
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Ocean
+        infoScreenOffset: 35
+        fillColour: '#2a2542'
+      - types: [ice]
+        spriteSheet: terrain_tilesets
+        spriteBase: snow_quay_tileset_000
+        waterSpriteBase: snow_quay_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: sea_background
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_ocean
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Ocean
+        infoScreenOffset: 35
+        fillColour: '#2a2542'
+      - types: [desert]
+        spriteSheet: terrain_tilesets
+        spriteBase: sand_quay_tileset_000
+        waterSpriteBase: sand_quay_tileset_001
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
         battleBackgroundSprite: sea_background
         portraitSpriteSheet: terrain/terrain_portraits

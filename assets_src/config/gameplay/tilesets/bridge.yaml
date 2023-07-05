@@ -3,7 +3,7 @@ tilesets:
   - id: bridge
     biomes:
       - types: [grass,tropical]
-        spriteSheet: terrain_tilesets
+        spriteSheet: bridge_terrain_tilesets
         spriteBase: grass_bridge_tileset2_bg
         foregroundSpriteBase: grass_bridge_tileset2_fg
         foregroundBaseLine: 18
@@ -18,7 +18,7 @@ tilesets:
         infoScreenOffset: 75
         fillColour: '#2a2542'
       - types: [ice]
-        spriteSheet: terrain_tilesets
+        spriteSheet: bridge_terrain_tilesets
         spriteBase: snow_bridge_tileset2_bg
         foregroundSpriteBase: snow_bridge_tileset2_fg
         foregroundBaseLine: 18
@@ -33,9 +33,9 @@ tilesets:
         infoScreenOffset: 75
         fillColour: '#2a2542'
       - types: [desert]
-        spriteSheet: terrain_tilesets
-        spriteBase: grass_bridge_tileset2_bg
-        foregroundSpriteBase: grass_bridge_tileset2_fg
+        spriteSheet: bridge_terrain_tilesets
+        spriteBase: sand_bridge_tileset2_bg
+        foregroundSpriteBase: sand_bridge_tileset2_fg
         foregroundBaseLine: 18
         waterSpriteBase: bridge_tileset2_water
         portraitSpriteSheet: terrain/terrain_portraits
@@ -48,7 +48,7 @@ tilesets:
         infoScreenOffset: 75
         fillColour: '#2a2542'
       - types: [volcano]
-        spriteSheet: terrain_tilesets
+        spriteSheet: bridge_terrain_tilesets
         spriteBase: grass_bridge_tileset2_bg
         foregroundSpriteBase: grass_bridge_tileset2_fg
         foregroundBaseLine: 18

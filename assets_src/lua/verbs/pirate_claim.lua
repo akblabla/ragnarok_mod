@@ -22,7 +22,7 @@ local function getSurroundingPirates(unit, pos)
     result = {}
     for i, p in ipairs(Wargroove.getTargetsInRange(pos, 1, "unit")) do
         local pirate = Wargroove.getUnitAt(p)
-        if pirate and pirate.unitClassId == "pirate_ship_loaded" and pirate.playerId == unit.playerId then
+        if pirate and pirate.unitClassId == "travelboat_with_gold" and pirate.playerId == unit.playerId then
             table.insert(result, pirate)
         end
     end
@@ -47,7 +47,7 @@ function pirate_claim:execute(unit, targetPos, strParam, path)
 	for i, pirate in pairs(pirates) do
 		amountToReceive = amountToReceive + Wargroove.getUnitState(pirate, stateKey)
 		Wargroove.setUnitState(pirate, stateKey, 0)
-		pirate.unitClassId = "pirate_ship"
+		pirate.unitClassId = "travelboat"
 		Wargroove.spawnMapAnimation(pirate.pos, 0, "fx/ransack_1", "default", "over_units", { x = 12, y = 0 })
 		Wargroove.updateUnit(pirate)
     end

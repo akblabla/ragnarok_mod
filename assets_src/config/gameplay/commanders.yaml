@@ -33,6 +33,21 @@ commanders:
     unitClassId: commander_flagship_rival
     dialogueBoxVoice: ui/dialogue/textScroll
 
+  - id: duchess
+    name: character_duchess_name
+    title: character_duchess_title
+    faction: cherrystone
+    portrait:
+      neutral: portraits/commanders/small/rival_portrait_small.png
+      happy: portraits/commanders/small/rival_portrait_small.png
+      sad: portraits/commanders/small/rival_portrait_small.png
+    cutscenePortrait: portraits/commanders/big/outlaw_portrait
+    portraitOffset: [0, 20]
+    themeSong: music/hostile
+    skinColour: typeII
+    unitClassId: commander_duchess
+    dialogueBoxVoice: ui/dialogue/textScroll
+
   - id: generic_soldier
     name: character_generic_soldier_name
     faction: cherrystone

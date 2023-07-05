@@ -224,6 +224,22 @@ triggerActions:
       - type: location_star
       - type: player_neutral_star
 
+  - id: play_animation
+    parameters:
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+      - type: string
+      - type: string
+
+  - id: play_emote
+    parameters:
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+      - type: string
+      - type: string
+
   - id: force_move
     parameters:
       - type: unit_class_star

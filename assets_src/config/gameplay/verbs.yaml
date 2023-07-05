@@ -8,6 +8,7 @@ verbs:
     targetOutlineColour: target_outline
     targetted: false
     aiUses: true
+    universal: true
     scriptName: verbs/wait_ai
 
   - id: healing_potion

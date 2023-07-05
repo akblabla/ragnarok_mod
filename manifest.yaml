@@ -5,14 +5,4 @@ name: "Ragnarok Mod"               # The mod's name. This is looked up in the la
 author: "Akblabla"
 description: "Just a great time! -Outlaw faction skins by Robotos \n Version 0.1" # The mod's description. This is looked up in the language string yaml configuration.
 overwritesPalette: true
-# remove:                             # Assets which are removed by the mod.
-    # - rules_win_conditions
-    # - rules_movement
-    # - rules_attacking
-    # - rules_counter
-    # - rules_groove
-    # - rules_terraindefence
-    # - rules_capture
-    # - rules_income
-    # - rules_recruitment
 ...

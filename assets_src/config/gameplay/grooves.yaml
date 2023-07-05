@@ -13,15 +13,27 @@ grooves:
       kill: 30                                #   The commander kills an enemy unit.
     verb: groove_broadside                      #   The verb associated with the groove. This should match the id of the verb in verbs.yaml.
 
-  - id: groove_area_damage_rival                     # The groove id
-    name: groove_name_area_damage_rival                 # The groove name (looks up the string in the string yaml file)
-    description: groove_description_area_damage_rival   # The groove description (looks up the string in the string yaml file)
-    maxCharge: 100                            # The maximum amount the groove can charge to
-    chargePerUse: 100                         # The amount of charge used per turn
-    chargeBy:                                 # The amount to charge the groove by when...
-      endOfTurn: 20                           #   The player ends their turn.
-      attack: 10                              #   The commander attacks an enemy unit.
-      counter: 10                             #   The commander is attacked by an enemy unit.
-      kill: 10                                #   The commander kills an enemy unit.
-    verb: groove_area_damage_rival                      #   The verb associated with the groove. This should match the id of the verb in verbs.yaml.
+  - id: groove_area_damage_rival                     
+    name: groove_name_area_damage_rival              
+    description: groove_description_area_damage_rival
+    maxCharge: 100                            
+    chargePerUse: 100                         
+    chargeBy:                                 
+      endOfTurn: 20                           
+      attack: 10                              
+      counter: 10                             
+      kill: 10                                
+    verb: groove_area_damage_rival
+    
+  - id: groove_alert_area
+    name: groove_name_alert_area
+    description: groove_description_alert_area
+    maxCharge: 50
+    chargePerUse: 50
+    chargeBy:
+      endOfTurn: 10
+      attack: 20
+      counter: 10
+      kill: 30
+    verb: groove_alert_area
 ...

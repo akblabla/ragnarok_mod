@@ -39,7 +39,7 @@ weapons:
 
 
 unitClasses:
-  - id: commander_duke
+  - id: commander_duchess
     name: unit_class_name_commander
     cost: 500
     movement: walking
@@ -61,15 +61,14 @@ unitClasses:
 
 
 units:
-  - class: commander_duke
+  - class: commander_duchess
     faction: cherrystone
-    name: character_duke_name
+    name: character_duchess_name
     mapAnimation: units/commanders/duchess/map_duchess
     battleAnimation: units/commanders/duchess/battle_duchess
     battleAnimationRiver: fx/river_overlay/battle_caesar_river
     smallPortrait: units/commanders/duchess/portrait_duchess_small.png
     mediumPortrait: units/commanders/duchess/portrait_duchess_medium.png
-    menuIdleSequence: capture_idle
     mapSpeed: 4.0
     skinColour: typeV
     grabPos: [27, 27]
@@ -93,7 +92,7 @@ units:
       - id: primary
         attackAnimationSequence: counter
         hitSpark: fx/bs_stab_attack
-        hitDelay: [1.0, 1.1]
+        hitDelay: 0.42
         samePanel: true
         attackSound: counter
       - id: secondary
@@ -104,11 +103,8 @@ units:
         hitDelay: 1.4
         ranged: true
         attackSound: [attack]
-    cutscenePreIdle: ""
-    cutsceneIdle: capture_idle
-    cutsceneHit: hit_foot
     emotes:
-      idle: capture_idle
+      idle: idle
       surprise: emote_surprise
       positive: emote_positive
       negative: emote_negative

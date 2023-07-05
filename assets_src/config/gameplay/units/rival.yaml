@@ -24,8 +24,11 @@ unitClasses:
     battleUnitCount: 1
     passiveMultiplier: 1.35
     isRecruitable: false
+    appearsInLists: false
+    inPalette: false
     sightRange: 4
     deathVerbId: death
+    codexClass: archer
 
 units:
   - class: rival

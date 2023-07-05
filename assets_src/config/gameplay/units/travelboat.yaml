@@ -18,6 +18,7 @@ unitClasses:
       - unload
       - pick_up_crown
       - throw_crown
+      - pirate_steal
       - healing_potion
       - wait_ai
     battleUnitCount: 1

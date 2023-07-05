@@ -84,6 +84,8 @@ function Actions.populate(dst)
     dst["give_bounty"] = Actions.giveBounty
     dst["force_move"] = Actions.forceMove
     dst["force_attack"] = Actions.forceAttack
+    dst["play_animation"] = Actions.playAnimation
+    dst["play_emote"] = Actions.playEmote
     dst["ai_set_profile"] = Actions.setAIProfileWithBuild
     dst["run_group_sequentially"] = Actions.runGroupSequentially
     dst["run_group_concurrently"] = Actions.runGroupConcurrently
@@ -602,6 +604,48 @@ function Actions.forceAttack(context)
     Wargroove.setMetaLocation("last_unit", unit.pos)
 end
 
+function Actions.playAnimation(context)
+    -- "Units of type {0} at location {1} owned by player {2} perform animation {3} facing {4}."
+    local units = context:gatherUnits(2, 0, 1)
+    local animation = context:getString(3)
+    local direction = context:getString(4)
+    for i, unit in ipairs(units) do
+        if direction == "left" then
+            Wargroove.setFacingOverride(unit.id, "left")
+        elseif direction == "right" then
+            Wargroove.setFacingOverride(unit.id, "right")
+        end
+        Wargroove.playUnitAnimation(unit.id,animation)
+    end
+end
+function Actions.playEmote (context)
+    -- "Units of type {0} at location {1} owned by player {2} gets {3} facing {4}."
+    local units = context:gatherUnits(2, 0, 1)
+    local emote = context:getString(3)
+    local direction = context:getString(4)
+    for i, unit in ipairs(units) do
+        if direction == "left" then
+            Wargroove.setFacingOverride(unit.id, "left")
+        elseif direction == "right" then
+            Wargroove.setFacingOverride(unit.id, "right")
+        end
+        if emote == "give up" then
+            Wargroove.spawnPaletteSwappedMapAnimation(unit.pos, 0, "fx/gave_up_fx", unit.playerId, "default", "over_units", { x = 12, y = 0 })
+            Wargroove.playMapSound("cutscene/surprised", unit.pos)
+        elseif emote == "alerted" then
+            Wargroove.spawnPaletteSwappedMapAnimation(unit.pos, 0, "fx/ambush_fx", unit.playerId, "default", "over_units", { x = 12, y = 0 })
+            Wargroove.playMapSound("cutscene/surprised", unit.pos)
+        elseif emote == "question" then
+            Wargroove.spawnPaletteSwappedMapAnimation(unit.pos, 0, "fx/surprised_fx", unit.playerId, "default", "over_units", { x = 12, y = 0 })
+            Wargroove.playMapSound("cutscene/surprised", unit.pos)
+        elseif emote == "spooked" then
+            Wargroove.spawnPaletteSwappedMapAnimation(unit.pos, 0, "fx/fleeing_fx", unit.playerId, "default", "over_units", { x = 12, y = 0 })
+            Wargroove.playMapSound("cutscene/surprised", unit.pos)
+        end
+        Wargroove.waitTime(0.1)
+    end
+end
+
 function Actions.runGroupSequentially(context)
 end
 
@@ -675,7 +719,7 @@ function Actions.updateAwareness(context)
     -- "Update awareness of units of type {0} at location {1} owned by player {2}"
     for i, unit in ipairs(Wargroove.getUnitsAtLocation()) do
         if unit.playerId == 0 then
-            StealthManager.awarenessCheck(unit.id,{unit.pos})
+            StealthManager.awarenessCheck(unit,{unit.pos})
         end
     end
     StealthManager.updateAwarenessAll()
@@ -759,6 +803,10 @@ function Actions.setAIProfileWithBuild(context)
     end
     if profile == "city_war" then
         local AIProfile = require "AIProfiles/cityWar"
+        AIProfile.setProfile()
+    end
+    if profile == "rival_pirate" then
+        local AIProfile = require "AIProfiles/rivalPirate"
         AIProfile.setProfile()
     end
     

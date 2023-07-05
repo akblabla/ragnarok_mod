@@ -22,7 +22,7 @@ local VisionTracker = {}
 
 local function isInsideBounds(pos)
 	local mapSize = Wargroove.getMapSize()
-	return pos.x>=0 and pos.x<mapSize.x and pos.y>=0 and pos.y<mapSize.y
+	return (pos.x>=0) and (pos.x<mapSize.x) and (pos.y>=0) and (pos.y<mapSize.y)
 end
 
 function VisionTracker.getSightRange(unit)
@@ -122,15 +122,8 @@ local function removeUnitFromListOfViewers(unitId,pos)
 	if isInsideBounds(pos) == false then
 		return
 	end
-<<<<<<< HEAD
-	if (listOfViewers[pos.x][pos.y][unit.id]~=nil) then
-		decrementNumberOfViewers(unit.playerId,pos)
-	end
-	listOfViewers[pos.x][pos.y][unit.id] = nil
-=======
 	listOfViewers[pos.x][pos.y][unitId] = nil
 	decrementNumberOfViewers(Wargroove.getUnitById(unitId).playerId,pos)
->>>>>>> parent of 4ab1098 (Revolution map ready for balance testing)
 end
 
 local teamPlayers = {}

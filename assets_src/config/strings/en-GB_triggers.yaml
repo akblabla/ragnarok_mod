@@ -79,6 +79,14 @@ en-GB:
   trigger_action_description_set_threat_at_location: "Set threat level at location."
   trigger_action_readable_set_threat_at_location: "Sets the threat level of {0} to {1}, sourcing the owner as {2} at {3} owned by {4}"
   
+  trigger_action_name_play_animation: "UI: Play Animation"
+  trigger_action_description_play_animation: "Play Animation."
+  trigger_action_readable_play_animation: "Units of type {0} at location {1} owned by player {2} perform animation {3} facing {4}."
+  
+  trigger_action_name_play_emote: "UI: Play Emote"
+  trigger_action_description_play_emote: "Play Emote."
+  trigger_action_readable_play_emote: "Units of type {0} at location {1} owned by player {2} gets {3} facing {4}."
+
   trigger_action_name_give_bounty: "Unit: Give Bounty"
   trigger_action_description_give_bounty: "Give Units a bounty."
   trigger_action_readable_give_bounty: "Give units of type {0} at location {1} owned by player {2} a bounty."

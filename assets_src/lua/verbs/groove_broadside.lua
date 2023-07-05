@@ -90,8 +90,11 @@ function Broadside:preExecute(unit, targetPos, strParam, endPos)
 end
 
 function Broadside:execute(unit, targetPos, strParam, path)
+	print("Broadside:execute(unit, targetPos, strParam, path)")
     Wargroove.setIsUsingGroove(unit.id, true)
+	print(1)
     Wargroove.updateUnit(unit)
+	print(2)
 
 	local direction = chosenDirection
     Wargroove.playPositionlessSound("battleStart")
@@ -102,6 +105,7 @@ function Broadside:execute(unit, targetPos, strParam, path)
 	else
 		Wargroove.playUnitAnimation(unit.id, "run")
 	end
+	print(3)
     Wargroove.playMapSound("broadside", unit.pos)
 	local animationString = ""
 	if direction.x == 1 then animationString = "right" end
@@ -110,14 +114,17 @@ function Broadside:execute(unit, targetPos, strParam, path)
 	if direction.y == -1 then animationString = "up" end
 	Wargroove.spawnMapAnimation(unit.pos, 1, "fx/broadside", animationString, "over_units", {x = 12, y = 12})
     Wargroove.playGrooveEffect()
+	print(4)
 
 	
     targetList = {}
+	print(5)
 	--print(dump(areaListPreset,0))
 	self:getTargetsFromAreaList(unit,unit.pos, direction, areaListPreset)
 	--print("got here 1")
 	--print(dump(targetList,1))
 	table.sort(targetList, function (k1, k2) return k1.timing < k2.timing end )
+	print(6)
 	--print("got here 2")
 	--print(dump(targetList,1))
 	local lastDistance = 0;
@@ -128,8 +135,10 @@ function Broadside:execute(unit, targetPos, strParam, path)
 			--print("got here 3")
 		end
 		--print("got here 4")
+		print(7)
         local u = Wargroove.getUnitAt(target.pos)
         if u and Wargroove.areEnemies(u.playerId, unit.playerId) then
+			print(8)
 			--print("got here 5")
 			local directionalDistance = 0
 			if direction.y == 0 then
@@ -137,18 +146,26 @@ function Broadside:execute(unit, targetPos, strParam, path)
 			else
 				directionalDistance = math.abs(targetPos.y-target.pos.y)
 			end
+			print(9)
 			--print("got here 6")
+			print(dump(Combat,0))
             local damage = Combat:getGrooveAttackerDamage(unit, u, "random", unit.pos, target.pos, path, nil) * 0.3
+			print(10)
 			--print("got here 7")
             u:setHealth(u.health - damage, unit.id)
+			print(11)
             Wargroove.updateUnit(u)
+			print(12)
             Wargroove.playUnitAnimation(u.id, "hit")
+			print(13)
 			--print("got here 8")
 			Wargroove.spawnMapAnimation(target.pos, 1, "fx/map_critical_fx", "idle", "over_units", {x = 12, y = 12})
+			print(14)
 			--print(dump(u,0))
         end
 		--print("got here 9")
     end
+	print(15)
 	
 	
     Wargroove.waitTime(1.0)

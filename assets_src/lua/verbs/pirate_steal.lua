@@ -53,7 +53,7 @@ function pirate_steal:execute(unit, targetPos, strParam, path)
     Wargroove.waitTime(0.3)
 
     Wargroove.setUnitState(unit, stateKey, amountToTake)
-    unit.unitClassId = "pirate_ship_loaded"
+    unit.unitClassId = "travelboat_with_gold"
     Wargroove.changeMoney(targetUnit.playerId, -amountToTake)
 	--unit.facing = facing
 	Wargroove.updateUnit(unit)

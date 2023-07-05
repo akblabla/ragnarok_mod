@@ -1,0 +1,152 @@
+---
+unitClasses:
+  - id: travelboat_with_gold
+    name: unit_class_name_travelboat
+    cost: 200
+    movement: sailing
+    moveRange: 8
+    damageMultiplier: 1
+    aiPriority: 1.5
+    weapons: []
+    tags:
+      - travelboat
+      - transport
+      - type.sea
+      - sailing
+    verbs:
+      - rescue
+      - unload
+      - pick_up_crown
+      - throw_crown
+      - pirate_deposit
+      - healing_potion
+      - wait_ai
+    battleUnitCount: 1
+    loadCapacity: 2
+    sightRange: 4
+    transportTags: [ type.ground.light, type.ground.heavy, type.amphibious, type.ground.hideout ]
+    classIcon: unit_icons_travelboat
+    isHiddenInCutsceneEditor: true
+    deathVerbId: death
+    codexClass: travelboat
+    isRecruitable: false
+    appearsInLists: false
+    inPalette: false
+    startingStates:
+      - id: awareness
+        value: unaware
+      - id: visual_awareness
+        value: unaware
+
+units:
+  - class: travelboat_with_gold
+    faction: cherrystone
+    name: unit_name_travelboat_cherrystone
+    mapAnimation: units/travelboat/outlaw/map_travelboat_with_gold_outlaw
+    battleAnimation: units/travelboat/cherrystone/battle_travelboat_cherrystone
+    smallPortrait: units/travelboat/cherrystone/portrait_travelboat_cherrystone_small.png
+    mediumPortrait: units/travelboat/cherrystone/portrait_travelboat_cherrystone.png
+    mapSpeed: 6.0
+    grabPos: [15, 15]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: soldierAttackRed
+      attackShout: soldierPreAttackRed
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+
+  - class: travelboat_with_gold
+    faction: felheim
+    name: unit_name_travelboat_felheim
+    mapAnimation: units/travelboat/outlaw/map_travelboat_with_gold_outlaw
+    battleAnimation: units/travelboat/felheim/battle_travelboat_felheim
+    smallPortrait: units/travelboat/felheim/portrait_travelboat_felheim_small.png
+    mediumPortrait: units/travelboat/felheim/portrait_travelboat_felheim.png
+    mapSpeed: 8.0
+    grabPos: [15, 15]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: soldierAttackRed
+      attackShout: soldierPreAttackRed
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+
+  - class: travelboat_with_gold
+    faction: heavensong
+    name: unit_name_travelboat_heavensong
+    mapAnimation: units/travelboat/outlaw/map_travelboat_with_gold_outlaw
+    battleAnimation: units/travelboat/heavensong/battle_travelboat_heavensong
+    smallPortrait: units/travelboat/heavensong/portrait_travelboat_heavensong_small.png
+    mediumPortrait: units/travelboat/heavensong/portrait_travelboat_heavensong.png
+    mapSpeed: 6.0
+    grabPos: [15, 15]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: soldierAttackRed
+      attackShout: soldierPreAttackRed
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+
+  - class: travelboat_with_gold
+    faction: floran
+    name: unit_name_travelboat_floran
+    mapAnimation: units/travelboat/outlaw/map_travelboat_with_gold_outlaw
+    battleAnimation: units/travelboat/floran/battle_travelboat_floran
+    smallPortrait: units/travelboat/floran/portrait_travelboat_floran_small.png
+    mediumPortrait: units/travelboat/floran/portrait_travelboat_floran.png
+    mapSpeed: 6.0
+    grabPos: [15, 15]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: soldierAttackRed
+      attackShout: soldierPreAttackRed
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+
+  - class: travelboat_with_gold
+    faction: outlaw
+    name: unit_name_travelboat_cherrystone
+    mapAnimation: units/travelboat/outlaw/map_travelboat_with_gold_outlaw
+    battleAnimation: units/travelboat/outlaw/battle_travelboat_outlaw
+    smallPortrait: units/travelboat/outlaw/portrait_travelboat_outlaw_small.png
+    mediumPortrait: units/travelboat/outlaw/portrait_travelboat_outlaw.png
+    mapSpeed: 6.0
+    grabPos: [15, 15]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: soldierAttackRed
+      attackShout: soldierPreAttackRed
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+
+...

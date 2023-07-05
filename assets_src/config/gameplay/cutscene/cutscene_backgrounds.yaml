@@ -22,6 +22,10 @@ cutscene_backgrounds:
     foreground: grass_battlescreen_extendedbackgrounds_bridge_foreground
     background: grass_battlescreen_extendedbackgrounds_bridge
     tileHeight: 24
+  - id: grass_bridge_bg
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    background: grass_battlescreen_extendedbackgrounds_bridge
+    tileHeight: 24
   - id: grass_forest
     spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
     foreground: grass_battlescreen_extendedbackgrounds_forest_foreground

@@ -52,7 +52,7 @@ function Verb:executeEntry(unitId, targetPos, strParam, path)
         Wargroove.clearCaches()
         local unit = Wargroove.getUnitById(unitId)
         local preMovePos = {x = unit.pos.x, y = unit.pos.y}
-        StealthManager.awarenessCheck(unitId, path)
+        StealthManager.awarenessCheck(unit, path)
         self:execute(unit, targetPos, strParam, path)
         self:updateSelfUnit(unit, targetPos, path)
         self:onPostUpdateUnit(unit, targetPos, strParam, path)
@@ -61,7 +61,7 @@ function Verb:executeEntry(unitId, targetPos, strParam, path)
         if (dist == nil) or (dist <= 1) then
             AIManager.clearOrder(unitId)
         end
-        StealthManager.awarenessCheck(unitId, {path[#path]})
+        StealthManager.awarenessCheck(unit, {path[#path]})
         local tiles = VisionTracker.calculateVisionOfUnit(unit)
         for i,tile in pairs(tiles) do
             local otherUnit = Wargroove.getUnitAt(tile)

@@ -105,6 +105,7 @@ function StealthManager.init()
 end
 
 function StealthManager.reportDeadUnit(unitId)
+    print("StealthManager.reportDeadUnit(unitId)")
     local unit = Wargroove.getUnitById(unitId)
 
     fleeingCount = 0
@@ -113,9 +114,11 @@ function StealthManager.reportDeadUnit(unitId)
             fleeingCount = fleeingCount + 1
         end
     end
+    print(dump(unit.pos,0))
     local listOfViewerPos = VisionTracker.getListOfViewerIds(unit.pos);
-    for viewerId, pos in pairs(listOfViewerPos) do
-        local viewer = Wargroove.getUnitAt(pos)
+    print(dump(listOfViewerPos,0))
+    for i, viewerId in pairs(listOfViewerPos) do
+        local viewer = Wargroove.getUnitById(viewerId)
         if (viewer ~= nil) and (StealthManager.canBeAlerted(viewer)) and (unitId ~= viewerId) then
             if unit.playerId == viewer.playerId then
                 StealthManager.setLastKnownLocation(viewerId, unit.pos)
@@ -125,8 +128,8 @@ function StealthManager.reportDeadUnit(unitId)
         end
     end
     local targetFleeCount = StealthManager.getFleeCountTarget(unit.playerId)
-    for viewerId, pos in pairs(listOfViewerPos) do
-        local viewer = Wargroove.getUnitAt(pos)
+    for i, viewerId in pairs(listOfViewerPos) do
+        local viewer = Wargroove.getUnitById(viewerId)
         if (viewer ~= nil) and (StealthManager.canBeAlerted(viewer)) and (unitId ~= viewerId) then
             if unit.playerId == viewer.playerId then
                 if fleeingCount <= targetFleeCount then
@@ -223,7 +226,7 @@ function StealthManager.update(context)
                 end
             end
         end
-        StealthManager.awarenessCheck(unit.id, {unit.pos})
+        StealthManager.awarenessCheck(unit, {unit.pos})
     end
     for unitId,pos in pairs(AIGoalPos) do
         local unit = Wargroove.getUnitById(unitId)
@@ -271,8 +274,8 @@ function StealthManager.endOfTurnCleanUp(playerId)
     for i,unit in pairs(units) do
         if Wargroove.areEnemies(unit.playerId,playerId) and StealthManager.canAlert(unit) then
             local viewerPosList = VisionTracker.getListOfViewerIds(unit.pos)
-            for viewerId,pos in pairs(viewerPosList) do
-                local viewer = Wargroove.getUnitAt(pos)
+            for i,viewerId in pairs(viewerPosList) do
+                local viewer = Wargroove.getUnitById(viewerId)
                 if (viewer ~= nil) and (viewer.playerId == playerId) then
                     cutOffEnemies[viewerId] = nil
                 end
@@ -420,8 +423,8 @@ function StealthManager.spreadInfo(unit)
     local idsToBeChecked = {unit.id}
     local function addNewToBeChecked(idsToBeChecked, checked, currentUnit)
         local viewerPosList = VisionTracker.getListOfViewerIds(currentUnit.pos)
-        for viewerId,pos in pairs(viewerPosList) do
-            local viewer = Wargroove.getUnitAt(pos)
+        for i,viewerId in pairs(viewerPosList) do
+            local viewer = Wargroove.getUnitById(viewerId)
             if (viewer ~= nil) and (viewer.playerId == unit.playerId) and StealthManager.canBeAlerted(viewer) and (checked[viewer.id] == nil) then
                 
                 local dist = math.abs(currentUnit.pos.x - viewer.pos.x) + math.abs(currentUnit.pos.y - viewer.pos.y)
@@ -494,12 +497,7 @@ function StealthManager.getLastKnownLocation(unitId)
     return {pos = lastKnownPosMap[unitId].pos, date = lastKnownPosMap[unitId].date}
 end
 
-function StealthManager.getWitnesses(unitId, path)
-    
-    local unit = Wargroove.getUnitById(unitId)
-    if unit == nil then
-        return {}, {}
-    end
+function StealthManager.getWitnesses(unit, path)
     if not StealthManager.canAlert(unit) then
         return {}, {}
     end
@@ -512,8 +510,8 @@ function StealthManager.getWitnesses(unitId, path)
         for i,tile in ipairs(path) do
             if Pathfinding.withinBounds(tile) then
                 local viewerPosList = VisionTracker.getListOfViewerIds(tile);
-                for viewerId, pos in pairs(viewerPosList) do
-                    local viewer = Wargroove.getUnitAt(pos)
+                for i, viewerId in pairs(viewerPosList) do
+                    local viewer = Wargroove.getUnitById(viewerId)
                     if (viewer ~= nil) and (active[viewer.playerId] ~= nil) and (viewer.health>0) then
                         if Wargroove.areEnemies(unit.playerId,viewer.playerId) then
                             if (newSearchersList[viewerId]~=nil) then
@@ -539,8 +537,8 @@ function StealthManager.getWitnesses(unitId, path)
         local endPos = path[#path]
         if endPos ~= nil and Pathfinding.withinBounds(endPos) then
             local viewerPosList = VisionTracker.getListOfViewerIds(endPos);
-            for viewerId, pos in pairs(viewerPosList) do
-                local viewer = Wargroove.getUnitAt(pos)
+            for i, viewerId in pairs(viewerPosList) do
+                local viewer = Wargroove.getUnitById(viewerId)
                 if (viewer ~= nil) and (active[viewer.playerId] ~= nil) then
                     if Wargroove.areEnemies(unit.playerId,viewer.playerId) then
                             newAlertedList[viewerId] = endPos
@@ -552,8 +550,11 @@ function StealthManager.getWitnesses(unitId, path)
     return newAlertedList,newSearchersList
 end
 
-function StealthManager.awarenessCheck(unitId, path)
-    local newAlertedList,newSearchersList = StealthManager.getWitnesses(unitId, path)
+function StealthManager.awarenessCheck(unit, path)
+    if Pathfinding.withinBounds(unit.pos) == false then
+        return
+    end
+    local newAlertedList,newSearchersList = StealthManager.getWitnesses(unit, path)
     if next(newAlertedList)~=nil then
         for viewerId,tile in pairs(newAlertedList) do
             local viewer = Wargroove.getUnitById(viewerId)
@@ -574,7 +575,6 @@ function StealthManager.awarenessCheck(unitId, path)
             end
         end
     end
-    StealthManager.updateAwarenessAll()
 end
 
 function StealthManager.isVisuallyAlerted(unit)

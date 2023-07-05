@@ -70,7 +70,7 @@ units:
   - class: commander_vesper
     faction: outlaw
     name: character_vesper_name
-    mapAnimation: units/commanders/vesper/map_vesper
+    mapAnimation: units/commanders/vesper/map_vesper_extra
     battleAnimation: units/commanders/vesper/battle_vesper_extra
     battleAnimationRiver: fx/river_overlay/battle_vesper_river
     smallPortrait: units/commanders/vesper/portrait_vesper_small.png

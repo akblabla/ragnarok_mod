@@ -3,7 +3,7 @@ tilesets:
   - id: sea
     biomes:
       - types: [grass,tropical, ice, desert]
-        spriteSheet: tilesets
+        spriteSheet: terrain_tilesets
         spriteBase: sea_tileset_000
         waterSpriteBase: sea_tileset_001
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
@@ -15,7 +15,7 @@ tilesets:
         infoScreenOffset: 35
         fillColour: '#2a2542'
       - types: [volcano]
-        spriteSheet: tilesets
+        spriteSheet: terrain_tilesets
         spriteBase: sea_tileset_000
         waterSpriteBase: sea_tileset_001
         battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds

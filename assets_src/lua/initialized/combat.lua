@@ -24,6 +24,16 @@ function Combat.init()
 	Combat.getBestWeapon = NewCombat.getBestWeapon
 	Combat.solveRound = NewCombat.solveRound
 	Combat.solveCombat = NewCombat.solveCombat
+	Combat.getGrooveAttackerDamage = NewCombat.getGrooveAttackerDamage
+end
+
+function NewCombat:getGrooveAttackerDamage(attacker, defender, solveType, attackerPos, defenderPos, attackerPath, weaponIdOverride)
+	local damage, hadPassive = self:getDamage(attacker, defender, solveType, false, attackerPos, defenderPos, attackerPath, {defenderPos}, true, weaponIdOverride)
+	if (damage == nil) then
+		return nil, false
+	end
+
+	return damage
 end
 
 function NewCombat:getBestWeapon(attacker, defender, delta, moved, facing)

@@ -8,13 +8,16 @@ en-GB:
   ragnarok_main1_cutscene_intro_Vesper_01: "Men! Raise the clan flag!"
   # Vesper catches up to Emeric's ship
   ragnarok_main1_cutscene_intro_Emeric_00: "What is this ruckus!"
-  ragnarok_main1_cutscene_intro_Emeric_01: "Oh, pirates.[short_pause] I should've expected we'd be accosted by ruffians at some point, but I had hoped we could avoid it for once."
+  ragnarok_main1_cutscene_intro_Emeric_01: "Oh, pirates.[short_pause] I should've expected we'd be accosted by ruffians at some point."
   ragnarok_main1_cutscene_intro_Emeric_02: "It's always so tiresome having to deal with these people..."
   ragnarok_main1_cutscene_intro_Emeric_03: "What are your demands?" #Maybe have Emeric insult her directly instead of Vesper overhearing the internal conversation among Emeric's crew.
-  ragnarok_main1_cutscene_intro_Vesper_02: "Tiresome?[short_pause] You insult me[slow]! [slow]I am nothing if not exciting[slow], [slow]and so is this heist![short_pause] It's not every day you steal a king's crown!"
-  ragnarok_main1_cutscene_intro_Emeric_04: "What?![short_pause] The crown?![short_pause] No![short_pause] We have gold and jewels you can take if you'll leave peacefully, but the crown stays[slow]. [slow]There [colour:player_red]will[colour:r] be bloodshed if you come for it[slow]. [slow]Surely, neither of us want that."
-  ragnarok_main1_cutscene_intro_Vesper_03: "I think not." 
-  ragnarok_main1_cutscene_intro_Vesper_04: "Sic 'em!"
+  ragnarok_main1_cutscene_intro_Vesper_02: "Tiresome?[short_pause] You insult me[slow]! [slow]I am nothing if not exciting[slow], [slow]and so is this heist!"
+  ragnarok_main1_cutscene_intro_Vesper_03: "It's not every day you steal a king's crown!"
+  #ragnarok_main1_cutscene_intro_Emeric_04: "[fast]What?![short_pause] The crown?![short_pause] No![short_pause] We have gold and jewels you can take if you'll leave peacefully, but the crown stays[slow]. [slow]There [colour:player_red]will[colour:r] be bloodshed if you come for it[slow]. [slow]Surely, neither of us want that.[fast]"
+  ragnarok_main1_cutscene_intro_Emeric_04: "[fast][shaking]The crown!?[shaking][short_pause] Have you been tracking us?[short_pause] Gah, that lookout..."
+  ragnarok_main1_cutscene_intro_Emeric_05: "No matter.[short_pause] If you want a fight, you'll get a fight"
+  ragnarok_main1_cutscene_intro_Vesper_04: "Adorable" 
+  ragnarok_main1_cutscene_intro_Vesper_05: "Sic 'em!"
   # Boarding begins
   
   #Ingame Dialogue:
@@ -203,15 +206,10 @@ en-GB:
   ragnarok_main3_cutscene_interlude_Vesper_03: "I hereby withdraw my position as chieftain and pass the role of clan chief to you,"
   ragnarok_main3_cutscene_interlude_Vesper_04: "and I shall return the warband to your service."
   # Half the soldiers leaves
-  ragnarok_main3_cutscene_interlude_Wulfar_02: "Are you up for joining the feast? There will be boar and wine for days!"
-  ragnarok_main3_cutscene_interlude_Vesper_05: "I can't. I have some business to attend to."
-  ragnarok_main3_cutscene_interlude_Vesper_06: "So if you don't mind, I'll just head off now."
-  # Vesper leaves in a cloud of smoke
-  ragnarok_main3_cutscene_interlude_Wulfar_03: "That was a short visit."
-  ragnarok_main3_cutscene_interlude_Wulfar_04: "Farnsworth!"
-  ragnarok_main3_cutscene_interlude_Wulfar_05: "Could ya keep an eye on her? I'm worried she's up to no good."
-  ragnarok_main3_cutscene_interlude_Farnsworth_00: "Plip plip!"
-  # Farnsworth jumps in the sea with an audible splash
+  ragnarok_main3_cutscene_interlude_Wulfar_02: "What about a feast? We gotta celebrate the occation!"
+  ragnarok_main3_cutscene_interlude_Vesper_05: "Hmmm[slow]...[slow][long_pause] You know what?"
+  ragnarok_main3_cutscene_interlude_Vesper_06: "Lets have a little fun."
+  ragnarok_main3_cutscene_interlude_Vesper_07: "I have some [colour:player_red]time[colour:r] to burn anyway."
   
   #-----------------------------------------------------------------------------------------------#
 

@@ -56,19 +56,29 @@ local powerMultiplierList = {
 	witch = 0
 }
 
+
+local antiAirMultiplierList = {
+	archer = 0.25,
+	ballista = 1.5,
+	harpoonship = 1.5,
+	harpy = 0.5,
+	mage = 0.8,
+	witch = 3
+}
+
 function MangroveAI.setProfile()
 	DefaultAI.setProfile()
 	CustomAI.valueReductionPerUnitList = valueReductionPerUnitList
 	CustomAI.idealUnitRatioList = idealUnitRatioList
 	CustomAI.powerMultiplierList = powerMultiplierList
 	CustomAI.antiAirMultiplierList = antiAirMultiplierList
-	CustomAI.bannedUnitList = bannedUnitList
-	CustomAI.antiAirReluctance = antiAirReluctance
-	CustomAI.airThreatPerTower = airThreatPerTower
-	CustomAI.baseLineOpportunityCost = baseLineOpportunityCost
-	CustomAI.baseLineOpportunityCostScaling = baseLineOpportunityCostScaling
-	CustomAI.unitRatioResetPerUnit = unitRatioResetPerUnit
-	CustomAI.unitRatioPenaltyPerUnit = unitRatioPenaltyPerUnit
+	CustomAI.bannedUnitList = {}
+	CustomAI.antiAirReluctance = 1000
+	CustomAI.airThreatPerTower = 200
+	CustomAI.baseLineOpportunityCost = 0.8
+	CustomAI.baseLineOpportunityCostScaling = 0.8
+	CustomAI.unitRatioResetPerUnit = 0.98
+	CustomAI.unitRatioPenaltyPerUnit = 0.2
 end
 
 return MangroveAI

@@ -69,21 +69,14 @@ function WargrooveVision.startCapture(attacker, defender, attackerPos)
 end
 
 function WargrooveVision.spawnUnit(playerId, pos, unitType, turnSpent, startAnimation, startingState, factionOverride)  
-	print("WargrooveVision.spawnUnit(p")
 	local unitId = Original.spawnUnit(playerId, pos, unitType, turnSpent, startAnimation, startingState, factionOverride)  
-	print("1")
 	if Pathfinding.withinBounds(pos) then
-		print("2")
-		print("3")
 		local unit = {id = unitId,pos = pos, playerId=playerId, unitClassId = unitType, unitClass = OldWargroove.getUnitClass(unitType)}
-		print("4")
 		VisionTracker.addUnitToVisionMatrix(unit)
-		print("5")
 		--VisionTracker.getPrevPosList()[unitId] = pos
 		-- StealthManager.removeUnit(unit)
 		-- Original.updateUnit(unit)
 	end
-	print("6")
     return unitId
 end
 

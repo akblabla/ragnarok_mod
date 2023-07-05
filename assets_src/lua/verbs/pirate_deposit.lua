@@ -28,7 +28,7 @@ function pirate_deposit:execute(unit, targetPos, strParam, path)
     local targetUnit = Wargroove.getUnitAt(targetPos)
     local amountToDeposit = Wargroove.getUnitState(unit, stateKey)
     Wargroove.setUnitState(unit, stateKey, 0)
-    unit.unitClassId = "pirate_ship"
+    unit.unitClassId = "travelboat"
     Wargroove.waitTime(0.2)
     Wargroove.playMapSound("thiefGoldReleased", targetPos)
     Wargroove.spawnMapAnimation(unit.pos, 0, "fx/ransack_1", "default", "over_units", { x = 12, y = 0 })
