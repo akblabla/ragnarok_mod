@@ -1,4 +1,4 @@
-local CustomAI = require "initialized/ai_economy_manager"
+local CustomAI = require "scripts/ai_economy_manager"
 local DefaultAI = require "AIProfiles/default"
 local CityPassiveAI = {}
 
@@ -13,7 +13,7 @@ local valueReductionPerUnitList = {
 	harpy = 0.8,
 	knight = 0.7,
 	mage = 0.8,
-	merman = 0.9,
+	merman = 0.7,
 	rifleman = 0.5,
 	soldier = 0.85,
 	spearman = 0.95,
@@ -21,8 +21,8 @@ local valueReductionPerUnitList = {
 	turtle = 0.8,
 	warship = 0.8,
 	witch = 0.6,
-	wagon = 0.6,
-	travelboat = 0.6,
+	wagon = 0.4,
+	travelboat = 0.4,
 	thief = 0.6
 }
 
@@ -32,66 +32,57 @@ local idealUnitRatioList = {
 	dog = 1,
 	dragon = 0.5,
 	giant = 0.5,
-	harpoonship = 1,
+	harpoonship = 0,
 	harpy = 1,
-	knight = 0.1,
+	knight = 1,
 	mage = 1,
-	merman = 1,
+	merman = 0.5,
 	rifleman = 0.5,
 	soldier = 2,
 	spearman = 1,
 	trebuchet = 0.3,
-	turtle = 1,
+	turtle = 0,
 	warship = 1,
 	witch = 1,
-	wagon = 1,
-	travelboat = 1,
-	thief = 1
+	wagon = 0.3,
+	travelboat = 0.3,
+	balloon = 0.1,
+	thief = 0
 }
 
 local powerMultiplierList = {
-	archer = 0,
-	dog = 0,
-	ballista = 0,
-	dragon = 0,
-	harpy = 0,
-	knight = 0,
-	harpoonship = 0,
-	mage = 0,
-	soldier = 0,
-	witch = 0,
-	wagon = 1,
-	travelboat = 1,
-	thief = 1
+	wagon = 0.5,
+	travelboat = 0.5,
+	thief = 0
 }
 
-local antiAirMultiplierList = {
-	archer = 0,
-	ballista = 0,
-	harpoonship = 0,
-	harpy = 0,
-	mage = 0,
-	witch = 0
-}
 
 local bannedUnitList = {
+	thief = true,
+	turtle = true,
+	warship = true,
+	trebuchet = true,
+	ballista = true,
+	giant = true,
+	harpoonship = true,
 	pirate_ship = true,
 	balloon = true,
 	flare = true
 }
 local antiAirReluctance = 1000;
 local airThreatPerTower = 200;
-local baseLineOpportunityCost = 0.8
-local baseLineOpportunityCostScaling = 0.8
-local unitRatioResetPerUnit = 0.98
-local unitRatioPenaltyPerUnit = 0.2
+local baseLineOpportunityCost = 0.5
+local baseLineOpportunityCostScaling = 0.75
+local unitRatioResetPerUnit = 0.9
+local unitRatioPenaltyPerUnit = 0.5
 
 function CityPassiveAI.setProfile()
 	DefaultAI.setProfile()
 	CustomAI.valueReductionPerUnitList = valueReductionPerUnitList
 	CustomAI.idealUnitRatioList = idealUnitRatioList
-	CustomAI.powerMultiplierList = powerMultiplierList
-	CustomAI.antiAirMultiplierList = antiAirMultiplierList
+	CustomAI.powerMultiplierList["wagon"] = powerMultiplierList["wagon"]
+	CustomAI.powerMultiplierList["travelboat"] = powerMultiplierList["travelboat"]
+	CustomAI.powerMultiplierList["thief"] = powerMultiplierList["thief"]
 	CustomAI.bannedUnitList = bannedUnitList
 	CustomAI.antiAirReluctance = antiAirReluctance
 	CustomAI.airThreatPerTower = airThreatPerTower

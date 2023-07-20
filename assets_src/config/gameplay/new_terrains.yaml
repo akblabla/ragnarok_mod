@@ -65,6 +65,27 @@ terrains:
       0: [plains, plains_alt, street]
       1: quay
 
+  - id: bridge_wide
+    name: terrain_name_bridge
+    defenceBonus: 0
+    movementCost:
+      walking: 1
+      riding: 1
+      flying: 1
+      hovering: 1
+      wheels: 1
+      amphibious: 1
+      sailing: 1
+      land_building: 1
+      indoor_building: 1
+    cantStop: [sailing]
+    movementGroupType: land
+    placeable: true
+    tilesets: 
+      0: [plains, plains_alt, street]
+      1: [sea_alt, quay, river, cave_river, cave_sea]
+      2: bridge_wide
+
   - id: cave_road
     name: terrain_name_cave_road
     defenceBonus: 1

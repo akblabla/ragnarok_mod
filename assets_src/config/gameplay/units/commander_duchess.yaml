@@ -57,7 +57,7 @@ unitClasses:
     battleUnitCount: 1
     sightRange: 4
     isCommander: true
-    grooveId: groove_alert_area
+    grooveId: groove_morale_boost
 
 
 units:
@@ -71,13 +71,14 @@ units:
     mediumPortrait: units/commanders/duchess/portrait_duchess_medium.png
     mapSpeed: 4.0
     skinColour: typeV
-    grabPos: [27, 27]
+    grabPos: [47, 48]
     deathMoveMin: 0
     deathMoveMax: 0
     sounds:
       attackMap: unitAttack
       attack: duchess/duchessAttack
       counter: duchess/duchessCounterAttack
+      attackCommanderShout: duchess/duchessCommanderKillShout
       captureShout: duchess/duchessCapture
       death: duchess/duchessDie
       deathMap: duchess/duchessDieGhost
@@ -117,91 +118,46 @@ units:
       dance: emote_dance
       sleep: emote_sleep
     shouts:
-      duchess_aurevoir: duchess/duchessShoutAuRevoir
-      duchess_beautifullyappointed: duchess/duchessShoutBeautifullyAppointed
-      duchess_bonnechance: duchess/duchessShoutBonneChance
-      duchess_caesar: duchess/duchessShoutCaesar
-      duchess_canefaitrien: duchess/duchessShoutCaNeFaitRien
-      duchess_cestlaguerre: duchess/duchessShoutCestLaGuerre
-      duchess_commanderryota: duchess/duchessShoutCommanderRyota
-      duchess_dog: duchess/duchessShoutDog
-      duchess_empresstenri: duchess/duchessShoutEmpressTenri
-      duchess_enid: duchess/duchessShoutEnid
-      duchess_errol: duchess/duchessShoutErrol
-      duchess_errorandawful: duchess/duchessShoutErrorAndAwful
-      duchess_felllord: duchess/duchessShoutFellLord
-      duchess_floran: duchess/duchessShoutFloran
-      duchess_flymypretty: duchess/duchessShoutFlyMyPretty
-      duchess_greenfingerzawan: duchess/duchessShoutGreenfingerZawan
-      duchess_hardlysurprising: duchess/duchessShoutHardlySurprising
-      duchess_hellowulfar: duchess/duchessShoutHelloWulfar
+      duchess_acoldwindblows: duchess/duchessShoutAColdWindBlows
+      duchess_astormapproaches: duchess/duchessShoutAStormApproaches
+      duchess_attack1: duchess/duchessShoutAttack1
+      duchess_attack2: duchess/duchessShoutAttack2
+      duchess_attack3: duchess/duchessShoutAttack3
+      duchess_attack4: duchess/duchessShoutAttack4
+      duchess_ihavefailed: duchess/duchessShoutIHaveFailed
+      duchess_imnotheretoplay: duchess/duchessShoutImNotHereToPlay
       duchess_hit1: duchess/duchessShoutHit1
       duchess_hit2: duchess/duchessShoutHit2
       duchess_hit3: duchess/duchessShoutHit3
-      duchess_hit4: duchess/duchessShoutHit4
-      duchess_hit5: duchess/duchessShoutHit5
-      duchess_hm: duchess/duchessShoutHm
-      duchess_hmm1: duchess/duchessShoutHmm1
-      duchess_hmm2: duchess/duchessShoutHmm2
-      duchess_hmm3: duchess/duchessShoutHmm3
+      duchess_powerofthetempest: duchess/duchessShoutPowerOfTheTempest
+      duchess_theresnotimetowaste: duchess/duchessShoutTheresNoTimeToWaste
+      duchess_thewindrises: duchess/duchessShoutTheWindRises
+      duchess_illmakethisquick: duchess/duchessShoutIllMakeThisQuick
+      duchess_absolutelynot: duchess/duchessShoutAbsolutelyNot
+      duchess_agreed: duchess/duchessShoutAgreed
+      duchess_fallback: duchess/duchessShoutFallBack
+      duchess_farewell: duchess/duchessShoutFarewell
+      duchess_getoutofmysight: duchess/duchessShoutGetOutOfMySight
+      duchess_greetings: duchess/duchessShoutGreetings
       duchess_hmph: duchess/duchessShoutHmph
-      duchess_howdareyou: duchess/duchessShoutHowDareYou
-      duchess_howdelightful: duchess/duchessShoutHowDelightful
-      duchess_huh: duchess/duchessShoutHuh
-      duchess_icastalongshadow: duchess/duchessShoutICastALongShadow
-      duchess_illjustbeonmywaynow: duchess/duchessShoutIllJustBeOnMyWayNow
-      duchess_illwinthisgame: duchess/duchessShoutIllWinThisGame
-      duchess_introduction: duchess/duchessShoutIntroduction
-      duchess_itsduchessdarling: duchess/duchessShoutItsduchessDarling
-      duchess_iwantriches: duchess/duchessShoutIWantRiches
-      duchess_justajoke: duchess/duchessShoutJustAJoke
-      duchess_justhereforthegold: duchess/duchessShoutJustHereForTheGold
-      duchess_justwhatineeded: duchess/duchessShoutJustWhatINeeded
+      duchess_howtimeflies: duchess/duchessShoutHowTimeFlies
+      duchess_itireofyourpresence: duchess/duchessShoutITireOfYourPresence
+      duchess_koji1: duchess/duchessShoutKoji1
+      duchess_koji2: duchess/duchessShoutKoji2
       duchess_laugh1: duchess/duchessShoutLaugh1
       duchess_laugh2: duchess/duchessShoutLaugh2
-      duchess_laugh3: duchess/duchessShoutLaugh3
-      duchess_laugh4: duchess/duchessShoutLaugh4
-      duchess_laugh5: duchess/duchessShoutLaugh5
-      duchess_nestcepas: duchess/duchessShoutNestcePas
-      duchess_no1: duchess/duchessShoutNo1
-      duchess_no2: duchess/duchessShoutNo2
-      duchess_noangry: duchess/duchessShoutNoAngry
-      duchess_noupset: duchess/duchessShoutNoUpset
-      duchess_nosmokewithoutfire: duchess/duchessShoutNoSmokeWithoutFire
-      duchess_nuru: duchess/duchessShoutNuru
-      duchess_oopsie: duchess/duchessShoutOopsie
-      duchess_orla: duchess/duchessShoutOrla
-      duchess_pluscachange: duchess/duchessShoutPlusCaChange
-      duchess_princekoji: duchess/duchessShoutPrinceKoji
-      duchess_queenmercia: duchess/duchessShoutQueenMercia
-      duchess_queldommage: duchess/duchessShoutQuelDommage
-      duchess_quitethecoupdetheatre: duchess/duchessShoutQuiteTheCoupDeTheatre
-      duchess_ragna: duchess/duchessShoutRagna
-      duchess_sedge: duchess/duchessShoutSedge
-      duchess_shesclearlyamoron: duchess/duchessShoutShesClearlyAMoron
-      duchess_shh: duchess/duchessShoutShh
-      duchess_shush: duchess/duchessShoutShush
-      duchess_sicem: duchess/duchessShoutSicEm
+      duchess_no: duchess/duchessShoutNo
+      duchess_noonethreatensmypeople: duchess/duchessShoutNoOneThreatensMyPeople
       duchess_sigh: duchess/duchessShoutSigh
-      duchess_sighannoyed: duchess/duchessShoutSighAnnoyed
-      duchess_sigrid: duchess/duchessShoutSigrid
-      duchess_siremeric: duchess/duchessShoutSirEmeric
-      duchess_smokeandshadows: duchess/duchessShoutSmokeAndShadows
-      duchess_sosad: duchess/duchessShoutSoSad
-      duchess_thankyou: duchess/duchessShoutThankYou
-      duchess_theloot: duchess/duchessShoutTheLoot
-      duchess_thishasbeenentertaining: duchess/duchessShoutThisHasBeenEntertaining
-      duchess_turnthatfrown: duchess/duchessShoutTurnThatFrown
-      duchess_valder: duchess/duchessShoutValder
-      duchess_vampire: duchess/duchessShoutVampire
-      duchess_watchthis: duchess/duchessShoutWatchThis
-      duchess_welcometothedarkness: duchess/duchessShoutWelcomeToTheDarkness
-      duchess_welldoneme: duchess/duchessShoutWellDoneMe
-      duchess_what: duchess/duchessShoutWhat
-      duchess_whatsalittleturpitude: duchess/duchessShoutWhatsALittleTurpitude
-      duchess_wonderful: duchess/duchessShoutWonderful
-      duchess_wulfar: duchess/duchessShoutWulfar
-      duchess_yes1: duchess/duchessShoutYes1
-      duchess_yes2: duchess/duchessShoutYes2
-      duchess_youwillchoke: duchess/duchessShoutYouWillChoke
+      duchess_standdown: duchess/duchessShoutStandDown
+      duchess_stopthis: duchess/duchessShoutStopThis
+      duchess_victoryshallbeswift: duchess/duchessShoutVictoryShallBeSwift
+      duchess_weareoldfriends: duchess/duchessShoutWeAreOldFriends
+      duchess_westandtogether: duchess/duchessShoutWeStandTogether
+      duchess_whatisthis1: duchess/duchessShoutWhatIsThis1
+      duchess_whatisthis2: duchess/duchessShoutWhatIsThis2
+      duchess_yes: duchess/duchessShoutYes
+      duchess_youfiend: duchess/duchessShoutYouFiend
+      duchess_youhavemythanks: duchess/duchessShoutYouHaveMyThanks
+      duchess_youthinkthisisagame: duchess/duchessShoutYouThinkThisIsAGame
 ...

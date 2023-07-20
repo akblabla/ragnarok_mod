@@ -1,5 +1,6 @@
 local VisionTracker = require "initialized/vision_tracker"
 local Wargroove = require "wargroove/wargroove"
+local StealthManager = require "scripts/stealth_manager"
 local Corners = {}
 
 Corners.__index = Corners
@@ -78,19 +79,44 @@ end
 
 function Corners.getVisionCorner(playerId, pos)
     local corners = {false,false,false,false}
-    if VisionTracker.canSeeTile(playerId,{x=pos.x,y=pos.y-1}) then
+    if Corners.shouldRenderTile(playerId,{x=pos.x,y=pos.y-1}) then
         corners[1] = true
     end
-    if VisionTracker.canSeeTile(playerId,{x=pos.x-1,y=pos.y-1}) then
+    if Corners.shouldRenderTile(playerId,{x=pos.x-1,y=pos.y-1}) then
         corners[2] = true
     end
-    if VisionTracker.canSeeTile(playerId,{x=pos.x,y=pos.y}) then
+    if Corners.shouldRenderTile(playerId,{x=pos.x,y=pos.y}) then
         corners[3] = true
     end
-    if VisionTracker.canSeeTile(playerId,{x=pos.x-1,y=pos.y}) then
+    if Corners.shouldRenderTile(playerId,{x=pos.x-1,y=pos.y}) then
         corners[4] = true
     end
     return corners
+end
+function Corners.shouldRenderTile(playerId, pos)
+    local viewerPosList = VisionTracker.getListOfViewerIds(pos)
+    for viewerId, pos in pairs(viewerPosList) do
+        local unit = Wargroove.getUnitById(viewerId)
+        if (unit~= nil)  and (unit.playerId == playerId) and StealthManager.canBeAlerted(unit) and (StealthManager.isUnitUnaware(unit) or StealthManager.isUnitSearching(unit)) then
+            return Wargroove.canCurrentlySeeTile({x=pos.x,y=pos.y})
+        end
+    end
+    return false
+end
+
+function Corners.update(cornerUnit)
+    local playerId = tonumber(Wargroove.getUnitState(cornerUnit, "playerId"))
+    Wargroove.setVisibleOverride(cornerUnit.id, true)
+    local corners = Corners.getVisionCorner(playerId, {x=200+cornerUnit.pos.x,y=200+cornerUnit.pos.y})
+    local cornerName = Corners.getCornerName(corners)
+    if Corners.cornerList[cornerUnit.id] ~= cornerName then
+        Wargroove.clearBuffVisualEffect(cornerUnit.id)
+        if (cornerName~=nil) and (cornerName ~= "") and (cornerName ~= "NE_NW_SE_SW") then
+            Wargroove.displayBuffVisualEffectAtPosition(cornerUnit.id, {x=cornerUnit.pos.x+200-1,y=cornerUnit.pos.y+300-1}, playerId, "units/LoSBorder/"..Corners.getCornerName(corners), "", 0.5, nil, nil, {x = 0, y = 0},true)
+        end
+        Corners.cornerList[cornerUnit.id] = cornerName
+    end
+    
 end
 
 Corners.cornerList = {}

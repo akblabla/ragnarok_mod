@@ -1,7 +1,0 @@
----
-actions:
-  - type: play
-    clips: [ sfx/vesper/vesperSmokeAndShadows.ogg ]
-    pitch: 0.9
-    group: voice
-...

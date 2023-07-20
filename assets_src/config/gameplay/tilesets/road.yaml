@@ -62,7 +62,7 @@ tilesets:
         iconSprite: terrain_icons_Road
         infoScreenOffset: 80
         fillColour: '#6d5e56'
-    primaryConnect: [undefined, road, cave_road, bridge, cave_bridge]
+    primaryConnect: [undefined, road, cave_road, bridge, bridge_wide, cave_bridge]
     decayTo: plains
     tiles:
       - { x: 0, y: 0, adj: "e s se" }

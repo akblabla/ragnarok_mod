@@ -35,8 +35,14 @@ function Hire:getTargetType()
     return "all"
 end
 
+local enabledPlayerList = {}
+
+function Hire.enableForPlayer(playerId)
+    enabledPlayerList[playerId] = true;
+end
+
 function Hire:canExecuteAnywhere(unit)
-    return true
+    return (enabledPlayerList[unit.playerId] ~= nil) and (enabledPlayerList[unit.playerId] == true)
 end
 
 Hire.inPreExecute = true
@@ -54,7 +60,7 @@ function Hire:canExecuteWithTarget(unit, endPos, targetPos, strParam)
 
     if (Hire.inPreExecute) then
         local u = Wargroove.getUnitAt(targetPos)
-        return (u ~= nil) and (u.unitClassId == "villager") and not Wargroove.areEnemies(unit.playerId,u.playerId)
+        return (u ~= nil) and (u.unitClassId == "villager") and Wargroove.isNeutral(u.playerId)
     else
 
         -- Check if this player can recruit this type of unit

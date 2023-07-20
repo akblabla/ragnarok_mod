@@ -3,19 +3,19 @@
 unitClasses:
   - id: tavern
     name: structure_name_tavern
+    classIconSpritesheet: ui_RagnarokMod
     aiPriority: 3.0
     verbs:
       - recruit
-    cargoSpace: 1
     battleUnitCount: 1
     isStructure: true
     canReinforce: true
     canBeReinforced: false
-    hostileNeutral: true
+#    hostileNeutral: false
     damageMultiplier: 0
     movement: land_building
     garrisonUnit: ""
-    recruitTags: [type.ground.light, knight, rifleman]
+    recruitTags: [type.ground.light, type.ground.heavy]
     cost: 500
     tags:
       - structure

@@ -544,64 +544,7 @@ function Actions.forceAttack(context)
     local targets = context:gatherUnits(5, 3, 4)
     local unit = units[1]
     local target = targets[1]
-    if (unit == nil) or (target == nil) then
-        return
-    end
-    --- Telegraph
-    if unit.pos.x>target.pos.x then
-        -- spawnedUnit.startPos.facing = 1
-        -- spawnedUnit.pos.facing = 1
-        Wargroove.setFacingOverride(unit.id, "left")
-    elseif unit.pos.x<target.pos.x then
-        -- spawnedUnit.startPos.facing = 0
-        -- spawnedUnit.pos.facing = 0
-        Wargroove.setFacingOverride(unit.id, "right")
-    end
-    if (not Wargroove.isLocalPlayer(unit.playerId)) and Wargroove.canCurrentlySeeTile(target.pos) then
-        Wargroove.spawnMapAnimation(target.pos, 0, "ui/grid/selection_cursor", "target", "over_units", {x = -4, y = -4})
-        Wargroove.waitTime(0.5)
-    end
-    local originalPos = unit.pos
-    local dist = math.sqrt((target.pos.x-unit.pos.x)^2 + (target.pos.y-unit.pos.y)^2)
-    Wargroove.playMapSound("unitAttack",target.pos)
-    Wargroove.moveUnitToOverride(unit.id, unit.pos, 0.5*(target.pos.x-unit.pos.x)/dist, 0.5*(target.pos.y-unit.pos.y)/dist, 4)
-    while Wargroove.isLuaMoving(unit.id) do
-      coroutine.yield()
-    end
-    local results = Combat:solveCombat(unit.id, target.id, {originalPos}, "random")
-    unit:setHealth(results.attackerHealth,target.id)
-    if results.attackerHealth<= 0 then
-        Wargroove.playUnitDeathAnimation(unit.id)
-        if (unit.unitClass.isCommander) then
-            Wargroove.playMapSound("commanderDie", unit.pos)
-        end
-    end
-    
-    if target.health>results.defenderHealth then
-        Wargroove.playUnitAnimation(target.id,"hit")
-        Wargroove.playMapSound("hitOrganic",target.pos)
-    end
-    target:setHealth(results.defenderHealth,unit.id)
-    if results.defenderHealth<= 0 then
-        Wargroove.playUnitDeathAnimation(target.id)
-        if (target.unitClass.isCommander) then
-            Wargroove.playMapSound("commanderDie", target.pos)
-        end
-    end
-    --Wargroove.startCombat(unit, target, {unit.pos})
-    Wargroove.updateUnit(unit)
-    Wargroove.updateUnit(target)
-    Wargroove.moveUnitToOverride(unit.id, unit.pos, 0, 0, 4)
-    Wargroove.waitTime(1)
-    if results.attackerHealth<= 0 then
-        Wargroove.removeUnit(unit.id)
-    end
-    if results.defenderHealth<= 0 then
-        Wargroove.removeUnit(target.id)
-    end
-    Wargroove.unsetFacingOverride(unit.id)
-    Wargroove.setMetaLocationArea("last_move_path", {unit.pos})
-    Wargroove.setMetaLocation("last_unit", unit.pos)
+    Combat:forceAttack(unit, target)
 end
 
 function Actions.playAnimation(context)
@@ -735,15 +678,7 @@ function Actions.setHideAndSeek(context)
             local playerState = {key = "playerId", value = player}
             table.insert(startingState, playerState)
             local unitId = Wargroove.spawnUnit(-1,{x=-200+x,y=-200+y},"stealth_rules",false,"",startingState)
-            
-            local corners = Corners.getVisionCorner(player, {x=x,y=y})
-            local cornerName = Corners.getCornerName(corners)
-            if Corners.cornerList[unitId] ~= cornerName then
-                if (cornerName~=nil) and (cornerName ~= "") and (cornerName ~= "NE_NW_SE_SW") then
-                    Wargroove.displayBuffVisualEffectAtPosition(unitId, {x=x-1,y=y+100-1}, player, "units/LoSBorder/"..Corners.getCornerName(corners), "", 0.5, nil, nil, {x = 0, y = 0},true)
-                end
-                Corners.cornerList[unitId] = cornerName
-            end
+            Corners.update(Wargroove.getUnitById(unitId))
         end
     end
     for i,unit in ipairs(Wargroove.getUnitsAtLocation(nil)) do

@@ -73,9 +73,7 @@ function Attack.revertFlanked(context)
 		flankerId = nil
 	end
 end
-
 function Attack:onPostUpdateUnit(unit, targetPos, strParam, path)
-
 end
 
 function Attack:execute(unit, targetPos, strParam, path)
@@ -84,11 +82,29 @@ function Attack:execute(unit, targetPos, strParam, path)
         Wargroove.spawnMapAnimation(targetPos, 0, "ui/grid/selection_cursor", "target", "over_units", {x = -4, y = -4})
         Wargroove.waitTime(0.5)
     end
- 	local flanked = Wargroove.getUnitAt(targetPos)
-    Wargroove.startCombat(unit, flanked, path)
-	StealthManager.setLastKnownLocation(flanked.id, unit.pos)
-	StealthManager.makeAlerted(flanked)
-	StealthManager.spreadInfo(flanked)
+ 	local target = Wargroove.getUnitAt(targetPos)
+    print("startCombat")
+    --Wargroove.startCombat(unit,target, path)
+    local weapon = target.unitClass.weapons[1]
+	local isHighAlert = Wargroove.getUnitState(target, "high_alert")
+	if (isHighAlert ~= nil) and (isHighAlert ~= "false") then
+		isHighAlert = true
+	else
+		isHighAlert = false
+	end
+    if isHighAlert and self:canExecuteWithTarget(target, target.pos, unit.pos, strParam) and (weapon~=nil) and weapon.canMoveAndAttack then
+        Combat:startReverseCombat(unit,target, path)
+        target = Wargroove.getUnitAt(targetPos)
+        if target~=nil then
+            Wargroove.setUnitState(target,"high_alert","to_be_removed")
+            Wargroove.updateUnit(target)
+        end
+    else
+        Wargroove.startCombat(unit,target, path)
+    end
+	StealthManager.setLastKnownLocation(target.id, unit.pos)
+	StealthManager.makeAlerted(target)
+	StealthManager.spreadInfo(target)
 end
 
 

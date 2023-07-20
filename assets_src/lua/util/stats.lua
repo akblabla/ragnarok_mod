@@ -178,6 +178,16 @@ Stats.terrainCost = {
 		sailing = 1,
 		cantStop = {sailing = true}
 	},
+	bridge_wide = {
+		walking = 1,
+		riding = 1,
+		flying = 1,
+		hovering = 1,
+		wheels = 1,
+		amphibious = 1,
+		sailing = 1,
+		cantStop = {sailing = true}
+	},
 	sea = {
 		sailing = 1,
 		flying = 1,
@@ -185,6 +195,12 @@ Stats.terrainCost = {
 		amphibious = 1
 	},
 	sea_alt = {
+		sailing = 1,
+		flying = 1,
+		hovering = 1,
+		amphibious = 1
+	},
+	quay = {
 		sailing = 1,
 		flying = 1,
 		hovering = 1,
@@ -206,6 +222,13 @@ Stats.terrainCost = {
 		walking = 2,
 		riding = 4,
 		flying = 1,
+		hovering = 1,
+		amphibious = 1,
+		sailing = 1
+	},
+	cave_river = {
+		walking = 2,
+		riding = 4,
 		hovering = 1,
 		amphibious = 1,
 		sailing = 1

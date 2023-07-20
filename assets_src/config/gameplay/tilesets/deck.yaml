@@ -21,7 +21,7 @@ tilesets:
         infoScreenOffset: 70
         fillColour: '#76231c'
     primaryConnect: [undefined, invisible_wall_ocean,ocean,deck]
-    secondaryConnect: [sea_alt, quay,beach, ocean, reef, bridge]
+    secondaryConnect: [sea_alt, quay,beach, ocean, reef, bridge_wide, bridge]
     decayTo: sea_alt
     tiles:
       - { x: 0, y: 0, adj: "e s se !n !w !nw" }

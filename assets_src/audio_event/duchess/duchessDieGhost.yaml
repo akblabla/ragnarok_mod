@@ -4,5 +4,5 @@ actions:
     clips: [ sfx/unitDie.ogg ]
     group: sfx
     volume: 0.4
-    delay: 1.0
+    delay: 0.2
 ...

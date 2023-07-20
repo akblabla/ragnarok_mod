@@ -3,6 +3,7 @@ local WargrooveExtra = require "initialized/wargroove_extra"
 
 
 
+
 local Ragnarok = {}
 Ragnarok.seaTiles = {"sea","sea_alt", "ocean","reef","cave_sea", "cave_reef","cave_reef","reef_no_hiding"}
 Ragnarok.amphibiousTiles = {"river", "cave_river", "beach", "cave_beach", "mangrove"}
@@ -708,5 +709,6 @@ function dump(o,level)
       return tostring(o)
    end
 end
+
 
 return Ragnarok

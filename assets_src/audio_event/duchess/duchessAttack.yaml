@@ -28,11 +28,11 @@ actions:
     delay: 2.6
     
   - type: play
-    clips: [ sfx/vesper/vesperSighAnnoyed.ogg  ]
+    clips: [ sfx/tenri/tenriHmph.ogg ]
     volume: 1
-    pitch: 0.9
+    pitch: 1
     group: voice
-    delay: 2.39
+    delay: 2.65
     
   - type: play
     clips: [ sfx/clothMovement1.ogg, sfx/clothMovement2.ogg, sfx/clothMovement3.ogg, sfx/clothMovement4.ogg, sfx/clothMovement5.ogg  ]

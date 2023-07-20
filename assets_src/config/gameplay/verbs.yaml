@@ -8,7 +8,6 @@ verbs:
     targetOutlineColour: target_outline
     targetted: false
     aiUses: true
-    universal: true
     scriptName: verbs/wait_ai
 
   - id: healing_potion
@@ -170,4 +169,25 @@ verbs:
     targetted: true
     directTarget: true
     scriptName: verbs/groove_golf_v2
+    
+  - id: groove_confusion
+    icon: ui/icons/grooves/unit_action_icon_hammer.png
+    name: groove_name_morale_boost
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetDisplayColour: target
+    targetDisplayOutlineColour: target_outline
+    targetted: true
+    directTarget: true
+    scriptName: verbs/groove_confusion
+    
+  - id: groove_morale_boost
+    icon: ui/icons/grooves/unit_action_icon_inspire.png
+    name: groove_name_morale_boost
+    targetColour: target
+    targetOutlineColour: target_outline
+    splashOutlineColour: heal_outline
+    targetted: true
+    splashRadius: 2
+    scriptName: verbs/groove_morale_boost
 ...

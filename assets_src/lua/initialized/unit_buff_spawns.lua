@@ -83,16 +83,6 @@ function BuffSpawns.area_damage(Wargroove, unit)
     end
 end
 
--- function BuffSpawns.stealth_rules(Wargroove, unit)
---     local corners = Corners.getVisionCorner(unit.playerId, {x=200+unit.pos.x,y=200+unit.pos.y})
---     local cornerName = Corners.getCornerName(corners)
---     if Corners.cornerList[unit.id] ~= cornerName then
---         if (cornerName~=nil) and (cornerName ~= "") and (cornerName ~= "NE_NW_SE_SW") then
---             Wargroove.displayBuffVisualEffectAtPosition(unit.id, {x=unit.pos.x+200-1,y=unit.pos.y+300-1}, unit.playerId, "units/LoSBorder/"..Corners.getCornerName(corners), "", 0.5, nil, "units", {x = 0, y = 0},true)
---         end
---         Corners.cornerList[unit.id] = cornerName
---     end
--- end
 function UnitBuffSpawns:getBuffSpawns()
     return BuffSpawns
 end

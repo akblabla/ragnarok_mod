@@ -1,7 +1,0 @@
----
-actions:
-  - type: play
-    clips: [ sfx/vesper/vesperNoUpset.ogg ]
-    pitch: 0.9
-    group: voice
-...

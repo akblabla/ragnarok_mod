@@ -7,6 +7,7 @@ unitClasses:
     cargoSpace: 1
     battleUnitCount: 1
     isStructure: true
+    hostileNeutral: true
     canReinforce: false
     canBeReinforced: false
     damageMultiplier: 0.5

@@ -1,8 +1,0 @@
----
-actions:
-  - type: play
-    clips: [ sfx/vesper/vesperCommanderRyota.ogg ]
-    
-    pitch: 0.9
-    group: voice
-...

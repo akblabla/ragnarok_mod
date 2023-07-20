@@ -1,0 +1,6 @@
+---
+- data:
+    tileWidth: 24
+    tileHeight: 24
+    atlas: snow_bridge_terrain_tilesets
+...

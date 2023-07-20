@@ -24,7 +24,7 @@ tilesets:
         iconSprite: terrain_icons_Ocean
         infoScreenOffset: 70
         fillColour: '#76231c'
-    primaryConnect: [undefined, sea, bridge, beach, ocean, river]
+    primaryConnect: [undefined, sea, bridge, bridge_wide, beach, ocean, river]
     decayTo: plains
     tiles:
       - { x: 0, y: 0, adj: "e se s" }

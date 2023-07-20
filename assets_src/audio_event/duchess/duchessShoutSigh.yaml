@@ -1,7 +1,6 @@
 ---
 actions:
   - type: play
-    clips: [ sfx/vesper/vesperSigh.ogg ]
-    pitch: 0.9
+    clips: [ sfx/tenri/tenriSigh.ogg ]
     group: voice
 ...

@@ -1,6 +1,25 @@
 ---
 
 commanders:
+  - id: duchess
+    name: character_duchess_name
+    title: character_duchess_title
+    playable: true
+    faction: cherrystone
+    factionIndex: 3
+    portrait:
+      neutral: portraits/commanders/small/duchess_portrait_small.png
+      happy: portraits/commanders/small/duchess_portrait_happy.png
+      sad: portraits/commanders/small/duchess_portrait_sad.png
+    cutscenePortrait: portraits/commanders/big/duchess_portrait
+    portraitOffset: [0, -15]
+    namePlate: ui/character_select/charlabel/charlabel_cherrystone.png
+    themeSong: music/hostile
+    skinColour: typeVI
+    unitClassId: commander_duchess
+    selectionSound: duchess/duchessShoutIllMakeThisQuick
+    dialogueBoxVoice: ui/dialogue/textScrollTenri
+
   - id: rival
     name: character_flagship_rival_name
     title: character_flagship_rival_title
@@ -31,21 +50,6 @@ commanders:
     themeSong: music/hostile
     skinColour: typeII
     unitClassId: commander_flagship_rival
-    dialogueBoxVoice: ui/dialogue/textScroll
-
-  - id: duchess
-    name: character_duchess_name
-    title: character_duchess_title
-    faction: cherrystone
-    portrait:
-      neutral: portraits/commanders/small/rival_portrait_small.png
-      happy: portraits/commanders/small/rival_portrait_small.png
-      sad: portraits/commanders/small/rival_portrait_small.png
-    cutscenePortrait: portraits/commanders/big/outlaw_portrait
-    portraitOffset: [0, 20]
-    themeSong: music/hostile
-    skinColour: typeII
-    unitClassId: commander_duchess
     dialogueBoxVoice: ui/dialogue/textScroll
 
   - id: generic_soldier

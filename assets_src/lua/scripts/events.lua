@@ -48,6 +48,7 @@ local triggerContext = TriggerContext:new({
     campaignFlags = {},    
     mapFlags = {},
     mapCounters = {},
+    scriptGlobals = {},
     party = {},
     campaignCutscenes = {},
     creditsToPlay = ""
@@ -77,6 +78,7 @@ function Events.startSession(matchState)
     readVariables("mapFlags")
     readVariables("mapCounters")
     readVariables("campaignFlags")
+    readVariables("scriptGlobals")
 
     for i, var in ipairs(matchState.triggersFired) do
         triggerContext.fired[var] = true
@@ -110,6 +112,7 @@ function Events.getMatchState()
     writeVariables("mapFlags")
     writeVariables("mapCounters")
     writeVariables("campaignFlags")
+    writeVariables("scriptGlobals")
 
     result.triggersFired = {}
     for k, v in pairs(triggerContext.fired) do

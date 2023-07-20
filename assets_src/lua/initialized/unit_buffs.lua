@@ -1,4 +1,5 @@
 local Wargroove = require "wargroove/wargroove"
+local Ragnarok = require "initialized/ragnarok"
 local OldBuffs = require "wargroove/unit_buffs"
 local VisionTracker = require "initialized/vision_tracker"
 local Corners = require "scripts/corners"
@@ -18,11 +19,29 @@ local function dump(o,level)
 
 local Buffs = {}
 local UnitBuffs = {}
+local highAlertAnimation = "ui/icons/high_alert"
+local function resetHighAlert(context)
+    if (context:checkState("startOfTurn")) then
+        for i,unit in pairs(Wargroove.getUnitsAtLocation()) do
+            local highAlert = Wargroove.getUnitState(unit,"high_alert")
+            if unit.playerId == Wargroove.getCurrentPlayerId() and (highAlert~=nil) and (highAlert == "true") then
+                Wargroove.setUnitState(unit, "high_alert", "false")
+                Wargroove.updateUnit(unit)
+                Wargroove.highAlertBuff(unit)
+            end
+        end
+    end
+end
+
+
 function Buffs.init()
+    Ragnarok.addAction(resetHighAlert,"repeating",false)
     OldBuffs.getBuffs = UnitBuffs.getBuffs
 end
 
 local ClearBuffs = {}
+
+
 
 function Buffs.crystal(Wargroove, unit)
     if Wargroove.isSimulating() then
@@ -231,16 +250,7 @@ function Buffs.thief_with_gold(Wargroove, unit)
 end
 function Buffs.stealth_rules(Wargroove, unit)
     if (not Wargroove.isSimulating()) then
-        local playerId = tonumber(Wargroove.getUnitState(unit, "playerId"))
-        local corners = Corners.getVisionCorner(playerId, {x=200+unit.pos.x,y=200+unit.pos.y})
-        local cornerName = Corners.getCornerName(corners)
-        if Corners.cornerList[unit.id] ~= cornerName then
-            Wargroove.clearBuffVisualEffect(unit.id)
-            if (cornerName~=nil) and (cornerName ~= "") and (cornerName ~= "NE_NW_SE_SW") then
-                Wargroove.displayBuffVisualEffectAtPosition(unit.id, {x=unit.pos.x+200-1,y=unit.pos.y+300-1}, playerId, "units/LoSBorder/"..Corners.getCornerName(corners), "", 0.5, nil, nil, {x = 0, y = 0},true)
-            end
-            Corners.cornerList[unit.id] = cornerName
-        end
+        Corners.update(unit)
     end
 end
 function Buffs.fog(Wargroove, unit)

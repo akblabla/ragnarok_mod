@@ -146,7 +146,7 @@ en-GB:
 
   trigger_action_name_set_hide_and_seek_bravery: "Stealth: Set Bravery"
   trigger_action_description_set_hide_and_seek_bravery: "Set Bravery."
-  trigger_action_readable_set_hide_and_seek_bravery: "Is hide and seek rules for player {1} enabled {0}"
+  trigger_action_readable_set_hide_and_seek_bravery: "Set hide and seek bravery for player {1} to {0}"
 
   trigger_action_name_limit_bounds: "Map: Limit Bounds"
   trigger_action_description_limit_bounds: "Limit Bounds."

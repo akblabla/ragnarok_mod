@@ -60,6 +60,10 @@ weather:
         operation: Subtract
         value: 1
         tags: [type.ground.light, type.ground.heavy, type.sea, type.air, type.amphibious]
+      - stat: SightRange
+        operation: Add
+        value: 1
+        tags: [type.scout]
 
   - id: sandstorm
     iconSpriteSheet: ui

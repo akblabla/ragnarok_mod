@@ -1,24 +1,79 @@
 local OldWargroove = require "wargroove/wargroove"
+local UnitPostCombat = require "wargroove/unit_post_combat"
 --local VisionTracker = require "initialized/vision_tracker"
 
 local WargrooveExtra = {}
-local originalGetMapTriggers = {}
--- local originalSpawnUnit= {}
--- local originalUpdateUnit= {}
+local originalGetMapTriggers
+local originalApplyBuffs
+local originalDoPostCombat
 function WargrooveExtra.init()
 	originalGetMapTriggers = OldWargroove.getMapTriggers
 	OldWargroove.getMapTriggers = WargrooveExtra.getMapTriggers
 --	OldWargroove.waitTime = WargrooveExtra.waitTime
 	
-	-- originalSpawnUnit = OldWargroove.spawnUnit
-	-- OldWargroove.spawnUnit = WargrooveExtra.spawnUnit
+	originalApplyBuffs = OldWargroove.applyBuffs
+	OldWargroove.applyBuffs = WargrooveExtra.applyBuffs
+
+	OldWargroove.highAlertBuff = WargrooveExtra.highAlertBuff
 	
-	-- originalUpdateUnit = OldWargroove.updateUnit
-	-- OldWargroove.updateUnit = WargrooveExtra.updateUnit
+	originalDoPostCombat= OldWargroove.doPostCombat
+	OldWargroove.doPostCombat = WargrooveExtra.doPostCombat
 end
 
 local hiddenTriggersStart = {}
 local hiddenTriggersEnd = {}
+
+local highAlertAnimation = "ui/icons/high_alert"
+local highAlertEntity = {}
+function WargrooveExtra:doPostCombat(unitId, isAttacker)
+    local unit = OldWargroove.getUnitById(unitId)
+    if unit == nil then
+        return
+    end
+
+    local postCombat = UnitPostCombat:getPostCombat(unit.unitClassId)
+    if (postCombat ~= nil) then
+        postCombat(OldWargroove, unit, isAttacker)
+    end
+	local postCombatGeneric = UnitPostCombat:getPostCombatGeneric()
+	for i,method in pairs(postCombatGeneric) do
+		method(OldWargroove, unit, isAttacker)
+	end
+end
+
+function WargrooveExtra.highAlertBuff(unit)
+
+    if OldWargroove.isSimulating() then
+        return
+    end
+	if (OldWargroove.getUnitState(unit, "high_alert") == nil) then
+        OldWargroove.setUnitState(unit, "high_alert", "false")
+        OldWargroove.updateUnit(unit)
+    end
+	local isHighAlert = OldWargroove.getUnitState(unit, "high_alert")
+	if (isHighAlert ~= nil) and (isHighAlert ~= "false") then
+		isHighAlert = true
+	else
+		isHighAlert = false
+	end
+	if (isHighAlert) then
+		if not OldWargroove.hasUnitEffect(unit.id, highAlertAnimation) then
+			print("spawning en garde passively")
+			highAlertEntity[unit.id] = OldWargroove.spawnUnitEffect(unit.id, highAlertAnimation, "idle", "spawn", true, false)
+		end
+	elseif OldWargroove.hasUnitEffect(unit.id, highAlertAnimation)  then
+		print("despawning en garde passively")
+		OldWargroove.deleteUnitEffect(highAlertEntity[unit.id], "death")
+	end
+end
+
+function WargrooveExtra.applyBuffs()
+	for i,id in pairs(OldWargroove.getAllUnitIds()) do
+		local unit = OldWargroove.getUnitById(id)
+		WargrooveExtra.highAlertBuff(unit)
+	end
+    originalApplyBuffs()
+end
 
 function WargrooveExtra.addHiddenTrigger(trigger, atEnd)
 	if atEnd == true then

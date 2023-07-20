@@ -226,6 +226,20 @@ decorations:
     snapOffset: [12, 18]
     animation:
       undefined: decoration/unit/building02
+      
+  - id: richBuilding01
+    layer: units
+    snapToGrid: true
+    snapOffset: [12, 18]
+    animation:
+      undefined: decoration/unit/richBuilding01
+
+  - id: richBuilding02
+    layer: units
+    snapToGrid: true
+    snapOffset: [12, 18]
+    animation:
+      undefined: decoration/unit/richBuilding02
 
 #Normal Deco
   - id: orangeField

@@ -2,12 +2,12 @@
 tilesets:
   - id: bridge
     biomes:
-      - types: [grass,tropical]
-        spriteSheet: bridge_terrain_tilesets
-        spriteBase: grass_bridge_tileset2_bg
-        foregroundSpriteBase: grass_bridge_tileset2_fg
+      - types: [grass, tropical]
+        spriteSheet: tilesets
+        spriteBase: bridge_tileset_000
+        foregroundSpriteBase: bridge_tileset_001
         foregroundBaseLine: 18
-        waterSpriteBase: bridge_tileset2_water
+        waterSpriteBase: bridge_tileset_002
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_bridge
         battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
@@ -18,11 +18,11 @@ tilesets:
         infoScreenOffset: 75
         fillColour: '#2a2542'
       - types: [ice]
-        spriteSheet: bridge_terrain_tilesets
-        spriteBase: snow_bridge_tileset2_bg
-        foregroundSpriteBase: snow_bridge_tileset2_fg
+        spriteSheet: tilesets
+        spriteBase: snow_bridge_tileset_000
+        foregroundSpriteBase: snow_bridge_tileset_001
         foregroundBaseLine: 18
-        waterSpriteBase: bridge_tileset2_water
+        waterSpriteBase: snow_bridge_tileset_002
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_snow_bridge
         battleBackgroundSpriteSheet: backgrounds/snow_battlescreen_extendedbackgrounds
@@ -33,11 +33,11 @@ tilesets:
         infoScreenOffset: 75
         fillColour: '#2a2542'
       - types: [desert]
-        spriteSheet: bridge_terrain_tilesets
-        spriteBase: sand_bridge_tileset2_bg
-        foregroundSpriteBase: sand_bridge_tileset2_fg
+        spriteSheet: tilesets
+        spriteBase: sand_bridge_tileset_000
+        foregroundSpriteBase: sand_bridge_tileset_001
         foregroundBaseLine: 18
-        waterSpriteBase: bridge_tileset2_water
+        waterSpriteBase: sand_bridge_tileset_002
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_sand_bridge
         battleBackgroundSpriteSheet: backgrounds/sand_battlescreen_extendedbackgrounds
@@ -48,11 +48,11 @@ tilesets:
         infoScreenOffset: 75
         fillColour: '#2a2542'
       - types: [volcano]
-        spriteSheet: bridge_terrain_tilesets
-        spriteBase: grass_bridge_tileset2_bg
-        foregroundSpriteBase: grass_bridge_tileset2_fg
+        spriteSheet: tilesets
+        spriteBase: volcanic_bridge_tileset_000
+        foregroundSpriteBase: volcanic_bridge_tileset_001
         foregroundBaseLine: 18
-        waterSpriteBase: bridge_tileset2_water
+        waterSpriteBase: volcanic_bridge_tileset_002
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_volcanic_bridge
         battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
@@ -62,314 +62,37 @@ tilesets:
         iconSprite: terrain_icons_Bridge
         infoScreenOffset: 75
         fillColour: '#2a2542'
-    primaryConnect: [undefined, bridge]
+    primaryConnect: [undefined, bridge, bridge_wide]
     secondaryConnect: [road, cave_road, street, plains, rough, plains_alt, cave_wall, forest, forest_invis, forest_no_hiding, forest_alt, forest_alt_no_hiding, brush, brush_invis, mountain, wall, wall_no_blocking, cobblestone, carpet]
     decayTo: ":below"
     tiles:
-      - { x: 0, y: 0, adj: "" }
-      - { x: 1, y: 0, adj: "s " }
-      - { x: 2, y: 0, adj: "!s " }
-      - { x: 3, y: 0, adj: "e " }
-      - { x: 4, y: 0, adj: "e s " }
-      - { x: 5, y: 0, adj: "e se s " }
-      - { x: 6, y: 0, adj: "e !s " }
-      - { x: 7, y: 0, adj: "e !se !s " }
-      - { x: 8, y: 0, adj: "!e " }
-      - { x: 9, y: 0, adj: "!e s " }
-      - { x: 10, y: 0, adj: "!e !se s " }
-      - { x: 11, y: 0, adj: "!e !s " }
-      - { x: 12, y: 0, adj: "n " }
-      - { x: 13, y: 0, adj: "n s " }
-      - { x: 14, y: 0, adj: "n !s " }
-      - { x: 15, y: 0, adj: "e n " }
-      - { x: 16, y: 0, adj: "e n ne " }
-      - { x: 17, y: 0, adj: "e n s " }
-      - { x: 18, y: 0, adj: "e n se s " }
-      - { x: 19, y: 0, adj: "e n ne s " }
-      - { x: 0, y: 1, adj: "e n ne se s " }
-      - { x: 1, y: 1, adj: "e n !s " }
-      - { x: 2, y: 1, adj: "e n !se !s " }
-      - { x: 3, y: 1, adj: "e n ne !s " }
-      - { x: 4, y: 1, adj: "e n ne !se !s " }
-      - { x: 5, y: 1, adj: "!e n " }
-      - { x: 6, y: 1, adj: "!e n !ne " }
-      - { x: 7, y: 1, adj: "!e n s " }
-      - { x: 8, y: 1, adj: "!e n !se s " }
-      - { x: 9, y: 1, adj: "!e n !ne s " }
-      - { x: 10, y: 1, adj: "!e n !ne !se s " }
-      - { x: 11, y: 1, adj: "!e n !s " }
-      - { x: 12, y: 1, adj: "!e n !ne !s " }
-      - { x: 13, y: 1, adj: "!n " }
-      - { x: 14, y: 1, adj: "!n s " }
-      - { x: 15, y: 1, adj: "!n !s " }
-      - { x: 16, y: 1, adj: "e !n " }
-      - { x: 17, y: 1, adj: "e !n !ne " }
-      - { x: 18, y: 1, adj: "e !n s " }
-      - { x: 19, y: 1, adj: "e !n se s " }
-      - { x: 0, y: 2, adj: "e !n !ne s " }
-      - { x: 1, y: 2, adj: "e !n !ne se s " }
-      - { x: 2, y: 2, adj: "e !n !s " }
-      - { x: 3, y: 2, adj: "e !n !se !s " }
-      - { x: 4, y: 2, adj: "e !n !ne !s " }
-      - { x: 5, y: 2, adj: "e !n !ne !se !s " }
-      - { x: 6, y: 2, adj: "!e !n " }
-      - { x: 7, y: 2, adj: "!e !n s " }
-      - { x: 8, y: 2, adj: "!e !n !se s " }
-      - { x: 9, y: 2, adj: "!e !n !s " }
-      - { x: 10, y: 2, adj: "w " }
-      - { x: 11, y: 2, adj: "w s " }
-      - { x: 12, y: 2, adj: "sw w s " }
-      - { x: 13, y: 2, adj: "w !s " }
-      - { x: 14, y: 2, adj: "!sw w !s " }
-      - { x: 15, y: 2, adj: "e w " }
-      - { x: 16, y: 2, adj: "e w s " }
-      - { x: 17, y: 2, adj: "e sw w s " }
-      - { x: 18, y: 2, adj: "e w se s " }
-      - { x: 19, y: 2, adj: "e sw w se s " }
-      - { x: 0, y: 3, adj: "e w !s " }
-      - { x: 1, y: 3, adj: "e !sw w !s " }
-      - { x: 2, y: 3, adj: "e w !se !s " }
-      - { x: 3, y: 3, adj: "e !sw w !se !s " }
-      - { x: 4, y: 3, adj: "!e w " }
-      - { x: 5, y: 3, adj: "!e w s " }
-      - { x: 6, y: 3, adj: "!e sw w s " }
-      - { x: 7, y: 3, adj: "!e w !se s " }
-      - { x: 8, y: 3, adj: "!e sw w !se s " }
-      - { x: 9, y: 3, adj: "!e w !s " }
-      - { x: 10, y: 3, adj: "!e !sw w !s " }
-      - { x: 11, y: 3, adj: "n w " }
-      - { x: 12, y: 3, adj: "n w nw " }
-      - { x: 13, y: 3, adj: "n w s " }
-      - { x: 14, y: 3, adj: "sw n w s " }
-      - { x: 15, y: 3, adj: "n w nw s " }
-      - { x: 16, y: 3, adj: "sw n w nw s " }
-      - { x: 17, y: 3, adj: "n w !s " }
-      - { x: 18, y: 3, adj: "!sw n w !s " }
-      - { x: 19, y: 3, adj: "n w nw !s " }
-      - { x: 0, y: 4, adj: "!sw n w nw !s " }
-      - { x: 1, y: 4, adj: "e n w " }
-      - { x: 2, y: 4, adj: "e n w ne " }
-      - { x: 3, y: 4, adj: "e n w nw " }
-      - { x: 4, y: 4, adj: "e n w nw ne " }
-      - { x: 5, y: 4, adj: "e n w s " }
-      - { x: 6, y: 4, adj: "e sw n w s " }
-      - { x: 7, y: 4, adj: "e n w se s " }
-      - { x: 8, y: 4, adj: "e sw n w se s " }
-      - { x: 9, y: 4, adj: "e n w ne s " }
-      - { x: 10, y: 4, adj: "e sw n w ne s " }
-      - { x: 11, y: 4, adj: "e n w ne se s " }
-      - { x: 12, y: 4, adj: "e sw n w ne se s " }
-      - { x: 13, y: 4, adj: "e n w nw s " }
-      - { x: 14, y: 4, adj: "e sw n w nw s " }
-      - { x: 15, y: 4, adj: "e n w nw se s " }
-      - { x: 16, y: 4, adj: "e sw n w nw se s " }
-      - { x: 17, y: 4, adj: "e n w nw ne s " }
-      - { x: 18, y: 4, adj: "e sw n w nw ne s " }
-      - { x: 19, y: 4, adj: "e n w nw ne se s " }
-      - { x: 0, y: 5, adj: "e sw n w nw ne se s " }
-      - { x: 1, y: 5, adj: "e n w !s " }
-      - { x: 2, y: 5, adj: "e !sw n w !s " }
-      - { x: 3, y: 5, adj: "e n w !se !s " }
-      - { x: 4, y: 5, adj: "e !sw n w !se !s " }
-      - { x: 5, y: 5, adj: "e n w ne !s " }
-      - { x: 6, y: 5, adj: "e !sw n w ne !s " }
-      - { x: 7, y: 5, adj: "e n w ne !se !s " }
-      - { x: 8, y: 5, adj: "e !sw n w ne !se !s " }
-      - { x: 9, y: 5, adj: "e n w nw !s " }
-      - { x: 10, y: 5, adj: "e !sw n w nw !s " }
-      - { x: 11, y: 5, adj: "e n w nw !se !s " }
-      - { x: 12, y: 5, adj: "e !sw n w nw !se !s " }
-      - { x: 13, y: 5, adj: "e n w nw ne !s " }
-      - { x: 14, y: 5, adj: "e !sw n w nw ne !s " }
-      - { x: 15, y: 5, adj: "e n w nw ne !se !s " }
-      - { x: 16, y: 5, adj: "e !sw n w nw ne !se !s " }
-      - { x: 17, y: 5, adj: "!e n w " }
-      - { x: 18, y: 5, adj: "!e n w !ne " }
-      - { x: 19, y: 5, adj: "!e n w nw " }
-      - { x: 0, y: 6, adj: "!e n w nw !ne " }
-      - { x: 1, y: 6, adj: "!e n w s " }
-      - { x: 2, y: 6, adj: "!e sw n w s " }
-      - { x: 3, y: 6, adj: "!e n w !se s " }
-      - { x: 4, y: 6, adj: "!e sw n w !se s " }
-      - { x: 5, y: 6, adj: "!e n w !ne s " }
-      - { x: 6, y: 6, adj: "!e sw n w !ne s " }
-      - { x: 7, y: 6, adj: "!e n w !ne !se s " }
-      - { x: 8, y: 6, adj: "!e sw n w !ne !se s " }
-      - { x: 9, y: 6, adj: "!e n w nw s " }
-      - { x: 10, y: 6, adj: "!e sw n w nw s " }
-      - { x: 11, y: 6, adj: "!e n w nw !se s " }
-      - { x: 12, y: 6, adj: "!e sw n w nw !se s " }
-      - { x: 13, y: 6, adj: "!e n w nw !ne s " }
-      - { x: 14, y: 6, adj: "!e sw n w nw !ne s " }
-      - { x: 15, y: 6, adj: "!e n w nw !ne !se s " }
-      - { x: 16, y: 6, adj: "!e sw n w nw !ne !se s " }
-      - { x: 17, y: 6, adj: "!e n w !s " }
-      - { x: 18, y: 6, adj: "!e !sw n w !s " }
-      - { x: 19, y: 6, adj: "!e n w !ne !s " }
-      - { x: 0, y: 7, adj: "!e !sw n w !ne !s " }
-      - { x: 1, y: 7, adj: "!e n w nw !s " }
-      - { x: 2, y: 7, adj: "!e !sw n w nw !s " }
-      - { x: 3, y: 7, adj: "!e n w nw !ne !s " }
-      - { x: 4, y: 7, adj: "!e !sw n w nw !ne !s " }
-      - { x: 5, y: 7, adj: "!n w " }
-      - { x: 6, y: 7, adj: "!n w !nw " }
-      - { x: 7, y: 7, adj: "!n w s " }
-      - { x: 8, y: 7, adj: "sw !n w s " }
-      - { x: 9, y: 7, adj: "!n w !nw s " }
-      - { x: 10, y: 7, adj: "sw !n w !nw s " }
-      - { x: 11, y: 7, adj: "!n w !s " }
-      - { x: 12, y: 7, adj: "!sw !n w !s " }
-      - { x: 13, y: 7, adj: "!n w !nw !s " }
-      - { x: 14, y: 7, adj: "!sw !n w !nw !s " }
-      - { x: 15, y: 7, adj: "e !n w " }
-      - { x: 16, y: 7, adj: "e !n w !ne " }
-      - { x: 17, y: 7, adj: "e !n w !nw " }
-      - { x: 18, y: 7, adj: "e !n w !nw !ne " }
-      - { x: 19, y: 7, adj: "e !n w s " }
-      - { x: 0, y: 8, adj: "e sw !n w s " }
-      - { x: 1, y: 8, adj: "e !n w se s " }
-      - { x: 2, y: 8, adj: "e sw !n w se s " }
-      - { x: 3, y: 8, adj: "e !n w !ne s " }
-      - { x: 4, y: 8, adj: "e sw !n w !ne s " }
-      - { x: 5, y: 8, adj: "e !n w !ne se s " }
-      - { x: 6, y: 8, adj: "e sw !n w !ne se s " }
-      - { x: 7, y: 8, adj: "e !n w !nw s " }
-      - { x: 8, y: 8, adj: "e sw !n w !nw s " }
-      - { x: 9, y: 8, adj: "e !n w !nw se s " }
-      - { x: 10, y: 8, adj: "e sw !n w !nw se s " }
-      - { x: 11, y: 8, adj: "e !n w !nw !ne s " }
-      - { x: 12, y: 8, adj: "e sw !n w !nw !ne s " }
-      - { x: 13, y: 8, adj: "e !n w !nw !ne se s " }
-      - { x: 14, y: 8, adj: "e sw !n w !nw !ne se s " }
-      - { x: 15, y: 8, adj: "e !n w !s " }
-      - { x: 16, y: 8, adj: "e !sw !n w !s " }
-      - { x: 17, y: 8, adj: "e !n w !se !s " }
-      - { x: 18, y: 8, adj: "e !sw !n w !se !s " }
-      - { x: 19, y: 8, adj: "e !n w !ne !s " }
-      - { x: 0, y: 9, adj: "e !sw !n w !ne !s " }
-      - { x: 1, y: 9, adj: "e !n w !ne !se !s " }
-      - { x: 2, y: 9, adj: "e !sw !n w !ne !se !s " }
-      - { x: 3, y: 9, adj: "e !n w !nw !s " }
-      - { x: 4, y: 9, adj: "e !sw !n w !nw !s " }
-      - { x: 5, y: 9, adj: "e !n w !nw !se !s " }
-      - { x: 6, y: 9, adj: "e !sw !n w !nw !se !s " }
-      - { x: 7, y: 9, adj: "e !n w !nw !ne !s " }
-      - { x: 8, y: 9, adj: "e !sw !n w !nw !ne !s " }
-      - { x: 9, y: 9, adj: "e !n w !nw !ne !se !s " }
-      - { x: 10, y: 9, adj: "e !sw !n w !nw !ne !se !s " }
-      - { x: 11, y: 9, adj: "!e !n w " }
-      - { x: 12, y: 9, adj: "!e !n w !nw " }
-      - { x: 13, y: 9, adj: "!e !n w s " }
-      - { x: 14, y: 9, adj: "!e sw !n w s " }
-      - { x: 15, y: 9, adj: "!e !n w !se s " }
-      - { x: 16, y: 9, adj: "!e sw !n w !se s " }
-      - { x: 17, y: 9, adj: "!e !n w !nw s " }
-      - { x: 18, y: 9, adj: "!e sw !n w !nw s " }
-      - { x: 19, y: 9, adj: "!e !n w !nw !se s " }
-      - { x: 0, y: 10, adj: "!e sw !n w !nw !se s " }
-      - { x: 1, y: 10, adj: "!e !n w !s " }
-      - { x: 2, y: 10, adj: "!e !sw !n w !s " }
-      - { x: 3, y: 10, adj: "!e !n w !nw !s " }
-      - { x: 4, y: 10, adj: "!e !sw !n w !nw !s " }
-      - { x: 5, y: 10, adj: "!w " }
-      - { x: 6, y: 10, adj: "!w s " }
-      - { x: 7, y: 10, adj: "!sw !w s " }
-      - { x: 8, y: 10, adj: "!w !s " }
-      - { x: 9, y: 10, adj: "e !w " }
-      - { x: 10, y: 10, adj: "e !w s " }
-      - { x: 11, y: 10, adj: "e !sw !w s " }
-      - { x: 12, y: 10, adj: "e !w se s " }
-      - { x: 13, y: 10, adj: "e !sw !w se s " }
-      - { x: 14, y: 10, adj: "e !w !s " }
-      - { x: 15, y: 10, adj: "e !w !se !s " }
-      - { x: 16, y: 10, adj: "!e !w " }
-      - { x: 17, y: 10, adj: "!e !w s " }
-      - { x: 18, y: 10, adj: "!e !sw !w s " }
-      - { x: 19, y: 10, adj: "!e !w !se s " }
-      - { x: 0, y: 11, adj: "!e !sw !w !se s " }
-      - { x: 1, y: 11, adj: "!e !w !s " }
-      - { x: 2, y: 11, adj: "n !w " }
-      - { x: 3, y: 11, adj: "n !w !nw " }
-      - { x: 4, y: 11, adj: "n !w s " }
-      - { x: 5, y: 11, adj: "!sw n !w s " }
-      - { x: 6, y: 11, adj: "n !w !nw s " }
-      - { x: 7, y: 11, adj: "!sw n !w !nw s " }
-      - { x: 8, y: 11, adj: "n !w !s " }
-      - { x: 9, y: 11, adj: "n !w !nw !s " }
-      - { x: 10, y: 11, adj: "e n !w " }
-      - { x: 11, y: 11, adj: "e n !w ne " }
-      - { x: 12, y: 11, adj: "e n !w !nw " }
-      - { x: 13, y: 11, adj: "e n !w !nw ne " }
-      - { x: 14, y: 11, adj: "e n !w s " }
-      - { x: 15, y: 11, adj: "e !sw n !w s " }
-      - { x: 16, y: 11, adj: "e n !w se s " }
-      - { x: 17, y: 11, adj: "e !sw n !w se s " }
-      - { x: 18, y: 11, adj: "e n !w ne s " }
-      - { x: 19, y: 11, adj: "e !sw n !w ne s " }
-      - { x: 0, y: 12, adj: "e n !w ne se s " }
-      - { x: 1, y: 12, adj: "e !sw n !w ne se s " }
-      - { x: 2, y: 12, adj: "e n !w !nw s " }
-      - { x: 3, y: 12, adj: "e !sw n !w !nw s " }
-      - { x: 4, y: 12, adj: "e n !w !nw se s " }
-      - { x: 5, y: 12, adj: "e !sw n !w !nw se s " }
-      - { x: 6, y: 12, adj: "e n !w !nw ne s " }
-      - { x: 7, y: 12, adj: "e !sw n !w !nw ne s " }
-      - { x: 8, y: 12, adj: "e n !w !nw ne se s " }
-      - { x: 9, y: 12, adj: "e !sw n !w !nw ne se s " }
-      - { x: 10, y: 12, adj: "e n !w !s " }
-      - { x: 11, y: 12, adj: "e n !w !se !s " }
-      - { x: 12, y: 12, adj: "e n !w ne !s " }
-      - { x: 13, y: 12, adj: "e n !w ne !se !s " }
-      - { x: 14, y: 12, adj: "e n !w !nw !s " }
-      - { x: 15, y: 12, adj: "e n !w !nw !se !s " }
-      - { x: 16, y: 12, adj: "e n !w !nw ne !s " }
-      - { x: 17, y: 12, adj: "e n !w !nw ne !se !s " }
-      - { x: 18, y: 12, adj: "!e n !w " }
-      - { x: 19, y: 12, adj: "!e n !w !ne " }
-      - { x: 0, y: 13, adj: "!e n !w !nw " }
-      - { x: 1, y: 13, adj: "!e n !w !nw !ne " }
-      - { x: 2, y: 13, adj: "!e n !w s " }
-      - { x: 3, y: 13, adj: "!e !sw n !w s " }
-      - { x: 4, y: 13, adj: "!e n !w !se s " }
-      - { x: 5, y: 13, adj: "!e !sw n !w !se s " }
-      - { x: 6, y: 13, adj: "!e n !w !ne s " }
-      - { x: 7, y: 13, adj: "!e !sw n !w !ne s " }
-      - { x: 8, y: 13, adj: "!e n !w !ne !se s " }
-      - { x: 9, y: 13, adj: "!e !sw n !w !ne !se s " }
-      - { x: 10, y: 13, adj: "!e n !w !nw s " }
-      - { x: 11, y: 13, adj: "!e !sw n !w !nw s " }
-      - { x: 12, y: 13, adj: "!e n !w !nw !se s " }
-      - { x: 13, y: 13, adj: "!e !sw n !w !nw !se s " }
-      - { x: 14, y: 13, adj: "!e n !w !nw !ne s " }
-      - { x: 15, y: 13, adj: "!e !sw n !w !nw !ne s " }
-      - { x: 16, y: 13, adj: "!e n !w !nw !ne !se s " }
-      - { x: 17, y: 13, adj: "!e !sw n !w !nw !ne !se s " }
-      - { x: 18, y: 13, adj: "!e n !w !s " }
-      - { x: 19, y: 13, adj: "!e n !w !ne !s " }
-      - { x: 0, y: 14, adj: "!e n !w !nw !s " }
-      - { x: 1, y: 14, adj: "!e n !w !nw !ne !s " }
-      - { x: 2, y: 14, adj: "!n !w " }
-      - { x: 3, y: 14, adj: "!n !w s " }
-      - { x: 4, y: 14, adj: "!sw !n !w s " }
-      - { x: 5, y: 14, adj: "!n !w !s " }
-      - { x: 6, y: 14, adj: "e !n !w " }
-      - { x: 7, y: 14, adj: "e !n !w !ne " }
-      - { x: 8, y: 14, adj: "e !n !w s " }
-      - { x: 9, y: 14, adj: "e !sw !n !w s " }
-      - { x: 10, y: 14, adj: "e !n !w se s " }
-      - { x: 11, y: 14, adj: "e !sw !n !w se s " }
-      - { x: 12, y: 14, adj: "e !n !w !ne s " }
-      - { x: 13, y: 14, adj: "e !sw !n !w !ne s " }
-      - { x: 14, y: 14, adj: "e !n !w !ne se s " }
-      - { x: 15, y: 14, adj: "e !sw !n !w !ne se s " }
-      - { x: 16, y: 14, adj: "e !n !w !s " }
-      - { x: 17, y: 14, adj: "e !n !w !se !s " }
-      - { x: 18, y: 14, adj: "e !n !w !ne !s " }
-      - { x: 19, y: 14, adj: "e !n !w !ne !se !s " }
-      - { x: 0, y: 15, adj: "!e !n !w " }
-      - { x: 1, y: 15, adj: "!e !n !w s " }
-      - { x: 2, y: 15, adj: "!e !sw !n !w s " }
-      - { x: 3, y: 15, adj: "!e !n !w !se s " }
-      - { x: 4, y: 15, adj: "!e !sw !n !w !se s " }
-      - { x: 5, y: 15, adj: "!e !n !w !s " }
+      - { x: 0, y: 0, adj: "!w !e" }
+      - { x: 1, y: 0, adj: "!w e" }
+      - { x: 1, y: 0, adj: "!w" }
+      - { x: 2, y: 0, adj: "w e" }
+      - { x: 2, y: 0, adj: "w" }
+      - { x: 2, y: 0, adj: "e" }
+      - { x: 3, y: 0, adj: "w !e" }
+      - { x: 3, y: 0, adj: "!e" }
+
+      - { x: 0, y: 1, adj: "!n s" }
+      - { x: 0, y: 1, adj: "!n" }
+      - { x: 1, y: 1, adj: "!n !s" }
+      - { x: 2, y: 1, adj: "w s e" }
+      - { x: 3, y: 1, adj: "s e" }
+      - { x: 4, y: 1, adj: "w s" }
+
+      - { x: 0, y: 2, adj: "n s" }
+      - { x: 0, y: 2, adj: "n" }
+      - { x: 0, y: 2, adj: "s" }
+      - { x: 1, y: 2, adj: "n e s" }
+      - { x: 2, y: 2, adj: "w n e" }
+      - { x: 3, y: 2, adj: "n e" }
+      - { x: 4, y: 2, adj: "w n" }
+
+      - { x: 0, y: 3, adj: "n !s" }
+      - { x: 0, y: 3, adj: "!s" }
+      - { x: 1, y: 3, adj: "n w s" }
+      - { x: 2, y: 3, adj: "n e s w" }
+      - { x: 3, y: 3, adj: "", default: true }
 ...
