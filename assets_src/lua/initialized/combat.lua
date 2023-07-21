@@ -315,13 +315,13 @@ end
 
 local reverseOrder = false
 
-local function shallowcopy(orig)
+local function deepCopy(orig)
     local orig_type = type(orig)
     local copy
     if orig_type == 'table' then
         copy = {}
         for orig_key, orig_value in pairs(orig) do
-            copy[orig_key] = orig_value
+            copy[orig_key] = deepCopy(orig_value)
         end
     else -- number, string, boolean, etc
         copy = orig
@@ -343,8 +343,10 @@ local function dump(o,level)
  end
 
 function NewCombat:solveCombat(attackerId, defenderId, attackerPath, solveType)
-	local tempAttacker = shallowcopy(Wargroove.getUnitById(attackerId))
-	local tempDefender = shallowcopy(Wargroove.getUnitById(defenderId))
+	local tempAttacker = deepCopy(Wargroove.getUnitById(attackerId))
+	assert(tempAttacker ~= nil)
+	local tempDefender = deepCopy(Wargroove.getUnitById(defenderId))
+	assert(tempDefender ~= nil)
 	local e0 = self:getEndPosition(attackerPath, tempAttacker.pos)
 	tempAttacker.pos = e0
 	local weapon, _ = self:getBestWeapon(tempDefender, tempAttacker, {x=tempAttacker.pos.x-tempDefender.pos.x,y=tempAttacker.pos.y-tempDefender.pos.y}, false, tempDefender.pos.facing)
@@ -360,13 +362,18 @@ function NewCombat:solveCombat(attackerId, defenderId, attackerPath, solveType)
 	if  (solveType ~= "random") and (isHighAlert == true) then
 		isHighAlert = true
 		attacker = Wargroove.getUnitById(defenderId)
+		assert(attacker ~= nil)
 		defender = Wargroove.getUnitById(attackerId)
-		defenderPath = shallowcopy(attackerPath)
+		defender.pos = e0
+		assert(defender ~= nil)
+		defenderPath = deepCopy(attackerPath)
 		attackerPath = {attacker.pos}
 	else
 		isHighAlert = false
 		attacker = Wargroove.getUnitById(attackerId)
+		assert(attacker ~= nil)
 		defender = Wargroove.getUnitById(defenderId)
+		assert(defender ~= nil)
 		defenderPath = {defender.pos}
 	end
 	local results = {
@@ -456,7 +463,7 @@ function Combat:forceAttack(attacker, defender)
     Wargroove.clearUnitPositionCache()
 
 end
-function Combat:forceAttackFake(attacker, defender, delayOverride)
+function Combat:forceAttackFake(unit, target, delayOverride)
 	if (unit == nil) or (target == nil) then
         return
     end

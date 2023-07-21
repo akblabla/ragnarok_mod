@@ -58,12 +58,37 @@ function WargrooveExtra.highAlertBuff(unit)
 	end
 	if (isHighAlert) then
 		if not OldWargroove.hasUnitEffect(unit.id, highAlertAnimation) then
-			print("spawning en garde passively")
 			highAlertEntity[unit.id] = OldWargroove.spawnUnitEffect(unit.id, highAlertAnimation, "idle", "spawn", true, false)
 		end
 	elseif OldWargroove.hasUnitEffect(unit.id, highAlertAnimation)  then
-		print("despawning en garde passively")
-		OldWargroove.deleteUnitEffect(highAlertEntity[unit.id], "death")
+		if highAlertEntity[unit.id] ~= nil then
+			OldWargroove.deleteUnitEffect(highAlertEntity[unit.id], "death")
+		else
+			OldWargroove.deleteUnitEffectByAnimation(unit.id, highAlertAnimation, "death")
+		end
+	end
+end
+
+local crownAnimation = "ui/icons/fx_crown"
+function WargrooveExtra.crownBuff(unit)
+
+    if OldWargroove.isSimulating() then
+        return
+    end
+	local hasCrown = OldWargroove.getUnitState(unit, "crown") ~= nil
+	if (hasCrown) then
+		if not OldWargroove.hasUnitEffect(unit.id, crownAnimation) then
+			local crownEffectEntityId = OldWargroove.spawnUnitEffect(unit.id, crownAnimation, "idle", nil, true, false)
+			OldWargroove.setUnitState(unit, "crownEffectEntityId", crownEffectEntityId)
+		end
+	elseif OldWargroove.hasUnitEffect(unit.id, crownAnimation)  then
+		local crownEffectEntityId = OldWargroove.getUnitState(unit, "crownEffectEntityId")
+		if crownEffectEntityId~=nil then
+			OldWargroove.deleteUnitEffect(crownEffectEntityId, "death")
+		else
+			OldWargroove.deleteUnitEffectByAnimation(unit.id, crownAnimation, "death")
+
+		end
 	end
 end
 
@@ -71,6 +96,7 @@ function WargrooveExtra.applyBuffs()
 	for i,id in pairs(OldWargroove.getAllUnitIds()) do
 		local unit = OldWargroove.getUnitById(id)
 		WargrooveExtra.highAlertBuff(unit)
+		WargrooveExtra.crownBuff(unit)
 	end
     originalApplyBuffs()
 end

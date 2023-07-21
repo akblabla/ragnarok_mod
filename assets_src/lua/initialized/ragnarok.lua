@@ -145,12 +145,10 @@ end
 local cantAttackBuildingsSet = {}
 local goldRobbed = {}
 Ragnarok.crownID = nil
-Ragnarok.crownPos = nil
 Ragnarok.crownBearerID = nil
 local crownAnimation = "ui/icons/fx_crown"
 local crownOffsetAnimation = "ui/icons/fx_crown_offset"
 local crownStateKey = "crown"
-local flareCountTable = {}
 local fogOfWarRulesEnabled = false
 local occurences = {}
 
@@ -289,82 +287,90 @@ function Ragnarok.cantAttackBuildings(playerId)
 	return false
 end
 
-function Ragnarok.getCrownPos()
-	if Ragnarok.crownID ~= nil then
-		local crown = Wargroove.getUnitById(Ragnarok.crownID)
-		if crown ~= nil then
-			return Ragnarok.crownPos
+function Ragnarok.getCrownBearer()
+	if Ragnarok.crownBearerID ~= nil then
+		return Wargroove.getUnitById(Ragnarok.crownBearerID)
+	else
+		local units = Wargroove.getUnitsAtLocation()
+		for i,unit in pairs(units) do
+			if Ragnarok.hasCrown(unit) then
+				Ragnarok.crownBearerID = unit.id
+				return unit
+			end
 		end
 	end
+	return nil
+end
 
-	if Ragnarok.crownBearerID ~= nil then
-		local crownBearer = Wargroove.getUnitById(Ragnarok.crownBearerID)
-		if crownBearer ~= nil then
-			return crownBearer.pos
+function Ragnarok.getCrown()
+	if Ragnarok.crownID ~= nil then
+		return Wargroove.getUnitById(Ragnarok.crownID)
+	else
+		local units = Wargroove.getUnitsAtLocation()
+		for i,unit in pairs(units) do
+			if unit.unitClassId == "crown" then
+				Ragnarok.crownID = unit.id
+				return unit
+			end
 		end
+	end
+	return nil
+end
+
+function Ragnarok.getCrownPos()
+	local crown = Ragnarok.getCrown()
+	if crown ~= nil then
+		return {x = crown.pos.x+100, y = crown.pos.y+100}
+	end
+
+	local crownBearer = Ragnarok.getCrownBearer()
+	if crownBearer ~= nil then
+		return crownBearer.pos
 	end
 	
 	return nil
 end
 
 function Ragnarok.hasCrown(unit)
-	return Ragnarok.crownBearerID and Ragnarok.crownBearerID == unit.id 
+	return Wargroove.getUnitState(unit, crownStateKey) ~= nil
 end
 
 function Ragnarok.removeCrown()
---	print("removeCrown function starts here")
---	print(Ragnarok.crownBearerID)
-	if Ragnarok.crownID ~= nil then
-		local crown = Wargroove.getUnitById(Ragnarok.crownID)
-		if crown ~= nil then
-			crown.health = 0
-			Wargroove.updateUnit(crown)
-		end
+	local crown = Ragnarok.getCrown()
+	if crown ~= nil then
+		crown.health = 0
+		Wargroove.updateUnit(crown)
 	end
-	if Ragnarok.crownBearerID then
-		local crownBearer = Wargroove.getUnitById(Ragnarok.crownBearerID)
---		print(dump(crownBearer,0))
-		if crownBearer ~= nil then
-			for i, _stateKey in ipairs(crownBearer.state) do
-				if (_stateKey.key == crownStateKey) then
-					_stateKey.value = nil
-					_stateKey.key = nil
-					_stateKey = nil
-				end
+	local crownBearer = Ragnarok.getCrownBearer()
+	if crownBearer ~= nil then
+		for i, _stateKey in ipairs(crownBearer.state) do
+			if (_stateKey.key == crownStateKey) then
+				_stateKey.value = nil
+				_stateKey.key = nil
+				_stateKey = nil
 			end
-
-			if Wargroove.hasUnitEffect(crownBearer.id, crownAnimation) then
-				Wargroove.deleteUnitEffectByAnimation(crownBearer.id, crownAnimation)
-			end
-			Wargroove.updateUnit(crownBearer)
 		end
+
+		if Wargroove.hasUnitEffect(crownBearer.id, crownAnimation) then
+			Wargroove.deleteUnitEffectByAnimation(crownBearer.id, crownAnimation)
+		end
+		Wargroove.updateUnit(crownBearer)
 	end
 	Ragnarok.crownID = nil
 	Ragnarok.crownBearerID = nil
 end
 
 function Ragnarok.dropCrown(targetPos)
-	--print("dropCrown function starts here")
 	Ragnarok.removeCrown()
-	--print("removed Crown")
-	--local startingState = {}
-    --local pos = {key = "pos", value = "" .. targetPos.x .. "," .. targetPos.y}
-    --table.insert(startingState, pos)
 	Ragnarok.crownID = Wargroove.spawnUnit(-1, {x = targetPos.x-100, y = targetPos.y-100}, "crown", false)
 	Wargroove.setVisibleOverride(Ragnarok.crownID, true)
-	--print("Spawned Crown")
-	Wargroove.spawnUnitEffect(Ragnarok.crownID, crownOffsetAnimation, "idle", nil, true, false)
-	--print("Added Crown Effect")
+--	Wargroove.spawnUnitEffect(Ragnarok.crownID, crownOffsetAnimation, "idle", nil, true, false)
 	
-	Ragnarok.crownPos = targetPos
-	--print("Crown Position updated")
 	Ragnarok.crownBearerID = nil
-	--print("Nobody is carrying the crown anymore")
 	return Ragnarok.crownID
 end
 
 function Ragnarok.grabCrown(unit)
---	print("grabCrown function starts here")
 	Ragnarok.removeCrown()
 	Wargroove.setUnitState(unit, crownStateKey, "")
 	if not Wargroove.hasUnitEffect(unit.id, crownAnimation) then
@@ -372,7 +378,6 @@ function Ragnarok.grabCrown(unit)
 	end
 	Ragnarok.crownBearerID = unit.id
 	Wargroove.updateUnit(unit)
-	return
 end
 
 local activator = {}
@@ -591,37 +596,8 @@ end
 function Ragnarok.printCrownInfo()
    print("Printing Crown Stuff")
    print("crownID:",Ragnarok.crownID)
-   print("crownPos:")
-   print(dump(Ragnarok.crownPos,1))
    print("crownBearerID:",Ragnarok.crownBearerID)
    print("")
-end
-
-function Ragnarok.setFlareCount(playerId, count)
-	flareCountTable[playerId] = count
-end
-
-function Ragnarok.addFlare(playerId)
-	if flareCountTable[playerId] then
-		flareCountTable[playerId] = flareCountTable[playerId] + 1
-	else
-		flareCountTable[playerId] = 1
-	end
-end
-
-function Ragnarok.removeFlare(playerId)
-	if flareCountTable[playerId] then
-		flareCountTable[playerId] = math.max(flareCountTable[playerId] - 1,0)
-	else
-		flareCountTable[playerId] = 0
-	end
-end
-
-function Ragnarok.getFlareCount(playerId)
-	if flareCountTable[playerId] then
-		return flareCountTable[playerId]
-	end
-	return 0
 end
 
 function Ragnarok.moveInArch(unitId, startPos, targetPos, numSteps, speed, gravity, xyGamma, zGamma, eventPackages)

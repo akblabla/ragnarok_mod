@@ -55,7 +55,6 @@ function Actions.populate(dst)
 	dst["spawn_unit_close"] = Actions.spawnUnitClose
 	dst["force_action"] = Actions.forceAction
 	dst["place_crown"] = Actions.placeCrown
-	dst["modify_flare_count"] = Actions.modifyFlareCount
 	dst["modify_healing_potion_count"] = Actions.modifyHealingPotionCount
 	dst["enable_AI_fog_limitations"] = Actions.enableAIFogLimitations
 	dst["reveal_all"] = Actions.revealAll
@@ -746,15 +745,6 @@ function Actions.setAIProfileWithBuild(context)
     end
     
     Wargroove.setAIProfile(targetPlayer, profile)
-end
-
-function Actions.modifyFlareCount(context)
-    -- "Modify the number of flares owned by {0}: {1}{2}"
-    local playerId = context:getPlayerId(0)
-    local operation = context:getOperation(1)
-    local value = context:getInteger(2)
-    local previous = Ragnarok.getFlareCount(playerId)
-	Ragnarok.setFlareCount(playerId, operation(previous, value))
 end
 
 function Actions.logMessage(context)

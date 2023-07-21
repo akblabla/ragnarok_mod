@@ -166,11 +166,6 @@ triggerActions:
       - type: counter
       - type: counter
       - type: counter
-  - id: modify_flare_count
-    parameters:
-      - type: player_neutral_star
-      - type: operation
-      - type: integer
       
   - id: modify_healing_potion_count
     parameters:

@@ -26,9 +26,9 @@ aiProfiles:
         enemy: 0
     recruitBonus:
       thief: 0.1
-      pirate_ship: 10
+      travelboat: 10
     recruitLimit:
       thief: 1
       witch: 3
-      pirate_ship: 2
+      travelboat: 2
 ...

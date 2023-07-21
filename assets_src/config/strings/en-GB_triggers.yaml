@@ -99,10 +99,6 @@ en-GB:
   trigger_action_description_split_into: "Split units at full hp."
   trigger_action_readable_split_into: "Split {0} at {1} for {2} if on full health into {3}"
   
-  trigger_action_name_modify_flare_count: "Player: Modify Flare Count"
-  trigger_action_description_modify_flare_count: "Modifies the amount of flares available to a player."
-  trigger_action_readable_modify_flare_count: "Modify the number of flares owned by {0}: {1} {2}"
-  
   trigger_action_name_modify_healing_potion_count: "Player: Modify Potion Count"
   trigger_action_description_modify_healing_potion_count: "Modifies the amount of healing potions available to a player."
   trigger_action_readable_modify_healing_potion_count: "Modify the number of healing potions owned by {0}: {1} {2}"
