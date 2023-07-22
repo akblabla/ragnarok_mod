@@ -248,7 +248,7 @@ function Buffs.thief_with_gold(Wargroove, unit)
         Wargroove.updateUnit(unit)
     end
 end
-function Buffs.stealth_rules(Wargroove, unit)
+function Buffs.vision_tile(Wargroove, unit)
     if (not Wargroove.isSimulating()) then
         Corners.update(unit)
     end
@@ -259,7 +259,7 @@ function Buffs.fog(Wargroove, unit)
     end
 end
 
-function ClearBuffs.stealth_rules(Wargroove, unit)
+function ClearBuffs.vision_tile(Wargroove, unit)
     Wargroove.clearBuffVisualEffect(unit.id)
 end
 

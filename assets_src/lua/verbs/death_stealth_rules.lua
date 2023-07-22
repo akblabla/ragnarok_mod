@@ -9,7 +9,7 @@ function StealthRules:execute(unit, targetPos, strParam, path)
     end
 
 
-    Wargroove.spawnUnit(unit.playerId, {x = -50, y = -50}, "stealth_rules", false, "")
+    Wargroove.spawnUnit(unit.playerId, {x = -50, y = -50}, "vision_tile", false, "")
 end
 
 return StealthRules

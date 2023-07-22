@@ -1,7 +1,7 @@
 ---
 
 unitClasses:
-  - id: stealth_rules
+  - id: ai_profile
     name: unit_class_name_area_heal
     movement: hovering
     moveRange: 0
@@ -17,13 +17,12 @@ unitClasses:
     isSpawnable: false
     hasDeathAnimation: false
     appearsInLists: false
-    deathVerbId: death_stealth_rules
     tags:
       - summon
 
 
 units:
-  - class: stealth_rules
+  - class: ai_profile
     faction: outlaw
     name: unit_class_name_area_heal
     mapAnimation: units/commanders/emeric/crystal

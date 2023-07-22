@@ -142,7 +142,6 @@ function Ragnarok.init()
 	Ragnarok.addAction(Ragnarok.regenerateCrownBearer,"repeating",true)
 end
 
-local cantAttackBuildingsSet = {}
 local goldRobbed = {}
 Ragnarok.crownID = nil
 Ragnarok.crownBearerID = nil
@@ -245,9 +244,6 @@ function Ragnarok.addHiddenTrigger(trigger, atEnd)
 	WargrooveExtra.addHiddenTrigger(trigger, atEnd)
 end
 
-function Ragnarok.addAIToCantAttackBuildings(playerId)
-	cantAttackBuildingsSet[tostring(playerId)] = true
-end
 
 function Ragnarok.addGoldRobbed(playerId, amount)
 	--print("addGoldRobbed starts here")
@@ -282,10 +278,6 @@ function Ragnarok.getGoldRobbed(playerId)
 	return 0
 end
 
-function Ragnarok.cantAttackBuildings(playerId)
-	if cantAttackBuildingsSet[tostring(playerId)] then return true end
-	return false
-end
 
 function Ragnarok.getCrownBearer()
 	if Ragnarok.crownBearerID ~= nil then

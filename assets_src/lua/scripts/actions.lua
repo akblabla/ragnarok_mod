@@ -12,6 +12,7 @@ local Pathfinding = require "util/pathfinding"
 local Corners = require "scripts/corners"
 local Stats = require "util/stats"
 local PosKey = require "util/posKey"
+local AIProfile = require "AIProfiles/ai_profile"
 
 local Actions = {}
 
@@ -148,7 +149,7 @@ end
 
 function Actions.setNoBuildingAttacking(context)
     local targetPlayer = context:getPlayerId(0)
-	Ragnarok.addAIToCantAttackBuildings(targetPlayer)
+    AIProfile.canAttackBuildings(false)
 end
 
 function Actions.enableHiring(context)
@@ -601,7 +602,7 @@ function Actions.setCurrentPositionAsGoal(context)
     -- "Make units of type {0} at location {1} owned by player {2} stand guard."
     local units = context:gatherUnits(2, 0, 1)
     for i, unit in ipairs(units) do
-        StealthManager.setAIGoalPos("road_move",unit.id,unit.pos)
+        StealthManager.setAIGoalPos("road_move",unit,unit.pos)
     end
 end
 
@@ -613,8 +614,8 @@ function Actions.setPositionAsGoal(context)
     local order = context:getString(5)
     local center = findCentreOfLocation(location)
     for i, unit in ipairs(units) do
-        AIManager.order(order, unit.id, center, maxSpeed)
-        StealthManager.setAIGoalPos(order, unit.id,center,maxSpeed)
+        AIManager.order(order, unit, center, maxSpeed)
+        StealthManager.setAIGoalPos(order, unit,center,maxSpeed)
     end
 end
 
@@ -626,7 +627,7 @@ function Actions.setAwareness(context)
     local location = context:getLocation(5)
     local center = findCentreOfLocation(location)
     for i, unit in ipairs(units) do
-        StealthManager.setLastKnownLocation(unit.id, center)
+        StealthManager.setLastKnownLocation(unit, center)
         if string == "fleeing" then
             StealthManager.makeFleeing(unit)
         elseif string == "alerted" then
@@ -676,13 +677,13 @@ function Actions.setHideAndSeek(context)
             local startingState = {}
             local playerState = {key = "playerId", value = player}
             table.insert(startingState, playerState)
-            local unitId = Wargroove.spawnUnit(-1,{x=-200+x,y=-200+y},"stealth_rules",false,"",startingState)
+            local unitId = Wargroove.spawnUnit(-1,{x=-200+x,y=-200+y},"vision_tile",false,"",startingState)
             Corners.update(Wargroove.getUnitById(unitId))
         end
     end
     for i,unit in ipairs(Wargroove.getUnitsAtLocation(nil)) do
         if not StealthManager.isCivilian(unit.unitClassId) then
-            StealthManager.setAIGoalPos(unit.id,unit.pos)
+            StealthManager.setAIGoalPos("road_move",unit,unit.pos)
         end
     end
 end
@@ -725,26 +726,9 @@ end
 
 function Actions.setAIProfileWithBuild(context)
     -- "Set the AI profile with a custom build order for {0} to {1}."
-    local targetPlayer = context:getPlayerId(0)
+    local playerId = context:getPlayerId(0)
     local profile = context:getString(1)
-    if profile == "mangrove_madness" then
-        local AIProfile = require "AIProfiles/mangroveMadness"
-        AIProfile.setProfile()
-    end
-    if profile == "city_passive" then
-        local AIProfile = require "AIProfiles/cityPassive"
-        AIProfile.setProfile()
-    end
-    if profile == "city_war" then
-        local AIProfile = require "AIProfiles/cityWar"
-        AIProfile.setProfile()
-    end
-    if profile == "rival_pirate" then
-        local AIProfile = require "AIProfiles/rivalPirate"
-        AIProfile.setProfile()
-    end
-    
-    Wargroove.setAIProfile(targetPlayer, profile)
+    AIProfile.setProfile(playerId,profile)
 end
 
 function Actions.logMessage(context)

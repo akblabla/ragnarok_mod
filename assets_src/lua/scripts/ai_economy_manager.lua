@@ -2,6 +2,7 @@ local Wargroove = require "wargroove/wargroove"
 local Ragnarok = require "initialized/ragnarok"
 local Recruit = require "verbs/recruit"
 local StealthManager = require "scripts/stealth_manager"
+--local AIProfile = require "AIProfiles/ai_profile"
 
 local AIEconomyManager = {}
 function AIEconomyManager.init()
@@ -339,6 +340,7 @@ function AIEconomyManager.spendRest(context)
 		if Wargroove.isHuman(playerId) == true then
 			return
 		end
+--		AIProfile.checkForProfile(playerId)
 		unitCountPlayerList = {}
 		local barracksCount = 0
 		for i, unit in ipairs(Wargroove.getUnitsAtLocation(nil)) do

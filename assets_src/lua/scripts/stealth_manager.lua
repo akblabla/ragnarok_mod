@@ -39,15 +39,21 @@ end
 
 local StealthManager = {}
 local fleeingCount = 0
-local active = {}
-local AIGoalPos = {}
-local AIOrder = {}
-local AISpeed = {}
-local lastKnownPosMap = {}
-local braveryMap = {}
 
 function StealthManager.setBravery(playerId, bravery)
-    braveryMap[playerId] = bravery
+    local stealthManager = StealthManager.getStealthManagerObject()
+    Wargroove.setUnitState(stealthManager,"bravery"..tostring(playerId),bravery)
+    Wargroove.updateUnit(stealthManager)
+end
+
+function StealthManager.getBravery(playerId)
+    local stealthManager = StealthManager.getStealthManagerObject()
+    local bravery = Wargroove.getUnitState(stealthManager,"bravery"..tostring(playerId))
+    if bravery == nil then
+        return 100
+    else
+        return bravery
+    end
 end
 
 function StealthManager.canBeAlerted(unit)
@@ -57,7 +63,7 @@ function StealthManager.canBeAlerted(unit)
     if unit.unitClass.isStructure then
         return false
     end
-    if active[unit.playerId]== nil then
+    if StealthManager.isActive(unit.playerId) == false then
         return false
     end
     return true
@@ -93,10 +99,8 @@ function StealthManager.getFleeCountTarget(playerId)
             enemyValue = enemyValue + (unit.unitClass.cost+100)*unit.health/100.0;
         end
     end
-    if braveryMap[playerId] == nil then
-        braveryMap[playerId] = 100
-    end
-    return math.ceil((enemyValue-2*playerValue*braveryMap[playerId]/100.0)/800.0)
+    local bravery = StealthManager.getBravery(playerId)
+    return math.ceil((enemyValue-2*playerValue*bravery/100.0)/800.0)
 end
 
 function StealthManager.init()
@@ -118,7 +122,7 @@ function StealthManager.reportDeadUnit(unitId)
         local viewer = Wargroove.getUnitAt(pos)
         if (viewer ~= nil) and (StealthManager.canBeAlerted(viewer)) and (unitId ~= viewerId) then
             if unit.playerId == viewer.playerId then
-                StealthManager.setLastKnownLocation(viewerId, unit.pos)
+                StealthManager.setLastKnownLocation(viewer, unit.pos)
                 StealthManager.makeAlerted(viewer)
                 StealthManager.spreadInfo(viewer)
             end
@@ -141,10 +145,7 @@ function StealthManager.reportDeadUnit(unitId)
 end
 
 function StealthManager.removeUnit(unit, noUpdate)
-    AIGoalPos[unit.id] = nil
-    AIOrder[unit.id] = nil
-    AISpeed[unit.id] = nil
-    StealthManager.setLastKnownLocation(unit.id, nil)
+    StealthManager.setLastKnownLocation(unit, nil)
     if not((noUpdate ~= nil) and noUpdate) then
         Wargroove.setUnitState(unit,"awareness","unaware")
         Wargroove.setUnitState(unit,"visual_awareness","unaware")
@@ -152,10 +153,31 @@ function StealthManager.removeUnit(unit, noUpdate)
     end
 end
 
+local stealthManagerObject = nil
+
+function StealthManager.getStealthManagerObject()
+	if stealthManagerObject == nil then
+        for i,unit in ipairs(Wargroove.getUnitsAtLocation(nil)) do
+            if unit.unitClassId == "stealth_manager" then
+                stealthManagerObject = unit
+                return stealthManagerObject
+            end
+        end
+        local id = Wargroove.spawnUnit(-1, {x=-50,y=-50}, "stealth_manager", false)
+        return Wargroove.getUnitById(id)
+    else
+        return stealthManagerObject
+    end
+end
+
 function StealthManager.setActive(playerId,isActive)
-	active[playerId] = isActive
+    local stealthManager = StealthManager.getStealthManagerObject()
+    local isActiveString = "false"
+    if isActive then
+        isActiveString = "true"
+    end
+    Wargroove.setUnitState(stealthManager,"active"..tostring(playerId),isActiveString)
     if isActive == false then
-        active[playerId] = nil
         local units = Wargroove.getUnitsAtLocation(nil)
         for i, unit in pairs(units) do
             if unit.playerId == playerId then
@@ -163,26 +185,49 @@ function StealthManager.setActive(playerId,isActive)
             end
         end
     end
+    Wargroove.updateUnit(stealthManager)
 end
 
 function StealthManager.isActive(playerId)
-	return active[playerId] ~= nil
+    local stealthManager = StealthManager.getStealthManagerObject()
+    local activeState = Wargroove.getUnitState(stealthManager,"active"..tostring(playerId))
+    if activeState == nil then
+        return false
+    end
+	return activeState == "true"
 end
 
-function StealthManager.setAIGoalPos(order, unitId,pos, maxSpeed)
-	AIGoalPos[unitId] = pos
-	AIOrder[unitId] = order
+function StealthManager.setAIGoalPos(order, unit,pos, maxSpeed)
+    Wargroove.setUnitState(unit,"AIGoalPosX", pos.x)
+    Wargroove.setUnitState(unit,"AIGoalPosY", pos.y)
+    Wargroove.setUnitState(unit,"AIOrder", order)
     if maxSpeed~=nil then
-        AISpeed[unitId] = maxSpeed
+        Wargroove.setUnitState(unit,"AISpeed", maxSpeed)
+    else
+        Wargroove.setUnitState(unit,"AISpeed", 100)
     end
 end
+
+function StealthManager.getAIGoalPos(unit)
+    local pos = {}
+    pos.x = Wargroove.getUnitState(unit,"AIGoalPosX")
+    pos.y = Wargroove.getUnitState(unit,"AIGoalPosY")
+    local order = Wargroove.getUnitState(unit,"AIOrder")
+    local maxSpeed = Wargroove.getUnitState(unit,"AISpeed")
+    if (pos.x~=nil) or (pos.y~=nil) or (order~=nil) or (maxSpeed~=nil) then
+        return nil
+    else
+        return {pos = pos, order = order, maxSpeed = maxSpeed}
+    end
+end
+
 local init = true
 function StealthManager.startOfGame(context)
     local units = Wargroove.getUnitsAtLocation(nil)
     for i,unit in ipairs(units) do
         StealthManager.removeUnit(unit)
     end
-    for playerId, value in ipairs(active) do
+    for playerId = 0,Wargroove.getNumPlayers(false) do
         StealthManager.endOfTurnCleanUp(playerId)
     end
 end
@@ -203,11 +248,12 @@ function StealthManager.update(context)
     end
 
     for i,unit in ipairs(units) do
-        if (active[unit.playerId]~=nil) then
+        if StealthManager.isActive(unit.playerId) then
             AIManager.roadMoveOrder(unit.id,unit.pos)
             if StealthManager.isUnitFleeing(unit) then
-                if AIGoalPos[unit.id]~=nil then
-                    AIManager.safeMoveOrder(unit.id,AIGoalPos[unit.id])
+                local AIGoal = StealthManager.getAIGoalPos(unit)
+                if AIGoal~=nil then
+                    AIManager.safeMoveOrder(unit.id,AIGoal.pos)
                 else
                     local unawareAllyPos = {}
                     for i,ally in ipairs(units) do
@@ -225,23 +271,22 @@ function StealthManager.update(context)
         end
         StealthManager.awarenessCheck(unit, {unit.pos})
     end
-    for unitId,pos in pairs(AIGoalPos) do
-        local unit = Wargroove.getUnitById(unitId)
-        if (unit ~= nil) and not StealthManager.isUnitPermaAlerted(unit) then
-            if AIOrder[unitId]==nil then
-                AIOrder[unitId] = "road_move"
-            end
-            AIManager.order(AIOrder[unitId], unitId, pos, AISpeed[unitId])
-        end
-    end
-    for id,lastKnownPos in pairs(lastKnownPosMap) do
-        local unit = Wargroove.getUnitById(id)
-        if (unit ~= nil) then
+    for id,unit in pairs(units) do
+        local lastKnownPos = StealthManager.getLastKnownLocation(unit)
+        if (lastKnownPos ~= nil) then
             if StealthManager.isUnitAlerted(unit) then
                 AIManager.attackMoveOrder(id,lastKnownPos.pos)
             elseif StealthManager.isUnitSearching(unit) then
                 AIManager.moveOrder(id,lastKnownPos.pos)
             end
+        end
+        local AIGoal = StealthManager.getAIGoalPos(unit)
+        if (AIGoal ~= nil) and not StealthManager.isUnitPermaAlerted(unit) then
+            if AIGoal.order==nil then
+                AIGoal.order = "road_move"
+                StealthManager.setAIGoalPos("road_move",unit, AIGoal.pos,AIGoal.maxSpeed)
+            end
+            AIManager.order(AIGoal.order, unit.id, AIGoal.pos, AIGoal.maxSpeed)
         end
     end
     if (context:checkState("endOfTurn")) then
@@ -253,7 +298,7 @@ function StealthManager.endOfTurnCleanUp(playerId)
     for i,other in pairs(Wargroove.getUnitsAtLocation()) do
         Pathfinding.clearCache(other.id)
     end
-    if (active[Wargroove.getCurrentPlayerId()] == nil) then
+    if StealthManager.isActive(Wargroove.getCurrentPlayerId()) == false then
         return
     end
     local units = {}
@@ -281,12 +326,12 @@ function StealthManager.endOfTurnCleanUp(playerId)
     end
 
     for i,enemy in pairs(cutOffEnemies) do
-        local lastKnownPos = StealthManager.getLastKnownLocation(enemy.id)
+        local lastKnownPos = StealthManager.getLastKnownLocation(enemy)
         if StealthManager.isUnitSearching(enemy) and (lastKnownPos ~= nil) then
             local dist = math.abs(enemy.pos.x - lastKnownPos.pos.x) + math.abs(enemy.pos.y - lastKnownPos.pos.y)
             if (dist<=2) and VisionTracker.canUnitSeeTile(enemy,lastKnownPos.pos) then
                 StealthManager.makeUnaware(enemy)
-                StealthManager.setLastKnownLocation(enemy.id, nil)
+                StealthManager.setLastKnownLocation(enemy, nil)
             end
         end
         if StealthManager.isUnitSearching(enemy) and (lastKnownPos == nil) then
@@ -323,7 +368,7 @@ function StealthManager.isUnitPermaAlerted(unit)
     if awareness == nil then
         return false
     end
-    return (active[unit.playerId]~=nil) and (awareness == "perma_alerted")
+    return StealthManager.isActive(unit.playerId) and (awareness == "perma_alerted")
 end
 
 function StealthManager.isUnitAlerted(unit,orBetter)
@@ -334,7 +379,7 @@ function StealthManager.isUnitAlerted(unit,orBetter)
     if awareness == nil then
         return false
     end
-    return (active[unit.playerId]~=nil) and (awareness == "alerted")
+    return StealthManager.isActive(unit.playerId) and (awareness == "alerted")
 end
 
 function StealthManager.isUnitFleeing(unit)
@@ -342,11 +387,11 @@ function StealthManager.isUnitFleeing(unit)
     if awareness == nil then
         return false
     end
-    return (active[unit.playerId]~=nil) and (awareness == "fleeing")
+    return StealthManager.isActive(unit.playerId) and (awareness == "fleeing")
 end
 
 function StealthManager.makeFleeing(unit)
-    if (active[unit.playerId]~=nil) and StealthManager.canBeAlerted(unit) then
+    if StealthManager.isActive(unit.playerId) and StealthManager.canBeAlerted(unit) then
         Wargroove.setUnitState(unit,"awareness","fleeing")
         Wargroove.updateUnit(unit)
         return true
@@ -355,7 +400,7 @@ function StealthManager.makeFleeing(unit)
 end
 
 function StealthManager.makePermaAlerted(unit)
-    if (active[unit.playerId]~=nil) then
+    if StealthManager.isActive(unit.playerId) then
         if (StealthManager.canBeAlerted(unit) and Ragnarok.isCombatUnit(unit)) or (unit.unitClassId == "barracks") or (unit.unitClassId == "port") then
             Wargroove.setUnitState(unit,"awareness","perma_alerted")
             Wargroove.updateUnit(unit)
@@ -367,7 +412,7 @@ end
 
 function StealthManager.makeAlerted(unit, force)
     if not StealthManager.isUnitFleeing(unit) or (force == true) then
-        if (active[unit.playerId]~=nil) and StealthManager.canBeAlerted(unit) then
+        if StealthManager.isActive(unit.playerId) and StealthManager.canBeAlerted(unit) then
             if Ragnarok.isCombatUnit(unit) then
                 if StealthManager.isUnitFleeing(unit) then
                     fleeingCount = fleeingCount-1
@@ -395,11 +440,11 @@ function StealthManager.isUnitSearching(unit, orBetter)
     if awareness == nil then
         return false
     end
-    return (active[unit.playerId]~=nil) and (awareness == "searching")
+    return StealthManager.isActive(unit.playerId) and (awareness == "searching")
 end
 
 function StealthManager.makeSearching(unit, force)
-    if active[unit.playerId]~=nil and StealthManager.canBeAlerted(unit) and (not StealthManager.isUnitAlerted(unit,true) or (force == true)) then
+    if StealthManager.isActive(unit.playerId) and StealthManager.canBeAlerted(unit) and (not StealthManager.isUnitAlerted(unit,true) or (force == true)) then
         if not StealthManager.isUnitSearching(unit) then
             if not StealthManager.isUnitPermaAlerted(unit) then
                 Wargroove.setUnitState(unit,"awareness","searching")
@@ -416,11 +461,11 @@ function StealthManager.isUnitUnaware(unit)
     if awareness == nil then
         return true
     end
-    return (active[unit.playerId]==nil) or ((active[unit.playerId]~=nil) and (awareness == "unaware"))
+    return not StealthManager.isActive(unit.playerId) or (StealthManager.isActive(unit.playerId) and (awareness == "unaware"))
 end
 
 function StealthManager.makeUnaware(unit)
-    if (active[unit.playerId]==nil) then
+    if not StealthManager.isActive(unit.playerId) then
         return false
     end
     if StealthManager.isUnitFleeing(unit) then
@@ -471,8 +516,8 @@ end
 
 function StealthManager.shareInfo(unit1, unit2)
     local infoShared = false
-    local lastKnownPos1 = StealthManager.getLastKnownLocation(unit1.id)
-    local lastKnownPos2 = StealthManager.getLastKnownLocation(unit2.id)
+    local lastKnownPos1 = StealthManager.getLastKnownLocation(unit1)
+    local lastKnownPos2 = StealthManager.getLastKnownLocation(unit2)
     if StealthManager.isUnitAlerted(unit1,true) and (lastKnownPos1~= nil) then
         infoShared = StealthManager.makeSearching(unit2) or infoShared
     end
@@ -480,38 +525,42 @@ function StealthManager.shareInfo(unit1, unit2)
         infoShared = StealthManager.makeSearching(unit1) or infoShared
     end
     if (lastKnownPos1== nil) and (lastKnownPos2~= nil) then
-        StealthManager.setLastKnownLocation(unit1.id, lastKnownPos2.pos, lastKnownPos2.date)
+        StealthManager.setLastKnownLocation(unit1, lastKnownPos2.pos, lastKnownPos2.date)
     end
     if (lastKnownPos2== nil) and (lastKnownPos1~= nil) then
-        StealthManager.setLastKnownLocation(unit2.id, lastKnownPos1.pos, lastKnownPos1.date)
+        StealthManager.setLastKnownLocation(unit2, lastKnownPos1.pos, lastKnownPos1.date)
     end
     if (lastKnownPos1~= nil) and (lastKnownPos2~= nil) then
         if lastKnownPos1.date > lastKnownPos2.date then
-            StealthManager.setLastKnownLocation(unit2.id, lastKnownPos1.pos, lastKnownPos1.date)
+            StealthManager.setLastKnownLocation(unit2, lastKnownPos1.pos, lastKnownPos1.date)
         else
-            StealthManager.setLastKnownLocation(unit1.id, lastKnownPos2.pos, lastKnownPos2.date)
+            StealthManager.setLastKnownLocation(unit1, lastKnownPos2.pos, lastKnownPos2.date)
         end
     end
     return infoShared
 end
 
-function StealthManager.setLastKnownLocation(unitId, pos, date)
+function StealthManager.setLastKnownLocation(unit, pos, date)
     if date == nil then
         date = Wargroove.getTurnNumber()
     end
     if pos ~= nil then
-        lastKnownPosMap[unitId] = {pos = pos, date = date}
+        Wargroove.setUnitState(unit, "lastKnownPosMapPosX", pos.x)
+        Wargroove.setUnitState(unit, "lastKnownPosMapPosY", pos.y)
+        Wargroove.setUnitState(unit, "lastKnownPosMapDate", date)
+        Wargroove.updateUnit(unit)
     end
 end
 
-function StealthManager.getLastKnownLocation(unitId)
-    if lastKnownPosMap[unitId] == nil then
+function StealthManager.getLastKnownLocation(unit)
+    local pos = {}
+    pos.x = Wargroove.getUnitState(unit, "lastKnownPosMapPosX")
+    pos.y = Wargroove.getUnitState(unit, "lastKnownPosMapPosY")
+    local date = Wargroove.getUnitState(unit, "lastKnownPosMapDate")
+    if (pos.x==nil) or (pos.y==nil) or (date==nil) then
         return nil
     end
-    if lastKnownPosMap[unitId] == {} then
-        return nil
-    end
-    return {pos = lastKnownPosMap[unitId].pos, date = lastKnownPosMap[unitId].date}
+    return {pos = pos, date = tonumber(date)}
 end
 
 function StealthManager.getWitnesses(unit, path)
@@ -529,7 +578,7 @@ function StealthManager.getWitnesses(unit, path)
                 local viewerPosList = VisionTracker.getListOfViewerIds(tile);
                 for viewerId, pos in pairs(viewerPosList) do
                     local viewer = Wargroove.getUnitAt(pos)
-                    if (viewer ~= nil) and (active[viewer.playerId] ~= nil) and (viewer.health>0) then
+                    if (viewer ~= nil) and StealthManager.isActive(viewer.playerId) and (viewer.health>0) then
                         if Wargroove.areEnemies(unit.playerId,viewer.playerId) then
                             if (newSearchersList[viewerId]~=nil) then
                                 if i<#path then
@@ -556,7 +605,7 @@ function StealthManager.getWitnesses(unit, path)
             local viewerPosList = VisionTracker.getListOfViewerIds(endPos);
             for viewerId, pos in pairs(viewerPosList) do
                 local viewer = Wargroove.getUnitAt(pos)
-                if (viewer ~= nil) and (active[viewer.playerId] ~= nil) then
+                if (viewer ~= nil) and StealthManager.isActive(viewer.playerId) then
                     if Wargroove.areEnemies(unit.playerId,viewer.playerId) then
                             newAlertedList[viewerId] = endPos
                     end
@@ -576,8 +625,8 @@ function StealthManager.awarenessCheck(unit, path)
         for viewerId,tile in pairs(newAlertedList) do
             local viewer = Wargroove.getUnitById(viewerId)
             newSearchersList[viewerId] = nil
-            if (viewer ~= nil) and (active[viewer.playerId] ~= nil) then
-                StealthManager.setLastKnownLocation(viewerId,tile)
+            if (viewer ~= nil) and StealthManager.isActive(viewer.playerId) then
+                StealthManager.setLastKnownLocation(viewer,tile)
                 StealthManager.makeAlerted(viewer)
                 StealthManager.spreadInfo(viewer)
             end
@@ -586,8 +635,8 @@ function StealthManager.awarenessCheck(unit, path)
     if next(newSearchersList)~=nil then
         for viewerId,tile in pairs(newSearchersList) do
             local viewer = Wargroove.getUnitById(viewerId)
-            if (viewer ~= nil) and (active[viewer.playerId] ~= nil) then
-                StealthManager.setLastKnownLocation(viewerId,tile)
+            if (viewer ~= nil) and StealthManager.isActive(viewer.playerId) then
+                StealthManager.setLastKnownLocation(viewer,tile)
                 StealthManager.makeSearching(viewer)
             end
         end
@@ -596,20 +645,20 @@ function StealthManager.awarenessCheck(unit, path)
 end
 
 function StealthManager.isVisuallyAlerted(unit)
-    return (active[unit.playerId]~=nil) and (Wargroove.getUnitState(unit,"visual_awareness")  == "alerted")
+    return StealthManager.isActive(unit.playerId) and (Wargroove.getUnitState(unit,"visual_awareness")  == "alerted")
 end
 
 function StealthManager.isVisuallyFleeing(unit)
-    return (active[unit.playerId]~=nil) and (Wargroove.getUnitState(unit,"visual_awareness") == "fleeing")
+    return StealthManager.isActive(unit.playerId) and (Wargroove.getUnitState(unit,"visual_awareness") == "fleeing")
 end
 
 
 function StealthManager.isVisuallySearching(unit)
-    return (active[unit.playerId]~=nil) and (Wargroove.getUnitState(unit,"visual_awareness") == "searching")
+    return StealthManager.isActive(unit.playerId) and (Wargroove.getUnitState(unit,"visual_awareness") == "searching")
 end
 
 function StealthManager.isVisuallyUnaware(unit)
-    return (active[unit.playerId]~=nil) and (Wargroove.getUnitState(unit,"visual_awareness") == "unaware")
+    return StealthManager.isActive(unit.playerId) and (Wargroove.getUnitState(unit,"visual_awareness") == "unaware")
 end
 
 function StealthManager.isVisuallyUpdated(unit)
@@ -639,8 +688,8 @@ function StealthManager.updateAwarenessAll()
     local function comp(a, b)
         local sqrDistA = 1000
         local sqrDistB = 1000
-        local lastKnownPosA = StealthManager.getLastKnownLocation(a.id)
-        local lastKnownPosB = StealthManager.getLastKnownLocation(b.id)
+        local lastKnownPosA = StealthManager.getLastKnownLocation(a)
+        local lastKnownPosB = StealthManager.getLastKnownLocation(b)
         if (lastKnownPosA ~= nil) and (lastKnownPosA.pos ~= nil) then
             local centerA = lastKnownPosA.pos
             sqrDistA = (a.pos.x-centerA.x)^2+(a.pos.y-centerA.y)^2
@@ -714,14 +763,14 @@ function StealthManager.updateAwarenessAll()
 end
 
 function StealthManager.updateFleeing(unit, track)
-    if  active[unit.playerId] == nil then
+    if  not StealthManager.isActive(unit.playerId) then
         return
     end
     if StealthManager.isUnitFleeing(unit) and not StealthManager.isVisuallyFleeing(unit) and (unit.health>0) then
         if (track~=nil) and (track == true) then
             Wargroove.trackCameraTo(unit.pos)
         end
-        local lastKnownPos = StealthManager.getLastKnownLocation(unit.id)
+        local lastKnownPos = StealthManager.getLastKnownLocation(unit)
         if lastKnownPos ~= nil then
             unit.pos.facing = getFacing(unit.pos, lastKnownPos.pos)
         end
@@ -740,14 +789,14 @@ end
 
 
 function StealthManager.updateAlerted(unit, track)
-    if  active[unit.playerId] == nil then
+    if not StealthManager.isActive(unit.playerId) then
         return
     end
     if (StealthManager.isUnitAlerted(unit) or StealthManager.isUnitPermaAlerted(unit)) and not StealthManager.isVisuallyAlerted(unit) and (unit.health>0) then
         if (track~=nil) and (track == true) then
             Wargroove.trackCameraTo(unit.pos)
         end
-        local lastKnownPos = StealthManager.getLastKnownLocation(unit.id)
+        local lastKnownPos = StealthManager.getLastKnownLocation(unit)
         if lastKnownPos ~= nil then
             unit.pos.facing = getFacing(unit.pos, lastKnownPos.pos)
         end
@@ -765,14 +814,14 @@ function StealthManager.updateAlerted(unit, track)
 end
 
 function StealthManager.updateSearching(unit, track)
-    if  active[unit.playerId] == nil then
+    if not StealthManager.isActive(unit.playerId) then
         return
     end
     if StealthManager.isUnitSearching(unit) and not StealthManager.isVisuallySearching(unit) and (unit.health>0) then
         if (track~=nil) and (track == true) then
             Wargroove.trackCameraTo(unit.pos)
         end
-        local lastKnownPos = StealthManager.getLastKnownLocation(unit.id)
+        local lastKnownPos = StealthManager.getLastKnownLocation(unit)
         if lastKnownPos ~= nil then
             unit.pos.facing = getFacing(unit.pos, lastKnownPos.pos)
         end
@@ -790,7 +839,7 @@ function StealthManager.updateSearching(unit, track)
 end
 
 function StealthManager.updateUnaware(unit,track)
-    if  active[unit.playerId] == nil then
+    if not StealthManager.isActive(unit.playerId) then
         return
     end
     if StealthManager.isUnitUnaware(unit) and not StealthManager.isVisuallyUnaware(unit) and (unit.health>0) then
@@ -814,7 +863,7 @@ function StealthManager.updateAwareness(unitId, track)
     if unit == nil then
         return
     end
-    if  active[unit.playerId] == nil then
+    if not StealthManager.isActive(unit.playerId) then
         return
     end
     StealthManager.updateAlerted(unit, track)

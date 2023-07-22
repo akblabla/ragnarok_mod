@@ -5,6 +5,7 @@ local Ragnarok = require "initialized/ragnarok"
 local StealthManager = require "scripts/stealth_manager"
 local Stats = require "util/stats"
 local Verb = require "initialized/a_new_verb"
+local AIProfile = require "AIProfiles/ai_profile"
 
 
 local Attack = {}
@@ -102,7 +103,7 @@ function Attack:execute(unit, targetPos, strParam, path)
     else
         Wargroove.startCombat(unit,target, path)
     end
-	StealthManager.setLastKnownLocation(target.id, unit.pos)
+	StealthManager.setLastKnownLocation(target, unit.pos)
 	StealthManager.makeAlerted(target)
 	StealthManager.spreadInfo(target)
 end
@@ -154,16 +155,10 @@ function Attack:canExecuteWithTarget(unit, endPos, targetPos, strParam)
       return false
     end
 
-	if Ragnarok.cantAttackBuildings(unit.playerId) and targetUnit.unitClass.isStructure then
+	if not AIProfile.canAttackBuildings(unit.playerId) and targetUnit.unitClass.isStructure then
 		return false
 	end
 	if Ragnarok.hasCrown(unit) then return false end
-	local fakePath = {unit.pos, endPos}
-    local results = Combat:solveCombat(unit.id, targetUnit.id, fakePath, "simulationOptimistic")
-	local relativeValue = (targetUnit.unitClass.cost*(targetUnit.health-results.defenderHealth))/(unit.unitClass.cost*(unit.health-results.attackerHealth))
-	if relativeValue < 1 and Ragnarok.cantAttackBuildings(unit.playerId) then
-		return false
-	end
 	local result, _ = Stats.getTerrainCost("bridge", unit.unitClassId)
 	local isGroundUnit = result<100
 	if not (isGroundUnit and targetUnit.unitClass.isStructure) then

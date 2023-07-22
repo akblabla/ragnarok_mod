@@ -1,7 +1,7 @@
 ---
 
 unitClasses:
-  - id: fog
+  - id: stealth_manager
     name: unit_class_name_area_heal
     movement: hovering
     moveRange: 0
@@ -22,7 +22,7 @@ unitClasses:
 
 
 units:
-  - class: fog
+  - class: stealth_manager
     faction: outlaw
     name: unit_class_name_area_heal
     mapAnimation: units/commanders/emeric/crystal

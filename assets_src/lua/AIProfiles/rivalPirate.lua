@@ -1,4 +1,4 @@
-local CustomAI = require "initialized/ai_economy_manager"
+local CustomAI = require "scripts/ai_economy_manager"
 local DefaultAI = require "AIProfiles/default"
 local RivalPirate = {}
 

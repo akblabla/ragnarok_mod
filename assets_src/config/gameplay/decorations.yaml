@@ -242,6 +242,13 @@ decorations:
       undefined: decoration/unit/richBuilding02
 
 #Normal Deco
+
+  - id: bush01
+    layer: units
+    animation:
+      undefined: decoration/unit/bush01
+
+
   - id: orangeField
     layer: ground
     animation:
