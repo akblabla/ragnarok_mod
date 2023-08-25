@@ -149,7 +149,7 @@ en-GB:
   ragnarok_main3_ingameDraw_Wulfar_01: "This was just a show. It is a democratic election afterall. Let's go home and see the results."
   
   #Donation
-  ragnarok_main3_ingameDonation_Wulfar_00: "Could ya hold this money for me? I have more gold to rob!"
+  ragnarok_main3_ingameDonation_Wulfar_00: "Could ya hold this coin for me? I have more gold to rob!"
   ragnarok_main3_ingameDonation_Rival_00: "Uhm, thanks?"
   ragnarok_main3_ingameDonation_Wulfar_01: "Still counts for my robbed amount. Use the gold well friend!"
   ragnarok_main3_ingameDonation_Rival_01: "Bugger, you are right. You are a cheeky one."
@@ -230,12 +230,32 @@ en-GB:
   ragnarok_main3_1_cutscene_start_Wulfar_08: "Have fun with the training!"
   ragnarok_main3_1_cutscene_start_Wulfar_09: "I'ma head to tavern for a wee pint."
 
+
+  ragnarok_main3_1_ingame_tutorial_vesper_00: "Ok boys. Do you see that red area?"
+  ragnarok_main3_1_ingame_tutorial_vesper_01: "That is the vision of those hapless oblivious goons!"
+  ragnarok_main3_1_ingame_tutorial_vesper_02: "Take 'em out."
   
+  ragnarok_main3_1_ingame_spotted_guard_00: "Bandits! Get ready for a scuffle!"
+  
+  ragnarok_main3_1_ingame_tutorial_2_alt_vesper_00: "You imbeciles!"
+  ragnarok_main3_1_ingame_tutorial_2_alt_vesper_01: "You waddled right into their field of vision!"
+  ragnarok_main3_1_ingame_tutorial_2_alt_vesper_02: "Next time, if they don't see you approaching, you can ambush them!"
+  ragnarok_main3_1_ingame_tutorial_2_alt_vesper_03: "Ambushing garantees a crit and lets you avoid their retaliation."
+
+  ragnarok_main3_1_ingame_tutorial_2_part_2_tax_00: "What do you mean my papers aren't in order?!"
+  ragnarok_main3_1_ingame_tutorial_2_part_2_guard_00: "Your seal is for Brorne, not Dorne..."
+  ragnarok_main3_1_ingame_tutorial_2_part_2_tax_01: "But I have my exemption right here! You can't be serious!?"
+
+  ragnarok_main3_1_ingame_tutorial_2_part_3_vesper_00: "If they don't see you approaching, you can ambush them!"
+  ragnarok_main3_1_ingame_tutorial_2_part_3_vesper_01: "Ambushing garantees a crit and lets you avoid their retaliation."
+
+  ragnarok_main3_1_ingame_tutorial_2_part_3_vesper_00: "If they don't see you approaching, you can ambush them!"
+  ragnarok_main3_1_ingame_tutorial_2_part_3_vesper_01: "Ambushing garantees a crit and lets you avoid their retaliation."
  #-----------------------------------------------------------------------------------------------#
 
   # STORY MAIN 4 Hideout Defense
   # Cutscene: Start of match. Wulfar wanders the streets of the outlaw HQ
-  ragnarok_main4_cutscene_start_Wulfar_00: "I wonder what that was all about..."
+  ragnarok_main4_cutscene_start_Wulfar_00: "Why would Vesper leave in such a hurry?"
   ragnarok_main4_cutscene_start_Trickster_00: "Sir, Cherrystone forces have been spotted down south in Felheim, and they are heading here!"
   ragnarok_main4_cutscene_start_Wulfar_01: "Well, I guess that answers my question."
   ragnarok_main4_cutscene_start_Wulfar_02: "Gather 'round!"

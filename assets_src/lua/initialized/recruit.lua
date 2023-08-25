@@ -106,11 +106,11 @@ function Recruit:execute(unit, targetPos, strParam, path)
 		Wargroove.playPositionlessSound("recruit")
 		Wargroove.waitTime(0.2)
 		local spawn = Wargroove.getUnitById(spawnedId) 
-		if StealthManager.isUnitPermaAlerted(unit) then
-			StealthManager.makePermaAlerted(spawn)
+		if StealthManager.isUnitPermaSearching(unit) then
+			StealthManager.makePermaSearching(spawn)
 			StealthManager.updateAwareness(spawn,false)
 		else
-			StealthManager.removeUnit(spawn)
+--			StealthManager.removeUnit(spawn)
 			Wargroove.updateUnit(spawn)
 		end
 	else

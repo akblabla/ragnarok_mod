@@ -1,0 +1,6 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/vesper/vesperShoutHesClearlyAMoron.ogg ]
+    group: voice
+...

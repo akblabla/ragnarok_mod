@@ -20,7 +20,7 @@ worldMaps:
     pos: [0, 0]
   - animation: world/maps/aurania_v2/windmill
     layer: ground_decorations
-    pos: [200, 210]
+    pos: [147,188]
   fishAnimations:
   - world/world_map_fish_size01
   - world/world_map_fish_size02

@@ -31,8 +31,7 @@ weapons:
       travelboat: 0.25
       pirate_ship: 0.25
       flagship: 0.05
-      
-
+  
 unitClasses:
   - id: soldier
     name: unit_class_name_soldier
@@ -117,7 +116,7 @@ units:
       cushion_surprise_clean: emote_cushion_surprise_clean
       telescope: emote_telescope
       dance: emote_dance
-      question: question
+      surprised: emote_surprised
     alternativeRuns:
       - id: run_crown
       - id: run_ragged

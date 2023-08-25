@@ -124,6 +124,7 @@ units:
       appeared: emote_appeared
       vanish: emote_vanish
       seated: emote_seated
+      invis: emote_invis
       dance: emote_dance
       hug: emote_hug
       hug_idle: emote_hug_idle
@@ -190,6 +191,7 @@ units:
       vesper_ragna: vesper/vesperShoutRagna
       vesper_sedge: vesper/vesperShoutSedge
       vesper_shesclearlyamoron: vesper/vesperShoutShesClearlyAMoron
+      vesper_hesclearlyamoron: vesper/vesperShoutHesClearlyAMoron
       vesper_shh: vesper/vesperShoutShh
       vesper_shush: vesper/vesperShoutShush
       vesper_sicem: vesper/vesperShoutSicEm

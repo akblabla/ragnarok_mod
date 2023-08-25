@@ -475,7 +475,7 @@ terrains:
 
   - id: street
     name: terrain_name_street
-    defenceBonus: 1
+    defenceBonus: 0
     movementCost:
       walking: 1
       riding: 1
@@ -491,16 +491,13 @@ terrains:
       0: street
 
   - id: building
-    name: terrain_name_forest
+    name: terrain_name_building
     defenceBonus: 0
-    movementCost:
-      flying: 1
-      hovering: 1
+    movementCost: {}
     movementGroupType: land
-    placeable: true
     visionBlocking: true
+    placeable: true
     tilesets:
-      0: [plains, plains_alt, street]
-      1: building
-
+      0: [plains, rough, plains_alt, street]
+      2: building
 ...

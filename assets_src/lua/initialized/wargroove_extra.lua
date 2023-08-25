@@ -18,6 +18,8 @@ function WargrooveExtra.init()
 	
 	originalDoPostCombat= OldWargroove.doPostCombat
 	OldWargroove.doPostCombat = WargrooveExtra.doPostCombat
+
+	OldWargroove.removeUnitState = WargrooveExtra.removeUnitState
 end
 
 local hiddenTriggersStart = {}
@@ -151,6 +153,15 @@ end
 	-- end
     -- Wargroove.clearUnitPositionCache()
 -- end
+
+function WargrooveExtra.removeUnitState(unit, key)
+    for i, stateKey in pairs(unit.state) do
+        if (stateKey.key == key) then
+			table.remove(unit.state,i)
+            return
+        end
+    end
+end
 
 
 function WargrooveExtra.waitTime(time)

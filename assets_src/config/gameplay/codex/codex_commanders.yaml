@@ -41,4 +41,66 @@ codex:
     title: ui_codex_damage_matrix
     unitClass: commander_flagship_wulfar
 
+- id: commander_duchess
+  category: commanders
+  name: character_duchess_name
+  icon:
+    image: units/commanders/duchess/portrait_duchess_small.png
+    paletteSwap: true
+    colour: red
+    skinColour: typeV
+  pages:
+  - pageType: bio
+    layoutType: image
+    image: ui/codex/content/commander_duchess_portrait.png
+    title: character_duchess_name
+    text: codex_commander_duchess_lore2_text
+  - pageType: bio
+    layoutType: image
+    image: ui/codex/content/commander_duchess_portrait.png
+    title: character_duchess_name
+    text: codex_commander_duchess_lore1_text
+  - pageType: bio
+    layoutType: image
+    image: ui/codex/content/commander_duchess_portrait.png
+    title: codex_commander_ethoshistory
+    text: codex_commander_duchess_lore3_text
+  - pageType: groove
+    layoutType: animation
+    animation: ui/codex/content/commander_merciagroove
+    title: groove_name_morale_boost
+    text: codex_groove_description_duchess
+  - pageType: strategy
+    layoutType: animation
+    animation: ui/codex/content/commander_merciagroove
+    title: codex_title_strategy_duchess
+    text: codex_groove_strategy_duchess
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: commander_duchess
+
+- id: commander_rival
+  category: commanders
+  name: character_rival_name
+  icon:
+    image: units/rival/portrait_rival_small.png
+    paletteSwap: true
+    colour: purple
+    skinColour: typeII
+  pages:
+  - pageType: bio
+    layoutType: image
+    image: ui/codex/content/commander_rival_portrait.png
+    title: character_rival_name
+    text: codex_commander_rival_lore2_text
+  - pageType: bio
+    layoutType: image
+    image: ui/codex/content/commander_rival_portrait.png
+    title: character_rival_name
+    text: codex_commander_rival_lore1_text
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: rival
 ...

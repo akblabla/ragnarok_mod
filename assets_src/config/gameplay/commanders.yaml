@@ -21,14 +21,14 @@ commanders:
     dialogueBoxVoice: ui/dialogue/textScrollTenri
 
   - id: rival
-    name: character_flagship_rival_name
-    title: character_flagship_rival_title
+    name: character_rival_name
+    title: character_rival_title
     faction: outlaw_rival
     portrait:
       neutral: portraits/commanders/small/rival_portrait_small.png
       happy: portraits/commanders/small/rival_portrait_small.png
       sad: portraits/commanders/small/rival_portrait_small.png
-    cutscenePortrait: portraits/commanders/big/outlaw_portrait
+    cutscenePortrait: portraits/commanders/big/rival_portrait
     portraitOffset: [0, 20]
     themeSong: music/hostile
     skinColour: typeII
@@ -36,16 +36,16 @@ commanders:
     dialogueBoxVoice: ui/dialogue/textScroll
     
   - id: flagship_rival
-    name: character_flagship_rival_name
+    name: character_rival_name
     playable: false
     hidden: true
-    title: character_flagship_rival_title
+    title: character_rival_title
     faction: outlaw_rival
     portrait:
       neutral: portraits/commanders/small/rival_portrait_small.png
       happy: portraits/commanders/small/rival_portrait_small.png
       sad: portraits/commanders/small/rival_portrait_small.png
-    cutscenePortrait: portraits/commanders/big/outlaw_portrait
+    cutscenePortrait: portraits/commanders/big/rival_portrait
     portraitOffset: [0, 20]
     themeSong: music/hostile
     skinColour: typeII
@@ -114,7 +114,22 @@ commanders:
     skinColour: typeII
     unitClassId: soldier
     dialogueBoxVoice: ui/dialogue/textScroll
-    
+
+  - id: generic_villager_neutral
+    name: character_villager_neutral_name
+    faction: cherrystone
+    playable: false
+    portrait:
+      neutral: portraits/commanders/small/villager_neutral_portrait_small.png
+      happy: portraits/commanders/small/villager_neutral_portrait_happy.png
+      sad: portraits/commanders/small/villager_neutral_portrait_sad.png
+      extra: portraits/commanders/small/villager_felheim_portrait.png
+    cutscenePortrait: portraits/commanders/big/cherrystone_portrait
+    themeSong: music/hostile
+    skinColour: typeII
+    unitClassId: knight
+    dialogueBoxVoice: ui/dialogue/textScroll
+
   - id: empty
     name: unit_class_name_rival
     faction: outlaw

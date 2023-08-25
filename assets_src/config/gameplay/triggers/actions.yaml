@@ -71,6 +71,14 @@ triggerActions:
       - type: location_star
       - type: player_neutral_star
 
+  - id: give_bounty_based_on_value
+    parameters:
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+      - type: player_neutral_star
+      - type: integer
+
 
   - id: link_gizmo_state_with_activators
     parameters:
@@ -118,6 +126,22 @@ triggerActions:
     parameters:
       - type: location
       
+  - id: set_location_to_units
+    parameters:
+      - type: location
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+
+  - id: set_location_to_units_with_state
+    parameters:
+      - type: location
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+      - type: string
+      - type: string
+
   - id: transfer_gold_robbed
     parameters:
       - type: player
@@ -128,6 +152,12 @@ triggerActions:
     parameters:
       - type: string
       
+  - id: log_unit
+    parameters:
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+
   - id: message
     parameters:
       - type: string
@@ -180,6 +210,13 @@ triggerActions:
       - type: player_neutral_star
       - type: location
       - type: string
+
+  - id: set_facing
+    parameters:
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+      - type: boolean
 
   - id: display_path
     parameters:

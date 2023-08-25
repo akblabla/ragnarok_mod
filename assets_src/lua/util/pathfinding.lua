@@ -167,7 +167,6 @@ function Pathfinding.reportDeadUnit(unitId)
 end
 
 function Pathfinding.clearCache(unitId)
-  print("Pathfinding.clearCache("..tostring(unitId)..")")
   pathCache = {}
   pathCache[unitId] = nil
   cameFromCache = {}
@@ -176,7 +175,6 @@ function Pathfinding.clearCache(unitId)
   edgeCache = nil
 end
 function Pathfinding.clearCaches()
-  print("Pathfinding.clearCaches()")
 
   cameFromCache = {}
   gScoreCache = {}
@@ -383,23 +381,21 @@ function Pathfinding.getMoveTiles(unit)
   return availableTiles
 end
 
-function Pathfinding.distanceToEnemyMap(pos, range, playerId)
+function Pathfinding.getDistanceToLocationMap(centerPos, range, location)
 
   local openSet = BinaryHeap()
   local distMap = {}
-  for i, unit in ipairs(Wargroove.getUnitsAtLocation()) do
-    if Wargroove.areEnemies(unit.playerId,playerId) and VisionTracker.canSeeTile(playerId,unit.pos) then
-      local startKey = PosKey.generatePosKey(unit.pos)
+  for i, pos in ipairs(location) do
+      local startKey = PosKey.generatePosKey(pos)
       distMap[startKey] = 0
       openSet:insert(distMap[startKey],startKey)
-    end
   end
   while (openSet:empty() == false) do
     local currentScore,currentPosKey = openSet:pop()
     local currentPos = PosKey.revertPosKey(currentPosKey)
     for i,dir in ipairs(directions) do
       local newPos = {x = currentPos.x+dir.x,y = currentPos.y+dir.y}
-      if Pathfinding.withinBounds(newPos) and (Pathfinding.newYorkDistance(pos,newPos) <= range) then
+      if Pathfinding.withinBounds(newPos) and (Pathfinding.newYorkDistance(centerPos,newPos) <= range) then
         local newPosKey = PosKey.generatePosKey(newPos)
         if distMap[newPosKey] == nil then
           distMap[newPosKey] = 1000
@@ -415,6 +411,8 @@ function Pathfinding.distanceToEnemyMap(pos, range, playerId)
   end
   return distMap
 end
+
+
 
 function Pathfinding.findClosestOpenSpot(unitClassId, start)
   local openSet = BinaryHeap()

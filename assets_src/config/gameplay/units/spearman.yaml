@@ -10,8 +10,8 @@ weapons:
     tagDamage:
       archer: 0.7
       soldier: 0.75
-      villager: 0.75
-      spearman: 0.85
+      villager: 0.85
+      spearman: 0.55
       dog: 0.8
       wagon: 0.45
       knight: 0.7
@@ -83,6 +83,8 @@ units:
       runMap: infantryHeavyMapEntry
       hit: hitOrganic
       hitMap: hitOrganic
+    emotes:
+      idle: idle
     attacks:
       - id: primary
         hitSpark: fx/bs_stab_attack

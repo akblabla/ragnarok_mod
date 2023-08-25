@@ -15,6 +15,10 @@ function pirate_deposit:getTargetType()
 end
 
 function pirate_deposit:canExecuteAnywhere(unit)
+    local cantDeposit = Wargroove.getUnitState(unit, "cant_deposit")
+    if cantDeposit ~= nil and cantDeposit == "true" then
+        return false
+    end
     local gold = Wargroove.getUnitState(unit, stateKey)
     return gold ~= nil and tonumber(gold) > 0
 end

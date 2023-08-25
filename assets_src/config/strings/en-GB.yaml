@@ -64,8 +64,13 @@ en-GB:
   terrain_description_brush_invis: Fields provides limited defense. Cavalry and wheeled units are slowed.
   terrain_name_cave_road: Cave Road
   terrain_description_cave_road: Underground roads speeds along wheeled units, but only provide limited defense.
-  terrain_name_street: Street
-  terrain_description_street: Urban roads provide full movement for wheeled units.
+  terrain_name_street: Road
+  terrain_description_street: Urban roads that speed along big wooden wheels, but offer little protection.
+  terrain_name_building: Building
+  terrain_description_building: Buildings so densely packed they act as walls for units.
+  terrain_name_quay: Sea
+  terrain_description_quay: Open water. Accessible only to air and naval units.
+
 
   #Fog of war gimmick tiles
   terrain_description_forest_no_hiding: Forests are slow going, but provide good defence and a means of avoiding vehicles
@@ -90,7 +95,8 @@ en-GB:
   unit_class_name_flagship_rival: "Rival's Flagship"
   unit_name_flagship_rival: "Rival's Flagship"
   unit_description_commander_flagship_rival: "Flagship of Rival"
-  
+
+
 
   # Commander
   character_flagship_wulfar_name: "Wulfar's Flagship"
@@ -100,11 +106,16 @@ en-GB:
   groove_description_broadside: "Blasts enemies in a cone. The closest enemies take 100% of the commanders damage at full health, the next layer 66% and the furthest layer 33%."
   groove_name_all_caps_groove_broadside: "BROADSIDE"
   
-  character_flagship_rival_name: "Rival"
-  character_flagship_rival_title: "Captain Rival  "
+  character_rival_name: "Rival"
+  character_rival_title: "Captain Rival"
   
-  character_duchess_name: "The Duchess"
+  character_duchess_name: "Sabah"
   character_duchess_title: "The Duchess of Dorne"
+  unit_description_commander_duchess: "Duchess of Dorne. She cmakes her units strike first when attacked."
+
+
+  character_rival_name: "Rival"
+  character_rival_title: "Captain Rival"
 
   groove_name_alert_area: "Martial Law"
   groove_description_alert_area: "Permanently alerts allies in a radius of 2."
@@ -112,11 +123,12 @@ en-GB:
 
 
   groove_name_morale_boost: "En Garde"
-  groove_description_morale_boost: "Friendly units within 3 tiles always strike first when attacked."
+  groove_description_morale_boost: "Friendly units within 2 tiles strike first when attacked."
   groove_name_all_caps_groove_morale_boost: "EN GARDE"
 
-  character_generic_outlaw_gang_name: "Generic Outlaws Gang"
-  character_generic_vesper_gang_name: "Generic Vespers Gang"
+  character_generic_outlaw_gang_name: "Outlaw Gang"
+  character_generic_vesper_gang_name: "Vespers Gang"
+  character_villager_neutral_name: "Villager Neutral"
   
   
   

@@ -30,9 +30,9 @@ weapons:
       rifleman: 1.05
       thief: 0.95
       
-      warship: 0.55
+      warship: 0.45
       harpoonship: 0.6
-      turtle: 0.55
+      turtle: 0.4
       travelboat: 0.45
       merman: 0.95
       flagship: 0.4

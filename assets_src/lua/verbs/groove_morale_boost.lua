@@ -1,6 +1,8 @@
 local Wargroove = require "wargroove/wargroove"
 local GrooveVerb = require "wargroove/groove_verb"
 local Combat = require "initialized/combat"
+local Pathfinding = require "util/pathfinding"
+local PosKey = require "util/posKey"
 local MoraleBoost = GrooveVerb:new()
 
 
@@ -79,31 +81,44 @@ function MoraleBoost:generateOrders(unitId, canMove)
 
     return orders
 end
-
 function MoraleBoost:getScore(unitId, order)
     local unit = Wargroove.getUnitById(unitId)
-    local unitClass = Wargroove.getUnitClass(unit.unitClassId)
-    local unitValue = 10
+    if unit == nil then
+        return{ score = -1000, introspection = {}}
+    end
     
-    local targetUnit = Wargroove.getUnitAt(order.targetPosition)
-    local targetUnitClass = Wargroove.getUnitClass(targetUnit.unitClassId)
-    local targetUnitValue = math.sqrt(targetUnitClass.cost / 100)
-
-    local unitHealth = unit.health
-    local targetHealth = targetUnit.health
-
-    local myHealthDelta = math.min(unitHealth + targetHealth, 100) - unitHealth
-    local myDelta = myHealthDelta / 100 * unitValue
-    local theirDelta = targetHealth / 100 * targetUnitValue
-
-    local score = myDelta + theirDelta
-
-    return { score = score, healthDelta = myHealthDelta, introspection = {
-        { key = "unitValue", value = unitValue },
-        { key = "targetUnitValue", value = targetUnitValue },
-        { key = "myHealthDelta", value = myHealthDelta },
-        { key = "myDelta", value = myDelta },
-        { key = "theirDelta", value = theirDelta }}}
+    local endPos = order.endPosition
+    local units = Wargroove.getUnitsAtLocation()
+    local enemyLocations = {}
+    for i,u in pairs(units) do
+        local uc = u.unitClass
+        if Pathfinding.withinBounds(u.pos) then
+            if Wargroove.areEnemies(u.playerId,unit.playerId) and (not uc.isStructure) and (uc.weapons ~= nil) and (uc.weapons[1] ~= nil) then
+                table.insert(enemyLocations,u.pos)
+            end
+        end
+    end
+    local enemyDistMap = Pathfinding.getDistanceToLocationMap(unit.pos, 20, enemyLocations)
+    local targets = Wargroove.getTargetsInRange(endPos, 2, "unit")
+    local score = -300
+    for i, pos in ipairs(targets) do
+        local u = Wargroove.getUnitAt(pos)
+        local uc = u.unitClass
+        local uValue = u.unitClass.cost*u.health/100
+        if u ~= nil and Wargroove.areAllies(u.playerId, unit.playerId) and (not uc.isStructure) then
+            if (uc.weapons ~= nil) and (uc.weapons[1] ~= nil) and (uc.weapons[1].canMoveAndAttack == true) then
+                local posKey = PosKey.generatePosKey(pos)
+                local distToEnemy = enemyDistMap[posKey];
+                if u.hadTurn then
+                    distToEnemy = distToEnemy*2 -- this is to compensate for the unit not being able to close the distance after the buff is applied
+                end
+                if enemyDistMap[posKey]<6 then
+                    score = score + (10-enemyDistMap[posKey])*uValue/10
+                end
+            end
+        end
+    end
+    return { score = score, introspection = {}}
 end
 
 return MoraleBoost

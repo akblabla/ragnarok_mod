@@ -61,4 +61,114 @@ unitClasses:
     sightRange: 4
     deathVerbId: death_drop_crown
     deathVerbId: death
+
+units:
+  - class: knight
+    faction: cherrystone
+    name: unit_name_knight_cherrystone
+    mapAnimation: units/knight/cherrystone/map_knight_cherrystone
+    battleAnimation: units/knight/cherrystone/battle_knight_cherrystone
+    battleAnimationRiver: fx/river_overlay/battle_knight_cherrystone_river
+    smallPortrait: units/knight/cherrystone/portrait_knight_cherrystone_small.png
+    mediumPortrait: units/knight/cherrystone/portrait_knight_cherrystone_medium.png
+    mapSpeed: 6.0
+    grabPos: [14, 9]
+    attackOffset: [5, 0]
+    sounds:
+      attackMap: unitAttack
+      attack: knightAttackRed
+      attackShout: knightPreAttack
+      death: soldierDieRed
+      deathMap: unitDie
+      run: horseEntry
+      runMap: horseMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.1
+    shouts:
+      soldier_shout1: soldierShoutRed1
+      soldier_shout2: soldierShoutRed2
+      soldier_shout3: soldierShoutRed3
+      soldier_shout4: soldierShoutRed4
+      soldier_shout5: soldierShoutRed5
+      soldier_shout6: soldierShoutRed6
+      soldier_shout7: soldierShoutRed7
+      soldier_shout8: soldierShoutRed8
+      soldier_shout9: soldierShoutRed9
+      soldier_hit1: soldierHitRed1
+      soldier_hit2: soldierHitRed2
+      soldier_hit3: soldierHitRed3
+      soldier_hit4: soldierHitRed4
+      soldier_hit5: soldierHitRed5
+      knight_shout1: knightShout1
+      knight_shout2: knightShout2
+      knight_shout3: knightShout3
+      knight_shout4: knightShout4
+      knight_shout5: knightShout5
+      knight_shout6: knightShout6
+      soldier_blue_shout1: soldierShoutBlue1
+      soldier_blue_shout2: soldierShoutBlue2
+      undead_shout1: undeadShout1
+      undead_shout2: undeadShout2
+      soldier_green_shout1: soldierShoutGreen1
+      soldier_green_shout2: soldierShoutGreen2
+      soldier_green_shout3: soldierShoutGreen3
+      soldier_green_shout4: soldierShoutGreen4
+      soldier_green_shout5: soldierShoutGreen5
+      soldier_green_shout6: soldierShoutGreen6
+      soldier_green_hit1: soldierHitGreen1
+      soldier_green_hit2: soldierHitGreen2
+      soldier_green_hit3: soldierHitGreen3
+      soldier_yellow_shout1: soldierShoutYellow1
+      soldier_yellow_shout2: soldierShoutYellow2
+      soldier_yellow_shout3: soldierShoutYellow3
+      soldier_yellow_shout4: soldierShoutYellow4
+      soldier_yellow_shout5: soldierShoutYellow5
+      soldier_yellow_hit1: soldierHitYellow1
+      soldier_yellow_hit2: soldierHitYellow2
+      soldier_yellow_hit3: soldierHitYellow3
+      soldier_yellow_hit4: soldierHitYellow4
+      villager_male_shout1: cutscene/villagerScreamMale1
+      villager_male_shout2: cutscene/villagerScreamMale2
+      merfolk_shout1: merfolkShout1
+      merfolk_shout2: merfolkShout2
+    emotes:
+      idle: idle
+    hidden:
+      shouts:
+        - soldier_shout3
+        - soldier_shout5
+        - soldier_shout6
+        - soldier_shout9
+        - knight_shout2
+        - knight_shout5
+        - soldier_blue_shout1
+        - soldier_blue_shout2
+        - undead_shout1
+        - undead_shout2
+        - soldier_green_shout1
+        - soldier_green_shout2
+        - soldier_green_shout3
+        - soldier_green_shout4
+        - soldier_green_shout5
+        - soldier_green_shout6
+        - soldier_green_hit1
+        - soldier_green_hit2
+        - soldier_green_hit3
+        - soldier_yellow_shout1
+        - soldier_yellow_shout2
+        - soldier_yellow_shout3
+        - soldier_yellow_shout4
+        - soldier_yellow_shout5
+        - soldier_yellow_hit1
+        - soldier_yellow_hit2
+        - soldier_yellow_hit3
+        - soldier_yellow_hit4
+        - villager_male_shout1
+        - villager_male_shout2
+        - merfolk_shout1
+        - merfolk_shout2
 ...

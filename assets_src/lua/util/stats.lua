@@ -46,6 +46,7 @@ Stats.sightRangeList = {
 	thief = 4,
 	thief_with_gold = 4,
 	travelboat = 4,
+	travelboat_with_gold = 4,
 	turtle = 4,
 	warship = 4,
 	witch = 4,
@@ -94,6 +95,7 @@ Stats.visionBlockingList = {
 	forest = true,
 	mountain = true,
 	wall = true,
+	building = true,
 	mangrove = true,
 	forest_alt = true,
 	cave_wall = true,
@@ -167,6 +169,8 @@ Stats.terrainCost = {
 		amphibious = 2
 	},
 	wall = {
+	},
+	building = {
 	},
 	bridge = {
 		walking = 1,

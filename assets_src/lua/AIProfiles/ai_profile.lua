@@ -46,36 +46,28 @@ function AIProfile.checkForProfile(playerId)
 end
 
 function AIProfile.getAIProfileObject()
-    print("AIProfile.getAIProfileObject()")
 	if AIProfileObject == nil then
-        print("AIProfileObject = nil")
         for i,unit in pairs(Wargroove.getUnitsAtLocation()) do
-            print("unit")
             if unit.unitClassId == "ai_profile" then
-                print("ai_profile")
                 AIProfileObject = unit
                 return AIProfileObject
             end
         end
-        print("spawning unit")
         local id = Wargroove.spawnUnit(-1, {x=-50,y=-50}, "ai_profile", false)
         AIProfileObject = Wargroove.getUnitById(id)
         return AIProfileObject
     else
-        print("already has an AIProfile Object")
         return AIProfileObject
     end
 end
 
 function AIProfile.setProfileState(playerId, profile)
-    print("AIProfile.setProfileState(playerId, profile)")
     local AIProfileObject = AIProfile.getAIProfileObject()
     Wargroove.setUnitState(AIProfileObject,"profile"..tostring(playerId),profile)
     Wargroove.updateUnit(AIProfileObject)
 end
 
 function AIProfile.getProfileState(playerId)
-    print("AIProfile.getProfileState(playerId)")
     local AIProfileObject = AIProfile.getAIProfileObject()
     local profile = Wargroove.getUnitState(AIProfileObject,"profile"..tostring(playerId))
     if profile == nil then
@@ -87,7 +79,11 @@ end
 
 function AIProfile.setCanAttackBuildings(playerId, canAttack)
     local AIProfileObject = AIProfile.getAIProfileObject()
-    Wargroove.setUnitState(AIProfileObject,"canAttackBuildings"..tostring(playerId),canAttack)
+    if canAttack then
+        Wargroove.setUnitState(AIProfileObject,"canAttackBuildings"..tostring(playerId),"true")
+    else
+        Wargroove.setUnitState(AIProfileObject,"canAttackBuildings"..tostring(playerId),"false")
+    end
     Wargroove.updateUnit(AIProfileObject)
 end
 
@@ -96,9 +92,9 @@ function AIProfile.canAttackBuildings(playerId)
     local AIProfileObject = AIProfile.getAIProfileObject()
     local canAttack = Wargroove.getUnitState(AIProfileObject,"canAttackBuildings"..tostring(playerId))
     if canAttack == nil then
-        return nil
+        return true
     else
-        return canAttack
+        return canAttack == "true"
     end
 end
 return AIProfile

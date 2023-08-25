@@ -227,20 +227,40 @@ decorations:
     animation:
       undefined: decoration/unit/building02
       
-  - id: richBuilding01
+  - id: buildingPoor01
     layer: units
     snapToGrid: true
     snapOffset: [12, 18]
     animation:
-      undefined: decoration/unit/richBuilding01
-
-  - id: richBuilding02
+      undefined: decoration/unit/buildingPoor01
+      
+  - id: buildingPoor02
     layer: units
     snapToGrid: true
     snapOffset: [12, 18]
     animation:
-      undefined: decoration/unit/richBuilding02
+      undefined: decoration/unit/buildingPoor02
 
+  - id: buildingRich01
+    layer: units
+    snapToGrid: true
+    snapOffset: [12, 18]
+    animation:
+      undefined: decoration/unit/buildingRich01
+
+  - id: buildingRich02
+    layer: units
+    snapToGrid: true
+    snapOffset: [12, 18]
+    animation:
+      undefined: decoration/unit/buildingRich02
+
+  - id: buildingRich03
+    layer: units
+    snapToGrid: true
+    snapOffset: [12, 18]
+    animation:
+      undefined: decoration/unit/buildingRich03
 #Normal Deco
 
   - id: bush01
@@ -375,6 +395,14 @@ decorations:
     layer: units
     animation:
       undefined: decoration/unit/anvil
+  - id: fishPile
+    layer: units
+    animation:
+      undefined: decoration/unit/fishPile
+  - id: fishString
+    layer: units
+    animation:
+      undefined: decoration/unit/fishString
   - id: furnace
     layer: units
     animation:

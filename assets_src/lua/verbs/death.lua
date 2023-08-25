@@ -49,7 +49,6 @@ function Death:execute(unit, targetPos, strParam, path)
 	-- 	self:deathVerb(unit, targetPos, strParam, path)
 	-- end
 	self:giveGold(unit, targetPos, strParam, path)
-    StealthManager.reportDeadUnit(unit.id)
 end
 
 

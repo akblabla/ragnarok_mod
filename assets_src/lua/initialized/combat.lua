@@ -4,7 +4,7 @@ local VisionTracker = require "initialized/vision_tracker"
 local Ragnarok = require "initialized/ragnarok"
 local Stats = require "util/stats"
 local StealthManager = require "scripts/stealth_manager"
-
+local Copy = require "util/copy"
 
 --
 local defencePerShield = 0.10
@@ -207,25 +207,25 @@ function NewCombat:getDamage(attacker, defender, solveType, isCounter, attackerP
 		sawItComing = true
 	end
 	if (sawItComing == false) and StealthManager.isActive(defender.playerId) and not StealthManager.isVisuallyAlerted(defender) then
-		passiveMultiplier = math.max(passiveMultiplier,effectiveAttacker.unitClass.passiveMultiplier)
+		passiveMultiplier = math.max(passiveMultiplier,attacker.unitClass.passiveMultiplier)
 	end
 	sawItComing = false
 	for i,tile in pairs(defenderPath) do
-		if (i ~= #defenderPath) and VisionTracker.canUnitSeeTile(effectiveAttacker,tile) then
+		if (i ~= #defenderPath) and VisionTracker.canUnitSeeTile(attacker,tile) then
 			sawItComing = true
 		end
 	end
-	visibleTiles = VisionTracker.calculateVisionOfUnit(effectiveAttacker)
+	visibleTiles = VisionTracker.calculateVisionOfUnit(attacker)
 	for i,tile in pairs(visibleTiles) do
 		local viewer = Wargroove.getUnitAt(tile)
-		if not ((defenderPos.x == tile.x) and (defenderPos.y == tile.y)) and (viewer ~= nil) and Wargroove.areEnemies(effectiveAttacker.playerId,viewer.playerId) then
+		if not ((defenderPos.x == tile.x) and (defenderPos.y == tile.y)) and (viewer ~= nil) and Wargroove.areEnemies(attacker.playerId,viewer.playerId) then
 			sawItComing = true
 		end
 	end
-	if effectiveAttacker.unitClass.isStructure == true then
+	if attacker.unitClass.isStructure == true then
 		sawItComing = true
 	end
-	if (sawItComing == false) and StealthManager.isActive(effectiveAttacker.playerId) and not StealthManager.isVisuallyAlerted(effectiveAttacker) then
+	if (sawItComing == false) and StealthManager.isActive(attacker.playerId) and not StealthManager.isVisuallyAlerted(attacker) then
 		passiveMultiplier = 0
 	end
 
@@ -315,19 +315,7 @@ end
 
 local reverseOrder = false
 
-local function deepCopy(orig)
-    local orig_type = type(orig)
-    local copy
-    if orig_type == 'table' then
-        copy = {}
-        for orig_key, orig_value in pairs(orig) do
-            copy[orig_key] = deepCopy(orig_value)
-        end
-    else -- number, string, boolean, etc
-        copy = orig
-    end
-    return copy
-end
+
 
 local function dump(o,level)
     if type(o) == 'table' then
@@ -343,9 +331,9 @@ local function dump(o,level)
  end
 
 function NewCombat:solveCombat(attackerId, defenderId, attackerPath, solveType)
-	local tempAttacker = deepCopy(Wargroove.getUnitById(attackerId))
+	local tempAttacker = Copy.deepCopy(Wargroove.getUnitById(attackerId))
 	assert(tempAttacker ~= nil)
-	local tempDefender = deepCopy(Wargroove.getUnitById(defenderId))
+	local tempDefender = Copy.deepCopy(Wargroove.getUnitById(defenderId))
 	assert(tempDefender ~= nil)
 	local e0 = self:getEndPosition(attackerPath, tempAttacker.pos)
 	tempAttacker.pos = e0
@@ -366,7 +354,7 @@ function NewCombat:solveCombat(attackerId, defenderId, attackerPath, solveType)
 		defender = Wargroove.getUnitById(attackerId)
 		defender.pos = e0
 		assert(defender ~= nil)
-		defenderPath = deepCopy(attackerPath)
+		defenderPath = Copy.deepCopy(attackerPath)
 		attackerPath = {attacker.pos}
 	else
 		isHighAlert = false

@@ -12,7 +12,7 @@ tilesets:
         battleBackgroundSprite: street_background
         battleBackgroundSpriteForeground: street_foreground
         iconSpriteSheet: ui_RagnarokMod
-        iconSprite: ":img:ui/codex/icons/icon_terrain_rough_grass.png"
+        iconSprite: ":img:ui/codex/icons/icon_terrain_street.png"
         infoScreenOffset: 80
         fillColour: '#83786e'
         
@@ -25,7 +25,7 @@ tilesets:
         battleBackgroundSprite: street_background
         battleBackgroundSpriteForeground: street_foreground
         iconSpriteSheet: ui_RagnarokMod
-        iconSprite: ":img:ui/codex/icons/icon_terrain_rough_grass.png"
+        iconSprite: ":img:ui/codex/icons/icon_terrain_street.png"
         infoScreenOffset: 80
         fillColour: '#807063'
         
@@ -38,7 +38,7 @@ tilesets:
         battleBackgroundSprite: street_background
         battleBackgroundSpriteForeground: street_foreground
         iconSpriteSheet: ui_RagnarokMod
-        iconSprite: ":img:ui/codex/icons/icon_terrain_rough_grass.png"
+        iconSprite: ":img:ui/codex/icons/icon_terrain_street.png"
         infoScreenOffset: 80
         fillColour: '#807063'
       - types: [ice]
@@ -50,7 +50,7 @@ tilesets:
         battleBackgroundSprite: street_background
         battleBackgroundSpriteForeground: street_foreground
         iconSpriteSheet: ui_RagnarokMod
-        iconSprite: ":img:ui/codex/icons/icon_terrain_rough_grass.png"
+        iconSprite: ":img:ui/codex/icons/icon_terrain_street.png"
         infoScreenOffset: 80
         fillColour: '#596876'
     primaryConnect: [undefined, street]

@@ -2,7 +2,7 @@ local Wargroove = require "wargroove/wargroove"
 local Ragnarok = require "initialized/ragnarok"
 local Recruit = require "verbs/recruit"
 local StealthManager = require "scripts/stealth_manager"
---local AIProfile = require "AIProfiles/ai_profile"
+local AIProfile = require "AIProfiles/ai_profile"
 
 local AIEconomyManager = {}
 function AIEconomyManager.init()
@@ -340,7 +340,7 @@ function AIEconomyManager.spendRest(context)
 		if Wargroove.isHuman(playerId) == true then
 			return
 		end
---		AIProfile.checkForProfile(playerId)
+		AIProfile.checkForProfile(playerId)
 		unitCountPlayerList = {}
 		local barracksCount = 0
 		for i, unit in ipairs(Wargroove.getUnitsAtLocation(nil)) do
@@ -368,7 +368,7 @@ function AIEconomyManager.spendRest(context)
 					local spawnPos = {x = relPos.x+unit.pos.x, y = relPos.y+unit.pos.y}
 					if unit.hadTurn == false and Wargroove.getUnitAt(spawnPos) == nil and Recruit:canExecuteWithTarget(unit, unit.pos,spawnPos, "soldier") then
 						if StealthManager.isActive(unit.playerId) then
-							if StealthManager.isUnitPermaAlerted(unit) then
+							if StealthManager.isUnitPermaSearching(unit) then
 								barracksCount = barracksCount + 1
 							end
 						else
@@ -411,10 +411,10 @@ function AIEconomyManager.spendRest(context)
 					for i, recruit in ipairs(unit.recruits) do 
 						print("Attempting to recruit: " .. recruit)
 						if StealthManager.isActive(unit.playerId) then
-							if ((StealthManager.isCivilian(recruit) and not StealthManager.isUnitPermaAlerted(unit))) then
+							if ((StealthManager.isCivilian(recruit) and not StealthManager.isUnitPermaSearching(unit))) then
 								AIEconomyManager.addUnitOption(recruit,unit,spawnPos,productionOptions,playerId)
 							end
-							if ((not StealthManager.isCivilian(recruit) and StealthManager.isUnitPermaAlerted(unit))) then
+							if ((not StealthManager.isCivilian(recruit) and StealthManager.isUnitPermaSearching(unit))) then
 								AIEconomyManager.addUnitOption(recruit,unit,spawnPos,productionOptions,playerId)
 							end
 						else

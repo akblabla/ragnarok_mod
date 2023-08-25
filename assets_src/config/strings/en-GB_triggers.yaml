@@ -91,6 +91,10 @@ en-GB:
   trigger_action_description_give_bounty: "Give Units a bounty."
   trigger_action_readable_give_bounty: "Give units of type {0} at location {1} owned by player {2} a bounty."
 
+  trigger_action_name_give_bounty_based_on_value: "Unit: Give Bounty based on Value"
+  trigger_action_description_give_bounty_based_on_value: "Give Units a bounty based on Value."
+  trigger_action_readable_give_bounty_based_on_value: "Give units of type {0} at location {1} owned by player {2} a bounty based on value of player {3} targeting {4}."
+
   trigger_action_name_spawn_unit_close: "Unit: Spawn as close as possible"
   trigger_action_description_spawn_unit_close: "Spawn as close as possible to target location."
   trigger_action_readable_spawn_unit_close: "Spawn {0} at {1} as close as possible for {2} (silent = {3})"
@@ -111,14 +115,26 @@ en-GB:
   trigger_action_description_set_location_to_spawned: "Set to Spawned Units"
   trigger_action_readable_set_location_to_spawned: "Set location {0} to the spawned units in this trigger."
 
+  trigger_action_name_set_location_to_units_with_state: "Location: Set to Units with State" 
+  trigger_action_description_set_location_to_units_with_state: "Set to location of Units with State"
+  trigger_action_readable_set_location_to_units_with_state: "Set location {0} to units of type(s) {1} at location {2} owned by player {3} with state {4} equal to {5}."
+
+  trigger_action_name_set_location_to_units: "Location: Set to Units" 
+  trigger_action_description_set_location_to_units: "Set to location of Units"
+  trigger_action_readable_set_location_to_units: "Set location {0} to units of type(s) {1} at location {2} owned by player {3}."
+
   trigger_action_name_dialogue_box_unit: "UI: Show Dialogue Box for Unit"
   trigger_action_description_dialogue_box_unit: "Triggers a dialogue box for a unit."
   trigger_action_readable_dialogue_box_unit: "Display dialogue box from {0} at {1} for {2} being {3} saying {4} with colour {5}."
 
-  trigger_action_name_log_message: "Dev: Write to Log"
+  trigger_action_name_log_message: "Dev: Log Message"
   trigger_action_description_log_message: "Write message to log."
   trigger_action_readable_log_message: "Write to log message: {0}"
   
+  trigger_action_name_log_unit: "Dev: Log Unit"
+  trigger_action_description_log_unit: "Log unit stats."
+  trigger_action_readable_log_unit: "Log {0} at location {1} owned by player {2}."
+
   trigger_action_name_set_match_seed: "Map: Set Match Seed"
   trigger_action_description_set_match_seed: "Set Match Seed."
   trigger_action_readable_set_match_seed: "Set Match Seed to {0}."
@@ -127,10 +143,13 @@ en-GB:
   trigger_action_description_set_priority_target: "Give Order."
   trigger_action_readable_set_priority_target: "Give units of type {0} at location {1} owned by player {2} {4} orders to go to location {3}."
   
+  trigger_action_name_set_facing: "Unit: Set Facing"
+  trigger_action_description_set_facing: "Set Facing."
+  trigger_action_readable_set_facing: "Set facing for units of type {0} at location {1} owned by player {2} to right {3}"
+
   trigger_action_name_display_path: "AI: Display Path"
   trigger_action_description_display_path: "Display path."
   trigger_action_readable_display_path: "Display path for units of type {0} at location {1} owned by player {2}"
-
 
   trigger_action_name_let_neutral_units_move: "AI: Let Neutral Move"
   trigger_action_description_let_neutral_units_move: "Let Neutral Move."

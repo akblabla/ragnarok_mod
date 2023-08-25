@@ -130,6 +130,8 @@ units:
       handshake_3: emote_handshake_3
       hug: emote_hug
       hug_idle: emote_hug_idle
+      sitting: emote_sitting
+      sitting_looking: emote_sitting_looking
 
     shouts:
       wulfar_agreed: wulfar/wulfarShoutAgreed

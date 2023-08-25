@@ -248,6 +248,29 @@ function Buffs.thief_with_gold(Wargroove, unit)
         Wargroove.updateUnit(unit)
     end
 end
+
+function Buffs.travelboat(Wargroove, unit)
+    if Wargroove.isSimulating() then
+        return
+    end
+
+    if (Wargroove.getUnitState(unit, "gold") == nil) then
+        Wargroove.setUnitState(unit, "gold", 0)
+        Wargroove.updateUnit(unit)
+    end
+end
+
+function Buffs.travelboat_with_gold(Wargroove, unit)
+    if Wargroove.isSimulating() then
+        return
+    end
+    
+    if (Wargroove.getUnitState(unit, "gold") == nil) then
+        Wargroove.setUnitState(unit, "gold", 300)
+        Wargroove.updateUnit(unit)
+    end
+end
+
 function Buffs.vision_tile(Wargroove, unit)
     if (not Wargroove.isSimulating()) then
         Corners.update(unit)

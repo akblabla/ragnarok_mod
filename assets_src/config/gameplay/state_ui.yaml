@@ -3,5 +3,36 @@ stateUIs:
   - id: crown
     type: text
     icon: ui/icons/state_crown_alt_2.png
+
+  - id: searching
+    type: text
+    icon: ui/icons/state_searching.png
     
+  - id: alerted
+    type: text
+    icon: ui/icons/state_alerted.png
+    
+  - id: fleeing
+    type: text
+    icon: ui/icons/state_fleeing.png
+
+  - id: lastKnownPosMapPosX
+    type: text
+    icon: ui/icons/state_x.png
+    
+  - id: lastKnownPosMapPosY
+    type: text
+    icon: ui/icons/state_y.png
+    
+  - id: lastKnownPosMapDate
+    type: text
+    icon: ui/icons/state_O.png
+    
+  - id: AISpeed
+    type: text
+    icon: ui/icons/state_S.png
+    
+  - id: follower
+    type: text
+    icon: ui/icons/state_F.png
 ...

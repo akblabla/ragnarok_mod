@@ -101,7 +101,7 @@ function WargrooveVision.removeUnit(unitId)
 	local unit = OldWargroove.getUnitById(unitId)
 	--local oldUnit = {playerId = unit.playerId, unitClassId = unit.unitClassId, pos = VisionTracker.getPrevPosList()[unitId], unitClass = unit.unitClass}
 	VisionTracker.removeUnitFromVisionMatrix(unit)
-	StealthManager.removeUnit(unit)
+--	StealthManager.removeUnit(unit)
 	Original.removeUnit(unitId)
 end
 

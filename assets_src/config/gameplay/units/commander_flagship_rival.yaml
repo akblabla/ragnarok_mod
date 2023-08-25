@@ -2,39 +2,40 @@
 
 weapons:
   - id: rival_flagship_cannon
-    rangeMin: 2
-    rangeMax: 4
+    rangeMin: 1
+    rangeMax: 2
     canMoveAndAttack: true
     baseDamage:
       land: 1
       water: 1
     tagDamage:
-      archer: 1.0
-      soldier: 0.9
+      archer: 1.3
+      soldier: 1.15
       villager: 1.25
-      spearman: 0.6
-      dog: 0.9
-      wagon: 0.45
-      knight: 0.45
-      trebuchet: 0.55
-      ballista: 0.6
-      mage: 0.6
-      giant: 0.3
-      structure: 0.5
-      balloon: 0.4
-      harpy: 0.7
-      witch: 0.6
+      spearman: 0.75
+      dog: 1.15
+      wagon: 0.7
+      knight: 0.55
+      trebuchet: 0.65
+      ballista: 0.7
       dragon: 0.3
-      commander: 0.3
-      rifleman: 0.9
-      thief: 0.75
+      mage: 0.8
+      giant: 0.4
+      structure: 0.7
+      balloon: 0.55
+      harpy: 0.9
+      witch: 0.7
+      dragon: 0.35
+      commander: 0.4
+      rifleman: 1.05
+      thief: 0.95
       
       warship: 0.45
       harpoonship: 0.6
-      turtle: 0.45
+      turtle: 0.4
       travelboat: 0.45
-      merman: 0.75
-      flagship: 0.3
+      merman: 0.95
+      flagship: 0.4
       pirate_ship: 0.6
 
 unitClasses:
@@ -43,8 +44,8 @@ unitClasses:
     cost: 500
     movement: sailing
     damageMultiplier: 0.75
-    moveRange: 5
-    aiPriority: 4.0
+    moveRange: 6
+    aiPriority: 2.0
     weapons:
       - id: rival_flagship_cannon
     cargoSpace: 2
@@ -66,7 +67,7 @@ units:
     faction: outlaw
     name: unit_name_flagship_rival
     mapAnimation: units/flagship/map_flagship
-    battleAnimation: units/warship/outlaw/battle_warship_outlaw
+    battleAnimation: units/flagship/battle_flagship_rival
     smallPortrait: units/warship/outlaw/portrait_warship_outlaw_small.png
     mediumPortrait: units/warship/outlaw/portrait_warship_outlaw_medium.png
     mapSpeed: 6.0

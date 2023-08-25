@@ -32,11 +32,7 @@ function Steal:execute(unit, targetPos, strParam, path)
     Wargroove.changeMoney(targetUnit.playerId, -amountToTake)
 
     if (targetUnit.unitClassId ~= "hq") then
-        if (targetUnit.unitClassId ~= "gate") or (targetUnit.unitClassId ~= "gate_no_los_blocker") then
-            targetUnit.playerId = -2
-        else
-            targetUnit.playerId = -1
-        end
+        targetUnit.playerId = -1
         Wargroove.updateUnit(targetUnit)
     end
 

@@ -6,7 +6,7 @@ unitClasses:
     movement: sailing
     moveRange: 8
     damageMultiplier: 1
-    aiPriority: 1.5
+    aiPriority: 3
     weapons: []
     tags:
       - travelboat

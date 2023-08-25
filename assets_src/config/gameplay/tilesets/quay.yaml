@@ -7,7 +7,7 @@ tilesets:
         spriteBase: grass_quay_tileset_000
         waterSpriteBase: grass_quay_tileset_001
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
-        battleBackgroundSprite: sea_background
+        battleBackgroundSprite: quay_background
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_ocean
         iconSpriteSheet: ui
@@ -19,7 +19,7 @@ tilesets:
         spriteBase: snow_quay_tileset_000
         waterSpriteBase: snow_quay_tileset_001
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
-        battleBackgroundSprite: sea_background
+        battleBackgroundSprite: quay_background
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_ocean
         iconSpriteSheet: ui
@@ -31,7 +31,7 @@ tilesets:
         spriteBase: sand_quay_tileset_000
         waterSpriteBase: sand_quay_tileset_001
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
-        battleBackgroundSprite: sea_background
+        battleBackgroundSprite: quay_background
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_ocean
         iconSpriteSheet: ui

@@ -96,6 +96,7 @@ units:
         hitDelay: 0.42
         samePanel: true
         attackSound: counter
+        postAttackAnimationSequence: post_counter_idle
       - id: secondary
         attackAnimationSequence: [attack]
         hitSpark: fx/bs_stab_attack
@@ -104,19 +105,10 @@ units:
         hitDelay: 1.4
         ranged: true
         attackSound: [attack]
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
     emotes:
       idle: idle
-      surprise: emote_surprise
-      positive: emote_positive
-      negative: emote_negative
-      laugh: emote_laugh
-      sniff: emote_sniff
-      hypno: emote_hypno
-      howl: emote_howl
-      unhappy: emote_unhappy
-      darkcaesar: emote_darkcaesar
-      dance: emote_dance
-      sleep: emote_sleep
     shouts:
       duchess_acoldwindblows: duchess/duchessShoutAColdWindBlows
       duchess_astormapproaches: duchess/duchessShoutAStormApproaches
@@ -148,6 +140,7 @@ units:
       duchess_laugh2: duchess/duchessShoutLaugh2
       duchess_no: duchess/duchessShoutNo
       duchess_noonethreatensmypeople: duchess/duchessShoutNoOneThreatensMyPeople
+      duchess_noone: duchess/duchessShoutNoOne
       duchess_sigh: duchess/duchessShoutSigh
       duchess_standdown: duchess/duchessShoutStandDown
       duchess_stopthis: duchess/duchessShoutStopThis

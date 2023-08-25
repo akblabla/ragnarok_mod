@@ -41,6 +41,7 @@ function Actions.populate(dst)
     dst["set_state"] = Actions.setState
     dst["transfer_gold_robbed"] = Actions.transferGoldRobbed
 	dst["log_message"] = Actions.logMessage
+	dst["log_unit"] = Actions.logUnit
 	dst["message_counter"] = Actions.messageCounter
 	dst["dialogue_box_with_counter"] = Actions.dialogueBoxWithCounter
 	dst["change_objective_with_3_counters"] = Actions.changeObjectiveWith3Counters
@@ -67,10 +68,12 @@ function Actions.populate(dst)
     dst["ai_set_restriction"] = Actions.aiSetRestriction
 	dst["set_location_to_vision"] = Actions.setLocationToVision
 	dst["set_location_to_spawned"] = Actions.setLocationToSpawned
-	dst["set_location_to_group"] = Actions.setLocationToGroup
+	dst["set_location_to_units"] = Actions.setLocationToUnits
+	dst["set_location_to_units_with_state"] = Actions.setLocationToUnitsWithState
 	dst["dialogue_box_unit"] = Actions.dialogueBoxUnit
 	dst["set_match_seed"] = Actions.setMatchSeed
 	dst["set_priority_target"] = Actions.setPriorityTarget
+    dst["set_facing"] = Actions.setFacing
     dst["display_path"] = Actions.displayPath
     dst["let_neutral_units_move"] = Actions.letNeutralUnitsMove
 	dst["set_hide_and_seek"] = Actions.setHideAndSeek
@@ -82,6 +85,7 @@ function Actions.populate(dst)
     dst["update_awareness"] = Actions.updateAwareness
     dst["set_current_position_as_goal"] = Actions.setCurrentPositionAsGoal
     dst["give_bounty"] = Actions.giveBounty
+    dst["give_bounty_based_on_value"] = Actions.giveBountyBasedOnValue
     dst["force_move"] = Actions.forceMove
     dst["force_attack"] = Actions.forceAttack
     dst["play_animation"] = Actions.playAnimation
@@ -106,7 +110,6 @@ end
 function Actions.aiSetRestriction(context)
     -- "Set AI restriction of {0} at {1} for {2}: Set {3} to {4}"
     local restriction = context:getString(3)
-    print(restriction)
     local value = context:getBoolean(4)
     local units = context:gatherUnits(2, 0, 1)
 
@@ -149,7 +152,7 @@ end
 
 function Actions.setNoBuildingAttacking(context)
     local targetPlayer = context:getPlayerId(0)
-    AIProfile.canAttackBuildings(false)
+    AIProfile.setCanAttackBuildings(targetPlayer,false)
 end
 
 function Actions.enableHiring(context)
@@ -351,12 +354,29 @@ function Actions.setLocationToSpawned(context)
 	location:setArea(newLocation)
 end
 
-function Actions.setLocationToGroup(context)
-    -- "Set location {0} to the spawned units this update."
+function Actions.setLocationToUnits(context)
+    -- "Set location {0} to units of type(s) {1} at location {2} owned by player {3}."
     local location = context:getLocation(0)
+    local units = context:gatherUnits(3, 1, 2)  -- A useful function for gathering units of type, location, and player
     local newLocation = {}
-    for posKey,value in pairs(context.spawnedUnits) do
-        table.insert(newLocation,PosKey.revertPosKey(posKey))
+    for i,unit in pairs(units) do
+        table.insert(newLocation,unit.pos)
+    end
+	location:setArea(newLocation)
+end
+
+function Actions.setLocationToUnitsWithState(context)
+    -- "Set location {0} to units of type(s) {1} at location {2} owned by player {3} with state {4} equal to {5}."
+    local location = context:getLocation(0)
+    local units = context:gatherUnits(3, 1, 2)  -- A useful function for gathering units of type, location, and player
+    local stateKey = context:getString(4)
+    local stateValue = context:getString(5)
+    local newLocation = {}
+    for i,unit in pairs(units) do
+        local value = Wargroove.getUnitState(unit, stateKey)
+        if (value~=nil) and value == stateValue then
+            table.insert(newLocation,unit.pos)
+        end
     end
 	location:setArea(newLocation)
 end
@@ -405,7 +425,7 @@ function Actions.setMatchSeed(context)
 end
 function Actions.setPriorityTarget(context)
     -- "Give units of type {0} at location {1} owned by player {2} {4} orders to go to location {3}."
-    local targetPos = findCentreOfLocation(context:getLocation(3))
+    local location = context:getLocation(3)
     local order = context:getString(4)
     local units = context:gatherUnits(2, 0, 1)
     for i, unit in ipairs(units) do
@@ -415,19 +435,19 @@ function Actions.setPriorityTarget(context)
         print(unit.id) 
         print(unit.unitClassId) 
         if order == "attack move" then
-            AIManager.attackMoveOrder(unit.id,targetPos)
+            AIManager.attackMoveOrder(unit.id,location.positions)
         end
         if order == "move" then
-            AIManager.moveOrder(unit.id,targetPos)
+            AIManager.moveOrder(unit.id,location.positions)
         end
         if order == "road move" then
-            AIManager.roadMoveOrder(unit.id,targetPos)
+            AIManager.roadMoveOrder(unit.id,location.positions)
         end
         if order == "road move left" then
-            AIManager.roadMoveLeftOrder(unit.id,targetPos)
+            AIManager.roadMoveLeftOrder(unit.id,location.positions)
         end
         if order == "road move right" then
-            AIManager.roadMoveRightOrder(unit.id,targetPos)
+            AIManager.roadMoveRightOrder(unit.id,location.positions)
         end
         if order == "retreat" then
             AIManager.retreatOrder(unit.id)
@@ -435,6 +455,24 @@ function Actions.setPriorityTarget(context)
         if order == "clear" then
             AIManager.clearOrder(unit.id)
         end
+        if order == "follow" then
+            AIManager.followOrder(unit.id,location.positions)
+        end
+    end
+end
+function Actions.setFacing(context)
+    -- "Set facing for units of type {0} at location {1} owned by player {2} to right {3}"
+    local units = context:gatherUnits(2, 0, 1)
+    local direction = context:getBoolean(3)
+    for i, unit in ipairs(units) do
+        if direction then
+            Wargroove.setFacingOverride(unit.id, "right")
+            unit.pos.facing = 0
+        else
+            Wargroove.setFacingOverride(unit.id, "left")
+            unit.pos.facing = 1
+        end
+        Wargroove.updateUnit(unit)
     end
 end
 
@@ -447,7 +485,7 @@ function Actions.displayPath(context)
         if playerId ==-1 then
             playerId = 0
         end
-        if path~=nil then
+        if (path~=nil) and (next(path) ~= nil) then
             Wargroove.trackCameraTo(path[#path])
             local lastTile = nil
             for j, tile in ipairs(path) do
@@ -491,7 +529,9 @@ local bountyMap = {
     harpy = 150,
     merman = 100,
     thief = 100,
+    thief_with_gold = 300,
     travelboat = 300,
+    travelboat_with_gold = 300,
     trebuchet = 200,
     wagon = 300,
     warship = 200,
@@ -505,6 +545,49 @@ function Actions.giveBounty(context)
     for i, unit in ipairs(units) do
         if bountyMap[unit.unitClassId] ~= nil then
             Wargroove.setUnitState(unit, "gold", bountyMap[unit.unitClassId])
+            Wargroove.updateUnit(unit)
+        end
+    end
+end
+
+function Actions.giveBountyBasedOnValue(context)
+    -- "Give units of type {0} at location {1} owned by player {2} a bounty based on value of player {3} targeting {4}."
+    local units = context:gatherUnits(2, 0, 1)
+    local playerId = context:getPlayerId(3)
+    local targetValue = context:getInteger(4)
+    local playerValue = Wargroove.getMoney(playerId)
+    for i, unit in ipairs(Wargroove.getUnitsAtLocation()) do
+        if Pathfinding.withinBounds(unit.pos) then
+            if Wargroove.areAllies(unit.playerId, playerId) then
+                playerValue = playerValue+unit.unitClass.cost*unit.health/100
+            end
+            if Wargroove.areEnemies(unit.playerId, playerId) then
+                local gold = Wargroove.getUnitState(unit, "gold")
+                if gold~= nil then
+                    gold = tonumber(gold)
+                    playerValue = playerValue+gold
+                end
+            end
+        end
+    end
+    for i, unit in ipairs(units) do
+        if bountyMap[unit.unitClassId] ~= nil then
+            local goldBonus = 100
+            if unit.unitClassId == "thief" then
+                goldBonus = 50
+            end
+            local gold = Wargroove.getUnitState(unit, "gold")
+            if gold~= nil then
+                gold = tonumber(gold)
+            else
+                gold = 0
+            end
+            if targetValue-playerValue>=bountyMap[unit.unitClassId]+goldBonus-gold then
+                Wargroove.setUnitState(unit, "gold", bountyMap[unit.unitClassId]+goldBonus)
+                playerValue = playerValue + bountyMap[unit.unitClassId]+goldBonus-gold
+            else
+                Wargroove.setUnitState(unit, "gold", bountyMap[unit.unitClassId])
+            end
             Wargroove.updateUnit(unit)
         end
     end
@@ -614,7 +697,6 @@ function Actions.setPositionAsGoal(context)
     local order = context:getString(5)
     local center = findCentreOfLocation(location)
     for i, unit in ipairs(units) do
-        AIManager.order(order, unit, center, maxSpeed)
         StealthManager.setAIGoalPos(order, unit,center,maxSpeed)
     end
 end
@@ -636,8 +718,8 @@ function Actions.setAwareness(context)
             StealthManager.makeSearching(unit,force)
         elseif string == "unaware" then
             StealthManager.makeUnaware(unit)
-        elseif string == "perma alerted" then
-            StealthManager.makePermaAlerted(unit)
+        elseif string == "perma searching" then
+            StealthManager.makePermaSearching(unit)
         end
     end
     StealthManager.updateAwarenessAll()
@@ -672,19 +754,19 @@ function Actions.setHideAndSeek(context)
     local active = context:getBoolean(0)
     local player = context:getPlayerId(1)
     StealthManager.setActive(player,active)
+    local cornerIds = {}
     for x = 0,Wargroove.getMapSize().x do
         for y = 0,Wargroove.getMapSize().y do
             local startingState = {}
             local playerState = {key = "playerId", value = player}
             table.insert(startingState, playerState)
             local unitId = Wargroove.spawnUnit(-1,{x=-200+x,y=-200+y},"vision_tile",false,"",startingState)
-            Corners.update(Wargroove.getUnitById(unitId))
+            table.insert(cornerIds,unitId)
         end
     end
-    for i,unit in ipairs(Wargroove.getUnitsAtLocation(nil)) do
-        if not StealthManager.isCivilian(unit.unitClassId) then
-            StealthManager.setAIGoalPos("road_move",unit,unit.pos)
-        end
+    Wargroove.waitFrame()
+    for i, id in ipairs(cornerIds) do
+        Corners.update(Wargroove.getUnitById(id))
     end
 end
 function Actions.setHideAndSeekBravery(context)
@@ -735,6 +817,13 @@ function Actions.logMessage(context)
     -- "Write to log message: {0}"
     print(context:getString(0))
 end
+function Actions.logUnit(context)
+    -- "Log {0} at location {1} owned by player {2}."
+    local units = context:gatherUnits(2, 0, 1)
+    
+    print(dump(units,0))
+end
+
 
 function Actions.messageCounter(context)
     -- "Display message: \"{0}\" and then counter {1}."
@@ -968,6 +1057,7 @@ function Actions.splitInto(context)
                 unit.health = 50
                 Wargroove.updateUnit(unit)
                 local unitId = Wargroove.spawnUnit(unit.playerId, pos, unitClassId, false)
+                context.spawnedUnits[PosKey.generatePosKey(pos)] = true
                 local mapSize = Wargroove.getMapSize()
                 if pos.x>(mapSize.x/2) then
                     Wargroove.setFacingOverride(unitId, "left")

@@ -54,7 +54,7 @@ function AreaAlert:execute(unit, targetPos, strParam, path)
     local units ={}
     for i, tile in pairs(tiles) do
         local unit = Wargroove.getUnitAt(tile)
-        if (unit~=nil) and StealthManager.makePermaAlerted(unit) then
+        if (unit~=nil) and StealthManager.makePermaSearching(unit) then
             table.insert(units,unit)
             AIManager.clearOrder(unit.id)
             Wargroove.setAIRestriction(unit.id, "cant_capture", false)
@@ -143,7 +143,7 @@ function AreaAlert:getScore(unitId, order)
                 if StealthManager.isUnitAlerted(u) then
                     multiplier = 0.25
                 end
-                if StealthManager.isUnitPermaAlerted(u) then
+                if StealthManager.isUnitPermaSearching(u) then
                     multiplier = 0
                 end
                 if Wargroove.hasAIRestriction(u.id, "cant_move") then

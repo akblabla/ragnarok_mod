@@ -2,6 +2,7 @@ local VisionTracker = require "initialized/vision_tracker"
 local Wargroove = require "wargroove/wargroove"
 local StealthManager = require "scripts/stealth_manager"
 local Corners = {}
+local Ragnarok = require "initialized/ragnarok"
 
 Corners.__index = Corners
 local cornerNameMap = {}
@@ -72,6 +73,16 @@ end
 for i=1,15 do
     cornerNameMap[i] = getCornerName(getCornerFromIndex(i))
 end
+function Corners.init()
+    Ragnarok.addAction(Corners.updateAll,"repeating",false)
+end
+function Corners.updateAll(context)
+    for i,unit in ipairs(Wargroove.getUnitsAtLocation(nil)) do
+        if unit.unitClassId == "vision_tile" then
+            Corners.update(unit)
+        end
+    end
+end
 
 function Corners.getCornerName(corners)
     return cornerNameMap[getCornerIndex(corners[1],corners[2],corners[3],corners[4])]
@@ -95,9 +106,9 @@ function Corners.getVisionCorner(playerId, pos)
 end
 function Corners.shouldRenderTile(playerId, pos)
     local viewerPosList = VisionTracker.getListOfViewerIds(pos)
-    for viewerId, pos in pairs(viewerPosList) do
+    for viewerId, viewerpos in pairs(viewerPosList) do
         local unit = Wargroove.getUnitById(viewerId)
-        if (unit~= nil)  and (unit.playerId == playerId) and StealthManager.canBeAlerted(unit) and (StealthManager.isUnitUnaware(unit) or StealthManager.isUnitSearching(unit)) then
+        if (unit~= nil)  and (unit.playerId == playerId) and StealthManager.canBeAlerted(unit) then-- and (StealthManager.isUnitUnaware(unit) or StealthManager.isUnitSearching(unit)) then
             return Wargroove.canCurrentlySeeTile({x=pos.x,y=pos.y})
         end
     end

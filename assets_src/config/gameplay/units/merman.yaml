@@ -17,7 +17,7 @@ weapons:
       wagon: 0.35
       knight: 0.15
       trebuchet: 0.2
-      mage: 0.3
+      mage: 0.2
       structure: 0.15
       commander: 0.1
       ballista: 0.25

@@ -281,5 +281,9 @@ cutscene_backgrounds:
     spritesheet: backgrounds/map_backgrounds_RagnarokMod
     foreground: heaven_song_smith_foreground
     background: heaven_song_smith_background
+  - id: quay
+    spritesheet: backgrounds/map_backgrounds_RagnarokMod
+    background: cutscene_quay_background
+    tileHeight: 44
 
 ...

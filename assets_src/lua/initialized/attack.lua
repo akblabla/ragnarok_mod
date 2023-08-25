@@ -147,15 +147,19 @@ function Attack:canExecuteWithTarget(unit, endPos, targetPos, strParam)
         end
     end
     local targetUnit = Wargroove.getUnitAt(targetPos)
-    if not targetUnit or not Wargroove.areEnemies(unit.playerId, targetUnit.playerId) then
+    if targetUnit == nil then
         return false
     end
 
-    if targetUnit.canBeAttacked ~= nil and not targetUnit.canBeAttacked then
+    if not Wargroove.areEnemies(unit.playerId, targetUnit.playerId) then
+        return false
+    end
+
+    if (targetUnit.canBeAttacked ~= nil) and (not targetUnit.canBeAttacked) then
       return false
     end
 
-	if not AIProfile.canAttackBuildings(unit.playerId) and targetUnit.unitClass.isStructure then
+	if (not AIProfile.canAttackBuildings(unit.playerId)) and targetUnit.unitClass.isStructure then
 		return false
 	end
 	if Ragnarok.hasCrown(unit) then return false end

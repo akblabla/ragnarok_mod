@@ -4,6 +4,7 @@ local Stats = require "util/stats"
 local Pathfinding = require "util/pathfinding"
 local VisionTracker = require "initialized/vision_tracker"
 local PosKey = require "util/posKey"
+local Copy = require "util/copy"
 
 local function dump(o,level)
    if type(o) == 'table' then
@@ -20,6 +21,7 @@ end
 
 local setupRan = false
 
+local orderMap = {}
 local AIManager = {}
 
 function AIManager.init()
@@ -30,17 +32,46 @@ function AIManager.setup(context)
 end
 
 function AIManager.letNeutralUnitsMove()
-   for i,unit in ipairs(Wargroove.getUnitsAtLocation(nil)) do
-       if Pathfinding.withinBounds(unit.pos) and Wargroove.isNeutral(unit.playerId) then
-         local nextTile, distMoved, dist = AIManager.getNextPosition(unit.id)
-         if nextTile ~= nil then 
-            local path = Pathfinding.AStar(unit, nextTile)
+   local units = Wargroove.getUnitsAtLocation(nil)
+   for i,unit in ipairs(units) do
+       if Pathfinding.withinBounds(unit.pos) and Wargroove.isNeutral(unit.playerId) and not unit.unitClass.isStructure then
+         Pathfinding.clearCaches()
+         local path = AIManager.getPath(unit.id)
+         if (path~=nil) and (next(path)~=nil) then 
+            local nextTile, distMoved, dist = AIManager.getNextPositionTowardsTarget(unit, path,100)
             if (path~=nil) and (next(path)~=nil) then
-               Pathfinding.forceMoveAlongPath(unit.id, path)
+               local shortenedPath = {}
+               for j, tile in ipairs(path) do
+                  if j>distMoved then
+                     break
+                  end
+                  table.insert(shortenedPath,tile)
+               end
+               if (next(shortenedPath)~=nil) then
+                  Pathfinding.forceMoveAlongPath(unit.id, shortenedPath)
+               end
             end
          end
        end
    end
+end
+
+function AIManager.shouldAIMoveUnit(unit)
+   local order = AIManager.getOrder(unit.id)
+   if order.type == "no_order" then
+      return nil
+   end
+   if order.type == "attack_move" then
+      if AIManager.isEnemyInRange(unit) then
+         return true
+      end
+   end
+   for i,tile in pairs(order.location) do
+      if (unit.pos.x == tile.x) and (unit.pos.y == tile.y) then
+         return false
+      end
+   end
+   return true
 end
 
 function AIManager.update(context)
@@ -65,7 +96,13 @@ function AIManager.getPath(unitId)
       if order.location == nil then
          return {}
       end
-      local safetyMap = Pathfinding.distanceToEnemyMap(unit.pos, 50, unit.playerId)
+      local enemyLocations = {}
+      for i, enemy in ipairs(Wargroove.getUnitsAtLocation()) do
+        if Wargroove.areEnemies(enemy.playerId,unit.playerId) and VisionTracker.canSeeTile(unit.playerId,enemy.pos) then
+            table.insert(enemyLocations,{x = unit.pos.x,y = unit.pos.y})
+        end
+      end
+      local safetyMap = Pathfinding.getDistanceToLocationMap(unit.pos, 50, enemyLocations)
       local path = Pathfinding.AStar(unit, order.location,{posPenalty = function(unit,pos)
          if pos == nil then
             return 0
@@ -81,6 +118,38 @@ function AIManager.getPath(unitId)
          end
          return 4-Wargroove.getTerrainDefenceAt(pos) + math.max(10-safetyMap[PosKey.generatePosKey(pos)],0)*2
       end, posPenaltyId = "defense_and_safety"})
+	   return path
+   end
+   if order.type == "follow" then
+      if order.location == nil then
+         return {}
+      end
+      local enemyLocations = {}
+      for i, enemy in ipairs(Wargroove.getUnitsAtLocation()) do
+        if Wargroove.areEnemies(enemy.playerId,unit.playerId) and VisionTracker.canSeeTile(unit.playerId,enemy.pos) then
+            table.insert(enemyLocations,{x = unit.pos.x,y = unit.pos.y})
+        end
+      end
+      local safetyMap = Pathfinding.getDistanceToLocationMap(unit.pos, 50, enemyLocations)
+      local targetDistMap = Pathfinding.getDistanceToLocationMap(unit.pos, 50, order.location)
+      local targetLocation = {}
+      for posKey, dist in pairs(targetDistMap) do
+         if dist == 3 then
+            table.insert(targetLocation,PosKey.revertPosKey(posKey))
+         end
+      end
+      local path = Pathfinding.AStar(unit, targetLocation,{posPenalty = function(unit,pos)
+         if pos == nil then
+            return 0
+         end
+         if safetyMap == nil then
+            return 0
+         end
+         if next(safetyMap)==nil then
+            return 0
+         end
+         return math.max(6-safetyMap[PosKey.generatePosKey(pos)],0)+math.max(2-targetDistMap[PosKey.generatePosKey(pos)],0)
+      end, posPenaltyId = "follow"})
 	   return path
    end
    if order.type == "road_move" then
@@ -184,7 +253,13 @@ function AIManager.getPath(unitId)
    end
    if order.type == "retreat" then
       local availableTiles = Pathfinding.getMoveTiles(unit)
-      local safetyMap = Pathfinding.distanceToEnemyMap(unit.pos, unit.unitClass.moveRange, unit.playerId)
+      local enemyLocations = {}
+      for i, enemy in ipairs(Wargroove.getUnitsAtLocation()) do
+        if Wargroove.areEnemies(enemy.playerId,unit.playerId) and VisionTracker.canSeeTile(unit.playerId,enemy.pos) then
+            table.insert(enemyLocations,{x = unit.pos.x,y = unit.pos.y})
+        end
+      end
+      local safetyMap = Pathfinding.getDistanceToLocationMap(unit.pos, unit.unitClass.moveRange, enemyLocations)
       local safestPos = unit.pos
       local bestSafety = 0
       for posKey,dist in pairs(availableTiles) do
@@ -238,6 +313,9 @@ function AIManager.getNextPosition(unitId)
    if order == nil then
       return nil
    end
+   if order.type == "no_order" then
+      return nil
+   end
    if not Pathfinding.withinBounds(unit.pos) then
       return nil
    end
@@ -245,24 +323,30 @@ function AIManager.getNextPosition(unitId)
    local path = AIManager.getPath(unitId);
    local nextTile, distMoved, dist = AIManager.getNextPositionTowardsTarget(unit, path,order.maxSpeed)
    if order.type == "attack_move" then
-      local tileList = Wargroove.getTargetsInRange(unit.pos, VisionTracker.getSightRange(unit), "all")
-      local canSeeEnemy = false
-      for i,tile in pairs(tileList) do
-         if VisionTracker.canSeeTile(unit.playerId,tile) then
-            local target = Wargroove.getUnitAt(tile)
-            if target~=nil and Wargroove.areEnemies(unit.playerId, target.playerId) then
-               canSeeEnemy = true
-               break
-            end
-         end
-      end
-      if canSeeEnemy then
+      if AIManager.isEnemyInRange(unit) then
          return nil, false
       end
    end
    return nextTile, distMoved, dist
 end
 
+function AIManager.isEnemyInRange(unit)
+   local tileList = Wargroove.getTargetsInRange(unit.pos, VisionTracker.getSightRange(unit), "all")
+   local canSeeEnemy = false
+   for i,tile in pairs(tileList) do
+      if VisionTracker.canSeeTile(unit.playerId,tile) then
+         local target = Wargroove.getUnitAt(tile)
+         if target~=nil and Wargroove.areEnemies(unit.playerId, target.playerId) then
+            canSeeEnemy = true
+            break
+         end
+      end
+   end
+   if canSeeEnemy then
+      return true
+   end
+   return false
+end
 function AIManager.getNextPositionTowardsTarget(unit, path, maxSpeed)
 
    --path[1] = nil
@@ -273,6 +357,7 @@ function AIManager.getNextPositionTowardsTarget(unit, path, maxSpeed)
    local tiles = maxSpeed
    local target = unit.pos
    local reachedEnd = false
+   local distMoved = 0
    for i,tile in pairs(path) do
       local tileCost = Stats.getTerrainCost(Wargroove.getTerrainNameAt(tile),unit.unitClassId)
       local canStop = Stats.canStopOnTerrain(Wargroove.getTerrainNameAt(tile),unit.unitClassId)
@@ -296,6 +381,7 @@ function AIManager.getNextPositionTowardsTarget(unit, path, maxSpeed)
       tiles = tiles-1
       if (Wargroove.isAnybodyElseAt(unit,tile) == false) and canStop then
          target = tile
+         distMoved = maxSpeed-tiles
       end
    end
    local dist = 0
@@ -313,13 +399,11 @@ function AIManager.getNextPositionTowardsTarget(unit, path, maxSpeed)
          break
       end
    end
-   local distMoved = maxSpeed-tiles
 	return target, distMoved, dist
 end
 
-local orderMap = {}
 
-function AIManager.order(order, unitId, location, maxSpeed)
+function AIManager.order(t, unitId, location, maxSpeed)
    if maxSpeed == nil then
       maxSpeed = 10000;
    end
@@ -327,8 +411,8 @@ function AIManager.order(order, unitId, location, maxSpeed)
       location = {location}
    end
    local unit = Wargroove.getUnitById(unitId)
-   if unit ~= nil then
-      orderMap[unit.id] = {type = order, location = location, maxSpeed = maxSpeed}
+   if (unit ~= nil) and Pathfinding.withinBounds(unit.pos) then
+      orderMap[unitId] = {type = t, location = location, maxSpeed = maxSpeed}
       -- Wargroove.setUnitStateObject(unit, "order", {type = "road_move", location = location, maxSpeed = maxSpeed})
       -- Wargroove.updateUnit(unit)
    end
@@ -380,33 +464,28 @@ function AIManager.safeMoveOrder(unitId, location, maxSpeed)
    AIManager.order("safe_move", unitId, location, maxSpeed)
 end
 
+function AIManager.followOrder(unitId, location, maxSpeed)
+   if location == nil then
+      return
+   end
+   AIManager.order("follow", unitId, location, maxSpeed)
+end
 
 function AIManager.clearOrder(unitId)
-   local unit = Wargroove.getUnitById(unitId)
-   if unit ~= nil then
-      orderMap[unit.id] = {type = "no_order", location = {}, maxSpeed = 0}
-      --Wargroove.setUnitStateObject(unit, "order", {type = "no_order", location = {}, maxSpeed = 0})
-      --Wargroove.updateUnit(unit)
-   end
+--   local unit = Wargroove.getUnitById(unitId)
+   orderMap[unitId] = {type = "no_order", location = nil, maxSpeed = 0}
+--    if unit ~= nil then
+-- --      orderMap[unit.id] = {type = "no_order", location = {}, maxSpeed = 0}
+--       --Wargroove.setUnitStateObject(unit, "order", {type = "no_order", location = {}, maxSpeed = 0})
+--       --Wargroove.updateUnit(unit)
+--    end
 end
 
 function AIManager.getOrder(unitId)
-   local unit = Wargroove.getUnitById(unitId)
-   if (unit ~= nil) then
-      return orderMap[unit.id]
-      -- local state = Wargroove.getUnitStateObject(unit, "order")
-      -- if state~= nil then
-      --    state.maxSpeed = tonumber(state.maxSpeed)
-      --    if state.location ~=nil then
-      --       for i,tile in pairs(state.location) do
-      --          state.location[i].x = tonumber(tile.x)
-      --          state.location[i].y = tonumber(tile.y)
-      --       end
-      --    end
-      --    return state
-      -- end
+   if orderMap[unitId] == nil then
+      orderMap[unitId] = {type = "no_order", location = nil, maxSpeed = 0}
    end
-   return {type = "no_order", location = nil, maxSpeed = 0}
+   return orderMap[unitId]
 end
 
 return AIManager

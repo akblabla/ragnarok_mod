@@ -228,10 +228,18 @@ end
 function Events.runActions(actions)
     for i, action in ipairs(actions) do
         triggerContext.triggerInstanceActionId = i
+        if action.id == "run_group_concurrently" then
+        end
         Events.runAction(action)
     end
 end
 
+function Events.runActionsConcurrently(actions)
+    for i, action in ipairs(actions) do
+        triggerContext.triggerInstanceActionId = i
+        Events.runAction(action)
+    end
+end
 
 function Events.setMapFlag(flagId, value)
     triggerContext:setMapFlagById(flagId, value)
@@ -312,15 +320,10 @@ end
 
 
 function Events.reportUnitDeath(id, attackerUnitId, attackerPlayerId, attackerUnitClass)
-    print("ReportUnitDeath")
 	local unit = Wargroove.getUnitById(id)
-    print(1)
 	VisionTracker.removeUnitFromVisionMatrix(unit)
-    print(2)
 	Wargroove.updateFogOfWar()
-    print(3)
     StealthManager.reportDeadUnit(id)
-    print(4)
 --    Pathfinding.reportDeadUnit(id)
     unit.attackerId = attackerUnitId
     unit.attackerPlayerId = attackerPlayerId
