@@ -36,7 +36,6 @@ weapons:
       travelboat: 0.45
       merman: 0.95
       flagship: 0.4
-      pirate_ship: 0.6
 
 unitClasses:
   - id: commander_flagship_wulfar

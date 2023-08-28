@@ -26,7 +26,6 @@ weapons:
       thief: 0.35
 
       flagship: 0.0001
-      pirate_ship: 0.2
       warship: 0.05
       harpoonship: 0.3
       travelboat: 0.1
@@ -52,6 +51,7 @@ unitClasses:
       - throw_crown
       - healing_potion
       - wait_ai
+      - hire
     tags:
       - merman
       - type.amphibious

@@ -36,6 +36,7 @@ unitClasses:
       - throw_crown
       - healing_potion
       - wait_ai
+      - hire
     battleUnitCount: 4
     passiveMultiplier: 2.0
     sightRange: 4

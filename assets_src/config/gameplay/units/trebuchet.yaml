@@ -31,7 +31,6 @@ weapons:
       thief: 1
 
       flagship: 0.2
-      pirate_ship: 0.85
 
 unitClasses:
   - id: trebuchet
@@ -54,6 +53,7 @@ unitClasses:
       - throw_crown
       - healing_potion
       - wait_ai
+      - hire
     sightRange: 4
     battleUnitCount: 1
     passiveMultiplier: 1.5

@@ -287,7 +287,12 @@ function StealthManager.update(context)
                 if StealthManager.isUnitAlerted(unit) then
                     AIManager.attackMoveOrder(unit.id,lastKnownPos.pos)
                 elseif StealthManager.isUnitSearching(unit) then
-                    AIManager.moveOrder(unit.id,lastKnownPos.pos)
+--                    StealthManager.isCapturableInRange(unit)
+                    if (Wargroove.hasAIRestriction(unit.id, "cant_capture") == false) and StealthManager.isCapturableInRange(unit) then
+                        AIManager.clearOrder(unit.id)
+                    else
+                        AIManager.moveOrder(unit.id,lastKnownPos.pos)
+                    end
                 end
             end
             local AIGoal = StealthManager.getAIGoalPos(unit)
@@ -300,7 +305,17 @@ function StealthManager.update(context)
         StealthManager.endOfTurnCleanUp(Wargroove.getCurrentPlayerId())
     end
 end
-
+function StealthManager.isCapturableInRange(unit)
+    local tileList = Wargroove.getTargetsInRange(unit.pos, VisionTracker.getSightRange(unit), "unit")
+    for i,tile in pairs(tileList) do
+        local target = Wargroove.getUnitAt(tile)
+        print(dump(target,0))
+        if target~=nil and Wargroove.isNeutral(target.playerId) and target.unitClass.isStructure then
+            return true
+        end
+    end
+    return false
+ end
 function StealthManager.endOfTurnCleanUp(playerId)
     for i,other in pairs(Wargroove.getUnitsAtLocation()) do
         Pathfinding.clearCache(other.id)
@@ -308,9 +323,6 @@ function StealthManager.endOfTurnCleanUp(playerId)
     if StealthManager.isActive(Wargroove.getCurrentPlayerId()) == false then
         return
     end
-    print("endOfTurnCleanUp")
-    print(1)
-    print(2)
     local units = {}
     for i,unit in ipairs(Wargroove.getUnitsAtLocation(nil)) do
         if Pathfinding.withinBounds(unit.pos) then
@@ -323,7 +335,6 @@ function StealthManager.endOfTurnCleanUp(playerId)
             cutOffEnemies[unit.id] = unit
         end
     end
-    print(3)
     for i,unit in pairs(units) do
         if Wargroove.areEnemies(unit.playerId,playerId) and StealthManager.canAlert(unit) then
             local viewerPosList = VisionTracker.getListOfViewerIds(unit.pos)
@@ -335,8 +346,6 @@ function StealthManager.endOfTurnCleanUp(playerId)
             end
         end
     end
-
-    print(4)
     for i,enemy in pairs(cutOffEnemies) do
         local lastKnownPos = StealthManager.getLastKnownLocation(enemy)
         if StealthManager.isUnitSearching(enemy) and (lastKnownPos ~= nil) then
@@ -362,7 +371,6 @@ function StealthManager.endOfTurnCleanUp(playerId)
             StealthManager.makeUnaware(enemy)
         end
     end
-    print(5)
     for id,unit in pairs(Wargroove.getUnitsAtLocation(nil)) do
         if (unit ~= nil) and Pathfinding.withinBounds(unit.pos) then
             if StealthManager.isUnitFleeing(unit) then
@@ -373,9 +381,7 @@ function StealthManager.endOfTurnCleanUp(playerId)
             end
         end
     end
-    print(6)
     StealthManager.updateAwarenessAll()
-    print(7)
 end
 
 function StealthManager.isUnitPermaSearching(unit)

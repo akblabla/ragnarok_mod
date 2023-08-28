@@ -21,6 +21,7 @@ unitClasses:
       - pick_up_crown
       - throw_crown
       - healing_potion
+      - hire
     battleUnitCount: 1
     passiveMultiplier: 1.35
     isRecruitable: false

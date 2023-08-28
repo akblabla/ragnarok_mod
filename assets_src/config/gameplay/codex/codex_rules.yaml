@@ -32,9 +32,8 @@ codex:
     image: ui/codex/icons/icon_rules_question.png
   pages:
   - pageType: page
-    layoutType: unit_sprite
-    unitClass: soldier
-    faction: outlaw
+    layoutType: animation
+    animation: ui/codex/content/melee
     title: codex_rules_changes_melee_title
     text: codex_rules_changes_melee_text
   - pageType: page
@@ -81,9 +80,8 @@ codex:
     title: codex_rules_changes_dog_title
     text: codex_rules_changes_dog_text
   - pageType: page
-    layoutType: unit_sprite
-    unitClass: mage
-    faction: outlaw
+    layoutType: animation
+    animation: ui/codex/content/mage
     title: codex_rules_changes_mage_title
     text: codex_rules_changes_mage_text
   - pageType: page

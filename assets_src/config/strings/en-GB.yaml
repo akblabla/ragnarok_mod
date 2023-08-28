@@ -70,6 +70,7 @@ en-GB:
   terrain_description_building: Buildings so densely packed they act as walls for units.
   terrain_name_quay: Sea
   terrain_description_quay: Open water. Accessible only to air and naval units.
+  terrain_description_bridge_wide: Bridges allow wheeled vehicles to travel quickly over otherwise impassable waters.
 
 
   #Fog of war gimmick tiles
@@ -136,10 +137,6 @@ en-GB:
   groove_description_area_damage_rival: "Sets an area ablaze over several turns."
   groove_name_all_caps_groove_area_damage_rival: "FIRE BOMBS"
   
-  unit_class_name_pirate_ship: Raider Ship
-  unit_description_pirate_ship: "Can steal gold from structures. It can't attack whilst loaded. Critical hits whilst fighting adjancent to land tiles."
-  unit_name_pirate_ship_outlaws: Pirate Ship
-  
   unit_class_name_cart: Cart
   unit_description_cart: "A humble cart."
   unit_name_cart_cherrystone: Cart
@@ -147,9 +144,6 @@ en-GB:
   unit_class_name_flare: Flare
   unit_description_flare: Reveals hidden units in an area. It expires at the end of the turn.
   unit_name_flare: Flare
-
-  unit_class_name_pirate_ship_loaded: Raider Ship Loaded
-  unit_description_pirate_ship_loaded: "Can steal gold from structures. It can't attack whilst loaded. Critical hits whilst fighting adjancent to land tiles."
 
   unit_class_name_crew: Capsized Crew
   unit_description_crew: "Crew drifting at sea. Save them, and maybe they can help you in return."

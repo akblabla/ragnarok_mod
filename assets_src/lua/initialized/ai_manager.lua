@@ -331,19 +331,14 @@ function AIManager.getNextPosition(unitId)
 end
 
 function AIManager.isEnemyInRange(unit)
-   local tileList = Wargroove.getTargetsInRange(unit.pos, VisionTracker.getSightRange(unit), "all")
-   local canSeeEnemy = false
+   local tileList = Wargroove.getTargetsInRange(unit.pos, VisionTracker.getSightRange(unit), "unit")
    for i,tile in pairs(tileList) do
       if VisionTracker.canSeeTile(unit.playerId,tile) then
          local target = Wargroove.getUnitAt(tile)
          if target~=nil and Wargroove.areEnemies(unit.playerId, target.playerId) then
-            canSeeEnemy = true
-            break
+            return true
          end
       end
-   end
-   if canSeeEnemy then
-      return true
    end
    return false
 end

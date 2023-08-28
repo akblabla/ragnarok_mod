@@ -36,7 +36,6 @@ weapons:
       balloon: 0.15
 
       flagship: 0.0001
-      pirate_ship: 0.05
       merman: 0.7
       warship: 0.0001
       harpoonship: 0.05

@@ -29,15 +29,11 @@ end
 local crownAnimation = "ui/icons/fx_crown"
 function handOverCrown:execute(unit, targetPos, strParam, path)
     Ragnarok.removeCrown()
+    Wargroove.playMapSound("cutscene/throwObject", unit.pos)
     Wargroove.waitTime(0.2)
-    Wargroove.playMapSound("thiefGoldReleased", targetPos)
-    Wargroove.spawnMapAnimation(unit.pos, 0, "fx/ransack_1", "default", "over_units", { x = 12, y = 0 })
     Wargroove.updateUnit(unit)
-    Wargroove.waitTime(1.0)
-    Wargroove.spawnMapAnimation(targetPos, 0, "fx/ransack_2", "default", "over_units", { x = 12, y = 0 })
-    Wargroove.waitTime(0.2)
-    Wargroove.playMapSound("thiefDeposit", targetPos)
     Wargroove.waitTime(0.4)
+    Wargroove.playMapSound("cutscene/land", targetPos)
     Ragnarok.grabCrown(unit)
 end
 

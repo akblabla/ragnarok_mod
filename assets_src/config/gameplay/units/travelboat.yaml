@@ -21,6 +21,7 @@ unitClasses:
       - pirate_steal
       - healing_potion
       - wait_ai
+      - hire
     battleUnitCount: 1
     loadCapacity: 2
     sightRange: 4

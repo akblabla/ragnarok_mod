@@ -27,7 +27,6 @@ weapons:
       
       
       flagship: 0.25
-      pirate_ship: 1.05
       warship: 0.95
       harpoonship: 0.7
       turtle: 0.75
@@ -49,6 +48,7 @@ unitClasses:
       - throw_crown
       - healing_potion
       - wait_ai
+      - hire
     weapons:
       - id: fireBreath
     tags:

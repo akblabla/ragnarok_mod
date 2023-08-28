@@ -32,7 +32,6 @@ weapons:
       harpoonship: 0.1
       turtle: 0.2
       travelboat: 0.1
-      pirate_ship: 0.1
       flagship: 0.0001
       
 unitClasses:

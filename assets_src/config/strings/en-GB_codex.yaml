@@ -23,10 +23,10 @@ en-GB:
   codex_rules_fow_changes: "Fog of War Changes"
   
   codex_rules_fow_overall_title: "Overall adjustments"
-  codex_rules_fow_overall_text: "All units have had their sight range increased by 3 compared to vanilla, with exceptions to siege, transports, knights ect. which have nerfed sight range relatively to the other units. Building sight range remain unchanged."
+  codex_rules_fow_overall_text: "All units now have a vision of 4. Building sight range remain unchanged."
 
   codex_rules_weather_title: "Weather"
-  codex_rules_weather_text: "Windy weather now reduces the  sight range of non-scout units by 1.\n Sever weather now reduces the sight range of scouts by 1 and non-scouts by 2."
+  codex_rules_weather_text: "Sever weather now reduces the sight range by 1. Scout units are unaffected."
 
   
   codex_rules_fow_AI_title: "AI"
@@ -54,9 +54,9 @@ en-GB:
   codex_rules_changes_dog_title: "Dog Changes"
   codex_rules_changes_dog_text: "Is now Melee\nCan now deal Damage to Naval Units (Check Damage Matrix)\nDmg vs Ballistae: 45% -> 55%\nDmg vs Trebuchets: 40% -> 50%"
   codex_rules_changes_mage_title: "Mage Changes"
-  codex_rules_changes_mage_text: "Can now deal high Damage to Naval Units (Check Damage Matrix)\nDmg vs Ballistae: 35% -> 65%\nDmg vs Trebuchets: 50% -> 60%"
+  codex_rules_changes_mage_text: "Can now deal high Damage to Naval Units (Check Damage Matrix)\nDmg vs Ballistae: 35% -> 65%\nDmg vs Trebuchets: 50% -> 60%\nDmg vs Merfolk: 60% -> 110% "
   codex_rules_changes_archer_title: "Archer Changes"
-  codex_rules_changes_archer_text: "Dmg vs Barges: 25% -> 40%\nDmg vs Turtles: 25% -> 35%\nDmg vs Harpoon Ships: 25% -> 40%\nDmg vs Warships: 25% -> 30%"
+  codex_rules_changes_archer_text: "Dmg vs Barges: 25% -> 40%\nDmg vs Turtles: 25% -> 35%\nDmg vs Harpoon Ships: 25% -> 40%\nDmg vs Warships: 25% -> 30%\nDmg vs Merfolk: 50% -> 75% "
   codex_rules_changes_rifle_title: "Rifleman Changes"
   codex_rules_changes_rifle_text: "Can now target units in sea tiles.\nCan do minor damage to naval units (Check Damage Matrix)"
   codex_rules_changes_knight_title: "Knight Changes"
@@ -90,11 +90,6 @@ en-GB:
   codex_unit_archer_outlaws_lore_text: "The Poachers are rangers who ditched their path to go hunting. Back before the Cherrykingdom allied themselves with the Florans, hunting was a thriving occupation. However, as a part of the peace treaty with the Florans, hunting in the gloomwoods became illegal, so the hunters either had to retire or become Poachers, illegally hunting for venison and pelts. As these wares were now contraband, the Poachers went to the Outlaws to sell their wares. The Poachers are now a stable of the Outlaw clan."
  
   codex_unit_mage_outlaws_lore_text: "The Tricksters are rejects from the Alchemists Academy of the Cherrykingdom. Most got caught cheating during their exams by using Heavensong fireworks inorder to enhance the spectacle of their spells. Whilst they do deploy a lot of tricks and illusions to exaggerate their magics, they are still excellent mages.\n Some trickters were part of the student council of the Alchemist Academy, and continue their legacy by helping in the bureaucracy of the Outlaws' Department of Ethics and Rights."
-
-  codex_unit_pirate_ship_outlaws_lore_text: "Pirates are the only folk truly brave enough to approach and board enemy ships. However, they don't have many other armaments than their own swords, so they struggle with fighting sea creatures. Pirates don't like getting wet afterall."
-  
-  codex_unit_pirate_ship_critical_text: "Raider Ships are fragile, but fast units, that can do large damage to enemy ships and ground units along the coast. Unlike other range-1 units, the Raider Ships can engage units on tiles they themselves can't occupy. They can also steal from enemy structures like thieves, but this removes their ability to attack. They can deposit at docks, outposts, warships or a flagship, if available."
-
   
   codex_unit_warship_outlaws_lore_text: "The Outlaws' build their own ships. The Outlaws have plenty humans ready join the merfolk on the sea. Whilst communication can be tough between the human and the merfolk crew, the moral is high with their constant sea shanties."
  

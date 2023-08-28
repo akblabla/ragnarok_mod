@@ -19,6 +19,7 @@ unitClasses:
       - pick_up_crown
       - throw_crown
       - healing_potion
+      - hire
       - wait_ai
     battleUnitCount: 1
     loadCapacity: 2

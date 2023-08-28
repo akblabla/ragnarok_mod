@@ -105,7 +105,7 @@ function MoraleBoost:getScore(unitId, order)
         local u = Wargroove.getUnitAt(pos)
         local uc = u.unitClass
         local uValue = u.unitClass.cost*u.health/100
-        if u ~= nil and Wargroove.areAllies(u.playerId, unit.playerId) and (not uc.isStructure) then
+        if u ~= nil and Wargroove.areAllies(u.playerId, unit.playerId) and (not uc.isStructure) and (u.id ~= unitId) then
             if (uc.weapons ~= nil) and (uc.weapons[1] ~= nil) and (uc.weapons[1].canMoveAndAttack == true) then
                 local posKey = PosKey.generatePosKey(pos)
                 local distToEnemy = enemyDistMap[posKey];

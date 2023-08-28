@@ -32,7 +32,6 @@ weapons:
       thief: 0.4
 
       flagship: 0.05
-      pirate_ship: 0.3
       warship: 0.2
       harpoonship: 0.3
       turtle: 0.4
@@ -59,6 +58,7 @@ unitClasses:
       - pick_up_crown
       - throw_crown
       - healing_potion
+      - hire
       - wait_ai
     battleUnitCount: 1
     passiveMultiplier: 1.5

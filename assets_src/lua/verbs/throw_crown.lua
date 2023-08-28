@@ -28,13 +28,7 @@ function throwCrown:canExecuteWithTarget(unit, endPos, targetPos, strParam)
 end
 
 function throwCrown:execute(unit, targetPos, strParam, path)
-	--print("Throw Crown Verb starts here")
-	Ragnarok.printCrownInfo()
     local crownID = Ragnarok.dropCrown(unit.pos)
-	--print("Dropped Crown")
-	--print("")
-	Ragnarok.printCrownInfo()
-	--Yoinked from groove_golf
 	local facingOverride = "left"
     if targetPos.x > unit.pos.x then
         facingOverride = "right"

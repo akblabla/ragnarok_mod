@@ -30,7 +30,6 @@ weapons:
       harpoonship: 1.1
       turtle: 0.9
       travelboat: 1.0
-      pirate_ship: 1.1
       flagship: 0.25
       
 unitClasses:
@@ -55,6 +54,7 @@ unitClasses:
       - throw_crown
       - healing_potion
       - wait_ai
+      - hire
     battleUnitCount: 1
     passiveMultiplier: 2
     sightRange: 4

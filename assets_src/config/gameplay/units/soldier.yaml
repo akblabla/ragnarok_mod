@@ -29,7 +29,6 @@ weapons:
       harpoonship: 0.3
       turtle: 0.25
       travelboat: 0.25
-      pirate_ship: 0.25
       flagship: 0.05
   
 unitClasses:
@@ -104,6 +103,10 @@ units:
       soldier_hit5: soldierHitRed5
       crownbearer_panting: cutscene/crownbearerPanting
       crownbearer_yell: cutscene/crownbearerYell
+      villager_male_shout1: cutscene/villagerScreamMale1
+      villager_male_shout2: cutscene/villagerScreamMale2
+      villager_female_shout1: cutscene/villagerScreamFemale1
+      villager_female_shout2: cutscene/villagerScreamFemale2
     emotes:
       idle: idle
       idle_crownbearer: idle_crownbearer

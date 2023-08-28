@@ -20,7 +20,7 @@ weapons:
       ballista: 0.6
       witch: 1.3
       dragon: 0.8
-      merman: 1.0
+      merman: 1.05
       mage: 0.35
       turtle: 0.2
       harpy: 1.4
@@ -35,7 +35,6 @@ weapons:
       harpoonship: 0.6
       turtle: 0.5
       travelboat: 0.5
-      pirate_ship: 0.35
       flagship: 0.15
 
 unitClasses:

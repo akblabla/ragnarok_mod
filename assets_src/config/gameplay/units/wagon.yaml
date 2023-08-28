@@ -18,6 +18,7 @@ unitClasses:
       - load
       - unload
       - wait_ai
+      - hire
     battleUnitCount: 1
     loadCapacity: 1
     sightRange: 4
