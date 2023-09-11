@@ -51,7 +51,10 @@ function Verb:executeEntry(unitId, targetPos, strParam, path)
     return Resumable.run(function ()
         Wargroove.clearCaches()
         local unit = Wargroove.getUnitById(unitId)
-        local preMovePos = {x = unit.pos.x, y = unit.pos.y}
+        local preMovePos = unit.pos
+        if next(path) ~= nil then
+            preMovePos = path[1]
+        end
         StealthManager.awarenessCheck(unit, path)
         self:execute(unit, targetPos, strParam, path)
         self:updateSelfUnit(unit, targetPos, path)
@@ -70,18 +73,33 @@ function Verb:executeEntry(unitId, targetPos, strParam, path)
                 break
             end
         end
-        -- if StealthManager.isUnitAlerted(unit) then
-        --     local viewers = VisionTracker.getListOfViewerIds(preMovePos)
-        --     for i,viewerId in pairs(viewers) do
-        --         local viewer = Wargroove.getUnitById(viewerId)
-        --         if (viewer ~= nil) and (viewer.playerId == unit.playerId) then
-        --             local dist = math.abs(viewer.pos.x-unit.pos.x)+math.abs(viewer.pos.y-unit.pos.y)
-        --             if dist <=2 then
-        --                 StealthManager.shareInfo(unit,viewer)
-        --             end
-        --         end
-        --     end
-        -- end
+        if StealthManager.isUnitAlerted(unit) then
+            print("preMovePos")
+            print(dump(preMovePos,0))
+            print("path")
+            print(dump(path,0))
+            local viewers = VisionTracker.getListOfViewerIds(preMovePos)
+            for viewerId,pos in pairs(viewers) do
+                local viewer = Wargroove.getUnitById(viewerId)
+                print("viewer")
+                print(dump(viewer,0))
+                if (viewer ~= nil) and (viewer.playerId == unit.playerId) then
+                    local dist = math.abs(viewer.pos.x-preMovePos.x)+math.abs(viewer.pos.y-preMovePos.y)
+                    print("dist: "..dist)
+                    if dist <=2 then
+                        if StealthManager.isUnitSearching(viewer) then
+                            StealthManager.makeAlerted(viewer)
+                        end
+                        if StealthManager.isUnitUnaware(viewer) then
+                            StealthManager.makeSearching(viewer)
+                            viewer.hadTurn = true;
+                            Wargroove.updateUnit(viewer)
+                        end
+                        StealthManager.shareInfo(unit,viewer)
+                    end
+                end
+            end
+        end
         StealthManager.updateAwarenessAll()
         Wargroove.setMetaLocationArea("last_move_path", path)
         Wargroove.setMetaLocation("last_unit", unit.pos)

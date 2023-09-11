@@ -50,9 +50,11 @@ unitClasses:
     verbs:
       - load
       - capture
+      - wait_ai
     tags:
       - commander
       - type.ground.light
+      - walking
     battleUnitCount: 1
     sightRange: 4
     isCommander: true

@@ -16,23 +16,23 @@ stateUIs:
     type: text
     icon: ui/icons/state_fleeing.png
 
-  - id: lastKnownPosMapPosX
-    type: text
-    icon: ui/icons/state_x.png
+  # - id: lastKnownPosMapPosX
+  #   type: text
+  #   icon: ui/icons/state_x.png
     
-  - id: lastKnownPosMapPosY
-    type: text
-    icon: ui/icons/state_y.png
+  # - id: lastKnownPosMapPosY
+  #   type: text
+  #   icon: ui/icons/state_y.png
     
-  - id: lastKnownPosMapDate
-    type: text
-    icon: ui/icons/state_O.png
+  # - id: lastKnownPosMapDate
+  #   type: text
+  #   icon: ui/icons/state_O.png
     
-  - id: AISpeed
-    type: text
-    icon: ui/icons/state_S.png
+  # - id: AISpeed
+  #   type: text
+  #   icon: ui/icons/state_S.png
     
-  - id: follower
-    type: text
-    icon: ui/icons/state_F.png
+  # - id: follower
+  #   type: text
+  #   icon: ui/icons/state_F.png
 ...

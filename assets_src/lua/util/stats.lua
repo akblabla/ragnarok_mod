@@ -134,7 +134,22 @@ Stats.terrainCost = {
 		wheels = 2,
 		amphibious = 2
 	},
+	rough = {
+		walking = 1,
+		riding = 1,
+		hovering = 1,
+		wheels = 2,
+		amphibious = 2
+	},
 	brush = {
+		walking = 1,
+		riding = 2,
+		flying = 1,
+		hovering = 1,
+		wheels = 3,
+		amphibious = 3
+	},
+	brush_invis = {
 		walking = 1,
 		riding = 2,
 		flying = 1,
@@ -150,7 +165,42 @@ Stats.terrainCost = {
 		wheels = 1,
 		amphibious = 2
 	},
+	cave_road = {
+		walking = 1,
+		riding = 1,
+		hovering = 1,
+		wheels = 1,
+		amphibious = 2
+	},
 	forest = {
+		walking = 2,
+		riding = 3,
+		flying = 1,
+		hovering = 1,
+		amphibious = 4
+	},
+	forest_invis = {
+		walking = 2,
+		riding = 3,
+		flying = 1,
+		hovering = 1,
+		amphibious = 4
+	},
+	forest_alt = {
+		walking = 2,
+		riding = 3,
+		flying = 1,
+		hovering = 1,
+		amphibious = 4
+	},
+	forest_no_hiding = {
+		walking = 2,
+		riding = 3,
+		flying = 1,
+		hovering = 1,
+		amphibious = 4
+	},
+	forest_alt_no_hiding = {
 		walking = 2,
 		riding = 3,
 		flying = 1,
@@ -162,7 +212,18 @@ Stats.terrainCost = {
 		flying = 1,
 		hovering = 1,
 	},
+	mountain_no_blocking = {
+		walking = 3,
+		flying = 1,
+		hovering = 1,
+	},
 	cobblestone = {
+		walking = 1,
+		riding = 1,
+		hovering = 1,
+		amphibious = 2
+	},
+	carpet = {
 		walking = 1,
 		riding = 1,
 		hovering = 1,
@@ -192,6 +253,15 @@ Stats.terrainCost = {
 		sailing = 1,
 		cantStop = {sailing = true}
 	},
+	cave_bridge = {
+		walking = 1,
+		riding = 1,
+		hovering = 1,
+		wheels = 1,
+		amphibious = 1,
+		sailing = 1,
+		cantStop = {sailing = true}
+	},
 	sea = {
 		sailing = 1,
 		flying = 1,
@@ -201,6 +271,11 @@ Stats.terrainCost = {
 	sea_alt = {
 		sailing = 1,
 		flying = 1,
+		hovering = 1,
+		amphibious = 1
+	},
+	cave_sea = {
+		sailing = 1,
 		hovering = 1,
 		amphibious = 1
 	},
@@ -222,6 +297,17 @@ Stats.terrainCost = {
 		hovering = 1,
 		amphibious = 1
 	},
+	reef_no_hiding = {
+		sailing = 2,
+		flying = 1,
+		hovering = 1,
+		amphibious = 1
+	},
+	cave_reef = {
+		sailing = 2,
+		hovering = 1,
+		amphibious = 1
+	},
 	river = {
 		walking = 2,
 		riding = 4,
@@ -229,6 +315,13 @@ Stats.terrainCost = {
 		hovering = 1,
 		amphibious = 1,
 		sailing = 1
+	},
+	mangrove = {
+		walking = 3,
+		flying = 1,
+		hovering = 1,
+		amphibious = 2,
+		sailing = 3
 	},
 	cave_river = {
 		walking = 2,
@@ -245,6 +338,13 @@ Stats.terrainCost = {
 		amphibious = 1,
 		sailing = 2
 	},
+	cave_beach = {
+		walking = 1,
+		riding = 2,
+		hovering = 1,
+		amphibious = 1,
+		sailing = 2
+	},
 	street = {
 		walking = 1,
 		riding = 1,
@@ -253,6 +353,17 @@ Stats.terrainCost = {
 		wheels = 1,
 		amphibious = 2
 	}
+}
+local captureUnitList = {
+	archer = true,
+	mage = true,
+	merman = true,
+	rifleman = true,
+	soldier = true,
+	commander_duchess = true,
+	commander_emeric = true,
+	commander_mercival = true,
+	spearman = true,
 }
 function Stats.getMovementType(unitClassId)
 	local unitClass = Wargroove.getUnitClass(unitClassId)
@@ -291,6 +402,14 @@ function Stats.canStopOnTerrain(terrainName, unitClassId)
 		return not ((Stats.terrainCost[terrainName]["cantStop"] ~= nil) and (Stats.terrainCost[terrainName]["cantStop"][movementType] == true))
 	end
 	return false
+end
+
+function Stats.getCaptureUnitList()
+	return captureUnitList
+end
+
+function Stats.canUnitClassCapture(unitClassId)
+	return captureUnitList[unitClassId] == true
 end
 
 return Stats

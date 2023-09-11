@@ -248,4 +248,18 @@ commanders:
     skinColour: green
     unitClassId: soldier
     dialogueBoxVoice: ui/dialogue/textScroll
+    
+  - id: generic_heavensong
+    name: character_generic_heavensong_name
+    faction: heavensong
+    playable: false
+    portrait:
+      neutral: portraits/commanders/small/heavensong_portrait_small.png
+      happy: portraits/commanders/small/heavensong_portrait_small.png
+      sad: portraits/commanders/small/heavensong_portrait_small.png
+    cutscenePortrait: portraits/commanders/big/heavensong_portrait
+    themeSong: music/koji
+    skinColour: typeIII
+    unitClassId: knight
+    dialogueBoxVoice: ui/dialogue/textScroll
 ...

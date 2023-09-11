@@ -3,6 +3,7 @@ local Ragnarok = require "initialized/ragnarok"
 local Recruit = require "verbs/recruit"
 local StealthManager = require "scripts/stealth_manager"
 local AIProfile = require "AIProfiles/ai_profile"
+local Stats = require "util/stats"
 
 local AIEconomyManager = {}
 function AIEconomyManager.init()
@@ -15,15 +16,6 @@ end
 local function rotate(vector)
 	return {x = -vector.y, y = vector.x}
 end
-
-local captureUnitList = {
-	archer = true,
-	mage = true,
-	merman = true,
-	rifleman = true,
-	soldier = true,
-	spearman = true,
-}
 
 AIEconomyManager.valueReductionPerUnitList = {
 	archer = 0.8,
@@ -104,9 +96,6 @@ local function isUnitClassBanned(unitClassId)
 	return AIEconomyManager.bannedUnitList[unitClassId] == true
 end
 
-local function canUnitClassCapture(unitClassId)
-	return captureUnitList[unitClassId] == true
-end
 
 local unitCountPlayerList = {}
 local function getAirUnitPower(count)
@@ -381,7 +370,7 @@ function AIEconomyManager.spendRest(context)
 		end
 		reserve = math.min(soldierClass.cost*barracksCount,Wargroove.getMoney(playerId))
 		local captureUnitCount = 0
-		for unitClassId, canCapture in pairs(captureUnitList) do
+		for unitClassId, canCapture in pairs(Stats.getCaptureUnitList()) do
 			if canCapture == true then
 				if unitCountPlayerList[playerId] ~= nil and unitCountPlayerList[playerId][unitClassId] ~= nil then
 					captureUnitCount = captureUnitCount +  unitCountPlayerList[playerId][unitClassId]

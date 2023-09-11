@@ -2,12 +2,27 @@
 tilesets:
   - id: bridge
     biomes:
-      - types: [grass, tropical]
+      - types: [grass]
         spriteSheet: tilesets
         spriteBase: bridge_tileset_000
         foregroundSpriteBase: bridge_tileset_001
         foregroundBaseLine: 18
         waterSpriteBase: bridge_tileset_002
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_bridge
+        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_bridge
+        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_bridge_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Bridge
+        infoScreenOffset: 75
+        fillColour: '#2a2542'
+      - types: [tropical]
+        spriteSheet: terrain_tilesets
+        spriteBase: tropical_bridge_tileset_000
+        foregroundSpriteBase: tropical_bridge_tileset_001
+        foregroundBaseLine: 18
+        waterSpriteBase: tropical_bridge_tileset_002
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_bridge
         battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds

@@ -442,6 +442,35 @@ function Pathfinding.findClosestOpenSpot(unitClassId, start)
   return nil
 end
 
+function Pathfinding.findClosestEnemy(unit)
+  local openSet = BinaryHeap()
+  local startKey = PosKey.generatePosKey(unit.pos)
+  local gScore = {}
+  gScore[startKey] = 0
+
+  openSet:insert(0,startKey)
+  while openSet:empty() == false do
+    local currentPosKey
+    _,currentPosKey = openSet:pop()
+    local currentPos = PosKey.revertPosKey(currentPosKey)
+    local target = Wargroove.getUnitAt(currentPos)
+    if (target ~= nil) and Wargroove.areEnemies(unit.playerId,target.playerId) then
+      return currentPos
+    end
+    for i,dir in ipairs(directions) do
+      local newPos = {x = currentPos.x+dir.x,y = currentPos.y+dir.y}
+      local newPosKey = PosKey.generatePosKey(newPos)
+      local tentative_gScore = gScore[currentPosKey] + Pathfinding.tileCost(unit.unitClassId,newPos,nil, false)
+      if gScore[newPosKey] == nil and Pathfinding.withinBounds(newPos) then
+        gScore[newPosKey] = tentative_gScore
+        openSet:insert(gScore[newPosKey],newPosKey)
+      end
+    end
+
+  end
+  return nil
+end
+
 local lastIterations = 0
 function Pathfinding.printIterations()
   print("Pathfinding iterations: " .. tostring(iterations-lastIterations))

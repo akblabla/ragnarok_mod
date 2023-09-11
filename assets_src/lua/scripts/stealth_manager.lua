@@ -3,6 +3,7 @@ local VisionTracker = require "initialized/vision_tracker"
 local AIManager = require "initialized/ai_manager"
 local Ragnarok = require "initialized/ragnarok"
 local Pathfinding = require "util/pathfinding"
+local Stats = require "util/stats"
 
 
 local function dump(o,level)
@@ -112,7 +113,7 @@ end
 
 function StealthManager.init()
     Ragnarok.addAction(StealthManager.startOfGame,"start_of_match",false)
-    Ragnarok.addAction(StealthManager.update,"repeating",false)
+    Ragnarok.addAction(StealthManager.update,"repeating",true)
 end
 
 function StealthManager.reportDeadUnit(unitId)
@@ -282,6 +283,12 @@ function StealthManager.update(context)
     end
     for i,unit in pairs(units) do
         if StealthManager.isActive(unit.playerId) then
+            if StealthManager.isUnitPermaSearching(unit) and context:checkState("startOfTurn") then --cheat
+                local closestEnemyPos = Pathfinding.findClosestEnemy(unit);
+                if closestEnemyPos~= nil then
+                    StealthManager.setLastKnownLocation(unit,closestEnemyPos,Wargroove.getTurnNumber())
+                end
+            end
             local lastKnownPos = StealthManager.getLastKnownLocation(unit)
             if (lastKnownPos ~= nil) then
                 if StealthManager.isUnitAlerted(unit) then
@@ -306,11 +313,13 @@ function StealthManager.update(context)
     end
 end
 function StealthManager.isCapturableInRange(unit)
+    if not Stats.canUnitClassCapture(unit.unitClassId) then
+        return false
+    end
     local tileList = Wargroove.getTargetsInRange(unit.pos, VisionTracker.getSightRange(unit), "unit")
     for i,tile in pairs(tileList) do
         local target = Wargroove.getUnitAt(tile)
-        print(dump(target,0))
-        if target~=nil and Wargroove.isNeutral(target.playerId) and target.unitClass.isStructure then
+        if target~=nil and Wargroove.isNeutral(target.playerId) and (target.unitClass.isStructure) and (target.unitClass.canBeCaptured) then
             return true
         end
     end
@@ -560,7 +569,7 @@ function StealthManager.shareInfo(unit1, unit2)
     if (lastKnownPos1~= nil) and (lastKnownPos2~= nil) then
         if lastKnownPos1.date > lastKnownPos2.date then
             StealthManager.setLastKnownLocation(unit2, lastKnownPos1.pos, lastKnownPos1.date)
-        else
+        elseif lastKnownPos1.date < lastKnownPos2.date then
             StealthManager.setLastKnownLocation(unit1, lastKnownPos2.pos, lastKnownPos2.date)
         end
     end
@@ -815,6 +824,9 @@ function StealthManager.updateFleeing(unit, track)
         if currentVisual~=nil then
             Wargroove.removeUnitState(unit,currentVisual)
         end
+        if StealthManager.isVisuallyUnaware(unit) and (Wargroove.getCurrentPlayerId() == unit.playerId) then
+            unit.hadTurn = true;
+        end
         Wargroove.setUnitState(unit,"visual_awareness","fleeing")
         Wargroove.setUnitState(unit,"fleeing","")
         Wargroove.updateUnit(unit)
@@ -846,6 +858,9 @@ function StealthManager.updateAlerted(unit, track)
         if currentVisual~=nil then
             Wargroove.removeUnitState(unit,currentVisual)
         end
+        if StealthManager.isVisuallyUnaware(unit) and (Wargroove.getCurrentPlayerId() == unit.playerId) then
+            unit.hadTurn = true;
+        end
         Wargroove.setUnitState(unit,"visual_awareness","alerted")
         Wargroove.setUnitState(unit,"alerted","")
         Wargroove.updateUnit(unit)
@@ -870,11 +885,14 @@ function StealthManager.updateSearching(unit, track)
         Wargroove.spawnPaletteSwappedMapAnimation(unit.pos, 0, "fx/surprised_fx", unit.playerId, "default", "over_units", { x = 12, y = 0 })
         Wargroove.playMapSound("cutscene/surprised", unit.pos)
         Wargroove.setAIRestriction(unit.id, "cant_attack", true)
-        Wargroove.setAIRestriction(unit.id, "cant_look_ahead", false)
+        Wargroove.setAIRestriction(unit.id, "cant_look_ahead", true)
         Wargroove.waitFrame()
         local currentVisual = Wargroove.getUnitState(unit,"visual_awareness")
         if currentVisual~=nil then
             Wargroove.removeUnitState(unit,currentVisual)
+        end
+        if StealthManager.isVisuallyUnaware(unit) and (Wargroove.getCurrentPlayerId() == unit.playerId) then
+            unit.hadTurn = true;
         end
         Wargroove.setUnitState(unit,"visual_awareness","searching")
         Wargroove.setUnitState(unit,"searching","")

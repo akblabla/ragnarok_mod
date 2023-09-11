@@ -48,12 +48,6 @@ codex:
     faction: outlaw
     title: codex_rules_changes_counter_title
     text: codex_rules_changes_counter_text
-  - pageType: page
-    layoutType: unit_sprite
-    unitClass: mage
-    faction: outlaw
-    title: codex_rules_damage_scaling_title
-    text: codex_rules_damage_scaling_text
 
 - id: rules_unit_changes
   category: rules
@@ -134,7 +128,7 @@ codex:
     text: codex_rules_changes_turtle_text
   - pageType: page
     layoutType: unit_sprite
-    unitClass: merfolk
+    unitClass: merman
     faction: outlaw
     title: codex_rules_changes_merfolk_title
     text: codex_rules_changes_merfolk_text

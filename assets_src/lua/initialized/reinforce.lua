@@ -13,14 +13,15 @@ function Reinforce.init()
     OldReinforce.getTargetType = Reinforce.getTargetType
     OldReinforce.getHealAndCost = Reinforce.getHealAndCost
     OldReinforce.getCostAt = Reinforce.getCostAt
-	
+	OldReinforce.generateOrders = Reinforce.generateOrders
+    OldReinforce.getScore = Reinforce.getScore
 end
 
 --------------------
 local conversionRate = 1       -- Every health point taken from city becomes <this value> for unit
 local minCityHealthAfter = 1   -- minimum % of health left on city after action
 local maxUnitHealth = 100      -- maximum % of health that the unit can achieve
-local costScoreFactor = 0.5    -- multiplies the monetary cost portion of the score (AI)
+local costScoreFactor = 1    -- multiplies the monetary cost portion of the score (AI)
 --------------------
 
 local function getHealingAvailableFrom(city)
@@ -148,15 +149,15 @@ function Reinforce:canExecuteAt(unit, endPos)
 end
 
 function Reinforce:canExecuteWithTarget(unit, endPos, targetPos, strParam)
-    if not self:canSeeTarget(targetPos) then
-        return false
-    end
+    -- if not self:canSeeTarget(targetPos) then
+    --     return false
+    -- end
 
-    local targetUnit = Wargroove.getUnitAt(targetPos)
+    -- local targetUnit = Wargroove.getUnitAt(targetPos)
 
-    if not targetUnit or not targetUnit.unitClass.canReinforce then
-        return false
-    end
+    -- if not targetUnit or not targetUnit.unitClass.canReinforce then
+    --     return false
+    -- end
 
     return true
 end
@@ -179,9 +180,7 @@ function Reinforce:getCostAt(unit, endPos, targetPos)
 end
 
 
-function Reinforce:execute(unit, targetPos, strParam, path)
-    local targetUnit = Wargroove.getUnitAt(targetPos)       
-
+function Reinforce:execute(unit, targetPos, strParam, path)   
     local toHeal, cost = self:getHealAndCost(unit, targetPos)
     consumeHealthAt(unit, targetPos, math.floor(toHeal / conversionRate + 0.5))
 
@@ -219,27 +218,42 @@ function Reinforce:generateOrders(unitId, canMove)
 end
 
 function Reinforce:getScore(unitId, order)
+    print("getScore")
     local unit = Wargroove.getUnitById(unitId)
     local unitClass = Wargroove.getUnitClass(unit.unitClassId)
-    local unitValue = math.sqrt(unitClass.cost / 100)
+    local unitValue = math.sqrt(unitClass.cost+50)
     if unitClass.isCommander then
-        unitValue = 10
+        unitValue = 20
     end
 
     local toHeal, cost = self:getHealAndCost(unit, order.endPosition)
     local healthScore = toHeal / 100
-    local costScore = -math.sqrt(cost / 100) * costScoreFactor
+    local costScore = -math.sqrt(cost / 100) * costScoreFactor/((100+Wargroove.getMoney(unit.playerId))/2500)
 
     local cities = getSurroundingCities(unit, order.endPosition)
     local cityScore = 0
     local cityHealthShare = (toHeal / conversionRate) / #cities
     for i, city in ipairs(cities) do
         local cityUC = Wargroove.getUnitClass(city.unitClassId)
-        local cityValue = math.sqrt(cityUC.cost / 100)
-        cityScore = cityScore - (cityHealthShare / 100) * cityValue
+        local cityValue = math.sqrt(30*cityUC.cost / 100)
+        if city.unitClassId == "tavern" then
+            cityValue = 0
+        end
+        if (city.unitClassId == "barracks") or (city.unitClassId == "port") or (city.unitClassId == "tower") then
+            cityValue = cityValue*2
+        end
+        local cityValueBefore = math.sqrt(city.health/100)*cityValue
+        local cityValueAfter = math.sqrt(math.max(city.health-cityHealthShare,0)/100)*cityValue
+        
+        cityScore = cityScore + (cityValueAfter - cityValueBefore)/(city.health/100)
     end
 
-    local score = healthScore * unitValue + costScore + cityScore
+    local score = (healthScore * unitValue + costScore + cityScore)/4
+    print("score = ".. score)
+    print("healthScore = ".. healthScore)
+    print("unitValue = ".. unitValue)
+    print("costScore = ".. costScore)
+    print("cityScore = ".. cityScore)
     return { score = score, healthDelta = toHeal, introspection = {
         { key = "toHeal", value = toHeal },
         { key = "cost", value = cost },

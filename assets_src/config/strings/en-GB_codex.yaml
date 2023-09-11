@@ -11,10 +11,10 @@ en-GB:
 
   codex_commander_duchess_lore1_text: "Age: 42.\nHeight: 173 cm.\nFavourite thing: Pâté.\nLeast favourite thing: Outlaws."
   codex_commander_duchess_lore2_text: "Retired marshal of the Cherrystone Kingdom, who was rewarded the title of Duchess of Dorne. Her harsh ways of dealing with subordinates have made her unpopular amongs her citizens."
-  codex_commander_duchess_lore3_text: "Being borne a noble, it was only natural she started her career as a knight. Her first experience in war was fighting against the vile Floran raids of the north. Her skills in predicting floran ambushes quickly came to attention and she was chosen as marshal to lead the campaign against the florans. As a reward for her duties, she was given the title of Duchess of the trading city of Dorne."
-  codex_groove_description_duchess: "With a shot commanding attention, Sabah orders her troops within 2 tiles to stand guard. Units standing guard will strike first when attacked until yout next turn. After counter attacking, the unit will drop their guards once more.\n\nGroove Charge Speed: Normal."
+  codex_commander_duchess_lore3_text: "Being born a noble, it was only natural she started her career as a knight. Her first experience in war was fighting against the vile Floran raids of the north. Her skills in predicting floran ambushes quickly came to attention and she was chosen as marshal to lead the campaign against the florans. As a reward for her duties, she was given the title of Duchess of the trading city of Dorne."
+  codex_groove_description_duchess: "With a shot commanding attention, Sabah orders her troops within 2 tiles to stand guard. Units standing guard will strike first when attacked until your next turn. After counter attacking, the unit will drop their guards once more.\n\nGroove Charge Speed: Normal."
   codex_title_strategy_duchess: "En Garde Strategy"
-  codex_groove_strategy_duchess: "En garde is a powerful tool to stall enemy assaults aswell as pushing aggressively into otherwise dangerous positions. Do note that the buff can be countered by ranged units that can attack at a safe distance and giants who may benefit from being struck before attacking. Weakened units can also be used to use up the buff before more powerfull units engage."
+  codex_groove_strategy_duchess: "En garde is a powerful tool to stall enemy assaults aswell as pushing aggressively into otherwise dangerous positions. Do note that the buff can be countered by ranged units that can attack at a safe distance and giants who may benefit from being struck before attacking. Weakened units can also be used to use up the buff before more powerful units engage."
 
   codex_commander_rival_lore1_text: "Age: 27.\nHeight: 189 cm.\nFavourite thing: Festivals.\nLeast favourite thing: Guards."
   codex_commander_rival_lore2_text: "Old friend of Wulfar. He either spends his time raiding trading vessels or spending his booty at the many coastal hideouts of Aurania. " 
@@ -42,9 +42,6 @@ en-GB:
   
   codex_rules_changes_counter_title: "Structure Counter Attacks"
   codex_rules_changes_counter_text: "Structure counter attack damage now scales with HP like all units, structure counter damage adjusted to compensate."
-  
-  codex_rules_damage_scaling_title: "Damage Scaling"
-  codex_rules_damage_scaling_text: "Damage scaling for a 1% health unit is increased from 1% to 10%."
   
   codex_rules_unit_changes: "Unit Changes"
   codex_rules_changes_soldier_title: "Soldier Changes"

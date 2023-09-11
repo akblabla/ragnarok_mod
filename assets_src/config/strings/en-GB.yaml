@@ -25,7 +25,7 @@ en-GB:
   ui_unit_verbs_claim: Retrieve
   ui_unit_verbs_rescue: Rescue
   ui_unit_verbs_hire: Hire
-  ui_unit_verbs_upgrade: Upgrade
+  ui_unit_verbs_upgrade: Retrain
   
   #biomes
   biome_name_tropical: Tropical
@@ -112,7 +112,7 @@ en-GB:
   
   character_duchess_name: "Sabah"
   character_duchess_title: "The Duchess of Dorne"
-  unit_description_commander_duchess: "Duchess of Dorne. She cmakes her units strike first when attacked."
+  unit_description_commander_duchess: "Duchess of Dorne. She commands her units to strike first when attacked."
 
 
   character_rival_name: "Rival"
@@ -178,7 +178,7 @@ en-GB:
   unit_name_thief_cherrystone: Tax Collector
   unit_name_thief_outlaws: Smuggler
   unit_name_rifleman_outlaws: Sharpshooter 
-  unit_name_rival_outlaws: Poacher 
+  unit_name_rival_outlaws: Ol'Friend 
 
   structure_name_tavern: "Tavern"
   unit_description_tavern: "Neutral building where anyone can reinforce and retrain their units."  

@@ -944,26 +944,47 @@ end
 
 
 function Actions.spawnUnitInsideTransport(context)
+    print("spawnUnitInsideTransport")
     -- "Give units of type {0} at location {1} owned by player {2} unit type {3} owned by player {4} with {5} hp."
+    Wargroove.clearCaches()
     local units = context:gatherUnits(2, 0, 1)
     local unitClassId = context:getUnitClass(3)
     local playerId = context:getPlayerId(4)
     local hp = context:getInteger(5)
-
+    local chosenTransportId = -1
+    local chosenTransportLoad = 1000
+    
     for i, transport in pairs(units) do
-        local pos = {x=-10,y=-10}
-        while Wargroove.getUnitAt(pos)~= nil do
-            pos.x = pos.x+1
+        print("transport")
+        print("id = ".. transport.id)
+        print("unitCount = ".. #transport.loadedUnits)
+        print("capacity = ".. transport.unitClass.loadCapacity)
+        print("smallestLoad id = ".. chosenTransportId)
+        print("smallestLoad = ".. chosenTransportLoad)
+        if #transport.loadedUnits < transport.unitClass.loadCapacity then
+            if #transport.loadedUnits < chosenTransportLoad then
+                chosenTransportId = transport.id
+                chosenTransportLoad = #transport.loadedUnits
+            end
         end
+    end
+    print("chosen Id = " .. chosenTransportId)
+    if chosenTransportId~=-1 then
+        Wargroove.clearCaches()
+        local chosenTransport = Wargroove.getUnitById(chosenTransportId)
+        local pos = {x=-10,y=-10}
+            while Wargroove.getUnitAt(pos)~= nil do
+                pos.x = pos.x+1
+            end
         local unitId = Wargroove.spawnUnit(playerId, pos, unitClassId, false)
         Wargroove.clearCaches()
         local unit = Wargroove.getUnitAt(pos)
 
-        table.insert(transport.loadedUnits, unitId)
+        table.insert(chosenTransport.loadedUnits, unitId)
         unit.inTransport = true
-        unit.transportedBy = transport.id
+        unit.transportedBy = chosenTransport.id
         unit.health = hp
-        Wargroove.updateUnit(transport)
+        Wargroove.updateUnit(chosenTransport)
         unit.pos = { x = -100, y = -100 }
         Wargroove.updateUnit(unit)
     end

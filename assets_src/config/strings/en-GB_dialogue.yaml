@@ -126,7 +126,7 @@ en-GB:
   #Ingame Dialogue:
   #Start of match after cutscene
   ragnarok_main3_ingameIntro_Wulfar_00: "We have to steal more gold from villages than our rival."
-  ragnarok_main3_ingameIntro_Wulfar_01: "Our pirate ships can steal 300 gold, but are left vulnerable while carrying it."
+  ragnarok_main3_ingameIntro_Wulfar_01: "Our barges can steal 300 gold, but can't carry units while doing so."
   ragnarok_main3_ingameIntro_Wulfar_02: "They can deposit at either our flagship or our docks."
   ragnarok_main3_ingameIntro_Wulfar_03: "Let's head out!"
   
