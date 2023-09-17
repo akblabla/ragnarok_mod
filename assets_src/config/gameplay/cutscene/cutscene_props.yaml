@@ -140,6 +140,8 @@ cutscene_props:
     path: backgrounds/props/cherrystone_building_foreground
   - id: telescope
     path: backgrounds/props/telescope
+  - id: telescope_with_building
+    path: backgrounds/props/telescope_with_building
   - id: forge_flame
     path: backgrounds/props/forge_flames
   - id: large_table

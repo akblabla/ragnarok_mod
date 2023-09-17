@@ -37,11 +37,11 @@ units:
   - class: thief
     faction: cherrystone
     name: unit_name_thief_cherrystone
-    mapAnimation: units/thief/cherrystone/map_thief_cherrystone2
-    battleAnimation: units/thief/cherrystone/battle_thief_cherrystone2
+    mapAnimation: units/thief/cherrystone/map_thief_cherrystone
+    battleAnimation: units/thief/cherrystone/battle_thief_cherrystone
     battleAnimationRiver: fx/river_overlay/battle_thief_river
-    smallPortrait: units/thief/cherrystone/portrait_thief_cherrystone_small2.png
-    mediumPortrait: units/thief/cherrystone/portrait_thief_cherrystone_medium2.png
+    smallPortrait: units/thief/cherrystone/portrait_thief_cherrystone_small.png
+    mediumPortrait: units/thief/cherrystone/portrait_thief_cherrystone_medium.png
     mapSpeed: 4.0
     grabPos: [13, 14]
     deathMoveMin: 0

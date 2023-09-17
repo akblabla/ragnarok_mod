@@ -13,6 +13,7 @@ end
 
 function Conditions.populate(dst)
     dst["state"] = Conditions.state
+    dst["crown_present"] = Conditions.crownPresent
     dst["did_it_occur"] = Conditions.didItOccur
     dst["is_rescued"] = Conditions.isRescued
     dst["or_group"] = Conditions.orGroup
@@ -35,6 +36,27 @@ function Conditions.state(context)
     end
 
     return false
+end
+
+function Conditions.crownPresent(context)
+  -- "If crown is at location {0}."
+
+  -- The context contains an ordered table of values and has accessor methods for various types.
+  local location = context:getLocation(0)
+  local crownPos = Ragnarok.getCrownPos()
+  if crownPos == nil then
+    return false
+  end
+  for i, pos in ipairs(location.positions) do
+    print("crownPos")
+    print(dump(crownPos,0))
+    print("pos")
+    print(dump(pos,0))
+    if (pos.x == crownPos.x) and (pos.y == crownPos.y) then
+      return true
+    end
+  end
+  return false
 end
 
 function Conditions.didItOccur(context)

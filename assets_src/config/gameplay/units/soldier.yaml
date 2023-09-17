@@ -173,4 +173,46 @@ units:
     alternativeRuns:
       - id: run_2
 
+  - class: soldier
+    faction: floran
+    name: unit_name_soldier_floran
+    mapAnimation: units/soldier/floran/map_soldier_floran
+    battleAnimation: units/soldier/floran/battle_soldier_floran
+    battleAnimationRiver: fx/river_overlay/battle_soldier_floran_river
+    smallPortrait: units/soldier/floran/portrait_soldier_floran_small.png
+    mediumPortrait: units/soldier/floran/portrait_soldier_floran_medium.png
+    mapSpeed: 4.0
+    grabPos: [18, 18]
+    sounds:
+      attack: soldierAttackGreen
+      attackShout: soldierPreAttackGreen
+      attackMap: unitAttack
+      captureShout: soldierPreAttackGreen
+      death: soldierDieGreen
+      deathMap: unitDie
+      run: infantryLightEntry
+      runMap: infantryLightMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [0.5, 0.85]
+    shouts:
+      soldier_green_shout1: soldierShoutGreen1
+      soldier_green_shout2: soldierShoutGreen2
+      soldier_green_shout3: soldierShoutGreen3
+      soldier_green_shout4: soldierShoutGreen4
+      soldier_green_shout5: soldierShoutGreen5
+      soldier_green_shout6: soldierShoutGreen6
+      soldier_green_hit1: soldierHitGreen1
+      soldier_green_hit2: soldierHitGreen2
+      soldier_green_hit3: soldierHitGreen3
+      dog_shout1: dogShoutGrowl
+      caesar_bark1: dogShoutBarkGreen
+    hidden:
+      shouts:
+        - soldier_green_shout2
+        - soldier_green_shout4
+        - soldier_green_shout5
 ...

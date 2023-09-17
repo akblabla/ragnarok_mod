@@ -212,6 +212,10 @@ en-GB:
   trigger_condition_description_state: "Triggers if a unit has a particular state."
   trigger_condition_readable_state: "If unit type(s) {0} at location {1} owned by player {2} have state {3} equal to {4}."
   
+  trigger_condition_name_crown_present: "Map: Crown Present"
+  trigger_condition_description_crown_present: "Triggers if the crown is present at a location."
+  trigger_condition_readable_crown_present: "If crown is at location {0}."
+  
   trigger_condition_name_did_it_occur: "Dev: Did it Occur"
   trigger_condition_description_did_it_occur: "Triggers when an occation occurs."
   trigger_condition_readable_did_it_occur: "If {0} occured"
