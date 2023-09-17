@@ -129,7 +129,7 @@ function Pathfinding.forceMoveAlongPath(unitId, path, facing)
     elseif delta.x == -1 then
       Wargroove.setFacingOverride(unitId,"left")
     end
-    Wargroove.moveUnitToOverride(unitId, unit.pos, tile.x-unit.pos.x, tile.y-unit.pos.y, 2)
+    Wargroove.moveUnitToOverride(unitId, unit.pos, tile.x-unit.pos.x, tile.y-unit.pos.y, 2.5)
     while Wargroove.isLuaMoving(unitId) do
       coroutine.yield()
     end
