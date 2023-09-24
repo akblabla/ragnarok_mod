@@ -163,7 +163,7 @@ function Attack:canExecuteWithTarget(unit, endPos, targetPos, strParam)
 		return false
 	end
 	if Ragnarok.hasCrown(unit) then return false end
-	local result, _ = Stats.getTerrainCost("bridge", unit.unitClassId)
+	local result, _ = Stats.getTerrainCost("plains", unit.unitClassId)
 	local isGroundUnit = result<100
 	if not (isGroundUnit and targetUnit.unitClass.isStructure) then
 		if (Stats.meleeUnits[unit.unitClassId] ~= nil) and (not Wargroove.canStandAt(unit.unitClassId, targetPos)) then

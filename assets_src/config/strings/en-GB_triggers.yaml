@@ -7,6 +7,10 @@ en-GB:
   trigger_action_description_ai_set_no_building_attacking: "Prevents AI from attacking buildings."
   trigger_action_readable_ai_set_no_building_attacking: "Prevent AI controlled by player {0} from attacking buildings."
 
+  trigger_action_name_ai_set_priority_target: "AI: Set Priority Target"
+  trigger_action_description_ai_set_priority_target: "Gives AI an AI bonus for standing on a location."
+  trigger_action_readable_ai_set_priority_target: "Give the AI player {0} an AI score bonus of {2} if it reaches {1}"
+
   trigger_action_name_enable_hiring: "Player: Let player hire"
   trigger_action_description_enable_hiring: "Let player hire."
   trigger_action_readable_enable_hiring: "Let player {0} hire villagers."
@@ -194,6 +198,14 @@ en-GB:
   trigger_action_name_force_attack: "Unit: Force Attack"
   trigger_action_description_force_attack: "Force Attack."
   trigger_action_readable_force_attack: "Force units of type {0} at location {1} owned by player {2} to attack units of type {3} at location {4} owned by player {5}."
+
+  trigger_action_name_force_smoke: "Unit: Force Smoke"
+  trigger_action_description_force_smoke: "Force Smoke."
+  trigger_action_readable_force_smoke: "Force Vesper at location {0} owned by player {1} to smoke {2}."
+  
+  trigger_action_name_force_golf: "Unit: Force Golf"
+  trigger_action_description_force_golf: "Force Golf."
+  trigger_action_readable_force_golf: "Force Wulfar at location {0} owned by player {1} to golf units of type {2} at location {3} owned by player {4} aiming for {5} ."
 
   trigger_action_name_run_group_concurrently: "Util: Run Group Concurrently"
   trigger_action_description_run_group_concurrently: "Run Group Concurrently."

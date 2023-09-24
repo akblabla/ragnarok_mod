@@ -43,4 +43,290 @@ unitClasses:
     canSeeOverTerrain: true
     deathVerbId: death
 
+units:
+  - class: witch
+    faction: cherrystone
+    name: unit_name_witch_cherrystone
+    mapAnimation: units/witch/cherrystone/map_witch_cherrystone
+    battleAnimation: units/witch/cherrystone/battle_witch_cherrystone
+    smallPortrait: units/witch/cherrystone/portrait_witch_cherrystone_small.png
+    mediumPortrait: units/witch/cherrystone/portrait_witch_cherrystone_medium.png
+    mapSpeed: 8.0
+    grabPos: [17, 15]
+    sounds:
+      attackMap: unitAttack
+      attack: witchAttack
+      attackEffect1: witchAttackEffect1
+      attackEffect2: witchAttackEffect2
+      attackEffect3: witchAttackEffect3
+      attackEffect4: witchAttackEffect4
+      death: witchDie
+      deathMap: unitDie
+      run: witchEntry
+      runMap: witchEntryMap
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: oneWitch
+        hitDelay: [1.45]
+        effect: fx/bs_witch_fx_1
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 1
+        attackEffectSound: attackEffect1
+        cutscenePivot: [-35, 140]
+      - id: twoWitches
+        hitDelay: [1.45, 1.75]
+        effect: fx/bs_witch_fx_2
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 2
+        attackEffectSound: attackEffect2
+        cutscenePivot: [-35, 140]
+      - id: threeWitches
+        hitDelay: [1.45, 1.75, 2.15]
+        effect: fx/bs_witch_fx_3
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 3
+        attackEffectSound: attackEffect3
+        cutscenePivot: [-35, 140]
+      - id: fourWitches
+        hitDelay: [1.45, 1.75, 2.15, 2.55]
+        effect: fx/bs_witch_fx_4
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 4
+        attackEffectSound: attackEffect4
+        cutscenePivot: [-35, 140]
+
+  - class: witch
+    faction: felheim
+    name: unit_name_witch_felheim
+    mapAnimation: units/witch/felheim/map_witch_felheim
+    battleAnimation: units/witch/felheim/battle_witch_felheim
+    smallPortrait: units/witch/felheim/portrait_witch_felheim_small.png
+    mediumPortrait: units/witch/felheim/portrait_witch_felheim_medium.png
+    mapSpeed: 8.0
+    grabPos: [17, 15]
+    sounds:
+      attackMap: unitAttack
+      attack: witchAttackBlue
+      attackEffect1: witchAttackEffect1
+      attackEffect2: witchAttackEffect2
+      attackEffect3: witchAttackEffect3
+      attackEffect4: witchAttackEffect4
+      death: undeadDieCrumble
+      deathMap: unitDie
+      run: witchEntry
+      runMap: witchEntryMap
+      hit: hitBone
+      hitMap: hitBone
+    attacks:
+      - id: oneWitch
+        hitDelay: [1.45]
+        effect: fx/bs_witch_fx_1
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 1
+        attackEffectSound: attackEffect1
+        cutscenePivot: [-35, 140]
+      - id: twoWitches
+        hitDelay: [1.45, 1.75]
+        effect: fx/bs_witch_fx_2
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 2
+        attackEffectSound: attackEffect2
+        cutscenePivot: [-35, 140]
+      - id: threeWitches
+        hitDelay: [1.45, 1.75, 2.15]
+        effect: fx/bs_witch_fx_3
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 3
+        attackEffectSound: attackEffect3
+        cutscenePivot: [-35, 140]
+      - id: fourWitches
+        hitDelay: [1.45, 1.75, 2.15, 2.55]
+        effect: fx/bs_witch_fx_4
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 4
+        attackEffectSound: attackEffect4
+        cutscenePivot: [-35, 140]
+
+
+  - class: witch
+    faction: heavensong
+    name: unit_name_witch_heavensong
+    mapAnimation: units/witch/heavensong/map_witch_heavensong
+    battleAnimation: units/witch/heavensong/battle_witch_heavensong
+    smallPortrait: units/witch/heavensong/portrait_witch_heavensong_small.png
+    mediumPortrait: units/witch/heavensong/portrait_witch_heavensong_medium.png
+    mapSpeed: 8.0
+    grabPos: [17, 15]
+    sounds:
+      attackMap: unitAttack
+      attack: witchAttack
+      attackEffect1: witchAttackEffect1
+      attackEffect2: witchAttackEffect2
+      attackEffect3: witchAttackEffect3
+      attackEffect4: witchAttackEffect4
+      death: witchDie
+      deathMap: unitDie
+      run: witchEntry
+      runMap: witchEntryMap
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: oneWitch
+        hitDelay: [1.45]
+        effect: fx/bs_witch_fx_1
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 1
+        attackEffectSound: attackEffect1
+        cutscenePivot: [-35, 140]
+      - id: twoWitches
+        hitDelay: [1.45, 1.75]
+        effect: fx/bs_witch_fx_2
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 2
+        attackEffectSound: attackEffect2
+        cutscenePivot: [-35, 140]
+      - id: threeWitches
+        hitDelay: [1.45, 1.75, 2.15]
+        effect: fx/bs_witch_fx_3
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 3
+        attackEffectSound: attackEffect3
+        cutscenePivot: [-35, 140]
+      - id: fourWitches
+        hitDelay: [1.45, 1.75, 2.15, 2.55]
+        effect: fx/bs_witch_fx_4
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 4
+        attackEffectSound: attackEffect4
+        cutscenePivot: [-35, 140]
+
+
+
+  - class: witch
+    faction: floran
+    name: unit_name_witch_floran
+    mapAnimation: units/witch/floran/map_witch_floran
+    battleAnimation: units/witch/floran/battle_witch_floran
+    smallPortrait: units/witch/floran/portrait_witch_floran_small.png
+    mediumPortrait: units/witch/floran/portrait_witch_floran_medium.png
+    mapSpeed: 8.0
+    grabPos: [17, 17]
+    sounds:
+      attackMap: unitAttack
+      attack: witchAttackGreen
+      attackEffect1: witchAttackEffect1
+      attackEffect2: witchAttackEffect2
+      attackEffect3: witchAttackEffect3
+      attackEffect4: witchAttackEffect4
+      death: soldierDieGreen
+      deathMap: unitDie
+      run: witchEntry
+      runMap: witchEntryMap
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: oneWitch
+        hitDelay: [1.45]
+        effect: fx/bs_witch_fx_1
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 1
+        attackEffectSound: attackEffect1
+        cutscenePivot: [-35, 140]
+      - id: twoWitches
+        hitDelay: [1.45, 1.75]
+        effect: fx/bs_witch_fx_2
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 2
+        attackEffectSound: attackEffect2
+        cutscenePivot: [-35, 140]
+      - id: threeWitches
+        hitDelay: [1.45, 1.75, 2.15]
+        effect: fx/bs_witch_fx_3
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 3
+        attackEffectSound: attackEffect3
+        cutscenePivot: [-35, 140]
+      - id: fourWitches
+        hitDelay: [1.45, 1.75, 2.15, 2.55]
+        effect: fx/bs_witch_fx_4
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 4
+        attackEffectSound: attackEffect4
+        cutscenePivot: [-35, 140]
+
+
+
+  - class: witch
+    faction: outlaw
+    name: unit_name_witch_outlaws
+    mapAnimation: units/witch/outlaws/map_witch_outlaws
+    battleAnimation: units/witch/outlaws/battle_witch_outlaws
+    smallPortrait: units/witch/outlaws/portrait_witch_outlaws_small.png
+    mediumPortrait: units/witch/outlaws/portrait_witch_outlaws_medium.png
+    mapSpeed: 8.0
+    grabPos: [17, 15]
+    sounds:
+      attackMap: unitAttack
+      attack: witchAttack
+      attackEffect1: witchAttackEffect1
+      attackEffect2: witchAttackEffect2
+      attackEffect3: witchAttackEffect3
+      attackEffect4: witchAttackEffect4
+      death: witchDie
+      deathMap: unitDie
+      run: witchEntry
+      runMap: witchEntryMap
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: oneWitch
+        hitDelay: [1.45]
+        effect: fx/bs_witch_fx_1
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 1
+        attackEffectSound: attackEffect1
+        cutscenePivot: [-35, 140]
+      - id: twoWitches
+        hitDelay: [1.45, 1.75]
+        effect: fx/bs_witch_fx_2
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 2
+        attackEffectSound: attackEffect2
+        cutscenePivot: [-35, 140]
+      - id: threeWitches
+        hitDelay: [1.45, 1.75, 2.15]
+        effect: fx/bs_witch_fx_3
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 3
+        attackEffectSound: attackEffect3
+        cutscenePivot: [-35, 140]
+      - id: fourWitches
+        hitDelay: [1.45, 1.75, 2.15, 2.55]
+        effect: fx/bs_witch_fx_4
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 4
+        attackEffectSound: attackEffect4
+        cutscenePivot: [-35, 140]
+
 ...

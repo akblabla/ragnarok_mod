@@ -102,10 +102,10 @@ units:
   - class: balloon
     faction: outlaw
     name: unit_name_balloon_cherrystone
-    mapAnimation: units/balloon/outlaw/map_balloon_outlaw
-    battleAnimation: units/balloon/outlaw/battle_balloon_outlaw
-    smallPortrait: units/balloon/outlaw/portrait_balloon_outlaw_small.png
-    mediumPortrait: units/balloon/outlaw/portrait_balloon_outlaw_medium.png
+    mapAnimation: units/balloon/outlaws/map_balloon_outlaws
+    battleAnimation: units/balloon/outlaws/battle_balloon_outlaws
+    smallPortrait: units/balloon/outlaws/portrait_balloon_outlaws_small.png
+    mediumPortrait: units/balloon/outlaws/portrait_balloon_outlaws_medium.png
     mapSpeed: 6.0
     grabPos: [22, 5]
     sounds:

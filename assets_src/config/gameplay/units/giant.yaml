@@ -59,4 +59,32 @@ unitClasses:
     passiveMultiplier: 2
     sightRange: 4
     deathVerbId: death
+
+units:
+  - class: giant
+    faction: outlaw
+    name: unit_name_giant_outlaws
+    mapAnimation: units/giant/outlaws/map_giant_outlaws
+    battleAnimation: units/giant/outlaws/battle_giant_outlaws
+    battleAnimationRiver: fx/river_overlay/battle_giant_cherrystone_river
+    smallPortrait: units/giant/outlaws/portrait_giant_outlaws_small.png
+    mediumPortrait: units/giant/outlaws/portrait_giant_outlaws_medium.png
+    mapSpeed: 4.0
+    grabPos: [27, 13]
+    deathMoveMin: 0
+    deathMoveMax: 0
+    sounds:
+      preAttack: giantPoseStone
+      attack: giantAttack
+      attackMap: unitAttack
+      death: giantDie
+      deathMap: unitDie
+      run: giantEntry
+      runMap: giantEntry
+      hit: hitStone
+      hitMap: hitStone
+    attacks:
+      - id: primary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 0.75
 ...

@@ -33,4 +33,115 @@ unitClasses:
         value: unaware
       - id: visual_awareness
         value: unaware
+
+units:
+  - class: travelboat
+    faction: cherrystone
+    name: unit_name_travelboat_cherrystone
+    mapAnimation: units/travelboat/cherrystone/map_travelboat_cherrystone
+    battleAnimation: units/travelboat/cherrystone/battle_travelboat_cherrystone
+    smallPortrait: units/travelboat/cherrystone/portrait_travelboat_cherrystone_small.png
+    mediumPortrait: units/travelboat/cherrystone/portrait_travelboat_cherrystone.png
+    mapSpeed: 6.0
+    grabPos: [15, 15]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: soldierAttackRed
+      attackShout: soldierPreAttackRed
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+
+  - class: travelboat
+    faction: felheim
+    name: unit_name_travelboat_felheim
+    mapAnimation: units/travelboat/felheim/map_travelboat_felheim
+    battleAnimation: units/travelboat/felheim/battle_travelboat_felheim
+    smallPortrait: units/travelboat/felheim/portrait_travelboat_felheim_small.png
+    mediumPortrait: units/travelboat/felheim/portrait_travelboat_felheim.png
+    mapSpeed: 8.0
+    grabPos: [15, 15]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: soldierAttackRed
+      attackShout: soldierPreAttackRed
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+
+  - class: travelboat
+    faction: heavensong
+    name: unit_name_travelboat_heavensong
+    mapAnimation: units/travelboat/heavensong/map_travelboat_heavensong
+    battleAnimation: units/travelboat/heavensong/battle_travelboat_heavensong
+    smallPortrait: units/travelboat/heavensong/portrait_travelboat_heavensong_small.png
+    mediumPortrait: units/travelboat/heavensong/portrait_travelboat_heavensong.png
+    mapSpeed: 6.0
+    grabPos: [15, 15]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: soldierAttackRed
+      attackShout: soldierPreAttackRed
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+
+  - class: travelboat
+    faction: floran
+    name: unit_name_travelboat_floran
+    mapAnimation: units/travelboat/floran/map_travelboat_floran
+    battleAnimation: units/travelboat/floran/battle_travelboat_floran
+    smallPortrait: units/travelboat/floran/portrait_travelboat_floran_small.png
+    mediumPortrait: units/travelboat/floran/portrait_travelboat_floran.png
+    mapSpeed: 6.0
+    grabPos: [15, 15]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: soldierAttackRed
+      attackShout: soldierPreAttackRed
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+
+  - class: travelboat
+    faction: outlaw
+    name: unit_name_travelboat_outlaws
+    mapAnimation: units/travelboat/outlaws/map_travelboat_outlaws
+    battleAnimation: units/travelboat/outlaws/battle_travelboat_outlaws
+    smallPortrait: units/travelboat/outlaws/portrait_travelboat_outlaws_small.png
+    mediumPortrait: units/travelboat/outlaws/portrait_travelboat_outlaws.png
+    mapSpeed: 6.0
+    grabPos: [15, 15]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: soldierAttackRed
+      attackShout: soldierPreAttackRed
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
 ...

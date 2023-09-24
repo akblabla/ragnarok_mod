@@ -704,7 +704,11 @@ end
 
 function StealthManager.isVisuallyUpdated(unit)
     local awareness = Wargroove.getUnitState(unit,"awareness")
-    local isUpdated = (Wargroove.getUnitState(unit,"visual_awareness") == awareness)
+    local visualAwareness = Wargroove.getUnitState(unit,"visual_awareness")
+    local isUpdated = visualAwareness == awareness
+    if StealthManager.isVisuallyAlerted(unit) and StealthManager.isUnitSearching(unit) then
+        return true
+    end
     return isUpdated
 end
 
@@ -873,7 +877,7 @@ function StealthManager.updateSearching(unit, track)
     if not StealthManager.isActive(unit.playerId) then
         return
     end
-    if StealthManager.isUnitSearching(unit) and not StealthManager.isVisuallySearching(unit) and (unit.health>0) then
+    if StealthManager.isUnitSearching(unit) and not StealthManager.isVisuallySearching(unit) and not StealthManager.isVisuallyAlerted(unit) and (unit.health>0) then
         if (track~=nil) and (track == true) then
             Wargroove.trackCameraTo(unit.pos)
         end

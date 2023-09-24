@@ -60,6 +60,9 @@ function MoraleBoost:generateOrders(unitId, canMove)
 
     local unit = Wargroove.getUnitById(unitId)
     local unitClass = Wargroove.getUnitClass(unit.unitClassId)
+    if Wargroove.hasAIRestriction(unitId, "cant_attack") then
+        return {}
+    end
     local movePositions = {}
     if canMove then
         movePositions = Wargroove.getTargetsInRange(unit.pos, unitClass.moveRange, "empty")
@@ -68,15 +71,7 @@ function MoraleBoost:generateOrders(unitId, canMove)
 
     for i, pos in pairs(movePositions) do
         local targets = Wargroove.getTargetsInRangeAfterMove(unit, pos, pos, 1, "unit")
-        for j, targetPos in pairs(targets) do
-            local u = Wargroove.getUnitAt(targetPos)
-            if u ~= nil then
-                local uc = Wargroove.getUnitClass(u.unitClassId)
-                if self:canExecuteWithTarget(unit, pos, targetPos, "") and not Wargroove.hasAIRestriction(u.id, "dont_target_this") then
-                    orders[#orders+1] = {targetPosition = targetPos, strParam = "", movePosition = pos, endPosition = pos}
-                end
-            end
-        end
+        orders[#orders+1] = {targetPosition = pos, strParam = "", movePosition = pos, endPosition = pos}
     end
 
     return orders
@@ -98,7 +93,7 @@ function MoraleBoost:getScore(unitId, order)
             end
         end
     end
-    local enemyDistMap = Pathfinding.getDistanceToLocationMap(unit.pos, 20, enemyLocations)
+    local enemyDistMap = Pathfinding.getDistanceToLocationMap(endPos, 20, enemyLocations)
     local targets = Wargroove.getTargetsInRange(endPos, 2, "unit")
     local score = -300
     for i, pos in ipairs(targets) do

@@ -37,6 +37,7 @@ end
 
 function Actions.populate(dst)
     dst["ai_set_no_building_attacking"] = Actions.setNoBuildingAttacking
+    dst["ai_set_priority_target"] = Actions.aiSetPriorityTarget
     dst["enable_hiring"] = Actions.enableHiring
     dst["set_state"] = Actions.setState
     dst["transfer_gold_robbed"] = Actions.transferGoldRobbed
@@ -88,6 +89,8 @@ function Actions.populate(dst)
     dst["give_bounty_based_on_value"] = Actions.giveBountyBasedOnValue
     dst["force_move"] = Actions.forceMove
     dst["force_attack"] = Actions.forceAttack
+    dst["force_smoke"] = Actions.forceSmoke
+    dst["force_golf"] = Actions.forceGolf
     dst["play_animation"] = Actions.playAnimation
     dst["play_emote"] = Actions.playEmote
     dst["ai_set_profile"] = Actions.setAIProfileWithBuild
@@ -149,6 +152,14 @@ local function spawnUnitCompareBestLocation(a, b)
 	return a.pos.x < b.pos.x
 end
 --
+
+function Actions.aiSetPriorityTarget(context)
+    -- "Give the AI player {0} an AI score bonus of {2} if it reaches {1}"
+    local playerId = context:getPlayerId(0)
+    local location = context:getLocation(1)
+    local score = context:getInteger(2)
+    AIManager.setAIPriorityMap(playerId, location.positions,score)
+end
 
 function Actions.setNoBuildingAttacking(context)
     local targetPlayer = context:getPlayerId(0)
@@ -628,6 +639,61 @@ function Actions.forceAttack(context)
     local unit = units[1]
     local target = targets[1]
     Combat:forceAttack(unit, target)
+end
+
+function Actions.forceSmoke(context)
+    -- "Force Vesper at location {0} owned by player {1} to smoke {2}."
+    local vesperLocation = context:getLocation(0)
+    local vesperPlayerId = context:getPlayerId(1)
+    local unit = nil
+    local found = false
+    for i,pos in ipairs(vesperLocation.positions) do
+        unit = Wargroove.getUnitAt(pos)
+        if (unit ~=nil) then
+            if (unit.unitClassId == "commander_vesper") and (unit.playerId == vesperPlayerId) then
+                found = true
+                break
+            end
+        end
+    end
+    if not found then
+        return
+    end
+    local location = context:getLocation(2)
+    local targetPosition = findCentreOfLocation(location)
+    local SmokeScreen = require "verbs/groove_dummy_smoke_screen"
+    SmokeScreen:execute(unit, targetPosition)
+end
+
+function Actions.forceGolf(context)
+    -- "Force Wulfar at location {0} owned by player {1} to golf units of type {2} at location {3} owned by player {4} aiming for {5} ."
+    print("Actions.forceGolf(context)")
+    print(1)
+    local wulfarLocation = context:getLocation(0)
+    local wulfarPlayerId = context:getPlayerId(1)
+    local unit = nil
+    local found = false
+    for i,pos in ipairs(wulfarLocation.positions) do
+        unit = Wargroove.getUnitAt(pos)
+        if (unit ~=nil) and (unit.unitClassId == "commander_wulfar") and (unit.playerId == wulfarPlayerId) then
+            found = true
+            break
+        end
+    end
+    if not found then
+        return
+    end
+    local targets = context:gatherUnits(4, 2, 3)
+    local location = context:getLocation(5)
+    print("unit")
+    print(dump(unit,0))
+    local targetUnit = targets[1]
+    print("targetUnit")
+    print(dump(targetUnit,0))
+    local targetPosition = findCentreOfLocation(location)
+    local Golf = require "verbs/groove_golf_v2"
+    local strParam = targetUnit.id .. ";" .. targetPosition.x .. "," .. targetPosition.y
+    Golf:execute(unit, targetUnit.pos, strParam, {unit.pos})
 end
 
 function Actions.playAnimation(context)

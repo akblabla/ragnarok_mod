@@ -28,10 +28,14 @@ function WaitAI:generateOrders(unitId, canMove)
     local unit = Wargroove.getUnitById(unitId)
     local unitClass = Wargroove.getUnitClass(unit.unitClassId)
     
-    local orders = {{targetPosition = unit.pos, strParam = "0", movePosition = unit.pos, endPosition = unit.pos}}
+    local orders = {}
     if (not canMove) then
         return orders
     end
+    if AIManager.getOrder(unitId).order == "no_order" then
+        return orders
+    end
+    orders = {{targetPosition = unit.pos, strParam = "0", movePosition = unit.pos, endPosition = unit.pos}}
     local target, distMoved, dist = AIManager.getNextPosition(unitId)
     if (target ~= nil) then
         local score = 0
@@ -40,21 +44,27 @@ function WaitAI:generateOrders(unitId, canMove)
         end
         table.insert(orders, {targetPosition = target, strParam = tostring(score), movePosition = target, endPosition = target})
     end
-    -- local movePositions = Wargroove.getTargetsInRange(unit.pos, unitClass.moveRange, "empty")
+    local movePositions = Wargroove.getTargetsInRange(unit.pos, unitClass.moveRange, "empty")
     -- table.insert(orders, {targetPosition = unit.pos, strParam = "", movePosition = unit.pos, endPosition = unit.pos})
         
-    -- for i, targetPos in ipairs(movePositions) do
-    --     if Wargroove.canStandAt(unitClass.id, targetPos) then
-    --         table.insert(orders, {targetPosition = targetPos, strParam = "", movePosition = targetPos, endPosition = targetPos})
-    --     end
-    -- end
+    for i, targetPos in ipairs(movePositions) do
+        if Wargroove.canStandAt(unitClass.id, targetPos) then
+            local score = 0
+            table.insert(orders, {targetPosition = targetPos, strParam = tostring(score), movePosition = targetPos, endPosition = targetPos})
+        end
+    end
     
     return orders
 end
 
 function WaitAI:getScore(unitId, order)
     local score = tonumber(order.strParam)
-    return {score = score, introspection = {}}
+    local unit = Wargroove.getUnitById(unitId)
+    local bonusScore = AIManager.getAIPriority(unit.playerId, order.endPosition)
+    if (bonusScore == nil) or (unit.unitClassId=="wagon") or (unit.unitClassId=="villager") then
+        bonusScore = 0
+    end
+    return {score = score+bonusScore, introspection = {}}
     -- local target, distMoved, dist = AIManager.getNextPosition(unitId)
     -- local unit = Wargroove.getUnitById(unitId)
 

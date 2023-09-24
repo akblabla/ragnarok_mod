@@ -391,6 +391,12 @@ decorations:
     layer: units
     animation:
       undefined: decoration/unit/cherrystoneMarketStand05
+  - id: caveLight
+    layer: units
+    snapToGrid: true
+    snapOffset: [12, 6]
+    animation:
+      undefined: decoration/unit/caveLight
   - id: anvil
     layer: units
     animation:

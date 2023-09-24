@@ -64,4 +64,50 @@ unitClasses:
     passiveMultiplier: 1.5
     sightRange: 4
     deathVerbId: death
+
+units:
+  - class: ballista
+    faction: outlaw
+    name: unit_name_ballista_outlaws
+    mapAnimation: units/ballista/outlaws/map_ballista_outlaws
+    battleAnimation: units/ballista/outlaws/battle_ballista_outlaws
+    smallPortrait: units/ballista/outlaws/portrait_ballista_outlaws_small.png
+    mediumPortrait: units/ballista/outlaws/portrait_ballista_outlaws_medium.png
+    mapSpeed: 4.0
+    grabPos: [16, 17]
+    attackOffset: [30, 0]
+    battlePosOffset: [-2, 0]
+    deathMoveMin: 0
+    deathMoveMax: 0
+    stayAfterDeath: true
+    sounds:
+      attackMap: unitAttack
+      attack: ballistaAttack
+      attackEffect: ballistaAttackEffect
+      death: gateDie
+      deathMap: unitDie
+      run: ballistaEntry
+      runMap: ballistaEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        ranged: true
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.6
+        effect: fx/bs_ballista_cherrystone_attack
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
+        attacksFlying: true
+        effectDelay: 1.3
+      - id: secondary
+        ranged: true
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.6
+        effect: fx/bs_ballista_2_cherrystone_attack
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
+        effectDelay: 1.3
 ...

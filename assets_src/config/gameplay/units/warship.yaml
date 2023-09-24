@@ -59,4 +59,157 @@ unitClasses:
     sightRange: 4
     isHiddenInCutsceneEditor: true
     deathVerbId: death
+
+
+units:
+  - class: warship
+    faction: cherrystone
+    name: unit_name_warship_cherrystone
+    mapAnimation: units/warship/cherrystone/map_warship_cherrystone
+    battleAnimation: units/warship/cherrystone/battle_warship_cherrystone
+    smallPortrait: units/warship/cherrystone/portrait_warship_cherrystone_small.png
+    mediumPortrait: units/warship/cherrystone/portrait_warship_cherrystone_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: warshipAttack
+      attackEffect: warshipAttackEffect
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_warship_attack
+        effectDelay: 1.8
+        hitDelay: [2.0, 2.3, 2.6]
+
+
+  - class: warship
+    faction: felheim
+    name: unit_name_warship_felheim
+    mapAnimation: units/warship/felheim/map_warship_felheim
+    battleAnimation: units/warship/felheim/battle_warship_felheim
+    smallPortrait: units/warship/felheim/portrait_warship_felheim_small.png
+    mediumPortrait: units/warship/felheim/portrait_warship_felheim_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: warshipAttack
+      attackEffect: warshipAttackEffect
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_warship_attack
+        effectDelay: 1.8
+        hitDelay: [2.0, 2.3, 2.6]
+
+  - class: warship
+    faction: heavensong
+    name: unit_name_warship_heavensong
+    mapAnimation: units/warship/heavensong/map_warship_heavensong
+    battleAnimation: units/warship/heavensong/battle_warship_heavensong
+    smallPortrait: units/warship/heavensong/portrait_warship_heavensong_small.png
+    mediumPortrait: units/warship/heavensong/portrait_warship_heavensong_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: warshipAttackYellow
+      attackEffect: warshipAttackEffect
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_warship_attack
+        effectDelay: 1.8
+        hitDelay: [2.0, 2.3, 2.6]
+
+  - class: warship
+    faction: floran
+    name: unit_name_warship_floran
+    mapAnimation: units/warship/floran/map_warship_floran
+    battleAnimation: units/warship/floran/battle_warship_floran
+    smallPortrait: units/warship/floran/portrait_warship_floran_small.png
+    mediumPortrait: units/warship/floran/portrait_warship_floran_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: warshipAttackGreen
+      attackEffect: warshipAttackEffect
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_warship_attack
+        effectDelay: 1.8
+        hitDelay: [2.0, 2.3, 2.6]
+
+  - class: warship
+    faction: outlaw
+    name: unit_name_warship_outlaws
+    mapAnimation: units/warship/outlaws/map_warship_outlaws
+    battleAnimation: units/warship/outlaws/battle_warship_outlaws
+    smallPortrait: units/warship/outlaws/portrait_warship_outlaws_small.png
+    mediumPortrait: units/warship/outlaws/portrait_warship_outlaws_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: warshipAttack
+      attackEffect: warshipAttackEffect
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_warship_attack
+        effectDelay: 1.8
+        hitDelay: [2.0, 2.3, 2.6]
 ...

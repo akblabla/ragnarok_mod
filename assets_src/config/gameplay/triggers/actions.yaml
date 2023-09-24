@@ -5,6 +5,12 @@ triggerActions:
     parameters:
       - type: player
 
+  - id: ai_set_priority_target
+    parameters:
+      - type: player
+      - type: location
+      - type: integer
+
   - id: enable_hiring
     parameters:
       - type: player
@@ -287,6 +293,21 @@ triggerActions:
       - type: unit_class_star
       - type: location_star
       - type: player_neutral_star
+      
+  - id: force_smoke
+    parameters:
+      - type: location
+      - type: player_neutral
+      - type: location
+      
+  - id: force_golf
+    parameters:
+      - type: location
+      - type: player_neutral
+      - type: unit_class_star
+      - type: location_star
+      - type: player_neutral_star
+      - type: location
 
   - id: run_group_sequentially
   - id: run_group_concurrently

@@ -23,6 +23,7 @@ local setupRan = false
 
 local orderMap = {}
 local AIManager = {}
+local AIPriorityMap = {}
 
 function AIManager.init()
 --	Ragnarok.addAction(AIManager.update,"repeating",true)
@@ -31,6 +32,22 @@ end
 function AIManager.setup(context)
 end
 
+function AIManager.setAIPriorityMap(playerId, positions, priority)
+   if AIPriorityMap[playerId]== nil then
+      AIPriorityMap[playerId] = {}
+   end
+   for i,pos in pairs(positions) do
+      local posKey = PosKey.generatePosKey(pos)
+      AIPriorityMap[playerId][posKey] = priority
+   end
+end
+function AIManager.getAIPriority(playerId, pos)
+   local posKey = PosKey.generatePosKey(pos)
+   if AIPriorityMap[playerId]==nil then
+      return nil
+   end
+   return AIPriorityMap[playerId][posKey]
+end
 function AIManager.letNeutralUnitsMove()
    local units = Wargroove.getUnitsAtLocation(nil)
    for i,unit in ipairs(units) do

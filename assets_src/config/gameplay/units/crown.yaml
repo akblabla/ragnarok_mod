@@ -19,14 +19,13 @@ unitClasses:
     tags:
       - summon
 
-
 units:
   - class: crown
-    faction: outlaw
-    name: unit_class_name_area_heal
+    faction: cherrystone
+    name: unit_class_name_crystal
     mapAnimation: units/crown/crown
     battleAnimation: units/commanders/emeric/battle_crystal
-    smallPortrait: units/balloon/heavensong/portrait_balloon_heavensong_small.png
+    smallPortrait: units/commanders/emeric/portrait_crystal_small.png
     mediumPortrait: units/commanders/emeric/portrait_crystal_medium.png
     mapSpeed: 4.0
     grabPos: [13, 14]

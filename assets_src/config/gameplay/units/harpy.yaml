@@ -370,4 +370,79 @@ units:
     emotes:
       idle: idle
 
+  - class: harpy
+    faction: outlaw
+    name: unit_name_harpy_cherrystone
+    mapAnimation: units/harpy/outlaws/map_harpy_outlaws
+    battleAnimation: units/harpy/outlaws/battle_harpy_outlaws
+    smallPortrait: units/harpy/outlaws/portrait_harpy_outlaws_small.png
+    mediumPortrait: units/harpy/outlaws/portrait_harpy_outlaws_medium.png
+    mapSpeed: 6.0
+    grabPos: [17, 11]
+    sounds:
+      attackMap: unitAttack
+      attack: harpyAttack
+      attackMelee: harpyMeleeAttack
+      attackEffect1: harpyAttackEffect1
+      attackEffect2: harpyAttackEffect2
+      attackEffect3: harpyAttackEffect3
+      attackEffect4: harpyAttackEffect4
+      death: witchDie
+      deathMap: unitDie
+      run: harpyEntry
+      runMap: harpyMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: fourHarpies
+        attackAnimationSequence: attack_range
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9, 2.1, 2.3]
+        effect: fx/bs_harpy_attack_4
+        effectPaletteSwaps: true
+        effectDelay: 1.4
+        attackEffectSound: attackEffect4
+        numAttackers: 4
+        attacksGround: true
+        ranged: true
+      - id: threeHarpies
+        attackAnimationSequence: attack_range
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9, 2.1]
+        effect: fx/bs_harpy_attack_3
+        effectPaletteSwaps: true
+        effectDelay: 1.4
+        attackEffectSound: attackEffect3
+        numAttackers: 3
+        attacksGround: true
+        ranged: true
+      - id: twoHarpies
+        attackAnimationSequence: attack_range
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9]
+        effect: fx/bs_harpy_attack_2
+        effectPaletteSwaps: true
+        effectDelay: 1.4
+        attackEffectSound: attackEffect2
+        numAttackers: 2
+        attacksGround: true
+        ranged: true
+      - id: oneHarpy
+        attackAnimationSequence: attack_range
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.7
+        effect: fx/bs_harpy_attack_1
+        effectPaletteSwaps: true
+        effectDelay: 1.4
+        attackEffectSound: attackEffect1
+        numAttackers: 1
+        attacksGround: true
+        ranged: true
+      - id: secondary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 0.65
+        attackSound: attackMelee
+    emotes:
+      idle: idle
+
 ...

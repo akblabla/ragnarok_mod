@@ -153,5 +153,34 @@ units:
       idle: idle
       cower: emote_cower
 
+  - class: villager
+    faction: outlaw
+    name: unit_name_villager_outlaws
+    mapAnimation: units/villager/outlaws/map_villager_outlaws
+    battleAnimation: units/villager/outlaws/battle_villager_outlaws
+    battleAnimationRiver: fx/river_overlay/battle_villager_river
+    smallPortrait: units/villager/outlaws/portrait_villager_outlaws_small.png
+    mediumPortrait: units/villager/outlaws/portrait_villager_outlaws_medium.png
+    mapSpeed: 4.0
+    grabPos: [13, 14]
+    sounds:
+      death: soldierDieRed
+      deathMap: unitDie
+      run: infantryLightEntry
+      runMap: infantryLightMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    shouts:
+      villager_male_shout1: cutscene/villagerScreamMale1
+      villager_male_shout2: cutscene/villagerScreamMale2
+      villager_female_shout1: cutscene/villagerScreamFemale1
+      villager_female_shout2: cutscene/villagerScreamFemale2
+    emotes:
+      idle: idle
+      cower: emote_cower
+      idle_gold: emote_idle_gold
+      throw_gold: emote_throw_gold
+    alternativeRuns:
+      - id: run_gold
 
 ...

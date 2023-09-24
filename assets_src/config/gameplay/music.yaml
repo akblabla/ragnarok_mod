@@ -9,4 +9,8 @@ music:
     name: music_name_bar_ambience_distant
     audioEvent: environmental/barAmbienceDistant
     isAmbience: true
+    
+  - id: ocean_ambience
+    name: music_name_ocean_ambience
+    audioEvent: environmental/oceanAmbience
 ...

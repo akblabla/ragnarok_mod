@@ -56,7 +56,7 @@ function throwCrown:execute(unit, targetPos, strParam, path)
       end
     end
 
-    local startingPosition = {x = unit.pos.x-100, y = unit.pos.y-100}
+    local startingPosition = {x = unit.pos.x+100, y = unit.pos.y+100}
 	--print("Start Arch")
 	Ragnarok.printCrownInfo()
     for i = 1, numSteps do

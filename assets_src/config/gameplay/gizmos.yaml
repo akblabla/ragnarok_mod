@@ -1,14 +1,11 @@
 ---
 gizmos:
-  - id: pulley
+  - id: robe
     layer: units
-    animation: gizmo/pulley
-  - id: building01
+    animation: gizmo/robe
+  - id: cave
     layer: units
-    animation: gizmo/building01
-  - id: capsized_crew
-    layer: ground
-    animation: gizmo/capsized_crew
+    animation: gizmo/cave
       
       
 #original assets that need tropical variants

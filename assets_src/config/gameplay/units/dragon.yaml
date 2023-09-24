@@ -187,5 +187,39 @@ units:
         hitDelay: 1.5
         effect: fx/bs_dragon_attack
         effectDelay: 0.9
-
+        
+  - class: dragon
+    faction: outlaw
+    name: unit_name_dragon_outlaws
+    mapAnimation: units/dragon/outlaws/map_dragon_outlaws
+    battleAnimation: units/dragon/outlaws/battle_dragon_outlaws
+    smallPortrait: units/dragon/outlaws/portrait_dragon_outlaws_small.png
+    mediumPortrait: units/dragon/outlaws/portrait_dragon_outlaws_medium.png
+    mapSpeed: 8.0
+    grabPos: [24, 13]
+    attackOffset: [10, 0]
+    cutsceneStartOffset: [75, 0]
+    sounds:
+      attackMap: unitAttack
+      attack: dragonAttack
+      attackEffect: dragonBreathFireEffect
+      death: dragonDie
+      deathMap: unitDie
+      run: dragonEntry
+      runMap: dragonEntry
+      firstHit: dragonHit
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        ranged: true
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.5
+        effect: fx/bs_dragon_attack
+        effectDelay: 0.9
+    emotes:
+      idle: idle
+      idle_norider: idle_norider
+    alternativeRuns:
+      - id: run_norider
 ...

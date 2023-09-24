@@ -130,6 +130,21 @@ commanders:
     unitClassId: knight
     dialogueBoxVoice: ui/dialogue/textScroll
 
+  - id: generic_villager_heavensong
+    name: character_villager_heavensong_name
+    faction: heavensong
+    playable: false
+    portrait:
+      neutral: portraits/commanders/small/villager_heavensong_portrait_small.png
+      happy: portraits/commanders/small/villager_heavensong_portrait_happy.png
+      sad: portraits/commanders/small/villager_heavensong_portrait_sad.png
+      extra: portraits/commanders/small/villager_felheim_portrait.png
+    cutscenePortrait: portraits/commanders/big/heavensong_portrait
+    themeSong: music/hostile
+    skinColour: typeII
+    unitClassId: knight
+    dialogueBoxVoice: ui/dialogue/textScroll
+
   - id: empty
     name: unit_class_name_rival
     faction: outlaw

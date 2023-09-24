@@ -60,4 +60,150 @@ unitClasses:
     sightRange: 4
     scout: true
     deathVerbId: death
+
+units:
+  - class: turtle
+    enabled: true
+    faction: cherrystone
+    name: unit_name_turtle_cherrystone
+    mapAnimation: units/turtle/cherrystone/map_turtle_cherrystone
+    battleAnimation: units/turtle/cherrystone/battle_turtle_cherrystone
+    smallPortrait: units/turtle/cherrystone/portrait_turtle_cherrystone_small.png
+    mediumPortrait: units/turtle/cherrystone/portrait_turtle_cherrystone.png
+    mapSpeed: 4.0
+    grabPos: [13, 19]
+    sounds:
+      attackMap: unitAttack
+      attack: turtleAttack
+      attackEffect: waveCrash
+      attackShout: soldierPreAttackRed
+      death: merfolkDie
+      deathMap: unitDie
+      run: waterEntry
+      runMap: waterMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        effectDelay: 2
+        hitDelay: 2.2
+        effect: fx/bs_turtle_attack
+        ranged: true
+
+  - class: turtle
+    enabled: true
+    faction: felheim
+    name: unit_name_turtle_felheim
+    mapAnimation: units/turtle/felheim/map_turtle_felheim
+    battleAnimation: units/turtle/felheim/battle_turtle_felheim
+    smallPortrait: units/turtle/felheim/portrait_turtle_felheim_small.png
+    mediumPortrait: units/turtle/felheim/portrait_turtle_felheim.png
+    mapSpeed: 4.0
+    grabPos: [13, 19]
+    sounds:
+      attackMap: unitAttack
+      attack: turtleAttack
+      attackEffect: waveCrash
+      attackShout: soldierPreAttackRed
+      death: merfolkDie
+      deathMap: unitDie
+      run: waterEntry
+      runMap: waterMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        effectDelay: 2
+        hitDelay: 2.2
+        effect: fx/bs_turtle_attack
+        ranged: true
+
+
+  - class: turtle
+    enabled: true
+    faction: heavensong
+    name: unit_name_turtle_heavensong
+    mapAnimation: units/turtle/heavensong/map_turtle_heavensong
+    battleAnimation: units/turtle/heavensong/battle_turtle_heavensong
+    smallPortrait: units/turtle/heavensong/portrait_turtle_heavensong_small.png
+    mediumPortrait: units/turtle/heavensong/portrait_turtle_heavensong.png
+    mapSpeed: 4.0
+    grabPos: [13, 19]
+    sounds:
+      attackMap: unitAttack
+      attack: turtleAttackYellow
+      attackEffect: waveCrash
+      attackShout: soldierPreAttackRed
+      death: soldierDieYellow
+      deathMap: unitDie
+      run: waterEntry
+      runMap: waterMapEntry
+      hit: hitOrganic
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        effectDelay: 2
+        hitDelay: 2.2
+        effect: fx/bs_turtle_attack
+        ranged: true
+
+
+
+  - class: turtle
+    enabled: true
+    faction: floran
+    name: unit_name_turtle_floran
+    mapAnimation: units/turtle/floran/map_turtle_floran
+    battleAnimation: units/turtle/floran/battle_turtle_floran
+    smallPortrait: units/turtle/floran/portrait_turtle_floran_small.png
+    mediumPortrait: units/turtle/floran/portrait_turtle_floran.png
+    mapSpeed: 4.0
+    grabPos: [13, 19]
+    sounds:
+      attackMap: unitAttack
+      attack: turtleAttackGreen
+      attackEffect: waveCrash
+      attackShout: soldierPreAttackRed
+      death: soldierDieGreen
+      deathMap: unitDie
+      run: waterEntry
+      runMap: waterMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        effectDelay: 2
+        hitDelay: 2.2
+        effect: fx/bs_turtle_attack
+        ranged: true
+
+
+  - class: turtle
+    enabled: true
+    faction: outlaw
+    name: unit_name_turtle_outlaws
+    mapAnimation: units/turtle/outlaws/map_turtle_outlaws
+    battleAnimation: units/turtle/outlaws/battle_turtle_outlaws
+    smallPortrait: units/turtle/outlaws/portrait_turtle_outlaws_small.png
+    mediumPortrait: units/turtle/outlaws/portrait_turtle_outlaws.png
+    mapSpeed: 4.0
+    grabPos: [13, 19]
+    sounds:
+      attackMap: unitAttack
+      attack: turtleAttack
+      attackEffect: waveCrash
+      attackShout: soldierPreAttackRed
+      death: merfolkDie
+      deathMap: unitDie
+      run: waterEntry
+      runMap: waterMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        effectDelay: 2
+        hitDelay: 2.2
+        effect: fx/bs_turtle_attack
+        ranged: true
+
 ...

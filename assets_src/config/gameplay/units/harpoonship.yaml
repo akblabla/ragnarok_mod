@@ -65,4 +65,170 @@ unitClasses:
     sightRange: 4
     deathVerbId: death
 
+
+units:
+  - class: harpoonship
+    faction: cherrystone
+    name: unit_name_harpoonship_cherrystone
+    mapAnimation: units/harpoonship/cherrystone/map_harpoonship_cherrystone
+    battleAnimation: units/harpoonship/cherrystone/battle_harpoonship_cherrystone
+    smallPortrait: units/harpoonship/cherrystone/portrait_harpoonship_cherrystone_small.png
+    mediumPortrait: units/harpoonship/cherrystone/portrait_harpoonship_cherrystone_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: harpoonAttack
+      attackEffect: ballistaAttackEffect
+      attackShout: soldierPreAttackRed
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 1.9
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_harpoon_cherrystone_attack
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
+        effectDelay: 1.8
+
+  - class: harpoonship
+    faction: felheim
+    name: unit_name_harpoonship_felheim
+    mapAnimation: units/harpoonship/felheim/map_harpoonship_felheim
+    battleAnimation: units/harpoonship/felheim/battle_harpoonship_felheim
+    smallPortrait: units/harpoonship/felheim/portrait_harpoonship_felheim_small.png
+    mediumPortrait: units/harpoonship/felheim/portrait_harpoonship_felheim_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: harpoonAttack
+      attackEffect: ballistaAttackEffect
+      attackShout: soldierPreAttackRed
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 1.9
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_harpoon_felheim_attack
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
+        effectDelay: 1.8
+
+  - class: harpoonship
+    faction: heavensong
+    name: unit_name_harpoonship_heavensong
+    mapAnimation: units/harpoonship/heavensong/map_harpoonship_heavensong
+    battleAnimation: units/harpoonship/heavensong/battle_harpoonship_heavensong
+    smallPortrait: units/harpoonship/heavensong/portrait_harpoonship_heavensong_small.png
+    mediumPortrait: units/harpoonship/heavensong/portrait_harpoonship_heavensong_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: harpoonAttackYellow
+      attackEffect: ballistaAttackEffect
+      attackShout: soldierPreAttackRed
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 1.9
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_harpoon_heavensong_attack
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
+        effectDelay: 1.8
+
+  - class: harpoonship
+    faction: floran
+    name: unit_name_harpoonship_floran
+    mapAnimation: units/harpoonship/floran/map_harpoonship_floran
+    battleAnimation: units/harpoonship/floran/battle_harpoonship_floran
+    smallPortrait: units/harpoonship/floran/portrait_harpoonship_floran_small.png
+    mediumPortrait: units/harpoonship/floran/portrait_harpoonship_floran_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: harpoonAttackGreen
+      attackEffect: ballistaAttackEffect
+      attackShout: soldierPreAttackRed
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 1.9
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_harpoon_floran_attack
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
+        effectDelay: 1.8
+
+  - class: harpoonship
+    faction: outlaw
+    name: unit_name_harpoonship_outlaws
+    mapAnimation: units/harpoonship/outlaws/map_harpoonship_outlaws
+    battleAnimation: units/harpoonship/outlaws/battle_harpoonship_outlaws
+    smallPortrait: units/harpoonship/outlaws/portrait_harpoonship_outlaws_small.png
+    mediumPortrait: units/harpoonship/outlaws/portrait_harpoonship_outlaws_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    sounds:
+      attackMap: unitAttack
+      attack: harpoonAttack
+      attackEffect: ballistaAttackEffect
+      attackShout: soldierPreAttackRed
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 1.9
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_harpoon_cherrystone_attack
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
+        effectDelay: 1.8
 ...

@@ -205,4 +205,40 @@ units:
         postAttackDeathSequence: post_attack_death
         effectDelay: 1.8
 
+  - class: trebuchet
+    faction: outlaw
+    name: unit_name_trebuchet_outlaws
+    mapAnimation: units/trebuchet/outlaws/map_trebuchet_outlaws
+    battleAnimation: units/trebuchet/outlaws/battle_trebuchet_outlaws
+    smallPortrait: units/trebuchet/outlaws/portrait_trebuchet_outlaws_small.png
+    mediumPortrait: units/trebuchet/outlaws/portrait_trebuchet_outlaws_medium.png
+    mapSpeed: 4.0
+    grabPos: [16, 17]
+    attackOffset: [50, 0]
+    battlePosOffset: [-21, 0]
+    deathMoveMin: 0
+    deathMoveMax: 0
+    stayAfterDeath: true
+    sounds:
+      attackMap: unitAttack
+      attack: trebuchetAttack
+      attackEffect: trebuchetAttackEffect
+      death: trebuchetDie
+      deathMap: unitDie
+      run: trebuchetEntry
+      runMap: trebuchetMapEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_trebuchet_attack
+        effectPaletteSwaps: true
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
+        effectDelay: 1.8
+
 ...

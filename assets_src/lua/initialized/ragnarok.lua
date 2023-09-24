@@ -312,7 +312,7 @@ end
 function Ragnarok.getCrownPos()
 	local crown = Ragnarok.getCrown()
 	if crown ~= nil then
-		return {x = crown.pos.x+100, y = crown.pos.y+100}
+		return {x = crown.pos.x-100, y = crown.pos.y-100}
 	end
 
 	local crownBearer = Ragnarok.getCrownBearer()
@@ -354,7 +354,7 @@ end
 
 function Ragnarok.dropCrown(targetPos)
 	Ragnarok.removeCrown()
-	Ragnarok.crownID = Wargroove.spawnUnit(-1, {x = targetPos.x-100, y = targetPos.y-100}, "crown", false)
+	Ragnarok.crownID = Wargroove.spawnUnit(-1, {x = targetPos.x+100, y = targetPos.y+100}, "crown", false)
 	Wargroove.setVisibleOverride(Ragnarok.crownID, true)
 --	Wargroove.spawnUnitEffect(Ragnarok.crownID, crownOffsetAnimation, "idle", nil, true, false)
 	

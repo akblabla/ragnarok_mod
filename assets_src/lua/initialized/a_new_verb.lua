@@ -89,13 +89,8 @@ function Verb:executeEntry(unitId, targetPos, strParam, path)
                     if dist <=2 then
                         if StealthManager.isUnitSearching(viewer) then
                             StealthManager.makeAlerted(viewer)
+                            StealthManager.shareInfo(unit,viewer)
                         end
-                        if StealthManager.isUnitUnaware(viewer) then
-                            StealthManager.makeSearching(viewer)
-                            viewer.hadTurn = true;
-                            Wargroove.updateUnit(viewer)
-                        end
-                        StealthManager.shareInfo(unit,viewer)
                     end
                 end
             end

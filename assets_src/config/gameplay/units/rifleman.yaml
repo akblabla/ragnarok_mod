@@ -36,7 +36,7 @@ weapons:
       balloon: 0.15
 
       flagship: 0.0001
-      merman: 0.7
+      merman: 0.5
       warship: 0.0001
       harpoonship: 0.05
       turtle: 0.1

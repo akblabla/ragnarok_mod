@@ -6,7 +6,7 @@ local Upgrade = Verb:new()
 
 local costMultiplier = 1
 
-local defaultUnits = {"soldier", "dog", "spearman", "mage", "archer", "knight", "rifleman"}
+local defaultUnits = {"soldier", "dog", "spearman", "mage", "archer", "knight"}
 
 function Upgrade:recruitsContain(recruits, unit)
     for i, recruit in pairs(recruits) do
@@ -20,7 +20,8 @@ end
 function Upgrade:getRecruitableTargets(unit)
     local recruits = {}
     for i,recruit in pairs(defaultUnits) do
-        if recruit~=unit.unitClassId then
+        local uc = Wargroove.getUnitClass(recruit)
+        if recruit~=unit.unitClassId and (uc.cost>unit.unitClass.cost) then
             table.insert(recruits,recruit)
         end
     end
@@ -82,11 +83,11 @@ function Upgrade:canExecuteWithTarget(unit, endPos, targetPos, strParam)
                 isDefault = true
             end
         end
-        if not isDefault and not Wargroove.canPlayerRecruit(unit.playerId, classToRecruit) then
+        if not isDefault then
             return false
         end
-
         local uc = Wargroove.getUnitClass(classToRecruit)
+
         return Wargroove.getMoney(unit.playerId) >= getCost(uc.cost)
     end
 end
