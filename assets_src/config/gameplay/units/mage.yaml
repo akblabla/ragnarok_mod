@@ -82,13 +82,13 @@ units:
     grabPos: [15, 12]
     sounds:
       attackMap: unitAttack
-      attack: mageAttackRed
-      attackEffect: mageAttackEffect
-      attackEffect1: mageAttackEffect1
-      attackEffect2: mageAttackEffect2
-      attackEffect3: mageAttackEffect3
-      attackEffect4: mageAttackEffect4
+      attack: mage/mageAttackOutlaw
+      attackEffect1: mage/mageAttackOutlawEffect1
+      attackEffect2: mage/mageAttackOutlawEffect2
+      attackEffect3: mage/mageAttackOutlawEffect3
+      attackEffect4: mage/mageAttackOutlawEffect4
       captureShout: soldierPreAttackRed
+      counter: mage/mageCounterOutlaw
       death: soldierDieRed
       deathMap: unitDie
       run: infantryMediumEntry2
@@ -96,38 +96,117 @@ units:
       hit: hitOrganic
       hitMap: hitOrganic
     attacks:
-      - id: fourMages
-        hitDelay: [1.0, 1.3, 1.6, 1.9]
+      - id: counter
+        samePanel: true
+        hitDelay: 0.8
         hitSpark: fx/bs_stab_attack
-        effect: fx/bs_mage_attack_4
-        effectDelay: 1.0
+        attackSound: counter
+        attackAnimationSequence: counter
+
+      - id: fourMagesAir
+        hitDelay: [3.25, 3.45, 3.65, 3.85]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_mage_outlaw_attack_air_4
+        effectDelay: 3
         attackEffectSound: attackEffect4
+        numAttackers: 4
+        attacksFlying: true
+        ranged: true
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
+        cutscenePivot: [-50, 175]
+
+      - id: threeMagesAir
+        hitDelay: [3.5, 3.45, 3.65]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_mage_outlaw_attack_air_3
+        effectDelay: 3
+        attackEffectSound: attackEffect3
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
+        numAttackers: 3
+        attacksFlying: true
+        ranged: true
+        cutscenePivot: [-50, 175]
+
+      - id: twoMagesAir
+        hitDelay: [3.25, 3.45]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_mage_outlaw_attack_air_2
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
+        effectDelay: 3
+        attackEffectSound: attackEffect2
+        attacksFlying: true
+        numAttackers: 2
+        ranged: true
+        cutscenePivot: [-50, 175]
+
+      - id: oneMageAir
+        hitDelay: [3.25]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_mage_outlaw_attack_air_1
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
+        effectDelay: 3
+        attackEffectSound: attackEffect1
+        numAttackers: 1
+        attacksFlying: true
+        ranged: true
+        cutscenePivot: [-50, 175]
+
+      - id: fourMages
+        hitDelay: [3.25, 3.45, 3.65, 3.85]
+        hitSpark: fx/bs_stab_attack
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
+        effect: fx/bs_mage_outlaw_attack_4
+        effectDelay: 3.1
+        attackEffectSound: attackEffect4
+        attackSound: attack
         numAttackers: 4
         ranged: true
         cutscenePivot: [-50, 175]
+
       - id: threeMages
-        hitDelay: [1.0, 1.3, 1.6]
+        hitDelay: [3.25, 3.45, 3.65]
         hitSpark: fx/bs_stab_attack
-        effect: fx/bs_mage_attack_3
-        effectDelay: 1.0
+        effect: fx/bs_mage_outlaw_attack_3
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
+        effectDelay: 3.1
         attackEffectSound: attackEffect3
         numAttackers: 3
         ranged: true
         cutscenePivot: [-50, 175]
+
       - id: twoMages
-        hitDelay: [1.0, 1.3]
+        hitDelay: [3.25, 3.45]
         hitSpark: fx/bs_stab_attack
-        effect: fx/bs_mage_attack_2
-        effectDelay: 1.0
+        effect: fx/bs_mage_outlaw_attack_2
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
+        effectDelay: 3.1
         attackEffectSound: attackEffect2
         numAttackers: 2
         ranged: true
         cutscenePivot: [-50, 175]
+
       - id: oneMage
-        hitDelay: [1.0]
+        hitDelay: [3.25]
         hitSpark: fx/bs_stab_attack
-        effect: fx/bs_mage_attack_1
-        effectDelay: 1.0
+        effect: fx/bs_mage_outlaw_attack_1
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
+        effectDelay: 3.1
         attackEffectSound: attackEffect1
         numAttackers: 1
         ranged: true
