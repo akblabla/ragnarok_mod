@@ -1,3 +1,0 @@
-local LinearProgram = {}
-
-return LinearProgram
