@@ -10,8 +10,8 @@ local Copy = require "util/copy"
 local defencePerShield = 0.10
 local damageAt0Health = 0.0
 local damageAt100Health = 1.0
-local randomDamageMin = 0
-local randomDamageMax = 0.1
+local randomDamageMin = 0.05
+local randomDamageMax = 0.05
 --
 
 local Combat = require "wargroove/combat"

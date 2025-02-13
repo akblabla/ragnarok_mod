@@ -7,7 +7,7 @@ tilesets:
         spriteBase: sea_tileset_000
         waterSpriteBase: sea_tileset_001
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
-        battleBackgroundSprite: beach_in_sea_background
+        battleBackgroundSprite: sea_background
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_ocean
         iconSpriteSheet: ui

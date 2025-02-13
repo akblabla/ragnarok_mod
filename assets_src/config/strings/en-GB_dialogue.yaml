@@ -1,5 +1,5 @@
 ---
-en-GB:
+en-GB: &flag-en
 
   # STORY MAIN 1 Prologue
   # Cutscene: Start of match. Vesper stalks Emeric's ship
@@ -67,7 +67,7 @@ en-GB:
   ragnarok_main2_ingameIntro_Crew_00: "Madam!"
   ragnarok_main2_ingameIntro_Crew_01: "The town's being attacked! The streets are full of skeletons!"
   ragnarok_main2_ingameIntro_Crew_02: "And also a bunch of dead people!"
-  ragnarok_main2_ingameIntro_2ndMate_00: "Wait no! The Tarvern!"
+  ragnarok_main2_ingameIntro_2ndMate_00: "Wait no! The Tavern!"
   ragnarok_main2_ingameIntro_Vesper_00: "Don't you worry about these silly xylophones. They should be easy enough to outmaneuver."
   ragnarok_main2_ingameIntro_2ndMate_01: "No! Not the tavernkeep!"
   ragnarok_main2_ingameIntro_2ndMate_02: "And the innkeeper! Have they no mercy?!"
@@ -332,6 +332,11 @@ en-GB:
   ragnarok_main4_ingameEnding_Wulfar_00: "It hurts seeing the homes of so many hard working criminals being razed. *sniff*"
   ragnarok_main4_ingameEnding_Wulfar_01: "Let's leave this place."
   
+  #Ingame Ending
+  ragnarok_main4_alt_ingameEnding_Rival_00: "We got them?! The king is defeated!"
+  ragnarok_main4_alt_ingameEnding_Wulfar_00: "The army ain't.[short_pause] We still have to escape."
+  
+  
   # Cutscene: End of match. At the docks of the outlaw HQ
   ragnarok_main4_cutscene_ending_Emeric_00: "They are escaping!"
   #Emeric starts channeling
@@ -341,7 +346,17 @@ en-GB:
   ragnarok_main4_cutscene_ending_Mercival_02: "The chieftain must know what happened to the crown."
   ragnarok_main4_cutscene_ending_Emeric_02: "The balloons were just filled with low rate criminals. The ones we want went by boat."
   ragnarok_main4_cutscene_ending_Mercival_03: "Then let us set sail!"
-
+    
+de-DE: *flag-en
+es-ES: *flag-en
+fr-FR: *flag-en
+it-IT: *flag-en
+ja-JP: *flag-en
+ko-KR: *flag-en
+pt-BR: *flag-en
+ru-RU: *flag-en
+zh-Hans: *flag-en
+zh-Hant: *flag-en
 #No more real content  
 #Mission 5 is Welcome to the Jungle, or maybe Mangroove Madness?
 #Wulfar gets a tip from Farnsworth about a battle at Cradle Island between vesper and the florans.

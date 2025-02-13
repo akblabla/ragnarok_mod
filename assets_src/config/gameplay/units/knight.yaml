@@ -87,6 +87,8 @@ units:
       - id: primary
         hitSpark: fx/bs_stab_attack
         hitDelay: 1.1
+    emotes:
+      idle: idle
     shouts:
       soldier_shout1: soldierShoutRed1
       soldier_shout2: soldierShoutRed2
