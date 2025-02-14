@@ -255,6 +255,9 @@ en-GB: &flag-en
  #-----------------------------------------------------------------------------------------------#
 
   # STORY MAIN 4 Hideout Defense
+  ragnarok_main4_objective_00: "Defend the stronghold until all balloons have escaped. (turn 16)\nWulfar must then escape by boat."
+  ragnarok_main4_objective_01: "Reach the barge with Wulfar."
+
   # Cutscene: Start of match. Wulfar wanders the streets of the outlaw HQ
   ragnarok_main4_cutscene_start_Wulfar_00: "Why would Vesper leave in such a hurry?"
   ragnarok_main4_cutscene_start_Trickster_00: "Sir, Cherrystone forces have been spotted down south in Felheim, and they are heading here!"
