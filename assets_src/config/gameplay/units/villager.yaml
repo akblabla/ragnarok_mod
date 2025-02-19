@@ -103,7 +103,7 @@ units:
     faction: heavensong
     name: unit_name_villager_heavensong
     mapAnimation: units/villager/heavensong/map_villager_heavensong
-    battleAnimation: units/villager/heavensong/battle_villager_heavensong
+    battleAnimation: units/villager/heavensong/battle_villager_heavensong2
     battleAnimationRiver: fx/river_overlay/battle_villager_river
     smallPortrait: units/villager/heavensong/portrait_villager_heavensong_small.png
     mediumPortrait: units/villager/heavensong/portrait_villager_heavensong_medium.png
@@ -124,6 +124,9 @@ units:
     emotes:
       idle: idle
       cower: emote_cower
+      idle_crown: idle_crown
+    alternativeRuns:
+      - id: run_crown
 
   - class: villager
     faction: floran
