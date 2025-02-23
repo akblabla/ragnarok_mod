@@ -379,9 +379,6 @@ function AIManager.getNextPositionTowardsTarget(unit, path, maxSpeed)
       if tileCost > unit.unitClass.moveRange then
          reachedEnd = true
       end
-      if movePoints<=0 then
-         break
-      end
       if tiles<=0 then
          break
       end
@@ -390,6 +387,9 @@ function AIManager.getNextPositionTowardsTarget(unit, path, maxSpeed)
          break
       end
       movePoints = movePoints-tileCost
+      if movePoints<0 then
+         break
+      end
       tiles = tiles-1
       if (Wargroove.isAnybodyElseAt(unit,tile) == false) and canStop then
          target = tile
