@@ -767,4 +767,144 @@ codex:
     layoutType: no_image
     title: ui_codex_damage_matrix
     unitClass: rifleman
+
+
+- id: unit_flare_outlaw
+  category: units
+  faction: outlaw
+  name: unit_class_name_flare
+  icon:
+    image: units/soldier/outlaws/portrait_soldier_outlaws_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: soldier
+    faction: outlaw
+    title: unit_name_soldier_outlaws
+    text: codex_unit_soldier_outlaws_lore_text
+  - pageType: strategy
+    layoutType: unit_sprite
+    unitClass: soldier
+    faction: outlaw
+    title: unit_name_soldier_outlaws
+    text: codex_unit_soldier_critical_text
+  - pageType: stats
+    layoutType: animation
+    animation: ui/codex/content/unit_soldiercrit
+    title: unit_name_soldier_outlaws
+    text: unit_description_soldier
+    unitClass: soldier
+  - pageType: matrix
+    layoutType: no_image
+    title: ui_codex_damage_matrix
+    unitClass: soldier
+    
+- id: unit_flare_cherrystone
+  category: units
+  faction: cherrystone
+  name: unit_name_flare
+  icon:
+    image: units/flare/portrait_flare_small.png
+    paletteSwap: true
+    colour: red
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: flare
+    faction: outlaw
+    title: unit_name_flare
+    text: codex_unit_flare_lore_text
+  - pageType: strategy
+    layoutType: animation
+    animation: ui/codex/content/flare
+    title: unit_name_flare
+    text: codex_unit_flare_critical_text
+- id: unit_flare_felheim
+  category: units
+  faction: felheim
+  name: unit_name_flare
+  icon:
+    image: units/flare/portrait_flare_small.png
+    paletteSwap: true
+    colour: blue
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: flare
+    faction: outlaw
+    title: unit_name_flare
+    text: codex_unit_flare_lore_text
+  - pageType: strategy
+    layoutType: animation
+    animation: ui/codex/content/flare
+    title: unit_name_flare
+    text: codex_unit_flare_critical_text
+- id: unit_flare_heavensong
+  category: units
+  faction: heavensong
+  name: unit_name_flare
+  icon:
+    image: units/flare/portrait_flare_small.png
+    paletteSwap: true
+    colour: yellow
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: flare
+    faction: outlaw
+    title: unit_name_flare
+    text: codex_unit_flare_lore_text
+  - pageType: strategy
+    layoutType: animation
+    animation: ui/codex/content/flare
+    title: unit_name_flare
+    text: codex_unit_flare_critical_text
+- id: unit_flare_floran
+  category: units
+  faction: floran
+  name: unit_name_flare
+  icon:
+    image: units/flare/portrait_flare_small.png
+    paletteSwap: true
+    colour: green
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: flare
+    faction: outlaw
+    title: unit_name_flare
+    text: codex_unit_flare_lore_text
+  - pageType: strategy
+    layoutType: animation
+    animation: ui/codex/content/flare
+    title: unit_name_flare
+    text: codex_unit_flare_critical_text
+- id: unit_flare_outlaw
+  category: units
+  faction: outlaw
+  name: unit_name_flare
+  icon:
+    image: units/flare/portrait_flare_small.png
+    paletteSwap: true
+    colour: black
+    skinColour: typeIV
+  pages:
+  - pageType: description
+    layoutType: unit_sprite
+    unitClass: flare
+    faction: outlaw
+    title: unit_name_flare
+    text: codex_unit_flare_lore_text
+  - pageType: strategy
+    layoutType: animation
+    animation: ui/codex/content/flare
+    title: unit_name_flare
+    text: codex_unit_flare_critical_text
 ...

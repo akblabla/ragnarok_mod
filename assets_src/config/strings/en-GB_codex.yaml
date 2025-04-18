@@ -2,9 +2,9 @@
 
 en-GB:
 # CODEX: COMMANDER INFO AND LORE
-  codex_commander_flagship_wulfar_lore1_text: "Age: 36.\nHeight: 220 cm.\nFavourite thing: Just parity between fellow souls.\nLeast favourite thing: Puns."
-  codex_commander_flagship_wulfar_lore2_text: "Chief Wulfar is the leader of Aurania’s largest and oldest outlaw clan. Standing more than 7 feet tall and wielding his great stone battle-hammer, he certainly cuts an imposing figure. But enemies should be wary of more than just his immense weapon and towering physique. It is Wulfar’s patience, intelligence and immovable resolve that render him a truly fearsome adversary."
-  codex_commander_flagship_wulfar_lore3_text: "For as long as there have been laws, there have been outlaws. Nowhere is this fact better illustrated than in Wulfar’s lineage. It was more than a century ago that Wulfar’s great grandfather, Magnus \"Bluetongue\" Pasternak, an infamous pirate captain, left his life on the high seas to settle in The Lost Leagues. There, he married Wulfar’s great grandmother, the shepherdess and renowned smuggler Mary Meyrick. These are but two individuals in the vast web of buccaneers and bootleggers, crooks and cutpurses that constitute Wulfar’s family tree."
+  codex_commander_flagship_wulfar_lore1_text: "Age: 137.\nHeight: 19 m.\nFavourite thing: A steadfast crew.\nLeast favourite thing: Barnacles."
+  codex_commander_flagship_wulfar_lore2_text: "Wulfar's family flagship. Named Towaich, she was first deployed 137 years ago. After the ship had served the Cherrystone navy for 20 years it got captured by the Wulfar's great grandpa, Magnus \"Bluetongue\" Pasternak. He used it to terrorize trading ships for decades."
+  codex_commander_flagship_wulfar_lore3_text: "Before his passing, Magnus made a statement: \"I give this vessel to our next generation, my sons and daughters. Let no bickering nor feuds prevent anyone from our family stepping afoot here.\"\n Wulfar, now the sole living member of his family is the defacto captain of this mighty vessel, Towaich."
   codex_groove_description_flagship_wulfar: "Wulfar can order his crew to fire a mighty barage from the broadside of his vessel. Enemies at closest row of tiles take 90% of the flagship's normal attack damage, with each subsequent row dealing 30% less. The broadside can hit any enemy target, even those hiding in the fog of war. \n\nGroove Charge Speed: Fast."
   codex_title_strategy_flagship_wulfar: "Broadside Strategy"
   codex_groove_strategy_flagship_wulfar: "The broadside only deals full damage in the first row, so even if multiple angles might hit the same targets, consider who takes the full brunt of the broadside."
@@ -12,7 +12,8 @@ en-GB:
   codex_commander_duchess_lore1_text: "Age: 42.\nHeight: 173 cm.\nFavourite thing: Pâté.\nLeast favourite thing: Outlaws."
   codex_commander_duchess_lore2_text: "Retired marshal of the Cherrystone Kingdom, who was rewarded the title of Duchess of Dorne. Her harsh ways of dealing with subordinates have made her unpopular amongs her citizens."
   codex_commander_duchess_lore3_text: "Being born a noble, it was only natural she started her career as a knight. Her first experience in war was fighting against the vile Floran raids of the north. Her skills in predicting floran ambushes quickly came to attention and she was chosen as marshal to lead the campaign against the florans. As a reward for her duties, she was given the title of Duchess of the trading city of Dorne."
-  codex_groove_description_duchess: "With a shot commanding attention, Sabah orders her troops within 2 tiles to stand guard. Units standing guard will strike first when attacked until your next turn. After counter attacking, the unit will drop their guards once more.\n\nGroove Charge Speed: Normal."
+  codex_groove_description_duchess: "With a shot commanding attention, Sabah orders her troops within 2 tiles to stand guard. Units standing guard will strike first when attacked until your next turn. After counter attacking, the unit will drop their guards once more."
+  codex_groove_description_2_duchess: "Units standing guard who can't normally counter attack will be able to counter attack last.\n\nGroove Charge Speed: Normal."
   codex_title_strategy_duchess: "En Garde Strategy"
   codex_groove_strategy_duchess: "En garde is a powerful tool to stall enemy assaults aswell as pushing aggressively into otherwise dangerous positions. Do note that the buff can be countered by ranged units that can attack at a safe distance and giants who may benefit from being struck before attacking. Weakened units can also be used to use up the buff before more powerful units engage."
 
@@ -20,13 +21,13 @@ en-GB:
   codex_commander_rival_lore2_text: "Old friend of Wulfar. He either spends his time raiding trading vessels or spending his booty at the many coastal hideouts of Aurania. " 
   
 # CODEX: RULES
-  codex_rules_fow_changes: "Fog of War Changes"
+  codex_rules_fow_changes: "FoW & Weather Changes"
   
   codex_rules_fow_overall_title: "Overall adjustments"
   codex_rules_fow_overall_text: "All units now have a vision of 4. Building sight range remain unchanged."
 
   codex_rules_weather_title: "Weather"
-  codex_rules_weather_text: "Sever weather now reduces the sight range by 1. Scout units are unaffected."
+  codex_rules_weather_text: "Sever weather now reduces the\u00a0sight range by\u00a01. Scout units are unaffected.\n\nIn addition the naval speed modifier for sever and windy weather got reduced from\u00a02\u00a0->\u00a01"
 
   
   codex_rules_fow_AI_title: "AI"

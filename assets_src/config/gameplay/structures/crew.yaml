@@ -4,7 +4,7 @@ unitClasses:
   - id: crew
     name: structure_name_city
     aiPriority: 0
-    cargoSpace: 1
+    cargoSpace: 10
     battleUnitCount: 1
     damageMultiplier: 0
     movement: sea_building

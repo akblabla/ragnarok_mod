@@ -719,4 +719,8 @@ decorations:
       tropical: decoration/unit/hay_desert
       desert: decoration/unit/hay_grass
       volcano: decoration/unit/hay_volcano     
+  - id: caveBG
+    layer: units
+    animation:
+      undefined: decoration/unit/caveBGDeco
 ...

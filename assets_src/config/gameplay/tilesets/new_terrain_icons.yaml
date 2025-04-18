@@ -5,6 +5,12 @@ tilesets:
       - types: [grass,tropical,ice,desert,volcano]
         iconSpriteSheet: ui_RagnarokMod
         iconSprite: ":img:ui/codex/icons/icon_terrain_brush_invis.png"
+  - id: brush_no_hiding_icon
+    biomes:
+      - types: [grass,tropical,ice,desert,volcano]
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_brush_no_hiding.png"
+
   - id: forest_no_hiding_icon
     biomes:
       - types: [grass,tropical,ice,desert,volcano]

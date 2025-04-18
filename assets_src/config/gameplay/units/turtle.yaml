@@ -10,21 +10,21 @@ weapons:
       land: 1
     tagDamage:
     
-      archer: 0.3
-      soldier: 0.25
-      villager: 0.4
-      spearman: 0.2
-      dog: 0.3
+      archer: 0.35
+      soldier: 0.3
+      villager: 0.45
+      spearman: 0.25
+      dog: 0.35
       wagon: 0
-      knight: 0.15
+      knight: 0.2
       trebuchet: 0
       ballista: 0
       mage: 0.25
       structure: 0.1
-      giant: 0.05
-      commander: 0.15
-      rifleman: 0.25
-      thief: 0.3
+      giant: 0.1
+      commander: 0.1
+      rifleman: 0.35
+      thief: 0.35
 
       warship: 0.8
       harpoonship: 0.35

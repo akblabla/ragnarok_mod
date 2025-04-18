@@ -11,11 +11,11 @@ unitClasses:
     isStructure: true
     canReinforce: true
     canBeReinforced: false
-#    hostileNeutral: false
+    hostileNeutral: true
     damageMultiplier: 0
     movement: land_building
     garrisonUnit: ""
-    recruitTags: [type.ground.light, type.ground.heavy]
+    recruitTags: [type.ground.light, knight]
     cost: 500
     tags:
       - structure
@@ -27,7 +27,7 @@ units:
     name: structure_name_tavern
     mapAnimation: structures/tavern
     smallPortrait: portraits/small/portrait_structure_small.png
-    mediumPortrait: portraits/medium/gate.png
+    mediumPortrait: portraits/medium/tavern.png
     grabPos: [15, 12]
     sounds:
       hit: hitWood

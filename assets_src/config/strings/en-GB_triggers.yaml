@@ -31,6 +31,10 @@ en-GB:
   trigger_action_description_give_crown: "Gives unit the Crown."
   trigger_action_readable_give_crown: "Give the crown to units of type {0} at location {1} owned by player {2}."
   
+  trigger_action_name_remove_crown: "Map: Remove Crown"
+  trigger_action_description_remove_crown: "Removes the crown."
+  trigger_action_readable_remove_crown: "Removes the crown."
+
   trigger_action_name_place_crown: "Map: Place Crown"
   trigger_action_description_place_crown: "Place crown at center of location."
   trigger_action_readable_place_crown: "Place the crown location {0}."

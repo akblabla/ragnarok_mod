@@ -73,6 +73,7 @@ units:
     grabPos: [27, 13]
     deathMoveMin: 0
     deathMoveMax: 0
+
     sounds:
       preAttack: giantPoseStone
       attack: giantAttack
@@ -87,4 +88,19 @@ units:
       - id: primary
         hitSpark: fx/bs_stab_attack
         hitDelay: 0.75
+    # sounds:
+    #   attack: giantAttackOrganic
+    #   attackMap: unitAttack
+    #   death: giantDie
+    #   deathMap: unitDie
+    #   run: wulfar/wulfarEntry
+    #   runMap: wulfar/wulfarEntry
+    #   hit: hitOrganic
+    #   hitMap: hitOrganic
+    # attacks:
+    #   - id: primary
+    #     hitSpark: fx/bs_stab_attack
+    #     hitDelay: [0.6, 1, 1.6]
+    #     postAttackAnimationSequence: post_attack_idle
+    #     postAttackHitSequence: post_attack_hit
 ...

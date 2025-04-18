@@ -178,7 +178,7 @@ decorations:
   - id: flowers1
     layer: ground
     animation:
-      tropical: decoration/ground/flowers1_grass
+      tropical: decoration/ground/flowers1_tropical
       grass: decoration/ground/flowers1_grass
       ice: decoration/ground/flowers1_ice
       desert: decoration/ground/flowers1_desert
@@ -186,7 +186,7 @@ decorations:
   - id: flowers2
     layer: ground
     animation:
-      tropical: decoration/ground/flowers2_grass
+      tropical: decoration/ground/flowers2_tropical
       grass: decoration/ground/flowers2_grass
       ice: decoration/ground/flowers2_ice
       desert: decoration/ground/flowers2_desert

@@ -13,7 +13,7 @@ tilesets:
         battleBackgroundSpriteForeground: cave_battlescreen_sand_foreground
         iconSpriteSheet: ui_RagnarokMod
         iconSprite: ":img:ui/codex/icons/icon_terrain_cave_wall.png"
-        infoScreenOffset: 80
+        infoScreenOffset: 20
         fillColour: '#83786e'
     primaryConnect: [undefined, cave_wall, wall, wall_no_blocking]
     decayTo: ":below"

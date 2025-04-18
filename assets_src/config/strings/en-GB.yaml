@@ -9,6 +9,7 @@ en-GB:
   ai_profile_mangrove_madness: Mangrove Madness
   ai_profile_city_passive: City Passive
   ai_profile_city_war: City War
+  ai_profile_deal: The Deal
 
   # Merge Verb
   ui_unit_verbs_better_merge: Merge
@@ -62,6 +63,7 @@ en-GB:
   terrain_name_brush: Field
   terrain_description_brush: Fields provides limited defense. Cavalry and wheeled units are slowed.
   terrain_description_brush_invis: Fields provides limited defense. Cavalry and wheeled units are slowed.
+  terrain_description_brush_no_hiding: Fields provides limited defense. Cavalry and wheeled units are slowed.
   terrain_name_cave_road: Cave Road
   terrain_description_cave_road: Underground roads speeds along wheeled units, but only provide limited defense.
   terrain_name_street: Road
@@ -183,6 +185,8 @@ en-GB:
   structure_name_tavern: "Tavern"
   unit_description_tavern: "Neutral building where anyone can reinforce and retrain their units."  
 
+  structure_name_outpost: "Outpost"
+  unit_description_outpost: "Used to recruit light ground units. Can't recruit two consecutive turns. Can also reinforce injured units."
 
   # UNIT DESCRIPTIONS
   unit_description_soldier: "[MELEE] Basic infantry, useful for capturing structures. Critical hit when adjacent to its commander."
@@ -205,6 +209,7 @@ en-GB:
   unit_description_giant: "[MELEE] An immensely powerful unit. Critical hit when at or below 40% health."
   unit_description_ballista: "Ranged ground-to-air unit, unable to move and attack in the same turn. Critical hit at min range."
   unit_description_travelboat: "Boats able to transport all ground units across water. Can steal from buildings."  
+  unit_description_travelboat_with_gold: "Loaded Boats can't transport units. They can unload at docks, warships and flagships."  
   #backgrounds
   ui_cutscene_background_deck: "Ship Deck"
   ui_cutscene_background_outlaw_ship: "Outlaw Ship"

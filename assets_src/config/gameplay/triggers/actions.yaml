@@ -119,6 +119,8 @@ triggerActions:
       - type: location_star
       - type: player_neutral_star
       
+  - id: remove_crown
+
   - id: place_crown
     parameters:
       - type: location_star

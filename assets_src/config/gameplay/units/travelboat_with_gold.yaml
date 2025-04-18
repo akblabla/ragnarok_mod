@@ -2,9 +2,9 @@
 unitClasses:
   - id: travelboat_with_gold
     name: unit_class_name_travelboat
-    cost: 200
+    cost: 250
     movement: sailing
-    moveRange: 8
+    moveRange: 6
     damageMultiplier: 1
     aiPriority: 3
     weapons: []
@@ -23,7 +23,7 @@ unitClasses:
       - wait_ai
       - hire
     battleUnitCount: 1
-    loadCapacity: 2
+    loadCapacity: 0
     sightRange: 4
     transportTags: [ type.ground.light, type.ground.heavy, type.amphibious, type.ground.hideout ]
     classIcon: unit_icons_travelboat
@@ -47,7 +47,7 @@ units:
     battleAnimation: units/travelboat/cherrystone/battle_travelboat_cherrystone
     smallPortrait: units/travelboat/cherrystone/portrait_travelboat_cherrystone_small.png
     mediumPortrait: units/travelboat/cherrystone/portrait_travelboat_cherrystone.png
-    mapSpeed: 6.0
+    mapSpeed: 3.0
     grabPos: [15, 15]
     deathMoveMin: 80
     deathMoveMax: 80
@@ -69,7 +69,7 @@ units:
     battleAnimation: units/travelboat/felheim/battle_travelboat_felheim
     smallPortrait: units/travelboat/felheim/portrait_travelboat_felheim_small.png
     mediumPortrait: units/travelboat/felheim/portrait_travelboat_felheim.png
-    mapSpeed: 8.0
+    mapSpeed: 3.0
     grabPos: [15, 15]
     deathMoveMin: 80
     deathMoveMax: 80
@@ -91,7 +91,7 @@ units:
     battleAnimation: units/travelboat/heavensong/battle_travelboat_heavensong
     smallPortrait: units/travelboat/heavensong/portrait_travelboat_heavensong_small.png
     mediumPortrait: units/travelboat/heavensong/portrait_travelboat_heavensong.png
-    mapSpeed: 6.0
+    mapSpeed: 3.0
     grabPos: [15, 15]
     deathMoveMin: 80
     deathMoveMax: 80
@@ -113,7 +113,7 @@ units:
     battleAnimation: units/travelboat/floran/battle_travelboat_floran
     smallPortrait: units/travelboat/floran/portrait_travelboat_floran_small.png
     mediumPortrait: units/travelboat/floran/portrait_travelboat_floran.png
-    mapSpeed: 6.0
+    mapSpeed: 3.0
     grabPos: [15, 15]
     deathMoveMin: 80
     deathMoveMax: 80
@@ -135,7 +135,7 @@ units:
     battleAnimation: units/travelboat/outlaw/battle_travelboat_outlaw
     smallPortrait: units/travelboat/outlaw/portrait_travelboat_outlaw_small.png
     mediumPortrait: units/travelboat/outlaw/portrait_travelboat_outlaw.png
-    mapSpeed: 6.0
+    mapSpeed: 3.0
     grabPos: [15, 15]
     deathMoveMin: 80
     deathMoveMax: 80

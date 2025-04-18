@@ -9,7 +9,9 @@ weapons:
     terrainExclusion:
       - forest
       - forest_alt
-      - forest_no_hide
+      - forest_no_hiding
+      - forest_alt_no_hiding
+      - forest_invis
       - mangrove
     baseDamage:
       land: 1

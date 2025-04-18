@@ -1,6 +1,25 @@
 ---
 
 commanders:
+  - id: mercival
+    name: character_mercival_name
+    title: character_mercival_title
+    faction: cherrystone
+    factionIndex: 3
+    portrait:
+      neutral: portraits/commanders/small/mercival_no_crown_portrait_small.png
+      happy: portraits/commanders/small/mercival_no_crown_portrait_happy.png
+      sad: portraits/commanders/small/mercival_no_crown_portrait_sad.png
+      extra: portraits/commanders/small/mercival_portrait_ghost.png
+    cutscenePortrait: portraits/commanders/big/mercival_portrait
+    namePlate: ui/character_select/charlabel/charlabel_mercival.png
+    themeSong: music/mercival
+    skinColour: typeII
+    unitClassId: commander_mercival
+    selectionSound: mercival/mercivalShoutIAmWithYou
+    dialogueBoxVoice: ui/dialogue/textScrollMercival
+    unlock: character_mercival
+
   - id: duchess
     name: character_duchess_name
     title: character_duchess_title

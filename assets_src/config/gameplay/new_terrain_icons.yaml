@@ -9,6 +9,16 @@ terrains:
     tilesets:
       0: [plains, plains_alt]
       1: brush_invis
+      
+  - id: brush_no_hiding_icon
+    name: terrain_name_brush
+    defenceBonus: 0
+    movementCost: {}
+    movementGroupType: land
+    placeable: true
+    tilesets:
+      0: [plains, plains_alt]
+      1: brush_no_hiding
 
   - id: forest_no_hiding_icon
     name: terrain_name_forest
