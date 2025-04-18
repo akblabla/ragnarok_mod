@@ -39,7 +39,11 @@ terrains:
     movementGroupType: [water]
     placeable: true
     tilesets:
-      0: quay
+      0: [plains, plains_alt, street]
+      1: quay
+    wang:
+      complementary: true
+      canRenderWater: true
 
   - id: bridge_wide
     name: terrain_name_bridge
@@ -58,8 +62,8 @@ terrains:
     movementGroupType: [land]
     placeable: true
     tilesets: 
-      0: [plains, plains_alt, cave_sea, sea, quay]
-      1: [river]
+      0: [plains, plains_alt, street]
+      1: [river, cave_sea, sea, quay]
       3: bridge_wide
 
   - id: cave_road

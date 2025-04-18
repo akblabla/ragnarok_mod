@@ -142,8 +142,8 @@ terrains:
     movementGroupType: [land]
     placeable: true
     tilesets: 
-      0: [sea, quay, plains, plains_alt, street]
-      1: [river, cave_river, cave_sea]
+      0: [plains, plains_alt, street]
+      1: [sea, quay, river, cave_river, cave_sea]
       2: bridge
     wang:
       blend: true
@@ -177,7 +177,7 @@ terrains:
     wang:
       complementary: true
       canRenderWater: true
-      adjacencies: [beach, ocean, reef, river]
+      adjacencies: [beach, ocean, reef, river, bridge]
 
   - id: ocean
     name: terrain_name_ocean
@@ -209,8 +209,9 @@ terrains:
     movementGroupType: [water]
     placeable: true
     tilesets:
-      0: sea
-      1: ocean
+      0: [plains, plains_alt]
+      1: sea
+      2: ocean
     wang:
       complementary: true
       canRenderWater: true
