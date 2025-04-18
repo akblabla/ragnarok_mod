@@ -2,7 +2,7 @@ local Wargroove = require "wargroove/wargroove"
 local Ragnarok = require "initialized/ragnarok"
 local Verb = require "wargroove/verb"
 local OldRecruit = require "verbs/recruit"
-local StealthManager = require "scripts/stealth_manager"
+--local StealthManager = require "scripts/stealth_manager"
 
 local Recruit = Verb:new()
 --local factionExclusiveUnits = {unitId = "pirate_ship", commanders = {"commander_wulfar","commander_vesper","commander_flagship_wulfar","commander_flagship_rival"}}
@@ -60,8 +60,6 @@ function Recruit:canExecuteWithTarget(unit, endPos, targetPos, strParam)
     if strParam == nil or strParam == "" then
         return true
     end
-	print("Recruit:canExecuteWithTarget")
-	print(strParam)
 
     -- Check if this can recruit that type of unit
     local ok = false
@@ -105,27 +103,34 @@ function Recruit:execute(unit, targetPos, strParam, path)
 		Wargroove.playMapSound("spawn", targetPos)
 		Wargroove.playPositionlessSound("recruit")
 		Wargroove.waitTime(0.2)
-		local spawn = Wargroove.getUnitById(spawnedId) 
-		if StealthManager.isUnitPermaSearching(unit) then
-			StealthManager.makePermaSearching(spawn)
-			StealthManager.updateAwareness(spawn,false)
-		else
+		-- local spawn = Wargroove.getUnitById(spawnedId) 
+		-- if StealthManager.isUnitPermaSearching(unit) then
+		-- 	StealthManager.makePermaSearching(spawn)
+		-- 	StealthManager.updateAwareness(spawn,false)
+		-- else
 --			StealthManager.removeUnit(spawn)
-			Wargroove.updateUnit(spawn)
+		local spawn = Wargroove.getUnitById(spawnedId) 
+		print("We are building a unit")
+		Wargroove.updateUnit(spawn)
+		if unit.unitClassId == "outpost" then
+			print("We are building a unit at an outpost")
+			Wargroove.setUnitState(unit, "process","sleeping");
+			Wargroove.playUnitAnimation(unit.id, "sleeping")
 		end
+--		end
 	else
-		--print("Deploy Flare!")
+		print("Deploy Flare!")
 		Wargroove.lockTrackCamera(unit.id)
-		--print("-2")
+		print("-2")
 		Wargroove.playMapSound("switch", unit.pos)
 		Wargroove.waitTime(0.5)
-		--print("-1")
+		print("-1")
 		Wargroove.playMapSound("ballistaAttack", unit.pos)
 		Wargroove.waitTime(0.52)
 		local spawnedId = Wargroove.spawnUnit(unit.playerId, unit.pos, "flare", false, "summon")
-		--print("0")
+		print("0")
 		local spawn = Wargroove.getUnitById(spawnedId)
-		--print("1")
+		print("1")
 		local facingOverride = ""
 		if targetPos.x > unit.pos.x then
 			facingOverride = "right"
@@ -137,28 +142,28 @@ function Recruit:execute(unit, targetPos, strParam, path)
 			facingOverride = "right"
 		end
 		Wargroove.setFacingOverride(spawnedId, facingOverride)
-		--print("2")
+		print("2")
 
 		local numSteps = 10
 		Wargroove.lockTrackCamera(spawnedId)
 		Wargroove.setShadowVisible(spawnedId, false)
 		Wargroove.setVisibleOverride(spawnedId, true)
-		--print("3")
+		print("3")
 		local eventPackage1 = {}
 		eventPackage1.event = function(eventData)
 			print("Inititiate Deployment Animation")
 			Wargroove.playUnitAnimation(eventData.unitId, "deploy")
 			Wargroove.playMapSound("cutscene/clothMovement1", eventData.targetPos)
 		end
-		--print("3.1")
+		print("3.1")
 		eventPackage1.time = 0.5
-		--print("3.2")
+		print("3.2")
 		eventPackage1.mode = "fromEnd"
-		--print("3.3")
+		print("3.3")
 		eventPackage1.eventData = {}
 		eventPackage1.eventData.unitId = spawnedId
 		eventPackage1.eventData.targetPos = targetPos
-		--print("4")
+		print("4")
 
 		local eventPackage2 = {}
 		eventPackage2.event = function(eventData)
@@ -171,19 +176,24 @@ function Recruit:execute(unit, targetPos, strParam, path)
 		eventPackage2.eventData.targetPos = {}
 		eventPackage2.eventData.targetPos.x = (targetPos.x+unit.pos.x)/2
 		eventPackage2.eventData.targetPos.y = (targetPos.y+unit.pos.y)/2
-		--print("5")
+		print("5")
 		local dist = math.sqrt((spawn.pos.x - targetPos.x)^2+(spawn.pos.y - targetPos.y)^2)
+		print("6")
 		Ragnarok.moveInArch(spawnedId, unit.pos, targetPos, numSteps, 5+math.sqrt(dist)*2, 10,3,2,{eventPackage1, eventPackage2})
+		print("7")
 		Wargroove.unsetShadowVisible(spawnedId)
 		Wargroove.unlockTrackCamera()
 		Wargroove.unsetVisibleOverride(spawnedId)
-		--Wargroove.unsetFacingOverride(spawnedId)
+		Wargroove.unsetFacingOverride(spawnedId)
+		print("8")
 		spawn.pos.facing = facingOverride
 		spawn.pos.x = targetPos.x
 		spawn.pos.y = targetPos.y
+		print("9")
 		Wargroove.updateUnit(spawn)
 		Wargroove.updateFogOfWar()
 		Wargroove.waitTime(0.25)
+		print("10")
 	end
 	Wargroove.notifyEvent("unit_recruit", unit.playerId)
 	Wargroove.setMetaLocation("last_recruit", targetPos)
@@ -195,7 +205,6 @@ function Recruit:execute(unit, targetPos, strParam, path)
 	end
 	Wargroove.updateUnit(unit)
 end
-
 
 function Recruit:generateOrders(unitId, canMove)
     local unit = Wargroove.getUnitById(unitId)

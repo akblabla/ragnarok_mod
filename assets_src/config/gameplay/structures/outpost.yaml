@@ -1,0 +1,45 @@
+---
+
+unitClasses:
+  - id: outpost
+    name: structure_name_outpost
+    aiPriority: 4.0
+    verbs:
+      - recruit
+    battleUnitCount: 1
+    isStructure: true
+    canReinforce: true
+    canBeReinforced: false
+    canBeCaptured: true
+    isNeutraliseable: true
+    damageMultiplier: 1
+    movement: land_building
+    income: 0
+    cost: 500
+    recruitTags: [type.ground.light]
+    regeneration: 10
+    tags:
+      - structure
+    sightRange: 1
+      
+units:
+  - class: outpost
+    faction: neutral
+    name: structure_name_outpost
+    mapAnimation: structures/outpost
+    smallPortrait: portraits/small/portrait_structure_small.png
+    mediumPortrait: portraits/medium/outpost.png
+    grabPos: [11, 7]
+    sounds:
+      hit: hitWood
+      hitMap: hitStone
+      death: gateDie
+    structureImage:
+      spriteSheet: backgrounds/hideout/hideout_background_full
+      farBackground: hideout_background_full_background_2
+      nearBackground: hideout_background_full_background_1
+      foreground: hideout_background_full_foreground
+      keeperPosition: [74, 85]
+      leftBannerOffset: [-16, 7]
+      rightBannerOffset: [-9, 4]
+...

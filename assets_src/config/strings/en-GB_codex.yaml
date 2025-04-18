@@ -1,6 +1,6 @@
 ---
 
-en-GB:
+en-GB: &flag-en
 # CODEX: COMMANDER INFO AND LORE
   codex_commander_flagship_wulfar_lore1_text: "Age: 36.\nHeight: 220 cm.\nFavourite thing: Just parity between fellow souls.\nLeast favourite thing: Puns."
   codex_commander_flagship_wulfar_lore2_text: "Chief Wulfar is the leader of Aurania’s largest and oldest outlaw clan. Standing more than 7 feet tall and wielding his great stone battle-hammer, he certainly cuts an imposing figure. But enemies should be wary of more than just his immense weapon and towering physique. It is Wulfar’s patience, intelligence and immovable resolve that render him a truly fearsome adversary."
@@ -12,13 +12,14 @@ en-GB:
   codex_commander_duchess_lore1_text: "Age: 42.\nHeight: 173 cm.\nFavourite thing: Pâté.\nLeast favourite thing: Outlaws."
   codex_commander_duchess_lore2_text: "Retired marshal of the Cherrystone Kingdom, who was rewarded the title of Duchess of Dorne. Her harsh ways of dealing with subordinates have made her unpopular amongs her citizens."
   codex_commander_duchess_lore3_text: "Being born a noble, it was only natural she started her career as a knight. Her first experience in war was fighting against the vile Floran raids of the north. Her skills in predicting floran ambushes quickly came to attention and she was chosen as marshal to lead the campaign against the florans. As a reward for her duties, she was given the title of Duchess of the trading city of Dorne."
-  codex_groove_description_duchess: "With a shot commanding attention, Sabah orders her troops within 2 tiles to stand guard. Units standing guard will strike first when attacked until your next turn. After counter attacking, the unit will drop their guards once more.\n\nGroove Charge Speed: Normal."
+  codex_groove_description_duchess: "With a shot commanding attention, Sabah orders her troops within 2 tiles to stand guard. Units standing guard will strike first when attacked until your next turn. After counter attacking, the unit will drop their guards once more."
+  codex_groove_description_2_duchess: "Units standing guard who can't normally counter attack will be able to counter attack last.\n\nGroove Charge Speed: Normal."
   codex_title_strategy_duchess: "En Garde Strategy"
   codex_groove_strategy_duchess: "En garde is a powerful tool to stall enemy assaults aswell as pushing aggressively into otherwise dangerous positions. Do note that the buff can be countered by ranged units that can attack at a safe distance and giants who may benefit from being struck before attacking. Weakened units can also be used to use up the buff before more powerful units engage."
 
   codex_commander_rival_lore1_text: "Age: 27.\nHeight: 189 cm.\nFavourite thing: Festivals.\nLeast favourite thing: Guards."
   codex_commander_rival_lore2_text: "Old friend of Wulfar. He either spends his time raiding trading vessels or spending his booty at the many coastal hideouts of Aurania. " 
-  
+
 # CODEX: RULES
   codex_rules_fow_changes: "Fog of War Changes"
   
@@ -26,11 +27,11 @@ en-GB:
   codex_rules_fow_overall_text: "All units now have a vision of 4. Building sight range remain unchanged."
 
   codex_rules_weather_title: "Weather"
-  codex_rules_weather_text: "Sever weather now reduces the sight range by 1. Scout units are unaffected."
+  codex_rules_weather_text: "Severe weather now reduces the sight range by 1. Scout units are unaffected."
 
   
   codex_rules_fow_AI_title: "AI"
-  codex_rules_fow_AI_text: "The AI can no longer targets enemies it can't see. This means that forests, reefs and just staying outside of enemy sight range keeps you safe from enemy attacks."
+  codex_rules_fow_AI_text: "The AI can no longer target enemies it can't see. This means that forests, reefs and just staying outside of enemy sight range will keep you safe from enemy attacks."
   
   codex_rules_combat_changes: "Combat Changes"
 
@@ -123,6 +124,9 @@ en-GB:
   
   codex_unit_rifleman_outlaws_lore_text: "The Sharpshooters are the riflemen of the Outlaw. These trickshooters can knock a coin off a post a mile away. Although they constantly talk about how busy they are, and demand high pay for their work, you can somehow always find them playing cards at the bar day and night."
   
+  codex_unit_flare_lore_text: "Flares are used by all faction to scout ahead during dark nights when safe navigation is crucial."
+  codex_unit_flare_critical_text: "Flares can be launched from towers to any visible tile on the map. They provide a cheap way to spot into the fog, as they both reveal and can move after being deployed. They can also potentially block would be attackers from closing towards your units."
+
 # CODEX: TERRAIN INFORMATION
   terrain_name_road_tropical: "Tropical Road"
   codex_terrain_road_tropical_description_text: "The distinctive red clay of Cradle Island is commenly used as roads. The rich colour lets it stand out in the foliage, so even the most weary of travelers can find back to civilization."
@@ -266,4 +270,15 @@ en-GB:
   codex_terrain_brush_desert_description_text: "Field. Write more plz."
   codex_terrain_brush_strategy_text: "Fields are great for infantry, as they provide more defense than plains, at no cost to movement, whilst slowing down cavalry that may want to charge them. In fog of war, they also block vision, so standind behind fields can prevent the enemy from seeing you. They do not hide units inside them like forest however."
   codex_terrain_brush_stats_text: "Fields provides limited defense. Cavalry and wheeled units are slowed."
+    
+de-DE: *flag-en
+es-ES: *flag-en
+fr-FR: *flag-en
+it-IT: *flag-en
+ja-JP: *flag-en
+ko-KR: *flag-en
+pt-BR: *flag-en
+ru-RU: *flag-en
+zh-Hans: *flag-en
+zh-Hant: *flag-en
 ...

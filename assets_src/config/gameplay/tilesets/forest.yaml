@@ -16,30 +16,55 @@ tilesets:
         iconSprite: terrain_icons_Forest
         fillColour: '#7fa33b'
         randomElements:
-          - sprite: terrain/trees/grass/cone_small
+          - sprite: terrain/trees/grass/cone2_small
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_small
 
-          - sprite: terrain/trees/grass/cone_medium
+          - sprite: terrain/trees/grass/cone2_medium
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_medium
 
-          - sprite: terrain/trees/grass/cone_big
+          - sprite: terrain/trees/grass/cone2_big
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_large
 
-          - sprite: terrain/trees/grass/round_small
+          - sprite: terrain/trees/grass/round2_small
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_small
 
-          - sprite: terrain/trees/grass/round_medium
+          - sprite: terrain/trees/grass/round2_medium
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_medium
 
-          - sprite: terrain/trees/grass/round_big
+          - sprite: terrain/trees/grass/round2_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large    
+
+          - sprite: terrain/trees/grass/cone3_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/grass/cone3_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/grass/cone3_big
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_large
-      - types: [tropical]
+
+          - sprite: terrain/trees/grass/round3_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/grass/round3_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/grass/round3_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+      - types: [deepforest]
         minRandomElements: 3
         maxRandomElements: 4
         portraitSpriteSheet: terrain/terrain_portraits
@@ -47,130 +72,747 @@ tilesets:
         battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
         battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_forest
         battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_forest_foreground
-        iconSpriteSheet: ui_RagnarokMod
-        iconSprite: ":img:ui/codex/icons/icon_terrain_forest_tropical.png"
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Forest
         fillColour: '#7fa33b'
         randomElements:
-          - sprite: terrain/trees/desert/palm_small
+          - sprite: terrain/trees/grass/cone2_small
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_small
 
-          - sprite: terrain/trees/desert/palm_medium
+          - sprite: terrain/trees/grass/cone2_medium
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_medium
 
-          - sprite: terrain/trees/desert/palm_big
+          - sprite: terrain/trees/grass/cone2_big
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_large
 
-          - sprite: terrain/trees/desert/shrub_medium
+          # - sprite: terrain/trees/grass/round2_small
+          #   shadowSpriteSheet: fx/shadows
+          #   shadowSprite: shadows_small
+
+          # - sprite: terrain/trees/grass/round2_medium
+          #   shadowSpriteSheet: fx/shadows
+          #   shadowSprite: shadows_medium
+
+          # - sprite: terrain/trees/grass/round2_big
+          #   shadowSpriteSheet: fx/shadows
+          #   shadowSprite: shadows_large    
+
+          - sprite: terrain/trees/grass/cone3_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/grass/cone3_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/grass/cone3_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+          # - sprite: terrain/trees/grass/round3_small
+          #   shadowSpriteSheet: fx/shadows
+          #   shadowSprite: shadows_small
+
+          # - sprite: terrain/trees/grass/round3_medium
+          #   shadowSpriteSheet: fx/shadows
+          #   shadowSprite: shadows_medium
+
+          # - sprite: terrain/trees/grass/round3_big
+          #   shadowSpriteSheet: fx/shadows
+          #   shadowSprite: shadows_large
+
+      - types: [flower]
+        minRandomElements: 2
+        maxRandomElements: 4
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_forest
+        battleBackgroundSpriteSheet: backgrounds/flower_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: flower_battlescreen_extendedbackgrounds_forest
+        battleBackgroundSpriteForeground: flower_battlescreen_extendedbackgrounds_forest_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Forest
+        fillColour: '#7fa33b'
+        randomElements:
+          # - sprite: terrain/trees/grass/cone2_small
+          #   shadowSpriteSheet: fx/shadows
+          #   shadowSprite: shadows_small
+
+          # - sprite: terrain/trees/grass/cone2_medium
+          #   shadowSpriteSheet: fx/shadows
+          #   shadowSprite: shadows_medium
+
+          # - sprite: terrain/trees/grass/cone2_big
+          #   shadowSpriteSheet: fx/shadows
+          #   shadowSprite: shadows_large
+
+          - sprite: terrain/trees/grass/round2_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/grass/round2_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/grass/round2_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large    
+
+          # - sprite: terrain/trees/grass/cone3_small
+          #   shadowSpriteSheet: fx/shadows
+          #   shadowSprite: shadows_small
+
+          # - sprite: terrain/trees/grass/cone3_medium
+          #   shadowSpriteSheet: fx/shadows
+          #   shadowSprite: shadows_medium
+
+          # - sprite: terrain/trees/grass/cone3_big
+          #   shadowSpriteSheet: fx/shadows
+          #   shadowSprite: shadows_large
+
+          - sprite: terrain/trees/grass/round3_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/grass/round3_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/grass/round3_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+      - types: [dungeon]
+        minRandomElements: 3
+        maxRandomElements: 4
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_forest
+        battleBackgroundSpriteSheet: backgrounds/dungeon_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: dungeon_battlescreen_extendedbackgrounds_forest
+        battleBackgroundSpriteEmit: dungeon_battlescreen_extendedbackgrounds_forest_emit
+        battleBackgroundSpriteForeground: dungeon_battlescreen_extendedbackgrounds_forest_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Forest
+        fillColour: '#7fa33b'
+        randomElements:
+          - sprite: terrain/trees/dungeon/crystal_cyan1_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_none
+
+          - sprite: terrain/trees/dungeon/crystal_cyan1_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_none
+
+          - sprite: terrain/trees/dungeon/crystal_cyan1_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_none
+
+          - sprite: terrain/trees/dungeon/crystal_cyan2_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_none
+
+          - sprite: terrain/trees/dungeon/crystal_cyan2_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_none
+
+          - sprite: terrain/trees/dungeon/crystal_cyan2_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_none
+
+          - sprite: terrain/trees/dungeon/plants1_verysmall
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants1_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants1_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants1_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants2_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants2_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants2_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants1_verysmall
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants1_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants1_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants1_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants2_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants2_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants2_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+      - types: [dungeon_lava]
+        minRandomElements: 3
+        maxRandomElements: 4
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_forest
+        battleBackgroundSpriteSheet: backgrounds/dungeon_lava_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: dungeon_lava_battlescreen_extendedbackgrounds_forest
+        battleBackgroundSpriteEmit: dungeon_lava_battlescreen_extendedbackgrounds_forest_emit
+        battleBackgroundSpriteForeground: dungeon_lava_battlescreen_extendedbackgrounds_forest_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Forest
+        fillColour: '#7fa33b'
+        randomElements:
+          - sprite: terrain/trees/dungeon_lava/crystal_red1_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_none
+
+          - sprite: terrain/trees/dungeon_lava/crystal_red1_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_none
+
+          - sprite: terrain/trees/dungeon_lava/crystal_red1_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_none
+
+          - sprite: terrain/trees/dungeon_lava/crystal_red2_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_none
+
+          - sprite: terrain/trees/dungeon_lava/crystal_red2_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_none
+
+          - sprite: terrain/trees/dungeon_lava/crystal_red2_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_none
+
+          - sprite: terrain/trees/dungeon_lava/plants1_lava_verysmall
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon_lava/plants1_lava_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon_lava/plants1_lava_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon_lava/plants1_lava_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon_lava/plants2_lava_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon_lava/plants2_lava_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon_lava/plants2_lava_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon_lava/plants1_lava_verysmall
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon_lava/plants1_lava_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon_lava/plants1_lava_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon_lava/plants1_lava_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon_lava/plants2_lava_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon_lava/plants2_lava_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon_lava/plants2_lava_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+      - types: [dungeon_purple]
+        minRandomElements: 3
+        maxRandomElements: 4
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_forest
+        battleBackgroundSpriteSheet: backgrounds/dungeon_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: dungeon_battlescreen_extendedbackgrounds_forest
+        battleBackgroundSpriteEmit: dungeon_battlescreen_extendedbackgrounds_forest_emit
+        battleBackgroundSpriteForeground: dungeon_battlescreen_extendedbackgrounds_forest_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Forest
+        fillColour: '#7fa33b'
+        randomElements:
+          - sprite: terrain/trees/dungeon/crystal_cyan1_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_none
+
+          - sprite: terrain/trees/dungeon/crystal_cyan1_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_none
+
+          - sprite: terrain/trees/dungeon/crystal_cyan1_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_none
+
+          - sprite: terrain/trees/dungeon/crystal_cyan2_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_none
+
+          - sprite: terrain/trees/dungeon/crystal_cyan2_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_none
+
+          - sprite: terrain/trees/dungeon/crystal_cyan2_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_none
+
+          - sprite: terrain/trees/dungeon/plants1_verysmall
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants1_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants1_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants1_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants2_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants2_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants2_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants1_verysmall
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants1_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants1_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants1_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants2_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants2_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/dungeon/plants2_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+      - types: [jungle]
+        minRandomElements: 2
+        maxRandomElements: 4
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_forest
+        battleBackgroundSpriteSheet: backgrounds/jungle_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: jungle_battlescreen_extendedbackgrounds_forest
+        battleBackgroundSpriteForeground: jungle_battlescreen_extendedbackgrounds_forest_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Forest
+        fillColour: '#7fa33b'
+        randomElements:
+          - sprite: terrain/trees/jungle/flower1_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_jungle
+
+          - sprite: terrain/trees/jungle/flower1_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_jungle
+
+          - sprite: terrain/trees/jungle/jungletree3_small 
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+          - sprite: terrain/trees/jungle/jungletree3_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+          - sprite: terrain/trees/jungle/jungletree3_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+          - sprite: terrain/trees/jungle/grass1_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_jungle
+
+          - sprite: terrain/trees/jungle/grass2_small
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_small
             
-          - sprite: terrain/trees/grass/round_small
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_small
-
-          - sprite: terrain/trees/grass/round_medium
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_medium
-
-          - sprite: terrain/trees/grass/round_big
+          - sprite: terrain/trees/jungle/jungletree3_small 
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_large
 
-      - types: [ice]
+          - sprite: terrain/trees/jungle/jungletree3_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+          - sprite: terrain/trees/jungle/jungletree3_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+          - sprite: terrain/trees/jungle/grass1_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_jungle
+            
+          - sprite: terrain/trees/jungle/grass2_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+      - types: [ice, ice_low]
         minRandomElements: 2
         maxRandomElements: 3
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_snow_forest
-        battleBackgroundSpriteSheet: backgrounds/snow_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: snow_battlescreen_extendedbackgrounds_forest
-        battleBackgroundSpriteForeground: snow_battlescreen_extendedbackgrounds_forest_foreground
+        battleBackgroundSpriteSheet: backgrounds/ice_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: ice_battlescreen_extendedbackgrounds_forest
+        battleBackgroundSpriteForeground: ice_battlescreen_extendedbackgrounds_forest_foreground
         iconSpriteSheet: ui
         iconSprite: terrain_icons_Forest
         fillColour: '#aec6e3'
         randomElements:
-          - sprite: terrain/trees/ice/snowround_small
+          - sprite: terrain/trees/ice/snowround_ice2_small
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_small
 
-          - sprite: terrain/trees/ice/snowround_medium
+          - sprite: terrain/trees/ice/snowround_ice2_medium
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_medium
 
-          - sprite: terrain/trees/ice/snowround_big
+          - sprite: terrain/trees/ice/snowround_ice2_big
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_large
 
-          - sprite: terrain/trees/ice/snowcone_small
+          - sprite: terrain/trees/ice/snowcone_ice2_small
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_small
 
-          - sprite: terrain/trees/ice/snowcone_medium
+          - sprite: terrain/trees/ice/snowcone_ice2_medium
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_medium
 
-          - sprite: terrain/trees/ice/snowcone_big
+          - sprite: terrain/trees/ice/snowcone_ice2_big
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_large
+
+      - types: [arctic]
+        minRandomElements: 3
+        maxRandomElements: 4
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_forest
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_forest
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_forest_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Forest
+        fillColour: '#aec6e3'
+        randomElements:
+          - sprite: terrain/trees/arctic/mushroom1_arctic_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+          - sprite: terrain/trees/arctic/mushroom1_arctic_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/arctic/mushroom1_arctic_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/arctic/mushroom2_arctic_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/arctic/mushroom2_arctic_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/arctic/mushroom2_arctic_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/arctic/mushroom2_arctic_big2 
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+          
+          - sprite: terrain/trees/arctic/mushroom2_arctic_big2
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/arctic/mushroom3_arctic_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/arctic/mushroom3_arctic_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/arctic/mushroom3_arctic_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/arctic/mushroom3_arctic_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/arctic/mushroom3_arctic_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/arctic/mushroom3_arctic_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+      - types: [arctic_bloom]
+        minRandomElements: 3
+        maxRandomElements: 4
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_forest
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds_bloom
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_bloom_forest
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_bloom_forest_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Forest
+        fillColour: '#aec6e3'
+        randomElements:
+          - sprite: terrain/trees/arctic_blood/mushroom1_arctic_blood_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+          - sprite: terrain/trees/arctic_blood/mushroom1_arctic_blood_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/arctic_blood/mushroom1_arctic_blood_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/arctic_blood/mushroom2_arctic_blood_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/arctic_blood/mushroom2_arctic_blood_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/arctic_blood/mushroom2_arctic_blood_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/arctic_blood/mushroom2_arctic_blood_big2 
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+          
+          - sprite: terrain/trees/arctic_blood/mushroom2_arctic_blood_big2
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/arctic_blood/mushroom3_arctic_blood_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/arctic_blood/mushroom3_arctic_blood_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/arctic_blood/mushroom3_arctic_blood_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/arctic_blood/mushroom3_arctic_blood_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/arctic_blood/mushroom3_arctic_blood_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/arctic_blood/mushroom3_arctic_blood_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+    
+      - types: [arctic_blood]
+        minRandomElements: 3
+        maxRandomElements: 4
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_forest
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds_red
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_red_forest
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_red_forest_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Forest
+        fillColour: '#aec6e3'
+        randomElements:
+          - sprite: terrain/trees/arctic_blood/mushroom1_arctic_blood_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+          - sprite: terrain/trees/arctic_blood/mushroom1_arctic_blood_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/arctic_blood/mushroom1_arctic_blood_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/arctic_blood/mushroom2_arctic_blood_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/arctic_blood/mushroom2_arctic_blood_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/arctic_blood/mushroom2_arctic_blood_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/arctic_blood/mushroom2_arctic_blood_big2 
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+          
+          - sprite: terrain/trees/arctic_blood/mushroom2_arctic_blood_big2
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/arctic_blood/mushroom3_arctic_blood_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/arctic_blood/mushroom3_arctic_blood_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/arctic_blood/mushroom3_arctic_blood_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/arctic_blood/mushroom3_arctic_blood_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/arctic_blood/mushroom3_arctic_blood_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/arctic_blood/mushroom3_arctic_blood_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
 
       - types: [desert]
         minRandomElements: 2
         maxRandomElements: 3
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_sand_forest
-        battleBackgroundSpriteSheet: backgrounds/sand_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: sand_battlescreen_extendedbackgrounds_forest
-        battleBackgroundSpriteForeground: sand_battlescreen_extendedbackgrounds_forest_foreground
+        battleBackgroundSpriteSheet: backgrounds/desert_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: desert_battlescreen_extendedbackgrounds_forest
+        battleBackgroundSpriteForeground: desert_battlescreen_extendedbackgrounds_forest_foreground
         iconSpriteSheet: ui
         iconSprite: terrain_icons_Forest
         fillColour: '#987647'
         randomElements:
-          - sprite: terrain/trees/desert/palm_small
+          - sprite: terrain/trees/desert/palm_desert2_small
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_small
 
-          - sprite: terrain/trees/desert/palm_medium
+          - sprite: terrain/trees/desert/palm_desert2_medium
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_medium
 
-          - sprite: terrain/trees/desert/palm_big
+          - sprite: terrain/trees/desert/palm_desert2_big
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_large
 
-          - sprite: terrain/trees/desert/cactus_big
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_large
-
-          - sprite: terrain/trees/desert/shrub_medium
+          - sprite: terrain/trees/desert/palm_desert2_small
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_small
 
-      - types: [volcano]
-        minRandomElements: 2
-        maxRandomElements: 3
-        portraitSpriteSheet: terrain/terrain_portraits
-        portraitSprite: terrain_portraits_sand_forest
-        battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: volcano_battlescreen_extendedbackgrounds_forest
-        battleBackgroundSpriteForeground: volcano_battlescreen_extendedbackgrounds_forest_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Forest
-        fillColour: '#6d5e56'
-        randomElements:
-          - sprite: terrain/trees/volcano/dry_small
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_small
-            hasLeaves: false
-
-          - sprite: terrain/trees/volcano/dry_medium
+          - sprite: terrain/trees/desert/palm_desert2_medium
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_medium
-            hasLeaves: false
 
-          - sprite: terrain/trees/volcano/dry_big
+          - sprite: terrain/trees/desert/palm_desert2_big
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_large
-            hasLeaves: false
+
+          - sprite: terrain/trees/desert/cactus_desert2_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+          - sprite: terrain/trees/desert/cactus_desert2_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/desert/shrub_desert2_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/desert/shrub_desert2_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
 ...

@@ -3,8 +3,8 @@ tilesets:
   - id: building
     biomes:
       - types: [grass,tropical, ice, desert]
-        spriteSheet: tilesets
-        spriteBase: deck_tileset
+        spriteSheet: terrain_tilesets
+        spriteBase: building_tileset
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
         battleBackgroundSprite: street_background
         iconSpriteSheet: ui_RagnarokMod
@@ -12,8 +12,8 @@ tilesets:
         infoScreenOffset: 0
         fillColour: '#2a2542'
       - types: [volcano]
-        spriteSheet: tilesets
-        spriteBase: deck_tileset
+        spriteSheet: terrain_tilesets
+        spriteBase: building_tileset
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
         battleBackgroundSprite: street_background
         iconSpriteSheet: ui_RagnarokMod
@@ -22,5 +22,8 @@ tilesets:
         fillColour: '#76231c'
     primaryConnect: []
     decayTo: street
+    tilesGroups:
+      - tiles:
+        - { x: 0, y: 0 }
 
 ...

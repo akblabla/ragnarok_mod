@@ -1,9 +1,8 @@
 ---
 tilesets:
   - id: street
-    decayTo: plains
     biomes:
-      - types: [grass]
+      - types: [grass, jungle, arctic, arctic_blood, dungeon, dungeon_lava, dungeon_purple, tundra, flower, deepforest, ice_low, arctic_bloom]
         spriteSheet: terrain_tilesets
         spriteBase: grass_street_tileset
         portraitSpriteSheet: terrain/terrain_portraits
@@ -16,18 +15,6 @@ tilesets:
         infoScreenOffset: 80
         fillColour: '#83786e'
         
-      - types: [tropical]
-        spriteSheet: terrain_tilesets
-        spriteBase: grass_street_tileset
-        portraitSpriteSheet: terrain/terrain_portraits
-        portraitSprite: terrain_portraits_city
-        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
-        battleBackgroundSprite: street_background
-        battleBackgroundSpriteForeground: street_foreground
-        iconSpriteSheet: ui_RagnarokMod
-        iconSprite: ":img:ui/codex/icons/icon_terrain_street.png"
-        infoScreenOffset: 80
-        fillColour: '#807063'
         
       - types: [desert]
         spriteSheet: terrain_tilesets

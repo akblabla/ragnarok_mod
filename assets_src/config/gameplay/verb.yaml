@@ -1,0 +1,122 @@
+---
+verbs:
+  - id: pick_up_crown
+    icon: ui/icons/grooves/unit_action_icon_inspire.png
+    name: ui_unit_verbs_pick_up_crown
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetted: true
+    scriptName: verbs/pick_up_crown
+
+  - id: hand_over_crown
+    icon: ui/icons/grooves/unit_action_icon_inspire.png
+    name: ui_unit_verbs_hand_over_crown
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetted: true
+    directTarget: true
+    scriptName: verbs/hand_over_crown
+    
+  - id: throw_crown
+    icon: ui/icons/unit_action_icon_merge.png
+    name: ui_unit_verbs_throw_crown
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetted: true
+#    directTarget: true
+    scriptName: verbs/throw_crown
+
+  - id: death
+    icon: ui/icons/grooves/unit_action_icon_bomb.png
+    name: ui_unit_verbs_explode
+    splashOutlineColour: attack_target_outline
+    scriptName: verbs/death
+
+  - id: pirate_steal
+    icon: ui/icons/unit_action_icon_steal.png
+    name: ui_unit_verbs_steal
+    targetColour: attack_target
+    targetOutlineColour: target_outline
+    targetted: true
+    directTarget: true                                  # This verb targets a specific unit
+    scriptName: verbs/pirate_steal
+    aiUses: true
+    
+  - id: pirate_deposit
+    icon: ui/icons/unit_action_icon_deposit.png
+    name: ui_unit_verbs_deposit
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetted: true
+    directTarget: true                                  # This verb targets a specific unit
+    scriptName: verbs/pirate_deposit
+    aiUses: true
+    
+  - id: pirate_claim
+    icon: ui/icons/unit_action_icon_capture.png
+    name: ui_unit_verbs_claim
+    targetColour: target
+    scriptName: verbs/pirate_claim
+
+  - id: groove_broadside
+    icon: ui/icons/grooves/unit_action_icon_shield.png
+    name: groove_name_broadside
+    targetColour: target
+    targetOutlineColour: attack_target_outline
+    targetDisplayOutlineColour: attack_target_outline
+    targetted: true
+    preExecute: true
+    scriptName: verbs/groove_broadside
+  - id: groove_area_damage_rival
+    icon: ui/icons/grooves/unit_action_icon_shield.png
+    name: groove_name_area_damage_rival
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetDisplayOutlineColour: attack_target_outline
+    targetted: true
+    scriptName: verbs/groove_area_damage_rival
+    splashOutlineColour: attack_target_outline
+    splashRadius: 3
+
+  - id: groove_alert_area
+    icon: ui/icons/grooves/unit_action_icon_shield.png
+    name: groove_name_alert_area
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetDisplayOutlineColour: attack_target_outline
+    targetted: true
+    scriptName: verbs/groove_alert_area
+    splashOutlineColour: attack_target_outline
+    splashRadius: 2
+
+  - id: rescue
+    icon: ui/icons/grooves/unit_action_icon_inspire.png
+    name: ui_unit_verbs_rescue
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetted: true
+    directTarget: true
+    scriptName: verbs/rescue
+
+  - id: hire
+    icon: ui/icons/grooves/unit_action_icon_inspire.png
+    name: ui_unit_verbs_hire
+    targetColour: target
+    targetOutlineColour: target_outline
+    preExecute: true
+    targetted: true
+    directTarget: true
+    scriptName: verbs/hire
+
+  - id: refreshments
+    icon: ui/icons/unit_action_icon_give_drink.png
+    name: ui_unit_verbs_upgrade
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetDisplayColour: target
+    targetDisplayOutlineColour: target_outline
+    preExecute: true
+    targetted: false
+    scriptName: verbs/upgrade
+    
+...

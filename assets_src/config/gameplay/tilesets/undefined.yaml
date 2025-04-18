@@ -3,5 +3,5 @@ tilesets:
   - id: undefined
     primaryConnect: []
     biomes:
-      - types: [grass,tropical, desert, ice]
+      - types: [grass, jungle, desert, ice, arctic, arctic_blood, dungeon, dungeon_lava, dungeon_purple, tundra, flower, deepforest, ice_low, arctic_bloom]
 ...

@@ -16,7 +16,7 @@ tilesets:
         fillColour: '#92b141'
       - types: [tropical]
         spriteSheet: terrain_tilesets
-        spriteBase: sand_wide_road_tileset
+        spriteBase: tropical_cave_wide_road_tileset
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_road
         battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds

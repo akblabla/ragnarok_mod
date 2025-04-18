@@ -1,11 +1,12 @@
 ---
 tilesets:
   - id: river
+    type: WangBlob
     biomes:
-      - types: [grass,tropical]
-        spriteSheet: terrain_tilesets
-        spriteBase: river_tileset_000
-        waterSpriteBase: river_tileset_001
+      - types: [grass, flower, deepforest]
+        spriteSheet: tilesets
+        spriteBase: wang_grass_river_tileset_000
+        waterSpriteBase: wang_grass_river_tileset_001
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_ocean
         battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
@@ -13,128 +14,156 @@ tilesets:
         battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_river_foreground
         iconSpriteSheet: ui
         iconSprite: terrain_icons_River
-        infoScreenOffset: 70
+        infoScreenOffset: 30
         fillColour: '#286ab1'
-      - types: [ice]
-        spriteSheet: terrain_tilesets
-        spriteBase: river_tileset_000
-        waterSpriteBase: river_tileset_001
+      - types: [dungeon, dungeon_purple]
+        spriteSheet: tilesets
+        spriteBase: wang_dungeon_river_tileset_000
+        waterSpriteBase: wang_dungeon_river_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_ocean
+        battleBackgroundSpriteSheet: backgrounds/dungeon_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: dungeon_battlescreen_extendedbackgrounds_river
+        battleBackgroundSpriteForeground: dungeon_battlescreen_extendedbackgrounds_river_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_River
+        infoScreenOffset: 30
+        fillColour: '#286ab1'
+      - types: [dungeon_lava]
+        spriteSheet: tilesets
+        spriteBase: wang_dungeon_lava_river_tileset_000
+        waterSpriteBase: wang_dungeon_lava_river_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_ocean
+        battleBackgroundSpriteSheet: backgrounds/dungeon_lava_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: dungeon_lava_battlescreen_extendedbackgrounds_river
+        battleBackgroundSpriteForeground: dungeon_lava_battlescreen_extendedbackgrounds_river_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_River
+        infoScreenOffset: 30
+        fillColour: '#286ab1'
+      - types: [jungle]
+        spriteSheet: tilesets
+        spriteBase: wang_jungle_river_tileset_000
+        waterSpriteBase: wang_jungle_river_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_ocean
+        battleBackgroundSpriteSheet: backgrounds/jungle_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: jungle_battlescreen_extendedbackgrounds_river
+        battleBackgroundSpriteForeground: jungle_battlescreen_extendedbackgrounds_river_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_River
+        infoScreenOffset: 30
+        fillColour: '#286ab1'
+      - types: [ice, ice_low]
+        spriteSheet: tilesets
+        spriteBase: wang_ice_river_tileset_000
+        waterSpriteBase: wang_ice_river_tileset_001
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_snow_river
-        battleBackgroundSpriteSheet: backgrounds/snow_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: snow_battlescreen_extendedbackgrounds_river
-        battleBackgroundSpriteForeground: snow_battlescreen_extendedbackgrounds_river_foreground
+        battleBackgroundSpriteSheet: backgrounds/ice_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: ice_battlescreen_extendedbackgrounds_river
+        battleBackgroundSpriteForeground: ice_battlescreen_extendedbackgrounds_river_foreground
         iconSpriteSheet: ui
         iconSprite: terrain_icons_River
-        infoScreenOffset: 70
+        infoScreenOffset: 30
+        fillColour: '#1659a8'
+      - types: [arctic]
+        spriteSheet: tilesets
+        spriteBase: wang_arctic_river_tileset_000
+        waterSpriteBase: wang_arctic_river_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_river
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_river
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_river_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_River
+        infoScreenOffset: 30
+        fillColour: '#1659a8'
+      - types: [arctic_bloom]
+        spriteSheet: tilesets
+        spriteBase: wang_arctic_river_tileset_000
+        waterSpriteBase: wang_arctic_river_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_river
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds_bloom
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_bloom_river
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_bloom_river_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_River
+        infoScreenOffset: 30
+        fillColour: '#1659a8'
+      - types: [arctic_blood]
+        spriteSheet: tilesets
+        spriteBase: wang_arctic_river_tileset_000
+        waterSpriteBase: wang_arctic_river_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_river
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds_red
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_red_river
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_red_river_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_River
+        infoScreenOffset: 30
         fillColour: '#1659a8'
       - types: [desert]
-        spriteSheet: terrain_tilesets
-        spriteBase: river_tileset_000
-        waterSpriteBase: river_tileset_001
+        spriteSheet: tilesets
+        spriteBase: wang_desert_river_tileset_000
+        waterSpriteBase: wang_desert_river_tileset_001
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_sand_river
-        battleBackgroundSpriteSheet: backgrounds/sand_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: sand_battlescreen_extendedbackgrounds_river
-        battleBackgroundSpriteForeground: sand_battlescreen_extendedbackgrounds_river_foreground
+        battleBackgroundSpriteSheet: backgrounds/desert_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: desert_battlescreen_extendedbackgrounds_river
+        battleBackgroundSpriteForeground: desert_battlescreen_extendedbackgrounds_river_foreground
         iconSpriteSheet: ui
         iconSprite: terrain_icons_River
-        infoScreenOffset: 70
+        infoScreenOffset: 30
         fillColour: '#1659a8'
-      - types: [volcano]
-        spriteSheet: terrain_tilesets
-        spriteBase: river_tileset_000
-        waterSpriteBase: river_tileset_001
-        portraitSpriteSheet: terrain/terrain_portraits
-        portraitSprite: terrain_portraits_sand_river
-        battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: volcano_battlescreen_extendedbackgrounds_lava
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_River
-        infoScreenOffset: 70
-        fillColour: '#76231c'
-    primaryConnect: [undefined, river, mangrove, cave_river, bridge, bridge_wide, sea_alt, quay,ocean, cave_sea, beach, cave_beach]
-    decayTo: ":below"
-    tiles:
-      - { x: 0, y: 0, adj: "e se s" }
-      - { x: 1, y: 0, adj: "e se s sw w" }
-      - { x: 2, y: 0, adj: "s sw w" }
-      - { x: 3, y: 0, adj: "n ne e se s" }
-      - { x: 4, y: 0, adj: "n nw w sw s" }
-      - { x: 5, y: 0, adj: "n s" }
+    primaryConnect: [undefined, river, bridge, sea, beach]
+    decayTo: plains
+    extras:
+      # Single tile variation
+      - { x: 6, y: 7, mask: 256 }
+      - { x: 6, y: 8, mask: 256 }
+      - { x: 6, y: 9, mask: 256 }
+      # Corner tile variation
+      - { x: 0, y: 7, mask: 28 }
+      - { x: 4, y: 7, mask: 112 }
+      - { x: 0, y: 11, mask: 7 }
+      - { x: 4, y: 11, mask: 193 }
+      # Outer corner tile variation
+      - { x: 1, y: 8, mask: 247 }
+      - { x: 2, y: 8, mask: 223 }
+      - { x: 1, y: 9, mask: 253 }
+      - { x: 2, y: 9, mask: 127 }
+      # Side tile variation
+      - { x: 1, y: 7, mask: 124 }
+      - { x: 2, y: 7, mask: 124 }
+      - { x: 3, y: 7, mask: 124 }
 
-      - { x: 0, y: 1, adj: "n ne e se s" }
-      - { x: 1, y: 1, adj: "n ne e se s sw w nw", default: true }
-      - { x: 2, y: 1, adj: "n nw w sw s" }
-      - { x: 3, y: 1, adj: "n ne e se s" }
-      - { x: 4, y: 1, adj: "n nw w sw s" }
-      - { x: 5, y: 1, adj: "n s" }
+      - { x: 0, y: 8, mask: 31 }
+      - { x: 0, y: 9, mask: 31 }
+      - { x: 0, y: 10, mask: 31 }
 
-      - { x: 0, y: 2, adj: "n ne e" }
-      - { x: 1, y: 2, adj: "w nw n ne e" }
-      - { x: 2, y: 2, adj: "w nw n" }
-      - { x: 3, y: 2, adj: "n ne e se s" }
-      - { x: 4, y: 2, adj: "n nw w sw s" }
-      - { x: 5, y: 2, adj: "n s" }
+      - { x: 4, y: 8, mask: 241 }
+      - { x: 4, y: 9, mask: 241 }
+      - { x: 4, y: 10, mask: 241 }
 
-      - { x: 0, y: 3, adj: "e se s sw w" }
-      - { x: 1, y: 3, adj: "e se s sw w" }
-      - { x: 2, y: 3, adj: "e se s sw w" }
-      - { x: 3, y: 3, adj: "e se s sw w" }
-      - { x: 4, y: 3, adj: "e se s sw w" }
-      - { x: 5, y: 3, adj: "w e" }
-      - { x: 6, y: 3, adj: "w e" }
-      - { x: 7, y: 3, adj: "w e" }
-      - { x: 8, y: 3, adj: "w e" }
-      - { x: 9, y: 3, adj: "w e" }
+      - { x: 1, y: 11, mask: 199 }
+      - { x: 2, y: 11, mask: 199 }
+      - { x: 3, y: 11, mask: 199 }
+      # U-shaped 1 tile wide ending variation
+      - { x: 0, y: 12, mask: 4 }
+      - { x: 4, y: 12, mask: 64 }
+      - { x: 5, y: 7, mask: 16 }
+      - { x: 5, y: 11, mask: 1 }
+      # Parallel 1 tile beach river variation
+      - { x: 1, y: 12, mask: 68 }
+      - { x: 2, y: 12, mask: 68 }
+      - { x: 3, y: 12, mask: 68 }
 
-      - { x: 0, y: 4, adj: "w nw n ne e" }
-      - { x: 1, y: 4, adj: "w nw n ne e" }
-      - { x: 2, y: 4, adj: "w nw n ne e" }
-      - { x: 3, y: 4, adj: "w nw n ne e" }
-      - { x: 4, y: 4, adj: "w nw n ne e" }
-
-      - { x: 0, y: 5, adj: "s" }
-      - { x: 1, y: 5, adj: "e" }
-      - { x: 2, y: 5, adj: "e w" }
-      - { x: 3, y: 5, adj: "w" }
-      - { x: 4, y: 5, adj: "s w n" }
-      - { x: 5, y: 5, adj: "n e s w ne se" }
-      - { x: 6, y: 5, adj: "n e s w nw sw" }
-      - { x: 7, y: 5, adj: "n e s w ne se" }
-      - { x: 8, y: 5, adj: "w s se e" }
-      - { x: 9, y: 5, adj: "w sw s e" }
-
-      - { x: 0, y: 6, adj: "n s" }
-      - { x: 1, y: 6, adj: "w s" }
-      - { x: 2, y: 6, adj: "s e" }
-      - { x: 3, y: 6, adj: "w s e" }
-      - { x: 4, y: 6, adj: "n e s w" }
-      - { x: 5, y: 6, adj: "n e s w se" }
-      - { x: 6, y: 6, adj: "n e s w sw" }
-      - { x: 7, y: 6, adj: "n e s w nw" }
-      - { x: 8, y: 6, adj: "n e s w ne" }
-      - { x: 9, y: 6, adj: "s w nw n ne e" }
-
-      - { x: 0, y: 7, adj: "n" }
-      - { x: 1, y: 7, adj: "n e" }
-      - { x: 2, y: 7, adj: "n w" }
-      - { x: 3, y: 7, adj: "n e s" }
-      - { x: 4, y: 7, adj: "w n e" }
-      - { x: 5, y: 7, adj: "n e s w se sw" }
-      - { x: 6, y: 7, adj: "n e s se" }
-      - { x: 7, y: 7, adj: "n e w nw" }
-      - { x: 8, y: 7, adj: "n e w ne" }
-      - { x: 9, y: 7, adj: "n ne e s sw w" }
-
-      - { x: 0, y: 8, adj: "" }
-      - { x: 1, y: 8, adj: "n e s w ne nw sw" }
-      - { x: 2, y: 8, adj: "n e s w ne nw se" }
-      - { x: 5, y: 8, adj: "n nw w s" }
-      - { x: 6, y: 8, adj: "n ne e s" }
-      - { x: 9, y: 8, adj: "n e se s w nw" }
-      
-      - { x: 1, y: 9, adj: "n e s w nw sw se" }
-      - { x: 2, y: 9, adj: "n e s w ne se sw" }
-      - { x: 5, y: 9, adj: "n w sw s" }
+      - { x: 5, y: 8, mask: 17 }
+      - { x: 5, y: 9, mask: 17 }
+      - { x: 5, y: 10, mask: 17 }
 ...

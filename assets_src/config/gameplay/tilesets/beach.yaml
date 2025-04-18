@@ -1,241 +1,253 @@
 ---
 tilesets:
   - id: beach
+    type: WangBlob
     biomes:
-      - types: [grass]
+      - types: [grass, flower, deepforest]
         spriteSheet: tilesets
-        spriteBase: beach_tileset_000
-        waterSpriteBase: beach_tileset_001
-        portraitSpriteSheet: terrain/terrain_portraits
-        portraitSprite: terrain_portraits_ocean        
+        spriteBase: wang_grass_plains_beach_tileset_000
+        waterSpriteBase: wang_grass_plains_beach_tileset_001
         battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
         battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_beach
         battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_beach_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Coast
-        infoScreenOffset: 75
-        fillColour: '#bdae86'
-      - types: [tropical]
-        spriteSheet: terrain_tilesets
-        spriteBase: tropical_beach_tileset_000
-        waterSpriteBase: tropical_beach_tileset_001
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_ocean        
-        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
-        battleBackgroundSprite: tropical_beach_background
-        battleBackgroundSpriteForeground: tropical_beach_foreground
         iconSpriteSheet: ui
         iconSprite: terrain_icons_Coast
-        infoScreenOffset: 75
+        infoScreenOffset: 30
+        fillColour: '#bdae86'
+      - types: [dungeon, dungeon_purple]
+        spriteSheet: tilesets
+        spriteBase: wang_dungeon_plains_beach_tileset_000
+        waterSpriteBase: wang_dungeon_plains_beach_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/dungeon_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: dungeon_battlescreen_extendedbackgrounds_beach
+        battleBackgroundSpriteForeground: dungeon_battlescreen_extendedbackgrounds_beach_foreground
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_ocean        
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Coast
+        infoScreenOffset: 30
+        fillColour: '#bdae86'
+      - types: [dungeon_lava]
+        spriteSheet: tilesets
+        spriteBase: wang_dungeon_lava_plains_beach_tileset_000
+        waterSpriteBase: wang_dungeon_lava_plains_beach_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/dungeon_lava_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: dungeon_lava_battlescreen_extendedbackgrounds_beach
+        battleBackgroundSpriteForeground: dungeon_lava_battlescreen_extendedbackgrounds_beach_foreground
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_ocean        
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Coast
+        infoScreenOffset: 30
+        fillColour: '#bdae86'
+      - types: [jungle]
+        spriteSheet: tilesets
+        spriteBase: wang_jungle_plains_beach_tileset_000
+        waterSpriteBase: wang_jungle_plains_beach_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/jungle_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: jungle_battlescreen_extendedbackgrounds_beach
+        battleBackgroundSpriteForeground: jungle_battlescreen_extendedbackgrounds_beach_foreground
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_ocean        
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Coast
+        infoScreenOffset: 30
         fillColour: '#bdae86'
       - types: [ice]
         spriteSheet: tilesets
-        spriteBase: snow_beach_tileset_000
-        waterSpriteBase: snow_beach_tileset_001
+        spriteBase: wang_ice_plains_beach_tileset_000
+        waterSpriteBase: wang_ice_plains_beach_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/ice_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: ice_battlescreen_extendedbackgrounds_beach
+        battleBackgroundSpriteForeground: ice_battlescreen_extendedbackgrounds_beach_foreground
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_snow_beach
-        battleBackgroundSpriteSheet: backgrounds/snow_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: snow_battlescreen_extendedbackgrounds_beach
-        battleBackgroundSpriteForeground: snow_battlescreen_extendedbackgrounds_beach_foreground
         iconSpriteSheet: ui
-        iconSprite: terrain_icons_Coast
-        infoScreenOffset: 75
+        iconSprite: terrain_icons_Coast 
+        infoScreenOffset: 30
+        fillColour: '#aec6e3'
+      - types: [ice_low]
+        spriteSheet: tilesets
+        spriteBase: wang_ice_plains_beach_tileset_low_000
+        waterSpriteBase: wang_ice_plains_beach_tileset_low_001
+        battleBackgroundSpriteSheet: backgrounds/ice_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: ice_battlescreen_extendedbackgrounds_beach
+        battleBackgroundSpriteForeground: ice_battlescreen_extendedbackgrounds_beach_foreground
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_beach
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Coast 
+        infoScreenOffset: 30
+        fillColour: '#aec6e3'
+      - types: [arctic]
+        spriteSheet: tilesets
+        spriteBase: wang_arctic_plains_beach_tileset_000
+        waterSpriteBase: wang_arctic_plains_beach_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_beach
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_beach_foreground
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_beach
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Coast 
+        infoScreenOffset: 30
+        fillColour: '#aec6e3'
+      - types: [arctic_bloom]
+        spriteSheet: tilesets
+        spriteBase: wang_arctic_plains_beach_tileset_000
+        waterSpriteBase: wang_arctic_plains_beach_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds_bloom
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_bloom_beach
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_bloom_beach_foreground
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_beach
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Coast 
+        infoScreenOffset: 30
+        fillColour: '#aec6e3'
+      - types: [arctic_blood]
+        spriteSheet: tilesets
+        spriteBase: wang_arctic_plains_beach_tileset_000
+        waterSpriteBase: wang_arctic_plains_beach_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds_red
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_red_beach
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_red_beach_foreground
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_beach
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Coast 
+        infoScreenOffset: 30
         fillColour: '#aec6e3'
       - types: [desert]
         spriteSheet: tilesets
-        spriteBase: sand_beach_tileset_000
-        waterSpriteBase: sand_beach_tileset_001
-        battleBackgroundSpriteSheet: backgrounds/sand_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: sand_battlescreen_extendedbackgrounds_beach
-        battleBackgroundSpriteForeground: sand_battlescreen_extendedbackgrounds_beach_foreground
+        spriteBase: wang_desert_plains_beach_tileset_000
+        waterSpriteBase: wang_desert_plains_beach_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/desert_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: desert_battlescreen_extendedbackgrounds_beach
+        battleBackgroundSpriteForeground: desert_battlescreen_extendedbackgrounds_beach_foreground
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_sand_beach
         iconSpriteSheet: ui
         iconSprite: terrain_icons_Coast
-        infoScreenOffset: 75
+        infoScreenOffset: 30
         fillColour: '#beb890'
-      - types: [volcano]
-        spriteSheet: tilesets
-        spriteBase: volcanic_beach_tileset_000
-        waterSpriteBase: volcanic_beach_tileset_001
-        battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: volcano_battlescreen_extendedbackgrounds_beach
-        battleBackgroundSpriteForeground: volcano_battlescreen_extendedbackgrounds_beach_foreground
-        portraitSpriteSheet: terrain/terrain_portraits
-        portraitSprite: terrain_portraits_sand_beach
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Coast
-        infoScreenOffset: 75
-        fillColour: '#6d5e56'
-    primaryConnect: [undefined, plains, rough, plains_alt, street, mountain, mountain_no_blocking, forest, forest_invis, forest_no_hiding, forest_alt, forest_alt_no_hiding, brush, brush_invis, road, cave_road, wall, wall_no_blocking,  cobblestone, carpet, rough, cave_wall]
-    secondaryConnect: [beach, cave_beach]
-    tertiaryConnect: [sea_alt, quay,cave_sea, ocean, reef, reef_no_hiding, cave_reef, bridge, bridge_wide, cave_bridge, river, mangrove, cave_river]
-    decayTo: sea_alt
-    validator:
-      decayTo: sea_alt
-    tiles:
-      - { x: 0, y: 0, adj: "n w !e !s #se" }
-      - { x: 0, y: 0, adj: "n w !e !s !se" }
-      - { x: 1, y: 0, adj: "n !e !w #s #nw #ne" }
-      - { x: 1, y: 0, adj: "n !e !w !s #nw #ne" }
-      - { x: 1, y: 0, adj: "n !e !w #s !nw #ne" }
-      - { x: 1, y: 0, adj: "n !e !w !s !nw #ne" }
-      - { x: 1, y: 0, adj: "n !e !w #s !nw !ne" }
-      - { x: 1, y: 0, adj: "n !e !w !s !nw !ne" }
-      - { x: 1, y: 0, adj: "n !e !w #s #nw !ne" }
-      - { x: 1, y: 0, adj: "n !e !w !s #nw !ne" }
-      - { x: 2, y: 0, adj: "n e !w !s #sw" }
-      - { x: 2, y: 0, adj: "n e !w !s !sw" }
-      - { x: 3, y: 0, adj: "n !e !w #s" }
-      - { x: 3, y: 0, adj: "n !e !w !s" }
-      - { x: 4, y: 0, adj: "s !e !w #n" }
-      - { x: 4, y: 0, adj: "s !e !w !n" }
-      - { x: 5, y: 0, adj: "e !s #w #n #sw" }
-      - { x: 5, y: 0, adj: "e !s !w #n #sw" }
-      - { x: 5, y: 0, adj: "e !s #w #n !sw" }
-      - { x: 5, y: 0, adj: "e !s !w #n !sw" }
-      - { x: 6, y: 0, adj: "w !s #e #n #se" }
-      - { x: 6, y: 0, adj: "w !s !e #n #se" }
-      - { x: 6, y: 0, adj: "w !s #e #n !se" }
-      - { x: 6, y: 0, adj: "w !s !e #n !se" }
-      - { x: 7, y: 0, adj: "s !e #n #w #ne" }
-      - { x: 7, y: 0, adj: "s !e !n #w #ne" }
-      - { x: 7, y: 0, adj: "s !e #n #w !ne" }
-      - { x: 7, y: 0, adj: "s !e !n #w !ne" }
-      - { x: 8, y: 0, adj: "s !w #n #e #nw" }
-      - { x: 8, y: 0, adj: "s !w !n #e #nw" }
-      - { x: 8, y: 0, adj: "s !w #n #e !nw" }
-      - { x: 8, y: 0, adj: "s !w !n #e !nw" }
-      - { x: 9, y: 0, adj: "s #n #e #w" }
-      - { x: 9, y: 0, adj: "s !n #e #w" }
+    decayTo: sea
+    extras:
+      # Single tile variation
+      - { x: 6, y: 7, mask: 256 }
+      - { x: 6, y: 8, mask: 256 }
+      - { x: 6, y: 9, mask: 256 }
+      # Corner tile variation
+      - { x: 0, y: 7, mask: 28 }
+      - { x: 4, y: 7, mask: 112 }
+      - { x: 0, y: 11, mask: 7 }
+      - { x: 4, y: 11, mask: 193 }
+      # Outer corner tile variation
+      - { x: 1, y: 8, mask: 247 }
+      - { x: 2, y: 8, mask: 223 }
+      - { x: 1, y: 9, mask: 253 }
+      - { x: 2, y: 9, mask: 127 }
+      # Side tile variation
+      - { x: 1, y: 7, mask: 124 }
+      - { x: 2, y: 7, mask: 124 }
+      - { x: 3, y: 7, mask: 124 }
 
-      - { x: 0, y: 1, adj: "w !n !s #e #ne #se" }
-      - { x: 0, y: 1, adj: "w !n !s !e #ne #se" }
-      - { x: 0, y: 1, adj: "w !n !s #e !ne #se" }
-      - { x: 0, y: 1, adj: "w !n !s !e !ne #se" }
-      - { x: 0, y: 1, adj: "w !n !s #e !ne !se" }
-      - { x: 0, y: 1, adj: "w !n !s !e !ne !se" }
-      - { x: 0, y: 1, adj: "w !n !s #e #ne !se" }
-      - { x: 0, y: 1, adj: "w !n !s !e #ne !se" }
-      - { x: 2, y: 1, adj: "e !n !s #w #nw #sw" }
-      - { x: 2, y: 1, adj: "e !n !s !w #nw #sw" }
-      - { x: 2, y: 1, adj: "e !n !s #w !nw #sw" }
-      - { x: 2, y: 1, adj: "e !n !s !w !nw #sw" }
-      - { x: 2, y: 1, adj: "e !n !s #w !nw !sw" }
-      - { x: 2, y: 1, adj: "e !n !s !w !nw !sw" }
-      - { x: 2, y: 1, adj: "e !n !s #w #nw !sw" }
-      - { x: 2, y: 1, adj: "e !n !s !w #nw !sw" }
-      - { x: 3, y: 1, adj: "e !n !s #w" }
-      - { x: 3, y: 1, adj: "e !n !s !w" }
-      - { x: 4, y: 1, adj: "w !n !s #e" }
-      - { x: 4, y: 1, adj: "w !n !s !e" }
-      - { x: 5, y: 1, adj: "e !n #w #s #nw" }
-      - { x: 5, y: 1, adj: "e !n !w #s #nw" }
-      - { x: 5, y: 1, adj: "e !n #w #s !nw" }
-      - { x: 5, y: 1, adj: "e !n !w #s !nw" }
-      - { x: 6, y: 1, adj: "w !n #e #s #ne" }
-      - { x: 6, y: 1, adj: "w !n !e #s #ne" }
-      - { x: 6, y: 1, adj: "w !n #e #s !ne" }
-      - { x: 6, y: 1, adj: "w !n !e #s !ne" }
-      - { x: 7, y: 1, adj: "n !e #s #w #se" }
-      - { x: 7, y: 1, adj: "n !e !s #w #se" }
-      - { x: 7, y: 1, adj: "n !e #s #w !se" }
-      - { x: 7, y: 1, adj: "n !e !s #w !se" }
-      - { x: 8, y: 1, adj: "n !w #s #e #sw" }
-      - { x: 8, y: 1, adj: "n !w !s #e #sw" }
-      - { x: 8, y: 1, adj: "n !w #s #e !sw" }
-      - { x: 8, y: 1, adj: "n !w !s #e !sw" }
-      - { x: 9, y: 1, adj: "n #s #e #w" }
-      - { x: 9, y: 1, adj: "n !s #e #w" }
-  
-      - { x: 0, y: 2, adj: "w s !n !e #ne" }
-      - { x: 0, y: 2, adj: "w s !n !e !ne" }
-      - { x: 1, y: 2, adj: "s !w !e #n #se #sw" }
-      - { x: 1, y: 2, adj: "s !w !e !n #se #sw" }
-      - { x: 1, y: 2, adj: "s !w !e #n !se #sw" }
-      - { x: 1, y: 2, adj: "s !w !e !n !se #sw" }
-      - { x: 1, y: 2, adj: "s !w !e #n !se !sw" }
-      - { x: 1, y: 2, adj: "s !w !e !n !se !sw" }
-      - { x: 1, y: 2, adj: "s !w !e #n #se !sw" }
-      - { x: 1, y: 2, adj: "s !w !e !n #se !sw" }
-      - { x: 2, y: 2, adj: "e s !n !w #nw" }
-      - { x: 2, y: 2, adj: "e s !n !w !nw" }
-      - { x: 8, y: 2, adj: "e #w #n #s" }
-      - { x: 8, y: 2, adj: "e !w #n #s" }
-      - { x: 9, y: 2, adj: "w #e #n #s" }
-      - { x: 9, y: 2, adj: "w !e #n #s" }
+      - { x: 0, y: 8, mask: 31 }
+      - { x: 0, y: 9, mask: 31 }
+      - { x: 0, y: 10, mask: 31 }
 
-      - { x: 7, y: 3, adj: "n w !s #e" }
-      - { x: 8, y: 3, adj: "n e !s #w" }
-      - { x: 9, y: 3, adj: "n w s #e" }
-      - { x: 9, y: 3, adj: "n w s !e" }
+      - { x: 4, y: 8, mask: 241 }
+      - { x: 4, y: 9, mask: 241 }
+      - { x: 4, y: 10, mask: 241 }
 
-      - { x: 1, y: 4, adj: "se !e !s #n #w" }
-      - { x: 1, y: 4, adj: "se !e !s !n #w" }
-      - { x: 1, y: 4, adj: "se !e !s #n !w" }
-      - { x: 1, y: 4, adj: "se !e !s !n !w" }
-      - { x: 2, y: 4, adj: "sw !w !s #n #e" }
-      - { x: 2, y: 4, adj: "sw !w !s !n #e" }
-      - { x: 2, y: 4, adj: "sw !w !s #n !e" }
-      - { x: 2, y: 4, adj: "sw !w !s !n !e" }
-      - { x: 7, y: 4, adj: "w s !n #e" }
-      - { x: 8, y: 4, adj: "e s !n #w" }
-      - { x: 9, y: 4, adj: "n e s #w" }
-      - { x: 9, y: 4, adj: "n e s !w" }
+      - { x: 1, y: 11, mask: 199 }
+      - { x: 2, y: 11, mask: 199 }
+      - { x: 3, y: 11, mask: 199 }
+      # U-shaped 1 tile wide ending variation
+      - { x: 0, y: 12, mask: 4 }
+      - { x: 4, y: 12, mask: 64 }
+      - { x: 5, y: 7, mask: 16 }
+      - { x: 5, y: 11, mask: 1 }
+      # Parallel 1 tile beach river variation
+      - { x: 1, y: 12, mask: 68 }
+      - { x: 2, y: 12, mask: 68 }
+      - { x: 3, y: 12, mask: 68 }
 
-      - { x: 1, y: 5, adj: "ne !e !n #s #w" }
-      - { x: 1, y: 5, adj: "ne !e !n !s #w" }
-      - { x: 1, y: 5, adj: "ne !e !n #s !w" }
-      - { x: 1, y: 5, adj: "ne !e !n !s !w" }
-      - { x: 2, y: 5, adj: "nw !w !n #s #e" }
-      - { x: 2, y: 5, adj: "nw !w !n !s #e" }
-      - { x: 2, y: 5, adj: "nw !w !n #s !e" }
-      - { x: 2, y: 5, adj: "nw !w !n !s !e" }
-      - { x: 5, y: 5, adj: "n w #s #e" }
-      - { x: 6, y: 5, adj: "n e #s #w" }
-      - { x: 7, y: 5, adj: "n w !e #s" }
-      - { x: 8, y: 5, adj: "n e !w #s" }
-      - { x: 9, y: 5, adj: "w n e #s" }
-      - { x: 9, y: 5, adj: "w n e !s" }
+      - { x: 5, y: 8, mask: 17 }
+      - { x: 5, y: 9, mask: 17 }
+      - { x: 5, y: 10, mask: 17 }
 
-      - { x: 5, y: 6, adj: "s w #n #e" }
-      - { x: 6, y: 6, adj: "s e #n #w" }
-      - { x: 7, y: 6, adj: "s w !e #n" }
-      - { x: 8, y: 6, adj: "s e !w #n" }
-      - { x: 9, y: 6, adj: "w e s #n" }
-      - { x: 9, y: 6, adj: "w e s !n" }
-
-      - { x: 0, y: 7, adj: "se !s #n #w #e" }
-      - { x: 0, y: 7, adj: "se !s #n !w #e" }
-      - { x: 0, y: 7, adj: "se !s !n #w #e" }
-      - { x: 0, y: 7, adj: "se !s !n !w #e" }
-      - { x: 1, y: 7, adj: "sw !s #n #w #e" }
-      - { x: 1, y: 7, adj: "sw !s !n #w #e" }
-      - { x: 1, y: 7, adj: "sw !s #n #w !e" }
-      - { x: 1, y: 7, adj: "sw !s !n #w !e" }
-      - { x: 2, y: 7, adj: "se !e #s #w #n" }
-      - { x: 2, y: 7, adj: "se !e #s !w #n" }
-      - { x: 2, y: 7, adj: "se !e #s #w !n" }
-      - { x: 2, y: 7, adj: "se !e #s !w !n" }
-      - { x: 3, y: 7, adj: "sw !w #s #e #n" }
-      - { x: 3, y: 7, adj: "sw !w #s #e !n" }
-      - { x: 3, y: 7, adj: "sw !w #s !e #n" }
-      - { x: 3, y: 7, adj: "sw !w #s !e !n" }
-
-      - { x: 0, y: 8, adj: "ne !n #w #s #e" }
-      - { x: 0, y: 8, adj: "ne !n !w #s #e" }
-      - { x: 0, y: 8, adj: "ne !n #w !s #e" }
-      - { x: 0, y: 8, adj: "ne !n !w !s #e" }
-      - { x: 1, y: 8, adj: "nw !n #w #s #e" }
-      - { x: 1, y: 8, adj: "nw !n #w !s #e" }
-      - { x: 1, y: 8, adj: "nw !n #w #s !e" }
-      - { x: 1, y: 8, adj: "nw !n #w !s !e" }
-      - { x: 2, y: 8, adj: "ne !e #n #w #s" }
-      - { x: 2, y: 8, adj: "ne !e #n !w #s" }
-      - { x: 2, y: 8, adj: "ne !e #n #w !s" }
-      - { x: 2, y: 8, adj: "ne !e #n !w !s" }
-      - { x: 3, y: 8, adj: "nw !w #n #e #s" }
-      - { x: 3, y: 8, adj: "nw !w #n !e #s" }
-      - { x: 3, y: 8, adj: "nw !w #n #e !s" }
-      - { x: 3, y: 8, adj: "nw !w #n !e !s" }
+    blend:
+      # pattern:
+      #   s = sea
+      #   b = beach
+      #   - = plains
+      #   . = don't care (ignore)
+      #   X = center (ignore)
+      #
+      # 1-tile coves
+      - { x: 9, y: 4, pattern: "s-s-X.s-s" }
+      - { x: 9, y: 5, pattern: "s-s.X-s-s" }
+      - { x: 9, y: 6, pattern: "s-s-X-s.s" }
+      - { x: 9, y: 7, pattern: "s.s-X-s-s" }
+      # single tile, horizontal
+      - { x: 9, y: 0, pattern: "sss.X.s-s", crop: [0, 8, 0, 0] }
+      - { x: 9, y: 1, pattern: "s-s.X.sss" }
+      # single tile, vertical
+      - { x: 9, y: 2, pattern: "s.ssX-s.s", crop: [8, 0, 0, 0] }
+      - { x: 9, y: 3, pattern: "s.s-Xss.s", crop: [0, 0, 8, 0] }
+      # horizontal transitions
+      - { x: 7, y: 2, pattern: "sss.Xbs-s", crop: [0, 8, 0, 0] }
+      - { x: 8, y: 2, pattern: "sssbX.s-s", crop: [0, 8, 0, 0] }
+      - { x: 7, y: 3, pattern: "s-s.Xbsss" }
+      - { x: 8, y: 3, pattern: "s-sbX.sss" }
+      # vertical transitions
+      - { x: 7, y: 0, pattern: "s.ssX-sbs", crop: [8, 0, 0, 0] }
+      - { x: 7, y: 1, pattern: "sbssX-s.s", crop: [8, 0, 0, 0] }
+      - { x: 8, y: 0, pattern: "s.s-Xssbs", crop: [0, 0, 8, 0] }
+      - { x: 8, y: 1, pattern: "sbs-Xss.s", crop: [0, 0, 8, 0] }
+      # 1-tile corners
+      - { x: 7, y: 8, pattern: "s-s-X.s.s" }
+      - { x: 8, y: 8, pattern: "s-s.X-s.s" }
+      - { x: 7, y: 9, pattern: "s.s-X.s-s" }
+      - { x: 8, y: 9, pattern: "s.s.X-s-s" }
+      # corner, horizontal tran.ition
+      - { x: 7, y: 4, pattern: "s-s-X.sbs" }
+      - { x: 8, y: 4, pattern: "s-s.X-sbs" }
+      - { x: 7, y: 5, pattern: "sbs-X.s-s" }
+      - { x: 8, y: 5, pattern: "sbs.X-s-s" }
+      # corner, vertical transition
+      - { x: 7, y: 6, pattern: "s-s-Xbs.s" }
+      - { x: 8, y: 6, pattern: "s-sbX-s.s" }
+      - { x: 7, y: 7, pattern: "s.s-Xbs-s" }
+      - { x: 8, y: 7, pattern: "s.sbX-s-s" }
+      # sand banks
+      - { x: 6, y: 10, pattern: "ssssX.sb-", crop: [8, 8, 0, 0] }
+      - { x: 5, y:  3, pattern: "ssssXbsb-" }
+      - { x: 7, y: 10, pattern: "sss.Xs-bs", crop: [0, 8, 8, 0] }
+      - { x: 3, y:  1, pattern: "sssbXs-bs" }
+      - { x: 6, y: 11, pattern: "sb-sX.sss", crop: [8, 0, 0, 2] }
+      - { x: 1, y:  3, pattern: "sb-sXbsss" }
+      - { x: 7, y: 11, pattern: "-bs.Xssss", crop: [0, 0, 8, 2] }
+      - { x: 4, y:  3, pattern: "-bsbXssss" }
+      - { x: 8, y: 10, pattern: "ssssXbs.-", crop: [8, 8, 0, 0] }
+      - { x: 9, y: 10, pattern: "sssbXs-.s", crop: [0, 8, 8, 0] }
+      - { x: 8, y: 11, pattern: "s.-sXbsss", crop: [8, 0, 0, 0] }
+      - { x: 9, y: 11, pattern: "-.sbXssss", crop: [0, 0, 8, 0] }
+      # special cases: single tile, bea.h both sides
+      - { x: 3, y: 0, pattern: "s-sbXbs.s" }
+      - { x: 3, y: 0, pattern: "s-sbXbsbs" }
+      - { x: 1, y: 4, pattern: "s.sbXbs-s" }
+      - { x: 1, y: 4, pattern: "sbsbXbs-s" }
+      - { x: 4, y: 1, pattern: "sbs.X-sbs" }
+      - { x: 4, y: 1, pattern: "sbsbX-sbs" }
+      - { x: 0, y: 3, pattern: "sbs-X.sbs" }
+      - { x: 0, y: 3, pattern: "sbs-Xbsbs" }
+      # special cases: corner, bea.h both directions
+      - { x: 3, y: 3, pattern: "s-s-Xbsbs" }
+      - { x: 6, y: 2, pattern: "s-sbX-sbs" }
+      - { x: 2, y: 6, pattern: "sbs-Xbs-s" }
+      - { x: 5, y: 5, pattern: "sbsbX-s-s" }
 ...

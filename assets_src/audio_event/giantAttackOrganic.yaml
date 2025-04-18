@@ -1,0 +1,38 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/hitOrganic1.ogg, sfx/hitOrganic2.ogg, sfx/hitOrganic3.ogg ]
+    group: sfx
+    volume: 1.1
+    delay: 0.15
+    pitch: 0.5
+  - type: play
+    clips: [ sfx/hitBone1.ogg, sfx/hitBone2.ogg, sfx/hitBone3.ogg, sfx/hitBone4.ogg ]
+    group: sfx
+    volume: 0.8
+    delay: 0.45
+    pitch: 1.5
+  - type: play
+    clips: [ sfx/hitOrganic1.ogg, sfx/hitOrganic2.ogg, sfx/hitOrganic3.ogg ]
+    group: sfx
+    volume: 1.1
+    delay: 0.35
+    pitch: 0.5
+  - type: play
+    clips: [ sfx/hitBone1.ogg, sfx/hitBone2.ogg, sfx/hitBone3.ogg, sfx/hitBone4.ogg ]
+    group: sfx
+    volume: 0.8
+    delay: 1.05
+    pitch: 1.5
+  - type: play
+    clips: [ sfx/giantStep.ogg]
+    group: sfx
+    volume: 1.5
+    pitch: 1.25
+    delay: 1.56
+  - type: play
+    clips: [ sfx/hitWood1.ogg, sfx/hitWood2.ogg, sfx/hitWood3.ogg ]
+    group: sfx
+    volume: 1
+    delay: 1.25
+...

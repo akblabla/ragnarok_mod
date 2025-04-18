@@ -1,5 +1,6 @@
 local OldWargroove = require "wargroove/wargroove"
 local UnitPostCombat = require "wargroove/unit_post_combat"
+local dump = require "util/dump"
 --local VisionTracker = require "initialized/vision_tracker"
 
 local WargrooveExtra = {}
@@ -7,6 +8,7 @@ local originalGetMapTriggers
 local originalApplyBuffs
 local originalDoPostCombat
 function WargrooveExtra.init()
+	print("wargroove_extra.lua loaded")
 	originalGetMapTriggers = OldWargroove.getMapTriggers
 	OldWargroove.getMapTriggers = WargrooveExtra.getMapTriggers
 --	OldWargroove.waitTime = WargrooveExtra.waitTime
@@ -27,7 +29,7 @@ local hiddenTriggersEnd = {}
 
 local highAlertAnimation = "ui/icons/high_alert"
 local highAlertEntity = {}
-function WargrooveExtra:doPostCombat(unitId, isAttacker)
+function WargrooveExtra:doPostCombat(unitId, isAttacker, healthAfterCombat)
     local unit = OldWargroove.getUnitById(unitId)
     if unit == nil then
         return
@@ -35,7 +37,7 @@ function WargrooveExtra:doPostCombat(unitId, isAttacker)
 
     local postCombat = UnitPostCombat:getPostCombat(unit.unitClassId)
     if (postCombat ~= nil) then
-        postCombat(OldWargroove, unit, isAttacker)
+        postCombat(OldWargroove, unit, isAttacker, healthAfterCombat)
     end
 	local postCombatGeneric = UnitPostCombat:getPostCombatGeneric()
 	for i,method in pairs(postCombatGeneric) do
@@ -113,6 +115,9 @@ end
 
 function WargrooveExtra.getMapTriggers()
 	local originalTriggers = originalGetMapTriggers()
+	print("WargrooveExtra.getMapTriggers()")
+	print("originalTriggers")
+	print(dump(originalTriggers))
 	local combinedTriggers = {}
 	for i,v in ipairs(hiddenTriggersStart) do
 		table.insert(combinedTriggers, v) 
@@ -123,6 +128,8 @@ function WargrooveExtra.getMapTriggers()
 	for i,v in ipairs(hiddenTriggersEnd) do
 		table.insert(combinedTriggers, v) 
 	end
+	print("combinedTriggers")
+	print(dump(combinedTriggers))
     return combinedTriggers
 end
 
@@ -165,30 +172,12 @@ end
 
 
 function WargrooveExtra.waitTime(time)
-	print("WargrooveExtra.waitTime(time)")
 	local currentTime = 0
     local timeStamp = currentTime+ time
-	print("timeStamp")
-	print(timeStamp)
     while currentTime < timeStamp do
-		print("now")
-		print(currentTime)
 		currentTime = currentTime +1.0/60.0
         coroutine.yield()
     end
-end
-
-function dump(o,level)
-   if type(o) == 'table' then
-      local s = '\n' .. string.rep("   ", level) .. '{\n'
-      for k,v in pairs(o) do
-         if type(k) ~= 'number' then k = '"'..k..'"' end
-         s = s .. string.rep("   ", level+1) .. '['..k..'] = ' .. dump(v,level+1) .. ',\n'
-      end
-      return s .. string.rep("   ", level) .. '}'
-   else
-      return tostring(o)
-   end
 end
 
 return WargrooveExtra

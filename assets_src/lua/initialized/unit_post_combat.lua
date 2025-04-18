@@ -4,16 +4,24 @@ local UnitPostCombat = {}
 local PostCombat = {}
 local PostCombatGeneric = {}
 local classMap = {}
+local originalGetPostCombat
 
 function UnitPostCombat.init()
-  OldUnitPostCombat.getPostCombat = UnitPostCombat.getPostCombat
-  OldUnitPostCombat.getPostCombatGeneric = UnitPostCombat.getPostCombatGeneric
+    originalGetPostCombat = OldUnitPostCombat.getPostCombat
+    OldUnitPostCombat.getPostCombat = UnitPostCombat.getPostCombat
+    OldUnitPostCombat.getPostCombatGeneric = UnitPostCombat.getPostCombatGeneric
 end
 
 
 
 function UnitPostCombat:getPostCombat(unitClassId)
-    return PostCombat[unitClassId]
+    print("UnitPostCombat:getPostCombat(unitClassId)")
+    if PostCombat[unitClassId]~=nil then
+        return PostCombat[unitClassId]
+    else
+        print(originalGetPostCombat)
+        return originalGetPostCombat(OldUnitPostCombat,unitClassId)
+    end
 	
 end
 
@@ -39,9 +47,9 @@ function PostCombat.rifleman(Wargroove, unit, isAttacker)
 end
 
 function PostCombatGeneric.attack(Wargroove, unit, isAttacker)
-    if not isAttacker then
-        return
-    end    
+    -- if not isAttacker then
+    --     return
+    -- end    
 	local isHighAlertToBeRemoved = Wargroove.getUnitState(unit, "high_alert")
 	if (isHighAlertToBeRemoved ~= nil) and (isHighAlertToBeRemoved == "to_be_removed") then
 		isHighAlertToBeRemoved = true

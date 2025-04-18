@@ -3,17 +3,17 @@
     - small_
     - map_
   data:
-    palette: image/palettes/wargroove_palette.png
+    palette: palettes/wargroove_palette.png
     material: Wargroove/PaletteSwap
     atlas: units/map_units_RagnarokMod
 - match:
     - portrait
   data:
-    palette: image/palettes/wargroove_palette.png
+    palette: palettes/wargroove_palette.png
     material: Wargroove/PaletteSwap
     atlas: portraits_RagnarokMod
     trim: false
 - data:
-    palette: image/palettes/wargroove_palette.png
+    palette: palettes/wargroove_palette.png
     material: Wargroove/PaletteSwap
 ...

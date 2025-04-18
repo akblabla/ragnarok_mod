@@ -13,7 +13,7 @@ terrains:
       amphibious: 2
       land_building: 1
       indoor_building: 1
-    movementGroupType: land
+    movementGroupType: [land]
     placeable: true
     tilesets:
       0: plains
@@ -30,11 +30,14 @@ terrains:
       amphibious: 2
       land_building: 1
       indoor_building: 1
-    movementGroupType: land
+    movementGroupType: [land]
     placeable: true
     tilesets:
-      0: [plains, plains_alt, street]
+      0: [plains, plains_alt]
       2: road
+    wang:
+      complementary: true
+      adjacencies: [bridge, abyss_bridge]
 
   - id: forest
     name: terrain_name_forest
@@ -45,7 +48,7 @@ terrains:
       flying: 1
       hovering: 1
       amphibious: 4
-    movementGroupType: land
+    movementGroupType: [land]
     placeable: true
     visionBlocking: true
     fowCover: true
@@ -60,7 +63,7 @@ terrains:
       walking: 3
       flying: 1
       hovering: 1
-    movementGroupType: land
+    movementGroupType: [land]
     placeable: true
     visionBlocking: true
     sightBonus: 2
@@ -78,13 +81,15 @@ terrains:
       hovering: 1
       land_building: 1
       indoor_building: 1
-    movementGroupType: land
+    movementGroupType: [land]
     cantStop: [flying]
     placeable: true
     indoor: true
     tilesets:
-      0: [plains, rough, plains_alt, street]
+      0: [plains, rough, plains_alt]
       1: cobblestone
+    wang:
+      complementary: true
 
   - id: carpet
     name: terrain_name_carpet
@@ -96,25 +101,29 @@ terrains:
       hovering: 1
       land_building: 1
       indoor_building: 1
-    movementGroupType: land
+    movementGroupType: [land]
     placeable: true
     indoor: true
     tilesets:
-      0: [plains, rough, plains_alt, street]
+      0: [plains, rough, plains_alt]
       1: cobblestone
       2: carpet
+    wang:
+      complementary: true
 
   - id: wall
     name: terrain_name_wall
     defenceBonus: 0
     movementCost: {}
-    movementGroupType: land
+    movementGroupType: [land]
     visionBlocking: true
     placeable: true
     tilesets:
-      0: [plains, rough, plains_alt, street]
+      0: [plains, rough, plains_alt]
       1: cobblestone
       2: wall
+    wang:
+      complementary: true
 
   - id: bridge
     name: terrain_name_bridge
@@ -130,12 +139,18 @@ terrains:
       land_building: 1
       indoor_building: 1
     cantStop: [sailing]
-    movementGroupType: land
+    movementGroupType: [land]
     placeable: true
     tilesets: 
-      0: [plains, plains_alt, street]
-      1: [sea_alt, quay, river, cave_river, cave_sea]
+      0: [sea, quay, plains, plains_alt, street]
+      1: [river, cave_river, cave_sea]
       2: bridge
+    wang:
+      blend: true
+      blendTo: [plains, road, forest, forest_cut, mountain, cobblestone]
+      complementary: true
+      canRenderWater: true
+      adjacencies: [road]
 
   - id: sea
     name: terrain_name_sea
@@ -154,11 +169,15 @@ terrains:
       volcano:
         flying: 1
         hovering: 1
-    movementGroupType: water
-    placeable: false
+    movementGroupType: [water]
+    placeable: true
     tilesets:
-      0: [plains, plains_alt, street]
+      0: [plains, plains_alt]
       1: sea
+    wang:
+      complementary: true
+      canRenderWater: true
+      adjacencies: [beach, ocean, reef, river]
 
   - id: ocean
     name: terrain_name_ocean
@@ -167,20 +186,35 @@ terrains:
     biomeDescriptions:
       volcano: terrain_description_lava
     defenceBonus: 0
+    cantStop: [airphibious]
     movementCost:
+      river_sailing: 2
       sailing: 1
       flying: 1
       hovering: 1
-      amphibious: 1
       sea_building: 1
+      river_sea_building: 1
+      airphibious: 1
+      amphibious: 2
     biomeMovementCosts:
       volcano:
         flying: 1
         hovering: 1
-    movementGroupType: water
+      dungeon:
+        flying: 1
+        hovering: 1
+      dungeon_lava:
+        flying: 1
+        hovering: 1
+    movementGroupType: [water]
     placeable: true
     tilesets:
+      0: sea
       1: ocean
+    wang:
+      complementary: true
+      canRenderWater: true
+      adjacencies: []
 
   - id: reef
     name: terrain_name_reef
@@ -199,12 +233,12 @@ terrains:
       volcano:
         flying: 1
         hovering: 1
-    movementGroupType: water
+    movementGroupType: [water]
     placeable: true
     fowCover: true
     tilesets: 
       0: [plains, plains_alt, street]
-      1: [sea_alt, quay]
+      1: [sea, quay]
       2: reef
 
   - id: river
@@ -215,36 +249,46 @@ terrains:
       volcano: terrain_description_lava
     defenceBonus: -2
     movementCost:
-      sailing: 1
       walking: 2
       riding: 4
       flying: 1
       hovering: 1
       amphibious: 1
-      sea_building: 1
+      airphibious: 1
+      river_sailing: 1
+      river_building: 1
+      river_sea_building: 1
     biomeMovementCosts:
       volcano:
         flying: 1
         hovering: 1
-    movementGroupType: land
+      dungeon_lava:
+        flying: 1
+        hovering: 1
+    movementGroupType: [land, water]
     placeable: true
     tilesets:
       0: [plains, plains_alt, street]
       1: river
+    wang:
+      blend: true
+      blendTo: [sea, beach]
+      complementary: true
+      canRenderWater: true
+      adjacencies: [sea, beach, ocean, reef]
 
   - id: beach
     name: terrain_name_beach
     defenceBonus: -1
     movementCost:
-      sailing: 2
+      sailing: 3
+      river_sailing: 1
       walking: 1
-      riding: 2
+      riding: 1
       flying: 1
       hovering: 1
-      amphibious: 1
-      sea_building: 1
-      land_building: 1
-      indoor_building: 1
+      airphibious: 1
+      amphibious: 2
     biomeMovementCosts:
       volcano:
         walking: 1
@@ -252,11 +296,17 @@ terrains:
         flying: 1
         hovering: 1
         amphibious: 2
-    movementGroupType: land
+    movementGroupType: [land, water]
     placeable: true
     tilesets:
-      0: [plains, plains_alt, street]
+      0: [plains,plains_alt]
       1: beach
+    wang:
+      blend: true
+      blendTo: [sea, river]
+      complementary: true
+      canRenderWater: true
+      adjacencies: [sea, ocean, reef, river]
 
   - id: sky
     name: terrain_name_sky
@@ -264,7 +314,7 @@ terrains:
     movementCost:
       flying: 1
       hovering: 1
-    movementGroupType: air
+    movementGroupType: [air]
     placeable: false
 
   - id: city
@@ -277,14 +327,14 @@ terrains:
       hovering: 1
       wheels: 1
       amphibious: 2
-    movementGroupType: land
+    movementGroupType: [land]
     placeable: false
 
   - id: volcano
     name: terrain_name_volcano
     defenceBonus: 0
     movementCost: {}
-    movementGroupType: land
+    movementGroupType: [land]
     placeable: true
     hidden: true
     tilesets:

@@ -1,7 +1,7 @@
 ---
 
 # This is the string configuration file for English.
-en-GB:
+en-GB: &flag-en
   # Actions
   trigger_action_name_ai_set_no_building_attacking: "AI: Set no building attacking"
   trigger_action_description_ai_set_no_building_attacking: "Prevents AI from attacking buildings."
@@ -39,6 +39,10 @@ en-GB:
   trigger_action_description_change_objective_with_3_counters: "Change objective with 3 counters."
   trigger_action_readable_change_objective_with_3_counters: "Sets the map objective to {0} ({1}) {2} ({3}) {4}."
   
+  trigger_action_name_change_thieves_objective: "Map: Update Highway Robbery Objective"
+  trigger_action_description_change_thieves_objective: "Update Highway Robbery Objective."
+  trigger_action_readable_change_thieves_objective: "Sets the map objective to highway robbery with {0} remaining and {1} escaped."
+
   trigger_action_name_dialogue_box_with_counter: "Map: Display dialog with counter"
   trigger_action_description_dialogue_box_with_counter: "Display dialog with counter."
   trigger_action_readable_dialogue_box_with_counter: "Display dialogue box with {0} {1} saying \"{2}\" with shout: {3}. Use counter {4}."
@@ -243,5 +247,15 @@ en-GB:
   trigger_condition_name_end_group: "Util: End"
   trigger_condition_description_end_group: "End group."
   trigger_condition_readable_end_group: "End group."
-
+    
+de-DE: *flag-en
+es-ES: *flag-en
+fr-FR: *flag-en
+it-IT: *flag-en
+ja-JP: *flag-en
+ko-KR: *flag-en
+pt-BR: *flag-en
+ru-RU: *flag-en
+zh-Hans: *flag-en
+zh-Hant: *flag-en
 ...

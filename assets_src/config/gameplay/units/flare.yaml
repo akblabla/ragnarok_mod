@@ -9,8 +9,6 @@ unitClasses:
     moveRange: 2
     aiPriority: 0.1
     weapons: []
-    verbs:
-      - wait_ai
     tags:
       - summon
       - type.air

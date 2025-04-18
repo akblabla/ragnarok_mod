@@ -16,6 +16,7 @@ local actions = {
 	repeating = {front = {}, back = {}}}
 
 function Ragnarok.init()
+	print("Ragnarok.lua loaded")
 	local resetOccurencesTrigger = {
 		id = "Reset Occurence List",
 		recurring = "repeat",
@@ -146,7 +147,7 @@ local goldRobbed = {}
 Ragnarok.crownID = nil
 Ragnarok.crownBearerID = nil
 local crownAnimation = "ui/icons/fx_crown"
-local crownOffsetAnimation = "ui/icons/fx_crown_offset"
+--local crownOffsetAnimation = "ui/icons/fx_crown_offset"
 local crownStateKey = "crown"
 local fogOfWarRulesEnabled = false
 local occurences = {}
@@ -168,7 +169,7 @@ function Ragnarok.regenerateCrownBearer(context)
 	if Ragnarok.crownBearerID ~= nil and context:checkState("startOfTurn") then
 		local crownBearer = Wargroove.getUnitById(Ragnarok.crownBearerID)
 		local currentTurnPlayerId = Wargroove.getCurrentPlayerId()
-		if currentTurnPlayerId == crownBearer.playerId or currentTurnPlayerId == Wargroove.getPlayerChildOf(crownBearer.playerId) then
+		if crownBearer~= nil and (currentTurnPlayerId == crownBearer.playerId or currentTurnPlayerId == Wargroove.getPlayerChildOf(crownBearer.playerId)) then
 			if crownBearer.health<crownBearer.unitClass.maxHealth then
                 Wargroove.playMapSound("unitHealed", crownBearer.pos)
 				crownBearer:setHealth(crownBearer.health+20,Ragnarok.crownBearerID)
@@ -594,6 +595,7 @@ end
 
 function Ragnarok.moveInArch(unitId, startPos, targetPos, numSteps, speed, gravity, xyGamma, zGamma, eventPackages)
 
+	print("Ragnarok.moveInArch start")
 	if not xyGamma then
 		xyGamma = 1
 	end
@@ -610,6 +612,7 @@ function Ragnarok.moveInArch(unitId, startPos, targetPos, numSteps, speed, gravi
     local yStep = yDiff / numSteps
 	local dist = math.sqrt(xDiff^2+yDiff^2)
 	local tEnd = dist/speed
+	print("1")
 	--use z = 1/2at^2+bt
 	--find b by constraining that at the mid section of the journey, the differential of z over time is zero.
 	--dz/dt = at+b
@@ -627,6 +630,7 @@ function Ragnarok.moveInArch(unitId, startPos, targetPos, numSteps, speed, gravi
 			deltaSteps[i] = steps[i]
 		end
     end
+	print("2")
 	local doneEvents = {}
     for i = 1, numSteps do
 		--print("Checking Event Packages")
@@ -649,11 +653,15 @@ function Ragnarok.moveInArch(unitId, startPos, targetPos, numSteps, speed, gravi
 				end
 			end
 		end
+		print("3")
 		Wargroove.moveUnitToOverride(unitId, startPos, steps[i].x, steps[i].y, math.max(math.sqrt(deltaSteps[i].x^2+deltaSteps[i].y^2)*numSteps/tEnd,1))
+		print("4")
 		while (Wargroove.isLuaMoving(unitId)) do
 			coroutine.yield()
 		end
+		print("5")
     end
+	print("6")
 	--print("Checking for missed Event Packages")
 	if eventPackages ~= nil then
 		for i, eventPackage in pairs(eventPackages) do
@@ -663,9 +671,10 @@ function Ragnarok.moveInArch(unitId, startPos, targetPos, numSteps, speed, gravi
 			end
 		end
 	end
+	print("Ragnarok.moveInArch end")
 end
 
-function dump(o,level)
+function Ragnarok.dump(o,level)
    if type(o) == 'table' then
       local s = '\n' .. string.rep("   ", level) .. '{\n'
       for k,v in pairs(o) do

@@ -17,20 +17,37 @@ function Upgrade:recruitsContain(recruits, unit)
      return false
 end
 
-function Upgrade:getRecruitableTargets(unit)
+local function unitCompare(a,b)
+    return Wargroove.getUnitClass(a).cost<Wargroove.getUnitClass(b).cost
+end
+
+function Upgrade:getRecruitableTargets(unit, endPos)
+    
+    local neighbours = Wargroove.getTargetsInRange(endPos, 1, "unit");
     local recruits = {}
-    for i,recruit in pairs(defaultUnits) do
-        local uc = Wargroove.getUnitClass(recruit)
-        if recruit~=unit.unitClassId and (uc.cost>unit.unitClass.cost) then
-            table.insert(recruits,recruit)
+    for i,tile in pairs(neighbours) do
+        local neighbour = Wargroove.getUnitAt(tile)
+        if (neighbour~=nil) and (neighbour.unitClassId == "tavern") then
+            for j,recruit in pairs(neighbour.recruits) do
+                local uc = Wargroove.getUnitClass(recruit)
+                if recruit~=unit.unitClassId and (uc.cost>unit.unitClass.cost) then
+                    recruits[recruit] = true;
+                end
+            end
         end
     end
-    return recruits
+
+    local flippedRecruits = {}
+    for recruit,i in pairs(recruits) do
+        table.insert(flippedRecruits,recruit)
+    end
+    table.sort(flippedRecruits,unitCompare)
+    return flippedRecruits
 end
 
 
 function Upgrade:getMaximumRange(unit, endPos)
-	return 0
+	return 1
 end
 
 local function getCost(cost)
@@ -54,7 +71,7 @@ function Upgrade:canExecuteWithTarget(unit, endPos, targetPos, strParam)
         return false
     end
     if (unit.unitClassId~="villager") then
-        local neighbours = Wargroove.getTargetsInRange(targetPos, 1, "unit");
+        local neighbours = Wargroove.getTargetsInRange(endPos, 1, "unit");
         local isTavern = false;
         for i,tile in pairs(neighbours) do
             local neighbour = Wargroove.getUnitAt(tile)
@@ -94,9 +111,9 @@ end
 
 function Upgrade:preExecute(unit, targetPos, strParam, endPos)
     Upgrade.inPreExecute = false
-    local recruitableUnits = Upgrade.getRecruitableTargets(self, unit);
+    local recruitableUnits = Upgrade:getRecruitableTargets(unit,endPos);
 
-    Wargroove.openRecruitMenu(unit.playerId, unit.id, unit.pos, unit.unitClassId, recruitableUnits, costMultiplier, defaultUnits, "outlaw");
+    Wargroove.openRecruitMenu(unit.playerId, unit.id, unit.pos, unit.unitClassId, recruitableUnits, costMultiplier, defaultUnits);
 
     while Wargroove.recruitMenuIsOpen() do
         coroutine.yield()

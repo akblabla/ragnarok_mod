@@ -1,115 +1,175 @@
 ---
 tilesets:
   - id: carpet
+    type: WangBlob
     biomes:
-      - types: [grass]
+      - types: [grass, flower, deepforest]
         spriteSheet: tilesets
-        spriteBase: grass_carpet_tileset
+        spriteBase: wang_grass_carpet_tileset
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_indoor
         battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
         battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_indoor
         iconSpriteSheet: ui
         iconSprite: terrain_icons_carpet
-        infoScreenOffset: 80
+        infoScreenOffset: 30
         fillColour: '#83786e'
-      - types: [ice]
+      - types: [dungeon]
         spriteSheet: tilesets
-        spriteBase: snow_carpet_tileset
+        spriteBase: wang_dungeon_carpet_tileset
+        emitSpriteBase: wang_dungeon_carpet_tileset_emit
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_indoor
-        battleBackgroundSpriteSheet: backgrounds/snow_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: snow_battlescreen_extendedbackgrounds_indoor
+        battleBackgroundSpriteSheet: backgrounds/dungeon_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: dungeon_battlescreen_extendedbackgrounds_indoor
         iconSpriteSheet: ui
         iconSprite: terrain_icons_carpet
-        infoScreenOffset: 80
+        infoScreenOffset: 30
+        fillColour: '#83786e'
+      - types: [dungeon_lava]
+        spriteSheet: tilesets
+        spriteBase: wang_dungeon_lava_carpet_tileset
+        emitSpriteBase: wang_dungeon_lava_carpet_tileset_emit
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_indoor
+        battleBackgroundSpriteSheet: backgrounds/dungeon_lava_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: dungeon_lava_battlescreen_extendedbackgrounds_indoor
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_carpet
+        infoScreenOffset: 30
+        fillColour: '#83786e'
+      - types: [dungeon_purple]
+        spriteSheet: tilesets
+        spriteBase: wang_dungeon_purple_carpet_tileset
+        emitSpriteBase: wang_dungeon_purple_carpet_tileset_emit
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_indoor
+        battleBackgroundSpriteSheet: backgrounds/dungeon_purple_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: dungeon_purple_battlescreen_extendedbackgrounds_indoor
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_carpet
+        infoScreenOffset: 30
+        fillColour: '#83786e'
+      - types: [jungle]
+        spriteSheet: tilesets
+        spriteBase: wang_jungle_carpet_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_indoor
+        battleBackgroundSpriteSheet: backgrounds/jungle_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: jungle_battlescreen_extendedbackgrounds_indoor
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_carpet
+        infoScreenOffset: 30
+        fillColour: '#83786e'
+      - types: [ice, ice_low]
+        spriteSheet: tilesets
+        spriteBase: wang_ice_carpet_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_indoor
+        battleBackgroundSpriteSheet: backgrounds/ice_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: ice_battlescreen_extendedbackgrounds_indoor
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_carpet
+        infoScreenOffset: 30
         fillColour: '#596876'
-      - types: [desert,tropical]
+      - types: [arctic]
         spriteSheet: tilesets
-        spriteBase: sand_carpet_tileset
+        spriteBase: wang_arctic_carpet_tileset
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_indoor
-        battleBackgroundSpriteSheet: backgrounds/sand_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: sand_battlescreen_extendedbackgrounds_indoor
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_indoor
         iconSpriteSheet: ui
         iconSprite: terrain_icons_carpet
-        infoScreenOffset: 80
+        infoScreenOffset: 30
+        fillColour: '#596876'
+      - types: [arctic_bloom]
+        spriteSheet: tilesets
+        spriteBase: wang_arctic_carpet_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_indoor
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds_bloom
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_bloom_indoor
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_carpet
+        infoScreenOffset: 30
+        fillColour: '#596876'
+      - types: [arctic_blood]
+        spriteSheet: tilesets
+        spriteBase: wang_arctic_carpet_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_indoor
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds_red
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_red_indoor
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_carpet
+        infoScreenOffset: 30
+        fillColour: '#596876'
+      - types: [desert]
+        spriteSheet: tilesets
+        spriteBase: wang_desert_carpet_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_indoor
+        battleBackgroundSpriteSheet: backgrounds/desert_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: desert_battlescreen_extendedbackgrounds_indoor
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_carpet
+        infoScreenOffset: 30
         fillColour: '#807063'
-      - types: [volcano]
-        spriteSheet: tilesets
-        spriteBase: volcanic_carpet_tileset
-        portraitSpriteSheet: terrain/terrain_portraits
-        portraitSprite: terrain_portraits_indoor
-        battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: volcano_battlescreen_extendedbackgrounds_interior_carpet
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_carpet
-        infoScreenOffset: 80
-        fillColour: '#4e4340'
     primaryConnect: [undefined, carpet]
     decayTo: cobblestone
-    tiles:
-      - { x: 0, y: 0, adj: "e s se" }
-      - { x: 1, y: 0, adj: "w sw s se e" }
-      - { x: 2, y: 0, adj: "w s sw" }
-      - { x: 3, y: 0, adj: "e" }
-      - { x: 4, y: 0, adj: "e w" }
-      - { x: 5, y: 0, adj: "w" }
-      - { x: 6, y: 0, adj: "", default: true }
-      - { x: 7, y: 0, adj: "" }
-      - { x: 7, y: 1, adj: "" }
-      - { x: 7, y: 2, adj: "" }
+    extras:
+    # Single tile variation
+      - { x: 6, y: 7, mask: 256 }
+      - { x: 6, y: 8, mask: 256 }
+      - { x: 6, y: 9, mask: 256 }
+      - { x: 3, y: 8, mask: 255 }
+      - { x: 3, y: 9, mask: 255 }
+      - { x: 3, y: 10, mask: 255 }
+      - { x: 1, y: 10, mask: 255 }
+      - { x: 2, y: 10, mask: 255 }
+      - { x: 6, y: 10, mask: 255 }
+      - { x: 6, y: 11, mask: 255 }
+      - { x: 6, y: 12, mask: 255 }
+      - { x: 5, y: 12, mask: 255 }
 
-      - { x: 0, y: 1, adj: "n ne e se s" }
-      - { x: 1, y: 1, adj: "n w e s ne nw se sw" }
-      - { x: 2, y: 1, adj: "n nw w sw s" }
-      - { x: 3, y: 1, adj: "s" }
-      - { x: 4, y: 1, adj: "n e s w" }
-      - { x: 5, y: 1, adj: "w s e" }
-      - { x: 6, y: 1, adj: "n w e" }
-      - { x: 2, y: 3, adj: "n w e s ne nw se sw" }
+    # Corner tile variation
+      - { x: 0, y: 7, mask: 28 }
+      - { x: 4, y: 7, mask: 112 }
+      - { x: 0, y: 11, mask: 7 }
+      - { x: 4, y: 11, mask: 193 }
+    # Outer corner tile variation
+      - { x: 1, y: 8, mask: 247 }
+      - { x: 2, y: 8, mask: 223 }
+      - { x: 1, y: 9, mask: 253 }
+      - { x: 2, y: 9, mask: 127 }
+    # Side tile variation
+      - { x: 1, y: 7, mask: 124 }
+      - { x: 2, y: 7, mask: 124 }
+      - { x: 3, y: 7, mask: 124 }
 
-      - { x: 0, y: 2, adj: "n ne e" }
-      - { x: 1, y: 2, adj: "w nw n ne e" }
-      - { x: 2, y: 2, adj: "w nw n" }
-      - { x: 3, y: 2, adj: "n s" }
-      - { x: 4, y: 2, adj: "n s e" }
-      - { x: 5, y: 2, adj: "s e" }
-      - { x: 6, y: 2, adj: "s w" }
-      - { x: 7, y: 3, adj: "n s" }
-      - { x: 7, y: 4, adj: "e w" }
-      - { x: 7, y: 5, adj: "n s" }
-      - { x: 7, y: 6, adj: "e w" }
+      - { x: 0, y: 8, mask: 31 }
+      - { x: 0, y: 9, mask: 31 }
+      - { x: 0, y: 10, mask: 31 }
 
-      - { x: 3, y: 3, adj: "n" }
-      - { x: 4, y: 3, adj: "n w s" }
-      - { x: 5, y: 3, adj: "n e" }
-      - { x: 6, y: 3, adj: "n w" }
+      - { x: 4, y: 8, mask: 241 }
+      - { x: 4, y: 9, mask: 241 }
+      - { x: 4, y: 10, mask: 241 }
 
-      - { x: 0, y: 3, adj: "n w e s ne nw sw" }
-      - { x: 1, y: 3, adj: "n w e s ne nw se" }
-      - { x: 0, y: 4, adj: "n w e s nw se sw" }
-      - { x: 1, y: 4, adj: "n w e s ne se sw" }
+      - { x: 1, y: 11, mask: 199 }
+      - { x: 2, y: 11, mask: 199 }
+      - { x: 3, y: 11, mask: 199 }
+    # U-shaped 1 tile wide ending variation
+      - { x: 0, y: 12, mask: 4 }
+      - { x: 4, y: 12, mask: 64 }
+      - { x: 5, y: 7, mask: 16 }
+      - { x: 5, y: 11, mask: 1 }
+    # Parallel 1 tile beach river variation
+      - { x: 1, y: 12, mask: 68 }
+      - { x: 2, y: 12, mask: 68 }
+      - { x: 3, y: 12, mask: 68 }
 
-      - { x: 2, y: 4, adj: "n w e s se sw" }
-      - { x: 3, y: 4, adj: "n w e s nw sw" }
-      - { x: 4, y: 4, adj: "n w e s ne nw" }
-      - { x: 5, y: 4, adj: "n w e s ne se" }
-      - { x: 6, y: 4, adj: "n w s sw" }
-
-      - { x: 0, y: 5, adj: "w s e se" }
-      - { x: 1, y: 5, adj: "w s e sw" }
-      - { x: 2, y: 5, adj: "n w e ne" }
-      - { x: 3, y: 5, adj: "n w e nw" }
-      - { x: 4, y: 5, adj: "n s e se" }
-      - { x: 5, y: 5, adj: "n s e ne" }
-      - { x: 6, y: 5, adj: "n w s nw" }
-
-      - { x: 0, y: 6, adj: "n e s w nw" }
-      - { x: 1, y: 6, adj: "n e s w ne" }
-      - { x: 2, y: 6, adj: "n e s w se" }
-      - { x: 3, y: 6, adj: "n e s w sw" }
-      - { x: 4, y: 6, adj: "n w e s ne sw" }
-      - { x: 5, y: 6, adj: "n w e s nw se" }
-
+      - { x: 5, y: 8, mask: 17 }
+      - { x: 5, y: 9, mask: 17 }
+      - { x: 5, y: 10, mask: 17 }
 ...

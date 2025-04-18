@@ -1,5 +1,5 @@
 ---
-en-GB:
+en-GB: &flag-en
 
   # STORY MAIN 1 Prologue
   # Cutscene: Start of match. Vesper stalks Emeric's ship
@@ -341,7 +341,17 @@ en-GB:
   ragnarok_main4_cutscene_ending_Mercival_02: "The chieftain must know what happened to the crown."
   ragnarok_main4_cutscene_ending_Emeric_02: "The balloons were just filled with low rate criminals. The ones we want went by boat."
   ragnarok_main4_cutscene_ending_Mercival_03: "Then let us set sail!"
-
+    
+de-DE: *flag-en
+es-ES: *flag-en
+fr-FR: *flag-en
+it-IT: *flag-en
+ja-JP: *flag-en
+ko-KR: *flag-en
+pt-BR: *flag-en
+ru-RU: *flag-en
+zh-Hans: *flag-en
+zh-Hant: *flag-en
 #No more real content  
 #Mission 5 is Welcome to the Jungle, or maybe Mangroove Madness?
 #Wulfar gets a tip from Farnsworth about a battle at Cradle Island between vesper and the florans.

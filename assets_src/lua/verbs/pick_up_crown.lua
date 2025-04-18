@@ -38,13 +38,41 @@ function handOverCrown:execute(unit, targetPos, strParam, path)
 end
 
 function handOverCrown:generateOrders(unitId, canMove)
+    local orders = {}
     local unit = Wargroove.getUnitById(unitId)
-    return {}
+    if not self:canExecuteAnywhere(unit) then
+        return orders
+    end
+    if unit.health > 20 then
+        return orders
+    end
+    local crownPos = Ragnarok.getCrownPos()
+	if crownPos == nil then return orders end
+
+    local unitClass = Wargroove.getUnitClass(unit.unitClassId)
+    local movePositions = {}
+    if canMove then
+        movePositions = Wargroove.getTargetsInRange(unit.pos, unitClass.moveRange, "empty")
+    end
+    table.insert(movePositions, unit.pos)
+
+    for i, pos in pairs(movePositions) do
+        local dist = math.abs(pos.x-crownPos.x)+math.abs(pos.y-crownPos.y)
+        if dist<=self:getMaximumRange(unit, pos) and self:canExecuteWithTarget(unit, pos, crownPos, "") then
+            table.insert(orders, {
+                targetPosition = crownPos,
+                strParam = "",
+                movePosition = pos,
+                endPosition = pos
+            })
+        end
+    end
+
+    return orders
 end
 
 function handOverCrown:getScore(unitId, order)
-    local unit = Wargroove.getUnitById(unitId)
-    return {score = -1, introspection = {}}
+    return {score = 200, introspection = {}}
 end
 
 return handOverCrown

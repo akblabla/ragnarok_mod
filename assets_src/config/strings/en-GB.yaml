@@ -1,7 +1,7 @@
 ---
 
 # This is the string configuration file for English.
-en-GB:
+en-GB: &flag-en
   #AI
   ai_profile_rival_pirate: Rival Pirate
   ai_profile_coward: Coward
@@ -9,6 +9,7 @@ en-GB:
   ai_profile_mangrove_madness: Mangrove Madness
   ai_profile_city_passive: City Passive
   ai_profile_city_war: City War
+  ai_profile_abandoned_bandits: Abandoned Bandits 
 
   # Merge Verb
   ui_unit_verbs_better_merge: Merge
@@ -26,6 +27,9 @@ en-GB:
   ui_unit_verbs_rescue: Rescue
   ui_unit_verbs_hire: Hire
   ui_unit_verbs_upgrade: Retrain
+  ui_unit_verbs_ascend: Ascend
+  ui_unit_verbs_descend: Descend
+  ui_unit_verbs_reposition: Reposition
   
   #biomes
   biome_name_tropical: Tropical
@@ -41,7 +45,7 @@ en-GB:
   terrain_description_invisible_wall_sea: The hull of the ship is unscalable by normal means, but still lets flyers pass over.
   terrain_description_invisible_wall_ocean: The hull of the ship is unscalable by normal means, but still lets flyers pass over.
   terrain_description_invisible_blocker_ocean: The cabin walls prevents all units from passing.
-  terrain_description_sea_alt: Open water. Accessible only to air and naval units.
+  terrain_description_sea: Open water. Accessible only to air and naval units.
   terrain_description_river: Slows down land units. Units attacked in a river are at a distinct disadvantage.
   terrain_name_mangrove: Mangrove
   terrain_description_mangrove: Conceals units, but it is incredibly slow to traverse for both naval and ground units.
@@ -66,19 +70,13 @@ en-GB:
   terrain_description_cave_road: Underground roads speeds along wheeled units, but only provide limited defense.
   terrain_name_street: Road
   terrain_description_street: Urban roads that speed along big wooden wheels, but offer little protection.
-  terrain_name_building: Building
+  terrain_name_building: Wall
   terrain_description_building: Buildings so densely packed they act as walls for units.
   terrain_name_quay: Sea
   terrain_description_quay: Open water. Accessible only to air and naval units.
   terrain_description_bridge_wide: Bridges allow wheeled vehicles to travel quickly over otherwise impassable waters.
 
 
-  #Fog of war gimmick tiles
-  terrain_description_forest_no_hiding: Forests are slow going, but provide good defence and a means of avoiding vehicles
-  terrain_description_forest_alt_no_hiding: Forests are slow going, but provide good defence and a means of avoiding vehicles
-  terrain_description_mountain_no_blocking: "Accessible only to walking and air units. Slow going, but confers high defence."
-  terrain_description_reef_no_hiding: "Rocks that lie beneath the sea, slowing but also protecting naval units."
-  terrain_description_wall_no_blocking: "While projectiles can travel over walls, units are unable to."
   
   terrain_name_deck: Deck
   terrain_name_outlaw_ship: Outlaw Ship
@@ -113,6 +111,10 @@ en-GB:
   character_duchess_name: "Sabah"
   character_duchess_title: "The Duchess of Dorne"
   unit_description_commander_duchess: "Duchess of Dorne. She commands her units to strike first when attacked."
+  
+  character_duchess_cutscene_name: "Sabah"
+  character_duchess_cutscene_title: "The Duchess of Dorne"
+  unit_description_commander_duchess_cutscene: "Duchess of Dorne. She commands her units to strike first when attacked."
 
 
   character_rival_name: "Rival"
@@ -153,6 +155,7 @@ en-GB:
   unit_description_rival: "Ranged ground units able to move and attack in the same turn. Critical hit when stationary."
   unit_name_rival: Ol' Friend
   
+  unit_class_name_travelboat_with_gold: Loaded Barge
 
   unit_name_archer_outlaws: Poacher 
   unit_name_dog_outlaws: Stray
@@ -175,8 +178,10 @@ en-GB:
   unit_name_ballista_outlaws: Ballista 
   unit_name_travelboat_outlaws: Barge
   unit_name_villager_outlaws: Beggar 
-  unit_name_thief_cherrystone: Tax Collector
+  unit_name_thief_cherrystone: Sheriff
+  unit_name_thief_with_gold_cherrystone: Sheriff with Gold
   unit_name_thief_outlaws: Smuggler
+  unit_name_thief_with_gold_outlaws: Smuggler with Gold
   unit_name_rifleman_outlaws: Sharpshooter 
   unit_name_rival_outlaws: Ol'Friend 
 
@@ -205,6 +210,8 @@ en-GB:
   unit_description_giant: "[MELEE] An immensely powerful unit. Critical hit when at or below 40% health."
   unit_description_ballista: "Ranged ground-to-air unit, unable to move and attack in the same turn. Critical hit at min range."
   unit_description_travelboat: "Boats able to transport all ground units across water. Can steal from buildings."  
+  unit_description_travelboat_with_gold: "Boats able to transport all ground units across water. Can steal from buildings."  
+
   #backgrounds
   ui_cutscene_background_deck: "Ship Deck"
   ui_cutscene_background_outlaw_ship: "Outlaw Ship"
@@ -217,13 +224,14 @@ en-GB:
   ui_cutscene_background_sand_cave: "Sand Cave"
   ui_cutscene_background_forge: "Forge"
   ui_cutscene_background_grass_bridge_bg: "Grass Bridge BG"
+  ui_cutscene_background_grass_forest_scene: "Grass Forest Scene"
   
   #cutscene sound effects
   ui_cutscene_sfx_wulfar_hug: "Wulfar and Vesper Hug"
   ui_cutscene_sfx_emeric_charged_attack: "Emeric Charged Attack"
   ui_cutscene_sfx_plip: "Plip"
   ui_cutscene_sfx_plop: "Plop"
-  
+  ui_cutscene_sfx_ballistaSound: "Ballista shooting"
   # CUTSCENE VISUAL EFFECTS
   ui_cutscene_vfx_wulfar_vesper_hug: "Wulfar and Vesper Hug"
   ui_cutscene_vfx_outlaw_HQ_banner: "Outlaw HQ Animated Banner"
@@ -249,7 +257,9 @@ en-GB:
   ui_cutscene_prop_forge_flame: "Forge Flames"
   ui_cutscene_prop_large_table: "Large Table"
   ui_cutscene_prop_large_table_servings: "Large Table Servings"
-
+  ui_cutscene_prop_crown: "Crown"
+  ui_cutscene_prop_bush2: "bush 2"
+  
   # MUSIC
   music_name_tavern_distant: "Distant Tavern"
   music_name_bar_ambience_distant: "Distant Tavern Ambience"
@@ -259,6 +269,12 @@ en-GB:
   ui_cutscene_emote_crown_surprise: "Crown Surprised"
   ui_cutscene_emote_crown_surprise_clean: "Crown Surprised Clean"
   ui_cutscene_emote_cushion_surprise_clean: "Cushion Surprised Clean"
+  ui_cutscene_emote_sit: "Sit"
+  ui_cutscene_emote_idle_sit_with_bug: "Sit with bug"
+  ui_cutscene_emote_standup_with_bug: "Stand up with bug"
+  ui_cutscene_emote_idle_bug: "Idle bug"
+  ui_cutscene_emote_hit_by_smoke: "Get Hit with Smoke"
+  ui_cutscene_emote_idle_sit_smoked: "Idle smoked"
   
   # CUTSCENE DUCHESS VOICE LINES
   ui_cutscene_shout_duchess_acoldwindblows: "\"A cold wind blows!\""
@@ -302,4 +318,14 @@ en-GB:
   ui_cutscene_shout_duchess_youhavemythanks: "\"You have my thanks.\""
   ui_cutscene_shout_duchess_youthinkthisisagame: "\"You think this is a game?\""
 
+de-DE: *flag-en
+es-ES: *flag-en
+fr-FR: *flag-en
+it-IT: *flag-en
+ja-JP: *flag-en
+ko-KR: *flag-en
+pt-BR: *flag-en
+ru-RU: *flag-en
+zh-Hans: *flag-en
+zh-Hant: *flag-en
 ...
