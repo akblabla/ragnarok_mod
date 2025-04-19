@@ -1,0 +1,37 @@
+---
+gizmos:
+  - id: robe
+    layer: units
+    animation: gizmo/robe
+  - id: cave
+    layer: units
+    animation: gizmo/cave
+      
+      
+#original assets that need tropical variants
+  - id: broken_wall
+    animation:
+      grass: gizmo/broken_wall
+      tropical: gizmo/broken_wall_desert
+      desert: gizmo/broken_wall_desert
+      ice: gizmo/broken_wall_snow
+      volcano: gizmo/broken_wall_volcano
+    offState:
+      terrainOverride: wall
+  - id: broken_wall_vertical
+    animation:
+      grass: gizmo/broken_wall_vertical
+      tropical: gizmo/broken_wall_vertical_desert
+      desert: gizmo/broken_wall_vertical_desert
+      ice: gizmo/broken_wall_vertical_snow
+      volcano: gizmo/broken_wall_vertical_volcano
+    offState:
+      terrainOverride: wall
+  - id: portal
+    animation:
+      grass: gizmo/portal
+      tropical: gizmo/portal_desert
+      desert: gizmo/portal_desert
+      ice: gizmo/portal_snow
+      volcano: gizmo/portal_volcano
+...

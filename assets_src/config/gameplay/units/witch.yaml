@@ -1,0 +1,76 @@
+---
+
+units:
+  - class: witch
+    faction: outlaw
+    name: unit_name_witch_outlaw
+    mapAnimation: units/witch/outlaw/map_witch_outlaw
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_air
+      scale: [0.5, 0.5]
+      jitter:
+        scale: 0.75
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/witch/outlaw/battle_witch_outlaw
+    smallPortrait: units/witch/outlaw/portrait_witch_outlaw_small.png
+    mediumPortrait: units/witch/outlaw/portrait_witch_outlaw_medium.png
+    mapSpeed: 8.0
+    grabPos: [17, 15]
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: witchAttack
+      attackEffect1: witchAttackEffect1
+      attackEffect2: witchAttackEffect2
+      attackEffect3: witchAttackEffect3
+      attackEffect4: witchAttackEffect4
+      death: witchDie
+      deathMap: unitDie
+      run: witchEntry
+      runMap: witchEntryMap
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: oneWitch
+        hitDelay: [1.45]
+        effect: fx/bs_witch_fx_1
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 1
+        attackEffectSound: attackEffect1
+        cutscenePivot: [-35, 140]
+      - id: twoWitches
+        hitDelay: [1.45, 1.75]
+        effect: fx/bs_witch_fx_2
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 2
+        attackEffectSound: attackEffect2
+        cutscenePivot: [-35, 140]
+      - id: threeWitches
+        hitDelay: [1.45, 1.75, 2.15]
+        effect: fx/bs_witch_fx_3
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 3
+        attackEffectSound: attackEffect3
+        cutscenePivot: [-35, 140]
+      - id: fourWitches
+        hitDelay: [1.45, 1.75, 2.15, 2.55]
+        effect: fx/bs_witch_fx_4
+        effectDelay: 0.5
+        ranged: true
+        numAttackers: 4
+        attackEffectSound: attackEffect4
+        cutscenePivot: [-35, 140]
+
+...

@@ -1,0 +1,28 @@
+---
+
+units:
+  - class: fortified_garrison
+    enabled: false
+    faction: outlaw
+    name: unit_name_soldier_outlaw
+    mapAnimation: units/soldier/outlaw/map_soldier_outlaw
+    mapLightSource: lights_small
+    battleAnimation: units/keeper/outlaw/battle_keeper_outlaw
+    smallPortrait: portraits/small/portrait_structure_small.png
+    mediumPortrait: portraits/medium/city.png
+    mapSpeed: 4.0
+    sounds:
+      death: ""
+      run: ""
+      runMap: ""
+      hit: ""
+      attackEffect: cityAttack
+    attacks:
+      - id: primary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.1, 1.3, 1.5, 1.7, 1.8]
+        effect: fx/bs_city_counterattack
+        effectDelay: 0.0
+        ranged: true
+
+...

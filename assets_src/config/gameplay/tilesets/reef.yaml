@@ -102,7 +102,7 @@ tilesets:
         iconSprite: terrain_icons_Reef
         infoScreenOffset: 30
         fillColour: '#2a2542'
-    primaryConnect: [undefined, reef]
+    primaryConnect: [undefined, reef, cave_reef]
     decayTo: sea
     extras:
     # Single tile variation

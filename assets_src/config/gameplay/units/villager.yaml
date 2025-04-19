@@ -1,0 +1,51 @@
+---
+
+units:
+  - class: villager
+    faction: outlaw
+    name: unit_name_villager_outlaw
+    mapAnimation: units/villager/outlaw/map_villager_outlaw
+    mapLightSource:
+      sprite: lights_small
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [0.65, 0.35]
+      jitter:
+        scale: 0.75
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/villager/outlaw/battle_villager_outlaw
+    battleAnimationRiver: fx/river_overlay/battle_villager_river
+    smallPortrait: units/villager/outlaw/portrait_villager_outlaw_small.png
+    mediumPortrait: units/villager/outlaw/portrait_villager_outlaw_medium.png
+    mapSpeed: 4.0
+    grabPos: [13, 14]
+    sounds:
+      death: soldierDieRed
+      deathMap: unitDie
+      run: infantryLightEntry
+      runMap: infantryLightMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    shouts:
+      villager_male_shout1: cutscene/villagerScreamMale1
+      villager_male_shout2: cutscene/villagerScreamMale2
+      villager_female_shout1: cutscene/villagerScreamFemale1
+      villager_female_shout2: cutscene/villagerScreamFemale2
+    emotes:
+      idle: idle
+      idle_old: emote_old_idle
+      cower: emote_cower
+      idle_gold: emote_idle_gold
+      throw_gold: emote_throw_gold
+      old_pushed: emote_old_pushed
+    alternativeRuns:
+      - id: run_gold
+      - id: run_old
+
+...

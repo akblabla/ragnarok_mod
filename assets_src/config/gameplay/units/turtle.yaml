@@ -1,0 +1,52 @@
+---
+
+units:
+  - class: turtle
+    enabled: true
+    faction: outlaw
+    name: unit_name_turtle_outlaw
+    mapAnimation: units/turtle/outlaw/map_turtle_outlaw
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [1.0, 0.6]
+      jitter:
+        scale: 0.5
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/turtle/outlaw/battle_turtle_outlaw
+    smallPortrait: units/turtle/outlaw/portrait_turtle_outlaw_small.png
+    mediumPortrait: units/turtle/outlaw/portrait_turtle_outlaw.png
+    mapSpeed: 4.0
+    grabPos: [13, 19]
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: turtleAttack
+      attackEffect: waveCrash
+      attackShout: soldierPreAttackRed
+      death: merfolkDie
+      deathMap: unitDie
+      run: waterEntry
+      runMap: waterMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        effectDelay: 1.0
+        hitDelay: 1.0
+        samePanel: true
+      - id: turtleDistance
+        effectDelay: 2
+        hitDelay: 2.2
+        effect: fx/bs_turtle_attack
+        ranged: true
+
+...

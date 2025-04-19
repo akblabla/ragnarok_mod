@@ -1,0 +1,61 @@
+---
+
+units:
+  - class: kraken
+    faction: outlaw
+    name: unit_name_kraken_pirates
+    mapAnimation: units/kraken/pirates/map_kraken_pirates
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_large
+      scale: [1.0, 0.6]
+      jitter:
+        scale: 0.25
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/kraken/pirates/battle_kraken_pirates
+    smallPortrait: units/kraken/pirates/portrait_kraken_pirates_small.png
+    mediumPortrait: units/kraken/pirates/portrait_kraken_pirates_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    attackOffset: [10, 0]
+    attackTimingsHack: false
+    battlePosOffset: [-20, 0]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: krakenAttack
+      attackEffect: krakenAttackEffect
+      attackShout: krakenPreAttack
+      death: krakenDie
+      deathMap: unitDie
+      run: krakenEntry
+      runMap: krakenMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+      counter: krakenAttack
+    attacks:
+      - id: primary
+        attackAnimationSequence: counter
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.0
+        attackSound: counter
+        samePanel: true
+      - id: oneKraken
+        hitDelay: 1.3
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_tentacle_pirates_attack
+        effectDelay: 0.7
+        effectPaletteSwaps: true
+
+...

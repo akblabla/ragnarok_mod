@@ -1,0 +1,37 @@
+---
+
+units:
+  - class: balloon
+    faction: outlaw
+    name: unit_name_balloon_outlaw
+    mapAnimation: units/balloon/outlaw/map_balloon_outlaw2
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_large
+      scale: [1.1, 1.1]
+      jitter:
+        scale: 0.5
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/balloon/outlaw/battle_balloon_outlaw2
+    smallPortrait: units/balloon/outlaw/portrait_balloon_outlaw_small2.png
+    mediumPortrait: units/balloon/outlaw/portrait_balloon_outlaw_medium2.png
+    mapSpeed: 6.0
+    grabPos: [22, 5]
+    emotes:
+      idle: idle
+    sounds:
+      death: balloonDie
+      deathMap: unitDie
+      run: balloonEntry
+      runMap: balloonEntryMap
+      hit: hitWood
+      hitMap: hitWood
+
+...

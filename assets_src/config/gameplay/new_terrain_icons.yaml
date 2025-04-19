@@ -17,8 +17,9 @@ terrains:
     movementGroupType: [land]
     placeable: true
     tilesets:
-      0: [plains, rough, plains_alt]
-      1: invisible_blocker_ocean
+      0: sea
+      1: ocean
+      2: invisible_blocker_ocean
 
   - id: invisibleWallOcean_icon
     name: terrain_name_hull
@@ -27,8 +28,9 @@ terrains:
     movementGroupType: [land]
     placeable: true
     tilesets:
-      0: [plains, rough, plains_alt]
-      1: invisible_wall_ocean
+      0: sea
+      1: ocean
+      2: invisible_wall_ocean
 
   - id: invisibleWallSea_icon
     name: terrain_name_hull
@@ -37,7 +39,7 @@ terrains:
     movementGroupType: [land]
     placeable: true
     tilesets:
-      0: [plains, rough, plains_alt]
+      0: sea
       1: invisible_wall_sea
 
 

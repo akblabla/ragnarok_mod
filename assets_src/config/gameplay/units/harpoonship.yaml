@@ -1,0 +1,54 @@
+---
+
+units:
+  - class: harpoonship
+    faction: outlaw
+    name: unit_name_harpoonship_outlaw
+    mapAnimation: units/harpoonship/outlaw/map_harpoonship_outlaw2
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_ship
+      scale: [1.25, 0.9]
+      jitter:
+        scale: 0.25
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/harpoonship/outlaw/battle_harpoonship_outlaw2
+    smallPortrait: units/harpoonship/outlaw/portrait_harpoonship_outlaw_small2.png
+    mediumPortrait: units/harpoonship/outlaw/portrait_harpoonship_outlaw_medium2.png
+    mapSpeed: 6.0
+    attackOffset: [20, 10]
+    grabPos: [10, 9]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: harpoonAttack
+      attackEffect: ballistaAttackEffect
+      attackShout: soldierPreAttackRed
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 1.9
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_harpoon_cherrystone_attack
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
+        effectDelay: 1.8
+
+...

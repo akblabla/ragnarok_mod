@@ -9,7 +9,8 @@ terrains:
       flying: 1
       hovering: 1
       amphibious: 2
-      sea_building: 1
+      airphibious: 1
+      river_sailing: 1
     movementGroupType: [land]
     placeable: true
     visionBlocking: true
@@ -25,6 +26,7 @@ terrains:
       volcano: terrain_name_sea_lava
     biomeDescriptions:
       volcano: terrain_description_lava
+    cantStop: [airphibious]
     defenceBonus: 1
     movementCost:
       sailing: 1
@@ -32,6 +34,9 @@ terrains:
       hovering: 1
       amphibious: 1
       sea_building: 1
+      airphibious: 1
+      river_sailing: 1
+      river_sea_building: 1
     biomeMovementCosts:
       volcano:
         flying: 1
@@ -39,8 +44,7 @@ terrains:
     movementGroupType: [water]
     placeable: true
     tilesets:
-      0: [plains, plains_alt, street]
-      1: quay
+      0: quay
     wang:
       complementary: true
       canRenderWater: true
@@ -58,12 +62,14 @@ terrains:
       sailing: 1
       land_building: 1
       indoor_building: 1
+      airphibious: 1
+      river_sailing: 1
     cantStop: [sailing]
     movementGroupType: [land]
     placeable: true
     tilesets: 
-      0: [plains, plains_alt, street]
-      1: [river, cave_sea, sea, quay]
+      0: [sea, quay, plains, plains_alt, street]
+      1: [river]
       3: bridge_wide
 
   - id: cave_road
@@ -77,12 +83,12 @@ terrains:
       amphibious: 2
       land_building: 1
       indoor_building: 1
+      airphibious: 1
     movementGroupType: [land]
     placeable: true
     tilesets:
-      0: [plains, plains_alt]
-      1: rough
-      2: cave_road
+      0: [plains, plains_alt, rough]
+      1: cave_road
 
   - id: cave_sea
     name: terrain_name_cave_sea
@@ -90,21 +96,27 @@ terrains:
       volcano: terrain_name_sea_lava
     biomeDescriptions:
       volcano: terrain_description_lava
+    cantStop: [airphibious]
     defenceBonus: 2
     movementCost:
       sailing: 1
       hovering: 1
       amphibious: 1
       sea_building: 1
+      airphibious: 1
+      river_sailing: 1
+      river_sea_building: 1
     biomeMovementCosts:
       volcano:
         hovering: 1
     movementGroupType: [water]
     placeable: true
     tilesets:
-      0: [plains, plains_alt]
-      1: rough
-      2: cave_sea
+      0: cave_sea
+    wang:
+      complementary: true
+      canRenderWater: true
+      adjacencies: [beach, ocean, reef, river, bridge, quay, invisible_wall_sea, invisible_blocker_ocean, sea, cave_reef, cave_beach]
 
   - id: cave_bridge
     name: terrain_name_cave_bridge
@@ -118,14 +130,15 @@ terrains:
       sailing: 1
       land_building: 1
       indoor_building: 1
+      airphibious: 1
+      river_sailing: 1
     cantStop: [sailing]
     movementGroupType: [land]
     placeable: true
     tilesets: 
-      0: [plains, plains_alt]
-      1: rough
-      2: [cave_river, cave_sea]
-      3: cave_bridge
+      0: [rough,cave_sea]
+      1: [cave_river]
+      2: cave_bridge
 
   - id: cave_reef
     name: terrain_name_cave_reef
@@ -133,12 +146,14 @@ terrains:
       volcano: terrain_name_reef_lava
     biomeDescriptions:
       volcano: terrain_description_lava
+    cantStop: [airphibious]
     defenceBonus: 3
     movementCost:
       sailing: 2
       hovering: 1
       amphibious: 1
-      sea_building: 1
+      airphibious: 1
+      river_sailing: 2
     biomeMovementCosts:
       volcano:
         flying: 1
@@ -147,10 +162,12 @@ terrains:
     placeable: true
     fowCover: true
     tilesets: 
-      0: [plains, plains_alt]
-      1: rough
-      2: cave_sea
-      3: cave_reef
+      0: cave_sea
+      2: cave_reef
+    wang:
+      complementary: true
+      canRenderWater: true
+      adjacencies: [sea, beach, ocean]
 
   - id: cave_river
     name: terrain_name_cave_river
@@ -166,15 +183,17 @@ terrains:
       hovering: 1
       amphibious: 1
       sea_building: 1
+      airphibious: 1
+      river_sailing: 1
+      river_sea_building: 1
     biomeMovementCosts:
       volcano:
         hovering: 1
     movementGroupType: [land]
     placeable: true
     tilesets:
-      0: [plains, plains_alt]
-      1: rough
-      2: cave_river
+      0: rough
+      1: cave_river
 
   - id: cave_beach
     name: terrain_name_cave_beach
@@ -188,6 +207,9 @@ terrains:
       sea_building: 1
       land_building: 1
       indoor_building: 1
+      airphibious: 1
+      river_sailing: 2
+      river_sea_building: 1
     biomeMovementCosts:
       volcano:
         walking: 1
@@ -197,27 +219,9 @@ terrains:
     movementGroupType: [land]
     placeable: true
     tilesets:
-      0: [plains, plains_alt]
-      1: rough
-      2: cave_beach
-
-  - id: river_plains
-    name: terrain_name_plains
-    defenceBonus: 1
-    movementCost:
-      walking: 1
-      riding: 1
-      flying: 1
-      hovering: 1
-      wheels: 2
-      amphibious: 2
-      land_building: 1
-      indoor_building: 1
-    movementGroupType: [land]
-    placeable: false
-    hidden: true
-    tilesets:
-      0: river_plains
+      0: cave_beach
+    wang:
+      canRenderWater: true
 
   - id: plains_alt
     name: terrain_name_plains
@@ -231,6 +235,7 @@ terrains:
       amphibious: 2
       land_building: 1
       indoor_building: 1
+      airphibious: 1
     movementGroupType: [land]
     placeable: true
     tilesets:
@@ -248,6 +253,7 @@ terrains:
       amphibious: 3
       land_building: 1
       indoor_building: 1
+      airphibious: 1
     movementGroupType: [land]
     fowCover: true
     placeable: true
@@ -267,6 +273,7 @@ terrains:
       amphibious: 3
       land_building: 1
       indoor_building: 1
+      airphibious: 1
     movementGroupType: [land]
     fowCover: true
     placeable: true
@@ -284,6 +291,7 @@ terrains:
       flying: 1
       hovering: 1
       amphibious: 4
+      airphibious: 1
     movementGroupType: [land]
     placeable: true
     visionBlocking: true
@@ -301,6 +309,7 @@ terrains:
       flying: 1
       hovering: 1
       amphibious: 4
+      airphibious: 1
     movementGroupType: [land]
     placeable: true
     visionBlocking: true
@@ -320,11 +329,11 @@ terrains:
       amphibious: 2
       land_building: 1
       indoor_building: 1
+      airphibious: 1
     movementGroupType: [land]
     placeable: true
     tilesets:
-      0: [plains, plains_alt]
-      1: rough
+      0: rough
       
   - id: cave_wall
     name: terrain_name_cave_wall
@@ -334,8 +343,8 @@ terrains:
     visionBlocking: true
     placeable: true
     tilesets:
-      0: [plains, plains_alt]
-      2: cave_wall
+      0: [plains, plains_alt, rough]
+      1: cave_wall
       
       
   - id: deck
@@ -350,9 +359,11 @@ terrains:
       amphibious: 2
       land_building: 1
       indoor_building: 1
+      airphibious: 1
     movementGroupType: [land]
     placeable: true
     tilesets:
+      0: sea
       1: ocean
       2: deck
       
@@ -362,15 +373,16 @@ terrains:
     movementCost:
       flying: 1
       hovering: 1
+      airphibious: 1
     placeable: true
     movementGroupType: [land]
     hidden: true
     tilesets:
-      0: invisible_wall_ocean
+      1: invisible_wall_ocean
     wang:
       complementary: true
       canRenderWater: true
-      adjacencies: []
+      adjacencies: [invisible_blocker_ocean, ocean]
 
   - id: sea_alt
     name: terrain_name_sea
@@ -410,15 +422,13 @@ terrains:
     movementCost: 
       flying: 1
       hovering: 1
+      airphibious: 1
     placeable: true
     movementGroupType: [land]
     hidden: true
     tilesets:
-      0: invisible_wall_sea
-    wang:
-      complementary: true
-      canRenderWater: true
-      adjacencies: [beach, ocean, reef]
+      0: sea
+      1: invisible_wall_sea
       
   - id: invisible_blocker_ocean
     name: terrain_name_cabin
@@ -434,7 +444,7 @@ terrains:
     wang:
       complementary: true
       canRenderWater: true
-      adjacencies: []
+      adjacencies: [ocean, invisible_wall_ocean]
       
 
   - id: street
@@ -449,11 +459,11 @@ terrains:
       amphibious: 2
       land_building: 1
       indoor_building: 1
+      airphibious: 1
     movementGroupType: [land]
     placeable: true
     tilesets:
-      0: [plains, plains_alt]
-      1: street
+      0: street
 
   - id: building
     name: terrain_name_building
@@ -465,8 +475,8 @@ terrains:
     visionBlocking: true
     placeable: true
     tilesets:
-      0: [plains, plains_alt]
-      2: building
+      0: [plains, plains_alt, street]
+      1: building
 
 #To be deleted
   - id: forest_no_hiding

@@ -1,0 +1,75 @@
+---
+
+units:
+  - class: rifleman
+    faction: outlaw
+    name: unit_name_rifleman_outlaw
+    mapAnimation: units/rifleman/outlaw/map_rifleman_outlaw
+    mapLightSource:
+      sprite: lights_small
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [0.65, 0.35]
+      jitter:
+        scale: 0.75
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/rifleman/outlaw/battle_rifleman_outlaw
+    battleAnimationRiver: fx/river_overlay/battle_rifleman_river
+    smallPortrait: units/rifleman/outlaw/portrait_rifleman_outlaw_small.png
+    mediumPortrait: units/rifleman/outlaw/portrait_rifleman_outlaw_medium.png
+    mapSpeed: 4.0
+    grabPos: [15, 24]
+    sounds:
+      attackMap: unitAttack
+      attack: riflemanAttack
+      counter: riflemanCounterAttack
+      captureShout: soldierPreAttackRed
+      death: soldierDieRed
+      deathMap: unitDie
+      run: infantryMediumEntry2
+      runMap: infantryMediumMapEntry2
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        attackAnimationSequence: counter
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 0.6
+        samePanel: true
+        attackSound: counter
+      - id: ranged
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.4
+        ranged: true
+    emotes:
+      idle: idle
+      aiming: emote_aiming
+    shouts:
+      soldier_shout1: soldierShoutRed1
+      soldier_shout2: soldierShoutRed2
+      soldier_shout3: soldierShoutRed3
+      soldier_shout4: soldierShoutRed4
+      soldier_shout5: soldierShoutRed5
+      soldier_shout6: soldierShoutRed6
+      soldier_shout7: soldierShoutRed7
+      soldier_shout8: soldierShoutRed8
+      soldier_shout9: soldierShoutRed9
+      soldier_hit1: soldierHitRed1
+      soldier_hit2: soldierHitRed2
+      soldier_hit3: soldierHitRed3
+      soldier_hit4: soldierHitRed4
+      soldier_hit5: soldierHitRed5
+    hidden:
+      shouts:
+        - soldier_shout3
+        - soldier_shout5
+        - soldier_shout6
+        - soldier_shout9
+
+...

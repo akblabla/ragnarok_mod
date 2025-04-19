@@ -93,7 +93,7 @@ function Actions.populate(dst)
     dst["force_golf"] = Actions.forceGolf
     dst["play_animation"] = Actions.playAnimation
     dst["play_emote"] = Actions.playEmote
-    dst["ai_set_profile"] = Actions.setAIProfileWithBuild
+    --dst["ai_set_profile"] = Actions.setAIProfileWithBuild
     dst["run_group_sequentially"] = Actions.runGroupSequentially
     dst["run_group_concurrently"] = Actions.runGroupConcurrently
     dst["end_group"] = Actions.endGroup

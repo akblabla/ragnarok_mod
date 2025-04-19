@@ -1,0 +1,53 @@
+---
+
+units:
+  - class: dragon
+    faction: outlaw
+    name: unit_name_dragon_outlaw
+    mapAnimation: units/dragon/outlaw/map_dragon_outlaw
+    mapLightSource:
+      sprite: lights_large
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_large
+      scale: [1.1, 0.8]
+      jitter:
+        scale: 0.33
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/dragon/outlaw/battle_dragon_outlaw
+    smallPortrait: units/dragon/outlaw/portrait_dragon_outlaw_small.png
+    mediumPortrait: units/dragon/outlaw/portrait_dragon_outlaw_medium.png
+    mapSpeed: 8.0
+    grabPos: [24, 13]
+    attackOffset: [10, 0]
+    cutsceneStartOffset: [75, 0]
+    sounds:
+      attackMap: unitAttack
+      attack: dragonAttack
+      attackEffect: dragonBreathFireEffect
+      death: dragonDie
+      deathMap: unitDie
+      run: dragonEntry
+      runMap: dragonEntry
+      firstHit: dragonHit
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        ranged: true
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.5
+        effect: fx/bs_dragon_attack
+        effectDelay: 0.9
+    emotes:
+      idle: idle
+      idle_norider: idle_norider
+    alternativeRuns:
+      - id: run_norider
+
+...

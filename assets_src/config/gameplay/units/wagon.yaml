@@ -1,0 +1,40 @@
+---
+
+units:
+  - class: wagon
+    faction: outlaw
+    name: unit_name_wagon_outlaw
+    mapAnimation: units/wagon/outlaw/map_wagon_outlaw
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_wagon
+      scale: [0.9, 0.5]
+      jitter:
+        scale: 0.5
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/wagon/outlaw/battle_wagon_outlaw
+    smallPortrait: units/wagon/outlaw/portrait_wagon_outlaw_small.png
+    mediumPortrait: units/wagon/outlaw/portrait_wagon_outlaw_medium.png
+    mapSpeed: 6.0
+    grabPos: [15, 14]
+    deathMoveMin: 0
+    deathMoveMax: 0
+    stayAfterDeath: true
+    emotes:
+      idle: idle
+    sounds:
+      death: gateDie
+      deathMap: unitDie
+      run: wagonEntry
+      runMap: wagonEntry
+      hit: hitWood
+      hitMap: hitWood
+
+...

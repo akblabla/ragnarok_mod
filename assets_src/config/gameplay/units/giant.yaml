@@ -1,0 +1,45 @@
+---
+
+units:
+  - class: giant
+    faction: outlaw
+    name: unit_name_giant_outlaw
+    mapAnimation: units/giant/outlaw/map_giant_outlaw
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_large
+      scale: [0.65, 0.35]
+      jitter:
+        scale: 0.5
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/giant/outlaw/battle_giant_outlaw
+    battleAnimationRiver: fx/river_overlay/battle_giant_cherrystone_river
+    smallPortrait: units/giant/outlaw/portrait_giant_outlaw_small.png
+    mediumPortrait: units/giant/outlaw/portrait_giant_outlaw_medium.png
+    mapSpeed: 4.0
+    grabPos: [27, 13]
+    deathMoveMin: 0
+    deathMoveMax: 0
+    sounds:
+      preAttack: giantPoseStone
+      attack: giantAttack
+      attackMap: unitAttack
+      death: giantDie
+      deathMap: unitDie
+      run: giantEntry
+      runMap: giantEntry
+      hit: hitStone
+      hitMap: hitStone
+    attacks:
+      - id: primary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 0.75
+
+...
