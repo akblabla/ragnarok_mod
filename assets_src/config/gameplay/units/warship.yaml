@@ -1,0 +1,52 @@
+---
+
+units:
+  - class: warship
+    faction: outlaw
+    name: unit_name_warship_outlaw
+    mapAnimation: units/warship/outlaw/map_warship_outlaw2
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_ship
+      scale: [1.5, 1.0]
+      jitter:
+        scale: 0.25
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/warship/outlaw/battle_warship_outlaw2
+    smallPortrait: units/warship/outlaw/portrait_warship_outlaw_small2.png
+    mediumPortrait: units/warship/outlaw/portrait_warship_outlaw_medium2.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    battlePosOffset: [-10, -10]
+    attackOffset: [20, -10]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: warshipAttack
+      attackEffect: warshipAttackEffect
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+      #  hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_warship_attack
+        effectDelay: 1.8
+        hitDelay: [2.0, 2.3, 2.6]
+
+...

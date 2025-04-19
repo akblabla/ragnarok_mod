@@ -1,0 +1,27 @@
+---
+unitClassModifiers:
+  - id: crown
+    regeneration: 20
+    baseDamage:
+      water: -1   
+      land: -1
+      buildings: -1
+      air: -1
+
+items:
+  - id: crown
+    name: crown_name
+    description: crown_description
+    animation: items/crown_item
+    icon: items/crown_icon
+    largeIcon: items/large/crown_large
+    unitClassModifierId: crown
+    cost: 100
+    lightSource:
+      sprite: lights_small3
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 5
+        frequency: 0.7
+        frequencyVariance: 0.0
+...

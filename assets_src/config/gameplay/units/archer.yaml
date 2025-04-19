@@ -1,0 +1,100 @@
+---
+
+units:
+  - class: archer
+    faction: outlaw
+    name: unit_name_archer_outlaw
+    mapAnimation: units/archer/outlaw/map_archer_outlaw
+    mapLightSource:
+      sprite: lights_small
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [0.65, 0.35]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/archer/outlaw/battle_archer_outlaw
+    battleAnimationRiver: fx/river_overlay/battle_archer_river
+    smallPortrait: units/archer/outlaw/portrait_archer_outlaw_small.png
+    mediumPortrait: units/archer/outlaw/portrait_archer_outlaw_medium.png
+    mapSpeed: 4.0
+    grabPos: [15, 24]
+    sounds:
+      attackMap: unitAttack
+      attack: archerAttack
+      attackEffect1: archerAttackEffect1
+      attackEffect2: archerAttackEffect2
+      attackEffect3: archerAttackEffect3
+      attackEffect4: archerAttackEffect4
+      captureShout: soldierPreAttackRed
+      death: soldierDieRed
+      deathMap: unitDie
+      run: infantryLightEntry
+      runMap: infantryLightMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+      counter: archerCounterAttack
+    attacks:
+      - id: primary
+        attackAnimationSequence: counter
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 0.8
+        attackSound: counter
+        samePanel: true
+      - id: oneArchers
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7]
+        effect: fx/bs_archer_attack_1
+        effectDelay: 1.4
+        attackEffectSound: attackEffect1
+        numAttackers: 1
+        ranged: true
+      - id: twoArchers
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9]
+        effect: fx/bs_archer_attack_2
+        effectDelay: 1.4
+        attackEffectSound: attackEffect2
+        numAttackers: 2
+        ranged: true
+      - id: threeArchers
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9, 2.1]
+        effect: fx/bs_archer_attack_3
+        effectDelay: 1.4
+        attackEffectSound: attackEffect3
+        numAttackers: 3
+        ranged: true
+      - id: fourArchers
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [1.7, 1.9, 2.1, 2.3]
+        effect: fx/bs_archer_attack_4
+        attackEffectSound: attackEffect4
+        effectDelay: 1.4
+        numAttackers: 4
+        ranged: true
+    emotes:
+      idle: idle
+    shouts:
+      soldier_shout1: soldierShoutRed1
+      soldier_shout2: soldierShoutRed2
+      soldier_shout3: soldierShoutRed3
+      soldier_shout4: soldierShoutRed4
+      soldier_shout5: soldierShoutRed5
+      soldier_shout6: soldierShoutRed6
+      soldier_shout7: soldierShoutRed7
+      soldier_shout8: soldierShoutRed8
+      soldier_shout9: soldierShoutRed9
+      soldier_hit1: soldierHitRed1
+      soldier_hit2: soldierHitRed2
+      soldier_hit3: soldierHitRed3
+      soldier_hit4: soldierHitRed4
+      soldier_hit5: soldierHitRed5
+
+...

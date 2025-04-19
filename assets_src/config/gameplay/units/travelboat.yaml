@@ -1,0 +1,43 @@
+---
+
+units:
+  - class: travelboat
+    faction: outlaw
+    name: unit_name_travelboat_outlaw
+    mapAnimation: units/travelboat/outlaw/map_travelboat_outlaw2
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_wagon
+      scale: [0.8, 0.6]
+      jitter:
+        scale: 0.25
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/travelboat/outlaw/battle_travelboat_outlaw2
+    smallPortrait: units/travelboat/outlaw/portrait_travelboat_outlaw_small2.png
+    mediumPortrait: units/travelboat/outlaw/portrait_travelboat_outlaw2.png
+    mapSpeed: 6.0
+    grabPos: [15, 15]
+    attackOffset: [0, 10]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: soldierAttackRed
+      attackShout: soldierPreAttackRed
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+
+...

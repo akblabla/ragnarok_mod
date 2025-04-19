@@ -318,6 +318,10 @@ en-GB: &flag-en
   ui_cutscene_shout_duchess_youhavemythanks: "\"You have my thanks.\""
   ui_cutscene_shout_duchess_youthinkthisisagame: "\"You think this is a game?\""
 
+  crown_name: The Cherrystone Crown
+  crown_description: Unit can't attack. At the start of each turn, unit regains 20 health.
+
+
 de-DE: *flag-en
 es-ES: *flag-en
 fr-FR: *flag-en

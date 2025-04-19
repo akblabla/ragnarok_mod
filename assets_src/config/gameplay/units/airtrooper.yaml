@@ -1,0 +1,45 @@
+---
+
+units:
+  - class: griffin_walking
+    faction: outlaw
+    name: unit_name_airtrooper_pirates
+    mapAnimation: units/griffin/pirates/map_griffin_pirates
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [0.75, 0.4]
+      jitter:
+        scale: 0.75
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/griffin/pirates/battle_griffin_pirates
+    battleAnimationRiver: fx/river_overlay/battle_airtrooper_pirates_river
+    smallPortrait: units/griffin/pirates/portrait_griffin_pirates_small.png
+    mediumPortrait: units/griffin/pirates/portrait_griffin_pirates_medium.png
+    mapSpeed: 5.0
+    grabPos: [17, 5]
+    attackTimingsHack: false
+    sounds:
+      attackMap: unitAttack
+      attack: airtrooperAttack
+      death: airtrooperDie
+      deathMap: unitDie
+      run: airtrooperEntry
+      runMap: airtrooperMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [0.72]
+    emotes:
+      idle: idle
+
+...

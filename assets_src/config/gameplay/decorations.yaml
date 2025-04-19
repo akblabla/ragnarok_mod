@@ -118,6 +118,16 @@ decorations:
     snapToGrid: true
     animation:
       undefined: decoration/bigDeco/fog
+  - id: fogHideoutBot
+    layer: ground
+    snapToGrid: true
+    animation:
+      undefined: decoration/bigDeco/fogHideoutBot
+  - id: fogHideoutTop
+    layer: ground
+    snapToGrid: true
+    animation:
+      undefined: decoration/bigDeco/fogHideoutTop
       
 #Field 1
   - id: field01
@@ -709,4 +719,8 @@ decorations:
       tropical: decoration/unit/hay_desert
       desert: decoration/unit/hay_grass
       volcano: decoration/unit/hay_volcano     
+  - id: caveBG
+    layer: units
+    animation:
+      undefined: decoration/unit/caveBGDeco
 ...

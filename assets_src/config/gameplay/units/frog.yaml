@@ -1,0 +1,50 @@
+---
+units:
+  - class: frog
+    faction: outlaw
+    name: unit_name_frog_outlaws
+    mapAnimation: units/frog/outlaws/map_frog_outlaws
+    mapLightSource:
+      sprite: lights_small
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [0.65, 0.35]
+      jitter:
+        scale: 0.75
+        frequency: 0.3
+        frequencyVariance: 0.15
+    mapAnimationWater: units/frog/outlaws/map_frog_swim_outlaws
+    battleAnimation: units/frog/outlaws/battle_frog_outlaws
+    battleAnimationRiver: fx/river_overlay/battle_frog_river
+    battleAnimationWater: units/frog/cherrystone/battle_frog_swim_cherrystone
+    smallPortrait: units/frog/outlaws/portrait_frog_outlaws_small.png
+    mediumPortrait: units/frog/outlaws/portrait_frog_outlaws_medium.png
+    mapSpeed: 8.0
+    grabPos: [26, 76]
+    attackRunTimeMin: 3.5
+    attackRunTimeMax: 3.5
+    attackTimingsHack: false
+    emotes:
+      idle: idle
+      croak: emote_croak
+    sounds:
+      attackMap: unitAttack
+      attack: frogAttack
+      death: frogDie
+      deathMap: unitDie
+      run: frogMapEntry
+      runMap: frogMapEntry
+      runWater: frogMapWaterEntry
+      runMapWater: frogMapWaterEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 0.6
+...

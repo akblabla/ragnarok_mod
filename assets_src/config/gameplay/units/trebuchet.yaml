@@ -1,0 +1,56 @@
+---
+
+units:
+  - class: trebuchet
+    faction: outlaw
+    name: unit_name_trebuchet_outlaw
+    mapAnimation: units/trebuchet/outlaw/map_trebuchet_outlaw
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_large
+      scale: [0.95, 0.55]
+      jitter:
+        scale: 0.4
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/trebuchet/outlaw/battle_trebuchet_outlaw
+    smallPortrait: units/trebuchet/outlaw/portrait_trebuchet_outlaw_small.png
+    mediumPortrait: units/trebuchet/outlaw/portrait_trebuchet_outlaw_medium.png
+    mapSpeed: 4.0
+    grabPos: [16, 17]
+    attackOffset: [50, 0]
+    battlePosOffset: [-21, 0]
+    deathMoveMin: 0
+    deathMoveMax: 0
+    stayAfterDeath: true
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: trebuchetAttack
+      attackEffect: trebuchetAttackEffect
+      death: trebuchetDie
+      deathMap: unitDie
+      run: trebuchetEntry
+      runMap: trebuchetMapEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_trebuchet_attack
+        effectPaletteSwaps: true
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
+        effectDelay: 1.8
+
+...

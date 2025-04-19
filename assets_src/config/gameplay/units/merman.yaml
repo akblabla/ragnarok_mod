@@ -1,0 +1,92 @@
+---
+
+units:
+  - class: merman
+    faction: outlaw
+    name: unit_name_merman_outlaw
+    mapAnimation: units/merman/outlaw/map_merman_outlaw
+    mapLightSource:
+      sprite: lights_small
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [0.65, 0.35]
+      jitter:
+        scale: 0.75
+        frequency: 0.3
+        frequencyVariance: 0.15
+    mapAnimationWater: units/merman/outlaw/map_merman_swim_outlaw
+    battleAnimation: units/merman/outlaw/battle_merman_outlaw
+    battleAnimationRiver: fx/river_overlay/battle_merman_river
+    battleAnimationWater: units/merman/outlaw/battle_merman_swim_outlaw
+    smallPortrait: units/merman/outlaw/portrait_merman_outlaw_small.png
+    mediumPortrait: units/merman/outlaw/portrait_merman_outlaw_medium.png
+    mapSpeed: 4.0
+    grabPos: [18, 24]
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: merfolkAttack
+      attackEffect1: merfolkAttackEffect1
+      attackEffect2: merfolkAttackEffect2
+      attackEffect3: merfolkAttackEffect3
+      attackEffect4: merfolkAttackEffect4
+      counter: merfolkCounterAttack
+      captureShout: merfolkCaptureShout
+      death: merfolkDie
+      deathMap: unitDie
+      run: merfolkEntry
+      runMap: merfolkMapEntry
+      runWater: waterEntry
+      runMapWater: waterMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        attackAnimationSequence: counter
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 0.7
+        attackSound: counter
+        samePanel: true
+      - id: oneMermen
+        hitDelay: [1.5]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_bident_attack_1
+        effectDelay: 1.3
+        attackEffectSound: attackEffect1
+        numAttackers: 1
+        ranged: true
+      - id: twoMermen
+        hitDelay: [1.5, 1.7]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_bident_attack_2
+        effectDelay: 1.3
+        attackEffectSound: attackEffect2
+        numAttackers: 2
+        ranged: true
+      - id: threeMermen
+        hitDelay: [1.5, 1.7, 1.9]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_bident_attack_3
+        effectDelay: 1.3
+        attackEffectSound: attackEffect3
+        numAttackers: 3
+        ranged: true
+      - id: fourMermen
+        hitDelay: [1.5, 1.7, 1.9, 2.1]
+        hitSpark: fx/bs_stab_attack
+        effect: fx/bs_bident_attack_4
+        effectDelay: 1.3
+        attackEffectSound: attackEffect4
+        numAttackers: 4
+        ranged: true
+    shouts:      
+      merfolk_shout1: merfolkShout1
+      merfolk_shout2: merfolkShout2
+
+...
