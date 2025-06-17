@@ -1,4 +1,27 @@
 ---
+unitClasses:
+  - id: balloon
+    name: unit_class_name_balloon
+    cost: 450
+    movement: flying
+    moveRange: 6
+    damageMultiplier: 1
+    aiPriority: 1.5
+    weapons: []
+    tags:
+      - balloon
+      - type.air
+    verbs:
+      - unload
+      - rescue
+      - attack_AI
+      - hire
+      - take_crown
+    battleUnitCount: 1
+    loadCapacity: 2
+    canSeeOverTerrain: true
+    sightRange: 4
+    transportTags: [ type.ground.light, type.amphibious.light, type.ground.hideout, airtrooper ]
 
 units:
   - class: balloon

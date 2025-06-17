@@ -27,6 +27,20 @@ units:
     faction: neutral
     name: structure_name_outpost
     mapAnimation: structures/outpost
+    mapLightSource:
+      sprite: lights_large
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [0.8, 0.8]
+      jitter:
+        scale: 0.33
+        frequency: 0.3
+        frequencyVariance: 0.15
     smallPortrait: portraits/small/portrait_structure_small.png
     mediumPortrait: portraits/medium/outpost.png
     grabPos: [11, 7]

@@ -1,9 +1,35 @@
 ---
+unitClasses:
+  - id: griffin_walking
+    name: unit_class_name_griffin
+    cost: 400
+    resourceCost: 2
+    movement: airphibious
+    moveRange: 5
+    damageMultiplier: 1.0
+    aiPriority: 1.0
+    ignoresObstacles: true
+    verbs:
+      - attack_AI
+      - capture
+      - load
+      - rescue
+      - hire
+      - take_crown
+    weapons:
+      - id: airtrooperBeak
+    tags:
+      - airtrooper
+      - type.air
+    battleUnitCount: 4
+    passiveMultiplier: 1.5
+    sightRange: 4
+    canSeeOverTerrain: false
 
 units:
   - class: griffin_walking
     faction: outlaw
-    name: unit_name_airtrooper_pirates
+    name: unit_name_griffin_outlaw
     mapAnimation: units/griffin/pirates/map_griffin_pirates
     mapLightSource:
       sprite: lights_medium

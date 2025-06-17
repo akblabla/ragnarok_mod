@@ -1,0 +1,21 @@
+---
+unitClassModifiers:
+  - id: mighty_boot
+    verbs: [item_kick]
+
+items:
+  - id: mighty_boot
+    name: mighty_boot_name
+    description: mighty_boot_description
+    animation: items/mighty_boot_item
+    icon: items/mighty_boot_icon
+    largeIcon: items/large/mighty_boot_large
+    unitClassModifierId: mighty_boot
+    lightSource:
+      sprite: lights_small3
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 5
+        frequency: 0.7
+        frequencyVariance: 0.0
+...

@@ -43,8 +43,17 @@ function Death:execute(unit, targetPos, strParam, path)
 	if crownPos and crownPos.x == unit.pos.x and crownPos.y == unit.pos.y then
 		Wargroove.waitTime(0.3)
 		Ragnarok.dropCrown(unit.pos)
+        unit.itemId = ""
 		Wargroove.waitTime(0.2)
 	end
+    print("Death:execute")
+    print("unit: "..unit.unitClassId)
+    print("item id: "..unit.itemId)
+    if (unit.unitClassId == "thief" or unit.unitClassId == "thief_with_gold") and unit.itemId ~= "" and unit.itemId ~= nil then
+        
+        local ic = Wargroove.getItem(unit.itemId)
+	    Wargroove.spawnItemAt(ic.id, unit.pos)
+    end
 	-- for i,deathVerb in pairs(deathVerbList) do
 	-- 	self:deathVerb(unit, targetPos, strParam, path)
 	-- end

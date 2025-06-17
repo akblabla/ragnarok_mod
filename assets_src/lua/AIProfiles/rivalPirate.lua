@@ -6,6 +6,7 @@ local RivalPirate = {}
 local valueReductionPerUnitList = {
 	archer = 0.1,
 	ballista = 0.1,
+	barge = 0.65,
 	dog = 0.1,
 	dragon = 0.1,
 	giant = 0.1,
@@ -19,8 +20,12 @@ local valueReductionPerUnitList = {
 	spearman = 0.1,
 	trebuchet = 0.1,
 	turtle = 0.8,
-	warship = 0.8,
-	witch = 0.1
+	warship = 0.5,
+	witch = 0.1,
+	kraken = 0.6,
+	frog = 0.4,
+	caravel = 0.85,
+	griffin_walking = 0.85,
 }
 
 local idealUnitRatioList = {
@@ -39,15 +44,19 @@ local idealUnitRatioList = {
 	spearman = 0,
 	trebuchet = 0,
 	turtle = 1,
-	warship = 1,
-	witch = 0
+	warship = 0,
+	witch = 0,
+	kraken = 0.65,
+	frog = 0.1,
+	caravel = 0.85,
 }
 
 local powerMultiplierList = {
-	barge = 1,
+	barge = 6,
 	merman = 1,
 	harpoonship = 1,
-	warship = 1
+	warship = 0.25,
+	frog = 0.75
 }
 
 

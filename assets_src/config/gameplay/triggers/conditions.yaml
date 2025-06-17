@@ -9,6 +9,14 @@ triggerConditions:
       - type: string
       - type: string
 
+  - id: units_ready
+    parameters:
+      - type: player_neutral_star
+      - type: operator
+      - type: integer
+      - type: unit_class_star
+      - type: location_star
+
   - id: crown_present
     parameters:
       - type: location_star

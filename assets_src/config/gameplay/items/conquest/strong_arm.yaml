@@ -1,0 +1,26 @@
+---
+unitClassModifiers:
+  - id: strong_arm
+    baseDamage:
+      land: 0.5
+      water: 0.5
+      air: 0.5
+      buildings: 0.5
+
+items:
+  - id: strong_arm
+    name: lumberjacks_axe_name
+    description: lumberjacks_axe_description
+    animation: items/lumberjacks_axe01_item
+    icon: items/lumberjacks_axe01_icon
+    largeIcon: items/large/lumberjacks_axe01_large
+    unitClassModifierId: strong_arm
+    cost: 300
+    lightSource:
+      sprite: lights_small3
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 5
+        frequency: 0.7
+        frequencyVariance: 0.0
+...

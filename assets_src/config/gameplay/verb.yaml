@@ -1,12 +1,72 @@
 ---
 verbs:
-  - id: pick_up_crown
+  - id: attack_AI
+    icon: ui/icons/unit_action_icon_attack.png
+    name: ui_unit_verbs_attack
+    targetColour: attack_target
+    targetOutlineColour: attack_target_outline
+    targetted: true
+    directTarget: true
+    preExecute: true
+    # description: ui_unit_verbs_attack_description
+    scriptName: verbs/attack_AI
+
+  - id: groove_smoke_screen
+    icon: ui/icons/grooves/unit_action_icon_smoke_tier_1.png
+    name: groove_name_smoke_screen
+    targetColour: target
+    targetOutlineColour: target_outline
+    splashOutlineColour: heal_outline
+    targetted: true
+    hasCustomSplash: true
+    scriptName: verbs/groove_smoke_screen_extra
+
+  - id: mini_groove_teleport
+    icon: ui/icons/grooves/unit_action_icon_teleport_tier_0.png
+    name: mini_groove_name_teleport
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetted: true
+    scriptName: verbs/mini_groove_teleport
+
+  - id: groove_golf
+    icon: ui/icons/grooves/unit_action_icon_golf_tier_1.png
+    name: groove_name_golf
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetDisplayColour: attack_target
+    targetDisplayOutlineColour: attack_target_outline
+    preExecute: true
+    targetted: true
+    directTarget: true
+    scriptName: verbs/groove_golf_extra
+
+  - id: mini_groove_putt
+    icon: ui/icons/grooves/unit_action_icon_putt_tier_0.png
+    name: mini_groove_name_putt
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetDisplayColour: attack_target
+    targetDisplayOutlineColour: attack_target_outline
+    preExecute: true
+    targetted: true
+    directTarget: true
+    scriptName: verbs/mini_groove_putt
+
+  - id: groove_no_groove
+    icon: ui/icons/grooves/unit_action_icon_inspire.png
+    name: ui_unit_verbs_pick_up_crown
+    targetColour: target
+    targetOutlineColour: target_outline
+    scriptName: verbs/groove_no_groove
+
+  - id: take_crown
     icon: ui/icons/grooves/unit_action_icon_inspire.png
     name: ui_unit_verbs_pick_up_crown
     targetColour: target
     targetOutlineColour: target_outline
     targetted: true
-    scriptName: verbs/pick_up_crown
+    scriptName: verbs/take_crown
 
   - id: hand_over_crown
     icon: ui/icons/grooves/unit_action_icon_inspire.png
@@ -17,7 +77,26 @@ verbs:
     directTarget: true
     scriptName: verbs/hand_over_crown
     
-  - id: throw_crown
+  - id: item_throw
+    icon: ui/icons/unit_action_icon_merge.png
+    name: item_verb_throw_crown_name
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetted: true
+#    directTarget: true
+    scriptName: verbs/item_throw
+
+  - id: item_kick
+    icon: ui/icons/unit_action_icon_kick.png
+    name: item_verb_kick_name
+    targetColour: attack_target
+    targetOutlineColour: attack_target_outline
+    targetted: true
+    hasTargetArrows: true
+#    directTarget: true
+    scriptName: verbs/item_kick
+
+  - id: throw_item
     icon: ui/icons/unit_action_icon_merge.png
     name: ui_unit_verbs_throw_crown
     targetColour: target
@@ -59,7 +138,7 @@ verbs:
     scriptName: verbs/pirate_claim
 
   - id: groove_broadside
-    icon: ui/icons/grooves/unit_action_icon_shield.png
+    icon: ui/icons/grooves/unit_action_icon_broadside_tier_1.png
     name: groove_name_broadside
     targetColour: target
     targetOutlineColour: attack_target_outline
@@ -67,6 +146,15 @@ verbs:
     targetted: true
     preExecute: true
     scriptName: verbs/groove_broadside
+    
+  - id: mini_groove_ram
+    icon: ui/icons/grooves/unit_action_icon_ram_tier_0.png
+    name: mini_groove_name_ram
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetted: true
+    scriptName: verbs/mini_groove_ram
+
   - id: groove_area_damage_rival
     icon: ui/icons/grooves/unit_action_icon_shield.png
     name: groove_name_area_damage_rival

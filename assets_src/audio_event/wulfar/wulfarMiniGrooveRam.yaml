@@ -1,0 +1,6 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/wulfar/wulfarBeOffWithYou.ogg, sfx/wulfar/wulfarThisMightBeASqueeze.ogg, sfx/wulfar/wulfarHereICome.ogg, sfx/wulfar/wulfarLetMeHandleThis.ogg ]
+    group: voice
+...

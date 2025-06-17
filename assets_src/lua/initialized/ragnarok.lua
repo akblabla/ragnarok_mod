@@ -2,12 +2,20 @@ local Wargroove = require "wargroove/wargroove"
 local WargrooveExtra = require "initialized/wargroove_extra"
 
 
-
+local function dump(o,level)
+	if type(o) == 'table' then
+	   local s = '\n' .. string.rep("   ", level) .. '{\n'
+	   for k,v in pairs(o) do
+		  if type(k) ~= 'number' then k = '"'..k..'"' end
+		  s = s .. string.rep("   ", level+1) .. '['..k..'] = ' .. dump(v,level+1) .. ',\n'
+	   end
+	   return s .. string.rep("   ", level) .. '}'
+	else
+	   return tostring(o)
+	end
+ end
 
 local Ragnarok = {}
-Ragnarok.seaTiles = {"sea","sea_alt", "ocean","reef","cave_sea", "cave_reef","cave_reef","reef_no_hiding"}
-Ragnarok.amphibiousTiles = {"river", "cave_river", "beach", "cave_beach", "mangrove"}
-Ragnarok.groundTags = {"type.ground.light", "type.ground.heavy"}
 
 
 local actions = {
@@ -19,12 +27,15 @@ function Ragnarok.init()
 	print("Ragnarok.lua loaded")
 	local resetOccurencesTrigger = {
 		id = "Reset Occurence List",
+		enabled = true,
+		isIntro = false,
 		recurring = "repeat",
 		actions = {
 			{
 				id = "reset_occurence_list",
 				parameters = {
-				}
+				},
+				enabled = true,
 			}
 		},
 		conditions = {},
@@ -33,12 +44,15 @@ function Ragnarok.init()
 	Ragnarok.addHiddenTrigger(resetOccurencesTrigger,true)
 	local resetRescuesTrigger = {
 		id = "Reset Rescue List",
+		enabled = true,
+		isIntro = false,
 		recurring = "repeat",
 		actions = {
 			{
 				id = "reset_rescue_list",
 				parameters = {
-				}
+				},
+				enabled = true,
 			}
 		},
 		conditions = {},
@@ -49,12 +63,15 @@ function Ragnarok.init()
 	--Start of Match Events
 	local startFrontActionsTrigger = {
 		id = "Run Start Front Actions",
+		enabled = true,
+		isIntro = false,
 		recurring = "start_of_match",
 		actions = {
 			{
 				id = "run_start_front_actions",
 				parameters = {
-				}
+				},
+				enabled = true,
 			}
 		},
 		conditions = {},
@@ -63,12 +80,15 @@ function Ragnarok.init()
 	Ragnarok.addHiddenTrigger(startFrontActionsTrigger,false)
 	local startBackActionsTrigger = {
 		id = "Run Start Back Actions",
+		enabled = true,
+		isIntro = false,
 		recurring = "start_of_match",
 		actions = {
 			{
 				id = "run_start_back_actions",
 				parameters = {
-				}
+				},
+				enabled = true,
 			}
 		},
 		conditions = {},
@@ -79,12 +99,15 @@ function Ragnarok.init()
 	--Repeating Events
 	local repeatFrontActionsTrigger = {
 		id = "Run Repeat Front Actions",
+		enabled = true,
+		isIntro = false,
 		recurring = "repeat",
 		actions = {
 			{
 				id = "run_repeat_front_actions",
 				parameters = {
-				}
+				},
+				enabled = true,
 			}
 		},
 		conditions = {},
@@ -93,12 +116,15 @@ function Ragnarok.init()
 	Ragnarok.addHiddenTrigger(repeatFrontActionsTrigger,false)
 	local repeatBackActionsTrigger = {
 		id = "Run Repeat Back Actions",
+		enabled = true,
+		isIntro = false,
 		recurring = "repeat",
 		actions = {
 			{
 				id = "run_repeat_back_actions",
 				parameters = {
-				}
+				},
+				enabled = true,
 			}
 		},
 		conditions = {},
@@ -110,12 +136,15 @@ function Ragnarok.init()
 	
 	local endFrontActionsTrigger = {
 		id = "Run End Front Actions",
+		enabled = true,
+		isIntro = false,
 		recurring = "end_of_match",
 		actions = {
 			{
 				id = "run_end_front_actions",
 				parameters = {
-				}
+				},
+				enabled = true,
 			}
 		},
 		conditions = {},
@@ -124,12 +153,15 @@ function Ragnarok.init()
 	Ragnarok.addHiddenTrigger(endFrontActionsTrigger,false)
 	local endBackActionsTrigger = {
 		id = "Run End Back Actions",
+		enabled = true,
+		isIntro = false,
 		recurring = "end_of_match",
 		actions = {
 			{
 				id = "run_end_back_actions",
 				parameters = {
-				}
+				},
+				enabled = true,
 			}
 		},
 		conditions = {},
@@ -140,7 +172,6 @@ function Ragnarok.init()
 	Ragnarok.addAction(Ragnarok.setupGizmos,"start_of_match",false)
 	Ragnarok.addAction(Ragnarok.updateGizmos,"repeating",false)
 	Ragnarok.addAction(Ragnarok.updateGizmos,"repeating",true)
-	Ragnarok.addAction(Ragnarok.regenerateCrownBearer,"repeating",true)
 end
 
 local goldRobbed = {}
@@ -152,6 +183,22 @@ local crownStateKey = "crown"
 local fogOfWarRulesEnabled = false
 local occurences = {}
 
+function Ragnarok.canHoldItem(unit)
+    if unit.unitClass.isCommander then
+        return false
+    end
+	if unit.itemId ~= "" then
+		return false
+	end
+	return true
+end
+
+function Ragnarok.canHoldCrown(unit)
+	if unit.itemId ~= "" then
+		return false
+	end
+	return true
+end
 
 function Ragnarok.isCombatUnit(unit)
 	local weapons = unit.unitClass.weapons
@@ -163,22 +210,6 @@ end
 
 function Ragnarok.getActions()
 	return actions
-end
-
-function Ragnarok.regenerateCrownBearer(context)
-	if Ragnarok.crownBearerID ~= nil and context:checkState("startOfTurn") then
-		local crownBearer = Wargroove.getUnitById(Ragnarok.crownBearerID)
-		local currentTurnPlayerId = Wargroove.getCurrentPlayerId()
-		if crownBearer~= nil and (currentTurnPlayerId == crownBearer.playerId or currentTurnPlayerId == Wargroove.getPlayerChildOf(crownBearer.playerId)) then
-			if crownBearer.health<crownBearer.unitClass.maxHealth then
-                Wargroove.playMapSound("unitHealed", crownBearer.pos)
-				crownBearer:setHealth(crownBearer.health+20,Ragnarok.crownBearerID)
-				Wargroove.updateUnit(crownBearer)
-                Wargroove.spawnMapAnimation(crownBearer.pos, 0, "fx/heal_unit")
-                Wargroove.waitTime(0.2)
-			end
-		end
-	end
 end
 
 function Ragnarok.addAction(action,occurence,front)
@@ -219,18 +250,11 @@ function Ragnarok.resetOccurences()
 end
 
 function Ragnarok.didItOccur(occation)
-	--print("didItOccur starts here")
-	--print(occation)
-	--print(dump(occurences,1))
 	return occurences[occation] ~= nil
 end
 
 function Ragnarok.reportOccation(occation)
-	--print("reportOccation starts here")
-	--print(Ragnarok.didItOccur(occation))
 	occurences[occation] = true
-	--print(dump(occurences,1))
-	--print(Ragnarok.didItOccur(occation))
 end
 
 function Ragnarok.setFogOfWarRules(fogOn)
@@ -247,34 +271,15 @@ end
 
 
 function Ragnarok.addGoldRobbed(playerId, amount)
-	--print("addGoldRobbed starts here")
-	--print("Player Id:")
-	--print(playerId)
-	--print("type")
-	--print(type(playerId))
-	--print("Amount To be deposited:")
-	--print(amount)
-	--print("type")
-	--print(type(amount))
 	if goldRobbed[playerId] then
-		--print("Total Deposited:")
-		--print(goldRobbed[playerId])
-		--print("type")
-		--print(type(goldRobbed[playerId]))
 		goldRobbed[playerId] = goldRobbed[playerId]+amount
 	else
-		--print("No Player with ID")
 		goldRobbed[playerId] = amount
 	end
-	--print(goldRobbed[playerId])
 end
 
 function Ragnarok.getGoldRobbed(playerId)
-	--print("getGoldRobbed starts here")
 	local robbedMoney = goldRobbed[playerId]
-	--print(robbedMoney)
-	--print("type")
-	--print(type(robbedMoney))
 	if robbedMoney then return robbedMoney end
 	return 0
 end
@@ -297,13 +302,13 @@ end
 
 function Ragnarok.getCrown()
 	if Ragnarok.crownID ~= nil then
-		return Wargroove.getUnitById(Ragnarok.crownID)
+		return Wargroove.getItem(Ragnarok.crownID)
 	else
-		local units = Wargroove.getUnitsAtLocation()
-		for i,unit in pairs(units) do
-			if unit.unitClassId == "crown" then
-				Ragnarok.crownID = unit.id
-				return unit
+		local items = Wargroove.getMapItemsAtLocation()
+		for i,item in pairs(items) do
+			if item.type == "crown" then
+				Ragnarok.crownID = item.id
+				return item
 			end
 		end
 	end
@@ -313,7 +318,7 @@ end
 function Ragnarok.getCrownPos()
 	local crown = Ragnarok.getCrown()
 	if crown ~= nil then
-		return {x = crown.pos.x-100, y = crown.pos.y-100}
+		return crown.pos
 	end
 
 	local crownBearer = Ragnarok.getCrownBearer()
@@ -325,29 +330,18 @@ function Ragnarok.getCrownPos()
 end
 
 function Ragnarok.hasCrown(unit)
-	return Wargroove.getUnitState(unit, crownStateKey) ~= nil
+	return unit.itemId=="crown"
+	--return Wargroove.getUnitState(unit, crownStateKey) ~= nil
 end
 
 function Ragnarok.removeCrown()
 	local crown = Ragnarok.getCrown()
 	if crown ~= nil then
-		crown.health = 0
-		Wargroove.updateUnit(crown)
+		Wargroove.consumeItemAt(crown.pos)
 	end
 	local crownBearer = Ragnarok.getCrownBearer()
 	if crownBearer ~= nil then
-		for i, _stateKey in ipairs(crownBearer.state) do
-			if (_stateKey.key == crownStateKey) then
-				_stateKey.value = nil
-				_stateKey.key = nil
-				_stateKey = nil
-			end
-		end
-
-		if Wargroove.hasUnitEffect(crownBearer.id, crownAnimation) then
-			Wargroove.deleteUnitEffectByAnimation(crownBearer.id, crownAnimation)
-		end
-		Wargroove.updateUnit(crownBearer)
+		Wargroove.unequipItem(crownBearer)
 	end
 	Ragnarok.crownID = nil
 	Ragnarok.crownBearerID = nil
@@ -355,22 +349,22 @@ end
 
 function Ragnarok.dropCrown(targetPos)
 	Ragnarok.removeCrown()
-	Ragnarok.crownID = Wargroove.spawnUnit(-1, {x = targetPos.x+100, y = targetPos.y+100}, "crown", false)
-	Wargroove.setVisibleOverride(Ragnarok.crownID, true)
---	Wargroove.spawnUnitEffect(Ragnarok.crownID, crownOffsetAnimation, "idle", nil, true, false)
+
+    local ic = Wargroove.getItem("crown")
+	Wargroove.spawnItemAt(ic.id, targetPos)
+	Wargroove.waitFrame()
+--	Ragnarok.crownID = Wargroove.getMapItemIdAt(targetPos.x, targetPos.y)
 	
 	Ragnarok.crownBearerID = nil
-	return Ragnarok.crownID
+	Ragnarok.crownID = nil
+--	return Ragnarok.crownID
+	return nil
 end
 
 function Ragnarok.grabCrown(unit)
 	Ragnarok.removeCrown()
-	Wargroove.setUnitState(unit, crownStateKey, "")
-	if not Wargroove.hasUnitEffect(unit.id, crownAnimation) then
-		Wargroove.spawnUnitEffect(unit.id, crownAnimation, "idle", nil, true, false)
-	end
+	Wargroove.equipItem(unit, "crown")
 	Ragnarok.crownBearerID = unit.id
-	Wargroove.updateUnit(unit)
 end
 
 local activator = {}
@@ -399,14 +393,11 @@ local gizmoSoundMapOff = {
 }
 
 function Ragnarok.setupGizmos(context)
---	print("Ragnarok.setupGizmos(context)")
     for i, gizmo in pairs(Wargroove.getGizmosAtLocation(nil)) do
 		if gizmo.type == "pressure_plate" then
---			print("Found pressure_plate")
 			gizmoModeList[Ragnarok.generateGizmoKey(gizmo)] = "stoodOn"
 		end
 		if gizmo.type == "lever" then
---			print("Found lever")
 			gizmoModeList[Ragnarok.generateGizmoKey(gizmo)] = "stoodOn"
 		end
     end
@@ -414,11 +405,9 @@ end
 
 
 function Ragnarok.updateGizmos(context)
---	print("Ragnarok.updateGizmos(context)")
     for i, gizmo in pairs(Wargroove.getGizmosAtLocation(nil)) do
 		if gizmoModeList[Ragnarok.generateGizmoKey(gizmo)] ~= nil then
 			if gizmoModeList[Ragnarok.generateGizmoKey(gizmo)] == "stoodOn" then
---				print("Gizmo type: " .. gizmo.type)
 				Ragnarok.gizmoActivateWhenStoodOn(gizmo)
 			end
 		end
@@ -457,20 +446,13 @@ function Ragnarok.linkGizmoStateWithActivators(linkedLocation)
 end
 
 function Ragnarok.setState(gizmo, state, playSound)
-	-- print("Ragnarok.setState(gizmo, state, playSound)") 
-	-- print("Gizmo type: " .. gizmo.type)
-	-- print("New State: " .. tostring(state))
 	if lockedGizmos[Ragnarok.generateGizmoKey(gizmo)] == true then
 		return {changedState = false, soundPlayed = false}
 	end
 	if playSound == nil then playSound = true end
-	--print("Ragnarok.setState(gizmo,state) starts here")
-	--print(invertedVisualGizmos[Ragnarok.generateGizmoKey(gizmo)]) 
 	local changedState = Ragnarok.getInternalGizmoState(gizmo) ~= state
 	local soundPlayed
---	print(changedState)
 	if changedState then
---		print("changedState") 
 		local soundOn = gizmoSoundMapOn[gizmo.type]
 		local soundOff = gizmoSoundMapOff[gizmo.type]
 		if soundOn and state then
@@ -481,7 +463,6 @@ function Ragnarok.setState(gizmo, state, playSound)
 		end
 	end
 	if playSound then
---		print("playSound") 
 		Wargroove.playMapSound(soundPlayed, gizmo.pos)
 	end
 	local key = Ragnarok.generateGizmoKey(gizmo)
@@ -612,7 +593,6 @@ function Ragnarok.moveInArch(unitId, startPos, targetPos, numSteps, speed, gravi
     local yStep = yDiff / numSteps
 	local dist = math.sqrt(xDiff^2+yDiff^2)
 	local tEnd = dist/speed
-	print("1")
 	--use z = 1/2at^2+bt
 	--find b by constraining that at the mid section of the journey, the differential of z over time is zero.
 	--dz/dt = at+b
@@ -630,7 +610,6 @@ function Ragnarok.moveInArch(unitId, startPos, targetPos, numSteps, speed, gravi
 			deltaSteps[i] = steps[i]
 		end
     end
-	print("2")
 	local doneEvents = {}
     for i = 1, numSteps do
 		--print("Checking Event Packages")
@@ -653,15 +632,11 @@ function Ragnarok.moveInArch(unitId, startPos, targetPos, numSteps, speed, gravi
 				end
 			end
 		end
-		print("3")
 		Wargroove.moveUnitToOverride(unitId, startPos, steps[i].x, steps[i].y, math.max(math.sqrt(deltaSteps[i].x^2+deltaSteps[i].y^2)*numSteps/tEnd,1))
-		print("4")
 		while (Wargroove.isLuaMoving(unitId)) do
 			coroutine.yield()
 		end
-		print("5")
     end
-	print("6")
 	--print("Checking for missed Event Packages")
 	if eventPackages ~= nil then
 		for i, eventPackage in pairs(eventPackages) do
@@ -671,20 +646,6 @@ function Ragnarok.moveInArch(unitId, startPos, targetPos, numSteps, speed, gravi
 			end
 		end
 	end
-	print("Ragnarok.moveInArch end")
-end
-
-function Ragnarok.dump(o,level)
-   if type(o) == 'table' then
-      local s = '\n' .. string.rep("   ", level) .. '{\n'
-      for k,v in pairs(o) do
-         if type(k) ~= 'number' then k = '"'..k..'"' end
-         s = s .. string.rep("   ", level+1) .. '['..k..'] = ' .. dump(v,level+1) .. ',\n'
-      end
-      return s .. string.rep("   ", level) .. '}'
-   else
-      return tostring(o)
-   end
 end
 
 

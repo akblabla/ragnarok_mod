@@ -13,13 +13,13 @@ unitClasses:
       - summon
       - type.air
       - type.scout
-      - flying
     battleUnitCount: 1
     canAttack: false
     canSeeOverTerrain: true
     regeneration: -35
     classIcon: unit_icons_summon
     scout: true
+    isRecruitable: true
     sightRange: 4
     deathVerbId: death
 

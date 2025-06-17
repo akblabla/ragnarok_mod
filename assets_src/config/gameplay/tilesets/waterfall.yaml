@@ -1,0 +1,169 @@
+---
+tilesets:
+  - id: waterfall
+    type: WangBlob
+    biomes:
+      - types: [grass, flower, deepforest]
+        spriteSheet: terrain_tilesets
+        spriteBase: wang_grass_river_tileset_2_000
+        waterSpriteBase: wang_grass_river_tileset_2_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_ocean
+        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_river
+        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_river_foreground
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_waterfall.png"
+        infoScreenOffset: 30
+        fillColour: '#286ab1'
+      - types: [dungeon, dungeon_purple]
+        spriteSheet: tilesets
+        spriteBase: wang_dungeon_river_tileset_000
+        waterSpriteBase: wang_dungeon_river_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_ocean
+        battleBackgroundSpriteSheet: backgrounds/dungeon_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: dungeon_battlescreen_extendedbackgrounds_river
+        battleBackgroundSpriteForeground: dungeon_battlescreen_extendedbackgrounds_river_foreground
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_waterfall.png"
+        infoScreenOffset: 30
+        fillColour: '#286ab1'
+      - types: [dungeon_lava]
+        spriteSheet: tilesets
+        spriteBase: wang_dungeon_lava_river_tileset_000
+        waterSpriteBase: wang_dungeon_lava_river_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_ocean
+        battleBackgroundSpriteSheet: backgrounds/dungeon_lava_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: dungeon_lava_battlescreen_extendedbackgrounds_river
+        battleBackgroundSpriteForeground: dungeon_lava_battlescreen_extendedbackgrounds_river_foreground
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_waterfall.png"
+        infoScreenOffset: 30
+        fillColour: '#286ab1'
+      - types: [jungle]
+        spriteSheet: tilesets
+        spriteBase: wang_jungle_river_tileset_000
+        waterSpriteBase: wang_jungle_river_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_ocean
+        battleBackgroundSpriteSheet: backgrounds/jungle_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: jungle_battlescreen_extendedbackgrounds_river
+        battleBackgroundSpriteForeground: jungle_battlescreen_extendedbackgrounds_river_foreground
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_waterfall.png"
+        infoScreenOffset: 30
+        fillColour: '#286ab1'
+      - types: [ice, ice_low]
+        spriteSheet: terrain_tilesets
+        spriteBase: wang_ice_river_tileset_2_000
+        waterSpriteBase: wang_ice_river_tileset_2_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_river
+        battleBackgroundSpriteSheet: backgrounds/ice_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: ice_battlescreen_extendedbackgrounds_river
+        battleBackgroundSpriteForeground: ice_battlescreen_extendedbackgrounds_river_foreground
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_waterfall.png"
+        infoScreenOffset: 30
+        fillColour: '#1659a8'
+      - types: [arctic]
+        spriteSheet: tilesets
+        spriteBase: wang_arctic_river_tileset_000
+        waterSpriteBase: wang_arctic_river_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_river
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_river
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_river_foreground
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_waterfall.png"
+        infoScreenOffset: 30
+        fillColour: '#1659a8'
+      - types: [arctic_bloom]
+        spriteSheet: tilesets
+        spriteBase: wang_arctic_river_tileset_000
+        waterSpriteBase: wang_arctic_river_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_river
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds_bloom
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_bloom_river
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_bloom_river_foreground
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_waterfall.png"
+        infoScreenOffset: 30
+        fillColour: '#1659a8'
+      - types: [arctic_blood]
+        spriteSheet: tilesets
+        spriteBase: wang_arctic_river_tileset_000
+        waterSpriteBase: wang_arctic_river_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_river
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds_red
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_red_river
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_red_river_foreground
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_waterfall.png"
+        infoScreenOffset: 30
+        fillColour: '#1659a8'
+      - types: [desert]
+        spriteSheet: tilesets
+        spriteBase: wang_desert_river_tileset_000
+        waterSpriteBase: wang_desert_river_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_sand_river
+        battleBackgroundSpriteSheet: backgrounds/desert_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: desert_battlescreen_extendedbackgrounds_river
+        battleBackgroundSpriteForeground: desert_battlescreen_extendedbackgrounds_river_foreground
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_waterfall.png"
+        infoScreenOffset: 30
+        fillColour: '#1659a8'
+    primaryConnect: [undefined, river, bridge]
+    decayTo: river
+    extras:
+      # Single tile variation
+      - { x: 6, y: 7, mask: 256 }
+      - { x: 6, y: 8, mask: 256 }
+      - { x: 6, y: 9, mask: 256 }
+      # Corner tile variation
+      - { x: 0, y: 7, mask: 28 }
+      - { x: 4, y: 7, mask: 112 }
+      - { x: 0, y: 11, mask: 7 }
+      - { x: 4, y: 11, mask: 193 }
+      # Outer corner tile variation
+      - { x: 1, y: 8, mask: 247 }
+      - { x: 2, y: 8, mask: 223 }
+      - { x: 1, y: 9, mask: 253 }
+      - { x: 2, y: 9, mask: 127 }
+      # Side tile variation
+      - { x: 1, y: 7, mask: 124 }
+      - { x: 2, y: 7, mask: 124 }
+      - { x: 3, y: 7, mask: 124 }
+
+      - { x: 0, y: 8, mask: 31 }
+      - { x: 0, y: 9, mask: 31 }
+      - { x: 0, y: 10, mask: 31 }
+
+      - { x: 4, y: 8, mask: 241 }
+      - { x: 4, y: 9, mask: 241 }
+      - { x: 4, y: 10, mask: 241 }
+
+      - { x: 1, y: 11, mask: 199 }
+      - { x: 2, y: 11, mask: 199 }
+      - { x: 3, y: 11, mask: 199 }
+      # U-shaped 1 tile wide ending variation
+      - { x: 0, y: 12, mask: 4 }
+      - { x: 4, y: 12, mask: 64 }
+      - { x: 5, y: 7, mask: 16 }
+      - { x: 5, y: 11, mask: 1 }
+      # Parallel 1 tile beach river variation
+      - { x: 1, y: 12, mask: 68 }
+      - { x: 2, y: 12, mask: 68 }
+      - { x: 3, y: 12, mask: 68 }
+
+      - { x: 5, y: 8, mask: 17 }
+      - { x: 5, y: 9, mask: 17 }
+      - { x: 5, y: 10, mask: 17 }
+...

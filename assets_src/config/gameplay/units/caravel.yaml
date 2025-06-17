@@ -1,0 +1,92 @@
+---
+
+weapons:
+  - id: caravelWeapon
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      water: 1
+      buildings: 1
+
+unitClasses:
+  - id: caravel
+    name: unit_class_name_caravel
+    cost: 200
+    movement: river_sailing
+    moveRange: 5
+    damageMultiplier: 1
+    aiPriority: 1.0
+    weapons:
+      - id: caravelWeapon
+    verbs:
+      - capture
+      - rescue
+      - attack_AI
+      - hire
+      - take_crown
+    tags:
+      - caravel
+      - type.sea.light
+    isRecruitable: true
+    isHidden: false
+    battleUnitCount: 1
+    passiveMultiplier: 1.5
+    sightRange: 4
+    isHiddenInCutsceneEditor: true
+    
+units:
+  - class: caravel
+    faction: outlaw
+    name: unit_name_caravel_outlaw
+    mapAnimation: units/caravel/pirates/map_caravel_pirates
+    mapLightSource:
+      sprite: lights_small
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_wagon
+      scale: [1.0, 0.6]
+      jitter:
+        scale: 0.25
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/caravel/pirates/battle_caravel_pirates
+    smallPortrait: units/caravel/pirates/portrait_caravel_pirates_small.png
+    mediumPortrait: units/caravel/pirates/portrait_caravel_pirates_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    attackTimingsHack: false
+    deathMoveMin: 80
+    deathMoveMax: 80
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: riverboatAttack
+      attackEffect: riverboatAttackEffect
+      attackShout: soldierPreAttackRed
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        attackAnimationSequence: counter
+        hitSpark: fx/bs_caravel_counter
+        hitDelay: 0.6
+        effectDelay: 0.6
+        samePanel: true
+      - id: oneShip
+        hitDelay: 1.1
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_caravel_attack
+        effectDelay: 1.0
+...

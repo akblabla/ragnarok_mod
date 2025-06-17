@@ -17,8 +17,6 @@ function Unload:canExecuteWithTarget(unit, endPos, targetPos, strParam)
 	if endPos.x == targetPos.x and endPos.y == targetPos.y then
 		return false
 	end
-    -- If it's a water transport, is it on a beach?
-    local tags = unit.unitClass.tags
 
     if strParam == '' then
         -- This means that the code is seeing if it should add unload to the action ui list
@@ -49,7 +47,7 @@ function Unload:canExecuteWithTarget(unit, endPos, targetPos, strParam)
         return false
     end
 
-    local targets = OldUnload:parseStrParam(strParam)
+    local targets = Wargroove.stringToPositions(strParam)
     for unitId, target in pairs(targets) do
         local loadedUnit = Wargroove.getUnitById(unitId)
 		if unit.unitClassId == "travelboat"  then

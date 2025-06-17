@@ -1,0 +1,28 @@
+---
+
+actions:
+  - type: play
+    clips: [ sfx/lighterTry0.ogg, sfx/lighterTry1.ogg, sfx/lighterTry2.ogg ]
+    group: sfx
+    pitch: [ 0.9, 1.1, 1.0 ]
+    delay: 0.6
+
+  - type: play
+    clips: [ sfx/lighterTry0.ogg, sfx/lighterTry1.ogg, sfx/lighterTry2.ogg ]
+    group: sfx
+    pitch: [ 0.9, 1.1, 1.0 ]
+    delay: 1.0
+
+  - type: play
+    clips: [ sfx/fuseLit.ogg ]
+    group: sfx
+    pitch: [ 0.9, 1.1, 1.0 ]
+    delay: 1.05
+
+  - type: play
+    clips: [ sfx/fireworksFlyOut.ogg ]
+    group: sfx
+    pitch: [ 0.9, 1.1, 1.0 ]
+    delay: 2.35
+
+...

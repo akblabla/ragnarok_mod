@@ -1,5 +1,40 @@
 ---
 
+weapons:
+  - id: fireBreath
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      air: 1
+      water: 1
+      buildings: 1
+
+unitClasses:
+  - id: dragon
+    name: unit_class_name_dragon
+    cost: 1250
+    resourceCost: 3
+    movement: flying
+    moveRange: 8
+    damageMultiplier: 1
+    aiPriority: 1.0
+    weapons:
+      - id: fireBreath
+    tags:
+      - dragon
+      - type.air
+    verbs:
+      - rescue
+      - attack_AI
+      - hire
+      - take_crown
+    battleUnitCount: 1
+    passiveMultiplier: 1.5
+    sightRange: 4
+    canSeeOverTerrain: true
+    
 units:
   - class: dragon
     faction: outlaw

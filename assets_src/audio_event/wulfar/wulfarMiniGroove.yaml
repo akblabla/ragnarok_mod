@@ -1,0 +1,15 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/cutscene/throwObject.ogg ]
+    delay: 0.05
+    pitch: 0.35
+    volume: 1
+    group: sfx
+    
+  - type: play
+    clips: [ sfx/wulfar/wulfarHmm.ogg ]
+    delay: 0.7
+    volume: 1
+    group: sfx
+...

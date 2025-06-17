@@ -1,6 +1,25 @@
 ---
 
 commanders:
+  - id: duchess
+    name: character_duchess_name
+    title: character_duchess_title
+    playable: true
+    faction: cherrystone
+    factionIndex: 3
+    portrait:
+      neutral: portraits/commanders/small/duchess_portrait_small.png
+      happy: portraits/commanders/small/duchess_portrait_happy.png
+      sad: portraits/commanders/small/duchess_portrait_sad.png
+    cutscenePortrait: portraits/commanders/big/duchess_portrait
+    portraitOffset: [0, -15]
+    namePlate: ui/character_select/charlabel/charlabel_cherrystone.png
+    themeSong: music/ominous
+    skinColour: typeVI
+    unitClassId: commander_duchess
+    selectionSound: duchess/duchessShoutIllMakeThisQuick
+    dialogueBoxVoice: ui/dialogue/textScrollTenri
+    
   - id: vesper
     name: character_vesper_name
     title: character_vesper_title
@@ -42,14 +61,16 @@ commanders:
   - id: rival
     name: character_rival_name
     title: character_rival_title
+    playable: true
+    mpPlayable: false
     faction: outlaw
     portrait:
-      neutral: portraits/commanders/small/soldier_portrait_extra.png
-      happy: portraits/commanders/small/soldier_portrait_extra.png
-      sad: portraits/commanders/small/soldier_portrait_extra.png
+      neutral: portraits/commanders/small/outlaw_archer_portrait.png
+      happy: portraits/commanders/small/outlaw_archer_portrait.png
+      sad: portraits/commanders/small/outlaw_archer_portrait.png
     cutscenePortrait: portraits/commanders/big/rival_portrait
     portraitOffset: [0, 20]
-    themeSong: music/hostile
+    themeSong: music/twins
     skinColour: typeII
     unitClassId: rival
     dialogueBoxVoice: ui/dialogue/textScroll
@@ -66,7 +87,7 @@ commanders:
       sad: portraits/commanders/small/soldier_portrait_extra.png
     cutscenePortrait: portraits/commanders/big/rival_portrait
     portraitOffset: [0, 20]
-    themeSong: music/hostile
+    themeSong: music/twins
     skinColour: typeII
     unitClassId: commander_flagship_rival
     dialogueBoxVoice: ui/dialogue/textScroll
@@ -258,9 +279,9 @@ commanders:
     faction: outlaw
     playable: false
     portrait:
-        happy: portraits/commanders/small/soldier_portrait_extra.png
+        happy: portraits/commanders/small/outlaw_archer_portrait.png
         neutral: portraits/commanders/small/outlaw_soldier_portrait.png
-        sad: portraits/commanders/small/thief_portrait.png
+        sad: portraits/commanders/small/outlaw_thief_portrait.png
         extra: portraits/commanders/small/outlaw_merfolk_portrait.png
     cutscenePortrait: portraits/commanders/big/outlaw_portrait
     portraitOffset: [0, 20]
@@ -294,6 +315,38 @@ commanders:
     cutscenePortrait: portraits/commanders/big/heavensong_portrait
     themeSong: music/koji
     skinColour: typeIII
+    unitClassId: knight
+    dialogueBoxVoice: ui/dialogue/textScroll
+
+  - id: generic_kraken
+    name: character_generic_kraken_name
+    faction: cherrystone
+    playable: false
+    portrait:
+      neutral: portraits/commanders/small/kraken_portrait_small.png
+      happy: portraits/commanders/small/kraken_portrait_happy.png
+      sad: portraits/commanders/small/kraken_portrait_sad.png
+      extra: portraits/commanders/small/kraken_portrait_extra.png
+    cutscenePortrait: portraits/commanders/big/cherrystone_portrait
+    themeSong: valder
+    skinColour: typeVI
+    unitClassId: knight
+    dialogueBoxVoice: ui/dialogue/textScroll
+
+
+  - id: generic_frog
+    name: character_generic_frog_name
+    faction: cherrystone
+    playable: false
+    portrait:
+      neutral: portraits/commanders/small/frogfolk_portrait_small.png
+      happy: portraits/commanders/small/frogfolk_portrait_small.png
+      sad: portraits/commanders/small/frogfolk_portrait_sad.png
+      extra: portraits/commanders/small/frogfolk_portrait_extra.png
+      extra2: portraits/commanders/small/frog_portrait_small.png
+    cutscenePortrait: portraits/commanders/big/cherrystone_portrait
+    themeSong: mercia
+    skinColour: typeVI
     unitClassId: knight
     dialogueBoxVoice: ui/dialogue/textScroll
 ...

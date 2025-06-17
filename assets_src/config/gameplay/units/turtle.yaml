@@ -1,6 +1,330 @@
 ---
 
+weapons:
+  - id: turtleBite
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      water: 1
+      
+unitClasses:
+  - id: turtle
+    name: unit_class_name_turtle
+    cost: 400
+    resourceCost: 2
+    movement: sailing
+    moveRange: 8.0
+    damageMultiplier: 1
+    aiPriority: 1.0
+    ignoresObstacles: true
+    weapons:
+      - id: turtleBite
+    tags:
+      - turtle
+      - type.sea.medium
+    verbs:
+      - rescue
+      - attack_AI
+      - hire
+      - take_crown
+    battleUnitCount: 4
+    passiveMultiplier: 1.5
+    sightRange: 4
+    scout: true
+    isHiddenInCutsceneEditor: true
+
 units:
+  - class: turtle
+    enabled: true
+    faction: cherrystone
+    name: unit_name_turtle_cherrystone
+    mapAnimation: units/turtle/cherrystone/map_turtle_cherrystone
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [1.0, 0.6]
+      jitter:
+        scale: 0.5
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/turtle/cherrystone/battle_turtle_cherrystone
+    smallPortrait: units/turtle/cherrystone/portrait_turtle_cherrystone_small.png
+    mediumPortrait: units/turtle/cherrystone/portrait_turtle_cherrystone.png
+    mapSpeed: 8.0
+    grabPos: [13, 19]
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: turtleAttack
+      attackEffect: waveCrash
+      attackShout: soldierPreAttackRed
+      death: merfolkDie
+      deathMap: unitDie
+      run: waterEntry
+      runMap: waterMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        effectDelay: 1.0
+        hitDelay: 1.0
+        samePanel: true
+      - id: turtleDistance
+        effectDelay: 2
+        hitDelay: 2.2
+        effect: fx/bs_turtle_attack
+        ranged: true
+
+  - class: turtle
+    enabled: true
+    faction: felheim
+    name: unit_name_turtle_felheim
+    mapAnimation: units/turtle/felheim/map_turtle_felheim
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [1.0, 0.6]
+      jitter:
+        scale: 0.5
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/turtle/felheim/battle_turtle_felheim
+    smallPortrait: units/turtle/felheim/portrait_turtle_felheim_small.png
+    mediumPortrait: units/turtle/felheim/portrait_turtle_felheim.png
+    mapSpeed: 8.0
+    grabPos: [13, 19]
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: turtleAttack
+      attackEffect: waveCrash
+      attackShout: soldierPreAttackRed
+      death: merfolkDie
+      deathMap: unitDie
+      run: waterEntry
+      runMap: waterMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        effectDelay: 1.0
+        hitDelay: 1.0
+        samePanel: true
+      - id: turtleDistance
+        effectDelay: 2
+        hitDelay: 2.2
+        effect: fx/bs_turtle_attack
+        ranged: true
+
+  - class: turtle
+    enabled: true
+    faction: heavensong
+    name: unit_name_turtle_heavensong
+    mapAnimation: units/turtle/heavensong/map_turtle_heavensong
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [1.0, 0.6]
+      jitter:
+        scale: 0.5
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/turtle/heavensong/battle_turtle_heavensong
+    smallPortrait: units/turtle/heavensong/portrait_turtle_heavensong_small.png
+    mediumPortrait: units/turtle/heavensong/portrait_turtle_heavensong.png
+    mapSpeed: 8.0
+    grabPos: [13, 19]
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: turtleAttackYellow
+      attackEffect: waveCrash
+      attackShout: soldierPreAttackRed
+      death: soldierDieYellow
+      deathMap: unitDie
+      run: waterEntry
+      runMap: waterMapEntry
+      hit: hitOrganic
+      hitMap: hitWood
+    attacks:
+      - id: primary
+        effectDelay: 1.0
+        hitDelay: 1.0
+        samePanel: true
+      - id: turtleDistance
+        effectDelay: 2
+        hitDelay: 2.2
+        effect: fx/bs_turtle_attack
+        ranged: true
+
+
+
+  - class: turtle
+    enabled: true
+    faction: floran
+    name: unit_name_turtle_floran
+    mapAnimation: units/turtle/floran/map_turtle_floran
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [1.0, 0.6]
+      jitter:
+        scale: 0.5
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/turtle/floran/battle_turtle_floran
+    smallPortrait: units/turtle/floran/portrait_turtle_floran_small.png
+    mediumPortrait: units/turtle/floran/portrait_turtle_floran.png
+    mapSpeed: 8.0
+    grabPos: [13, 19]
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: turtleAttackGreen
+      attackEffect: waveCrash
+      attackShout: soldierPreAttackRed
+      death: soldierDieGreen
+      deathMap: unitDie
+      run: waterEntry
+      runMap: waterMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        effectDelay: 1.0
+        hitDelay: 1.0
+        samePanel: true
+      - id: turtleDistance
+        effectDelay: 2
+        hitDelay: 2.2
+        effect: fx/bs_turtle_attack
+        ranged: true
+
+  - class: turtle
+    enabled: true
+    faction: faahri
+    name: unit_name_turtle_faahri
+    mapAnimation: units/turtle/faahri/map_turtle_faahri
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [1.0, 0.6]
+      jitter:
+        scale: 0.5
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/turtle/faahri/battle_turtle_faahri
+    smallPortrait: units/turtle/faahri/portrait_turtle_faahri_small.png
+    mediumPortrait: units/turtle/faahri/portrait_turtle_faahri.png
+    mapSpeed: 8.0
+    grabPos: [13, 19]
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: turtleAttackOrange
+      attackEffect: waveCrash
+      attackShout: soldierPreAttackOrange
+      death: soldierDieOrange
+      deathMap: unitDie
+      run: waterEntry
+      runMap: waterMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        effectDelay: 1.0
+        hitDelay: 1.0
+        samePanel: true
+      - id: turtleDistance
+        effectDelay: 2
+        hitDelay: 2.2
+        effect: fx/bs_turtle_attack
+        ranged: true
+
+  - class: turtle
+    enabled: true
+    faction: pirates
+    name: unit_name_turtle_pirates
+    mapAnimation: units/turtle/pirates/map_turtle_pirates
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [1.0, 0.6]
+      jitter:
+        scale: 0.5
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/turtle/pirates/battle_turtle_pirates
+    smallPortrait: units/turtle/pirates/portrait_turtle_pirates_small.png
+    mediumPortrait: units/turtle/pirates/portrait_turtle_pirates.png
+    mapSpeed: 8.0
+    grabPos: [13, 19]
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: turtleAttack
+      attackEffect: waveCrash
+      attackShout: soldierPreAttackRed
+      death: merfolkDie
+      deathMap: unitDie
+      run: waterEntry
+      runMap: waterMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        effectDelay: 1.0
+        hitDelay: 1.0
+        samePanel: true
+      - id: turtleDistance
+        effectDelay: 2
+        hitDelay: 2.2
+        effect: fx/bs_turtle_attack
+        ranged: true
+
   - class: turtle
     enabled: true
     faction: outlaw
@@ -23,7 +347,7 @@ units:
     battleAnimation: units/turtle/outlaw/battle_turtle_outlaw
     smallPortrait: units/turtle/outlaw/portrait_turtle_outlaw_small.png
     mediumPortrait: units/turtle/outlaw/portrait_turtle_outlaw.png
-    mapSpeed: 4.0
+    mapSpeed: 8.0
     grabPos: [13, 19]
     emotes:
       idle: idle

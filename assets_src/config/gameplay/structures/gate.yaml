@@ -1,0 +1,81 @@
+---
+
+unitClasses:
+  - id: gate
+    name: structure_name_gate
+    aiPriority: 3.0
+    cargoSpace: 1
+    battleUnitCount: 1
+    isStructure: true
+    canReinforce: false
+    canBeReinforced: false
+    hostileNeutral: true
+    damageMultiplier: 0.5
+    movement: indoor_building
+    garrisonUnit: ""
+    cost: 500
+    isLineOfSightBlocker: true
+    tags:
+      - structure
+    sightRange: 1
+
+units:
+  - class: gate
+    faction: neutral
+    name: structure_name_gate
+    mapBiomeAnimation:
+      - id: grass
+        images: [structures/gate_new, structures/gate_new_2]
+      - id: jungle
+        images: [structures/gate_new, structures/gate_new_2]
+      - id: desert
+        images: [structures/gate_new, structures/gate_new_2]
+      - id: ice
+        images: [structures/gate_new, structures/gate_new_2]
+      - id: ice_low
+        images: [structures/gate_new, structures/gate_new_2]   
+      - id: arctic
+        images: [structures/gate_new, structures/gate_new_2]
+      - id: arctic_blood
+        images: [structures/gate_new, structures/gate_new_2]
+      - id: dungeon
+        images: [structures/gate_new, structures/gate_new_2]
+      - id: dungeon_purple
+        images: [structures/gate_new, structures/gate_new_2]
+      - id: dungeon_lava
+        images: [structures/gate_new, structures/gate_new_2]
+    # mapLightSource:
+    #   sprite: lights_large
+    #   scale: [1.0, 1.0]
+    #   jitter:
+    #     scale: 1.0
+    #     frequency: 0.3
+    #     frequencyVariance: 0.15
+    # battleLightSource:
+    #   sprite: lights_battle_large
+    #   scale: [3.0, 2.0]
+    #   jitter:
+    #     scale: 0.33
+    #     frequency: 0.3
+    #     frequencyVariance: 0.15
+    smallPortrait: portraits/small/portrait_structure_small.png
+    mediumPortrait: portraits/medium/gate.png
+    grabPos: [15, 12]
+    sounds:
+      hit: hitWood
+      hitMap: hitStone
+      death: gateDie
+      deathMap: strongholdDieRed
+    structureBiomeImage:
+      - id: grass
+        image:
+          spriteSheet: backgrounds/gate/gate_background_full
+          farBackground: gate_background_full_background_2
+          nearBackground: gate_background_full_background_2
+          foreground: gate_background_full_background_2
+          keeperPosition: [54, 75]
+          leftBannerOffset: [0, 0]
+          rightBannerOffset: [0, 0]
+    hasBattleScreen: false
+
+...

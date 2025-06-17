@@ -1,0 +1,12 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/clothMovement1.ogg ]
+    group: sfx
+
+  - type: play
+    clips: [ sfx/riflemanCounterAttackHit.ogg ]
+    group: sfx
+    pitch: [ 0.95, 1.05 ]
+    delay: 0.9
+...

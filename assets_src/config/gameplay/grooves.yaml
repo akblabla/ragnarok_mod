@@ -1,0 +1,42 @@
+---
+
+grooves:
+  - id: groove_broadside                        # The groove id
+    name: groove_name_broadside                 # The groove name (looks up the string in the string yaml file)
+    description: groove_description_broadside   # The groove description (looks up the string in the string yaml file)
+    grooveCostTier1: 50
+    grooveCostTier2: 150
+    verb: groove_no_groove                      #   The verb associated with the groove. This should match the id of the verb in verbs.yaml.
+
+  - id: groove_area_damage_rival                     # The groove id
+    name: groove_name_area_damage_rival                 # The groove name (looks up the string in the string yaml file)
+    description: groove_description_area_damage_rival   # The groove description (looks up the string in the string yaml file)
+    grooveCostTier1: 100
+    verb: groove_area_damage_rival                      #   The verb associated with the groove. This should match the id of the verb in verbs.yaml.
+    
+  - id: groove_alert_area                     # The groove id
+    name: groove_name_alert_area                 # The groove name (looks up the string in the string yaml file)
+    description: groove_description_alert_area   # The groove description (looks up the string in the string yaml file)
+    grooveCostTier1: 50
+    verb: groove_alert_area                      #   The verb associated with the groove. This should match the id of the verb in verbs.yaml.
+
+  - id: groove_morale_boost                     # The groove id
+    name: groove_name_morale_boost                 # The groove name (looks up the string in the string yaml file)
+    description: groove_description_morale_boost   # The groove description (looks up the string in the string yaml file)
+    grooveCostTier1: 150
+    verb: groove_morale_boost                      #   The verb associated with the groove. This should match the id of the verb in verbs.yaml.
+
+  - id: golf
+    name: groove_name_golf
+    description: groove_description_golf
+    grooveCostTier1: 50
+    grooveCostTier2: 100
+    verb: groove_no_groove
+    
+  - id: smoke_screen
+    name: groove_name_smoke_screen
+    description: groove_description_smoke_screen
+    grooveCostTier1: 100
+    grooveCostTier2: 200
+    verb: groove_no_groove
+...

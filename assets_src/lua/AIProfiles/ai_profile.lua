@@ -5,17 +5,6 @@ local AIProfile = {}
 
 local AIProfileObject = nil
 
-
-function AIProfile.init()
-    -- print("AIProfile.init()")
-    -- for playerId = 0,Wargroove.getNumPlayers(false) do
-    --     local profile = AIProfile.getProfileState(playerId)
-    --     if profile ~= nil then
-    --         AIProfile.setProfile(playerId, profile)
-    --     end
-    -- end
-end
-
 function AIProfile.setProfile(playerId, profile)
     if profile == "mangrove_madness" then
         local AIProfile = require "AIProfiles/mangroveMadness"
@@ -31,6 +20,15 @@ function AIProfile.setProfile(playerId, profile)
     end
     if profile == "rival_pirate" then
         local AIProfile = require "AIProfiles/rivalPirate"
+        AIProfile.setProfile()
+    end
+    if profile == "rival_pirate_late" then
+        local AIProfile = require "AIProfiles/rivalPirateLate"
+        AIProfile.setProfile()
+    end
+    
+    if profile == "hidden_fjord" then
+        local AIProfile = require "AIProfiles/hiddenFjord"
         AIProfile.setProfile()
     end
     AIProfile.setProfileState(playerId, profile)
@@ -53,7 +51,8 @@ function AIProfile.getAIProfileObject()
                 return AIProfileObject
             end
         end
-        local id = Wargroove.spawnUnit(-1, {x=-50,y=-50}, "ai_profile", false)
+        local id = Wargroove.spawnUnit(-1, {x=-50,y=-50}, "ai_profile", false, "idle")
+        Wargroove.clearCaches()
         AIProfileObject = Wargroove.getUnitById(id)
         return AIProfileObject
     else

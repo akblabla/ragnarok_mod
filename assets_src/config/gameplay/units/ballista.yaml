@@ -1,5 +1,38 @@
 ---
+weapons:
+  - id: ballistaBolt
+    rangeMin: 2
+    rangeMax: 6
+    canMoveAndAttack: false
+    baseDamage:
+      air: 1
+      land: 1
+      water: 1
+      buildings: 1      
 
+unitClasses:
+  - id: ballista
+    name: unit_class_name_ballista
+    cost: 800
+    movement: wheels
+    moveRange: 6
+    damageMultiplier: 1
+    aiPriority: 1.6
+    weapons:
+      - id: ballistaBolt
+    tags:
+      - ballista
+      - type.ground.heavy
+    verbs:
+      - load
+      - rescue
+      - attack_AI
+      - hire
+      - take_crown
+    battleUnitCount: 1
+    passiveMultiplier: 1.5
+    sightRange: 4
+    
 units:
   - class: ballista
     faction: outlaw

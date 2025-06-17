@@ -1,9 +1,386 @@
 ---
+weapons:
+  - id: tentacleSmack
+    rangeMin: 1
+    rangeMax: 3
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      water: 1
+      buildings: 1
+
+unitClasses:
+  - id: kraken
+    name: unit_class_name_kraken
+    cost: 1000
+    resourceCost: 2
+    movement: sailing
+    moveRange: 6.0
+    damageMultiplier: 1
+    aiPriority: 1.0
+    weapons:
+      - id: tentacleSmack
+    verbs:
+#      - tentacle
+      - rescue
+      - attack_AI
+      - hire
+      - take_crown
+    tags:
+      - kraken
+      - type.sea.heavy
+    battleUnitCount: 1
+    passiveMultiplier: 1.5
+    sightRange: 4
+    deathVerbId: kraken_death
+
 
 units:
   - class: kraken
-    faction: outlaw
+    faction: cherrystone
+    name: unit_name_kraken_cherrystone
+    mapAnimation: units/kraken/cherrystone/map_kraken_cherrystone
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_large
+      scale: [1.0, 0.6]
+      jitter:
+        scale: 0.25
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/kraken/cherrystone/battle_kraken_cherrystone
+    smallPortrait: units/kraken/cherrystone/portrait_kraken_cherrystone_small.png
+    mediumPortrait: units/kraken/cherrystone/portrait_kraken_cherrystone_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    attackTimingsHack: false
+    attackOffset: [10, 0]
+    battlePosOffset: [-20, 0]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: krakenAttack
+      attackEffect: krakenAttackEffect
+      attackShout: krakenPreAttack
+      death: krakenDie
+      deathMap: unitDie
+      run: krakenEntry
+      runMap: krakenMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+      counter: krakenAttack
+    attacks:
+      - id: primary
+        attackAnimationSequence: counter
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.0
+        attackSound: counter
+        samePanel: true
+      - id: oneKraken
+        hitDelay: 1.3
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_tentacle_cherrystone_attack
+        effectDelay: 0.7
+        effectPaletteSwaps: true
+
+  - class: kraken
+    faction: felheim
+    name: unit_name_kraken_felheim
+    mapAnimation: units/kraken/felheim/map_kraken_felheim
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_large
+      scale: [1.0, 0.6]
+      jitter:
+        scale: 0.25
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/kraken/felheim/battle_kraken_felheim
+    smallPortrait: units/kraken/felheim/portrait_kraken_felheim_small.png
+    mediumPortrait: units/kraken/felheim/portrait_kraken_felheim_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    attackTimingsHack: false
+    attackOffset: [10, 0]
+    battlePosOffset: [-20, 0]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: krakenAttack
+      attackEffect: krakenAttackEffect
+      attackShout: krakenPreAttack
+      death: krakenDie
+      deathMap: unitDie
+      run: krakenEntry
+      runMap: krakenMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+      counter: krakenAttack
+    attacks:
+      - id: primary
+        attackAnimationSequence: counter
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.0
+        attackSound: counter
+        samePanel: true
+      - id: oneKraken
+        hitDelay: 1.3
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_tentacle_felheim_attack
+        effectDelay: 0.7
+        effectPaletteSwaps: true
+
+  - class: kraken
+    faction: heavensong
+    name: unit_name_kraken_heavensong
+    mapAnimation: units/kraken/heavensong/map_kraken_heavensong
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_large
+      scale: [1.0, 0.6]
+      jitter:
+        scale: 0.25
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/kraken/heavensong/battle_kraken_heavensong
+    smallPortrait: units/kraken/heavensong/portrait_kraken_heavensong_small.png
+    mediumPortrait: units/kraken/heavensong/portrait_kraken_heavensong_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    attackTimingsHack: false
+    attackOffset: [10, 0]
+    battlePosOffset: [-20, 0]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: krakenAttackOrange
+      attackEffect: krakenAttackEffect
+      attackShout: krakenPreAttack
+      death: krakenDieOrange
+      deathMap: unitDie
+      run: krakenEntryMech
+      runMap: krakenMapEntryMech
+      hit: hitMetal
+      hitMap: hitMetal
+      counter: krakenAttackOrange
+    attacks:
+      - id: primary
+        attackAnimationSequence: counter
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.0
+        attackSound: counter
+        samePanel: true
+      - id: oneKraken
+        hitDelay: 1.3
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_tentacle_heavensong_attack
+        effectDelay: 0.7
+        effectPaletteSwaps: true
+
+  - class: kraken
+    faction: floran
+    name: unit_name_kraken_floran
+    mapAnimation: units/kraken/floran/map_kraken_floran
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_large
+      scale: [1.0, 0.6]
+      jitter:
+        scale: 0.25
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/kraken/floran/battle_kraken_floran
+    smallPortrait: units/kraken/floran/portrait_kraken_floran_small.png
+    mediumPortrait: units/kraken/floran/portrait_kraken_floran_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    attackTimingsHack: false
+    attackOffset: [10, 0]
+    battlePosOffset: [-20, 0]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: krakenAttack
+      attackEffect: krakenAttackEffect
+      attackShout: krakenPreAttack
+      death: krakenDie
+      deathMap: unitDie
+      run: krakenEntry
+      runMap: krakenMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+      counter: krakenAttack
+    attacks:
+      - id: primary
+        attackAnimationSequence: counter
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.0
+        attackSound: counter
+        samePanel: true
+      - id: oneKraken
+        hitDelay: 1.3
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_tentacle_floran_attack
+        effectDelay: 0.7
+        effectPaletteSwaps: true
+        
+  - class: kraken
+    faction: faahri
+    name: unit_name_kraken_faahri
+    mapAnimation: units/kraken/faahri/map_kraken_faahri
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_large
+      scale: [1.0, 0.6]
+      jitter:
+        scale: 0.25
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/kraken/faahri/battle_kraken_faahri
+    smallPortrait: units/kraken/faahri/portrait_kraken_faahri_small.png
+    mediumPortrait: units/kraken/faahri/portrait_kraken_faahri_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    attackOffset: [10, 0]
+    attackTimingsHack: false
+    battlePosOffset: [-20, 0]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: krakenAttackOrange
+      attackEffect: krakenAttackEffect
+      attackShout: krakenPreAttack
+      death: krakenDieOrange
+      deathMap: unitDie
+      run: krakenEntryMech
+      runMap: krakenMapEntryMech
+      hit: hitMetal
+      hitMap: hitMetal
+      counter: krakenAttackOrange
+    attacks:
+      - id: primary
+        attackAnimationSequence: counter
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.0
+        attackSound: counter
+        samePanel: true
+      - id: oneKraken
+        hitDelay: 1.3
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_tentacle_faahri_attack
+        effectDelay: 0.7
+        effectPaletteSwaps: true
+
+  - class: kraken
+    faction: pirates
     name: unit_name_kraken_pirates
+    mapAnimation: units/kraken/pirates/map_kraken_pirates
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_large
+      scale: [1.0, 0.6]
+      jitter:
+        scale: 0.25
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/kraken/pirates/battle_kraken_pirates
+    smallPortrait: units/kraken/pirates/portrait_kraken_pirates_small.png
+    mediumPortrait: units/kraken/pirates/portrait_kraken_pirates_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    attackOffset: [10, 0]
+    attackTimingsHack: false
+    battlePosOffset: [-20, 0]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: krakenAttack
+      attackEffect: krakenAttackEffect
+      attackShout: krakenPreAttack
+      death: krakenDie
+      deathMap: unitDie
+      run: krakenEntry
+      runMap: krakenMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+      counter: krakenAttack
+    attacks:
+      - id: primary
+        attackAnimationSequence: counter
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.0
+        attackSound: counter
+        samePanel: true
+      - id: oneKraken
+        hitDelay: 1.3
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_tentacle_pirates_attack
+        effectDelay: 0.7
+        effectPaletteSwaps: true
+
+  - class: kraken
+    faction: outlaw
+    name: unit_name_kraken_outlaw
     mapAnimation: units/kraken/pirates/map_kraken_pirates
     mapLightSource:
       sprite: lights_medium

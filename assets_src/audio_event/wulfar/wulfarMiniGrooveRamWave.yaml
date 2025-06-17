@@ -1,0 +1,8 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/waveCrash.ogg ]
+    volume: 0.6
+    group: sfx
+    loop: false
+...

@@ -18,6 +18,10 @@ local valueReductionPerUnitList = {
 	trebuchet = 0.5,
 	turtle = 0.8,
 	warship = 0.8,
+	kraken = 0.8,
+	frog = 0.6,
+	caravel = 0.85,
+	griffin_walking = 0.85,
 	witch = 0.6,
 	travelboat = 1,
 	balloon = 1,
@@ -40,7 +44,11 @@ local idealUnitRatioList = {
 	spearman = 1,
 	trebuchet = 0.3,
 	turtle = 1,
-	warship = 1,
+	warship = 0.75,
+	kraken = 0.75,
+	frog = 0.75,
+	caravel = 1,
+	griffin_walking = 1,
 	witch = 1,
 	travelboat = 0,
 	balloon = 0,
@@ -66,8 +74,15 @@ local antiAirMultiplierList = {
 	witch = 3
 }
 
+local producerPrice = {
+	barracks = 50,
+	hideout = 0,
+	port = 25,
+	tower = 0,
+	outpost = 50
+}
+
 local bannedUnitList = {
-	pirate_ship = true,
 	wagon = true,
 	balloon = true,
 	travelboat = true,
@@ -92,6 +107,7 @@ function Default.setProfile()
 	CustomAI.baseLineOpportunityCostScaling = baseLineOpportunityCostScaling
 	CustomAI.unitRatioResetPerUnit = unitRatioResetPerUnit
 	CustomAI.unitRatioPenaltyPerUnit = unitRatioPenaltyPerUnit
+	CustomAI.producerPrice = producerPrice
 end
 
 return Default

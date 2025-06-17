@@ -1,0 +1,54 @@
+---
+
+# This is the string configuration file for English.
+en-GB: &flag-en
+  #AI
+  character_vesper_age: 21
+  character_vesper_birthday: ""
+  character_vesper_height: "165 cm"
+  character_vesper_name: "Vesper"
+  character_vesper_title: "Convicted Pet-napper"
+
+  codex_commander_vesper_lore_text: |
+    Vesper and Wulfar grew up together as best friends in a large Outlaw clan. 4 years after the events of Frivolous Rivalries, the pair met the most charming girl either had ever seen: Alia. 
+
+    The three quickly became close, but it was soon obvious that Vesper and Wulfar were both competing for Alia’s time and affection.
+
+    When Vesper recognized her own feelings, she instinctively withdrew for fear of being abandoned. On the night Vesper at last mustered the courage to confess her love, she found herself fifteen minutes too late. Wulfar had just finished his own confession, and he and Alia were locked in embrace.
+
+    Panic, embarrassment, shame overwhelmed Vesper—she fled the clan that very night, after nearly suffocating Wulfar and Alia in a rage-induced cloud of smoke. 
+
+    Since then, Vesper’s life has been one self-inflicted disaster after another. Case in point: two years ago, Vesper returned to her old clan's territory, intending to make amends with Wulfar and Alia. However, when she learned of Alia’s passing, and of Wulfar’s apparent happy life despite that loss--Vesper was overcome with disgust, and launched headfirst into her latest scheme.
+    
+  codex_groove_title_vesper2_minigroove: "【Mini-groove: Teleport】"
+
+  codex_groove_description_vesper2_minigroove: |
+    Dissappear in a puff of smoke and reappear in style at a location within 5 tiles.
+    【 Charge: Medium 】
+  codex_groove_title_vesper2: "【groove: Smoke Shroud】"
+  codex_groove_description_vesper2: |
+    Summon a smoke shroud within 6 tiles that shields units from all damage for one turn. (Radius: 2)
+    【 Charge: Very Slow 】
+
+  codex_groove_title_wulfar2_minigroove: "【Mini-groove: Putt】"
+
+  codex_groove_description_wulfar2_minigroove: |
+    Push a unit up to 3 tiles. They take no damage and can't bump into other units or walls.
+    【 Charge: Very Fast 】
+
+  codex_groove_title_wulfar2: "【groove: Tee Off】"
+  codex_groove_description_wulfar2: |
+    Launch a unit into the air, dealing 50% Groove damage to the launched unit and adjacent enemies on impact. The maximum launch range is 8 tiles.
+    【 Charge: Medium 】
+
+de-DE: *flag-en
+es-ES: *flag-en
+fr-FR: *flag-en
+it-IT: *flag-en
+ja-JP: *flag-en
+ko-KR: *flag-en
+pt-BR: *flag-en
+ru-RU: *flag-en
+zh-Hans: *flag-en
+zh-Hant: *flag-en
+...

@@ -1,0 +1,7 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/putt.ogg ]
+    volume: 0.6
+    group: sfx
+...

@@ -1,6 +1,10 @@
 ---
 
 triggerActions:
+  - id: ignore_enemies_threatening_allies
+    parameters:
+      - type: player
+
   - id: ai_set_no_building_attacking
     parameters:
       - type: player
@@ -63,6 +67,8 @@ triggerActions:
       - type: location_star
       - type: player_neutral_star
       - type: boolean
+      - type: skin_colour
+      - type: facing
 
   - id: split_into
     parameters:
@@ -181,14 +187,11 @@ triggerActions:
       - type: character_non_playable
       - type: string
       - type: string
+      - type: boolean
+      - type: string
+      - type: player_colour_star
       - type: counter
 
-  - id: dialogue_box
-    parameters:
-      - type: character_expression
-      - type: character_non_playable
-      - type: string
-      - type: string
   - id: dialogue_box_unit
     parameters:
       - type: unit_class_star

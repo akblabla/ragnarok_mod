@@ -30,7 +30,7 @@ function Upgrade:getRecruitableTargets(unit, endPos)
         if (neighbour~=nil) and (neighbour.unitClassId == "tavern") then
             for j,recruit in pairs(neighbour.recruits) do
                 local uc = Wargroove.getUnitClass(recruit)
-                if recruit~=unit.unitClassId and (uc.cost>unit.unitClass.cost) then
+                if recruit~=unit.unitClassId and Wargroove.canStandAt(recruit,endPos) then
                     recruits[recruit] = true;
                 end
             end
@@ -60,7 +60,7 @@ function Upgrade:getTargetType()
 end
 
 function Upgrade:canExecuteAnywhere(unit)
-    return true
+    return unit.unitClass.isCommander == false
 end
 
 Upgrade.inPreExecute = true

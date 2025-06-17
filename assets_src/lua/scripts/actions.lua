@@ -13,6 +13,7 @@ local Corners = require "scripts/corners"
 local Stats = require "util/stats"
 local PosKey = require "util/posKey"
 local AIProfile = require "AIProfiles/ai_profile"
+local PirateBout = require "scripts/pirate_bout"
 
 local Actions = {}
 
@@ -36,6 +37,7 @@ function Actions.init()
 end
 
 function Actions.populate(dst)
+    dst["ignore_enemies_threatening_allies"] = Actions.ignoreEnemiesThreateningAllies
     dst["ai_set_no_building_attacking"] = Actions.setNoBuildingAttacking
     dst["ai_set_priority_target"] = Actions.aiSetPriorityTarget
     dst["enable_hiring"] = Actions.enableHiring
@@ -45,6 +47,7 @@ function Actions.populate(dst)
 	dst["log_unit"] = Actions.logUnit
 	dst["message_counter"] = Actions.messageCounter
 	dst["dialogue_box_with_counter"] = Actions.dialogueBoxWithCounter
+    dst["update_constant_objective"] = Actions.updateConstantObjective
 	dst["change_objective_with_3_counters"] = Actions.changeObjectiveWith3Counters
 	dst["give_crown"] = Actions.giveCrown
 	dst["link_gizmo_state_with_activators"] = Actions.linkGizmoStateWithActivators
@@ -52,7 +55,7 @@ function Actions.populate(dst)
 	dst["gizmo_toggle_when_stood_on"] = Actions.gizmoToggleStateWhenMovedTo
 	dst["invert_gizmo"] = Actions.invertGizmo
 	dst["set_threat_at_location"] = Actions.setThreatAtLocation
-	dst["spawn_unit"] = Actions.spawnUnit
+	--dst["spawn_unit"] = Actions.spawnUnit
 	dst["split_into"] = Actions.splitInto
 	dst["spawn_unit_in_transport"] = Actions.spawnUnitInsideTransport
 	dst["spawn_unit_close"] = Actions.spawnUnitClose
@@ -93,7 +96,7 @@ function Actions.populate(dst)
     dst["force_golf"] = Actions.forceGolf
     dst["play_animation"] = Actions.playAnimation
     dst["play_emote"] = Actions.playEmote
-    --dst["ai_set_profile"] = Actions.setAIProfileWithBuild
+    dst["ai_set_profile"] = Actions.setAIProfileWithBuild
     dst["run_group_sequentially"] = Actions.runGroupSequentially
     dst["run_group_concurrently"] = Actions.runGroupConcurrently
     dst["end_group"] = Actions.endGroup
@@ -109,6 +112,11 @@ function Actions.populate(dst)
 end
 
 
+function Actions.ignoreEnemiesThreateningAllies(context)
+    -- "Make player {0} ignore enemies threatening allies"
+    local playerId = context:getPlayerId(0)
+    PirateBout.playerIgnoreUnitsThreateningAllies(playerId)
+end
 
 function Actions.aiSetRestriction(context)
     -- "Set AI restriction of {0} at {1} for {2}: Set {3} to {4}"
@@ -358,11 +366,8 @@ end
 function Actions.setLocationToSpawned(context)
     -- "Set location {0} to the spawned units this update."
     local location = context:getLocation(0)
-    local newLocation = {}
-    for posKey,value in pairs(context.spawnedUnits) do
-        table.insert(newLocation,PosKey.revertPosKey(posKey))
-    end
-	location:setArea(newLocation)
+
+	location:setArea(context.spawnedUnits)
 end
 
 function Actions.setLocationToUnits(context)
@@ -445,6 +450,9 @@ function Actions.setPriorityTarget(context)
         print(unit.playerId) 
         print(unit.id) 
         print(unit.unitClassId) 
+        if order == "do verb" then
+            AIManager.doVerbOrder(unit.id,location.positions)
+        end
         if order == "attack move" then
             AIManager.attackMoveOrder(unit.id,location.positions)
         end
@@ -492,31 +500,54 @@ function Actions.displayPath(context)
     local units = context:gatherUnits(2, 0, 1)
     for i, unit in ipairs(units) do
         local path = AIManager.getPath(unit.id)
+
         local playerId = unit.playerId
         if playerId ==-1 then
             playerId = 0
         end
         if (path~=nil) and (next(path) ~= nil) then
-            Wargroove.trackCameraTo(path[#path])
+            local trackUnitId = Wargroove.spawnUnit(-1,unit.pos,"vision_tile",false)
+            Wargroove.setShadowVisible(trackUnitId, false)
+		    Wargroove.setVisibleOverride(trackUnitId, false)
+            Wargroove.lockTrackCamera(trackUnitId)
             local lastTile = nil
+            local deltaTime = 0.05
+
+            local actualPos = {x = path[1].x, y = path[1].y}
             for j, tile in ipairs(path) do
+                local dist = math.sqrt((tile.x-actualPos.x)^2+(tile.y-actualPos.y)^2)
+                local dir = {x = (tile.x-actualPos.x),y = (tile.y-actualPos.y)}
+                if dist~=0 then
+                    dir = {x = dir.x/dist,y = dir.y/dist}
+                else
+                    dir = {x = 0, y = 0}
+                end
+                local speed = dist*8
+                Wargroove.moveUnitToOverride(trackUnitId, tile, 0, 0, speed)
                 local nextTile = path[j+1]
                 if lastTile~=nil then
                     if nextTile~=nil then
                         local cornerPos = {x = 24*(lastTile.x+nextTile.x-2*tile.x)/8,y = 24*(lastTile.y+nextTile.y-2*tile.y)/8}
                         Wargroove.displayBuffVisualEffectAtPosition(unit.id, tile, playerId, "units/PathArrows/C", "spawn", 1, nil, nil, cornerPos)
-                        Wargroove.waitTime(0.05)    
                     else
                         Wargroove.displayBuffVisualEffectAtPosition(unit.id, tile, playerId, "units/PathArrows/X", "spawn", 1)
                     end
                 else
                     Wargroove.displayBuffVisualEffectAtPosition(unit.id, tile, playerId, "units/PathArrows/C", "spawn", 1)
-                    Wargroove.waitTime(0.05)
+
+                end
+                Wargroove.waitTime(deltaTime)
+                if speed*deltaTime>dist then
+                    actualPos = {x = tile.x, y = tile.y}
+                else
+                    actualPos = {x = actualPos.x+dir.x*speed*deltaTime, y = actualPos.y+dir.y*speed*deltaTime}
                 end
                 lastTile = tile
             end
-            Wargroove.waitTime(1)
+            Wargroove.waitTime(2)
             Wargroove.clearBuffVisualEffect(unit.id)
+            Wargroove.unlockTrackCamera()
+            Wargroove.removeUnit(trackUnitId)
             break
         end
     end
@@ -633,12 +664,15 @@ function Actions.forceMove(context)
 end
 
 function Actions.forceAttack(context)
+	print("Actions.forceAttack(context)")
     -- "Force units of type {0} at location {1} owned by player {2} to attack units of type {3} at location {4} owned by player {5}."
     local units = context:gatherUnits(2, 0, 1)
     local targets = context:gatherUnits(5, 3, 4)
     local unit = units[1]
     local target = targets[1]
+	print("A")
     Combat:forceAttack(unit, target)
+	print("B")
 end
 
 function Actions.forceSmoke(context)
@@ -898,8 +932,28 @@ function Actions.messageCounter(context)
 end
 
 function Actions.dialogueBoxWithCounter(context)
-    -- "Display dialogue box with {0} {1} saying \"{2}\" with shout: {3}. Use counter {4}."
-    Wargroove.showDialogueBox(context:getString(0), context:getString(1), context:getString(2) .. tostring(context:getMapCounter(4)), context:getString(3))
+    -- "Display dialogue box with {0} {1} saying {2} with shout {3} using name {5} for {6}. Use Counter {7} (instant = {4})"
+    local playerColour = context:getPlayerColour(6)
+    local counter = context:getMapCounter(7)
+    counter = math.floor(counter + 0.5)
+    local dialogue = context:getString(2)
+    local startindex, endindex = string.find(dialogue, "{0}")
+    while startindex~= nil do
+        dialogue = string.sub(dialogue,1,startindex-1)..counter..string.sub(dialogue,endindex+1)
+        startindex, endindex = string.find(dialogue, "{0}")
+    end
+    Wargroove.showDialogueBox(context:getString(0), context:getString(1), dialogue, context:getString(3), {}, "standard", context:getBoolean(4), context:getString(5), playerColour)
+end
+
+function Actions.updateConstantObjective(context)
+    -- "Update the current constant objective to: {0} (replace tokens [0] and [1] with {1}, {2})"
+    local item = context:getString(0)
+    local counter = context:getMapCounter(1)
+    counter = math.floor(counter + 0.5)
+    local counterTwo = context:getMapCounter(2)
+    counterTwo = math.floor(counterTwo + 0.5)
+
+    Wargroove.updateConstantObjective(item, counter, counterTwo)
 end
 
 function Actions.changeObjectiveWith3Counters(context)
@@ -1106,7 +1160,7 @@ function Actions.spawnUnit(context)
             Wargroove.trackCameraTo(pos)
         end
         local unitId = Wargroove.spawnUnit(playerId, pos, unitClassId, false)
-        context.spawnedUnits[PosKey.generatePosKey(pos)] = true
+        table.insert(context.spawnedUnits,pos)
 		local spawnedUnit = Wargroove.getUnitById(unitId);
 		local mapSize = Wargroove.getMapSize()
 		if pos.x>(mapSize.x/2) then
@@ -1144,7 +1198,7 @@ function Actions.splitInto(context)
                 unit.health = 50
                 Wargroove.updateUnit(unit)
                 local unitId = Wargroove.spawnUnit(unit.playerId, pos, unitClassId, false)
-                context.spawnedUnits[PosKey.generatePosKey(pos)] = true
+                table.insert(context.spawnedUnits,pos)
                 local mapSize = Wargroove.getMapSize()
                 if pos.x>(mapSize.x/2) then
                     Wargroove.setFacingOverride(unitId, "left")
@@ -1167,13 +1221,14 @@ function Actions.splitInto(context)
 end
 
 function Actions.spawnUnitClose(context)
-    -- "Spawn {0} at {1} as close as possible for {2} (silent = {3})"
+    -- "Spawn {0} with colour variation {4} at {1} as close as possible for {2} facing {5} (silent = {3})"
     local unitClassId = context:getUnitClass(0)
-    print("Actions.spawnUnitClose(context)")
-    print(unitClassId)
     local location = context:getLocation(1)
     local playerId = context:getPlayerId(2)
     local silent = context:getBoolean(3)
+    local skinColour = context:getString(4)
+    local facing = context:getString(5)
+
 
     local candidates = {}
 
@@ -1212,62 +1267,31 @@ function Actions.spawnUnitClose(context)
     table.sort(candidates, spawnUnitCompareBestLocation)
 
     -- Spawn at the best candidate
+    local pos 
     if #candidates > 0 then
-        local pos = candidates[1].pos
+        pos = candidates[1].pos
+    else
+        local targetCenterPos = findCentreOfLocation(location)
+        pos = Pathfinding.findClosestOpenSpot(unitClassId,targetCenterPos)
+    end
+    if pos ~= nil then
         if not silent then
             Wargroove.trackCameraTo(pos)
         end
-        local unitId = Wargroove.spawnUnit(playerId, pos, unitClassId, false)
-        context.spawnedUnits[PosKey.generatePosKey(pos)] = true
-		local mapSize = Wargroove.getMapSize()
-		if pos.x>(mapSize.x/2) then
-			Wargroove.setFacingOverride(unitId, "left")
-		else
-			Wargroove.setFacingOverride(unitId, "right")
-		end
-		--Wargroove.updateUnit(spawnedUnit)
-        Wargroove.clearCaches()
-        if silent or (not Wargroove.canCurrentlySeeTile(pos)) then
-            -- Need to wait two frames to prevent being able to spawn on top of other units
-            Wargroove.waitFrame()
-            Wargroove.waitFrame()
+        local mapSize = Wargroove.getMapSize()
+        if pos.x>(mapSize.x/2) then
+            pos.facing = 1
         else
+            pos.facing = 0
+        end
+        Wargroove.spawnUnit(playerId, pos, unitClassId, false, "", "", "", false, skinColour, facing or "right")
+        table.insert(context.spawnedUnits,pos)
+
+        Wargroove.clearCaches()
+        if (not silent) and Wargroove.canCurrentlySeeTile(pos) then
             Wargroove.spawnMapAnimation(pos, 0, "fx/mapeditor_unitdrop")
             Wargroove.playMapSound("spawn", pos)
             Wargroove.waitTime(0.5)
-        end
-    else
-
-        local targetCenterPos = findCentreOfLocation(location)
-        local pos = Pathfinding.findClosestOpenSpot(unitClassId,targetCenterPos)
-        if pos ~= nil then
-            if not silent then
-                Wargroove.trackCameraTo(pos)
-            end
-            local mapSize = Wargroove.getMapSize()
-            if pos.x>(mapSize.x/2) then
-                pos.facing = 1
-            else
-                pos.facing = 0
-            end
-            local unitId = Wargroove.spawnUnit(playerId, pos, unitClassId, false)
-            context.spawnedUnits[PosKey.generatePosKey(pos)] = true
-            local mapSize = Wargroove.getMapSize()
-            if pos.x>(mapSize.x/2) then
-                -- spawnedUnit.startPos.facing = 1
-                -- spawnedUnit.pos.facing = 1
-                Wargroove.setFacingOverride(unitId, "left")
-            else
-                -- spawnedUnit.startPos.facing = 0
-                -- spawnedUnit.pos.facing = 0
-                Wargroove.setFacingOverride(unitId, "right")
-            end
-            Wargroove.clearCaches()
-            if (not silent) and Wargroove.canCurrentlySeeTile(pos) then
-                Wargroove.spawnMapAnimation(pos, 0, "fx/mapeditor_unitdrop")
-                Wargroove.playMapSound("spawn", pos)
-                Wargroove.waitTime(0.5)
-            end
         end
     end
 end

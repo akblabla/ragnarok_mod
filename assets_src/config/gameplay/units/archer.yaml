@@ -1,4 +1,39 @@
 ---
+weapons:
+  - id: bow
+    rangeMin: 1
+    rangeMax: 3
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      water: 1
+      air: 1
+      buildings: 1
+
+
+unitClasses:
+  - id: archer
+    name: unit_class_name_archer
+    cost: 500
+    movement: walking
+    moveRange: 3
+    damageMultiplier: 1
+    aiPriority: 1.0
+    weapons:
+      - id: bow
+    tags:
+      - archer
+      - type.ground.light
+    verbs:
+      - attack_AI
+      - load
+      - capture
+      - rescue
+      - hire
+      - take_crown
+    battleUnitCount: 4
+    passiveMultiplier: 1.35
+    sightRange: 4
 
 units:
   - class: archer
@@ -96,5 +131,11 @@ units:
       soldier_hit3: soldierHitRed3
       soldier_hit4: soldierHitRed4
       soldier_hit5: soldierHitRed5
+      crownbearer_panting: cutscene/crownbearerPanting
+      crownbearer_yell: cutscene/crownbearerYell
+      villager_male_shout1: cutscene/villagerScreamMale1
+      villager_male_shout2: cutscene/villagerScreamMale2
+      villager_female_shout1: cutscene/villagerScreamFemale1
+      villager_female_shout2: cutscene/villagerScreamFemale2
 
 ...

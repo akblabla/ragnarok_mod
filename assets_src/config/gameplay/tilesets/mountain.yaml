@@ -1,0 +1,209 @@
+---
+tilesets:
+  - id: mountain
+    biomes:
+      - types: [grass, flower, deepforest]
+        spriteSheet: terrain_tilesets
+        spriteBase: grass_mountain_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_mountain
+        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_mountain
+        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_mountain_foreground
+        swapBackgroundPanes: true
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Mountain
+      - types: [dungeon, dungeon_purple]
+        spriteSheet: tilesets
+        spriteBase: wang_dungeon_mountain_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_mountain
+        battleBackgroundSpriteSheet: backgrounds/dungeon_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: dungeon_battlescreen_extendedbackgrounds_mountain
+        battleBackgroundSpriteForeground: dungeon_battlescreen_extendedbackgrounds_mountain_foreground
+        swapBackgroundPanes: true
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Mountain
+      - types: [dungeon_lava]
+        spriteSheet: tilesets
+        spriteBase: wang_dungeon_lava_mountain_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_mountain
+        battleBackgroundSpriteSheet: backgrounds/dungeon_lava_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: dungeon_lava_battlescreen_extendedbackgrounds_mountain
+        battleBackgroundSpriteForeground: dungeon_lava_battlescreen_extendedbackgrounds_mountain_foreground
+        swapBackgroundPanes: true
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Mountain
+      - types: [jungle]
+        spriteSheet: tilesets
+        spriteBase: wang_jungle_mountain_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_mountain
+        battleBackgroundSpriteSheet: backgrounds/jungle_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: jungle_battlescreen_extendedbackgrounds_mountain
+        battleBackgroundSpriteForeground: jungle_battlescreen_extendedbackgrounds_mountain_foreground
+        swapBackgroundPanes: true
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Mountain
+      - types: [ice, ice_low]
+        spriteSheet: tilesets
+        spriteBase: wang_ice_mountain_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_mountain
+        battleBackgroundSpriteSheet: backgrounds/ice_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: ice_battlescreen_extendedbackgrounds_mountain
+        battleBackgroundSpriteForeground: ice_battlescreen_extendedbackgrounds_mountain_foreground
+        swapBackgroundPanes: true
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Mountain
+      - types: [arctic]
+        spriteSheet: tilesets
+        spriteBase: wang_arctic_mountain_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_mountain
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_mountain
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_mountain_foreground
+        swapBackgroundPanes: true
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Mountain
+      - types: [arctic_bloom]
+        spriteSheet: tilesets
+        spriteBase: wang_arctic_mountain_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_mountain
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds_bloom
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_bloom_mountain
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_bloom_mountain_foreground
+        swapBackgroundPanes: true
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Mountain
+      - types: [arctic_blood]
+        spriteSheet: tilesets
+        spriteBase: wang_arctic_mountain_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_mountain
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds_red
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_red_mountain
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_red_mountain_foreground
+        swapBackgroundPanes: true
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Mountain
+      - types: [desert]
+        spriteSheet: tilesets
+        spriteBase: wang_desert_mountain_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_sand_mountains
+        battleBackgroundSpriteSheet: backgrounds/desert_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: desert_battlescreen_extendedbackgrounds_mountain
+        battleBackgroundSpriteForeground: desert_battlescreen_extendedbackgrounds_mountain_foreground
+        swapBackgroundPanes: true
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Mountain
+    primaryConnect: []
+    decayTo: plains
+    tilesGroups:
+      - tiles:
+        - { x: 0, y: 0 }
+      - tiles:
+        - { x: 1, y: 0 }
+      - tiles:
+        - { x: 2, y: 0 }
+        - { x: 3, y: 0 }
+        - { x: 4, y: 0 }
+      - tiles:
+        - { x: 5, y: 0 }
+        - { x: 6, y: 0 }
+        - { x: 7, y: 0 }
+        - { x: 8, y: 0 }
+        - { x: 9, y: 0 }
+      - tiles:
+        - { x: 0, y: 1 }
+        - { x: 0, y: 2 }
+        - { x: 0, y: 3 }
+      - tiles:
+        - { x: 1, y: 1 }
+        - { x: 2, y: 1 }
+      - tiles:
+        - { x: 3, y: 1 }
+        - { x: 4, y: 1 }
+        - { x: 5, y: 1 }
+        - { x: 6, y: 1 }
+      - tiles:
+        - { x: 7, y: 1 }
+        - { x: 8, y: 1 }
+        - { x: 9, y: 1 }
+        - { x: 7, y: 2 }
+        - { x: 8, y: 2 }
+        - { x: 9, y: 2 }
+        - { x: 7, y: 3 }
+        - { x: 8, y: 3 }
+        - { x: 9, y: 3 }
+      - tiles:
+        - { x: 1, y: 2 }
+        - { x: 1, y: 3 }
+      - tiles:
+        - { x: 2, y: 2 }
+        - { x: 3, y: 2 }
+        - { x: 2, y: 3 }
+        - { x: 3, y: 3 }
+      - tiles:
+        - { x: 4, y: 2 }
+        - { x: 5, y: 2 }
+        - { x: 6, y: 2 }
+        - { x: 4, y: 3 }
+        - { x: 5, y: 3 }
+        - { x: 6, y: 3 }
+      - tiles:
+        - { x: 0, y: 4 }
+        - { x: 1, y: 4 }
+        - { x: 2, y: 4 }
+        - { x: 3, y: 4 }
+        - { x: 4, y: 4 }
+        - { x: 5, y: 4 }
+        - { x: 6, y: 4 }
+      - tiles:
+        - { x: 7, y: 4 }
+        - { x: 5, y: 5 }
+        - { x: 6, y: 5 }
+        - { x: 7, y: 5 }
+        - { x: 7, y: 6 }
+      - tiles:
+        - { x: 8, y: 4 }
+        - { x: 8, y: 5 }
+        - { x: 8, y: 6 }
+        - { x: 8, y: 7 }
+        - { x: 8, y: 8 }
+      - tiles:
+        - { x: 9, y: 4 }
+        - { x: 9, y: 5 }
+        - { x: 9, y: 6 }
+        - { x: 9, y: 7 }
+      - tiles:
+        - { x: 0, y: 5 }
+        - { x: 1, y: 5 }
+        - { x: 2, y: 5 }
+        - { x: 1, y: 6 }
+      - tiles:
+        - { x: 3, y: 5 }
+        - { x: 2, y: 6 }
+        - { x: 3, y: 6 }
+        - { x: 3, y: 7 }
+      - tiles:
+        - { x: 4, y: 5 }
+        - { x: 4, y: 6 }
+        - { x: 5, y: 6 }
+        - { x: 4, y: 7 }
+      - tiles:
+        - { x: 0, y: 6 }
+        - { x: 0, y: 7 }
+        - { x: 1, y: 7 }
+        - { x: 2, y: 7 }
+        - { x: 0, y: 8 }
+      - tiles:
+        - { x: 6, y: 6 }
+        - { x: 5, y: 7 }
+        - { x: 6, y: 7 }
+        - { x: 7, y: 7 }
+...

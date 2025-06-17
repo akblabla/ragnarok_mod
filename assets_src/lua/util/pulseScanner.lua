@@ -132,25 +132,17 @@ function PulseScanner.calculateLoSOfUnitPulse(pos, scout, canSeeOver, sightRange
 				end
 				local function printTree(node, level)
 					if node~=nil then
-						--print("Corner at layer "..tostring(level).." : angle = "..tostring(node:getKey())..", isBlocking = "..tostring(node:getData()))
 						if node.left~=nil then
-							--print("left")
 							printTree(node.left,level+1)
 						end
 						if node.right~=nil then
-							--print("right")
 							printTree(node.right,level+1)
 						end
 					end
 				end
-				-- print("Tree before removal")
-				-- printTree(t._root, 0)
-				-- print("Removing nodes")
 				for i, key in ipairs(keysToBeRemoved) do
 					t:remove(key)
 				end
-				-- print("Tree after removal")
-				-- printTree(t._root, 0)
 			end
 		end
 	end

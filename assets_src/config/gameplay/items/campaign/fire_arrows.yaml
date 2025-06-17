@@ -1,0 +1,20 @@
+---
+unitClassModifiers:
+  - id: fire_arrows
+
+items:
+  - id: fire_arrows
+    name: fire_arrows_name
+    description: fire_arrows_description
+    animation: items/lucia_bow_item
+    icon: items/lucia_bow_icon
+    largeIcon: items/large/lucia_bow_large
+    unitClassModifierId: fire_arrows
+    lightSource:
+      sprite: lights_small3
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 5
+        frequency: 0.7
+        frequencyVariance: 0.0
+...

@@ -3,8 +3,6 @@
 unitClasses:
   - id: tavern
     name: structure_name_tavern
-    classIcon: unit_icons_tavern_2
-    classIconSpritesheet: ui_RagnarokMod
     aiPriority: 3.0
     verbs:
       - recruit
@@ -12,11 +10,11 @@ unitClasses:
     isStructure: true
     canReinforce: true
     canBeReinforced: false
-    hostileNeutral: true
+    canBeCaptured: false
+    hostileNeutral: false
     damageMultiplier: 0
     movement: land_building
-    garrisonUnit: ""
-    recruitTags: [type.ground.light, knight, airtrooper]
+    recruitTags: [type.ground.light, knight, airtrooper, type.sea.light, type.amphibious.light, type.ground.hideout]
     cost: 500
     tags:
       - structure
@@ -27,6 +25,20 @@ units:
     faction: neutral
     name: structure_name_tavern
     mapAnimation: structures/tavern
+    mapLightSource:
+      sprite: lights_large
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [0.8, 0.8]
+      jitter:
+        scale: 0.33
+        frequency: 0.3
+        frequencyVariance: 0.15
     smallPortrait: portraits/small/portrait_structure_small.png
     mediumPortrait: portraits/medium/tavern_2.png
     grabPos: [15, 12]

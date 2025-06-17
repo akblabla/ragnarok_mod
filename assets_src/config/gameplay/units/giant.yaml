@@ -1,5 +1,39 @@
 ---
 
+weapons:
+  - id: giantSlam
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      buildings: 1
+
+unitClasses:
+  - id: giant
+    name: unit_class_name_giant
+    cost: 1200
+    resourceCost: 3
+    movement: riding
+    moveRange: 5
+    damageMultiplier: 1
+    aiPriority: 1.0
+    weapons:
+      - id: giantSlam
+    tags:
+      - giant
+      - type.ground.heavy
+      - tall
+    verbs:
+      - load
+      - rescue
+      - attack_AI
+      - hire
+      - take_crown
+    battleUnitCount: 1
+    passiveMultiplier: 2.5
+    sightRange: 4
+
 units:
   - class: giant
     faction: outlaw

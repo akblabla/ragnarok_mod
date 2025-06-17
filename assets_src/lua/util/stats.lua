@@ -117,14 +117,15 @@ function Stats.isTerrainBlocking(terrainName)
 	return Stats.visionBlockingList[terrainName] ~= nil
 end
 
-Stats.terrainCost = {
+Stats.terrain = {
 	plains = {
 		walking = 1,
 		riding = 1,
 		flying = 1,
 		hovering = 1,
 		wheels = 2,
-		amphibious = 2
+		amphibious = 2,
+		airphibious = 1
 	},
 	plains_alt = {
 		walking = 1,
@@ -132,14 +133,16 @@ Stats.terrainCost = {
 		flying = 1,
 		hovering = 1,
 		wheels = 2,
-		amphibious = 2
+		amphibious = 2,
+		airphibious = 1
 	},
 	rough = {
 		walking = 1,
 		riding = 1,
 		hovering = 1,
 		wheels = 2,
-		amphibious = 2
+		amphibious = 2,
+		airphibious = 1
 	},
 	brush = {
 		walking = 1,
@@ -147,7 +150,8 @@ Stats.terrainCost = {
 		flying = 1,
 		hovering = 1,
 		wheels = 3,
-		amphibious = 3
+		amphibious = 2,
+		airphibious = 1
 	},
 	brush_invis = {
 		walking = 1,
@@ -155,7 +159,8 @@ Stats.terrainCost = {
 		flying = 1,
 		hovering = 1,
 		wheels = 3,
-		amphibious = 3
+		amphibious = 2,
+		airphibious = 1
 	},
 	road = {
 		walking = 1,
@@ -163,71 +168,60 @@ Stats.terrainCost = {
 		flying = 1,
 		hovering = 1,
 		wheels = 1,
-		amphibious = 2
+		amphibious = 2,
+		airphibious = 1
 	},
 	cave_road = {
 		walking = 1,
 		riding = 1,
 		hovering = 1,
 		wheels = 1,
-		amphibious = 2
+		amphibious = 2,
+		airphibious = 1
 	},
 	forest = {
 		walking = 2,
 		riding = 3,
 		flying = 1,
 		hovering = 1,
-		amphibious = 4
+		amphibious = 3,
+		airphibious = 1
 	},
 	forest_invis = {
 		walking = 2,
 		riding = 3,
 		flying = 1,
 		hovering = 1,
-		amphibious = 4
+		amphibious = 3,
+		airphibious = 1
 	},
 	forest_alt = {
 		walking = 2,
 		riding = 3,
 		flying = 1,
 		hovering = 1,
-		amphibious = 4
-	},
-	forest_no_hiding = {
-		walking = 2,
-		riding = 3,
-		flying = 1,
-		hovering = 1,
-		amphibious = 4
-	},
-	forest_alt_no_hiding = {
-		walking = 2,
-		riding = 3,
-		flying = 1,
-		hovering = 1,
-		amphibious = 4
+		amphibious = 3,
+		airphibious = 1
 	},
 	mountain = {
 		walking = 3,
 		flying = 1,
 		hovering = 1,
-	},
-	mountain_no_blocking = {
-		walking = 3,
-		flying = 1,
-		hovering = 1,
+		airphibious = 1
 	},
 	cobblestone = {
 		walking = 1,
 		riding = 1,
 		hovering = 1,
-		amphibious = 2
+		amphibious = 2,
+		airphibious = 1
 	},
 	carpet = {
 		walking = 1,
 		riding = 1,
 		hovering = 1,
-		amphibious = 2
+		amphibious = 2,
+		airphibious = 1
 	},
 	wall = {
 	},
@@ -240,8 +234,10 @@ Stats.terrainCost = {
 		hovering = 1,
 		wheels = 1,
 		amphibious = 1,
-		sailing = 1,
-		cantStop = {sailing = true}
+		sailing = 2,
+		airphibious = 1,
+		river_sailing = 1,
+		cantStop = {sailing = true, river_sailing = true}
 	},
 	bridge_wide = {
 		walking = 1,
@@ -250,8 +246,10 @@ Stats.terrainCost = {
 		hovering = 1,
 		wheels = 1,
 		amphibious = 1,
-		sailing = 1,
-		cantStop = {sailing = true}
+		sailing = 2,
+		airphibious = 1,
+		river_sailing = 1,
+		cantStop = {sailing = true, river_sailing = true}
 	},
 	cave_bridge = {
 		walking = 1,
@@ -259,54 +257,128 @@ Stats.terrainCost = {
 		hovering = 1,
 		wheels = 1,
 		amphibious = 1,
-		sailing = 1,
-		cantStop = {sailing = true}
+		sailing = 2,
+		airphibious = 1,
+		river_sailing = 1,
+		cantStop = {sailing = true, river_sailing = true}
 	},
 	sea = {
 		sailing = 1,
 		flying = 1,
 		hovering = 1,
-		amphibious = 1
+		amphibious = 1,
+		airphibious = 1,
+		river_sailing = 1,
+		willFall = {
+			walking = true,
+			riding = true,
+			wheels = true,
+			airphibious = true
+		},
+		cantStop = {airphibious = true}
 	},
-	sea_alt = {
-		sailing = 1,
+
+	invisible_wall_sea = {
 		flying = 1,
 		hovering = 1,
-		amphibious = 1
+		airphibious = 1,
+		willFall = {
+			walking = true,
+			riding = true,
+			wheels = true,
+			airphibious = true,
+			amphibious = true
+		},
+		cantStop = {airphibious = true}
 	},
+	invisible_wall_ocean = {
+		flying = 1,
+		hovering = 1,
+		airphibious = 1,
+		willFall = {
+			walking = true,
+			riding = true,
+			wheels = true,
+			airphibious = true,
+			amphibious = true
+		},
+		cantStop = {airphibious = true}
+	},
+	invisible_blocker_ocean = {
+	},
+
 	cave_sea = {
 		sailing = 1,
 		hovering = 1,
-		amphibious = 1
+		amphibious = 1,
+		airphibious = 1,
+		river_sailing = 1,
+		willFall = {
+			walking = true,
+			riding = true,
+			wheels = true,
+			airphibious = true
+		},
+		cantStop = {airphibious = true}
 	},
 	quay = {
 		sailing = 1,
 		flying = 1,
 		hovering = 1,
-		amphibious = 1
+		amphibious = 1,
+		airphibious = 1,
+		river_sailing = 1,
+		willFall = {
+			walking = true,
+			riding = true,
+			wheels = true,
+			airphibious = true
+		},
+		cantStop = {airphibious = true}
 	},
 	ocean = {
 		sailing = 1,
 		flying = 1,
 		hovering = 1,
-		amphibious = 1
+		amphibious = 2,
+		airphibious = 1,
+		river_sailing = 2,
+		willFall = {
+			walking = true,
+			riding = true,
+			wheels = true,
+			airphibious = true
+		},
+		cantStop = {airphibious = true}
 	},
 	reef = {
-		sailing = 2,
+		sailing = 3,
 		flying = 1,
 		hovering = 1,
-		amphibious = 1
-	},
-	reef_no_hiding = {
-		sailing = 2,
-		flying = 1,
-		hovering = 1,
-		amphibious = 1
+		amphibious = 1,
+		airphibious = 1,
+		river_sailing = 2,
+		willFall = {
+			walking = true,
+			riding = true,
+			wheels = true,
+			airphibious = true
+		},
+		cantStop = {airphibious = true}
 	},
 	cave_reef = {
-		sailing = 2,
+		sailing = 3,
 		hovering = 1,
-		amphibious = 1
+		amphibious = 1,
+		airphibious = 1,
+		river_sailing = 2,
+		willFall = {
+			walking = true,
+			riding = true,
+			wheels = true,
+			airphibious = true
+		},
+		cantStop = {airphibious = true}
 	},
 	river = {
 		walking = 2,
@@ -314,21 +386,32 @@ Stats.terrainCost = {
 		flying = 1,
 		hovering = 1,
 		amphibious = 1,
-		sailing = 1
+		sailing = 1,
+		river_sailing = 1,
+		airphibious = 1,
+		willFall = {
+			wheels = true,
+		},
 	},
 	mangrove = {
 		walking = 3,
 		flying = 1,
 		hovering = 1,
 		amphibious = 2,
-		sailing = 3
+		river_sailing = 2,
+		airphibious = 1
 	},
 	cave_river = {
 		walking = 2,
 		riding = 4,
 		hovering = 1,
 		amphibious = 1,
-		sailing = 1
+		sailing = 1,
+		river_sailing = 1,
+		airphibious = 1,
+		willFall = {
+			wheels = true,
+		},
 	},
 	beach = {
 		walking = 1,
@@ -336,14 +419,24 @@ Stats.terrainCost = {
 		flying = 1,
 		hovering = 1,
 		amphibious = 1,
-		sailing = 2
+		sailing = 2,
+		river_sailing = 1,
+		airphibious = 1,
+		willFall = {
+			wheels = true,
+		},
 	},
 	cave_beach = {
 		walking = 1,
 		riding = 2,
 		hovering = 1,
 		amphibious = 1,
-		sailing = 2
+		sailing = 2,
+		river_sailing = 1,
+		airphibious = 1,
+		willFall = {
+			wheels = true,
+		},
 	},
 	street = {
 		walking = 1,
@@ -351,7 +444,8 @@ Stats.terrainCost = {
 		flying = 1,
 		hovering = 1,
 		wheels = 1,
-		amphibious = 2
+		amphibious = 2,
+		airphibious = 1
 	}
 }
 local captureUnitList = {
@@ -367,41 +461,58 @@ local captureUnitList = {
 }
 function Stats.getMovementType(unitClassId)
 	local unitClass = Wargroove.getUnitClass(unitClassId)
-	local validTags = {
-		walking = true,
-		riding = true,
-		wheels = true,
-		flying = true,
-		hovering = true,
-		amphibious = true,
-		sailing = true
-	}
-	for i,tag in pairs(unitClass.tags) do
-		if validTags[tag] ~= nil then
-			return tag
-		end
-	end
-	return nil
+	return unitClass.movementType
 end
+function Stats.getMovementCostAtPos(unit, pos)
+	local terrainName = Wargroove.getTerrainNameAt(pos)
+	if not Wargroove.canStandAt(unit.unitClassId, pos) and Stats.canStopOnTerrain(terrainName, unit.unitClassId) then
+		return 100
+	end
+	return Stats.getTerrainCost(terrainName, unit.unitClassId)
+end
+
 function Stats.getTerrainCost(terrainName, unitClassId)
-	if Stats.terrainCost[terrainName] == nil then
+	if Stats.terrain[terrainName] == nil then
 		return 100
 	end
 	local movementType = Stats.getMovementType(unitClassId)
-	if Stats.terrainCost[terrainName][movementType] ~= nil then
-		return Stats.terrainCost[terrainName][movementType]
+	if Stats.terrain[terrainName][movementType] ~= nil then
+		return Stats.terrain[terrainName][movementType]
 	end
 	return 100
 end
 function Stats.canStopOnTerrain(terrainName, unitClassId)
-	if Stats.terrainCost[terrainName] == nil then
+	if Stats.terrain[terrainName] == nil then
 		return false
 	end
 	local movementType = Stats.getMovementType(unitClassId)
-	if Stats.terrainCost[terrainName][movementType] ~= nil then
-		return not ((Stats.terrainCost[terrainName]["cantStop"] ~= nil) and (Stats.terrainCost[terrainName]["cantStop"][movementType] == true))
+	if Stats.terrain[terrainName][movementType] ~= nil then
+		return not ((Stats.terrain[terrainName]["cantStop"] ~= nil) and (Stats.terrain[terrainName]["cantStop"][movementType] == true))
 	end
 	return false
+end
+local function dump(o,level)
+	if type(o) == 'table' then
+	   local s = '\n' .. string.rep("   ", level) .. '{\n'
+	   for k,v in pairs(o) do
+		  if type(k) ~= 'number' then k = '"'..k..'"' end
+		  s = s .. string.rep("   ", level+1) .. '['..k..'] = ' .. dump(v,level+1) .. ',\n'
+	   end
+	   return s .. string.rep("   ", level) .. '}'
+	else
+	   return tostring(o)
+	end
+ end
+
+function Stats.willFallOnTerrain(terrainName, unit)
+	if Stats.terrain[terrainName] == nil then
+		return false
+	end
+	if Stats.terrain[terrainName]["willFall"] == nil then
+		return false
+	end
+	local movementType = unit.unitClass.movementType
+	return Stats.terrain[terrainName]["willFall"][movementType] == true
 end
 
 function Stats.getCaptureUnitList()

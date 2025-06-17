@@ -4,21 +4,38 @@ terrains:
     name: terrain_name_mangrove
     defenceBonus: 2
     movementCost:
-      sailing: 3
       walking: 3
       flying: 1
       hovering: 1
       amphibious: 2
       airphibious: 1
-      river_sailing: 1
+      river_sailing: 2
     movementGroupType: [land]
     placeable: true
     visionBlocking: true
     fowCover: true
     tilesets:
-      0: [plains, plains_alt]
-      1: river
-      2: mangrove
+      0: river
+      1: mangrove
+
+  - id: waterfall
+    name: terrain_name_waterfall
+    defenceBonus: -2
+    movementCost:
+      walking: 2
+      riding: 4
+      flying: 1
+      hovering: 1
+      amphibious: 1
+      airphibious: 1
+    movementGroupType: [land, water]
+    placeable: true
+    tilesets:
+      0: waterfall
+    wang:
+      complementary: true
+      canRenderWater: true
+      adjacencies: [cave_river, river]
 
   - id: quay
     name: terrain_name_sea
@@ -59,22 +76,19 @@ terrains:
       hovering: 1
       wheels: 1
       amphibious: 1
-      sailing: 1
-      land_building: 1
-      indoor_building: 1
+      sailing: 2
       airphibious: 1
       river_sailing: 1
-    cantStop: [sailing]
+    cantStop: [sailing, river_sailing]
     movementGroupType: [land]
     placeable: true
     tilesets: 
-      0: [sea, quay, plains, plains_alt, street]
-      1: [river]
-      3: bridge_wide
+      0: [sea, quay, plains, plains_alt, street, river]
+      2: bridge_wide
 
   - id: cave_road
     name: terrain_name_cave_road
-    defenceBonus: 1
+    defenceBonus: 0
     movementCost:
       walking: 1
       riding: 1
@@ -88,7 +102,7 @@ terrains:
     placeable: true
     tilesets:
       0: [plains, plains_alt, rough]
-      1: cave_road
+      2: cave_road
 
   - id: cave_sea
     name: terrain_name_cave_sea
@@ -97,7 +111,7 @@ terrains:
     biomeDescriptions:
       volcano: terrain_description_lava
     cantStop: [airphibious]
-    defenceBonus: 2
+    defenceBonus: 1
     movementCost:
       sailing: 1
       hovering: 1
@@ -116,28 +130,27 @@ terrains:
     wang:
       complementary: true
       canRenderWater: true
-      adjacencies: [beach, ocean, reef, river, bridge, quay, invisible_wall_sea, invisible_blocker_ocean, sea, cave_reef, cave_beach]
+      adjacencies: [beach, ocean, reef, river, bridge, quay, invisible_wall_sea, invisible_blocker_ocean, sea, cave_reef, cave_river cave_beach]
 
   - id: cave_bridge
     name: terrain_name_cave_bridge
-    defenceBonus: 1
+    defenceBonus: 0
     movementCost:
       walking: 1
       riding: 1
       wheels: 1
       hovering: 1
       amphibious: 1
-      sailing: 1
+      sailing: 2
       land_building: 1
       indoor_building: 1
       airphibious: 1
       river_sailing: 1
-    cantStop: [sailing]
+    cantStop: [sailing, river_sailing]
     movementGroupType: [land]
     placeable: true
     tilesets: 
-      0: [rough,cave_sea]
-      1: [cave_river]
+      0: [cave_river,cave_sea]
       2: cave_bridge
 
   - id: cave_reef
@@ -147,9 +160,9 @@ terrains:
     biomeDescriptions:
       volcano: terrain_description_lava
     cantStop: [airphibious]
-    defenceBonus: 3
+    defenceBonus: 2
     movementCost:
-      sailing: 2
+      sailing: 3
       hovering: 1
       amphibious: 1
       airphibious: 1
@@ -175,7 +188,7 @@ terrains:
       volcano: terrain_name_river_lava
     biomeDescriptions:
       volcano: terrain_description_lava
-    defenceBonus: -1
+    defenceBonus: -2
     movementCost:
       sailing: 1
       walking: 2
@@ -185,19 +198,23 @@ terrains:
       sea_building: 1
       airphibious: 1
       river_sailing: 1
+      river_building: 1
       river_sea_building: 1
     biomeMovementCosts:
       volcano:
         hovering: 1
-    movementGroupType: [land]
+    movementGroupType: [land, water]
     placeable: true
     tilesets:
-      0: rough
-      1: cave_river
+      0: cave_river
+    wang:
+      complementary: true
+      canRenderWater: true
+      adjacencies: [sea, cave_sea, quay, river, waterfall, beach, cave_beach, ocean, invisible_blocker_ocean, invisible_wall_ocean, reef, cave_reef]
 
   - id: cave_beach
     name: terrain_name_cave_beach
-    defenceBonus: -0
+    defenceBonus: -1
     movementCost:
       sailing: 2
       walking: 1
@@ -208,7 +225,7 @@ terrains:
       land_building: 1
       indoor_building: 1
       airphibious: 1
-      river_sailing: 2
+      river_sailing: 1
       river_sea_building: 1
     biomeMovementCosts:
       volcano:
@@ -221,7 +238,11 @@ terrains:
     tilesets:
       0: cave_beach
     wang:
+      blend: true
+      blendTo: [cave_sea]
+      complementary: true
       canRenderWater: true
+      adjacencies: [sea,quay, cave_sea, river, cave_river, ocean, invisible_blocker_ocean, invisible_wall_ocean, reef, cave_reef]
 
   - id: plains_alt
     name: terrain_name_plains
@@ -250,7 +271,7 @@ terrains:
       wheels: 3
       flying: 1
       hovering: 1
-      amphibious: 3
+      amphibious: 2
       land_building: 1
       indoor_building: 1
       airphibious: 1
@@ -270,7 +291,7 @@ terrains:
       wheels: 3
       flying: 1
       hovering: 1
-      amphibious: 3
+      amphibious: 2
       land_building: 1
       indoor_building: 1
       airphibious: 1
@@ -290,7 +311,7 @@ terrains:
       riding: 3
       flying: 1
       hovering: 1
-      amphibious: 4
+      amphibious: 3
       airphibious: 1
     movementGroupType: [land]
     placeable: true
@@ -308,7 +329,7 @@ terrains:
       riding: 3
       flying: 1
       hovering: 1
-      amphibious: 4
+      amphibious: 3
       airphibious: 1
     movementGroupType: [land]
     placeable: true
@@ -320,7 +341,7 @@ terrains:
 
   - id: rough
     name: terrain_name_rough
-    defenceBonus: 2
+    defenceBonus: 1
     movementCost:
       walking: 1
       riding: 1
@@ -370,6 +391,7 @@ terrains:
   - id: invisible_wall_ocean
     name: terrain_name_hull
     defenceBonus: 0
+    cantStop: [airphibious]
     movementCost:
       flying: 1
       hovering: 1
@@ -393,7 +415,7 @@ terrains:
     defenceBonus: 1
     cantStop: [airphibious]
     movementCost:
-      sailing: 1
+      sailing: 2
       river_sailing: 1
       flying: 1
       hovering: 1
@@ -418,6 +440,7 @@ terrains:
 
   - id: invisible_wall_sea
     name: terrain_name_hull
+    cantStop: [airphibious]
     defenceBonus: 0
     movementCost: 
       flying: 1
@@ -432,6 +455,7 @@ terrains:
       
   - id: invisible_blocker_ocean
     name: terrain_name_cabin
+    cantStop: [airphibious]
     defenceBonus: 0
     movementCost: {}
     movementGroupType: [land]
@@ -464,6 +488,9 @@ terrains:
     placeable: true
     tilesets:
       0: street
+    wang:
+      complementary: true
+      adjacencies: [bridge, abyss_bridge]
 
   - id: building
     name: terrain_name_building

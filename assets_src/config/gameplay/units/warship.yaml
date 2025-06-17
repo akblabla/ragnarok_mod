@@ -1,6 +1,335 @@
 ---
+weapons:
+  - id: warshipCannon
+    rangeMin: 3
+    rangeMax: 4
+    canMoveAndAttack: true
+    canAttackSecondaryTiles: false
+    baseDamage:
+      land: 1
+      buildings: 1
+      
+unitClasses:  
+  - id: warship
+    name: unit_class_name_warship
+    cost: 900
+    resourceCost: 3
+    movement: sailing
+    moveRange: 6.0
+    damageMultiplier: 1
+    aiPriority: 1.0
+    weapons:
+      - id: warshipCannon
+    cargoSpace: 2
+    tags:
+      - warship
+      - type.sea.heavy
+    verbs:
+      - rescue
+      - attack_AI
+      - hire
+      - take_crown
+    battleUnitCount: 1
+    passiveMultiplier: 1.5
+    sightRange: 4
+    isHiddenInCutsceneEditor: true
 
 units:
+  - class: warship
+    faction: cherrystone
+    name: unit_name_warship_cherrystone
+    mapAnimation: units/warship/cherrystone/map_warship_cherrystone
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_ship
+      scale: [1.5, 1.0]
+      jitter:
+        scale: 0.25
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/warship/cherrystone/battle_warship_cherrystone
+    smallPortrait: units/warship/cherrystone/portrait_warship_cherrystone_small.png
+    mediumPortrait: units/warship/cherrystone/portrait_warship_cherrystone_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    battlePosOffset: [-10, -10]
+    attackOffset: [20, -10]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: warshipAttack
+      attackEffect: warshipAttackEffect
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+      #  hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_warship_attack
+        effectDelay: 1.8
+        hitDelay: [2.0, 2.3, 2.6]
+
+
+  - class: warship
+    faction: felheim
+    name: unit_name_warship_felheim
+    mapAnimation: units/warship/felheim/map_warship_felheim
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_ship
+      scale: [1.5, 1.0]
+      jitter:
+        scale: 0.25
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/warship/felheim/battle_warship_felheim
+    smallPortrait: units/warship/felheim/portrait_warship_felheim_small.png
+    mediumPortrait: units/warship/felheim/portrait_warship_felheim_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    battlePosOffset: [-10, -10]
+    attackOffset: [20, -10]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: warshipAttack
+      attackEffect: warshipAttackEffect
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+     #   hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_warship_attack
+        effectDelay: 1.8
+        hitDelay: [2.0, 2.3, 2.6]
+
+  - class: warship
+    faction: heavensong
+    name: unit_name_warship_heavensong
+    mapAnimation: units/warship/heavensong/map_warship_heavensong
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_ship
+      scale: [1.5, 1.0]
+      jitter:
+        scale: 0.25
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/warship/heavensong/battle_warship_heavensong
+    smallPortrait: units/warship/heavensong/portrait_warship_heavensong_small.png
+    mediumPortrait: units/warship/heavensong/portrait_warship_heavensong_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    battlePosOffset: [-10, -10]
+    attackOffset: [20, -10]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: warshipAttackYellow
+      attackEffect: warshipAttackEffect
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+      #  hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_warship_attack
+        effectDelay: 1.8
+        hitDelay: [2.0, 2.3, 2.6]
+
+  - class: warship
+    faction: floran
+    name: unit_name_warship_floran
+    mapAnimation: units/warship/floran/map_warship_floran
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_ship
+      scale: [1.5, 1.0]
+      jitter:
+        scale: 0.25
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/warship/floran/battle_warship_floran
+    smallPortrait: units/warship/floran/portrait_warship_floran_small.png
+    mediumPortrait: units/warship/floran/portrait_warship_floran_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    battlePosOffset: [-10, -10]
+    attackOffset: [20, -10]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: warshipAttackGreen
+      attackEffect: warshipAttackEffect
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+      #  hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_warship_attack
+        effectDelay: 1.8
+        hitDelay: [2.0, 2.3, 2.6]
+
+  - class: warship
+    faction: faahri
+    name: unit_name_warship_faahri
+    mapAnimation: units/warship/faahri/map_warship_faahri
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_ship
+      scale: [1.5, 1.0]
+      jitter:
+        scale: 0.25
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/warship/faahri/battle_warship_faahri
+    smallPortrait: units/warship/faahri/portrait_warship_faahri_small.png
+    mediumPortrait: units/warship/faahri/portrait_warship_faahri_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    attackTimingsHack: false
+    battlePosOffset: [-10, -10]
+    attackOffset: [20, -10]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    emotes:
+      idle: idle
+      idle_pistil: idle_pistil
+      idle_nopistil: idle_nopistil
+    alternativeRuns:
+      - id: run_pistil
+      - id: run_nopistil
+    sounds:
+      attackMap: unitAttack
+      attack: warshipAttackOrange
+      attackEffect: warshipAttackEffectOrange
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+      #  hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_warship_faahri_attack
+        effectDelay: 1.8
+        hitDelay: [2.0, 2.3, 2.6]
+
+  - class: warship
+    faction: pirates
+    name: unit_name_warship_pirates
+    mapAnimation: units/warship/pirates/map_warship_pirates
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_ship
+      scale: [1.5, 1.0]
+      jitter:
+        scale: 0.25
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/warship/pirates/battle_warship_pirates
+    smallPortrait: units/warship/pirates/portrait_warship_pirates_small.png
+    mediumPortrait: units/warship/pirates/portrait_warship_pirates_medium.png
+    mapSpeed: 6.0
+    grabPos: [10, 9]
+    battlePosOffset: [-10, -10]
+    attackOffset: [20, -10]
+    deathMoveMin: 80
+    deathMoveMax: 80
+    emotes:
+      idle: idle
+    sounds:
+      attackMap: unitAttack
+      attack: warshipAttack
+      attackEffect: warshipAttackEffect
+      death: shipDie
+      deathMap: unitDie
+      run: waterBoatEntry
+      runMap: waterBoatEntry
+      hit: hitWood
+      hitMap: hitWood
+    attacks:
+      - id: primary
+      #  hitDelay: 2.0
+        hitSpark: fx/bs_stab_attack
+        ranged: true
+        effect: fx/bs_warship_attack
+        effectDelay: 1.8
+        hitDelay: [2.0, 2.3, 2.6]
+
   - class: warship
     faction: outlaw
     name: unit_name_warship_outlaw

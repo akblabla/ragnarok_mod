@@ -1,0 +1,10 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/vesper/vesperAttackBombBlastFoley.ogg ]
+    group: sfx
+  - type: play
+    clips: [ sfx/vesper/vesperAttackBombSmokeFoleyShort.ogg ]
+    group: sfx
+    
+...

@@ -1,0 +1,529 @@
+---
+codex:
+
+- id: terrain_road_tropical
+  category: terrain
+  name: terrain_name_road
+  biome: tropical
+  icon:
+    image: ui/codex/icons/icon_terrain_road.png
+  pages:
+  - pageType: description
+    layoutType: image
+    image: ui/codex/content/background_road_grass.png
+    title: terrain_name_road_tropical
+    text: codex_terrain_road_tropical_description_text
+  - pageType: strategy
+    layoutType: image
+    image: ui/codex/content/background_road_grass.png
+    title: terrain_name_road_strategy
+    text: codex_terrain_road_strategy_text
+  - pageType: terrain_stats
+    layoutType: image
+    image: ui/codex/content/background_road_grass.png
+    title: terrain_name_road_stats
+    text: codex_terrain_road_stats_text
+    terrainType: road
+
+
+
+
+
+
+
+
+- id: terrain_plains_tropical
+  category: terrain
+  name: terrain_name_plains
+  biome: tropical
+  icon:
+    image: ui/codex/icons/icon_terrain_plains.png
+  pages:
+  - pageType: description
+    layoutType: image
+    image: ui/codex/content/background_field_grass.png
+    title: terrain_name_plains_tropical
+    text: codex_terrain_plains_tropical_description_text
+  - pageType: strategy
+    layoutType: image
+    image: ui/codex/content/background_field_grass.png
+    title: terrain_name_plains_tropical
+    text: codex_terrain_plains_strategy_text
+  - pageType: terrain_stats
+    layoutType: image
+    image: ui/codex/content/background_field_grass.png
+    title: terrain_name_field_stats
+    text: codex_terrain_plains_stats_text
+    terrainType: plains
+
+
+
+
+
+
+
+
+
+
+- id: terrain_forest_tropical
+  category: terrain
+  name: terrain_name_forest
+  biome: tropical
+  icon:
+    image: ui/codex/icons/icon_terrain_forest.png
+  pages:
+  - pageType: description
+    layoutType: image
+    image: ui/codex/content/background_forest_grass.png
+    title: terrain_name_forest_tropical
+    text: codex_terrain_forest_tropical_description_text
+  - pageType: strategy
+    layoutType: image
+    image: ui/codex/content/background_forest_grass.png
+    title: terrain_name_forest_strategy
+    text: codex_terrain_forest_strategy_text
+  - pageType: terrain_stats
+    layoutType: image
+    image: ui/codex/content/background_forest_grass.png
+    title: terrain_name_forest_stats
+    text: codex_terrain_forest_stats_text
+    terrainType: forest
+
+
+
+
+
+
+
+
+
+
+
+- id: terrain_mountain_tropical
+  category: terrain
+  name: terrain_name_mountain
+  biome: tropical
+  icon:
+    image: ui/codex/icons/icon_terrain_mountain.png
+  pages:
+  - pageType: description
+    layoutType: image
+    image: ui/codex/content/background_mountain_grass.png
+    title: terrain_name_mountain_tropical
+    text: codex_terrain_mountain_tropical_description_text
+  - pageType: strategy
+    layoutType: image
+    image: ui/codex/content/background_mountain_grass.png
+    title: terrain_name_mountain_strategy
+    text: codex_terrain_mountain_strategy_text
+  - pageType: terrain_stats
+    layoutType: image
+    image: ui/codex/content/background_mountain_grass.png
+    title: terrain_name_mountain_stats
+    text: codex_terrain_mountain_stats_text
+    terrainType: mountain
+
+
+
+
+
+
+
+
+
+
+- id: terrain_river_tropical
+  category: terrain
+  name: terrain_name_river
+  biome: tropical
+  icon:
+    image: ui/codex/icons/icon_terrain_river.png
+  pages:
+  - pageType: description
+    layoutType: image
+    image: ui/codex/content/background_river_grass.png
+    title: terrain_name_river_tropical
+    text: codex_terrain_river_tropical_description_text
+  - pageType: strategy
+    layoutType: image
+    image: ui/codex/content/background_river_grass.png
+    title: terrain_name_river_strategy
+    text: codex_terrain_river_strategy_text
+  - pageType: terrain_stats
+    layoutType: image
+    image: ui/codex/content/background_river_grass.png
+    title: terrain_name_river_stats
+    text: codex_terrain_river_stats_text
+    terrainType: river
+
+
+
+
+
+
+
+
+
+
+
+- id: terrain_bridge_tropical
+  category: terrain
+  name: terrain_name_bridge
+  biome: tropical
+  icon:
+    image: ui/codex/icons/icon_terrain_bridge.png
+  pages:
+  - pageType: description
+    layoutType: image
+    image: ui/codex/content/background_bridge_grass.png
+    title: terrain_name_bridge_tropical
+    text: codex_terrain_bridge_tropical_description_text
+  - pageType: strategy
+    layoutType: image
+    image: ui/codex/content/background_bridge_grass.png
+    title: terrain_name_bridge_strategy
+    text: codex_terrain_bridge_strategy_text
+  - pageType: terrain_stats
+    layoutType: image
+    image: ui/codex/content/background_bridge_grass.png
+    title: terrain_name_bridge_stats
+    text: codex_terrain_bridge_stats_text
+    terrainType: bridge
+
+
+
+
+
+
+
+
+
+
+
+- id: terrain_beach_tropical
+  category: terrain
+  name: terrain_name_beach
+  biome: tropical
+  icon:
+    image: ui/codex/icons/icon_terrain_beach.png
+  pages:
+  - pageType: description
+    layoutType: image
+    image: ui/codex/content/background_beach_grass.png
+    title: terrain_name_beach_tropical
+    text: codex_terrain_beach_tropical_description_text
+  - pageType: strategy
+    layoutType: image
+    image: ui/codex/content/background_beach_grass.png
+    title: terrain_name_beach_strategy
+    text: codex_terrain_beach_strategy_text
+  - pageType: terrain_stats
+    layoutType: image
+    image: ui/codex/content/background_beach_grass.png
+    title: terrain_name_beach_stats
+    text: codex_terrain_beach_stats_text
+    terrainType: beach
+
+
+
+
+
+
+
+
+
+
+- id: terrain_sea_tropical
+  category: terrain
+  name: terrain_name_sea
+  biome: tropical
+  icon:
+    image: ui/codex/icons/icon_terrain_sea.png
+  pages:
+  - pageType: description
+    layoutType: image
+    image: ui/codex/content/background_ocean_grass.png
+    title: terrain_name_ocean_tropical
+    text: codex_terrain_sea_tropical_description_text
+  - pageType: strategy
+    layoutType: image
+    image: ui/codex/content/background_ocean_grass.png
+    title: terrain_name_ocean_strategy
+    text: codex_terrain_sea_strategy_text
+  - pageType: terrain_stats
+    layoutType: image
+    image: ui/codex/content/background_ocean_grass.png
+    title: terrain_name_ocean_stats
+    text: codex_terrain_sea_stats_text
+    terrainType: sea
+
+
+
+
+
+
+
+
+
+
+- id: terrain_deepsea_tropical
+  category: terrain
+  name: terrain_name_ocean
+  biome: tropical
+  icon:
+    image: ui/codex/icons/icon_terrain_deepsea.png
+  pages:
+  - pageType: description
+    layoutType: image
+    image: ui/codex/content/background_ocean_grass.png
+    title: terrain_name_deepsea_tropical
+    text: codex_terrain_deepsea_tropical_description_text
+  - pageType: strategy
+    layoutType: image
+    image: ui/codex/content/background_ocean_grass.png
+    title: terrain_name_deepsea_strategy
+    text: codex_terrain_deepsea_strategy_text
+  - pageType: terrain_stats
+    layoutType: image
+    image: ui/codex/content/background_ocean_grass.png
+    title: terrain_name_deepsea_stats
+    text: codex_terrain_deepsea_stats_text
+    terrainType: ocean
+
+
+
+
+
+
+
+
+
+
+
+- id: terrain_reef_tropical
+  category: terrain
+  name: terrain_name_reef
+  biome: tropical
+  icon:
+    image: ui/codex/icons/icon_terrain_reef.png
+  pages:
+  - pageType: description
+    layoutType: image
+    image: ui/codex/content/background_reef_grass.png
+    title: terrain_name_reef_tropical
+    text: codex_terrain_reef_tropical_description_text
+  - pageType: strategy
+    layoutType: image
+    image: ui/codex/content/background_reef_grass.png
+    title: terrain_name_reef_strategy
+    text: codex_terrain_reef_strategy_text
+  - pageType: terrain_stats
+    layoutType: image
+    image: ui/codex/content/background_reef_grass.png
+    title: terrain_name_reef_stats
+    text: codex_terrain_reef_stats_text
+    terrainType: reef
+
+
+
+
+
+
+
+
+
+
+
+- id: terrain_wall_tropical
+  category: terrain
+  name: terrain_name_wall
+  biome: tropical
+  icon:
+    image: ui/codex/icons/icon_terrain_wall.png
+  pages:
+  - pageType: description
+    layoutType: image
+    image: ui/codex/content/background_wall_grass.png
+    title: terrain_name_wall_tropical
+    text: codex_terrain_wall_tropical_description_text
+  - pageType: strategy
+    layoutType: image
+    image: ui/codex/content/background_wall_grass.png
+    title: terrain_name_wall_strategy
+    text: codex_terrain_wall_strategy_text
+  - pageType: terrain_stats
+    layoutType: image
+    image: ui/codex/content/background_wall_grass.png
+    title: terrain_name_wall_stats
+    text: codex_terrain_wall_stats_text
+    terrainType: wall
+
+
+
+
+
+
+
+
+
+
+- id: terrain_cobblestone_tropical
+  category: terrain
+  name: terrain_name_cobblestone
+  biome: tropical
+  icon:
+    image: ui/codex/icons/icon_terrain_cobblestone.png
+  pages:
+  - pageType: description
+    layoutType: image
+    image: ui/codex/content/background_flagstone_grass.png
+    title: terrain_name_cobblestone_tropical
+    text: codex_terrain_cobblestone_tropical_description_text
+  - pageType: strategy
+    layoutType: image
+    image: ui/codex/content/background_flagstone_grass.png
+    title: terrain_name_cobblestone_strategy
+    text: codex_terrain_cobblestone_strategy_text
+  - pageType: terrain_stats
+    layoutType: image
+    image: ui/codex/content/background_flagstone_grass.png
+    title: terrain_name_cobblestone_stats
+    text: codex_terrain_cobblestone_stats_text
+    terrainType: cobblestone
+
+
+
+
+
+
+
+
+
+
+- id: terrain_carpet_tropical
+  category: terrain
+  name: terrain_name_carpet
+  biome: tropical
+  icon:
+    image: ui/codex/icons/icon_terrain_carpet.png
+  pages:
+  - pageType: description
+    layoutType: image
+    image: ui/codex/content/background_interior_grass.png
+    title: terrain_name_carpet_tropical
+    text: codex_terrain_carpet_tropical_description_text
+  - pageType: strategy
+    layoutType: image
+    image: ui/codex/content/background_interior_grass.png
+    title: terrain_name_carpet_strategy
+    text: codex_terrain_carpet_strategy_text
+  - pageType: terrain_stats
+    layoutType: image
+    image: ui/codex/content/background_interior_grass.png
+    title: terrain_name_carpet_stats
+    text: codex_terrain_carpet_stats_text
+    terrainType: carpet
+
+
+
+
+    
+##############
+- id: terrain_mangrove_grass
+  category: terrain
+  name: terrain_name_mangrove
+  biome: grass
+  icon:
+    image: ui/codex/icons/icon_terrain_forest.png
+  pages:
+  - pageType: description
+    layoutType: image
+    image: ui/codex/content/background_forest_grass.png
+    title: terrain_name_mangrove_grass
+    text: codex_terrain_mangrove_grass_description_text
+  - pageType: strategy
+    layoutType: image
+    image: ui/codex/content/background_forest_grass.png
+    title: terrain_name_mangrove_strategy
+    text: codex_terrain_mangrove_strategy_text
+  - pageType: terrain_stats
+    layoutType: image
+    image: ui/codex/content/background_forest_grass.png
+    title: terrain_name_mangrove_stats
+    text: codex_terrain_mangrove_stats_text
+    terrainType: mangrove
+
+- id: terrain_mangrove_tropical
+  category: terrain
+  name: terrain_name_mangrove
+  biome: tropical
+  icon:
+    image: ui/codex/icons/icon_terrain_forest.png
+  pages:
+  - pageType: description
+    layoutType: image
+    image: ui/codex/content/background_forest_grass.png
+    title: terrain_name_mangrove_tropical
+    text: codex_terrain_mangrove_tropical_description_text
+  - pageType: strategy
+    layoutType: image
+    image: ui/codex/content/background_forest_grass.png
+    title: terrain_name_mangrove_strategy
+    text: codex_terrain_mangrove_strategy_text
+  - pageType: terrain_stats
+    layoutType: image
+    image: ui/codex/content/background_forest_grass.png
+    title: terrain_name_mangrove_stats
+    text: codex_terrain_mangrove_stats_text
+    terrainType: mangrove
+
+- id: terrain_mangrove_ice
+  category: terrain
+  name: terrain_name_mangrove
+  biome: ice
+  icon:
+    image: ui/codex/icons/icon_terrain_forest_ice.png
+  pages:
+  - pageType: description
+    layoutType: image
+    image: ui/codex/content/background_forest_ice.png
+    title: terrain_name_mangrove_ice
+    text: codex_terrain_mangrove_ice_description_text
+  - pageType: strategy
+    layoutType: image
+    image: ui/codex/content/background_forest_ice.png
+    title: terrain_name_mangrove_strategy
+    text: codex_terrain_mangrove_strategy_text
+  - pageType: terrain_stats
+    layoutType: image
+    image: ui/codex/content/background_forest_ice.png
+    title: terrain_name_mangrove_stats
+    text: codex_terrain_mangrove_stats_text
+    terrainType: mangrove
+
+- id: terrain_mangrove_desert
+  category: terrain
+  name: terrain_name_mangrove
+  biome: desert
+  icon:
+    image: ui/codex/icons/icon_terrain_forest_desert.png
+  pages:
+  - pageType: description
+    layoutType: image
+    image: ui/codex/content/background_forest_desert.png
+    title: terrain_name_mangrove_desert
+    text: codex_terrain_mangrove_desert_description_text
+  - pageType: strategy
+    layoutType: image
+    image: ui/codex/content/background_forest_desert.png
+    title: terrain_name_mangrove_strategy
+    text: codex_terrain_mangrove_strategy_text
+  - pageType: terrain_stats
+    layoutType: image
+    image: ui/codex/content/background_forest_desert.png
+    title: terrain_name_mangrove_stats
+    text: codex_terrain_mangrove_stats_text
+    terrainType: mangrove
+
+...
+...

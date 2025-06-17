@@ -1,0 +1,11 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/hitWood2.ogg ]
+    group: sfx
+  - type: play
+    clips: [ sfx/gateDie.ogg ]
+    volume: 0.4
+    pitch: 1.2
+    group: sfx
+...

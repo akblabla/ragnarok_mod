@@ -13,11 +13,26 @@ end
 
 function Conditions.populate(dst)
     dst["state"] = Conditions.state
+    dst["units_ready"] = Conditions.unitsReady
     dst["crown_present"] = Conditions.crownPresent
     dst["did_it_occur"] = Conditions.didItOccur
     dst["is_rescued"] = Conditions.isRescued
     dst["or_group"] = Conditions.orGroup
     dst["end_group"] = Conditions.endGroup
+end
+
+function Conditions.unitsReady(context)
+    -- "Does {0} have {1} {2} of {3} at {4} that hasn't spend their turn?"
+    local operator = context:getOperator(1)
+    local value = context:getInteger(2)
+    local units = context:gatherUnits(0, 3, 4)
+    local unitsWithoutTurn = {}
+    for i,unit in ipairs(units) do
+      if unit.hadTurn == false then
+        table.insert(unitsWithoutTurn,unit)
+      end
+    end
+    return operator(#unitsWithoutTurn, value)
 end
 
 function Conditions.state(context)
@@ -48,10 +63,6 @@ function Conditions.crownPresent(context)
     return false
   end
   for i, pos in ipairs(location.positions) do
-    print("crownPos")
-    print(dump(crownPos,0))
-    print("pos")
-    print(dump(pos,0))
     if (pos.x == crownPos.x) and (pos.y == crownPos.y) then
       return true
     end

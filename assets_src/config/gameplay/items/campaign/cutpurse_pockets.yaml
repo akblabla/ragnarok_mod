@@ -1,0 +1,21 @@
+---
+unitClassModifiers:
+  - id: cutpurse_pockets
+    damageMultiplier: -0.25
+
+items:
+  - id: cutpurse_pockets
+    name: cutpurse_pockets_name
+    description: cutpurse_pockets_description
+    animation: items/cutpurse_pockets_item
+    icon: items/cutpurse_pockets_icon
+    largeIcon: items/large/cutpurse_pockets_large
+    unitClassModifierId: cutpurse_pockets
+    lightSource:
+      sprite: lights_small3
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 5
+        frequency: 0.7
+        frequencyVariance: 0.0
+...

@@ -1,0 +1,59 @@
+---
+
+unitClasses:
+  - id: fortified_city
+    name: structure_name_fortified_city
+    aiPriority: 3.0
+    cargoSpace: 1
+    battleUnitCount: 1
+    damageMultiplier: 0.5
+    movement: land_building
+    isStructure: true
+    canReinforce: true
+    canBeReinforced: false
+    canBeCaptured: true
+    isNeutraliseable: true
+    income: 200
+    cost: 1000
+    regeneration: 10
+    garrisonUnit: fortified_garrison
+    tags:
+      - structure
+    sightRange: 1
+
+units:
+  - class: fortified_city
+    faction: neutral
+    name: structure_name_fortified_city
+    mapAnimation: [structures/bigcities, structures/bigcities2, structures/bigcities3]
+    mapLightSource:
+      sprite: lights_large
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [0.8, 0.8]
+      jitter:
+        scale: 0.33
+        frequency: 0.3
+        frequencyVariance: 0.15
+    smallPortrait: portraits/small/portrait_structure_small.png
+    mediumPortrait: portraits/medium/bigcity.png
+    grabPos: [14, 15]
+    sounds:
+      hit: hitWood
+      hitMap: hitStone
+      death: gateDie
+    structureImage:
+      spriteSheet: backgrounds/fortified_village/fortified_village
+      farBackground: fortified_village_background_2
+      nearBackground: fortified_village_background_1
+      foreground: fortified_village_foreground
+      keeperPosition: [78, 95]
+      leftBannerOffset: [-6, 2]
+      rightBannerOffset: [0, 2]
+
+...

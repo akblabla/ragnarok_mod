@@ -1,0 +1,7 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/environmental/weather_windy.ogg ]
+    group: sfx
+    loop: true
+...

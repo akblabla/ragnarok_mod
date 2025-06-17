@@ -54,7 +54,10 @@ function Pathfinding.tileCost(unitClassId,pos, playerId, ignoreUnits)
     if (playerId ~= nil) and VisionTracker.canSeeTile(playerId,pos) and (stranger ~= nil) and Wargroove.areEnemies(playerId, stranger.playerId) and (not ignoreUnits) then
         return 100
     end
-    local tileCost = Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unitClassId)
+    local unit = {}
+    unit.pos = {x = pos.x, y = pos.y}
+    unit.unitClassId = unitClassId
+    local tileCost = Stats.getMovementCostAtPos(unit, pos)
     return tileCost
 end
 
@@ -432,6 +435,11 @@ function Pathfinding.findClosestOpenSpot(unitClassId, start)
       local newPos = {x = currentPos.x+dir.x,y = currentPos.y+dir.y}
       local newPosKey = PosKey.generatePosKey(newPos)
       local tentative_gScore = gScore[currentPosKey] + Pathfinding.tileCost(unitClassId,newPos,nil, false)
+      
+      --Prioritise Roads and bridges
+      if Wargroove.getTerrainNameAt(newPos) == "road" or Wargroove.getTerrainNameAt(newPos) == "bridge" then
+        tentative_gScore = tentative_gScore -0.01
+      end
       if gScore[newPosKey] == nil and Pathfinding.withinBounds(newPos) then
         gScore[newPosKey] = tentative_gScore
         openSet:insert(gScore[newPosKey],newPosKey)

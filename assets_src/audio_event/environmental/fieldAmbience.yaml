@@ -1,0 +1,7 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/music/dlc1/vesper.ogg ]
+    group: sfx
+    loop: true
+...

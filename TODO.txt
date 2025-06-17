@@ -1,24 +1,20 @@
 Mod todo list:
 
-Tropical Cave Sea Background
-Tropical Cave Bridge Background
+Outlaw Riverboat Battle Animations
 
-Tropical Extended Beach Background
+Outlaw Riverboat Map Animations
 
-Grass Cave Background
-Grass Cave River Background
-Grass Cave Sea Background
-Grass Cave Bridge Background
-Grass Brush Background
+Outlaw Airtrooper Battle Animations
 
-Make Big Rival Portrait sprite
+Outlaw Airtrooper Map Animations
 
-Pirate Ship Battle Animations
+Outlaw Giant (only need death animation) Battle Animations
+
+Outlaw Giant Map Animations
 
 Flag Ship Battle Animations
 
-Finish Garland Animation
+Add Grass and Tropical Field Background
 
-Cool Rock ceiling breaking animation
-
-Fix up river to sea connection
+(Wish list)
+Outlaw HQ background for cutscene

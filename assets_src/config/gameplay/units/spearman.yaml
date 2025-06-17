@@ -1,5 +1,38 @@
 ---
 
+weapons:
+  - id: spear
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      buildings: 1
+
+unitClasses:
+  - id: spearman
+    name: unit_class_name_spearman
+    cost: 250
+    movement: walking
+    moveRange: 3
+    damageMultiplier: 1
+    aiPriority: 1.0
+    weapons:
+      - id: spear
+    verbs:
+      - capture
+      - load
+      - rescue
+      - attack_AI
+      - hire
+      - take_crown
+    tags:
+      - spearman
+      - type.ground.light
+    battleUnitCount: 4
+    passiveMultiplier: 1.5
+    sightRange: 4
+
 units:
   - class: spearman
     faction: outlaw

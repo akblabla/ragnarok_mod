@@ -1,0 +1,7 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/environmental/snow_ambience_mono.ogg ]
+    group: sfx
+    loop: true
+...

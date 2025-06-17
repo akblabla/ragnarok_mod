@@ -5,6 +5,7 @@ local Pathfinding = require "util/pathfinding"
 local VisionTracker = require "initialized/vision_tracker"
 local PosKey = require "util/posKey"
 local Copy = require "util/copy"
+local Events = require "wargroove/events"
 
 local function dump(o,level)
    if type(o) == 'table' then
@@ -24,12 +25,123 @@ local setupRan = false
 local orderMap = {}
 local AIManager = {}
 local AIPriorityMap = {}
-
-function AIManager.init()
---	Ragnarok.addAction(AIManager.update,"repeating",true)
+local logging = false
+function AIManager.enableLogging()
+    logging = true
 end
 
-function AIManager.setup(context)
+
+
+
+function AIManager.init()
+	Ragnarok.addAction(AIManager.update,"repeating",false)
+end
+
+function AIManager.update(context)
+   
+   if not (context:checkState("endOfTurn")) then
+      local success, err = pcall(AIManager.moveUnits,context)
+      if not success then
+         print("AIManager.update(context) Error!")
+         print(dump(err,0))
+      end
+   end
+end
+function AIManager.moveUnits(context)
+   local units = Wargroove.getUnitsAtLocation(nil)
+   local bestOrder = nil
+   print("AIManager.moveUnits(context)")
+   local function comparator(a,b)
+      if a.dist-a.distMoved<b.dist-b.distMoved then
+         return true
+      end
+      if a.dist-a.distMoved>b.dist-b.distMoved then
+         return false
+      end
+      if a.dist<b.dist then
+         return true
+      end
+      return false
+   end
+   for i,unit in ipairs(units) do
+      if unit.playerId < 0 then
+         goto next 
+      end
+      print("Unit: ".. unit.unitClassId.. " " .. unit.id.. " is being checked")
+
+      if not Wargroove.isPlayersCurrentTurn(unit.playerId) then
+         goto next 
+      end
+      print("Is owners' turn")
+      if Wargroove.isHuman(unit.playerId) then
+         goto next 
+      end
+      print("Is not human")
+      if unit.hadTurn then
+         goto next 
+      end
+      print("Hasn't used its turn yet.")
+      print("Order "..AIManager.getOrder(unit.id).type)
+      if AIManager.getOrder(unit.id).type ~= "no_order"  then
+
+         print("Unit: ".. unit.unitClassId.. " " .. unit.id.. " got an order and might move")
+         Pathfinding.clearCaches()
+         local path = AIManager.getPath(unit.id)
+         if (path~=nil) and (next(path)~=nil) then 
+            print("Unit has a path")
+            local nextTile, distMoved, dist = AIManager.getNextPosition(unit.id)
+            if nextTile~=nil and not (nextTile.x==unit.pos.x and nextTile.y==unit.pos.y) then
+               print("Unit has a next tile")
+               local newOrder = {unitId = unit.id, nextTile = {x = nextTile.x, y = nextTile.y}, distMoved = distMoved, dist = dist}
+
+               if bestOrder == nil or comparator(newOrder, bestOrder) then
+                  bestOrder = newOrder
+               end
+            else
+               print("Unit with order had no next tile or already reached it!")
+               print(dump(nextTile,0))
+            end
+         else
+            print("Unit with order had no path!")
+            print(dump(path,0))
+         end
+      end
+      ::next::
+   end
+   print("best order")
+   print(dump(bestOrder,0))
+   if bestOrder==nil then 
+      return
+   end
+   local unit = Wargroove.getUnitById(bestOrder.unitId)
+   print("1")
+   if unit~=nil and unit.hadTurn==false and AIManager.getOrder(unit.id).type ~= "no_order" and Wargroove.isPlayersCurrentTurn(unit.playerId) then
+      print("2")
+      Pathfinding.clearCaches()
+      print("3")
+      local path = AIManager.getPath(unit.id)
+      print("4")
+      if (path~=nil) and (next(path)~=nil) then 
+         print("5")
+         local nextTile, distMoved, dist = AIManager.getNextPosition(unit.id)
+         print("6")
+         if nextTile~=nil and not (nextTile.x==unit.pos.x and nextTile.y==unit.pos.y) then
+            print("7")
+            Wargroove.unitAction({bestOrder.unitId}, {nextTile}, {nextTile}, "wait", true, true, false, "")
+            print("8")
+            Wargroove.waitFrame()
+            print("9")
+            Wargroove.doLuaDeathCheck(bestOrder.unitId, true)
+
+            Wargroove.refreshObstacles()
+            
+            print("10")
+--               Wargroove.checkTriggers("repeat")
+         end
+      end
+   end
+   Events.checkEventsAfter()
+   print("it worked!")
 end
 
 function AIManager.setAIPriorityMap(playerId, positions, priority)
@@ -41,6 +153,7 @@ function AIManager.setAIPriorityMap(playerId, positions, priority)
       AIPriorityMap[playerId][posKey] = priority
    end
 end
+
 function AIManager.getAIPriority(playerId, pos)
    local posKey = PosKey.generatePosKey(pos)
    if AIPriorityMap[playerId]==nil then
@@ -48,11 +161,14 @@ function AIManager.getAIPriority(playerId, pos)
    end
    return AIPriorityMap[playerId][posKey]
 end
+
 function AIManager.letNeutralUnitsMove()
    local units = Wargroove.getUnitsAtLocation(nil)
    for i,unit in ipairs(units) do
        if Pathfinding.withinBounds(unit.pos) and Wargroove.isNeutral(unit.playerId) and not unit.unitClass.isStructure then
          Pathfinding.clearCaches()
+         print("Neutral unit ".. unit.unitClassId.. " has order:")
+         print(dump(AIManager.getOrder(unit.id),0))
          local path = AIManager.getPath(unit.id)
          if (path~=nil) and (next(path)~=nil) then 
             local nextTile, distMoved, dist = AIManager.getNextPositionTowardsTarget(unit, path,100)
@@ -65,6 +181,10 @@ function AIManager.letNeutralUnitsMove()
                   table.insert(shortenedPath,tile)
                end
                if (next(shortenedPath)~=nil) then
+                  --Wargroove.unitAction({unit.id}, {shortenedPath[#shortenedPath]}, {shortenedPath[#shortenedPath]}, "wait", true, true, false, "")
+                  --Wargroove.waitFrame()
+
+                  --Wargroove.refreshObstacles()
                   Pathfinding.forceMoveAlongPath(unit.id, shortenedPath)
                end
             end
@@ -89,9 +209,6 @@ function AIManager.shouldAIMoveUnit(unit)
       end
    end
    return true
-end
-
-function AIManager.update(context)
 end
 
 function AIManager.getPath(unitId)
@@ -187,12 +304,12 @@ function AIManager.getPath(unitId)
          end
          if (movementType == "walking") or (movementType == "riding") or (movementType == "wheels") then
            if not (terrainName == "road" or terrainName == "bridge") then
-               return Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unit.unitClassId)+bonus
+               return Stats.getMovementCostAtPos(unit,pos)+bonus
            end
          end
          if (movementType == "amphibious") or (movementType == "sailing") then
            if not (terrainName == "sea" or terrainName == "river" or terrainName == "ocean") then
-             return Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unit.unitClassId)+bonus
+               return Stats.getMovementCostAtPos(unit,pos)+bonus
            end
          end
          return 0
@@ -217,14 +334,14 @@ function AIManager.getPath(unitId)
             bonus = bonus+1
          end
          if (movementType == "walking") or (movementType == "riding") or (movementType == "wheels") then
-           if not (terrainName == "road" or terrainName == "bridge") then
-               return Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unit.unitClassId)+bonus+positionalBonus
-           end
+            if not (terrainName == "road" or terrainName == "bridge") then
+               return Stats.getMovementCostAtPos(unit,pos)+bonus+positionalBonus
+            end
          end
          if (movementType == "amphibious") or (movementType == "sailing") then
-           if not (terrainName == "sea" or terrainName == "river" or terrainName == "ocean") then
-             return Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unit.unitClassId)+bonus+positionalBonus
-           end
+            if not (terrainName == "sea" or terrainName == "river" or terrainName == "ocean") then
+               return Stats.getMovementCostAtPos(unit,pos)+bonus+positionalBonus
+            end
          end
          return positionalBonus
       end, pathPenaltyId = "roads_and_left"})
@@ -248,14 +365,14 @@ function AIManager.getPath(unitId)
             bonus = bonus+1
          end
          if (movementType == "walking") or (movementType == "riding") or (movementType == "wheels") then
-           if not (terrainName == "road" or terrainName == "bridge") then
-               return Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unit.unitClassId)+bonus+positionalBonus
-           end
+            if not (terrainName == "road" or terrainName == "bridge") then
+               return Stats.getMovementCostAtPos(unit,pos)+bonus+positionalBonus
+            end
          end
          if (movementType == "amphibious") or (movementType == "sailing") then
-           if not (terrainName == "sea" or terrainName == "river" or terrainName == "ocean") then
-             return Stats.getTerrainCost(Wargroove.getTerrainNameAt(pos),unit.unitClassId)+bonus+positionalBonus
-           end
+            if not (terrainName == "sea" or terrainName == "river" or terrainName == "ocean") then
+               return Stats.getMovementCostAtPos(unit,pos)+bonus+positionalBonus
+            end
          end
          return positionalBonus
       end, pathPenaltyId = "roads_and_right"})
@@ -292,18 +409,29 @@ function AIManager.getPath(unitId)
       if order.location == nil then
          return {}
       end
-      local tileList = Wargroove.getTargetsInRange(unit.pos, VisionTracker.getSightRange(unit), "all")
-      local canSeeEnemy = false
-      for i,tile in pairs(tileList) do
-         if VisionTracker.canSeeTile(unit.playerId,tile) then
+      local goStraight = true
+      if Ragnarok.usingFogOfWarRules() then
+         local tileList = Wargroove.getTargetsInRange(unit.pos, VisionTracker.getSightRange(unit), "all")
+         for i,tile in pairs(tileList) do
+            if VisionTracker.canSeeTile(unit.playerId,tile) then
+               local target = Wargroove.getUnitAt(tile)
+               if target~=nil and Wargroove.areEnemies(unit.playerId, target.playerId) then
+                  goStraight = false
+                  break
+               end
+            end
+         end
+      else
+         local tileList = Wargroove.getTargetsInRange(unit.pos, unit.unitClass.moveRange+1, "all")
+         for i,tile in pairs(tileList) do
             local target = Wargroove.getUnitAt(tile)
             if target~=nil and Wargroove.areEnemies(unit.playerId, target.playerId) then
-               canSeeEnemy = true
+               goStraight = false
                break
             end
          end
-      end
-      if canSeeEnemy then
+      end         
+      if not goStraight then
          return {}
       else
          local path = Pathfinding.AStar(unit, order.location, {posPenalty = function(unit,pos)
@@ -314,6 +442,18 @@ function AIManager.getPath(unitId)
          end, posPenaltyId = "defense"})
          return path
       end
+   end
+   if order.type == "do_verb" then
+      if order.location == nil then
+         return {}
+      end
+      local path = Pathfinding.AStar(unit, order.location, {posPenalty = function(unit,pos)
+         if Stats.getMovementType(unit.unitClassId) == "flying" then
+            return 4-Wargroove.getSkyDefenceAt(pos)
+         end
+         return 4-Wargroove.getTerrainDefenceAt(pos)
+      end, posPenaltyId = "defense"})
+      return path
    end
    return {}
 end
@@ -341,10 +481,40 @@ function AIManager.getNextPosition(unitId)
    local nextTile, distMoved, dist = AIManager.getNextPositionTowardsTarget(unit, path,order.maxSpeed)
    if order.type == "attack_move" then
       if AIManager.isEnemyInRange(unit) then
-         return nil, false
+         return nil, nil, nil
+      end
+   end
+   if order.type == "do_verb" then
+      if distMoved>=#path-1 then
+         return nil, nil, nil
       end
    end
    return nextTile, distMoved, dist
+end
+--[[Gets tiles attackable by unit. This does not account for minimum range.]]
+function AIManager.getAttackableTiles(unitId)
+   local unit = Wargroove.getUnitById(unitId)
+   if unit == nil then
+      return nil
+   end
+   if unit.health <= 0 then
+      return nil
+   end
+   local weapons = unit.unitClass.weapons
+   if #weapons ~= 1 then
+      return nil
+   end
+   local weapons = unit.unitClass.weapons
+   local movementArea = Pathfinding.getMoveTiles(unit)
+   local result = {}
+   local distanceToLocationMap = Pathfinding.getDistanceToLocationMap(unit.pos,weapons[1].maxRange+unit.unitClass.moveRange,movementArea)
+   for key,dist in pairs(distanceToLocationMap) do
+      local tile = PosKey.revertPosKey(key)
+      if dist <= weapons[1].maxRange then
+         table.insert(result,tile)
+      end
+   end
+   return result
 end
 
 function AIManager.isEnemyInRange(unit)
@@ -371,7 +541,7 @@ function AIManager.getNextPositionTowardsTarget(unit, path, maxSpeed)
    local reachedEnd = false
    local distMoved = 0
    for i,tile in pairs(path) do
-      local tileCost = Stats.getTerrainCost(Wargroove.getTerrainNameAt(tile),unit.unitClassId)
+      local tileCost = Stats.getMovementCostAtPos(unit,tile)
       local canStop = Stats.canStopOnTerrain(Wargroove.getTerrainNameAt(tile),unit.unitClassId)
       if i == #path then
          reachedEnd = true
@@ -398,7 +568,7 @@ function AIManager.getNextPositionTowardsTarget(unit, path, maxSpeed)
    end
    local dist = 0
    for i,tile in pairs(path) do
-      local tileCost, cantStop = Stats.getTerrainCost(Wargroove.getTerrainNameAt(tile),unit.unitClassId)
+      local tileCost = Stats.getMovementCostAtPos(unit,tile)
       if tileCost<100 then
          dist = dist+tileCost
          if i == #path then
@@ -417,16 +587,24 @@ end
 
 function AIManager.order(t, unitId, location, maxSpeed)
    if maxSpeed == nil then
-      maxSpeed = 10000;
+      maxSpeed = 1000
    end
-   if (location ~= nil) and (location.x ~= nil) then
+   if location == nil then
+      
+      error("Argument 'location' was missing")
+      return
+   end
+   if location.x ~= nil then
       location = {location}
    end
    local unit = Wargroove.getUnitById(unitId)
    if (unit ~= nil) and Pathfinding.withinBounds(unit.pos) then
       orderMap[unitId] = {type = t, location = location, maxSpeed = maxSpeed}
-      -- Wargroove.setUnitStateObject(unit, "order", {type = "road_move", location = location, maxSpeed = maxSpeed})
-      -- Wargroove.updateUnit(unit)
+      if logging then
+         local unit = Wargroove.getUnitById(unitId)
+         print("Unit: ".. unit.unitClassId.. " " .. unit.id.. "'s order got replaced by")
+         print(dump(orderMap[unitId],0))
+      end
    end
 end
 
@@ -435,6 +613,13 @@ function AIManager.attackMoveOrder(unitId, location, maxSpeed)
       return
    end
    AIManager.order("attack_move", unitId, location, maxSpeed)
+end
+
+function AIManager.doVerbOrder(unitId, location, maxSpeed)
+   if location == nil then
+      return
+   end
+   AIManager.order("do_verb", unitId, location, maxSpeed)
 end
 
 function AIManager.moveOrder(unitId, location, maxSpeed)
@@ -484,13 +669,11 @@ function AIManager.followOrder(unitId, location, maxSpeed)
 end
 
 function AIManager.clearOrder(unitId)
---   local unit = Wargroove.getUnitById(unitId)
+   if logging then
+      local unit = Wargroove.getUnitById(unitId)
+      print("Unit: ".. unit.unitClassId.. " " .. unit.id.. " lost its order")
+   end
    orderMap[unitId] = {type = "no_order", location = nil, maxSpeed = 0}
---    if unit ~= nil then
--- --      orderMap[unit.id] = {type = "no_order", location = {}, maxSpeed = 0}
---       --Wargroove.setUnitStateObject(unit, "order", {type = "no_order", location = {}, maxSpeed = 0})
---       --Wargroove.updateUnit(unit)
---    end
 end
 
 function AIManager.getOrder(unitId)

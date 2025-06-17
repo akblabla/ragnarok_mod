@@ -79,7 +79,8 @@ en-GB: &flag-en
   ragnarok_main2_ingameIntro_Vesper_03: "Just pass it along. We don't have all day."
   
   #After you move the crownbearer for the first time
-  ragnarok_main2_postThrow_Vesper_00: "Do keep yourself safe with the crown. I won't have you fight whilst holding it. It's fragile."
+  ragnarok_main2_postThrow_Vesper_00: "Do keep yourself safe with the crown. I won't have you fight whilst holding it."
+  ragnarok_main2_postThrow_Vesper_01: "It's worth more than you can imagine."
   #ragnarok_main2_ingameIntro_Crew_00: "Aww, ma'am, it's sweet that you worry about us!"
   #ragnarok_main2_postThrow_Vesper_00: "What? No. The crown. You could damage it!"
   
@@ -111,9 +112,13 @@ en-GB: &flag-en
  #-----------------------------------------------------------------------------------------------#
 
   # STORY MAIN 3 Election
+  # Objective: 
+  ragnarok_main3_objective: "Steal more gold than your rival."
+  ragnarok_main3_objective_updated: "Steal more gold than your rival.\n\nDo NOT kill another of your rival's unit."
+
   # Cutscene: Start of match. We encounter Wulfar dancing among his peers in the tavern.
   #After a bit of dancing, Rival dramatically kicks down the door. Everyone is silent except Wulfar, who keeps dancing without noticing.
-  
+
   ragnarok_main3_cutscene_start_Rival_00: "Ahem,[short_pause] attention please!"
   ragnarok_main3_cutscene_start_Rival_01: "Election day is coming up, and you are clearly not fit to lead the clan."
   ragnarok_main3_cutscene_start_Rival_02: "I hereby challenge thee to a[short_pause] Pirate Bout!"
@@ -255,6 +260,10 @@ en-GB: &flag-en
  #-----------------------------------------------------------------------------------------------#
 
   # STORY MAIN 4 Hideout Defense
+  ragnarok_main4_objective_00: "Defend the stronghold until all balloons have escaped. (turn 16)\nWulfar must then escape by boat."
+  ragnarok_main4_objective_01: "Reach the barge with Wulfar."
+
+  
   # Cutscene: Start of match. Wulfar wanders the streets of the outlaw HQ
   ragnarok_main4_cutscene_start_Wulfar_00: "Why would Vesper leave in such a hurry?"
   ragnarok_main4_cutscene_start_Trickster_00: "Sir, Cherrystone forces have been spotted down south in Felheim, and they are heading here!"
@@ -276,7 +285,8 @@ en-GB: &flag-en
   ragnarok_main4_ingameIntro_Wulfar_03: "I'll deal with Vesper later."
   ragnarok_main4_ingameIntro_Rival_00: "Here they come chief!"
   ragnarok_main4_ingameIntro_Mage_00: "Wait, is that a whole city of bandits?!"
-  ragnarok_main4_ingameIntro_Mage_01: "Send word to Emeric, those pirates must be here!"
+  ragnarok_main4_ingameIntro_Mage_01: "Go back [colour:player_red]south[colour:r] and report to Emeric."
+  ragnarok_main4_ingameIntro_Mage_02: "Those pirates must be here!"
   ragnarok_main4_ingameIntro_Soldier_00: "Yes ma'am!"
   
   #Emeric's ingame intro
@@ -284,7 +294,8 @@ en-GB: &flag-en
   ragnarok_main4_emericIntro_Wulfar_00: "Aye. I am Wulfar, clan chief of the outlaws."
   ragnarok_main4_emericIntro_Emeric_01: "I demand that you hand over Vesper, or we will be forced to take your town by force."
   ragnarok_main4_emericIntro_Wulfar_01: "I am not lettin' ya waltz in here just like that. Sod off!"
-  ragnarok_main4_emericIntro_Emeric_02: "Good thing Mercival will come with reinforcments from the north in [colour:player_red]5 turns[colour:r]. This place is massive."
+  ragnarok_main4_emericIntro_Emeric_02: "Good thing Mercival will come with reinforcments from the north in [colour:player_red]5 turns[colour:r]."
+  ragnarok_main4_emericIntro_Emeric_03: "This place is massive."
   
   #Emeric Dies
   ragnarok_main4_emericDies_Wulfar_00: "This will hurt more than just yer pride."
@@ -298,21 +309,23 @@ en-GB: &flag-en
   ragnarok_main4_mercivalIntro_Mercival_00: "Emeric, good to see you old friend!"
   ragnarok_main4_mercivalIntro_Emeric_00: "Sire! These bandits are harboring the pirates we were chasing. We have to take the city by force!"
   ragnarok_main4_mercivalIntro_Mercival_01: "Force?[short_pause] Did you even try diplomacy?[short_pause] Let me have a go at it."
-  ragnarok_main4_mercivalIntro_Mercival_02: "Greetings Chieftain of the Outlaws.[short_pause] It seems like some of your folk took something from us. Would you be so kind to hand it back?"
+  ragnarok_main4_mercivalIntro_Mercival_02: "Greetings Chieftain of the Outlaws.[short_pause] It seems like some of your folk took something from us."
+  ragnarok_main4_mercivalIntro_Mercival_03: "Would you be so kind to hand it back?"
   ragnarok_main4_mercivalIntro_Wulfar_00: "I would never sell out one o' me colleagues to a tyrant like you."
   ragnarok_main4_mercivalIntro_Wulfar_01: "Sod off!"
-  ragnarok_main4_mercivalIntro_Mercival_03: "Ah well, worth a shot."
-  ragnarok_main4_mercivalIntro_Mercival_04: "Charge!"
+  ragnarok_main4_mercivalIntro_Mercival_04: "Ah well, worth a shot."
+  ragnarok_main4_mercivalIntro_Mercival_05: "Charge!"
   
   #Mercival Arive (Emeric Dead)
   ragnarok_main4_mercivalIntroAlt_Mercival_00: "Emeric, good to see you old friend!"
   ragnarok_main4_mercivalIntroAlt_Soldier_00: "[slow]Uhm, sir?[slow][short_pause] I think they knocked out Emeric."
   ragnarok_main4_mercivalIntroAlt_Mercival_01: "Wait, what?[short_pause] Still too reckless for his own good I see."
-  ragnarok_main4_mercivalIntroAlt_Mercival_02: "Greetings Chieftain of the Outlaws.[short_pause] It seems like some of your folk took something from us. Would you be so kind to hand it back?"
+  ragnarok_main4_mercivalIntroAlt_Mercival_02: "Greetings Chieftain of the Outlaws.[short_pause] It seems like some of your folk took something from us."
+  ragnarok_main4_mercivalIntroAlt_Mercival_03: "Would you be so kind to hand it back?"
   ragnarok_main4_mercivalIntroAlt_Wulfar_00: "I would never sell out one o' me colleagues to a tyrant like you."
   ragnarok_main4_mercivalIntroAlt_Wulfar_01: "Sod off!"
-  ragnarok_main4_mercivalIntroAlt_Mercival_03: "Ah well, worth a shot."
-  ragnarok_main4_mercivalIntroAlt_Mercival_04: "Charge!"
+  ragnarok_main4_mercivalIntroAlt_Mercival_04: "Ah well, worth a shot."
+  ragnarok_main4_mercivalIntroAlt_Mercival_05: "Charge!"
   
   #Mercival Dies
   ragnarok_main4_mercivalDies_Wulfar_00: "Ye've bitten off more than ye can chew!"
@@ -326,6 +339,12 @@ en-GB: &flag-en
   
   #Start Escape Sequence
   ragnarok_main4_escapeSequence_Wulfar_00: "Was that everyone?[short_pause] Then it is time for us to make our leave!"
+
+  
+  #Commanders Defeated (optional objective)
+  ragnarok_main4_co_defeated_Rival_00: "We got them?! The king is defeated!"
+  ragnarok_main4_co_defeated_Wulfar_00: "The army ain't laddy!"
+  ragnarok_main4_co_defeated_Wulfar_01: "We still have to escape!"
 
   #Ingame Ending
   ragnarok_main4_ingameEnding_Rival_00: "Phew, that was a close one."

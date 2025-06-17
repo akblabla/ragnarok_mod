@@ -91,6 +91,7 @@ decorations:
   - id: pirateShipForeground
     layer: units
     snapToGrid: true
+    snapOffset: [0, 14]
     animation:
       undefined: decoration/bigDeco/pirateShipForeground
   - id: westMountain01
@@ -181,6 +182,11 @@ decorations:
     layer: units
     animation:
       undefined: decoration/bigDeco/field03Layer01
+  - id: field03Border
+    layer: ground
+    snapToGrid: true
+    animation:
+      undefined: decoration/bigDeco/field03Border
      
 #Field 4
   - id: field04
@@ -207,6 +213,11 @@ decorations:
     layer: units
     animation:
       undefined: decoration/bigDeco/field05Layer02
+  - id: field05Border
+    layer: ground
+    snapToGrid: true
+    animation:
+      undefined: decoration/bigDeco/field05Border
       
 #Field 6
   - id: field06
@@ -229,55 +240,68 @@ decorations:
     snapToGrid: true
     snapOffset: [12, 18]
     animation:
-      undefined: decoration/unit/building01
+      undefined: decoration/unit/grass/building01
+      ice: decoration/unit/ice/building01
   - id: building02
     layer: units
     snapToGrid: true
     snapOffset: [12, 18]
     animation:
-      undefined: decoration/unit/building02
+      undefined: decoration/unit/grass/building02
+      ice: decoration/unit/ice/building02
       
   - id: buildingPoor01
     layer: units
     snapToGrid: true
     snapOffset: [12, 18]
     animation:
-      undefined: decoration/unit/buildingPoor01
+      undefined: decoration/unit/grass/buildingPoor01
+      ice: decoration/unit/ice/buildingPoor01
       
   - id: buildingPoor02
     layer: units
     snapToGrid: true
     snapOffset: [12, 18]
     animation:
-      undefined: decoration/unit/buildingPoor02
+      undefined: decoration/unit/grass/buildingPoor02
+      ice: decoration/unit/ice/buildingPoor02
 
   - id: buildingRich01
     layer: units
     snapToGrid: true
     snapOffset: [12, 18]
     animation:
-      undefined: decoration/unit/buildingRich01
+      undefined: decoration/unit/grass/buildingRich01
+      ice: decoration/unit/ice/buildingRich01
 
   - id: buildingRich02
     layer: units
     snapToGrid: true
     snapOffset: [12, 18]
     animation:
-      undefined: decoration/unit/buildingRich02
+      undefined: decoration/unit/grass/buildingRich02
+      ice: decoration/unit/ice/buildingRich02
 
   - id: buildingRich03
     layer: units
     snapToGrid: true
     snapOffset: [12, 18]
     animation:
-      undefined: decoration/unit/buildingRich03
+      undefined: decoration/unit/grass/buildingRich03
+      ice: decoration/unit/ice/buildingRich03
 #Normal Deco
 
   - id: bush01
     layer: units
     animation:
-      undefined: decoration/unit/bush01
+      undefined: decoration/unit/grass/bush01
+      arctic: decoration/unit/ice/bush01
+      ice: decoration/unit/ice/bush01
 
+  - id: grassTuft01
+    layer: units
+    animation:
+      undefined: decoration/unit/grassTuft01
 
   - id: orangeField
     layer: ground
@@ -302,6 +326,10 @@ decorations:
     layer: units
     animation:
       undefined: decoration/unit/windmill
+  - id: lighthouse
+    layer: units
+    animation:
+      undefined: decoration/unit/lighthouse
       
   - id: tileCover
     layer: ground
@@ -384,23 +412,28 @@ decorations:
   - id: cherrystone_market_stand01
     layer: units
     animation:
-      undefined: decoration/unit/cherrystoneMarketStand01
+      undefined: decoration/unit/grass/cherrystoneMarketStand01
+      ice: decoration/unit/ice/felheimMarketStand01
   - id: cherrystone_market_stand02
     layer: units
     animation:
-      undefined: decoration/unit/cherrystoneMarketStand02
+      undefined: decoration/unit/grass/cherrystoneMarketStand02
+      ice: decoration/unit/ice/felheimMarketStand02
   - id: cherrystone_market_stand03
     layer: units
     animation:
-      undefined: decoration/unit/cherrystoneMarketStand03
+      undefined: decoration/unit/grass/cherrystoneMarketStand03
+      ice: decoration/unit/ice/felheimMarketStand03
   - id: cherrystone_market_stand04
     layer: units
     animation:
-      undefined: decoration/unit/cherrystoneMarketStand04
+      undefined: decoration/unit/grass/cherrystoneMarketStand04
+      ice: decoration/unit/ice/felheimMarketStand04
   - id: cherrystone_market_stand05
     layer: units
     animation:
-      undefined: decoration/unit/cherrystoneMarketStand05
+      undefined: decoration/unit/grass/cherrystoneMarketStand05
+      ice: decoration/unit/ice/felheimMarketStand05
   - id: caveLight
     layer: units
     snapToGrid: true
@@ -423,10 +456,24 @@ decorations:
     layer: units
     animation:
       undefined: decoration/unit/furnace
+    lightSource:
+      sprite: lights_small2
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
   - id: furnaceSmall
     layer: units
     animation:
       undefined: decoration/unit/furnace_small
+    lightSource:
+      sprite: lights_small2
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
   - id: garland
     layer: units
     animation:

@@ -1,5 +1,41 @@
 ---
 
+weapons:
+  - id: bident
+    rangeMin: 1
+    rangeMax: 2
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      water: 1
+      buildings: 1
+
+unitClasses:
+  - id: merman
+    name: unit_class_name_merman
+    cost: 350
+    resourceCost: 2
+    movement: amphibious
+    moveRange: 5
+    damageMultiplier: 1
+    uiEffectivenessMultiplier: 2
+    aiPriority: 1.0
+    weapons:
+      - id: bident
+    verbs:
+      - capture
+      - load
+      - rescue
+      - attack_AI
+      - hire
+      - take_crown
+    tags:
+      - merman
+      - type.amphibious.light
+    battleUnitCount: 4
+    passiveMultiplier: 2
+    sightRange: 4
+
 units:
   - class: merman
     faction: outlaw

@@ -1,4 +1,43 @@
 ---
+weapons:
+  - id: lightning
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      water: 1
+      air: 1
+      buildings: 1
+
+unitClasses:
+  - id: mage
+    name: unit_class_name_mage
+    cost: 400
+    resourceCost: 2
+    movement: walking
+    moveRange: 5
+    damageMultiplier: 1
+    aiPriority: 1.0
+    weapons:
+      - id: lightning
+        ammo: 5
+    tags:
+      - mage
+      - type.ground.light
+      - spellcaster
+    verbs:
+      - load
+      - capture
+      - spell_heal
+      - rescue
+      - attack_AI
+      - hire
+      - take_crown
+    verbCostMultiplier: 0.5 # only applies in conquest mode
+    battleUnitCount: 4
+    passiveMultiplier: 1.5
+    sightRange: 4
 
 units:
   - class: mage
@@ -171,6 +210,12 @@ units:
       soldier_hit3: soldierHitRed3
       soldier_hit4: soldierHitRed4
       soldier_hit5: soldierHitRed5
+      crownbearer_panting: cutscene/crownbearerPanting
+      crownbearer_yell: cutscene/crownbearerYell
+      villager_male_shout1: cutscene/villagerScreamMale1
+      villager_male_shout2: cutscene/villagerScreamMale2
+      villager_female_shout1: cutscene/villagerScreamFemale1
+      villager_female_shout2: cutscene/villagerScreamFemale2
     emotes:
       idle: idle
 

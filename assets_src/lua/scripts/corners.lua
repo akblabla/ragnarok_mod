@@ -105,14 +105,15 @@ function Corners.getVisionCorner(playerId, pos)
     return corners
 end
 function Corners.shouldRenderTile(playerId, pos)
-    local viewerPosList = VisionTracker.getListOfViewerIds(pos)
+    return Wargroove.canAIPlayerSeeTile(playerId, pos)
+--[[    local viewerPosList = VisionTracker.getListOfViewerIds(pos)
     for viewerId, viewerpos in pairs(viewerPosList) do
         local unit = Wargroove.getUnitById(viewerId)
         if (unit~= nil)  and (unit.playerId == playerId) and StealthManager.canBeAlerted(unit) then-- and (StealthManager.isUnitUnaware(unit) or StealthManager.isUnitSearching(unit)) then
             return Wargroove.canCurrentlySeeTile({x=pos.x,y=pos.y})
         end
     end
-    return false
+    return false]]
 end
 
 function Corners.update(cornerUnit)

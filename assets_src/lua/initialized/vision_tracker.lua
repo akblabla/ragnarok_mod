@@ -314,31 +314,8 @@ end
 
 
 function VisionTracker.init()
-	--print("VisionTracker Test added to list of tests")
---	Ragnarok.addAction(VisionTracker.setup,"start_of_match",true)
---	Ragnarok.addAction(VisionTracker.humanTest,"repeating",true)
-	Ragnarok.addAction(VisionTracker.weatherChecker,"repeating",true)
-	--Ragnarok.addAction(VisionTracker.aiTest,"repeating",true)
 end
 
-local lastWeather = nil
-function VisionTracker.weatherChecker(context)
-	if context:checkState("startOfTurn") then
-		Wargroove.updateFogOfWar()
-		if not Ragnarok.usingFogOfWarRules() then
-			return
-		end
-		local playerId = Wargroove.getCurrentPlayerId();
-		if playerId ~= 0 then
-			return
-		end
-		local newWeather = Wargroove.getCurrentWeather();
-		if lastWeather ~= newWeather then
-			VisionTracker.reset()
-		end
-		lastWeather = newWeather
-	end
-end
 
 function VisionTracker.setupTeamPlayers()
 	teamPlayers = {}
@@ -552,18 +529,14 @@ function VisionTracker.calculateVisionOfUnit(unit)
 	if isInsideBounds(unit.pos) == false then
 		return {}
 	end
-	--Wargroove.showMessage("Calculating vision of unit "..unit.id)
-	-- print("calculateVisionOfUnit(unit) starts here")
 	if VisionTracker.getSightRange(unit) == 0 then
 		return {unit.pos}
 	end
 	local tilesInRange = Wargroove.getTargetsInRange(unit.pos, VisionTracker.getSightRange(unit), "all")
-	-- print("Got the tiles in range")
 	if Stats.scoutList[unit.unitClassId] ~= nil then return tilesInRange end
 	if Stats.seeOverList[unit.unitClassId] ~= nil then
 		local visibleTiles = {}
 		for i, checkedTile in ipairs(tilesInRange) do
-			-- print("checking LoS at: "..tostring(checkedTile.x)..","..tostring(checkedTile.y))
 			local checkedTerrainName = Wargroove.getTerrainNameAt(checkedTile)
 			local dist = math.abs(checkedTile.x-unit.pos.x)+math.abs(checkedTile.y-unit.pos.y)
 			if Stats.fowCoverList[checkedTerrainName] == nil or dist <=1 then
@@ -572,25 +545,17 @@ function VisionTracker.calculateVisionOfUnit(unit)
 		end
 		return visibleTiles
 	end
-	--print("loading pulse scanner")
 	local PulseScanner = require "util/pulseScanner"
-	--print("loaded pulse scanner")
 	local function getBlockerRadius(origin, pos)
 		local dist = VectorMath.dist(origin, pos)
 		return math.min(0.5+dist/200,0.6)
 	end
 
-	--print("Setting Blocker Function")
 	PulseScanner.setBlockerFunction(VisionTracker.isTileBlocker)
-	--print("Setting Blocker Radius Function")
 	PulseScanner.setBlockerRadiusFunction(getBlockerRadius)
-	--print("Checking if Scout")
 	local isScout = Stats.isScout(unit)
-	--print("Checking if it can see over")
 	local canSeeOver = Stats.canSeeOver(unit)
-	--print("Checking sight range")
 	local sightRange = VisionTracker.getSightRange(unit)
-	--print("Calculating LoS using pulse")
 	local function removeDuplicates(data)
 		local hash = {}
 		local res = {}

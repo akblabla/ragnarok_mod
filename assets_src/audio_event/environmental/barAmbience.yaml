@@ -1,0 +1,7 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/environmental/bar_ambience.ogg ]
+    group: sfx
+    loop: true
+...

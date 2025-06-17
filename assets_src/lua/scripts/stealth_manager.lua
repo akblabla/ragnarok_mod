@@ -243,8 +243,10 @@ function StealthManager.startOfGame(context)
     end
 end
 
-local canSeeTiles = {}
-
+local logging = false
+function StealthManager.enableLogging()
+    logging = true
+end
 
 function StealthManager.update(context)
     if init then
@@ -295,11 +297,16 @@ function StealthManager.update(context)
                     AIManager.attackMoveOrder(unit.id,lastKnownPos.pos)
                 elseif StealthManager.isUnitSearching(unit) then
 --                    StealthManager.isCapturableInRange(unit)
-                    if (Wargroove.hasAIRestriction(unit.id, "cant_capture") == false) and StealthManager.isCapturableInRange(unit) then
-                        AIManager.clearOrder(unit.id)
-                    else
-                        AIManager.moveOrder(unit.id,lastKnownPos.pos)
+--                    if (Wargroove.hasAIRestriction(unit.id, "cant_capture") == false) and StealthManager.isCapturableInRange(unit) then
+--                        AIManager.clearOrder(unit.id)
+--                    else
+                    if logging then
+                        print("AIManager.moveOrder(unit.id,lastKnownPos.pos)")
+                        print("unit.id: ".. unit.id)
+                        print("lastKnownPos.pos: ".. lastKnownPos.pos.x..", ".. lastKnownPos.pos.y)
                     end
+                    AIManager.moveOrder(unit.id,lastKnownPos.pos)
+--                    end
                 end
             end
             local AIGoal = StealthManager.getAIGoalPos(unit)
@@ -577,10 +584,20 @@ function StealthManager.shareInfo(unit1, unit2)
 end
 
 function StealthManager.setLastKnownLocation(unit, pos, date)
+    if logging then
+        print("StealthManager.setLastKnownLocation(unit, pos, date)")
+        print("unit.id: ".. unit.id)
+    end
     if date == nil then
         date = Wargroove.getTurnNumber()
     end
+    if logging then
+        print("date: ".. date)
+    end
     if pos ~= nil then
+        if logging then
+            print("pos: ".. pos.x..", ".. pos.y)
+        end
         Wargroove.setUnitState(unit, "lastKnownPosMapPosX", pos.x)
         Wargroove.setUnitState(unit, "lastKnownPosMapPosY", pos.y)
         Wargroove.setUnitState(unit, "lastKnownPosMapDate", date)
@@ -829,7 +846,7 @@ function StealthManager.updateFleeing(unit, track)
             Wargroove.removeUnitState(unit,currentVisual)
         end
         if StealthManager.isVisuallyUnaware(unit) and (Wargroove.getCurrentPlayerId() == unit.playerId) then
-            unit.hadTurn = true;
+--            unit.hadTurn = true;
         end
         Wargroove.setUnitState(unit,"visual_awareness","fleeing")
         Wargroove.setUnitState(unit,"fleeing","")
@@ -863,7 +880,7 @@ function StealthManager.updateAlerted(unit, track)
             Wargroove.removeUnitState(unit,currentVisual)
         end
         if StealthManager.isVisuallyUnaware(unit) and (Wargroove.getCurrentPlayerId() == unit.playerId) then
-            unit.hadTurn = true;
+--            unit.hadTurn = true;
         end
         Wargroove.setUnitState(unit,"visual_awareness","alerted")
         Wargroove.setUnitState(unit,"alerted","")
@@ -896,7 +913,7 @@ function StealthManager.updateSearching(unit, track)
             Wargroove.removeUnitState(unit,currentVisual)
         end
         if StealthManager.isVisuallyUnaware(unit) and (Wargroove.getCurrentPlayerId() == unit.playerId) then
-            unit.hadTurn = true;
+--            unit.hadTurn = true;
         end
         Wargroove.setUnitState(unit,"visual_awareness","searching")
         Wargroove.setUnitState(unit,"searching","")

@@ -1,0 +1,24 @@
+---
+unitClasses:
+  - id: tentacle
+    name: unit_class_name_tentacle
+    cost: 25
+    damageMultiplier: 2
+    aiPriority: 1.0
+    moveRange: 0
+    movement: amphibious
+    tags:
+    #  - structure
+      - kraken
+    battleUnitCount: 1
+    sightRange: 1
+    hasHealthIndicator: true
+    isHidden: true
+    isRecruitable: false
+    canBeReinforced: false
+    damageParentUnit: false
+    treatAsNeutralObstacle: true
+    appearsInLists: false
+    deathVerbId: tentacle_death
+    classIcon: unit_icons_summon
+...

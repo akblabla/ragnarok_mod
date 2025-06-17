@@ -1,12 +1,15 @@
 local Wargroove = require "wargroove/wargroove"
 local Ragnarok = require "initialized/ragnarok"
 local Recruit = require "verbs/recruit"
-local StealthManager = require "scripts/stealth_manager"
+--local StealthManager = require "scripts/stealth_manager"
 local AIProfile = require "AIProfiles/ai_profile"
 local Stats = require "util/stats"
 
 local AIEconomyManager = {}
+
+
 function AIEconomyManager.init()
+	print("ai_economy_manager.lua loaded")
 	Ragnarok.addAction(AIEconomyManager.spendRest,"repeating",true)
 end
 
@@ -16,6 +19,8 @@ end
 local function rotate(vector)
 	return {x = -vector.y, y = vector.x}
 end
+
+AIEconomyManager.producerPrice = {}
 
 AIEconomyManager.valueReductionPerUnitList = {
 	archer = 0.8,
@@ -34,6 +39,10 @@ AIEconomyManager.valueReductionPerUnitList = {
 	trebuchet = 0.5,
 	turtle = 0.8,
 	warship = 0.8,
+	kraken = 0.8,
+	frog = 0.6,
+	caravel = 0.85,
+	griffin_walking = 0.85,
 	witch = 0.6,
 	travelboat = 1,
 	balloon = 1,
@@ -57,6 +66,10 @@ AIEconomyManager.idealUnitRatioList = {
 	trebuchet = 0.3,
 	turtle = 1,
 	warship = 1,
+	kraken = 0.75,
+	frog = 0.75,
+	caravel = 1,
+	griffin_walking = 1,
 	witch = 1,
 	travelboat = 0,
 	balloon = 0,
@@ -152,6 +165,9 @@ local function getIncome(playerId)
 	if unitCountPlayerList[playerId]["water_city"] ~= nil then
 		income = income + unitCountPlayerList[playerId]["water_city"]*100
 	end
+	if unitCountPlayerList[playerId]["river_city"] ~= nil then
+		income = income + unitCountPlayerList[playerId]["river_city"]*100
+	end
 	if unitCountPlayerList[playerId]["hq"] ~= nil then
 		income = income + unitCountPlayerList[playerId]["hq"]*100
 	end
@@ -180,6 +196,10 @@ local function updateUnitRatioModifier(newUnitClassId, playerId)
 			trebuchet = 0,
 			turtle = 0,
 			warship = 0,
+			kraken = 0,
+			frog = 0,
+			caravel = 0,
+			griffin_walking = 0,
 			witch = 0
 		}
 	end
@@ -224,6 +244,10 @@ local function getUnitRatioModifier(unitClassId, playerId)
 			trebuchet = 0,
 			turtle = 0,
 			warship = 0,
+			kraken = 0,
+			frog = 0,
+			caravel = 0,
+			griffin_walking = 0,
 			witch = 0,
 			wagon = 0,
 			travelboat = 0,
@@ -246,14 +270,13 @@ local function getUnitRatioModifier(unitClassId, playerId)
 	end
 	return result
 end
-local soldierClass = Wargroove.getUnitClass("soldier")
 
 local reserve = 0
 local function calculateConvertedCost(producer, recruit)
 	local recruitClass = Wargroove.getUnitClass(recruit)
 	local convertedCost = 0
-	if producer.unitClassId == "barracks" then
-		convertedCost = recruitClass.cost-math.min(soldierClass.cost,reserve)
+	if producer.unitClassId == "barracks" or producer.unitClassId == "outpost" then
+		convertedCost = recruitClass.cost-math.min(Wargroove.getUnitClass("soldier").cost,reserve)
 	else
 		convertedCost = recruitClass.cost
 	end
@@ -273,8 +296,12 @@ local function getUnitCountPenalty(playerId)
 	return totalUnits * 10
 end
 
-local function getUnitValue(unitClassId, playerId)
-	local value = Wargroove.getUnitClass(unitClassId).cost+50
+local function getUnitValue(producer, unitClassId, playerId)
+	local producerPrice = AIEconomyManager.producerPrice[producer]
+	if producerPrice == nil then
+		producerPrice = 0
+	end
+	local value = Wargroove.getUnitClass(unitClassId).cost+producerPrice
 	if AIEconomyManager.powerMultiplierList[unitClassId] ~= nil then
 		value = value*AIEconomyManager.powerMultiplierList[unitClassId]
 	end
@@ -306,7 +333,7 @@ local function getUnitValue(unitClassId, playerId)
 end
 
 local function getProducedUnitValue(producer, unitClassId, playerId)
-	local value = getUnitValue(unitClassId, playerId)
+	local value = getUnitValue(producer, unitClassId, playerId)
 	value = value-getOpportunityCost(producer, unitClassId, playerId)
 	if unitClassId == "soldier" and value<=0 then
 		value = 1 --Always worth buying a soldier if you have money left over
@@ -324,11 +351,14 @@ function AIEconomyManager.addUnitOption(recruit,unit,spawnPos,productionOptions,
 	end
 end
 function AIEconomyManager.spendRest(context)
+	print("AIEconomyManager.spendRest(context)")
 	if context:checkState("endOfTurn") then
+		print("End of turn")
 		local playerId = Wargroove.getCurrentPlayerId();
 		if Wargroove.isHuman(playerId) == true then
 			return
 		end
+		print("Is not human")
 		AIProfile.checkForProfile(playerId)
 		unitCountPlayerList = {}
 		local barracksCount = 0
@@ -350,25 +380,27 @@ function AIEconomyManager.spendRest(context)
 					unitCountPlayerList[unit.playerId][unit.unitClassId] = unitCountPlayerList[unit.playerId][unit.unitClassId] + unit.health/unit.unitClass.maxHealth
 				end
 			end
-			if unit.unitClassId == "barracks" and unit.playerId == playerId then
+			if (unit.unitClassId == "barracks" or unit.unitClassId == "outpost") and unit.playerId == playerId and unit.hadTurn==false then
 				local relPos = {x = 0, y = 1}
 				for i = 1,4 do
 					relPos = rotate(relPos);
 					local spawnPos = {x = relPos.x+unit.pos.x, y = relPos.y+unit.pos.y}
 					if unit.hadTurn == false and Wargroove.getUnitAt(spawnPos) == nil and Recruit:canExecuteWithTarget(unit, unit.pos,spawnPos, "soldier") then
-						if StealthManager.isActive(unit.playerId) then
-							if StealthManager.isUnitPermaSearching(unit) then
-								barracksCount = barracksCount + 1
-							end
-						else
+--						if StealthManager.isActive(unit.playerId) then
+--							if StealthManager.isUnitPermaSearching(unit) then
+--								barracksCount = barracksCount + 1
+--							end
+--						else
 							barracksCount = barracksCount + 1
-						end
+--						end
 						break
 					end
 				end
 			end
 		end
-		reserve = math.min(soldierClass.cost*barracksCount,Wargroove.getMoney(playerId))
+		print("counted up units")
+		print("barracks count: " .. barracksCount)
+		reserve = math.min(Wargroove.getUnitClass("soldier").cost*barracksCount,Wargroove.getMoney(playerId))
 		local captureUnitCount = 0
 		for unitClassId, canCapture in pairs(Stats.getCaptureUnitList()) do
 			if canCapture == true then
@@ -377,7 +409,7 @@ function AIEconomyManager.spendRest(context)
 				end
 			end
 		end
-		reserve = math.min(reserve,soldierClass.cost*math.ceil(math.max(6-captureUnitCount/3,0)))
+		reserve = math.min(reserve,Wargroove.getUnitClass("soldier").cost*math.ceil(math.max(6-captureUnitCount/3,0)))
 		local budget = Wargroove.getMoney(playerId)-reserve
 		local productionBuildings = {}
 		local productionOptions = {}
@@ -399,16 +431,16 @@ function AIEconomyManager.spendRest(context)
 					print("valid spawnPoint")
 					for i, recruit in ipairs(unit.recruits) do 
 						print("Attempting to recruit: " .. recruit)
-						if StealthManager.isActive(unit.playerId) then
-							if ((StealthManager.isCivilian(recruit) and not StealthManager.isUnitPermaSearching(unit))) then
-								AIEconomyManager.addUnitOption(recruit,unit,spawnPos,productionOptions,playerId)
-							end
-							if ((not StealthManager.isCivilian(recruit) and StealthManager.isUnitPermaSearching(unit))) then
-								AIEconomyManager.addUnitOption(recruit,unit,spawnPos,productionOptions,playerId)
-							end
-						else
+--						if StealthManager.isActive(unit.playerId) then
+--							if ((StealthManager.isCivilian(recruit) and not StealthManager.isUnitPermaSearching(unit))) then
+--								AIEconomyManager.addUnitOption(recruit,unit,spawnPos,productionOptions,playerId)
+--							end
+--							if ((not StealthManager.isCivilian(recruit) and StealthManager.isUnitPermaSearching(unit))) then
+--								AIEconomyManager.addUnitOption(recruit,unit,spawnPos,productionOptions,playerId)
+--							end
+--						else
 							AIEconomyManager.addUnitOption(recruit,unit,spawnPos,productionOptions,playerId)
-						end
+--						end
 
 					end
 				end
@@ -438,7 +470,7 @@ function AIEconomyManager.spendRest(context)
 				chosenProducer.hadTurn = true
 				Wargroove.updateUnit(chosenProducer)
 				if chosenProduction.recruit == "soldier" then
-					reserve = math.max(reserve-soldierClass.cost,0)
+					reserve = math.max(reserve-Wargroove.getUnitClass("soldier").cost,0)
 				end
 				updateUnitRatioModifier(chosenProduction.recruit, playerId)
 			end
@@ -460,19 +492,6 @@ function AIEconomyManager.spendRest(context)
 			end
 		end
 	end
-end
-
-function dump(o,level)
-   if type(o) == 'table' then
-      local s = '\n' .. string.rep("   ", level) .. '{\n'
-      for k,v in pairs(o) do
-         if type(k) ~= 'number' then k = '"'..k..'"' end
-         s = s .. string.rep("   ", level+1) .. '['..k..'] = ' .. dump(v,level+1) .. ',\n'
-      end
-      return s .. string.rep("   ", level) .. '}'
-   else
-      return tostring(o)
-   end
 end
 
 return AIEconomyManager

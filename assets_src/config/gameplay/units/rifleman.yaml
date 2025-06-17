@@ -1,4 +1,48 @@
 ---
+weapons:
+  - id: musket
+    rangeMin: 1
+    rangeMax: 9
+    canMoveAndAttack: false
+    blockedByEnemies: true
+    horizontalAndVerticalOnly: true
+    horizontalAndVerticalExtraWidth: 1
+    #terrainExclusion:
+    #  - forest
+    baseDamage:
+      land: 1
+      water: 1
+      buildings: 1
+
+unitClasses:
+  - id: rifleman
+    name: unit_class_name_rifleman
+    cost: 650
+    resourceCost: 2
+    movement: walking
+    moveRange: 4
+    damageMultiplier: 1
+    aiPriority: 1.0
+    defaultAttack: attack_rifleman
+    weapons:
+      - id: musket
+    tags:
+      - rifleman
+      - type.ground.hideout
+    verbs:
+      - reload
+      - load
+      - capture
+      - rescue
+      - attack_AI
+      - hire
+      - take_crown
+    battleUnitCount: 4
+    passiveMultiplier: 1.5
+    sightRange: 4
+    startingStates:
+      - id: ammo
+        value: 3
 
 units:
   - class: rifleman

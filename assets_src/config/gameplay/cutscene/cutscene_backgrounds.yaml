@@ -63,9 +63,9 @@ cutscene_backgrounds:
     foreground: snow_battlescreen_extendedbackgrounds_beach_foreground
     background: snow_battlescreen_extendedbackgrounds_beach
   - id: snow_river
-    spritesheet: backgrounds/snow_battlescreen_extendedbackgrounds
-    foreground: snow_battlescreen_extendedbackgrounds_river_foreground
-    background: snow_battlescreen_extendedbackgrounds_river
+    spritesheet: backgrounds/ice_battlescreen_extendedbackgrounds
+    foreground: ice_battlescreen_extendedbackgrounds_river_foreground
+    background: ice_battlescreen_extendedbackgrounds_river
   - id: forest_edited
     hidden: true
     spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
@@ -242,15 +242,15 @@ cutscene_backgrounds:
   - id: deck
     spritesheet: backgrounds/map_backgrounds_RagnarokMod
     background: deck_background
-  - id: outlaw_ship
+  - id: vesper_ship
     spritesheet: backgrounds/map_backgrounds_RagnarokMod
     foreground: outlaw_ship_foreground
     background: outlaw_ship_background
-  - id: outlaw_ship_right
+  - id: vesper_ship_right
     spritesheet: backgrounds/map_backgrounds_RagnarokMod
     foreground: outlaw_ship_right_foreground
     background: outlaw_ship_right_background
-  - id: outlaw_cherry_ship
+  - id: vesper_cherry_ship
     spritesheet: backgrounds/map_backgrounds_RagnarokMod
     foreground: outlaw_and_cherrystone_ship_foreground
     background: outlaw_and_cherrystone_ship_background

@@ -154,7 +154,7 @@ tilesets:
         infoScreenOffset: 30
         fillColour: '#2a2542'
     primaryConnect: [undefined, bridge]
-    secondaryConnect: [plains, forest, mountain, road, wall, cobblestone, carpet]
+    secondaryConnect: [plains, forest, mountain, road, street, wall, cobblestone, carpet]
     decayTo: ":below"
     extras:
     # Single tile variation

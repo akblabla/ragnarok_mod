@@ -40,7 +40,7 @@ tilesets:
         iconSprite: ":img:ui/codex/icons/icon_terrain_street.png"
         infoScreenOffset: 80
         fillColour: '#596876'
-    primaryConnect: [undefined, street]
+    primaryConnect: [undefined, street, road, cave_road, quay, bridge, bridge_wide]
     decayTo: plains
     tiles:
       - { x: 0, y: 0, adj: "e s se" }

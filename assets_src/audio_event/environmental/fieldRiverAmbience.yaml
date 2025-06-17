@@ -1,0 +1,11 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/environmental/river_ambience.ogg ]
+    group: sfx
+    loop: true
+  - type: play
+    clips: [ sfx/environmental/field_ambience.ogg ]
+    group: sfx
+    loop: true
+...

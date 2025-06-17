@@ -1,0 +1,8 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/environmental/weather_sandstorm.ogg ]
+    group: sfx
+    loop: true
+    volume: 0.5
+...

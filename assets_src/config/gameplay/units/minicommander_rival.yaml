@@ -30,9 +30,13 @@ unitClasses:
     verbs:
       - load
       - capture
+      - rescue
+      - attack_AI
+      - hire
+      - take_crown
     battleUnitCount: 1
-    passiveMultiplier: 1.35
-    sightRange: 2
+    passiveMultiplier: 1.5
+    sightRange: 4
     canBeRenamed: false
     isCommander: true
 
@@ -40,8 +44,8 @@ unitClasses:
 units:
   - class: rival
     faction: outlaw
-    name: character_hans_name
-    mapAnimation: units/minicommanders/hans/map_hans
+    name: unit_name_rival_outlaws
+    mapAnimation: units/archer/cherrystone/map_archer_cherrystone
     mapLightSource:
       sprite: lights_small
       scale: [1.0, 1.0]
@@ -56,10 +60,10 @@ units:
         scale: 1.0
         frequency: 0.3
         frequencyVariance: 0.15
-    battleAnimation: units/minicommanders/hans/battle_hans
+    battleAnimation: units/archer/cherrystone/battle_archer_cherrystone
     battleAnimationRiver: fx/river_overlay/battle_archer_river
-    smallPortrait: units/minicommanders/hans/portrait_hans_small.png
-    mediumPortrait: units/minicommanders/hans/portrait_hans_medium.png
+    smallPortrait: units/archer/cherrystone/portrait_archer_cherrystone_small.png
+    mediumPortrait: units/archer/cherrystone/portrait_archer_cherrystone_medium.png
     skinColour: typeII
     mapSpeed: 4.0
     grabPos: [15, 24]

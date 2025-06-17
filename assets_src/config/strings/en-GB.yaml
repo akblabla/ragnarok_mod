@@ -4,21 +4,23 @@
 en-GB: &flag-en
   #AI
   ai_profile_rival_pirate: Rival Pirate
+  ai_profile_rival_pirate_late: Rival Pirate Late game
   ai_profile_coward: Coward
   ai_profile_charge: Charge
   ai_profile_mangrove_madness: Mangrove Madness
   ai_profile_city_passive: City Passive
   ai_profile_city_war: City War
   ai_profile_abandoned_bandits: Abandoned Bandits 
+  ai_profile_hidden_fjord: Hidden Fjord Skeletons
+  ai_profile_pirate_bout_cherrystone: Pirate Bout Guards
 
-  # Merge Verb
+  
   ui_unit_verbs_better_merge: Merge
   ui_unit_verbs_pirate_deposit: Deposit
   ui_unit_verbs_pirate_steal: Steal
   ui_unit_verbs_board: Board
   ui_unit_verbs_hand_over_crown: Hand Over Crown
   ui_unit_verbs_pick_up_crown: Pick Up Crown
-  ui_unit_verbs_throw_crown: Throw Crown
   ui_unit_verbs_spawn_flare_1: Spawn Flare[1]
   ui_unit_verbs_spawn_flare_2: Spawn Flare[2]
   ui_unit_verbs_spawn_flare_many: Spawn Flare[3+]
@@ -30,6 +32,10 @@ en-GB: &flag-en
   ui_unit_verbs_ascend: Ascend
   ui_unit_verbs_descend: Descend
   ui_unit_verbs_reposition: Reposition
+
+  item_verb_throw_crown_name: Throw Crown
+  item_verb_kick_name: Kick
+
   
   #biomes
   biome_name_tropical: Tropical
@@ -75,6 +81,8 @@ en-GB: &flag-en
   terrain_name_quay: Sea
   terrain_description_quay: Open water. Accessible only to air and naval units.
   terrain_description_bridge_wide: Bridges allow wheeled vehicles to travel quickly over otherwise impassable waters.
+  terrain_name_waterfall: Waterfall
+  terrain_description_waterfall: Slows down land units. Waterfalls are not traversable for naval-only units
 
 
   
@@ -95,9 +103,14 @@ en-GB: &flag-en
   unit_name_flagship_rival: "Rival's Flagship"
   unit_description_commander_flagship_rival: "Flagship of Rival"
 
-
+  unit_name_rival_outlaws: "Ol' Friend"
 
   # Commander
+
+  mini_groove_name_putt: "Putt"
+  mini_groove_name_teleport: "Teleport"
+  mini_groove_name_ram: "Ram"
+
   character_flagship_wulfar_name: "Wulfar's Flagship"
   character_flagship_wulfar_title: "Captain Wulfar"
   
@@ -105,6 +118,7 @@ en-GB: &flag-en
   groove_description_broadside: "Blasts enemies in a cone. The closest enemies take 100% of the commanders damage at full health, the next layer 66% and the furthest layer 33%."
   groove_name_all_caps_groove_broadside: "BROADSIDE"
   
+
   character_rival_name: "Rival"
   character_rival_title: "Captain Rival"
   
@@ -139,12 +153,8 @@ en-GB: &flag-en
   groove_description_area_damage_rival: "Sets an area ablaze over several turns."
   groove_name_all_caps_groove_area_damage_rival: "FIRE BOMBS"
   
-  unit_class_name_cart: Cart
-  unit_description_cart: "A humble cart."
-  unit_name_cart_cherrystone: Cart
-  
   unit_class_name_flare: Flare
-  unit_description_flare: Reveals hidden units in an area. It expires at the end of the turn.
+  unit_description_flare: Reveals hidden units in an area. It takes 30% damage at the start of its turn.
   unit_name_flare: Flare
 
   unit_class_name_crew: Capsized Crew
@@ -157,66 +167,76 @@ en-GB: &flag-en
   
   unit_class_name_travelboat_with_gold: Loaded Barge
 
-  unit_name_archer_outlaws: Poacher 
-  unit_name_dog_outlaws: Stray
-  unit_name_mage_outlaws: Trickster 
-  unit_name_rifleman_outlaws: Sharpshooter 
-  unit_name_soldier_outlaws: Cutthroat
-  unit_name_spearman_outlaws: Brigand 
-  unit_name_knight_outlaws: Highwayman 
-  unit_name_wagon_outlaws: Wagon
-  unit_name_warship_outlaws: Warship 
-  unit_name_harpoonship_outlaws: Harpoon Ship 
-  unit_name_dragon_outlaws: Emberwing 
-  unit_name_trebuchet_outlaws: Trebuchet 
-  unit_name_merman_outlaws: Corsair
-  unit_name_turtle_outlaws: Seadog 
-  unit_name_witch_outlaws: Hag 
-  unit_name_harpy_outlaws: Harpy 
-  unit_name_balloon_outlaws: Balloon 
-  unit_name_giant_outlaws: Golem 
-  unit_name_ballista_outlaws: Ballista 
-  unit_name_travelboat_outlaws: Barge
-  unit_name_villager_outlaws: Beggar 
+  unit_name_archer_outlaw: Poacher 
+  unit_name_dog_outlaw: Stray
+  unit_name_mage_outlaw: Trickster 
+  unit_name_rifleman_outlaw: Sharpshooter 
+  unit_name_soldier_outlaw: Cutthroat
+  unit_name_spearman_outlaw: Brigand 
+  unit_name_knight_outlaw: Highwayman 
+  unit_name_wagon_outlaw: Wagon
+  unit_name_warship_outlaw: Warship 
+  unit_name_harpoonship_outlaw: Harpoon Ship 
+  unit_name_dragon_outlaw: Emberwing 
+  unit_name_trebuchet_outlaw: Trebuchet 
+  unit_name_merman_outlaw: Corsair
+  unit_name_turtle_outlaw: Seadog 
+  unit_name_witch_outlaw: Hag 
+  unit_name_harpy_outlaw: Harpy 
+  unit_name_balloon_outlaw: Balloon 
+  unit_name_giant_outlaw: Golem 
+  unit_name_ballista_outlaw: Ballista 
+  unit_name_travelboat_outlaw: Barge
+  unit_name_villager_outlaw: Beggar 
   unit_name_thief_cherrystone: Sheriff
   unit_name_thief_with_gold_cherrystone: Sheriff with Gold
-  unit_name_thief_outlaws: Smuggler
-  unit_name_thief_with_gold_outlaws: Smuggler with Gold
-  unit_name_rifleman_outlaws: Sharpshooter 
-  unit_name_rival_outlaws: Ol'Friend 
+  unit_name_thief_outlaw: Smuggler
+  unit_name_thief_with_gold_outlaw: Smuggler with Gold
+  unit_name_rifleman_outlaw: Sharpshooter 
+  unit_name_rival_outlaw: Ol'Friend 
+  unit_name_griffin_outlaw: Goose Rider
+  unit_name_caravel_outlaw: Dinghy
+  unit_name_frog_outlaw: Toad
+  unit_name_kraken_outlaw: Kraken
+
 
   structure_name_tavern: "Tavern"
   unit_description_tavern: "Neutral building where anyone can reinforce and retrain their units."  
 
+  structure_name_outpost: "Outpost"
+  unit_description_outpost: "Used to recruit light ground units. Can't recruit two consecutive turns. Can also reinforce injured units."
 
   # UNIT DESCRIPTIONS
-  unit_description_soldier: "[MELEE] Basic infantry, useful for capturing structures. Critical hit when adjacent to its commander."
+  unit_description_soldier: "Basic infantry, useful for capturing structures. Critical hit when adjacent to its commander."
   unit_description_villager: "Simple peasants. They're not equipped to fight, and are vulnerable to just about everything."
-  unit_description_spearman: "[MELEE] Slower, more powerful infantry. Critical hit when adjacent to another spearman."
+  unit_description_spearman: "Slower, more powerful infantry. Critical hit when adjacent to another spearman."
   unit_description_archer: "Ranged ground units able to move and attack in the same turn. Critical hit when stationary."
-  unit_description_dog: "[MELEE] A quick unit. Critical hit when another dog unit is adjacent to the target."
+  unit_description_dog: "A quick unit. Critical hit when another dog unit is adjacent to the target."
   unit_description_mage: "A powerful unit built to combat naval and air units. Critical hit when defence is 3 or above. Able to heal allied targets by 20%."
   unit_description_warship: "An immensely powerful long range unit. Critical hit when on beach."
-  unit_description_harpoonship: "Ranged anti-air water unit. Does half damage to enemies on land. Critical hit when in reef."
+  unit_description_harpoonship: "Ranged anti-air water unit. It is also strong vs sea creatures. Critical hit when in reef."
   unit_description_dragon: "Incredibly powerful air-to-ground unit. Critical hit when target is standing on a road."
-  unit_description_knight: "[MELEE] Powerful, mobile ground unit. Critical hit when it attacks from a location six spaces away from where it starts."
+  unit_description_knight: "Powerful, mobile ground unit. Critical hit when it attacks from a location six spaces away from where it starts."
   unit_description_wagon: "Capable of quickly transporting units that would otherwise travel by foot."
   unit_description_trebuchet: "Powerful long-range unit, unable to move and attack in the same turn. Critical hit at max range."
-  unit_description_merman: "Amphibious infantry unit that can capture structures. Critical hit when in rivers or sea."
-  unit_description_turtle: "[MELEE] Powerful naval unit, built to conquer the water. Critical hit when in deep sea."
+  unit_description_merman: "Ranged Amphibious infantry unit that can capture structures. Critical hit when in rivers or sea."
+  unit_description_turtle: "Powerful naval unit, built to conquer the water. Critical hit when in deep sea."
   unit_description_witch: "Air-to-air unit. Critical hit when target is not adjacent to its own allied witch. Hex deals 10% damage to all unit types."
   unit_description_harpy: "Immensely mobile units, useful for crossing enemy lines. Critical hit when above a mountain."
   unit_description_balloon: "Aircraft able to transport footsoldiers and Dog units."
-  unit_description_giant: "[MELEE] An immensely powerful unit. Critical hit when at or below 40% health."
+  unit_description_giant: "An immensely powerful unit. Critical hit when at or below 40% health."
   unit_description_ballista: "Ranged ground-to-air unit, unable to move and attack in the same turn. Critical hit at min range."
   unit_description_travelboat: "Boats able to transport all ground units across water. Can steal from buildings."  
-  unit_description_travelboat_with_gold: "Boats able to transport all ground units across water. Can steal from buildings."  
-
+  unit_description_travelboat_with_gold: "A vulnerable unit that cannot transport, but is able to deposit the gold it has stolen at a friendly Flagship, Warship or Dock. If defeated, the gold goes to the attacker."  
+  unit_description_rifleman: "A long-range ground unit. Can't target enemies behind other units or tall terrain. Critical hit when target is in the centre of the Rifleman's sights."
+  unit_description_griffin_walking: "Flies over units, but must land on solid ground. Crit when ally is opposite to target."
+  unit_description_caravel: "Cost-effective for neutralizing structures. Crit when target is adjacent to a structure. Strong vs Ships."
+  unit_description_kraken: "Naval supremacist. Tentacle ability immobilizes a unit for one turn (Range: 3).\nCritical hit when enemy has no adjacent allies."
   #backgrounds
   ui_cutscene_background_deck: "Ship Deck"
-  ui_cutscene_background_outlaw_ship: "Outlaw Ship"
-  ui_cutscene_background_outlaw_ship_right: "Outlaw Ship Mirrored"
-  ui_cutscene_background_outlaw_cherry_ship: "Outlaw and Cherry Ship"
+  ui_cutscene_background_vesper_ship: "Vesper Ship"
+  ui_cutscene_background_vesper_ship_right: "Vesper Ship Mirrored"
+  ui_cutscene_background_vesper_cherry_ship: "Vesper and Cherry Ship"
   ui_cutscene_background_outlaw_HQ: "Outlaw HQ"
   ui_cutscene_background_outlaw_HQ_intro: "Outlaw HQ Intro"
   ui_cutscene_background_tropical_beach: "Tropical Beach"
@@ -261,9 +281,20 @@ en-GB: &flag-en
   ui_cutscene_prop_bush2: "bush 2"
   
   # MUSIC
+  # MUSIC TRACKS
+  music_name_hostile_2: "Outlaws ~ Cheeky Ruckus"
+  music_name_campaign_2: "Aurania"
+
+  music_name_wulfar_2: "Wulfar ~ Towering Chieftain"
+  music_name_twins_2: "Errol & Orla ~ Impish Urchins"
+  music_name_vesper_2: "Vesper ~ Flashy Fumomancer"
+  music_name_theplan_2: "The Plan"
+  music_name_tavern_2: "The Tavern"
   music_name_tavern_distant: "Distant Tavern"
   music_name_bar_ambience_distant: "Distant Tavern Ambience"
   
+
+
   # MAP HIGHLIGHT TYPES
   location_highlight_arrow_up: "Arrow up"
   ui_cutscene_emote_crown_surprise: "Crown Surprised"
@@ -318,9 +349,17 @@ en-GB: &flag-en
   ui_cutscene_shout_duchess_youhavemythanks: "\"You have my thanks.\""
   ui_cutscene_shout_duchess_youthinkthisisagame: "\"You think this is a game?\""
 
-  crown_name: The Cherrystone Crown
-  crown_description: Unit can't attack. At the start of each turn, unit regains 20 health.
+  crown_name: "The Cherrystone Crown"
+  crown_description: "Unit can't attack. At the start of each turn, unit regains 20 health.\nFits snuggly on any commander's head."
 
+  mighty_boot_name: "Mighty Boot"
+  mighty_boot_description: "Unit can kick another unit, pushing it two tiles and dealing 20 damage."
+
+  fire_arrows_name: "Fire Arrows"
+  fire_arrows_description: "Ignites enemies hit by attacks. "
+
+  cutpurse_pockets_name: "Cutpurse Pockets"
+  cutpurse_pockets_description: "Steals 100 gold from enemies killed. Reduces damage taken by 25%."
 
 de-DE: *flag-en
 es-ES: *flag-en

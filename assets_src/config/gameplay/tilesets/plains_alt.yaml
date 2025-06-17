@@ -1,148 +1,137 @@
 ---
 tilesets:
   - id: plains_alt
-    type: WangBlob
     biomes:
-      - types: [desert, ice, ice_low]
-        spriteSheet: tilesets
-        spriteBase: wang_grass_plains_sea_tileset_000
-        waterSpriteBase: wang_grass_plains_sea_tileset_001
+      - types: [desert]
+        spriteSheet: terrain_tilesets
+        spriteBase: sand_fake_grass_plains_tileset
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_plains
         battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
         battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_plains
         battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_plains_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Plain
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_plains_alt.png"
         infoScreenOffset: 30
         fillColour: '#92b141'
-      - types: [flower]
-        spriteSheet: tilesets
-        spriteBase: wang_flower_plains_sea_tileset_000
-        waterSpriteBase: wang_flower_plains_sea_tileset_001
+      - types: [tropical]
+        spriteSheet: terrain_tilesets
+        spriteBase: tropical_fake_sand_plains_tileset
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_plains
-        battleBackgroundSpriteSheet: backgrounds/flower_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: flower_battlescreen_extendedbackgrounds_plains
-        battleBackgroundSpriteForeground: flower_battlescreen_extendedbackgrounds_plains_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Plain
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: tropical_fake_sand_background
+        battleBackgroundSpriteForeground: tropical_beach_foreground
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_plains_alt.png"
         infoScreenOffset: 30
         fillColour: '#92b141'
-      - types: [dungeon, dungeon_purple]
-        spriteSheet: tilesets
-        spriteBase: wang_dungeon_plains_sea_tileset_000
-        waterSpriteBase: wang_dungeon_plains_sea_tileset_001
-        portraitSpriteSheet: terrain/terrain_portraits
-        portraitSprite: terrain_portraits_plains
-        battleBackgroundSpriteSheet: backgrounds/dungeon_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: dungeon_battlescreen_extendedbackgrounds_plains
-        battleBackgroundSpriteForeground: dungeon_battlescreen_extendedbackgrounds_plains_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Plain
-        infoScreenOffset: 30
-        fillColour: '#92b141'
-      - types: [dungeon_lava]
-        spriteSheet: tilesets
-        spriteBase: wang_dungeon_lava_plains_sea_tileset_000
-        waterSpriteBase: wang_dungeon_lava_plains_sea_tileset_001
-        portraitSpriteSheet: terrain/terrain_portraits
-        portraitSprite: terrain_portraits_plains
-        battleBackgroundSpriteSheet: backgrounds/dungeon_lava_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: dungeon_lava_battlescreen_extendedbackgrounds_plains
-        battleBackgroundSpriteForeground: dungeon_lava_battlescreen_extendedbackgrounds_plains_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Plain
-        infoScreenOffset: 30
-        fillColour: '#92b141'
-      - types: [jungle]
-        spriteSheet: tilesets
-        spriteBase: wang_jungle_plains_sea_tileset_000
-        waterSpriteBase: wang_jungle_plains_sea_tileset_001
-        portraitSpriteSheet: terrain/terrain_portraits
-        portraitSprite: terrain_portraits_plains
-        battleBackgroundSpriteSheet: backgrounds/jungle_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: jungle_battlescreen_extendedbackgrounds_plains
-        battleBackgroundSpriteForeground: jungle_battlescreen_extendedbackgrounds_plains_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Plain
-        infoScreenOffset: 30
-        fillColour: '#92b141'
-      - types: [grass, deepforest]
-        spriteSheet: tilesets
-        spriteBase: wang_ice_plains_sea_tileset_000
-        waterSpriteBase: wang_ice_plains_sea_tileset_001
+      - types: [grass]
+        spriteSheet: terrain_tilesets
+        spriteBase: grass_fake_snow_plains_tileset
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_snow_plains
         battleBackgroundSpriteSheet: backgrounds/ice_battlescreen_extendedbackgrounds
         battleBackgroundSprite: ice_battlescreen_extendedbackgrounds_plains
         battleBackgroundSpriteForeground: ice_battlescreen_extendedbackgrounds_plains_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Plain
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_plains_alt.png"
         infoScreenOffset: 30
         fillColour: '#aec6e3'
-      - types: [arctic]
-        spriteSheet: tilesets
-        spriteBase: wang_arctic_plains_sea_tileset_000
-        waterSpriteBase: wang_arctic_plains_sea_tileset_001
+      - types: [ice]
+        spriteSheet: terrain_tilesets
+        spriteBase: sand_fake_grass_plains_tileset
         portraitSpriteSheet: terrain/terrain_portraits
-        portraitSprite: terrain_portraits_snow_plains
-        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_plains
-        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_plains_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Plain
+        portraitSprite: terrain_portraits_sand_plains
+        battleBackgroundSpriteSheet: backgrounds/sand_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: sand_battlescreen_extendedbackgrounds_plains
+        battleBackgroundSpriteForeground: sand_battlescreen_extendedbackgrounds_plains_foreground
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_plains_alt.png"
         infoScreenOffset: 30
-        fillColour: '#aec6e3'
-      - types: [arctic_bloom]
+        fillColour: '#987647'
+      - types: [volcano]
         spriteSheet: tilesets
-        spriteBase: wang_arctic_plains_sea_tileset_000
-        waterSpriteBase: wang_arctic_plains_sea_tileset_001
+        spriteBase: volcano_plains_tileset
         portraitSpriteSheet: terrain/terrain_portraits
-        portraitSprite: terrain_portraits_snow_plains
-        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds_bloom
-        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_bloom_plains
-        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_bloom_plains_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Plain
+        portraitSprite: terrain_portraits_sand_plains
+        battleBackgroundSpriteSheet: backgrounds/volcano_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: volcano_battlescreen_extendedbackgrounds_plains
+        battleBackgroundSpriteForeground: volcano_battlescreen_extendedbackgrounds_plains_foreground
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_plains_alt.png"
         infoScreenOffset: 30
-        fillColour: '#aec6e3'
-      - types: [arctic_blood]
-        spriteSheet: tilesets
-        spriteBase: wang_arctic_plains_sea_tileset_000
-        waterSpriteBase: wang_arctic_plains_sea_tileset_001
-        portraitSpriteSheet: terrain/terrain_portraits
-        portraitSprite: terrain_portraits_snow_plains
-        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds_red
-        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_red_plains
-        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_red_plains_foreground
-        iconSpriteSheet: ui
-        iconSprite: terrain_icons_Plain
-        infoScreenOffset: 30
-        fillColour: '#aec6e3'
-    primaryConnect: []
+        fillColour: '#6d5e56'
+    primaryConnect: [undefined, plains_alt]
     decayTo: plains
-    extras:
-    # Single tile variation
-      - { x: 7, y: 0, mask: 0 }
-      - { x: 8, y: 0, mask: 0 }
-      - { x: 9, y: 0, mask: 0 }
-      - { x: 7, y: 1, mask: 0 }
-      - { x: 8, y: 1, mask: 0 }
-      - { x: 9, y: 1, mask: 0 }
-      - { x: 7, y: 2, mask: 0 }
-      - { x: 8, y: 2, mask: 0 }
-      - { x: 9, y: 2, mask: 0 }
-      - { x: 7, y: 3, mask: 0 }
-      - { x: 8, y: 3, mask: 0 }
-      - { x: 9, y: 3, mask: 0 }
-      - { x: 7, y: 4, mask: 0 }
-      - { x: 8, y: 4, mask: 0 }
-      - { x: 9, y: 4, mask: 0 }
-      - { x: 7, y: 5, mask: 0 }
-      - { x: 8, y: 5, mask: 0 }
-      - { x: 9, y: 5, mask: 0 }
-      - { x: 7, y: 6, mask: 0 }
-      - { x: 8, y: 6, mask: 0 }
-      - { x: 9, y: 6, mask: 0 }
+    tiles:
+      - { x: 0, y: 0, adj: "e s se" }
+      - { x: 1, y: 0, adj: "w sw s se e" }
+      - { x: 2, y: 0, adj: "w s sw" }
+      - { x: 3, y: 0, adj: "e" }
+      - { x: 4, y: 0, adj: "e w" }
+      - { x: 5, y: 0, adj: "w" }
+      - { x: 6, y: 0, adj: "" }
+
+      - { x: 0, y: 1, adj: "n ne e se s" }
+      - { x: 1, y: 1, adj: "n w e s ne nw se sw" }
+      - { x: 2, y: 1, adj: "n nw w sw s" }
+      - { x: 3, y: 1, adj: "s" }
+      - { x: 4, y: 1, adj: "n e s w" }
+      - { x: 5, y: 1, adj: "w s e" }
+      - { x: 6, y: 1, adj: "n w e" }
+
+      - { x: 0, y: 2, adj: "n ne e" }
+      - { x: 1, y: 2, adj: "w nw n ne e" }
+      - { x: 2, y: 2, adj: "w nw n" }
+      - { x: 3, y: 2, adj: "n s" }
+      - { x: 4, y: 2, adj: "n s e" }
+      - { x: 5, y: 2, adj: "s e" }
+      - { x: 6, y: 2, adj: "s w" }
+
+      - { x: 2, y: 3, adj: "n w e s ne nw se sw" }
+      - { x: 3, y: 3, adj: "n" }
+      - { x: 4, y: 3, adj: "n w s" }
+      - { x: 5, y: 3, adj: "n e" }
+      - { x: 6, y: 3, adj: "n w" }
+
+      - { x: 0, y: 3, adj: "n w e s ne nw sw" }
+      - { x: 1, y: 3, adj: "n w e s ne nw se" }
+      - { x: 0, y: 4, adj: "n w e s nw se sw" }
+      - { x: 1, y: 4, adj: "n w e s ne se sw" }
+
+      - { x: 2, y: 4, adj: "n w e s se sw" }
+      - { x: 3, y: 4, adj: "n w e s nw sw" }
+      - { x: 4, y: 4, adj: "n w e s ne nw" }
+      - { x: 5, y: 4, adj: "n w e s ne se" }
+      - { x: 6, y: 4, adj: "n w s sw" }
+
+      - { x: 0, y: 5, adj: "w s e se" }
+      - { x: 1, y: 5, adj: "w s e sw" }
+      - { x: 2, y: 5, adj: "n w e ne" }
+      - { x: 3, y: 5, adj: "n w e nw" }
+      - { x: 4, y: 5, adj: "n s e se" }
+      - { x: 5, y: 5, adj: "n s e ne" }
+      - { x: 6, y: 5, adj: "n w s nw" }
+
+      - { x: 0, y: 6, adj: "n e s w nw" }
+      - { x: 1, y: 6, adj: "n e s w ne" }
+      - { x: 2, y: 6, adj: "n e s w se" }
+      - { x: 3, y: 6, adj: "n e s w sw" }
+      - { x: 4, y: 6, adj: "n w e s ne sw" }
+      - { x: 5, y: 6, adj: "n w e s nw se" }
+      - { x: 6, y: 6, adj: "n w e s ne nw se sw" }
+
+      - { x: 0, y: 7, adj: "n w e s ne nw se sw" }
+      - { x: 1, y: 7, adj: "n w e s ne nw se sw" }
+      - { x: 2, y: 7, adj: "n w e s ne nw se sw" }
+      - { x: 3, y: 7, adj: "n w e s ne nw se sw" }
+      - { x: 4, y: 7, adj: "n w e s ne nw se sw" }
+      - { x: 5, y: 7, adj: "n w e s ne nw se sw" }
+      - { x: 6, y: 7, adj: "n w e s ne nw se sw" }
+
+      - { x: 0, y: 8, adj: "n w e s ne nw se sw" }
+      - { x: 1, y: 8, adj: "n w e s ne nw se sw" }
+      - { x: 2, y: 8, adj: "n w e s ne nw se sw" }
+      - { x: 3, y: 8, adj: "n w e s ne nw se sw" }
 ...

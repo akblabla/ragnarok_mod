@@ -49,7 +49,7 @@ terrains:
       riding: 3
       flying: 1
       hovering: 1
-      amphibious: 4
+      amphibious: 3
       airphibious: 1
     movementGroupType: [land]
     placeable: true
@@ -141,25 +141,23 @@ terrains:
       hovering: 1
       wheels: 1
       amphibious: 1
-      sailing: 1
+      sailing: 2
       land_building: 1
       indoor_building: 1
       airphibious: 1
       river_sailing: 1
-      river_sea_building: 1
-    cantStop: [sailing]
+    cantStop: [sailing, river_sailing]
     movementGroupType: [land]
     placeable: true
     tilesets: 
-      0: [plains, plains_alt, street, sea, quay, cave_sea]
-      1: [river, cave_river]
+      0: [plains, plains_alt, street, beach, cave_beach sea, quay, cave_sea, river, cave_river, waterfall]
       2: bridge
     wang:
       blend: true
-      blendTo: [plains, road, forest, forest_cut, mountain, cobblestone]
+      blendTo: [plains, road, cave_road, street, forest, forest_cut, mountain, cobblestone]
       complementary: true
       canRenderWater: true
-      adjacencies: [road]
+      adjacencies: [road, cave_road, street]
 
   - id: sea
     name: terrain_name_sea
@@ -175,9 +173,9 @@ terrains:
       hovering: 1
       amphibious: 1
       sea_building: 1
+      river_sea_building: 1
       airphibious: 1
       river_sailing: 1
-      river_sea_building: 1
     biomeMovementCosts:
       volcano:
         flying: 1
@@ -189,7 +187,7 @@ terrains:
     wang:
       complementary: true
       canRenderWater: true
-      adjacencies: [beach, ocean, reef, river, bridge, quay, invisible_wall_sea, invisible_blocker_ocean, cave_sea, cave_reef, cave_beach]
+      adjacencies: [beach, ocean, reef, river, bridge, quay, invisible_wall_sea, invisible_blocker_ocean, cave_sea, cave_river, cave_reef, cave_beach]
 
   - id: ocean
     name: terrain_name_ocean
@@ -237,14 +235,12 @@ terrains:
     cantStop: [airphibious]
     defenceBonus: 2
     movementCost:
-      sailing: 2
+      sailing: 3
       flying: 1
       hovering: 1
       amphibious: 1
-      sea_building: 1
       airphibious: 1
       river_sailing: 2
-      river_sea_building: 1
     biomeMovementCosts:
       volcano:
         flying: 1
@@ -258,7 +254,7 @@ terrains:
     wang:
       complementary: true
       canRenderWater: true
-      adjacencies: [sea, beach, ocean]
+      adjacencies: [sea, cave_sea, quay, river, cave_river, beach, cave_beach, ocean, invisible_blocker_ocean, invisible_wall_ocean, cave_reef]
 
   - id: river
     name: terrain_name_river
@@ -288,14 +284,11 @@ terrains:
     movementGroupType: [land, water]
     placeable: true
     tilesets:
-      0: [plains, plains_alt, street]
-      1: river
+      0: river
     wang:
-      blend: true
-      blendTo: [sea, beach]
       complementary: true
       canRenderWater: true
-      adjacencies: [sea, beach, ocean, invisible_blocker_ocean, invisible_wall_ocean, reef]
+      adjacencies: [sea, cave_sea, quay, cave_river, waterfall, beach, cave_beach, ocean, invisible_blocker_ocean, invisible_wall_ocean, reef, cave_reef]
 
   - id: beach
     name: terrain_name_beach
@@ -304,11 +297,13 @@ terrains:
       sailing: 2
       river_sailing: 1
       walking: 1
-      riding: 1
+      riding: 2
       flying: 1
       hovering: 1
       airphibious: 1
       amphibious: 1
+      sea_building: 1
+      river_sea_building: 1
     biomeMovementCosts:
       volcano:
         walking: 1
@@ -325,7 +320,7 @@ terrains:
       blendTo: [sea]
       complementary: true
       canRenderWater: true
-      adjacencies: [sea,quay, ocean, invisible_blocker_ocean, invisible_wall_ocean, reef]
+      adjacencies: [sea,quay, cave_sea, river, cave_river, ocean, invisible_blocker_ocean, invisible_wall_ocean, reef, cave_reef]
 
   - id: sky
     name: terrain_name_sky

@@ -53,7 +53,7 @@ tilesets:
         iconSprite: ":img:ui/codex/icons/icon_terrain_rough_grass.png"
         infoScreenOffset: 80
         fillColour: '#596876'
-    primaryConnect: [undefined, rough]
+    primaryConnect: [undefined, rough, cave_sea, cave_river]
     decayTo: plains
     tiles:
       - { x: 0, y: 0, adj: "e s se" }

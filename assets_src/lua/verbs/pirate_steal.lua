@@ -15,6 +15,9 @@ function pirate_steal:getTargetType()
 end
 
 function pirate_steal:canExecuteAnywhere(unit)
+    if #unit.loadedUnits > 0 then
+        return false
+    end
     local gold = Wargroove.getUnitState(unit, stateKey)
     return gold == nil or tonumber(gold) == 0
 end
@@ -112,7 +115,7 @@ function pirate_steal:getScore(unitId, order)
     local newUnitValue = 2*math.sqrt(amountToTake / 100 + unitClass.cost / 100 * unit.health*unit.health / 10000)
     local myDelta = newUnitValue - oldUnitValue
 
-    return { score = myDelta, healthDelta = 0, introspection = {
+    return { score = 100000, healthDelta = 0, introspection = {
         { key = "amountToTake", value = amountToTake },
         { key = "oldUnitValue", value = oldUnitValue },
         { key = "newUnitValue", value = newUnitValue }}}

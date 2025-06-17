@@ -1,0 +1,7 @@
+---
+actions:
+  - type: play
+    clips: [ music/wg2/hostile_2.ogg ]
+    group: music
+    loop: true
+...

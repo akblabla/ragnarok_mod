@@ -1,0 +1,32 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/clothMovement4.ogg ]
+    group: sfx
+    delay: 0.0
+  - type: play
+    clips: [ sfx/vesper/vesperAttackWhipUncoilFoley.ogg ]
+    group: sfx
+    delay: 0.3
+  - type: play
+    clips: [ sfx/vesper/vesperAttackWhipDownFoley.ogg ]
+    group: sfx
+    delay: 0.5
+  - type: play
+    clips: [ sfx/vesper/vesperAttackWhipCrackFoley.ogg ]
+    group: sfx
+    volume: 0.5
+    pitch: 1
+    delay: 0.75
+  - type: play
+    clips: [ sfx/vesper/vesperAttackBombBlastFoley.ogg ]
+    pitch: 0.8
+    delay: 0.85
+    group: sfx
+  - type: play
+    clips: [ sfx/vesper/vesperAttackBombSmokeFoleyShort.ogg ]
+    pitch: 0.8
+    delay: 0.85
+    group: sfx
+    
+...

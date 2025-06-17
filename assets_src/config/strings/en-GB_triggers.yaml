@@ -3,6 +3,10 @@
 # This is the string configuration file for English.
 en-GB: &flag-en
   # Actions
+  trigger_action_name_ignore_enemies_threatening_allies: "AI: Ignore Enemies Threatening Allies"
+  trigger_action_description_ignore_enemies_threatening_allies: "Prevents AI from attacking enemies threatening allies more than themselves."
+  trigger_action_readable_ignore_enemies_threatening_allies: "Make player {0} ignore enemies threatening allies"
+
   trigger_action_name_ai_set_no_building_attacking: "AI: Set no building attacking"
   trigger_action_description_ai_set_no_building_attacking: "Prevents AI from attacking buildings."
   trigger_action_readable_ai_set_no_building_attacking: "Prevent AI controlled by player {0} from attacking buildings."
@@ -43,9 +47,9 @@ en-GB: &flag-en
   trigger_action_description_change_thieves_objective: "Update Highway Robbery Objective."
   trigger_action_readable_change_thieves_objective: "Sets the map objective to highway robbery with {0} remaining and {1} escaped."
 
-  trigger_action_name_dialogue_box_with_counter: "Map: Display dialog with counter"
-  trigger_action_description_dialogue_box_with_counter: "Display dialog with counter."
-  trigger_action_readable_dialogue_box_with_counter: "Display dialogue box with {0} {1} saying \"{2}\" with shout: {3}. Use counter {4}."
+  trigger_action_name_dialogue_box_with_counter: "UI: Show Dialog Box with counter."
+  trigger_action_description_dialogue_box_with_counter: "Show Dialog Box with counter."
+  trigger_action_readable_dialogue_box_with_counter: "Display dialogue box with {0} {1} saying {2} with shout {3} using name {5} for {6}. Use Counter {7} (instant = {4})"
   
   trigger_action_name_message_counter: "Data: Display message with counter"
   trigger_action_description_message_counter: "Display message with counter."
@@ -105,7 +109,7 @@ en-GB: &flag-en
 
   trigger_action_name_spawn_unit_close: "Unit: Spawn as close as possible"
   trigger_action_description_spawn_unit_close: "Spawn as close as possible to target location."
-  trigger_action_readable_spawn_unit_close: "Spawn {0} at {1} as close as possible for {2} (silent = {3})"
+  trigger_action_readable_spawn_unit_close: "Spawn {0} with colour variation {4} at {1} as close as possible for {2} facing {5} (silent = {3})"
 
   trigger_action_name_split_into: "Unit: Split"
   trigger_action_description_split_into: "Split units at full hp."
@@ -224,6 +228,10 @@ en-GB: &flag-en
   trigger_action_readable_end_group: "End grouped actions."
 
 #Conditions
+  trigger_condition_name_units_ready: "Unit: Are units ready?"
+  trigger_condition_descriptionunits_ready: "Triggers if enough units ready to take a turn are present."
+  trigger_condition_readable_units_ready: "Does {0} have {1} {2} of {3} at {4} that hasn't spend their turn?"
+
   trigger_condition_name_state: "Has State"
   trigger_condition_description_state: "Triggers if a unit has a particular state."
   trigger_condition_readable_state: "If unit type(s) {0} at location {1} owned by player {2} have state {3} equal to {4}."

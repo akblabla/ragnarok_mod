@@ -1,10 +1,38 @@
 ---
 
+unitClasses:
+  - id: thief
+    name: unit_class_name_thief
+    cost: 400
+    movement: walking
+    moveRange: 6
+    damageMultiplier: 1
+    aiPriority: 1.0
+    weapons: []
+    verbs:
+      - load
+      - steal
+      - heist
+      - bypass_gate
+      - rescue
+      - attack_AI
+      - hire
+      - take_crown
+    tags:
+      - thief
+      - type.ground.hideout
+    battleUnitCount: 1
+    sightRange: 4
+    deathVerbId: death_give_gold
+    startingStates:
+      - id: gold
+        value: 0
+
 units:
   - class: thief
-    faction: outlaw
-    name: unit_name_thief_outlaw
-    mapAnimation: units/thief/outlaw/map_thief_outlaw
+    faction: cherrystone
+    name: unit_name_thief_cherrystone
+    mapAnimation: units/thief/cherrystone/map_thief_cherrystone2
     mapLightSource:
       sprite: lights_small
       scale: [1.0, 1.0]
@@ -19,10 +47,77 @@ units:
         scale: 1.0
         frequency: 0.3
         frequencyVariance: 0.15
-    battleAnimation: units/thief/outlaw/battle_thief_outlaw
+    battleAnimation: units/thief/cherrystone/battle_thief_cherrystone2
     battleAnimationRiver: fx/river_overlay/battle_thief_river
-    smallPortrait: units/thief/outlaw/portrait_thief_outlaw_small.png
-    mediumPortrait: units/thief/outlaw/portrait_thief_outlaw_medium.png
+    smallPortrait: units/thief/cherrystone/portrait_thief_cherrystone_small2.png
+    mediumPortrait: units/thief/cherrystone/portrait_thief_cherrystone_medium2.png
+    mapSpeed: 4.0
+    grabPos: [13, 14]
+    deathMoveMin: 0
+    deathMoveMax: 0
+    stayAfterDeath: true
+    sounds:
+      death: thiefDieRed
+      deathMap: unitDie
+      run: thiefMapEntry
+      runMap: thiefMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    shouts:
+      soldier_shout1: soldierShoutRed1
+      soldier_shout2: soldierShoutRed2
+      soldier_shout3: soldierShoutRed3
+      soldier_shout4: soldierShoutRed4
+      soldier_shout5: soldierShoutRed5
+      soldier_shout6: soldierShoutRed6
+      soldier_shout7: soldierShoutRed7
+      soldier_shout8: soldierShoutRed8
+      soldier_shout9: soldierShoutRed9
+      soldier_hit1: soldierHitRed1
+      soldier_hit2: soldierHitRed2
+      soldier_hit3: soldierHitRed3
+      soldier_hit4: soldierHitRed4
+      soldier_hit5: soldierHitRed5
+      ragna_attack3: cutscene/phyllisHah
+      ragna_hit3: cutscene/phyllisHit
+      orla_huh: cutscene/phyllisHuh
+      mercia_sigh: cutscene/phyllisSigh
+    hidden:
+      shouts:
+        - soldier_shout3
+        - soldier_shout5
+        - soldier_shout6
+        - soldier_shout9
+        - ragna_attack3
+        - ragna_hit3
+        - orla_huh
+        - mercia_sigh
+    emotes:
+      idle: idle
+      surprise: emote_surprise
+
+  - class: thief
+    faction: outlaw
+    name: unit_name_thief_outlaw
+    mapAnimation: units/thief/cherrystone/map_thief_cherrystone
+    mapLightSource:
+      sprite: lights_small
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [0.65, 0.35]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/thief/cherrystone/battle_thief_cherrystone
+    battleAnimationRiver: fx/river_overlay/battle_thief_river
+    smallPortrait: units/thief/cherrystone/portrait_thief_cherrystone_small.png
+    mediumPortrait: units/thief/cherrystone/portrait_thief_cherrystone_medium.png
     mapSpeed: 4.0
     grabPos: [13, 14]
     deathMoveMin: 0

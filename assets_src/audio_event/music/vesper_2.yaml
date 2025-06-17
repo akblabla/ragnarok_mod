@@ -1,0 +1,7 @@
+---
+actions:
+  - type: play
+    clips: [ music/dlc1/vesper.ogg ]
+    group: music
+    loop: true
+...

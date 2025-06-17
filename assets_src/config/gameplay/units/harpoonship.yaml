@@ -1,4 +1,38 @@
 ---
+weapons:
+  - id: harpoonshipCannon
+    rangeMin: 2
+    rangeMax: 4
+    canMoveAndAttack: true
+    canAttackSecondaryTiles: false
+    baseDamage:
+      air: 1
+      water: 1
+
+unitClasses:
+  - id: harpoonship
+    name: unit_class_name_harpoonship
+    cost: 500
+    resourceCost: 2
+    movement: river_sailing
+    moveRange: 6
+    damageMultiplier: 1
+    aiPriority: 1.0
+    weapons:
+      - id: harpoonshipCannon
+    cargoSpace: 2
+    tags:
+      - harpoonship
+      - type.sea.medium
+    verbs:
+      - rescue
+      - attack_AI
+      - hire
+      - take_crown
+    battleUnitCount: 1
+    passiveMultiplier: 1.5
+    sightRange: 4
+    isHiddenInCutsceneEditor: true
 
 units:
   - class: harpoonship

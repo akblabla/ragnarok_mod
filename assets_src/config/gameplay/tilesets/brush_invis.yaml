@@ -7,18 +7,18 @@ tilesets:
       - types: [grass]
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_forest
-        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_forest
-        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_forest_foreground
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: grass_field_background
+        battleBackgroundSpriteForeground: grass_field_foreground
         iconSpriteSheet: ui_RagnarokMod
         iconSprite: ":img:ui/codex/icons/icon_terrain_brush.png"
         fillColour: '#7fa33b'
       - types: [tropical]
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_forest
-        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_forest
-        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_forest_foreground
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: grass_field_background
+        battleBackgroundSpriteForeground: grass_field_foreground
         iconSpriteSheet: ui_RagnarokMod
         iconSprite: ":img:ui/codex/icons/icon_terrain_brush.png"
         fillColour: '#7fa33b'

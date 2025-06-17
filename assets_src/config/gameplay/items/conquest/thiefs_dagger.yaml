@@ -1,0 +1,26 @@
+---
+unitClassModifiers:
+  - id: thiefs_dagger
+    baseDamage:
+      land: 0.25
+      water: 0.25
+      air: 0.25
+      buildings: 0.25
+
+items:
+  - id: thiefs_dagger
+    name: thiefs_dagger_name
+    description: thiefs_dagger_description
+    animation: items/thiefs_dagger_item
+    icon: items/thiefs_dagger_icon
+    largeIcon: items/large/thiefs_dagger_large
+    unitClassModifierId: thiefs_dagger
+    cost: 150
+    lightSource:
+      sprite: lights_small3
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 5
+        frequency: 0.7
+        frequencyVariance: 0.0
+...

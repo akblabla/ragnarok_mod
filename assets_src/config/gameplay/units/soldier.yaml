@@ -1,15 +1,4 @@
 ---
-
-weapons:
-  - id: sword
-    rangeMin: 1
-    rangeMax: 1
-    canMoveAndAttack: true
-    baseDamage:
-      land: 1
-      buildings: 1
-    tagDamageOverwrite: soldier
-
 unitClasses:
   - id: soldier
     name: unit_class_name_soldier
@@ -24,7 +13,9 @@ unitClasses:
       - capture
       - load
       - rescue
+      - attack_AI
       - hire
+      - take_crown
     tags:
       - soldier
       - type.ground.light
@@ -33,6 +24,84 @@ unitClasses:
     sightRange: 4
 
 units:
+  - class: soldier
+    faction: cherrystone
+    name: unit_name_soldier_cherrystone
+    mapAnimation: units/soldier/cherrystone/map_soldier_cherrystone
+    mapLightSource:
+      sprite: lights_small
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [0.65, 0.35]
+      jitter:
+        scale: 0.75
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/soldier/cherrystone/battle_soldier_cherrystone_extra
+    battleAnimationRiver: fx/river_overlay/battle_soldier_cherrystone_river
+    smallPortrait: units/soldier/cherrystone/portrait_soldier_cherrystone_small.png
+    mediumPortrait: units/soldier/cherrystone/portrait_soldier_cherrystone_medium.png
+    mapSpeed: 4.0
+    grabPos: [13, 14]
+    sounds:
+      attack: soldierAttackRed
+      attackShout: soldierPreAttackRed
+      attackMap: unitAttack
+      captureShout: soldierPreAttackRed
+      death: soldierDieRed
+      deathMap: unitDie
+      run: infantryHeavyEntry
+      runMap: infantryHeavyMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    attacks:
+      - id: primary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: [0.45, 0.8]
+    shouts:
+      soldier_shout1: soldierShoutRed1
+      soldier_shout2: soldierShoutRed2
+      soldier_shout3: soldierShoutRed3
+      soldier_shout4: soldierShoutRed4
+      soldier_shout5: soldierShoutRed5
+      soldier_shout6: soldierShoutRed6
+      soldier_shout7: soldierShoutRed7
+      soldier_shout8: soldierShoutRed8
+      soldier_shout9: soldierShoutRed9
+      soldier_hit1: soldierHitRed1
+      soldier_hit2: soldierHitRed2
+      soldier_hit3: soldierHitRed3
+      soldier_hit4: soldierHitRed4
+      soldier_hit5: soldierHitRed5
+      crownbearer_panting: cutscene/crownbearerPanting
+      crownbearer_yell: cutscene/crownbearerYell
+      villager_male_shout1: cutscene/villagerScreamMale1
+      villager_male_shout2: cutscene/villagerScreamMale2
+      villager_female_shout1: cutscene/villagerScreamFemale1
+      villager_female_shout2: cutscene/villagerScreamFemale2
+    emotes:
+      idle: idle
+      idle_crownbearer: idle_crownbearer
+      idle_crown: emote_idle_crown
+      idle_crown_ragged: emote_idle_crown_ragged
+      cushion: emote_cushion
+      idle_cushion: emote_idle_cushion
+      crown_surprise: emote_crown_surprise
+      crown_surprise_clean: emote_crown_surprise_clean
+      cushion_surprise_clean: emote_cushion_surprise_clean
+      telescope: emote_telescope
+      dance: emote_dance
+      surprised: emote_surprised
+    alternativeRuns:
+      - id: run_crown
+      - id: run_ragged
+      - id: run_2
+
   - class: soldier
     faction: outlaw
     name: unit_name_soldier_outlaw
@@ -87,6 +156,12 @@ units:
       soldier_hit3: soldierHitRed3
       soldier_hit4: soldierHitRed4
       soldier_hit5: soldierHitRed5
+      crownbearer_panting: cutscene/crownbearerPanting
+      crownbearer_yell: cutscene/crownbearerYell
+      villager_male_shout1: cutscene/villagerScreamMale1
+      villager_male_shout2: cutscene/villagerScreamMale2
+      villager_female_shout1: cutscene/villagerScreamFemale1
+      villager_female_shout2: cutscene/villagerScreamFemale2
     emotes:
       idle: idle
       telescope: emote_telescope

@@ -53,8 +53,8 @@ tilesets:
         iconSprite: ":img:ui/codex/icons/icon_terrain_cave_river.png"
         infoScreenOffset: 70
         fillColour: '#76231c'
-    primaryConnect: [undefined, river, mangrove, cave_river, bridge, bridge_wide, sea_alt, quay,cave_sea, ocean, beach, cave_beach]
-    decayTo: ":below"
+    primaryConnect: [undefined, river, mangrove, cave_river, bridge, bridge_wide, sea, quay,cave_sea, ocean, beach, cave_beach]
+    decayTo: rough
     tiles:
       - { x: 0, y: 0, adj: "e se s" }
       - { x: 1, y: 0, adj: "e se s sw w" }

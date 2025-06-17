@@ -1,5 +1,40 @@
 ---
 
+weapons:
+  - id: bite
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      buildings: 1
+
+unitClasses:
+  - id: dog
+    name: unit_class_name_dog
+    cost: 150
+    movement: walking
+    moveRange: 5
+    damageMultiplier: 1
+    aiPriority: 1.0
+    weapons:
+      - id: bite
+    verbs:
+      - load
+      - rescue
+      - attack_AI
+      - hire
+      - take_crown
+    tags:
+      - dog
+      - type.ground.light
+      - animal
+    battleUnitCount: 4
+    passiveMultiplier: 1.5
+    sightRange: 4
+    scout: true
+    runsAway: true
+
 units:
   - class: dog
     faction: outlaw

@@ -1,5 +1,30 @@
 ---
 
+
+unitClasses:
+  - id: harpy
+    name: unit_class_name_harpy
+    cost: 600
+    resourceCost: 2
+    movement: flying
+    moveRange: 6
+    damageMultiplier: 1.0
+    aiPriority: 1.0
+    weapons:
+      - id: harpyClaws
+    tags:
+      - harpy
+      - type.air
+    verbs:
+      - rescue
+      - attack_AI
+      - hire
+      - take_crown
+    battleUnitCount: 4
+    passiveMultiplier: 1.5
+    sightRange: 4
+    canSeeOverTerrain: true
+
 units:
   - class: harpy
     faction: outlaw

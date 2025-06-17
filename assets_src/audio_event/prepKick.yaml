@@ -1,0 +1,8 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/cutscene/ropeTwist.ogg ]
+    group: sfx
+    pitch: 0.7
+    volume: [ 0.9, 1.0 ]
+...

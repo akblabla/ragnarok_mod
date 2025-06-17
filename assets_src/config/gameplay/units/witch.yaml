@@ -1,5 +1,40 @@
 ---
 
+weapons:
+  - id: witchSpell
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      air: 1
+
+unitClasses:
+  - id: witch
+    name: unit_class_name_witch
+    cost: 750
+    resourceCost: 3
+    movement: flying
+    moveRange: 7
+    damageMultiplier: 1.0
+    aiPriority: 1.0
+    weapons:
+      - id: witchSpell
+    tags:
+      - witch
+      - type.air
+      - spellcaster
+    verbs:
+      - spell_hex
+      - rescue
+      - attack_AI
+      - hire
+      - take_crown
+    verbCostMultiplier: 0.5 # only applies in conquest mode
+    battleUnitCount: 4
+    passiveMultiplier: 2.0
+    sightRange: 4
+    canSeeOverTerrain: true
+
 units:
   - class: witch
     faction: outlaw

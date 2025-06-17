@@ -1,0 +1,8 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/environmental/ocean_ambience.ogg ]
+    group: sfx
+    loop: true
+    volume: 0.35
+...

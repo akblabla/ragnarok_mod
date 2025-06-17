@@ -1,5 +1,35 @@
 ---
 
+weapons:
+  - id: trebuchetSling
+    rangeMin: 3
+    rangeMax: 5
+    canMoveAndAttack: false
+    baseDamage:
+      land: 1
+      water: 1
+      buildings: 1
+
+unitClasses:
+  - id: trebuchet
+    name: unit_class_name_trebuchet
+    cost: 1100
+    resourceCost: 3
+    movement: wheels
+    moveRange: 5
+    damageMultiplier: 1
+    aiPriority: 1.6
+    weapons:
+      - id: trebuchetSling
+    tags:
+      - trebuchet
+      - type.ground.heavy
+    verbs:
+      - load
+    battleUnitCount: 1
+    passiveMultiplier: 1.5
+    sightRange: 4
+    
 units:
   - class: trebuchet
     faction: outlaw

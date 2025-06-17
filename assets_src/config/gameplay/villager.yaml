@@ -1,0 +1,294 @@
+---
+
+unitClasses:
+  - id: villager
+    name: unit_class_name_villager
+    cost: 50
+    movement: walking
+    moveRange: 3
+    damageMultiplier: 1
+    canBeReinforced: false
+    aiPriority: 0.5
+    weapons: []
+    verbs:
+      - load
+    tags:
+      - villager
+      - type.ground.light
+    battleUnitCount: 4
+    sightRange: 2
+    isRecruitable: false
+    palettePriority: 1
+
+
+units:
+  - class: villager
+    faction: cherrystone
+    name: unit_name_villager_cherrystone
+    mapAnimation: units/villager/cherrystone/map_villager_cherrystone
+    mapLightSource:
+      sprite: lights_small
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [0.65, 0.35]
+      jitter:
+        scale: 0.75
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/villager/cherrystone/battle_villager_cherrystone
+    battleAnimationRiver: fx/river_overlay/battle_villager_river
+    smallPortrait: units/villager/cherrystone/portrait_villager_cherrystone_small.png
+    mediumPortrait: units/villager/cherrystone/portrait_villager_cherrystone_medium.png
+    mapSpeed: 4.0
+    grabPos: [13, 14]
+    sounds:
+      death: soldierDieRed
+      deathMap: unitDie
+      run: infantryLightEntry
+      runMap: infantryLightMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    shouts:
+      villager_male_shout1: cutscene/villagerScreamMale1
+      villager_male_shout2: cutscene/villagerScreamMale2
+      villager_female_shout1: cutscene/villagerScreamFemale1
+      villager_female_shout2: cutscene/villagerScreamFemale2
+    emotes:
+      idle: idle
+      idle_old: emote_old_idle
+      cower: emote_cower
+      idle_gold: emote_idle_gold
+      throw_gold: emote_throw_gold
+      old_pushed: emote_old_pushed
+    alternativeRuns:
+      - id: run_gold
+      - id: run_old
+
+
+  - class: villager
+    faction: felheim
+    name: unit_name_villager_felheim
+    mapAnimation: units/villager/felheim/map_villager_felheim
+    mapLightSource:
+      sprite: lights_small
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [0.65, 0.35]
+      jitter:
+        scale: 0.75
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/villager/felheim/battle_villager_felheim
+    battleAnimationRiver: fx/river_overlay/battle_villager_river
+    smallPortrait: units/villager/felheim/portrait_villager_felheim_small.png
+    mediumPortrait: units/villager/felheim/portrait_villager_felheim_medium.png
+    mapSpeed: 4.0
+    grabPos: [13, 14]
+    sounds:
+      death: soldierDieBlue
+      deathMap: unitDie
+      run: infantryLightEntry
+      runMap: infantryLightMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    shouts:
+      soldier_blue_shout1: soldierShoutBlue1
+      soldier_blue_shout2: soldierShoutBlue2
+    emotes:
+      idle: idle
+      cower: emote_cower
+
+
+      
+
+  - class: villager
+    faction: heavensong
+    name: unit_name_villager_heavensong
+    mapAnimation: units/villager/heavensong/map_villager_heavensong
+    mapLightSource:
+      sprite: lights_small
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [0.65, 0.35]
+      jitter:
+        scale: 0.75
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/villager/heavensong/battle_villager_heavensong
+    battleAnimationRiver: fx/river_overlay/battle_villager_river
+    smallPortrait: units/villager/heavensong/portrait_villager_heavensong_small.png
+    mediumPortrait: units/villager/heavensong/portrait_villager_heavensong_medium.png
+    mapSpeed: 4.0
+    grabPos: [13, 14]
+    sounds:
+      death: soldierDieRed
+      deathMap: unitDie
+      run: infantryLightEntry
+      runMap: infantryLightMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    shouts:
+      villager_male_shout1: cutscene/villagerScreamMale1
+      villager_male_shout2: cutscene/villagerScreamMale2
+      villager_female_shout1: cutscene/villagerScreamFemale1
+      villager_female_shout2: cutscene/villagerScreamFemale2
+    emotes:
+      idle: idle
+      cower: emote_cower
+      idle_old: emote_old_idle
+      idle_pa: emote_pa_idle
+    alternativeRuns:
+      - id: run_old
+      - id: run_pa
+
+  - class: villager
+    faction: floran
+    name: unit_name_villager_floran
+    mapAnimation: units/villager/floran/map_villager_floran
+    mapLightSource:
+      sprite: lights_small
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [0.65, 0.35]
+      jitter:
+        scale: 0.75
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/villager/floran/battle_villager_floran
+    battleAnimationRiver: fx/river_overlay/battle_villager_river
+    smallPortrait: units/villager/floran/portrait_villager_floran_small.png
+    mediumPortrait: units/villager/floran/portrait_villager_floran_medium.png
+    mapSpeed: 4.0
+    grabPos: [13, 14]
+    sounds:
+      death: soldierDieGreen
+      deathMap: unitDie
+      run: infantryLightEntry
+      runMap: infantryLightMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    shouts:
+      soldier_green_shout1: soldierShoutGreen1
+      soldier_green_shout2: soldierShoutGreen2
+      soldier_green_shout3: soldierShoutGreen3
+      soldier_green_shout4: soldierShoutGreen4
+      soldier_green_shout5: soldierShoutGreen5
+      soldier_green_shout6: soldierShoutGreen6
+    emotes:
+      idle: idle
+      cower: emote_cower
+
+  - class: villager
+    faction: faahri
+    name: unit_name_villager_faahri
+    mapAnimation: units/villager/faahri/map_villager_faahri
+    mapLightSource:
+      sprite: lights_small
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [0.65, 0.35]
+      jitter:
+        scale: 0.75
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/villager/faahri/battle_villager_faahri
+    battleAnimationRiver: fx/river_overlay/battle_villager_faahri_river
+    smallPortrait: units/villager/faahri/portrait_villager_faahri_small.png
+    mediumPortrait: units/villager/faahri/portrait_villager_faahri_medium.png
+    mapSpeed: 4.0
+    grabPos: [17, 14]
+    sounds:
+      death: soldierDieOrange
+      deathMap: unitDie
+      run: infantryLightEntry
+      runMap: infantryLightMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    shouts:
+      soldier_green_shout1: soldierShoutGreen1
+      soldier_green_shout2: soldierShoutGreen2
+      soldier_green_shout3: soldierShoutGreen3
+      soldier_green_shout4: soldierShoutGreen4
+      soldier_green_shout5: soldierShoutGreen5
+      soldier_green_shout6: soldierShoutGreen6
+    emotes:
+      idle: idle
+      idle_harp: emote_idle_harp
+      coffee: emote_coffee
+      stargazing: emote_stargazing
+      sleep: emote_sleep
+      back: emote_back
+    alternativeRuns:
+      - id: harp_run
+    hidden:
+      emotes:
+        - stargazing
+        - sleep
+
+  - class: villager
+    faction: pirates
+    name: unit_name_villager_pirates
+    mapAnimation: units/villager/pirates/map_villager_pirates
+    mapLightSource:
+      sprite: lights_small
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [0.65, 0.35]
+      jitter:
+        scale: 0.75
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/villager/pirates/battle_villager_pirates
+    battleAnimationRiver: fx/river_overlay/battle_villager_river
+    smallPortrait: units/villager/pirates/portrait_villager_pirates_small.png
+    mediumPortrait: units/villager/pirates/portrait_villager_pirates_medium.png
+    mapSpeed: 4.0
+    grabPos: [13, 14]
+    sounds:
+      death: soldierDieBlack
+      deathMap: unitDie
+      run: infantryLightEntry
+      runMap: infantryLightMapEntry
+      hit: hitOrganic
+      hitMap: hitOrganic
+    shouts:
+      soldier_green_shout1: soldierShoutGreen1
+      soldier_green_shout2: soldierShoutGreen2
+      soldier_green_shout3: soldierShoutGreen3
+      soldier_green_shout4: soldierShoutGreen4
+      soldier_green_shout5: soldierShoutGreen5
+      soldier_green_shout6: soldierShoutGreen6
+    emotes:
+      idle: idle
+      pose: emote_pose
+...
