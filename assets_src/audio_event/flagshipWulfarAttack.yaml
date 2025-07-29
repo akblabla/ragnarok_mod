@@ -1,8 +1,7 @@
 ---
 actions:
   - type: play
-    clips: [ sfx/wulfar/wulfarHmph.ogg, sfx/wulfar/wulfarBoilYourHead.ogg, sfx/wulfar/wulfarThatsRight.ogg,
-    sfx/wulfar/wulfarYouveMadeAMistake]
+    clips: [ sfx/wulfar/wulfarHmph.ogg, sfx/wulfar/wulfarBoilYourHead.ogg, sfx/wulfar/wulfarThatsRight.ogg, sfx/wulfar/wulfarYouveMadeAMistake]
     group: voice
     delay: 0.7
   - type: play

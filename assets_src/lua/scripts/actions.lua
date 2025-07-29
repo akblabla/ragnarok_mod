@@ -41,6 +41,7 @@ function Actions.populate(dst)
     dst["ai_set_no_building_attacking"] = Actions.setNoBuildingAttacking
     dst["ai_set_priority_target"] = Actions.aiSetPriorityTarget
     dst["enable_hiring"] = Actions.enableHiring
+    dst["dialogue_box"] = Actions.dialogueBox
     dst["set_state"] = Actions.setState
     dst["transfer_gold_robbed"] = Actions.transferGoldRobbed
 	dst["log_message"] = Actions.logMessage
@@ -178,7 +179,14 @@ function Actions.enableHiring(context)
     -- "Let player {0} hire villagers."
     local playerId = context:getPlayerId(0)
 	local Hire = require "verbs/hire"
-    Hire.enableForPlayer(playerId)
+--    Hire.enableForPlayer(playerId)
+end
+function Actions.dialogueBox(context)
+    -- "Display dialogue box with {0} {1} saying {2} with shout {3} using name {5} for {6}. (instant = {4})"
+    local playerColour = context:getPlayerColour(6)
+    print("playerColour")
+    print(playerColour)
+    Wargroove.showDialogueBox(context:getString(0), context:getString(1), context:getString(2), context:getString(3), {}, "standard", context:getBoolean(4), context:getString(5), playerColour)
 end
 
 function Actions.allowPirateShips(context)
@@ -190,6 +198,7 @@ end
 function Actions.enableAIFogLimitations(context)
     -- "Enable AI fog Limitations"
 	Ragnarok.setFogOfWarRules(true)
+    VisionTracker.reset()
 end
 
 function Actions.resetOccurenceList(context)
@@ -1197,7 +1206,7 @@ function Actions.splitInto(context)
                 Wargroove.trackCameraTo(pos)
                 unit.health = 50
                 Wargroove.updateUnit(unit)
-                local unitId = Wargroove.spawnUnit(unit.playerId, pos, unitClassId, false)
+                local unitId = Wargroove.spawnUnit(-1, pos, unitClassId, false, "", "", "outlaw", false, nil, nil)
                 table.insert(context.spawnedUnits,pos)
                 local mapSize = Wargroove.getMapSize()
                 if pos.x>(mapSize.x/2) then
@@ -1279,11 +1288,6 @@ function Actions.spawnUnitClose(context)
             Wargroove.trackCameraTo(pos)
         end
         local mapSize = Wargroove.getMapSize()
-        if pos.x>(mapSize.x/2) then
-            pos.facing = 1
-        else
-            pos.facing = 0
-        end
         Wargroove.spawnUnit(playerId, pos, unitClassId, false, "", "", "", false, skinColour, facing or "right")
         table.insert(context.spawnedUnits,pos)
 

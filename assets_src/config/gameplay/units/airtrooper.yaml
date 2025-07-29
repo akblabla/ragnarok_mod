@@ -45,7 +45,7 @@ units:
         scale: 0.75
         frequency: 0.3
         frequencyVariance: 0.15
-    battleAnimation: units/griffin/pirates/battle_griffin_pirates
+    battleAnimation: units/griffin/outlaws/battle_griffin_outlaws_2
     battleAnimationRiver: fx/river_overlay/battle_airtrooper_pirates_river
     smallPortrait: units/griffin/pirates/portrait_griffin_pirates_small.png
     mediumPortrait: units/griffin/pirates/portrait_griffin_pirates_medium.png

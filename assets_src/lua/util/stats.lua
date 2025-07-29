@@ -63,7 +63,11 @@ Stats.sightRangeList = {
 	tower = 1,
 	water_city = 1,
 	crew = 0,
-	gate_no_los_blocker = 1
+	gate_no_los_blocker = 1,
+	griffin_walking = 4,
+	frog = 4,
+	kraken = 4,
+	caravel = 4,
 }
 
 Stats.scoutList = {
@@ -118,6 +122,18 @@ function Stats.isTerrainBlocking(terrainName)
 end
 
 Stats.terrain = {
+	abyss = {
+		willFall = {
+			walking = true,
+			riding = true,
+			wheels = true,
+			airphibious = true,
+			amphibious = true,
+			sailing = true,
+			river_sailing = true,
+		},
+		cantStop = {airphibious = true}
+	},
 	plains = {
 		walking = 1,
 		riding = 1,
@@ -234,7 +250,7 @@ Stats.terrain = {
 		hovering = 1,
 		wheels = 1,
 		amphibious = 1,
-		sailing = 2,
+		sailing = 3,
 		airphibious = 1,
 		river_sailing = 1,
 		cantStop = {sailing = true, river_sailing = true}
@@ -246,7 +262,7 @@ Stats.terrain = {
 		hovering = 1,
 		wheels = 1,
 		amphibious = 1,
-		sailing = 2,
+		sailing = 3,
 		airphibious = 1,
 		river_sailing = 1,
 		cantStop = {sailing = true, river_sailing = true}
@@ -257,13 +273,13 @@ Stats.terrain = {
 		hovering = 1,
 		wheels = 1,
 		amphibious = 1,
-		sailing = 2,
+		sailing = 3,
 		airphibious = 1,
 		river_sailing = 1,
 		cantStop = {sailing = true, river_sailing = true}
 	},
 	sea = {
-		sailing = 1,
+		sailing = 2,
 		flying = 1,
 		hovering = 1,
 		amphibious = 1,
@@ -308,7 +324,7 @@ Stats.terrain = {
 	},
 
 	cave_sea = {
-		sailing = 1,
+		sailing = 2,
 		hovering = 1,
 		amphibious = 1,
 		airphibious = 1,
@@ -337,7 +353,7 @@ Stats.terrain = {
 		cantStop = {airphibious = true}
 	},
 	ocean = {
-		sailing = 1,
+		sailing = 2,
 		flying = 1,
 		hovering = 1,
 		amphibious = 2,
@@ -352,7 +368,7 @@ Stats.terrain = {
 		cantStop = {airphibious = true}
 	},
 	reef = {
-		sailing = 3,
+		sailing = 6,
 		flying = 1,
 		hovering = 1,
 		amphibious = 1,
@@ -367,7 +383,7 @@ Stats.terrain = {
 		cantStop = {airphibious = true}
 	},
 	cave_reef = {
-		sailing = 3,
+		sailing = 6,
 		hovering = 1,
 		amphibious = 1,
 		airphibious = 1,
@@ -386,7 +402,7 @@ Stats.terrain = {
 		flying = 1,
 		hovering = 1,
 		amphibious = 1,
-		sailing = 1,
+		sailing = 3,
 		river_sailing = 1,
 		airphibious = 1,
 		willFall = {
@@ -406,7 +422,7 @@ Stats.terrain = {
 		riding = 4,
 		hovering = 1,
 		amphibious = 1,
-		sailing = 1,
+		sailing = 3,
 		river_sailing = 1,
 		airphibious = 1,
 		willFall = {
@@ -419,7 +435,7 @@ Stats.terrain = {
 		flying = 1,
 		hovering = 1,
 		amphibious = 1,
-		sailing = 2,
+		sailing = 4,
 		river_sailing = 1,
 		airphibious = 1,
 		willFall = {
@@ -431,7 +447,7 @@ Stats.terrain = {
 		riding = 2,
 		hovering = 1,
 		amphibious = 1,
-		sailing = 2,
+		sailing = 4,
 		river_sailing = 1,
 		airphibious = 1,
 		willFall = {

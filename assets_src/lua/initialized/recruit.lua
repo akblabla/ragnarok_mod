@@ -2,7 +2,7 @@ local Wargroove = require "wargroove/wargroove"
 local Ragnarok = require "initialized/ragnarok"
 local Verb = require "wargroove/verb"
 local OldRecruit = require "verbs/recruit"
---local StealthManager = require "scripts/stealth_manager"
+local StealthManager = require "scripts/stealth_manager"
 
 local Recruit = Verb:new()
 --local factionExclusiveUnits = {unitId = "pirate_ship", commanders = {"commander_wulfar","commander_vesper","commander_flagship_wulfar","commander_flagship_rival"}}
@@ -85,11 +85,6 @@ function Recruit:canExecuteWithTarget(unit, endPos, targetPos, strParam)
 	elseif not Wargroove.isHuman(unit.playerId) or not Wargroove.canStandAt("balloon", targetPos) then
 		return false
 	end
-	if strParam == "pirate_ship" and not Wargroove.isHuman(unit.playerId) then
-		if raiderShipBuilderList[unit.playerId] == nil then
-			return false
-		end
-	end
     return Wargroove.canStandAt(strParam, targetPos) and Wargroove.getMoney(unit.playerId) >= uc.cost and Wargroove.canPlayerSeeTile(unit.playerId, targetPos)
 end
 
@@ -103,12 +98,11 @@ function Recruit:execute(unit, targetPos, strParam, path)
 		Wargroove.playMapSound("spawn", targetPos)
 		Wargroove.playPositionlessSound("recruit")
 		Wargroove.waitTime(0.2)
-		-- local spawn = Wargroove.getUnitById(spawnedId) 
-		-- if StealthManager.isUnitPermaSearching(unit) then
-		-- 	StealthManager.makePermaSearching(spawn)
-		-- 	StealthManager.updateAwareness(spawn,false)
-		-- else
---			StealthManager.removeUnit(spawn)
+		local spawn = Wargroove.getUnitById(spawnedId) 
+		if StealthManager.isUnitPermaSearching(unit) then
+		 	StealthManager.makePermaSearching(spawn)
+		 	StealthManager.updateAwareness(spawn,false)
+		end
 		local spawn = Wargroove.getUnitById(spawnedId) 
 		print("We are building a unit")
 		Wargroove.updateUnit(spawn)

@@ -1,7 +1,7 @@
 local Wargroove = require "wargroove/wargroove"
 local Ragnarok = require "initialized/ragnarok"
 local Recruit = require "verbs/recruit"
---local StealthManager = require "scripts/stealth_manager"
+local StealthManager = require "scripts/stealth_manager"
 local AIProfile = require "AIProfiles/ai_profile"
 local Stats = require "util/stats"
 
@@ -386,13 +386,13 @@ function AIEconomyManager.spendRest(context)
 					relPos = rotate(relPos);
 					local spawnPos = {x = relPos.x+unit.pos.x, y = relPos.y+unit.pos.y}
 					if unit.hadTurn == false and Wargroove.getUnitAt(spawnPos) == nil and Recruit:canExecuteWithTarget(unit, unit.pos,spawnPos, "soldier") then
---						if StealthManager.isActive(unit.playerId) then
---							if StealthManager.isUnitPermaSearching(unit) then
---								barracksCount = barracksCount + 1
---							end
---						else
+						if StealthManager.isActive(unit.playerId) then
+							if StealthManager.isUnitPermaSearching(unit) then
+								barracksCount = barracksCount + 1
+							end
+						else
 							barracksCount = barracksCount + 1
---						end
+						end
 						break
 					end
 				end
@@ -431,16 +431,16 @@ function AIEconomyManager.spendRest(context)
 					print("valid spawnPoint")
 					for i, recruit in ipairs(unit.recruits) do 
 						print("Attempting to recruit: " .. recruit)
---						if StealthManager.isActive(unit.playerId) then
---							if ((StealthManager.isCivilian(recruit) and not StealthManager.isUnitPermaSearching(unit))) then
---								AIEconomyManager.addUnitOption(recruit,unit,spawnPos,productionOptions,playerId)
---							end
---							if ((not StealthManager.isCivilian(recruit) and StealthManager.isUnitPermaSearching(unit))) then
---								AIEconomyManager.addUnitOption(recruit,unit,spawnPos,productionOptions,playerId)
---							end
---						else
+						if StealthManager.isActive(unit.playerId) then
+							if ((StealthManager.isCivilian(recruit) and not StealthManager.isUnitPermaSearching(unit))) then
+								AIEconomyManager.addUnitOption(recruit,unit,spawnPos,productionOptions,playerId)
+							end
+							if ((not StealthManager.isCivilian(recruit) and StealthManager.isUnitPermaSearching(unit))) then
+								AIEconomyManager.addUnitOption(recruit,unit,spawnPos,productionOptions,playerId)
+							end
+						else
 							AIEconomyManager.addUnitOption(recruit,unit,spawnPos,productionOptions,playerId)
---						end
+						end
 
 					end
 				end

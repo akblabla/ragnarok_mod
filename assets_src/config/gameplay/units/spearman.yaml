@@ -26,6 +26,7 @@ unitClasses:
       - attack_AI
       - hire
       - take_crown
+      - wait_ai
     tags:
       - spearman
       - type.ground.light

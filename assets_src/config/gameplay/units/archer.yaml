@@ -31,6 +31,7 @@ unitClasses:
       - rescue
       - hire
       - take_crown
+      - wait_ai
     battleUnitCount: 4
     passiveMultiplier: 1.35
     sightRange: 4

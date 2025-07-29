@@ -2,4 +2,5 @@
 pivotX: 12
 pivotY: 26
 material: Wargroove/PaletteSwap
+palette: palettes/wargroove_palette.png
 ...

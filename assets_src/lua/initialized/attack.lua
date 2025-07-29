@@ -3,6 +3,7 @@ local OldAttack = require "verbs/attack"
 local Combat = require "wargroove/combat"
 local Ragnarok = require "initialized/ragnarok"
 local StealthManager = require "scripts/stealth_manager"
+local VisionTracker = require "initialized/vision_tracker"
 local Stats = require "util/stats"
 --local Verb = require "initialized/a_new_verb"
 local AIProfile = require "AIProfiles/ai_profile"
@@ -16,33 +17,6 @@ function Attack.init()
 	OldAttack.onPostUpdateUnit = Attack.onPostUpdateUnit
 	OldAttack.canExecuteAt = Attack.canExecuteAt
 end
-
-local function BurnBonus(unit, targetPos)
-
-    Wargroove.playMapSound("nadia/nadiaGrooveHit", targetPos)
-    Wargroove.spawnMapAnimation(targetPos, 1, "units/commanders/nadia/nadia_burn_fx_front", "idle", "over_units", {x = 13, y = 16})
-    Wargroove.spawnMapAnimation(targetPos, 1, "units/commanders/nadia/nadia_burn_fx_back", "idle", "units", {x = 13, y = 16})
-
-    local target = Wargroove.getUnitAt(targetPos)
-    if target == nil or target.health<0 then
-        return
-    end
-    local isBurning = Wargroove.getUnitState(target, "burning")
-    -- We prevent double burns
-    if (isBurning == nil or isBurning == "false") then
-        Wargroove.setUnitState(target, "burning", "true")
-        Wargroove.updateUnit(target)
-
-        local startingState = {}
-        local unitId = {key = "unitId", value = target.id}
-        table.insert(startingState, unitId)
-        Wargroove.spawnUnit(unit.playerId, {x = -100, y = -100}, "burn", false, "", startingState)
-
-        Wargroove.displayBuffVisualEffect(target.id, target.playerId, "units/commanders/nadia/nadia_constant_burn_fx_back", "spawn", 1.0, nil, "units", {x = 0, y = -1}, false, false)
-        Wargroove.displayBuffVisualEffect(target.id, target.playerId, "units/commanders/nadia/nadia_constant_burn_fx_front", "spawn", 1.0, nil, "over_units", {x = 0, y = 3}, false, false)
-    end
-end
-
 function Attack:canExecuteAt(unit, endPos)
 --    if Verb.inInBorderlands(endPos, unit.playerId) then
 --        return false
@@ -57,25 +31,6 @@ function Attack:canExecuteAt(unit, endPos)
     end
 
     return not Wargroove.isAnybodyElseAt(unit, endPos)
-end
-
-local function getFacing(from, to)
-    local dx = to.x - from.x
-    local dy = to.y - from.y
-
-    if math.abs(dx) > math.abs(dy) then
-        if dx > 0 then
-            return 1 -- Right
-        else
-            return 3 -- Left
-        end
-    else
-        if dy > 0 then
-            return 2 -- Down
-        else
-            return 0 -- Up
-        end
-    end
 end
 
 local flankedId = nil;
@@ -102,6 +57,28 @@ function Attack:execute(unit, targetPos, strParam, path, telegraph)
 
     local target = Wargroove.getUnitAt(targetPos)
     Wargroove.startCombat(unit, target, path, "average")
+    local attackerWitnessIds = VisionTracker.getListOfViewerIds(path[#path])
+    local defenderWitnessIds = VisionTracker.getListOfViewerIds(targetPos)
+    local witnesses = {}
+    for i,witnessId in ipairs(attackerWitnessIds) do
+        witnesses[witnessId] = true
+    end
+    for i,witnessId in ipairs(defenderWitnessIds) do
+        witnesses[witnessId] = true
+    end
+    for witnessId,exists in pairs(witnesses) do
+        local witness = Wargroove.getUnitById(witnessId)
+        if witness ~= nil then
+            if StealthManager.isActive(witness.playerId) then
+                StealthManager.awarenessCheck(unit, {path[#path]})
+                if (otherUnit~=nil) and (StealthManager.canAlert(otherUnit)) and Wargroove.areEnemies(unit.playerId,otherUnit.playerId) then
+                    StealthManager.makeAlerted(unit)
+                    StealthManager.setLastKnownLocation(unit,otherUnit.pos)
+                    break
+                end
+            end
+        end
+    end
 end
 
 

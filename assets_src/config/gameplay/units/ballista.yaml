@@ -77,7 +77,7 @@ units:
         ranged: true
         hitSpark: fx/bs_stab_attack
         hitDelay: 1.6
-        effect: fx/bs_ballista_cherrystone_attack
+        effect: fx/bs_ballista_outlaw_attack
         postAttackAnimationSequence: post_attack_idle
         postAttackHitSequence: post_attack_hit
         postAttackDeathSequence: post_attack_death
@@ -87,7 +87,7 @@ units:
         ranged: true
         hitSpark: fx/bs_stab_attack
         hitDelay: 1.6
-        effect: fx/bs_ballista_2_cherrystone_attack
+        effect: fx/bs_ballista_2_outlaw_attack
         postAttackAnimationSequence: post_attack_idle
         postAttackHitSequence: post_attack_hit
         postAttackDeathSequence: post_attack_death

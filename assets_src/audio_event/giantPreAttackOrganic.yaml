@@ -1,0 +1,6 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/outlawGiant/hmm1.ogg, sfx/outlawGiant/huh1.ogg, sfx/outlawGiant/huh2.ogg, sfx/outlawGiant/huh3.ogg]
+    group: sfx
+...

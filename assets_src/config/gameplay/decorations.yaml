@@ -318,6 +318,11 @@ decorations:
     animation:
       undefined: decoration/ground/potato_field
       
+  - id: street
+    layer: ground
+    animation:
+      undefined: decoration/ground/street
+
   - id: solidBarrel
     layer: units
     animation:

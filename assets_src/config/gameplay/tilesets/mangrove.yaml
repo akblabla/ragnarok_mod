@@ -14,7 +14,7 @@ tilesets:
         iconSprite: ":img:ui/codex/icons/icon_terrain_mangrove.png"
         infoScreenOffset: 70
         fillColour: '#286ab1'
-      - types: [ice]
+      - types: [ice, arctic, arctic_bloom, arctic_blood]
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_snow_river
         battleBackgroundSpriteSheet: backgrounds/snow_battlescreen_extendedbackgrounds

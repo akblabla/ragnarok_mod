@@ -15,7 +15,7 @@ unitClasses:
     name: unit_class_name_caravel
     cost: 200
     movement: river_sailing
-    moveRange: 5
+    moveRange: 6
     damageMultiplier: 1
     aiPriority: 1.0
     weapons:
@@ -55,7 +55,7 @@ units:
         scale: 0.25
         frequency: 0.3
         frequencyVariance: 0.15
-    battleAnimation: units/caravel/pirates/battle_caravel_pirates
+    battleAnimation: units/caravel/outlaws/battle_caravel_outlaw_2
     smallPortrait: units/caravel/pirates/portrait_caravel_pirates_small.png
     mediumPortrait: units/caravel/pirates/portrait_caravel_pirates_medium.png
     mapSpeed: 6.0

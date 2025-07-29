@@ -23,7 +23,8 @@ local valueReductionPerUnitList = {
 	witch = 0.6,
 	travelboat = 1,
 	balloon = 1,
-	thief = 1
+	thief = 1,
+	caravel = 0.6,
 }
 
 local idealUnitRatioList = {

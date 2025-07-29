@@ -1,12 +1,14 @@
 
 local Ragnarok = require "initialized/ragnarok"
 local Wargroove = require "wargroove/wargroove"
-local camp = {}
-function camp.init()
-	Ragnarok.addAction(camp.update,"repeating",false)
+local outpost = {}
+function outpost.init()
+	Ragnarok.addAction(outpost.update,"repeating",false)
+	Ragnarok.addAction(outpost.setup,"start_of_match",false)
+
 end
 
-function camp.update(context)
+function outpost.update(context)
 	local allUnits = Wargroove.getAllUnitIds()
 	for i, id in ipairs(allUnits) do
 		local unit = Wargroove.getUnitById(id)
@@ -38,4 +40,14 @@ function camp.update(context)
 		end
 	end
 end
-return camp
+function outpost.setup(context)
+
+	for i,unit in pairs(Wargroove.getUnitsAtLocation()) do
+		if unit.unitClassId == "barracks" and unit.damageTakenPercent == 57 then
+			unit.unitClassId = "outpost"
+			unit.damageTakenPercent = 100
+			Wargroove.updateUnit(unit)
+		end
+	end
+end
+return outpost

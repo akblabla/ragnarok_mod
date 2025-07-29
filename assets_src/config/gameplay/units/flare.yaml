@@ -27,75 +27,20 @@ unitClasses:
 units:
   - class: flare
     faction: cherrystone
-    name: unit_name_flare
-    mapAnimation: units/flare/map_flare
-    battleAnimation: units/flare/battle_flare
-    smallPortrait: units/flare/portrait_flare_small.png
-    mediumPortrait: units/flare/portrait_flare_medium.png
-    mapSpeed: 3.0
-    grabPos: [22, 5]
-    sounds:
-      death: balloonDie
-      deathMap: flareDie
-      run: balloonEntry
-      runMap: balloonEntryMap
-      hit: hitWood
-      hitMap: hitWood
-
-  - class: flare
-    faction: felheim
-    name: unit_name_flare
-    mapAnimation: units/flare/map_flare
-    battleAnimation: units/flare/battle_flare
-    smallPortrait: units/flare/portrait_flare_small.png
-    mediumPortrait: units/flare/portrait_flare_medium.png
-    mapSpeed: 3.0
-    grabPos: [22, 5]
-    sounds:
-      death: balloonDieBlue
-      deathMap: flareDie
-      run: balloonEntry
-      runMap: balloonEntryMap
-      hit: hitWood
-      hitMap: hitWood
-
-  - class: flare
-    faction: heavensong
-    name: unit_name_flare
-    mapAnimation: units/flare/map_flare
-    battleAnimation: units/flare/battle_flare
-    smallPortrait: units/flare/portrait_flare_small.png
-    mediumPortrait: units/flare/portrait_flare_medium.png
-    mapSpeed: 3.0
-    grabPos: [23, 4]
-    sounds:
-      death: balloonDie
-      deathMap: flareDie
-      run: balloonEntry
-      runMap: balloonEntryMap
-      hit: hitWood
-      hitMap: hitWood
-
-
-  - class: flare
-    faction: floran
-    name: unit_name_flare
-    mapAnimation: units/flare/map_flare
-    battleAnimation: units/flare/battle_flare
-    smallPortrait: units/flare/portrait_flare_small.png
-    mediumPortrait: units/flare/portrait_flare_medium.png
-    mapSpeed: 3.0
-    grabPos: [22, 5]
-    sounds:
-      death: balloonDie
-      deathMap: flareDie
-      run: balloonEntry
-      runMap: balloonEntryMap
-      hit: hitWood
-      hitMap: hitWood
-
-  - class: flare
-    faction: outlaw
+    mapLightSource:
+      sprite: lights_medium
+      scale: [2.0, 2.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_air
+      scale: [1.1, 1.1]
+      jitter:
+        scale: 0.75
+        frequency: 0.3
+        frequencyVariance: 0.15
     name: unit_name_flare
     mapAnimation: units/flare/map_flare
     battleAnimation: units/flare/battle_flare

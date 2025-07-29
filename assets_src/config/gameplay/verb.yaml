@@ -1,5 +1,14 @@
 ---
 verbs:
+  - id: wait_ai
+    icon: ui/icons/unit_action_icon_wait.png
+    name: ui_unit_verbs_wait
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetted: false
+    aiUses: true
+    scriptName: verbs/wait_ai
+    
   - id: attack_AI
     icon: ui/icons/unit_action_icon_attack.png
     name: ui_unit_verbs_attack

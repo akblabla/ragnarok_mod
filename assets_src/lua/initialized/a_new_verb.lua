@@ -113,19 +113,18 @@ function Verb:doExecuteEntry(unitId, verb, isGrooveVerb, targetPos, strParam, pa
                     if (viewer ~= nil) and (viewer.playerId == unit.playerId) then
                         local dist = math.abs(viewer.pos.x-preMovePos.x)+math.abs(viewer.pos.y-preMovePos.y)
                         if dist <=2 then
-                            if StealthManager.isUnitSearching(viewer) then
+                            --if StealthManager.isUnitSearching(viewer) then
                                 StealthManager.makeAlerted(viewer)
                                 StealthManager.shareInfo(unit,viewer)
-                            end
-                            StealthManager.makeSearching(viewer)
-                            StealthManager.shareInfo(unit,viewer)
+                            --end
+                            --StealthManager.makeSearching(viewer)
+                            --StealthManager.shareInfo(unit,viewer)
                         end
                     end
                 end
             end
         end
         StealthManager.updateAwarenessAll()
-
         if self:shouldSetMetaLocations() then
             Wargroove.setMetaLocationArea("last_move_path", path)
             Wargroove.setMetaLocation("last_unit", unit.pos)
@@ -133,7 +132,7 @@ function Verb:doExecuteEntry(unitId, verb, isGrooveVerb, targetPos, strParam, pa
 
         -- Remember the verb use
         Wargroove.reportVerbUsed(unitId, verb, isGrooveVerb, targetPos, strParam, path)
-        Events.checkEventsAfter()
+        --Events.checkEventsAfter()
         print("Verb:doExecuteEntry end")
     end)
 end

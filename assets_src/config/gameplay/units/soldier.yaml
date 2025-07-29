@@ -16,6 +16,7 @@ unitClasses:
       - attack_AI
       - hire
       - take_crown
+      - wait_ai
     tags:
       - soldier
       - type.ground.light

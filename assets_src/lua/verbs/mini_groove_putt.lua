@@ -40,8 +40,31 @@ function Putt:isValidTarget(targetUnit)
     return (not targetUnit.unitClass.isStructure) and (not targetUnit.unitClass.isCommander) and (targetUnit.playerId >= 0) and (targetUnit.unitClass.moveRange > 0) and (targetUnit.canBeAttacked)
 end
 
-function Putt:canPushTo(movingUnitPos, targetPos)
-    local pushResult = Wargroove.getPushPullResult(movingUnitPos, targetPos, 1, false, false)
+local function cap(x,y)
+    return math.max(math.min(x,y),-y)
+end
+
+function Putt:canPushTo(target, endPos)
+    local pushDirection = 'y'
+    if target.pos.x~=endPos.x then
+        pushDirection = 'x'
+    end
+    local deltaDist = endPos[pushDirection]-target.pos[pushDirection]
+    local deltaDir = cap(deltaDist,1)
+    local dist = 0
+    local result = {x = target.pos.x,y = target.pos.y}
+    while math.abs(dist)<math.abs(deltaDist) do
+        dist = dist+deltaDir
+        local newPos = {x = target.pos.x,y = target.pos.y}
+        newPos[pushDirection] = newPos[pushDirection]+dist
+        if not Wargroove.canStandAt(target.unitClassId,newPos) then
+            return Wargroove.isPushPullBreakPosition(newPos, target) and dist == deltaDist
+        end
+        
+        
+    end
+    return true
+--[[    local pushResult = Wargroove.getPushPullResult(movingUnitPos, targetPos, 1, true, false)
     if pushResult == nil then
         return false
     end
@@ -49,7 +72,7 @@ function Putt:canPushTo(movingUnitPos, targetPos)
         return false
     end
     local destination = pushResult["pushPosition"]
-    return destination.x~=targetPos.x and destination.y~=targetPos.y
+    return destination.x==targetPos.x and destination.y==targetPos.y]]
 end
 
 function Putt:canExecuteAnywhere(unit)
@@ -94,7 +117,7 @@ function Putt:canExecuteWithTarget(unit, endPos, targetPos, strParam)
         if not self:isValidTarget(movingUnit) then
             return false
         end
-        if not Putt:canPushTo(movingUnit.pos, targetPos) then
+        if not Putt:canPushTo(movingUnit, targetPos) then
             return false
         end
 
@@ -166,6 +189,58 @@ function Putt:parseTargets(strParam)
     return targetUnitId, targetTeleportPosition
 end
 
+function Putt.rampedMovement(target, endPos, speedMulti, minSpeed, rampUp)
+    local numSteps = 10
+
+    local steps = {}
+    local xDiff = endPos.x - target.pos.x
+    local yDiff = endPos.y - target.pos.y
+    for i = 0,numSteps do
+        local stamp = i / numSteps
+        if rampUp then
+            steps[i] = {x = xDiff * stamp^2, y = yDiff * stamp^2}
+        else
+            steps[i] = {x = xDiff * (1-(1-stamp)^2), y = yDiff * (1-(1-stamp)^2)}
+        end
+    end
+
+    local speed = {}
+    for i = 1,numSteps do
+        speed[i] = math.sqrt((steps[i].x - steps[i-1].x)^2+(steps[i].y - steps[i-1].y)^2);
+    end
+    for i = 1, numSteps do
+      Wargroove.moveUnitToOverride(target.id, target.pos, steps[i].x, steps[i].y, speed[i]*speedMulti+minSpeed)
+      while (Wargroove.isLuaMoving(target.id)) do
+        coroutine.yield()
+      end
+    end    
+end
+
+function Putt.rampedCircularMovement(target, startPos, radius, startAngle, endAngle, speedMulti, minSpeed, xscale, yscale)
+    local numSteps = 10
+
+    local steps = {}
+    local xDiff = startPos.x - target.pos.x 
+    local yDiff = startPos.y - target.pos.y
+    local angleDiff = endAngle - startAngle
+    for i = 0,numSteps do
+        local stamp = i / numSteps
+        steps[i] = {angle = angleDiff*stamp^2}
+        steps[i].x = math.cos(startAngle+steps[i].angle)*radius*xscale
+        steps[i].y = math.sin(startAngle+steps[i].angle)*radius*yscale
+    end
+    local speed = {}
+    for i = 1,numSteps do
+        speed[i] = math.sqrt((steps[i].x - steps[i-1].x)^2+(steps[i].y - steps[i-1].y)^2);
+    end
+    for i = 1, numSteps do
+      Wargroove.moveUnitToOverride(target.id, target.pos, steps[i].x-steps[0].x+xDiff, steps[i].y-steps[0].y+yDiff, speed[i]*speedMulti + minSpeed)
+      while (Wargroove.isLuaMoving(target.id)) do
+        coroutine.yield()
+      end
+    end    
+end
+
 function Putt:execute(unit, targetPos, strParam, path)
     if strParam == "" then
         print("Golf:execute was not given any target positions.")
@@ -196,27 +271,20 @@ function Putt:execute(unit, targetPos, strParam, path)
     Wargroove.playGrooveEffect()
     local targetUnit = Wargroove.getUnitById(targetUnitId)
 
-    local numSteps = 10
-
-    local steps = {}
-    local xDiff = teleportPosition.x - targetUnit.pos.x
-    local yDiff = teleportPosition.y - targetUnit.pos.y
-    for i = 0,numSteps do
-        local stamp = i / numSteps
-        steps[i] = {x = xDiff * (1-(1-stamp)^2), y = yDiff * (1-(1-stamp)^2)}
+    Wargroove.lockTrackCamera(targetUnitId)
+    local pushDirection = 'y'
+    if targetUnit.pos.x~=teleportPosition.x then
+        pushDirection = 'x'
     end
-
-    local speed = {}
-    for i = 1,numSteps do
-        speed[i] = math.sqrt((steps[i].x - steps[i-1].x)^2+(steps[i].y - steps[i-1].y)^2);
-    end
-    local startingPosition = targetUnit.pos
-    Wargroove.lockTrackCamera(targetUnit.id)
-    for i = 1, numSteps do
-      Wargroove.moveUnitToOverride(targetUnit.id, startingPosition, steps[i].x, steps[i].y, speed[i]*15)
-      while (Wargroove.isLuaMoving(targetUnit.id)) do
-        coroutine.yield()
-      end
+    local endPos = {x = teleportPosition.x, y = teleportPosition.y}
+    local deltaDist = endPos[pushDirection]-targetUnit.pos[pushDirection]
+    local deltaDir = cap(deltaDist,1)
+    if Wargroove.canStandAt(targetUnit.unitClassId,teleportPosition) then
+        self.rampedMovement(targetUnit, teleportPosition, 25/math.sqrt(math.max(math.abs(deltaDist-0.5),0.5)), 0, false)
+    else
+        endPos[pushDirection] = endPos[pushDirection]-0.3*deltaDir
+        self.rampedMovement(targetUnit, endPos, 25/math.sqrt(math.max(math.abs(deltaDist-0.3),0.7)), 0.1, false)
+        self.rampedCircularMovement(targetUnit, endPos, 0.3, -math.pi/2, 0, 80, 0.1,deltaDir, 0.65)
     end
     Wargroove.unlockTrackCamera()
 
@@ -227,14 +295,20 @@ function Putt:execute(unit, targetPos, strParam, path)
         Wargroove.spawnMapAnimation(teleportPosition, 1, splashFX)
         Wargroove.playMapSound("unitSplash", teleportPosition)
     else
-        Wargroove.playMapSound("wulfar/wulfarGrooveUnitLanding", teleportPosition)
+        if Wargroove.getTerrainNameAt(teleportPosition) == "abyss" then
+            Wargroove.playMapSound("wulfar/wulfarMiniGroovePuttScore", teleportPosition)
+        end
     end
     -- Break?
     if not Wargroove.canStandAt(targetUnit.unitClassId, teleportPosition) then
-        if not Wargroove.isWater(teleportPosition) then
+        if not Wargroove.isWater(teleportPosition) and Wargroove.getTerrainNameAt(teleportPosition) ~= "abyss" then
             Wargroove.spawnMapAnimation(teleportPosition, 1, "fx/unit_ship_break")
         end
         Wargroove.setVisibleOverride(targetUnit.id, false)
+        
+        Wargroove.waitTime(0.8)
+        Wargroove.playMapSound("wulfar/wulfarMiniGroovePuttApplause", teleportPosition)
+        Wargroove.waitTime(1)
         Wargroove.updateUnit(targetUnit)
     end
     Wargroove.updateUnit(targetUnit)

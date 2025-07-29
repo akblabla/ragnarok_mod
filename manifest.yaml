@@ -5,8 +5,4 @@ name: "Frivolous Rivalry Mod"               # The mod's name. This is looked up 
 author: "Akblabla"
 description: "Data for the Frivolous Rivalry campaign\n -Outlaw faction skins by Robotos \n Version 0.1" # The mod's description. This is looked up in the language string yaml configuration.
 overwritesPalette: true
-remove:
-  verb:                          
-    - rename
-    - cancel                        
 ...

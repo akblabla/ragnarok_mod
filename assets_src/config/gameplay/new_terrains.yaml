@@ -10,13 +10,32 @@ terrains:
       amphibious: 2
       airphibious: 1
       river_sailing: 2
-    movementGroupType: [land]
+    movementGroupType: [land, water]
     placeable: true
     visionBlocking: true
     fowCover: true
     tilesets:
       0: river
       1: mangrove
+      
+  - id: mangrove_layer_2
+    name: terrain_name_mangrove
+    defenceBonus: 2
+    movementCost:
+      walking: 3
+      flying: 1
+      hovering: 1
+      amphibious: 2
+      airphibious: 1
+      river_sailing: 2
+    movementGroupType: [land, water]
+    placeable: false
+    visionBlocking: true
+    fowCover: true
+    tilesets:
+      0: plains
+      1: river
+      2: mangrove
 
   - id: waterfall
     name: terrain_name_waterfall
@@ -46,7 +65,7 @@ terrains:
     cantStop: [airphibious]
     defenceBonus: 1
     movementCost:
-      sailing: 1
+      sailing: 2
       flying: 1
       hovering: 1
       amphibious: 1
@@ -76,7 +95,7 @@ terrains:
       hovering: 1
       wheels: 1
       amphibious: 1
-      sailing: 2
+      sailing: 3
       airphibious: 1
       river_sailing: 1
     cantStop: [sailing, river_sailing]
@@ -88,7 +107,7 @@ terrains:
 
   - id: cave_road
     name: terrain_name_cave_road
-    defenceBonus: 0
+    defenceBonus: 1
     movementCost:
       walking: 1
       riding: 1
@@ -111,9 +130,9 @@ terrains:
     biomeDescriptions:
       volcano: terrain_description_lava
     cantStop: [airphibious]
-    defenceBonus: 1
+    defenceBonus: 2
     movementCost:
-      sailing: 1
+      sailing: 2
       hovering: 1
       amphibious: 1
       sea_building: 1
@@ -134,14 +153,14 @@ terrains:
 
   - id: cave_bridge
     name: terrain_name_cave_bridge
-    defenceBonus: 0
+    defenceBonus: 1
     movementCost:
       walking: 1
       riding: 1
       wheels: 1
       hovering: 1
       amphibious: 1
-      sailing: 2
+      sailing: 3
       land_building: 1
       indoor_building: 1
       airphibious: 1
@@ -160,9 +179,9 @@ terrains:
     biomeDescriptions:
       volcano: terrain_description_lava
     cantStop: [airphibious]
-    defenceBonus: 2
+    defenceBonus: 3
     movementCost:
-      sailing: 3
+      sailing: 6
       hovering: 1
       amphibious: 1
       airphibious: 1
@@ -188,9 +207,9 @@ terrains:
       volcano: terrain_name_river_lava
     biomeDescriptions:
       volcano: terrain_description_lava
-    defenceBonus: -2
+    defenceBonus: -1
     movementCost:
-      sailing: 1
+      sailing: 3
       walking: 2
       riding: 4
       hovering: 1
@@ -214,9 +233,9 @@ terrains:
 
   - id: cave_beach
     name: terrain_name_cave_beach
-    defenceBonus: -1
+    defenceBonus: -0
     movementCost:
-      sailing: 2
+      sailing: 4
       walking: 1
       riding: 2
       hovering: 1

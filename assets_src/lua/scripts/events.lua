@@ -43,6 +43,7 @@ function Events.init()
 	OldEvents.isConditionTrue = Events.isConditionTrue
 	OldEvents.runAction = Events.runAction
     OldEvents.checkEventsAfter = Events.checkEventsAfter
+    OldEvents.reportVerbUsed = Events.reportVerbUsed
 end
 
 local triggerContext = TriggerContext:new({
@@ -64,6 +65,7 @@ local triggerActions = {}
 local pendingDeadUnits = {}
 local pendingVerbsUsed = {}
 local pendingInteractionsUsed = {}
+local checkEventsAfter = false
 
 function Events.startSession(matchState)
     pendingDeadUnits = {}
@@ -170,10 +172,16 @@ function Events.populateTriggerList()
       condition.populate(triggerConditions)
     end
 end
-local checkEventsAfter = false
-
+local wasEndOfTurn = false
 function Events.checkEventsAfter()
     checkEventsAfter = true
+    if triggerContext:checkState("endOfTurn") then
+        triggerContext.state = "repeat"
+        wasEndOfTurn = true
+        print("We're going to check events after (we interrupted the end of the turn)")
+    else
+        print("We're going to check events after")
+    end
 end
 
 function Events.doCheckEvents(state)
@@ -207,7 +215,7 @@ function Events.doCheckEvents(state)
     pendingVerbsUsed = newPendingVerbs
     pendingInteractionsUsed = newPendingInteractions
     checkEventsAfter = true
-    while (checkEventsAfter) do
+    while checkEventsAfter do
         checkEventsAfter = false
         for triggerNum, trigger in ipairs(triggerList) do
             triggerContext.triggerInstanceTriggerId = triggerNum
@@ -425,7 +433,8 @@ function Events.reportVerbUsed(id, verb, isGrooveVerb, targetPos, strParam, path
         verb = verb,
         isGroove = isGrooveVerb,
         strParam = strParam,
-        path = path
+        path = path,
+        targetPos = {x = targetPos.x, y = targetPos.y}
     }
     table.insert(pendingVerbsUsed, unit)
 end

@@ -16,7 +16,7 @@ unitClasses:
     cost: 600
     resourceCost: 2
     movement: amphibious
-    moveRange: 7
+    moveRange: 6
     damageMultiplier: 1
     uiEffectivenessMultiplier: 2
     aiPriority: 1.0

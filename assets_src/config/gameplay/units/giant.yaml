@@ -62,18 +62,23 @@ units:
     deathMoveMin: 0
     deathMoveMax: 0
     sounds:
-      preAttack: giantPoseStone
-      attack: giantAttack
+      attack: giantAttackOrganic
       attackMap: unitAttack
-      death: giantDie
+      attackShout: giantAttackShoutOrganic
+      preAttack: giantPreAttackOrganic
+      death: giantDieOrganic
       deathMap: unitDie
       run: giantEntry
       runMap: giantEntry
-      hit: hitStone
-      hitMap: hitStone
+      hit: hitOrganic
+      hitMap: hitOrganic
     attacks:
       - id: primary
         hitSpark: fx/bs_stab_attack
-        hitDelay: 0.75
+        hitDelay: [0.5, 0.9, 1.74]
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: post_attack_hit
+        postAttackHitLeadupSequence: post_attack_hit_leadup
+        postAttackHitEndSequence: post_attack_hit_end
 
 ...

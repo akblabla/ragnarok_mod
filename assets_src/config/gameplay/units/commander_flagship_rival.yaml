@@ -17,7 +17,7 @@ unitClasses:
     cost: 500
     movement: sailing
     damageMultiplier: 0.75
-    moveRange: 6.0
+    moveRange: 12.0
     aiPriority: 2.0
     weapons:
       - id: rival_flagship_cannon

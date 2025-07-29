@@ -14,8 +14,8 @@ unitClasses:
     name: unit_class_name_harpoonship
     cost: 500
     resourceCost: 2
-    movement: river_sailing
-    moveRange: 6
+    movement: sailing
+    moveRange: 12
     damageMultiplier: 1
     aiPriority: 1.0
     weapons:

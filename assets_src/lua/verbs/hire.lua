@@ -17,8 +17,12 @@ function Hire:recruitsContain(recruits, unit)
      return false
 end
 
-function Hire:getRecruitableTargets(unit)
-    return defaultUnits
+function Hire:getRecruitableTargets(target)
+    if target.unitClassId == "villager" then
+        return defaultUnits
+    else
+        return {target.unitClassId}
+    end
 end
 
 
@@ -35,14 +39,9 @@ function Hire:getTargetType()
     return "all"
 end
 
-local enabledPlayerList = {}
-
-function Hire.enableForPlayer(playerId)
-    enabledPlayerList[playerId] = true;
-end
-
 function Hire:canExecuteAnywhere(unit)
-    return (enabledPlayerList[unit.playerId] ~= nil) and (enabledPlayerList[unit.playerId] == true)
+    local canReqruit = Wargroove.getUnitState(unit,"canReqruit")
+    return canReqruit ~= nil
 end
 
 Hire.inPreExecute = true
@@ -60,7 +59,10 @@ function Hire:canExecuteWithTarget(unit, endPos, targetPos, strParam)
 
     if (Hire.inPreExecute) then
         local u = Wargroove.getUnitAt(targetPos)
-        return (u ~= nil) and (u.unitClassId == "villager") and Wargroove.isNeutral(u.playerId)
+        if (u ~= nil) then
+            local canBeRequired = Wargroove.getUnitState(u,"Recruitable")
+            return (canBeRequired ~= nil) and Wargroove.isNeutral(u.playerId)
+        end
     else
 
         -- Check if this player can recruit this type of unit
@@ -81,9 +83,50 @@ end
 
 function Hire:preExecute(unit, targetPos, strParam, endPos)
     Hire.inPreExecute = false
-    local recruitableUnits = Hire.getRecruitableTargets(self, unit);
+    local recruitableUnits = {"soldier", "dog", "spearman", "mage", "archer"}
 
-    Wargroove.openRecruitMenu(unit.playerId, unit.id, unit.pos, unit.unitClassId, recruitableUnits, costMultiplier, defaultUnits, "outlaw");
+    local target = Wargroove.getUnitAt(targetPos)
+    if target == nil then
+        return false, ""
+    end
+
+    recruitableUnits = Hire:getRecruitableTargets(target)
+    local message = Wargroove.getUnitState(target,"RecruitMessage")
+    local messageCharacter = Wargroove.getUnitState(target,"RecruitMessageCharacter")
+    local messageExpression = Wargroove.getUnitState(target,"RecruitMessageExpression")
+    local messageShout = Wargroove.getUnitState(target,"RecruitMessageShout")
+    local messageName = Wargroove.getUnitState(target,"RecruitMessageName")
+    local discount = Wargroove.getUnitState(target,"RecruitDiscount")
+    if messageExpression == nil then
+        messageExpression = "neutral"
+    else
+        Wargroove.removeUnitState(target, "RecruitMessageExpression")
+    end
+    if messageCharacter == nil then
+        messageCharacter = "generic_villager"
+    else
+        Wargroove.removeUnitState(target, "RecruitMessageCharacter")
+    end
+    if messageShout == nil then
+        messageShout = ""
+    else
+        Wargroove.removeUnitState(target, "RecruitMessageShout")
+    end
+    if messageName == nil then
+        messageName = ""
+    else
+        Wargroove.removeUnitState(target, "RecruitMessageName")
+    end
+    if discount == nil then
+        discount = 0
+    else
+        discount = 100 - tonumber(discount)
+    end
+    if message ~= nil then
+        Wargroove.showDialogueBox(messageExpression, messageCharacter, message, messageShout, {}, "standard", false, messageName, "neutral")
+        Wargroove.removeUnitState(target, "RecruitMessage")
+    end
+    Wargroove.openRecruitMenu(unit.playerId, unit.id, unit.pos, unit.unitClassId, recruitableUnits, (100-discount)/100.0, defaultUnits, "outlaw");
 
     while Wargroove.recruitMenuIsOpen() do
         coroutine.yield()

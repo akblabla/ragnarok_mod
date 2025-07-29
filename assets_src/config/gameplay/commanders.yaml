@@ -349,4 +349,21 @@ commanders:
     skinColour: typeVI
     unitClassId: knight
     dialogueBoxVoice: ui/dialogue/textScroll
+    
+
+  - id: generic_toad
+    name: unit_name_frog_outlaw
+    faction: outlaw
+    playable: false
+    portrait:
+      neutral: portraits/commanders/small/toadfolk_portrait_neutral.png
+      happy: portraits/commanders/small/frogfolk_portrait_small.png
+      sad: portraits/commanders/small/frogfolk_portrait_sad.png
+      extra: portraits/commanders/small/toadfolk_portrait_extra.png
+      extra2: portraits/commanders/small/frog_portrait_small.png
+    cutscenePortrait: portraits/commanders/big/cherrystone_portrait
+    themeSong: mercia
+    skinColour: typeV
+    unitClassId: frog
+    dialogueBoxVoice: ui/dialogue/textScroll
 ...

@@ -1,0 +1,7 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/wulfar/golfApplause.ogg ]
+    volume: 1
+    group: sfx
+...

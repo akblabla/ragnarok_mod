@@ -81,49 +81,4 @@ units:
       dog_shout1: dogShoutGrowl
       caesar_bark1: dogShoutBark
 
-  - class: dog
-    faction: faahri
-    name: unit_name_dog_outlaw
-    mapAnimation: units/dog/outlaw/map_dog_outlaw_faahri
-    mapLightSource:
-      sprite: lights_small
-      scale: [1.0, 1.0]
-      jitter:
-        scale: 1.0
-        frequency: 0.3
-        frequencyVariance: 0.15
-    battleLightSource:
-      sprite: lights_battle_medium
-      scale: [0.65, 0.35]
-      jitter:
-        scale: 0.75
-        frequency: 0.3
-        frequencyVariance: 0.15
-    battleAnimation: units/dog/outlaw/battle_dog_outlaw_faahri
-    battleAnimationRiver: fx/river_overlay/battle_dog_cherrystone_river
-    smallPortrait: units/dog/outlaw/portrait_dog_outlaw_small.png
-    mediumPortrait: units/dog/outlaw/portrait_dog_outlaw_medium.png
-    skinColours: [ "typeVII", "typeVIII", "typeIX", "typeX" ]
-    mapSpeed: 5.0
-    grabPos: [15, 23]
-    emotes:
-      idle: idle
-    sounds:
-      attackMap: unitAttack
-      attack: dogAttack
-      attackShout: dogPreAttack
-      death: dogDie
-      deathMap: unitDie
-      run: dogEntry
-      runMap: dogMapEntry
-      hit: hitOrganic
-      hitMap: hitOrganic
-    attacks:
-      - id: primary
-        hitSpark: fx/bs_stab_attack
-        hitDelay: 0.3
-    shouts:      
-      dog_shout1: dogShoutGrowl
-      caesar_bark1: dogShoutBark
-
 ...

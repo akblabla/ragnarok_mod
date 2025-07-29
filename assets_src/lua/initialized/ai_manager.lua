@@ -34,18 +34,12 @@ end
 
 
 function AIManager.init()
-	Ragnarok.addAction(AIManager.update,"repeating",false)
+	Ragnarok.addAction(AIManager.update,"repeating",true)
 end
 
 function AIManager.update(context)
    
-   if not (context:checkState("endOfTurn")) then
-      local success, err = pcall(AIManager.moveUnits,context)
-      if not success then
-         print("AIManager.update(context) Error!")
-         print(dump(err,0))
-      end
-   end
+   AIManager.moveUnits(context)
 end
 function AIManager.moveUnits(context)
    local units = Wargroove.getUnitsAtLocation(nil)
@@ -63,6 +57,7 @@ function AIManager.moveUnits(context)
       end
       return false
    end
+   local moved = true
    for i,unit in ipairs(units) do
       if unit.playerId < 0 then
          goto next 
@@ -131,16 +126,16 @@ function AIManager.moveUnits(context)
             print("8")
             Wargroove.waitFrame()
             print("9")
-            Wargroove.doLuaDeathCheck(bestOrder.unitId, true)
+            
+            --Wargroove.doLuaDeathCheck(bestOrder.unitId, true)
 
             Wargroove.refreshObstacles()
             
             print("10")
---               Wargroove.checkTriggers("repeat")
+            Events.checkEventsAfter()
          end
       end
    end
-   Events.checkEventsAfter()
    print("it worked!")
 end
 
