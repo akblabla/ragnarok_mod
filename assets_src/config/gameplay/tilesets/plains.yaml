@@ -1,0 +1,174 @@
+---
+tilesets:
+  - id: plains
+    type: WangBlob
+    biomes:
+      - types: [grass, deepforest]
+        spriteSheet: tilesets
+        spriteBase: wang_grass_plains_sea_tileset_000
+        waterSpriteBase: wang_grass_plains_sea_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_plains
+        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_plains
+        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_plains_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Plain
+        infoScreenOffset: 30
+        fillColour: '#92b141'
+      - types: [tropical]
+        spriteSheet: terrain_tilesets
+        spriteBase: wang_tropical_plains_sea_tileset_000
+        waterSpriteBase: wang_tropical_plains_sea_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_plains
+        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_plains
+        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_plains_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Plain
+        infoScreenOffset: 30
+        fillColour: '#92b141'
+      - types: [flower]
+        spriteSheet: tilesets
+        spriteBase: wang_flower_plains_sea_tileset_000
+        waterSpriteBase: wang_flower_plains_sea_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_plains
+        battleBackgroundSpriteSheet: backgrounds/flower_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: flower_battlescreen_extendedbackgrounds_plains
+        battleBackgroundSpriteForeground: flower_battlescreen_extendedbackgrounds_plains_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Plain
+        infoScreenOffset: 30
+        fillColour: '#92b141'
+      - types: [dungeon, dungeon_purple]
+        spriteSheet: tilesets
+        spriteBase: wang_dungeon_plains_sea_tileset_000
+        waterSpriteBase: wang_dungeon_plains_sea_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_plains
+        battleBackgroundSpriteSheet: backgrounds/dungeon_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: dungeon_battlescreen_extendedbackgrounds_plains
+        battleBackgroundSpriteForeground: dungeon_battlescreen_extendedbackgrounds_plains_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Plain
+        infoScreenOffset: 30
+        fillColour: '#92b141'
+      - types: [dungeon_lava]
+        spriteSheet: tilesets
+        spriteBase: wang_dungeon_lava_plains_sea_tileset_000
+        waterSpriteBase: wang_dungeon_lava_plains_sea_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_plains
+        battleBackgroundSpriteSheet: backgrounds/dungeon_lava_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: dungeon_lava_battlescreen_extendedbackgrounds_plains
+        battleBackgroundSpriteForeground: dungeon_lava_battlescreen_extendedbackgrounds_plains_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Plain
+        infoScreenOffset: 30
+        fillColour: '#92b141'
+      - types: [jungle]
+        spriteSheet: tilesets
+        spriteBase: wang_jungle_plains_sea_tileset_000
+        waterSpriteBase: wang_jungle_plains_sea_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_plains
+        battleBackgroundSpriteSheet: backgrounds/jungle_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: jungle_battlescreen_extendedbackgrounds_plains
+        battleBackgroundSpriteForeground: jungle_battlescreen_extendedbackgrounds_plains_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Plain
+        infoScreenOffset: 30
+        fillColour: '#92b141'
+      - types: [ice, ice_low]
+        spriteSheet: tilesets
+        spriteBase: wang_ice_plains_sea_tileset_000
+        waterSpriteBase: wang_ice_plains_sea_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_plains
+        battleBackgroundSpriteSheet: backgrounds/ice_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: ice_battlescreen_extendedbackgrounds_plains
+        battleBackgroundSpriteForeground: ice_battlescreen_extendedbackgrounds_plains_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Plain
+        infoScreenOffset: 30
+        fillColour: '#aec6e3'
+      - types: [arctic]
+        spriteSheet: tilesets
+        spriteBase: wang_arctic_plains_sea_tileset_000
+        waterSpriteBase: wang_arctic_plains_sea_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_plains
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_plains
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_plains_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Plain
+        infoScreenOffset: 30
+        fillColour: '#aec6e3'
+      - types: [arctic_bloom]
+        spriteSheet: tilesets
+        spriteBase: wang_arctic_plains_sea_tileset_000
+        waterSpriteBase: wang_arctic_plains_sea_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_plains
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds_bloom
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_bloom_plains
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_bloom_plains_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Plain
+        infoScreenOffset: 30
+        fillColour: '#aec6e3'
+      - types: [arctic_blood]
+        spriteSheet: tilesets
+        spriteBase: wang_arctic_plains_sea_tileset_000
+        waterSpriteBase: wang_arctic_plains_sea_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_plains
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds_red
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_red_plains
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_red_plains_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Plain
+        infoScreenOffset: 30
+        fillColour: '#aec6e3'
+      - types: [desert]
+        spriteSheet: tilesets
+        spriteBase: wang_desert_plains_sea_tileset_000
+        waterSpriteBase: wang_desert_plains_sea_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_sand_plains
+        battleBackgroundSpriteSheet: backgrounds/desert_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: desert_battlescreen_extendedbackgrounds_plains
+        battleBackgroundSpriteForeground: desert_battlescreen_extendedbackgrounds_plains_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Plain
+        infoScreenOffset: 30
+        fillColour: '#987647'
+    primaryConnect: []
+    decayTo: plains
+    extras:
+    # Single tile variation
+      - { x: 7, y: 0, mask: 0 }
+      - { x: 8, y: 0, mask: 0 }
+      - { x: 9, y: 0, mask: 0 }
+      - { x: 7, y: 1, mask: 0 }
+      - { x: 8, y: 1, mask: 0 }
+      - { x: 9, y: 1, mask: 0 }
+      - { x: 7, y: 2, mask: 0 }
+      - { x: 8, y: 2, mask: 0 }
+      - { x: 9, y: 2, mask: 0 }
+      - { x: 7, y: 3, mask: 0 }
+      - { x: 8, y: 3, mask: 0 }
+      - { x: 9, y: 3, mask: 0 }
+      - { x: 7, y: 4, mask: 0 }
+      - { x: 8, y: 4, mask: 0 }
+      - { x: 9, y: 4, mask: 0 }
+      - { x: 7, y: 5, mask: 0 }
+      - { x: 8, y: 5, mask: 0 }
+      - { x: 9, y: 5, mask: 0 }
+      - { x: 7, y: 6, mask: 0 }
+      - { x: 8, y: 6, mask: 0 }
+      - { x: 9, y: 6, mask: 0 }
+...

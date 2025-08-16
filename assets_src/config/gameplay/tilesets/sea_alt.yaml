@@ -2,7 +2,7 @@
 tilesets:
   - id: sea_alt
     biomes:
-      - types: [grass,tropical, ice, desert]
+      - types: [grass,tropical, flower, ice, desert]
         spriteSheet: terrain_tilesets
         spriteBase: sea_alt
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod

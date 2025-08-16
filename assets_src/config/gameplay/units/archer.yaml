@@ -28,6 +28,7 @@ unitClasses:
       - attack_AI
       - load
       - capture
+      - capture_AI
       - rescue
       - hire
       - take_crown
@@ -75,7 +76,7 @@ units:
       runMap: infantryLightMapEntry
       hit: hitOrganic
       hitMap: hitOrganic
-      counter: archerCounterAttack
+      counter: archer/archerCounterOutlaw
     attacks:
       - id: primary
         attackAnimationSequence: counter
@@ -117,6 +118,8 @@ units:
         ranged: true
     emotes:
       idle: idle
+      dance: emote_dance
+      surprise: emote_surprise
     shouts:
       soldier_shout1: soldierShoutRed1
       soldier_shout2: soldierShoutRed2
@@ -138,5 +141,11 @@ units:
       villager_male_shout2: cutscene/villagerScreamMale2
       villager_female_shout1: cutscene/villagerScreamFemale1
       villager_female_shout2: cutscene/villagerScreamFemale2
+    hidden:
+      shouts:
+        - soldier_shout3
+        - soldier_shout5
+        - soldier_shout6
+        - soldier_shout9
 
 ...

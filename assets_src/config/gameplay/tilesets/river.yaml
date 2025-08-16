@@ -16,6 +16,19 @@ tilesets:
         iconSprite: terrain_icons_River
         infoScreenOffset: 30
         fillColour: '#286ab1'
+      - types: [tropical]
+        spriteSheet: terrain_tilesets
+        spriteBase: wang_tropical_river_tileset_000
+        waterSpriteBase: wang_tropical_river_tileset_001
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_ocean
+        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_river
+        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_river_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_River
+        infoScreenOffset: 30
+        fillColour: '#286ab1'
       - types: [dungeon, dungeon_purple]
         spriteSheet: tilesets
         spriteBase: wang_dungeon_river_tileset_000

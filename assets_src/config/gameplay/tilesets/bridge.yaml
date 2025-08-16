@@ -63,7 +63,7 @@ tilesets:
         iconSprite: terrain_icons_Bridge
         infoScreenOffset: 30
         fillColour: '#2a2542'
-      - types: [jungle]
+      - types: [jungle, tropical]
         spriteSheet: tilesets
         spriteBase: wang_jungle_bridge_tileset_000
         foregroundSpriteBase: wang_jungle_bridge_tileset_001

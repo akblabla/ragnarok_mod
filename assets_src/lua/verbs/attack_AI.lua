@@ -44,6 +44,15 @@ end
 function AttackAI:getScore(unitId, order)
     local unit = Wargroove.getUnitById(unitId)
     local target = Wargroove.getUnitAt(order.targetPosition)
+    local attackScore = Wargroove.getUnitState(target, "attackScore")
+    local result = Combat:solveCombat(unitId,target.id,{order.endPosition},"average")
+    if attackScore ~= nil and attackScore ~= "" then
+        if result.attackerHealth<=0 then        
+            return {score = 5*tonumber(attackScore)*(target.health-result.defenderHealth)/100, introspection = {}}
+        else
+            return {score = tonumber(attackScore)*(target.health-result.defenderHealth)/100-(unit.health-result.attackerHealth)/100*unit.unitClass.cost, introspection = {}}
+        end
+    end
     if target.unitClassId == "travelboat_with_gold" then
         return {score = 1000, introspection = {}}
     end

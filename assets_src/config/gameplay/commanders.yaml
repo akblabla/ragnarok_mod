@@ -199,6 +199,25 @@ commanders:
     skinColour: typeVI
     unitClassId: soldier
     dialogueBoxVoice: ui/dialogue/textScroll
+    
+  - id: wulfar
+    name: character_wulfar_name
+    title: character_wulfar_title
+    faction: outlaw
+    factionIndex: 0
+    mpPlayable: true
+    portrait:
+      neutral: portraits/commanders/small/wulfar_portrait_small.png
+      happy: portraits/commanders/small/wulfar_portrait_happy.png
+      sad: portraits/commanders/small/wulfar_portrait_sad.png
+    cutscenePortrait: portraits/commanders/big/wulfar_portrait
+    portraitOffset: [0, -45]
+    namePlate: ui/character_select/charlabel/charlabel_outlaw.png
+    themeSong: wulfar
+    skinColour: typeII
+    unitClassId: commander_wulfar
+    selectionSound: wulfar/wulfarShoutUpForTheTask
+    dialogueBoxVoice: ui/dialogue/textScrollWulfar
 
   - id: wulfar_offset
     name: character_wulfar_name

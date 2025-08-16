@@ -296,17 +296,17 @@ function StealthManager.update(context)
                 if StealthManager.isUnitAlerted(unit) then
                     AIManager.attackMoveOrder(unit.id,lastKnownPos.pos)
                 elseif StealthManager.isUnitSearching(unit) then
---                    StealthManager.isCapturableInRange(unit)
---                    if (Wargroove.hasAIRestriction(unit.id, "cant_capture") == false) and StealthManager.isCapturableInRange(unit) then
---                        AIManager.clearOrder(unit.id)
---                    else
+                    StealthManager.isCapturableInRange(unit)
+                    if (Wargroove.hasAIRestriction(unit.id, "cant_capture") == false) and StealthManager.isCapturableInRange(unit) then
+                        AIManager.clearOrder(unit.id)
+                    else
                     if logging then
                         print("AIManager.moveOrder(unit.id,lastKnownPos.pos)")
                         print("unit.id: ".. unit.id)
                         print("lastKnownPos.pos: ".. lastKnownPos.pos.x..", ".. lastKnownPos.pos.y)
                     end
                     AIManager.moveOrder(unit.id,lastKnownPos.pos)
---                    end
+                    end
                 end
             end
             local AIGoal = StealthManager.getAIGoalPos(unit)

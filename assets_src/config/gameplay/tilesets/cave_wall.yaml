@@ -3,7 +3,7 @@ tilesets:
   - id: cave_wall
     decayTo: plains
     biomes:
-      - types: [grass,tropical, ice, desert, volcano]
+      - types: [grass,tropical, flower, ice, desert, volcano]
         spriteSheet: terrain_tall_tilesets
         spriteBase: grass_cave_wall_tileset_tall
         portraitSpriteSheet: terrain/terrain_portraits

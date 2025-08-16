@@ -468,12 +468,14 @@ local captureUnitList = {
 	archer = true,
 	mage = true,
 	merman = true,
+	caravel = true,
 	rifleman = true,
 	soldier = true,
 	commander_duchess = true,
 	commander_emeric = true,
 	commander_mercival = true,
 	spearman = true,
+	griffin_walking = true,
 }
 function Stats.getMovementType(unitClassId)
 	local unitClass = Wargroove.getUnitClass(unitClassId)

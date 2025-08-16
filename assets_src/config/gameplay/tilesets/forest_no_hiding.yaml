@@ -2,7 +2,7 @@
 tilesets:
   - id: forest_no_hiding
     biomes:
-      - types: [grass,tropical, ice, desert]
+      - types: [grass,tropical, flower, ice, desert]
         spriteSheet: terrain_tilesets
         spriteBase: forest_no_hiding
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod

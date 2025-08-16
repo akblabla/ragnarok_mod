@@ -105,7 +105,7 @@ codex:
   faction: outlaw
   name: unit_name_wagon_outlaw
   icon:
-    image: units/wagon/cherrystone/portrait_wagon_cherrystone_small.png
+    image: units/wagon/outlaw/portrait_wagon_outlaw_small.png
     paletteSwap: true
     colour: black
     skinColour: typeIV
@@ -139,7 +139,7 @@ codex:
   faction: outlaw
   name: unit_name_archer_outlaw
   icon:
-    image: units/archer/cherrystone/portrait_archer_cherrystone_small.png
+    image: units/archer/outlaw/portrait_archer_outlaw_small.png
     paletteSwap: true
     colour: black
     skinColour: typeIV
@@ -172,7 +172,7 @@ codex:
   faction: outlaw
   name: unit_name_mage_outlaw
   icon:
-    image: units/mage/cherrystone/portrait_mage_cherrystone_small.png
+    image: units/mage/outlaw/portrait_mage_outlaw_small.png
     paletteSwap: true
     colour: black
     skinColour: typeIV
@@ -205,7 +205,7 @@ codex:
   faction: outlaw
   name: unit_name_knight_outlaw
   icon:
-    image: units/knight/cherrystone/portrait_knight_cherrystone_small.png
+    image: units/knight/outlaw/portrait_knight_outlaw_small.png
     paletteSwap: true
     colour: black
     skinColour: typeIV
@@ -238,7 +238,7 @@ codex:
   faction: outlaw
   name: unit_name_ballista_outlaw
   icon:
-    image: units/ballista/cherrystone/portrait_ballista_cherrystone_small.png
+    image: units/ballista/outlaw/portrait_ballista_outlaw_small.png
     paletteSwap: true
     colour: black
     skinColour: typeIV
@@ -271,7 +271,7 @@ codex:
   faction: outlaw
   name: unit_name_trebuchet_cherrystone
   icon:
-    image: units/trebuchet/cherrystone/portrait_trebuchet_cherrystone_small.png
+    image: units/trebuchet/outlaw/portrait_trebuchet_outlaw_small.png
     paletteSwap: true
     colour: black
     skinColour: typeIV
@@ -304,7 +304,7 @@ codex:
   faction: outlaw
   name: unit_name_giant_outlaw
   icon:
-    image: units/giant/cherrystone/portrait_giant_cherrystone_small.png
+    image: units/giant/outlaw/portrait_giant_outlaw_small.png
     paletteSwap: true
     colour: black
     skinColour: typeIV
@@ -406,7 +406,7 @@ codex:
   faction: outlaw
   name: unit_name_rifleman_outlaw
   icon:
-    image: units/rifleman/cherrystone/portrait_rifleman_cherrystone_small.png
+    image: units/rifleman/outlaw/portrait_rifleman_outlaw_small.png
     paletteSwap: true
     colour: black
     skinColour: typeIII
@@ -440,7 +440,7 @@ codex:
   faction: outlaw
   name: unit_name_villager_outlaw
   icon:
-    image: units/villager/cherrystone/portrait_villager_cherrystone_small.png
+    image: units/villager/outlaw/portrait_villager_outlaw_small.png
     paletteSwap: true
     colour: black
     skinColour: typeIV
@@ -474,7 +474,7 @@ codex:
   faction: outlaw
   name: unit_name_balloon_outlaw
   icon:
-    image: units/balloon/cherrystone/portrait_balloon_cherrystone_small.png
+    image: units/balloon/outlaw/portrait_balloon_outlaw_small.png
     paletteSwap: true
     colour: black
     skinColour: typeIV
@@ -540,7 +540,7 @@ codex:
   faction: outlaw
   name: unit_name_harpy_outlaw
   icon:
-    image: units/harpy/cherrystone/portrait_harpy_cherrystone_small.png
+    image: units/harpy/outlaw/portrait_harpy_outlaw_small.png
     paletteSwap: true
     colour: black
     skinColour: typeIV
@@ -573,7 +573,7 @@ codex:
   faction: outlaw
   name: unit_name_witch_outlaw
   icon:
-    image: units/witch/cherrystone/portrait_witch_cherrystone_small.png
+    image: units/witch/outlaw/portrait_witch_outlaw_small.png
     paletteSwap: true
     colour: black
     skinColour: typeIV
@@ -606,7 +606,7 @@ codex:
   faction: outlaw
   name: unit_name_dragon_outlaw
   icon:
-    image: units/dragon/cherrystone/portrait_dragon_cherrystone_small.png
+    image: units/dragon/outlaw/portrait_dragon_outlaw_small.png
     paletteSwap: true
     colour: black
     skinColour: typeIV
@@ -639,7 +639,7 @@ codex:
   faction: outlaw
   name: unit_name_travelboat_outlaw
   icon:
-    image: units/travelboat/cherrystone/portrait_travelboat_cherrystone_small.png
+    image: units/travelboat/outlaw/portrait_travelboat_outlaw_small.png
     paletteSwap: true
     colour: black
     skinColour: typeIV
@@ -706,7 +706,7 @@ codex:
   faction: outlaw
   name: unit_name_merman_outlaw
   icon:
-    image: units/merman/cherrystone/portrait_merman_cherrystone_small.png
+    image: units/merman/outlaw/portrait_merman_outlaw_small.png
     paletteSwap: true
     colour: black
     skinColour: typeIV
@@ -739,7 +739,7 @@ codex:
   faction: outlaw
   name: unit_name_turtle_outlaw
   icon:
-    image: units/turtle/cherrystone/portrait_turtle_cherrystone_small.png
+    image: units/turtle/outlaw/portrait_turtle_outlaw_small.png
     paletteSwap: true
     colour: black
     skinColour: typeIV
@@ -806,7 +806,7 @@ codex:
   faction: outlaw
   name: unit_name_warship_outlaw
   icon:
-    image: units/warship/cherrystone/portrait_warship_cherrystone_small.png
+    image: units/warship/outlaw/portrait_warship_outlaw_small.png
     paletteSwap: true
     colour: black
     skinColour: typeIV
@@ -839,7 +839,7 @@ codex:
   faction: outlaw
   name: unit_name_kraken_outlaw
   icon:
-    image: units/kraken/cherrystone/portrait_kraken_cherrystone_small.png
+    image: units/kraken/outlaw/portrait_kraken_outlaw_small.png
     paletteSwap: true
     colour: black
     skinColour: typeIV

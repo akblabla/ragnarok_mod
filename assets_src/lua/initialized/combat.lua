@@ -204,7 +204,7 @@ function Combat:getDamage(attacker, defender, solveType, isCounter, attackerPos,
 
 	local passiveMultiplier = self:getPassiveMultiplier(effectiveAttacker, defender, attackerPos, defenderPos, attackerPath, isCounter, attacker.state)
 	if not isGroove then
-		passiveMultiplier = sawItComingMultiplier(attacker, defender, attackerPos, defenderPos, attackerPath, defenderPath, passiveMultiplier)
+	--	passiveMultiplier = sawItComingMultiplier(attacker, defender, attackerPos, defenderPos, attackerPath, defenderPath, passiveMultiplier)
 	end
 	local defenderUnitClass = Wargroove.getUnitClass(defender.unitClassId)
 	local defenderIsInAir = defenderUnitClass.inAir

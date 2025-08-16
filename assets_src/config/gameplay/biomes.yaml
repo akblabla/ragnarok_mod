@@ -1,0 +1,29 @@
+---
+
+colours:
+  grid_tropical_move_range_mine: '#744A49'
+  grid_tropical_move_range_outline_mine: '#744A49'
+  grid_tropical_move_and_attack_range_mine: '#DFC686'
+  grid_tropical_move_and_attack_range_outline_mine: '#E9DEB8'
+  grid_tropical_attack_range_outline_mine: '#DFC686'
+  grid_tropical_move_range_theirs: '#744A49'
+  grid_tropical_move_range_outline_theirs: '#744A49'
+  grid_tropical_attack_range_outline_theirs: '#1D1C24'
+  grid_tropical_move_and_attack_range_theirs: '#1D1C24'
+  grid_tropical_move_and_attack_range_outline_theirs: '#1D1C24'
+  grid_tropical_attack_target: '#D71919'
+  grid_tropical_attack_target_outline: '#EB3232'
+  grid_tropical_target: '#07AB5E'
+  grid_tropical_target_outline: '#0CDE8A'
+  grid_tropical_heal_outline: '#FFFFFF'
+
+biomes:
+  - id: tropical
+    name: biome_name_tropical
+    parentId: grass
+    severeWeather: rain
+    waterPalette: palettes/water_colours_tropical.png
+    waterTexture: terrain/water/water_texture_grass.png
+    splashEffect: fx/unit_splash
+
+...

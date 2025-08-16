@@ -85,7 +85,6 @@ function Actions.populate(dst)
     dst["set_hide_and_seek_bravery"] = Actions.setHideAndSeekBravery
     dst["set_position_as_goal"] = Actions.setPositionAsGoal
     dst["set_awareness"] = Actions.setAwareness
-    dst["limit_bounds"] = Actions.limitBounds
 --    dst["set_awareness_wave"] = Actions.setAwarenessWave
     dst["update_awareness"] = Actions.updateAwareness
     dst["set_current_position_as_goal"] = Actions.setCurrentPositionAsGoal
@@ -883,14 +882,6 @@ function Actions.setHideAndSeekBravery(context)
     local bravery = context:getInteger(0)
     local player = context:getPlayerId(1)
     StealthManager.setBravery(player, bravery)
-end
-function Actions.limitBounds(context)
-    -- "Limit playable area for player {1} to {0}"
-    local location = context:getLocation(0)
-    local player = context:getPlayerId(1)
- 
-    local Verb = require "initialized/a_new_verb"
-    Verb.setBorderLands(location, player)
 end
 
 function Actions.transferGoldRobbed(context)

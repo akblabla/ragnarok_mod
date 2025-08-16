@@ -25,6 +25,7 @@ unitClasses:
     verbs:
       - load
       - capture
+      - capture_AI
       - groove_smoke_screen
       - mini_groove_teleport
       - rescue

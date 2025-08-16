@@ -12,6 +12,7 @@ unitClasses:
     verbs:
       - attack_AI
       - capture
+      - capture_AI
       - load
       - rescue
       - hire

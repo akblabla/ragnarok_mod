@@ -33,6 +33,7 @@ unitClasses:
       - reload
       - load
       - capture
+      - capture_AI
       - rescue
       - attack_AI
       - hire

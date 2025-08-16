@@ -13,6 +13,17 @@ tilesets:
         swapBackgroundPanes: true
         iconSpriteSheet: ui
         iconSprite: terrain_icons_Mountain
+      - types: [tropical]
+        spriteSheet: terrain_tilesets
+        spriteBase: wang_tropical_mountain_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_mountain
+        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_mountain
+        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_mountain_foreground
+        swapBackgroundPanes: true
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Mountain
       - types: [dungeon, dungeon_purple]
         spriteSheet: tilesets
         spriteBase: wang_dungeon_mountain_tileset

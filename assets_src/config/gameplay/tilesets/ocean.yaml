@@ -3,7 +3,7 @@ tilesets:
   - id: ocean
     type: WangBlob
     biomes:
-      - types: [grass, flower, deepforest]
+      - types: [grass, flower, deepforest, tropical]
         spriteSheet: terrain_tilesets
         spriteBase: wang_grass_ocean_tileset_2_000
         waterSpriteBase: wang_grass_ocean_tileset_2_001

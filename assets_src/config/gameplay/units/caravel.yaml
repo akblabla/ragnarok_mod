@@ -22,6 +22,7 @@ unitClasses:
       - id: caravelWeapon
     verbs:
       - capture
+      - capture_AI
       - rescue
       - attack_AI
       - hire
@@ -55,7 +56,8 @@ units:
         scale: 0.25
         frequency: 0.3
         frequencyVariance: 0.15
-    battleAnimation: units/caravel/outlaws/battle_caravel_outlaw_2
+    # battleAnimation: units/caravel/outlaws/battle_caravel_outlaw_2
+    battleAnimation: units/caravel/pirates/battle_caravel_pirates
     smallPortrait: units/caravel/pirates/portrait_caravel_pirates_small.png
     mediumPortrait: units/caravel/pirates/portrait_caravel_pirates_medium.png
     mapSpeed: 6.0

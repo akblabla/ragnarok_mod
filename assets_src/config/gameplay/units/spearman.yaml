@@ -21,6 +21,7 @@ unitClasses:
       - id: spear
     verbs:
       - capture
+      - capture_AI
       - load
       - rescue
       - attack_AI

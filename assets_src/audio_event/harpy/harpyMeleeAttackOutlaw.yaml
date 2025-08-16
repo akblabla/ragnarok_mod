@@ -1,0 +1,9 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/harpyAttackVoice.ogg ]
+    group: voice
+    pitch: [ 0.9, 1.1 ]
+    volume: [ 0.9, 1.0 ]
+    delay: 0.35
+...

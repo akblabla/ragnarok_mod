@@ -1,0 +1,266 @@
+---
+tilesets:
+  - id: beach
+    type: WangBlob
+    biomes:
+      - types: [grass, flower, deepforest]
+        spriteSheet: tilesets
+        spriteBase: wang_grass_plains_beach_tileset_000
+        waterSpriteBase: wang_grass_plains_beach_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_beach
+        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_beach_foreground
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_ocean        
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Coast
+        infoScreenOffset: 30
+        fillColour: '#bdae86'
+      - types: [tropical]
+        spriteSheet: terrain_tilesets
+        spriteBase: wang_tropical_plains_beach_tileset_000
+        waterSpriteBase: wang_tropical_plains_beach_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_beach
+        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_beach_foreground
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_ocean        
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Coast
+        infoScreenOffset: 30
+        fillColour: '#bdae86'
+      - types: [dungeon, dungeon_purple]
+        spriteSheet: tilesets
+        spriteBase: wang_dungeon_plains_beach_tileset_000
+        waterSpriteBase: wang_dungeon_plains_beach_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/dungeon_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: dungeon_battlescreen_extendedbackgrounds_beach
+        battleBackgroundSpriteForeground: dungeon_battlescreen_extendedbackgrounds_beach_foreground
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_ocean        
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Coast
+        infoScreenOffset: 30
+        fillColour: '#bdae86'
+      - types: [dungeon_lava]
+        spriteSheet: tilesets
+        spriteBase: wang_dungeon_lava_plains_beach_tileset_000
+        waterSpriteBase: wang_dungeon_lava_plains_beach_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/dungeon_lava_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: dungeon_lava_battlescreen_extendedbackgrounds_beach
+        battleBackgroundSpriteForeground: dungeon_lava_battlescreen_extendedbackgrounds_beach_foreground
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_ocean        
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Coast
+        infoScreenOffset: 30
+        fillColour: '#bdae86'
+      - types: [jungle]
+        spriteSheet: tilesets
+        spriteBase: wang_jungle_plains_beach_tileset_000
+        waterSpriteBase: wang_jungle_plains_beach_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/jungle_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: jungle_battlescreen_extendedbackgrounds_beach
+        battleBackgroundSpriteForeground: jungle_battlescreen_extendedbackgrounds_beach_foreground
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_ocean        
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Coast
+        infoScreenOffset: 30
+        fillColour: '#bdae86'
+      - types: [ice]
+        spriteSheet: tilesets
+        spriteBase: wang_ice_plains_beach_tileset_000
+        waterSpriteBase: wang_ice_plains_beach_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/ice_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: ice_battlescreen_extendedbackgrounds_beach
+        battleBackgroundSpriteForeground: ice_battlescreen_extendedbackgrounds_beach_foreground
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_beach
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Coast 
+        infoScreenOffset: 30
+        fillColour: '#aec6e3'
+      - types: [ice_low]
+        spriteSheet: tilesets
+        spriteBase: wang_ice_plains_beach_tileset_low_000
+        waterSpriteBase: wang_ice_plains_beach_tileset_low_001
+        battleBackgroundSpriteSheet: backgrounds/ice_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: ice_battlescreen_extendedbackgrounds_beach
+        battleBackgroundSpriteForeground: ice_battlescreen_extendedbackgrounds_beach_foreground
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_beach
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Coast 
+        infoScreenOffset: 30
+        fillColour: '#aec6e3'
+      - types: [arctic]
+        spriteSheet: tilesets
+        spriteBase: wang_arctic_plains_beach_tileset_000
+        waterSpriteBase: wang_arctic_plains_beach_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_beach
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_beach_foreground
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_beach
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Coast 
+        infoScreenOffset: 30
+        fillColour: '#aec6e3'
+      - types: [arctic_bloom]
+        spriteSheet: tilesets
+        spriteBase: wang_arctic_plains_beach_tileset_000
+        waterSpriteBase: wang_arctic_plains_beach_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds_bloom
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_bloom_beach
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_bloom_beach_foreground
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_beach
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Coast 
+        infoScreenOffset: 30
+        fillColour: '#aec6e3'
+      - types: [arctic_blood]
+        spriteSheet: tilesets
+        spriteBase: wang_arctic_plains_beach_tileset_000
+        waterSpriteBase: wang_arctic_plains_beach_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds_red
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_red_beach
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_red_beach_foreground
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_snow_beach
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Coast 
+        infoScreenOffset: 30
+        fillColour: '#aec6e3'
+      - types: [desert]
+        spriteSheet: tilesets
+        spriteBase: wang_desert_plains_beach_tileset_000
+        waterSpriteBase: wang_desert_plains_beach_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/desert_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: desert_battlescreen_extendedbackgrounds_beach
+        battleBackgroundSpriteForeground: desert_battlescreen_extendedbackgrounds_beach_foreground
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_sand_beach
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Coast
+        infoScreenOffset: 30
+        fillColour: '#beb890'
+    decayTo: sea
+    extras:
+      # Single tile variation
+      - { x: 6, y: 7, mask: 256 }
+      - { x: 6, y: 8, mask: 256 }
+      - { x: 6, y: 9, mask: 256 }
+      # Corner tile variation
+      - { x: 0, y: 7, mask: 28 }
+      - { x: 4, y: 7, mask: 112 }
+      - { x: 0, y: 11, mask: 7 }
+      - { x: 4, y: 11, mask: 193 }
+      # Outer corner tile variation
+      - { x: 1, y: 8, mask: 247 }
+      - { x: 2, y: 8, mask: 223 }
+      - { x: 1, y: 9, mask: 253 }
+      - { x: 2, y: 9, mask: 127 }
+      # Side tile variation
+      - { x: 1, y: 7, mask: 124 }
+      - { x: 2, y: 7, mask: 124 }
+      - { x: 3, y: 7, mask: 124 }
+
+      - { x: 0, y: 8, mask: 31 }
+      - { x: 0, y: 9, mask: 31 }
+      - { x: 0, y: 10, mask: 31 }
+
+      - { x: 4, y: 8, mask: 241 }
+      - { x: 4, y: 9, mask: 241 }
+      - { x: 4, y: 10, mask: 241 }
+
+      - { x: 1, y: 11, mask: 199 }
+      - { x: 2, y: 11, mask: 199 }
+      - { x: 3, y: 11, mask: 199 }
+      # U-shaped 1 tile wide ending variation
+      - { x: 0, y: 12, mask: 4 }
+      - { x: 4, y: 12, mask: 64 }
+      - { x: 5, y: 7, mask: 16 }
+      - { x: 5, y: 11, mask: 1 }
+      # Parallel 1 tile beach river variation
+      - { x: 1, y: 12, mask: 68 }
+      - { x: 2, y: 12, mask: 68 }
+      - { x: 3, y: 12, mask: 68 }
+
+      - { x: 5, y: 8, mask: 17 }
+      - { x: 5, y: 9, mask: 17 }
+      - { x: 5, y: 10, mask: 17 }
+
+    blend:
+      # pattern:
+      #   s = sea
+      #   b = beach
+      #   - = plains
+      #   . = don't care (ignore)
+      #   X = center (ignore)
+      #
+      # 1-tile coves
+      - { x: 9, y: 4, pattern: ".-.-Xs.-." }
+      - { x: 9, y: 5, pattern: ".-.sX-.-." }
+      - { x: 9, y: 6, pattern: ".-.-X-.s." }
+      - { x: 9, y: 7, pattern: ".s.-X-.-." }
+      # single tile, horizontal
+      - { x: 9, y: 0, pattern: "...sXs.-.", crop: [0, 8, 0, 0] }
+      - { x: 9, y: 1, pattern: ".-.sXs..." }
+      # single tile, vertical
+      - { x: 9, y: 2, pattern: ".s..X-.s.", crop: [8, 0, 0, 0] }
+      - { x: 9, y: 3, pattern: ".s.-X..s.", crop: [0, 0, 8, 0] }
+      # horizontal transitions
+      - { x: 7, y: 2, pattern: "...sXb.-.", crop: [0, 8, 0, 0] }
+      - { x: 8, y: 2, pattern: "...bXs.-.", crop: [0, 8, 0, 0] }
+      - { x: 7, y: 3, pattern: ".-.sXb..." }
+      - { x: 8, y: 3, pattern: ".-.bXs..." }
+      # vertical transitions
+      - { x: 7, y: 0, pattern: ".s..X-.b.", crop: [8, 0, 0, 0] }
+      - { x: 7, y: 1, pattern: ".b..X-.s.", crop: [8, 0, 0, 0] }
+      - { x: 8, y: 0, pattern: ".s.-X..b.", crop: [0, 0, 8, 0] }
+      - { x: 8, y: 1, pattern: ".b.-X..s.", crop: [0, 0, 8, 0] }
+      # 1-tile corners
+      - { x: 7, y: 8, pattern: ".-.-Xs.s." }
+      - { x: 8, y: 8, pattern: ".-.sX-.s." }
+      - { x: 7, y: 9, pattern: ".s.-Xs.-." }
+      - { x: 8, y: 9, pattern: ".s.sX-.-." }
+      # corner, horizontal transition
+      - { x: 7, y: 4, pattern: ".-.-Xs.b." }
+      - { x: 8, y: 4, pattern: ".-.sX-.b." }
+      - { x: 7, y: 5, pattern: ".b.-Xs.-." }
+      - { x: 8, y: 5, pattern: ".b.sX-.-." }
+      # corner, vertical transition
+      - { x: 7, y: 6, pattern: ".-.-Xb.s." }
+      - { x: 8, y: 6, pattern: ".-.bX-.s." }
+      - { x: 7, y: 7, pattern: ".s.-Xb.-." }
+      - { x: 8, y: 7, pattern: ".s.bX-.-." }
+      # sand banks
+      - { x: 6, y: 10, pattern: "....Xs.b-", crop: [8, 8, 0, 0] }
+      - { x: 5, y:  3, pattern: "....Xb.b-" }
+      - { x: 7, y: 10, pattern: "...sX.-b.", crop: [0, 8, 8, 0] }
+      - { x: 3, y:  1, pattern: "...bX.-b." }
+      - { x: 6, y: 11, pattern: ".b-.Xs...", crop: [8, 0, 0, 2] }
+      - { x: 1, y:  3, pattern: ".b-.Xb..." }
+      - { x: 7, y: 11, pattern: "-b.sX....", crop: [0, 0, 8, 2] }
+      - { x: 4, y:  3, pattern: "-b.bX...." }
+      - { x: 8, y: 10, pattern: "....Xb.s-", crop: [8, 8, 0, 0] }
+      - { x: 9, y: 10, pattern: "...bX.-s.", crop: [0, 8, 8, 0] }
+      - { x: 8, y: 11, pattern: ".s-.Xb...", crop: [8, 0, 0, 0] }
+      - { x: 9, y: 11, pattern: "-s.bX....", crop: [0, 0, 8, 0] }
+      # special cases: single tile, beach both sides
+      - { x: 3, y: 0, pattern: ".-.bXb.s." }
+      - { x: 3, y: 0, pattern: ".-.bXb.b." }
+      - { x: 1, y: 4, pattern: ".s.bXb.-." }
+      - { x: 1, y: 4, pattern: ".b.bXb.-." }
+      - { x: 4, y: 1, pattern: ".b.sX-.b." }
+      - { x: 4, y: 1, pattern: ".b.bX-.b." }
+      - { x: 0, y: 3, pattern: ".b.-Xs.b." }
+      - { x: 0, y: 3, pattern: ".b.-Xb.b." }
+      # special cases: corner, beach both directions
+      - { x: 3, y: 3, pattern: ".-.-Xb.b." }
+      - { x: 6, y: 2, pattern: ".-.bX-.b." }
+      - { x: 2, y: 6, pattern: ".b.-Xb.-." }
+      - { x: 5, y: 5, pattern: ".b.bX-.-." }
+...

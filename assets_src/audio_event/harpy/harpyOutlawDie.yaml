@@ -1,0 +1,13 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/hitOrganic1.ogg ]
+    group: sfx
+    pitch: [ 0.95, 1.05 ]
+    volume: [ 0.9, 1.0 ]
+  - type: play
+    clips: [ sfx/soldierDie1.ogg, sfx/soldierDie2.ogg, sfx/soldierDie3.ogg, sfx/soldierDie4.ogg ]
+    group: sfx
+    pitch: [ 0.9, 1.1 ]
+    volume: [ 0.9, 1.0 ]
+...

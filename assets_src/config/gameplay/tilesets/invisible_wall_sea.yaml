@@ -12,7 +12,7 @@ tilesets:
         iconSpriteSheet: ui_RagnarokMod
         iconSprite: ":img:ui/codex/icons/icon_terrain_brush.png"
         fillColour: '#7fa33b'
-      - types: [tropical]
+      - types: [tropical, flower]
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_forest
         battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds

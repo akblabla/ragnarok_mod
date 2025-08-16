@@ -24,6 +24,7 @@ unitClasses:
       - id: bident
     verbs:
       - capture
+      - capture_AI
       - load
       - rescue
       - attack_AI
@@ -95,6 +96,9 @@ units:
         effect: fx/bs_bident_attack_1
         effectDelay: 1.3
         attackEffectSound: attackEffect1
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: hit
+        postAttackDeathSequence: death
         numAttackers: 1
         ranged: true
       - id: twoMermen
@@ -103,6 +107,9 @@ units:
         effect: fx/bs_bident_attack_2
         effectDelay: 1.3
         attackEffectSound: attackEffect2
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: hit
+        postAttackDeathSequence: death
         numAttackers: 2
         ranged: true
       - id: threeMermen
@@ -111,6 +118,9 @@ units:
         effect: fx/bs_bident_attack_3
         effectDelay: 1.3
         attackEffectSound: attackEffect3
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: hit
+        postAttackDeathSequence: death
         numAttackers: 3
         ranged: true
       - id: fourMermen
@@ -119,6 +129,9 @@ units:
         effect: fx/bs_bident_attack_4
         effectDelay: 1.3
         attackEffectSound: attackEffect4
+        postAttackAnimationSequence: post_attack_idle
+        postAttackHitSequence: hit
+        postAttackDeathSequence: death
         numAttackers: 4
         ranged: true
     shouts:      

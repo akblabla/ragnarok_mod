@@ -4,7 +4,7 @@ tilesets:
     primaryConnect: []
     decayTo: river
     biomes:
-      - types: [grass,tropical]
+      - types: [grass,tropical, flower]
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_ocean
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod

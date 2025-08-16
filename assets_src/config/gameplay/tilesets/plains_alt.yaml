@@ -14,7 +14,7 @@ tilesets:
         iconSprite: ":img:ui/codex/icons/icon_terrain_plains_alt.png"
         infoScreenOffset: 30
         fillColour: '#92b141'
-      - types: [tropical]
+      - types: [tropical, flower]
         spriteSheet: terrain_tilesets
         spriteBase: tropical_fake_sand_plains_tileset
         portraitSpriteSheet: terrain/terrain_portraits

@@ -325,10 +325,6 @@ triggerActions:
     parameters:
       - type: integer
       - type: player
-  - id: limit_bounds
-    parameters:
-      - type: location
-      - type: player
 
 #Normally hidden triggers
   - id: set_conditional_location_highlight

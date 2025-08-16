@@ -2,7 +2,7 @@
 tilesets:
   - id: cave_bridge
     biomes:
-      - types: [grass,tropical]
+      - types: [grass]
         spriteSheet: terrain_tilesets
         spriteBase: cave_bridge_tileset_000
         foregroundSpriteBase: cave_bridge_tileset_001
@@ -32,7 +32,7 @@ tilesets:
         iconSprite: ":img:ui/codex/icons/icon_terrain_cave_bridge.png"
         infoScreenOffset: 75
         fillColour: '#2a2542'
-      - types: [desert]
+      - types: [desert,tropical, flower]
         spriteSheet: terrain_tilesets
         spriteBase: cave_bridge_tileset_000
         foregroundSpriteBase: cave_bridge_tileset_001

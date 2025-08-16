@@ -25,6 +25,7 @@ unitClasses:
     verbs:
       - load
       - capture
+      - capture_AI
       - groove_golf
       - mini_groove_putt
       - rescue

@@ -2,10 +2,23 @@
 tilesets:
   - id: cave_sea
     biomes:
-      - types: [grass,tropical, ice, desert]
+      - types: [grass, ice, flower]
         spriteSheet: terrain_tilesets
         spriteBase: cave_sea_tileset_000
         waterSpriteBase: cave_sea_tileset_001
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: cove_battlescreen_background
+        battleBackgroundSpriteForeground: cove_battlescreen_foreground
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_ocean
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_cave_sea.png"
+        infoScreenOffset: 35
+        fillColour: '#2a2542'
+      - types: [tropical, desert]
+        spriteSheet: terrain_tilesets
+        spriteBase: cave_sand_sea_tileset_000
+        waterSpriteBase: cave_sand_sea_tileset_001
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
         battleBackgroundSprite: cove_battlescreen_background
         battleBackgroundSpriteForeground: cove_battlescreen_foreground

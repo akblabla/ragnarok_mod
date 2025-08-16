@@ -122,12 +122,12 @@ function Hire:preExecute(unit, targetPos, strParam, endPos)
     else
         discount = 100 - tonumber(discount)
     end
-    if message ~= nil then
+    if message ~= nil and message ~= "" then
         Wargroove.showDialogueBox(messageExpression, messageCharacter, message, messageShout, {}, "standard", false, messageName, "neutral")
         Wargroove.removeUnitState(target, "RecruitMessage")
     end
     Wargroove.openRecruitMenu(unit.playerId, unit.id, unit.pos, unit.unitClassId, recruitableUnits, (100-discount)/100.0, defaultUnits, "outlaw");
-
+    Wargroove.updateUnit(target)
     while Wargroove.recruitMenuIsOpen() do
         coroutine.yield()
     end
@@ -155,6 +155,11 @@ function Hire:execute(unit, targetPos, strParam, path)
         return
     end
 
+    if discount == nil then
+        discount = 0
+    else
+        discount = 100 - tonumber(discount)
+    end
     local facingOverride = ""
     if targetPos.x > unit.pos.x then
         facingOverride = "right"
@@ -178,20 +183,25 @@ function Hire:execute(unit, targetPos, strParam, path)
     Wargroove.playMapSound("thiefDeposit", targetPos)
     Wargroove.waitTime(0.4)
     local uc = Wargroove.getUnitClass(strParam)
-    Wargroove.changeMoney(unit.playerId, -getCost(uc.cost))
+    local target = Wargroove.getUnitAt(targetPos)
+    local discount = Wargroove.getUnitState(target,"RecruitDiscount")
+    if discount == nil then
+        discount = 0
+    else
+        discount = 100 - tonumber(discount)
+    end
+    Wargroove.changeMoney(unit.playerId, -getCost(uc.cost)*(100-discount)/100.0)
  --   Wargroove.spawnUnit(unit.playerId, targetPos, strParam, false, "", "", "floran")
 
-	local u = Wargroove.getUnitAt(targetPos)
-
-	if u then
+	if target then
 		print(strParam)
-		u.unitClassId = strParam
-		u.playerId = unit.playerId
-		u.hadTurn = true
+		target.unitClassId = strParam
+		target.playerId = unit.playerId
+		target.hadTurn = true
         if (strParam=="rifleman") then
-            Wargroove.setUnitState(u, "ammo",3)
+            Wargroove.setUnitState(target, "ammo",3)
         end
-		Wargroove.updateUnit(u)
+		Wargroove.updateUnit(target)
 	end
 
     Wargroove.waitTime(0.2)

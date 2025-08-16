@@ -1,0 +1,41 @@
+---
+tilesets:
+  - id: sky
+    primaryConnect: []
+    biomes:
+      - types: [grass, jungle, desert, ice, flower, deepforest, ice_low, tropical]
+        battleBackgroundSpriteSheet: backgrounds/battlescreen_extendedbackgrounds
+        battleBackgroundSprite: battlescreen_extendedbackgrounds_sky
+        battleBackgroundSpriteForeground: battlescreen_extendedbackgrounds_sky_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_sky
+      - types: [dungeon, dungeon_purple]
+        battleBackgroundSpriteSheet: backgrounds/dungeon_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: dungeon_battlescreen_extendedbackgrounds_sky
+        battleBackgroundSpriteForeground: dungeon_battlescreen_extendedbackgrounds_sky_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_sky
+      - types: [dungeon_lava]
+        battleBackgroundSpriteSheet: backgrounds/dungeon_lava_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: dungeon_lava_battlescreen_extendedbackgrounds_sky
+        battleBackgroundSpriteForeground: dungeon_lava_battlescreen_extendedbackgrounds_sky_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_sky
+      - types: [arctic]
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_sky
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_sky_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_sky
+      - types: [arctic_bloom]
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds_bloom
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_bloom_sky
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_bloom_sky_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_sky
+      - types: [arctic_blood]
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds_red
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_red_sky
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_red_sky_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_sky

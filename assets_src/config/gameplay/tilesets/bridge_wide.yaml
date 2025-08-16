@@ -2,7 +2,7 @@
 tilesets:
   - id: bridge_wide
     biomes:
-      - types: [grass,tropical]
+      - types: [grass,tropical, flower]
         spriteSheet: grass_bridge_terrain_tilesets
         spriteBase: grass_bridge_tileset2_bg
         foregroundSpriteBase: grass_bridge_tileset2_fg

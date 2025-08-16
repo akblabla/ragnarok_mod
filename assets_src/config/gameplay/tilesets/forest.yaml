@@ -184,6 +184,76 @@ tilesets:
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_large
 
+      - types: [tropical]
+        minRandomElements: 2
+        maxRandomElements: 3
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_forest
+        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_forest
+        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_forest_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Forest
+        fillColour: '#7fa33b'
+        randomElements:
+          - sprite: terrain/trees/tropical/round2_small
+            spriteSheet: ragnarok_decoration 
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/tropical/round2_medium
+            spriteSheet: ragnarok_decoration 
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/tropical/round2_big
+            spriteSheet: ragnarok_decoration 
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+            
+          - sprite: terrain/trees/tropical/round3_small
+            spriteSheet: ragnarok_decoration 
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/tropical/round3_medium
+            spriteSheet: ragnarok_decoration 
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+
+          - sprite: terrain/trees/tropical/round3_big
+            spriteSheet: ragnarok_decoration 
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+          - sprite: terrain/trees/tropical/flat2_small
+            spriteSheet: ragnarok_decoration 
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/tropical/flat2_medium
+            spriteSheet: ragnarok_decoration 
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium    
+
+          - sprite: terrain/trees/tropical/flat2_big
+            spriteSheet: ragnarok_decoration 
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large    
+            
+          - sprite: terrain/trees/desert/shrub_desert2_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+            
+          - sprite: terrain/trees/jungle/grass1_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_jungle
+
+          - sprite: terrain/trees/jungle/grass2_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
       - types: [dungeon]
         minRandomElements: 3
         maxRandomElements: 4

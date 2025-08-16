@@ -24,6 +24,7 @@ unitClasses:
     verbs:
       - load
       - capture
+      - capture_AI
       - wait_ai
     tags:
       - commander

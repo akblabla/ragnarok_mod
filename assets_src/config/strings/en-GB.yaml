@@ -38,7 +38,7 @@ en-GB: &flag-en
 
   
   #biomes
-  biome_name_tropical: Tropical
+  biome_name_tropical: Sub-Tropical
   
   #terrain
   terrain_name_rough: Cave
@@ -170,7 +170,6 @@ en-GB: &flag-en
   unit_name_archer_outlaw: Poacher 
   unit_name_dog_outlaw: Stray
   unit_name_mage_outlaw: Trickster 
-  unit_name_rifleman_outlaw: Sharpshooter 
   unit_name_soldier_outlaw: Cutthroat
   unit_name_spearman_outlaw: Brigand 
   unit_name_knight_outlaw: Highwayman 
@@ -179,12 +178,12 @@ en-GB: &flag-en
   unit_name_harpoonship_outlaw: Harpoon Ship 
   unit_name_dragon_outlaw: Emberwing 
   unit_name_trebuchet_outlaw: Trebuchet 
-  unit_name_merman_outlaw: Corsair
+  unit_name_merman_outlaw: Lumper
   unit_name_turtle_outlaw: Seadog 
   unit_name_witch_outlaw: Hag 
-  unit_name_harpy_outlaw: Harpy 
+  unit_name_harpy_outlaw: Magpie 
   unit_name_balloon_outlaw: Balloon 
-  unit_name_giant_outlaw: Golem 
+  unit_name_giant_outlaw: Lad
   unit_name_ballista_outlaw: Ballista 
   unit_name_travelboat_outlaw: Barge
   unit_name_villager_outlaw: Beggar 
@@ -196,7 +195,7 @@ en-GB: &flag-en
   unit_name_rival_outlaw: Ol'Friend 
   unit_name_griffin_outlaw: Goose Rider
   unit_name_caravel_outlaw: Dinghy
-  unit_name_frog_outlaw: Toad
+  unit_name_frog_outlaw: Toadfolk
   unit_name_kraken_outlaw: Kraken
 
 
@@ -205,6 +204,8 @@ en-GB: &flag-en
 
   structure_name_outpost: "Outpost"
   unit_description_outpost: "Used to recruit light ground units. Can't recruit two consecutive turns. Can also reinforce injured units."
+
+  structure_name_crew: "Capsized Crew"
 
   # UNIT DESCRIPTIONS
   unit_description_soldier: "Basic infantry, useful for capturing structures. Critical hit when adjacent to its commander."
@@ -234,6 +235,7 @@ en-GB: &flag-en
   unit_description_kraken: "Naval supremacist. Tentacle ability immobilizes a unit for one turn (Range: 3).\nCritical hit when enemy has no adjacent allies."
   #backgrounds
   ui_cutscene_background_deck: "Ship Deck"
+  ui_cutscene_background_outlaw_ship: "Outlaw Ship (new)"
   ui_cutscene_background_vesper_ship: "Vesper Ship"
   ui_cutscene_background_vesper_ship_right: "Vesper Ship Mirrored"
   ui_cutscene_background_vesper_cherry_ship: "Vesper and Cherry Ship"

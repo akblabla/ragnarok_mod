@@ -64,6 +64,55 @@ tilesets:
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_large
 
+      - types: [tropical]
+        minRandomElements: 2
+        maxRandomElements: 3
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_forest
+        battleBackgroundSpriteSheet: backgrounds/jungle_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: jungle_battlescreen_extendedbackgrounds_forest
+        battleBackgroundSpriteForeground: jungle_battlescreen_extendedbackgrounds_forest_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Forest
+        fillColour: '#7fa33b'
+        randomElements:
+          - sprite: terrain/trees/desert/palm_desert2_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+          - sprite: terrain/trees/desert/palm_desert2_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_medium
+
+          - sprite: terrain/trees/desert/palm_desert2_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+          - sprite: terrain/trees/desert/shrub_desert2_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+            
+          - sprite: terrain/trees/jungle/jungletree3_small 
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+          - sprite: terrain/trees/jungle/jungletree3_medium
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+          - sprite: terrain/trees/jungle/jungletree3_big
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_large
+
+          - sprite: terrain/trees/jungle/grass1_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_jungle
+
+          - sprite: terrain/trees/jungle/grass2_small
+            shadowSpriteSheet: fx/shadows
+            shadowSprite: shadows_small
+
+
       - types: [ice]
         minRandomElements: 3
         maxRandomElements: 4

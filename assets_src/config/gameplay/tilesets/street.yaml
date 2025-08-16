@@ -2,7 +2,7 @@
 tilesets:
   - id: street
     biomes:
-      - types: [grass, jungle, arctic, arctic_blood, dungeon, dungeon_lava, dungeon_purple, tundra, flower, deepforest, ice_low, arctic_bloom]
+      - types: [grass, jungle, arctic, arctic_blood, dungeon, dungeon_lava, dungeon_purple, tundra, flower, deepforest, ice_low, arctic_bloom, tropical]
         spriteSheet: terrain_tilesets
         spriteBase: grass_street_tileset
         portraitSpriteSheet: terrain/terrain_portraits

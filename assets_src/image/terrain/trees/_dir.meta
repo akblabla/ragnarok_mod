@@ -1,0 +1,5 @@
+---
+- data:
+    material: Wargroove/SpriteDepth
+    atlas: ragnarok_decoration
+...

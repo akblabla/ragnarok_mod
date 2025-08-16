@@ -323,6 +323,13 @@ decorations:
     animation:
       undefined: decoration/ground/street
 
+  - id: plain_patch_alt
+    layer: ground
+    animation:
+      tropical: decoration/ground/plain_patch_alt_tropical
+      undefined: decoration/ground/plain_patch_alt_tropical
+
+
   - id: solidBarrel
     layer: units
     animation:
@@ -532,7 +539,7 @@ decorations:
     animation:
       grass: decoration/ground/breeze_ice
       ice: decoration/ground/breeze_desert
-      tropical: decoration/ground/breeze_desert
+      tropical: decoration/old_desert/ground/breeze_desert
       desert: decoration/ground/breeze_grass
       volcano: decoration/ground/breeze_volcano     
   - id: rock0_alt
@@ -540,7 +547,7 @@ decorations:
     animation:
       grass: decoration/ground/rock0_ice
       ice: decoration/ground/rock0_desert
-      tropical: decoration/ground/rock0_desert
+      tropical: decoration/old_desert/ground/rock0_desert
       desert: decoration/ground/rock0_grass
       volcano: decoration/ground/rock0_volcano      
   - id: rock1_alt
@@ -548,7 +555,7 @@ decorations:
     animation:
       grass: decoration/ground/rock1_ice
       ice: decoration/ground/rock1_desert
-      tropical: decoration/ground/rock1_desert
+      tropical: decoration/old_desert/ground/rock1_desert
       desert: decoration/ground/rock1_grass
       volcano: decoration/ground/rock1_volcano   
   - id: rock2_alt
@@ -556,7 +563,7 @@ decorations:
     animation:
       grass: decoration/ground/rock2_ice
       ice: decoration/ground/rock2_desert
-      tropical: decoration/ground/rock2_desert
+      tropical: decoration/old_desert/ground/rock2_desert
       desert: decoration/ground/rock2_grass
       volcano: decoration/ground/rock2_volcano    
   - id: flowers1_alt
@@ -564,7 +571,7 @@ decorations:
     animation:
       grass: decoration/ground/flowers1_ice
       ice: decoration/ground/flowers1_desert
-      tropical: decoration/ground/flowers1_desert
+      tropical: decoration/old_desert/ground/flowers1_desert
       desert: decoration/ground/flowers1_grass
       volcano: decoration/ground/flowers1_volcano     
   - id: flowers2_alt
@@ -572,7 +579,7 @@ decorations:
     animation:
       grass: decoration/ground/flowers2_ice
       ice: decoration/ground/flowers2_desert
-      tropical: decoration/ground/flowers2_desert
+      tropical: decoration/old_desert/ground/flowers2_desert
       desert: decoration/ground/flowers2_grass
       volcano: decoration/ground/flowers2_volcano    
   - id: log1_alt
@@ -580,7 +587,7 @@ decorations:
     animation:
       grass: decoration/ground/log1_ice
       ice: decoration/ground/log1_desert
-      tropical: decoration/ground/log1_desert
+      tropical: decoration/old_desert/ground/log1_desert
       desert: decoration/ground/log1_grass
       volcano: decoration/ground/log1_volcano       
   - id: log2_alt
@@ -588,7 +595,7 @@ decorations:
     animation:
       grass: decoration/ground/log2_ice
       ice: decoration/ground/log2_desert
-      tropical: decoration/ground/log2_desert
+      tropical: decoration/old_desert/ground/log2_desert
       desert: decoration/ground/log2_grass
       volcano: decoration/ground/log2_volcano     
   - id: stump1_alt
@@ -596,7 +603,7 @@ decorations:
     animation:
       grass: decoration/ground/stump1_ice
       ice: decoration/ground/stump1_desert
-      tropical: decoration/ground/stump1_desert
+      tropical: decoration/old_desert/ground/stump1_desert
       desert: decoration/ground/stump1_grass
       volcano: decoration/ground/stump1_desert      
   - id: monolith1_alt
@@ -604,7 +611,7 @@ decorations:
     animation:
       grass: decoration/unit/monolith1_ice
       ice: decoration/unit/monolith1_desert
-      tropical: decoration/unit/monolith1_desert
+      tropical: decoration/old_desert/unit/monolith1_desert
       desert: decoration/unit/monolith1_grass
       volcano: decoration/unit/monolith1_volcano    
 
@@ -615,7 +622,7 @@ decorations:
     animation:
       grass: decoration/unit/ruin1_ice
       ice: decoration/unit/ruin1_desert
-      tropical: decoration/unit/ruin1_desert
+      tropical: decoration/old_desert/unit/ruin1_desert
       desert: decoration/unit/ruin1_grass
       volcano: decoration/unit/ruin1_volcano     
   - id: ruin2_alt
@@ -623,7 +630,7 @@ decorations:
     animation:
       grass: decoration/unit/ruin2_ice
       ice: decoration/unit/ruin2_desert
-      tropical: decoration/unit/ruin2_desert
+      tropical: decoration/old_desert/unit/ruin2_desert
       desert: decoration/unit/ruin2_grass
       volcano: decoration/unit/ruin2_volcano    
   - id: ruin3_alt
@@ -631,7 +638,7 @@ decorations:
     animation:
       grass: decoration/unit/ruin3_ice
       ice: decoration/unit/ruin3_desert
-      tropical: decoration/unit/ruin3_desert
+      tropical: decoration/old_desert/unit/ruin3_desert
       desert: decoration/unit/ruin3_grass
       volcano: decoration/unit/ruin3_volcano        
   - id: ruin4_alt
@@ -639,7 +646,7 @@ decorations:
     animation:
       grass: decoration/unit/ruin4_ice
       ice: decoration/unit/ruin4_desert
-      tropical: decoration/unit/ruin4_desert
+      tropical: decoration/old_desert/unit/ruin4_desert
       desert: decoration/unit/ruin4_grass
       volcano: decoration/unit/ruin4_volcano      
   - id: ruin5_alt
@@ -647,7 +654,7 @@ decorations:
     animation:
       grass: decoration/unit/ruin5_ice
       ice: decoration/unit/ruin5_desert
-      tropical: decoration/unit/ruin5_desert
+      tropical: decoration/old_desert/unit/ruin5_desert
       desert: decoration/unit/ruin5_grass
       volcano: decoration/unit/ruin5_volcano  
   - id: ruin6_alt
@@ -655,7 +662,7 @@ decorations:
     animation:
       grass: decoration/unit/ruin6_ice
       ice: decoration/unit/ruin6_desert
-      tropical: decoration/unit/ruin6_desert
+      tropical: decoration/old_desert/unit/ruin6_desert
       desert: decoration/unit/ruin6_grass
       volcano: decoration/unit/ruin6_volcano      
   - id: ruin7_alt
@@ -663,7 +670,7 @@ decorations:
     animation:
       grass: decoration/ground/ruin7_ice
       ice: decoration/ground/ruin7_desert
-      tropical: decoration/ground/ruin7_desert
+      tropical: decoration/old_desert/ground/ruin7_desert
       desert: decoration/ground/ruin7_grass
       volcano: decoration/ground/ruin7_volcano   
   - id: ruinground_alt
@@ -671,7 +678,7 @@ decorations:
     animation:
       grass: decoration/ground/ruinground_ice
       ice: decoration/ground/ruinground_desert
-      tropical: decoration/ground/ruinground_desert
+      tropical: decoration/old_desert/ground/ruinground_desert
       desert: decoration/ground/ruinground_grass
       volcano: decoration/ground/ruinground_volcano
   - id: princessstatue_alt
@@ -679,7 +686,7 @@ decorations:
     animation:
       grass: decoration/unit/princess_statue_ice
       ice: decoration/unit/princess_statue_desert
-      tropical: decoration/unit/princess_statue_desert
+      tropical: decoration/old_desert/unit/princess_statue_desert
       desert: decoration/unit/princess_statue_grass
       volcano: decoration/unit/princess_statue_volcano                                          
   # man-made objects
@@ -688,7 +695,7 @@ decorations:
     animation:
       grass: decoration/unit/sign1_ice
       ice: decoration/unit/sign1_desert
-      tropical: decoration/unit/sign1_desert
+      tropical: decoration/old_desert/unit/sign1_desert
       desert: decoration/unit/sign1_grass
       volcano: decoration/unit/sign1_desert        
   - id: sign2_alt
@@ -696,7 +703,7 @@ decorations:
     animation:
       grass: decoration/unit/sign2_ice
       ice: decoration/unit/sign2_desert
-      tropical: decoration/unit/sign2_desert
+      tropical: decoration/old_desert/unit/sign2_desert
       desert: decoration/unit/sign2_grass
       volcano: decoration/unit/sign2_desert     
   - id: gravestone1_alt
@@ -704,7 +711,7 @@ decorations:
     animation:
       grass: decoration/unit/gravestone1_ice
       ice: decoration/unit/gravestone1_desert
-      tropical: decoration/unit/gravestone1_desert
+      tropical: decoration/old_desert/unit/gravestone1_desert
       desert: decoration/unit/gravestone1_grass
       volcano: decoration/unit/gravestone1_volcano      
   - id: well_alt
@@ -712,7 +719,7 @@ decorations:
     animation:
       grass: decoration/unit/well_ice
       ice: decoration/unit/well_desert
-      tropical: decoration/unit/well_desert
+      tropical: decoration/old_desert/unit/well_desert
       desert: decoration/unit/well_grass
       volcano: decoration/unit/well_desert      
   - id: chest1_alt
@@ -720,7 +727,7 @@ decorations:
     animation:
       grass: decoration/unit/chest1_ice
       ice: decoration/unit/chest1_desert
-      tropical: decoration/unit/chest1_desert
+      tropical: decoration/old_desert/unit/chest1_desert
       desert: decoration/unit/chest1_grass
       volcano: decoration/unit/chest1_volcano     
   - id: scarecrow1_alt
@@ -728,7 +735,7 @@ decorations:
     animation:
       grass: decoration/unit/scarecrow1_ice
       ice: decoration/unit/scarecrow1_desert
-      tropical: decoration/unit/scarecrow1_desert
+      tropical: decoration/old_desert/unit/scarecrow1_desert
       desert: decoration/unit/scarecrow1_grass
       volcano: decoration/unit/scarecrow1_volcano 
   - id: pillar1_alt
@@ -736,7 +743,7 @@ decorations:
     animation:
       grass: decoration/unit/pillar1_ice
       ice: decoration/unit/pillar1_desert
-      tropical: decoration/unit/pillar1_desert
+      tropical: decoration/old_desert/unit/pillar1_desert
       desert: decoration/unit/pillar1_grass
       volcano: decoration/unit/pillar1_volcano     
   - id: pillar2_alt
@@ -744,7 +751,7 @@ decorations:
     animation:
       grass: decoration/unit/pillar2_ice
       ice: decoration/unit/pillar2_desert
-      tropical: decoration/unit/pillar2_desert
+      tropical: decoration/old_desert/unit/pillar2_desert
       desert: decoration/unit/pillar2_grass
       volcano: decoration/unit/pillar2_volcano  
   - id: barrel1_alt
@@ -752,7 +759,7 @@ decorations:
     animation:
       grass: decoration/unit/barrel1_ice
       ice: decoration/unit/barrel1_desert
-      tropical: decoration/unit/barrel1_desert
+      tropical: decoration/old_desert/unit/barrel1_desert
       desert: decoration/unit/barrel1_grass
       volcano: decoration/unit/barrel1_volcano    
   - id: crate1_alt
@@ -760,7 +767,7 @@ decorations:
     animation:
       grass: decoration/unit/crate1_ice
       ice: decoration/unit/crate1_desert
-      tropical: decoration/unit/crate1_desert
+      tropical: decoration/old_desert/unit/crate1_desert
       desert: decoration/unit/crate1_grass
       volcano: decoration/unit/crate1_volcano        
   - id: hay_alt
@@ -768,7 +775,7 @@ decorations:
     animation:
       grass: decoration/unit/hay_ice
       ice: decoration/unit/hay_desert
-      tropical: decoration/unit/hay_desert
+      tropical: decoration/old_desert/unit/hay_desert
       desert: decoration/unit/hay_grass
       volcano: decoration/unit/hay_volcano     
   - id: caveBG

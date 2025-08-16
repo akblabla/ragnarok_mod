@@ -20,7 +20,11 @@ local valueReductionPerUnitList = {
 	trebuchet = 0.5,
 	turtle = 0.8,
 	warship = 0.8,
-	witch = 0.6
+	witch = 0.6,
+	kraken = 0.6,
+	frog = 0.8,
+	caravel = 0.85,
+	griffin_walking = 0.8,
 }
 
 local idealUnitRatioList = {
@@ -40,7 +44,11 @@ local idealUnitRatioList = {
 	trebuchet = 0.3,
 	turtle = 1,
 	warship = 1,
-	witch = 1
+	witch = 2,
+	kraken = 0.65,
+	frog = 0.85,
+	caravel = 1,
+	griffin_walking = 0.75,
 }
 
 local powerMultiplierList = {
@@ -53,15 +61,34 @@ local powerMultiplierList = {
 	harpoonship = 0.5,
 	mage = 0.8,
 	soldier = 1.5,
-	witch = 0
+	witch = 0,
+	kraken = 1,
+	frog = 1.2,
+	caravel = 1.1,
+	griffin_walking = 1,
 }
-
+local antiAirMultiplierList = {
+	archer = 1,
+	dog = 1.25,
+	ballista = 0.5,
+	dragon = 1.2,
+	harpy = 1.2,
+	knight = 0.5,
+	harpoonship = 0.5,
+	mage = 0.8,
+	soldier = 1.5,
+	witch = 0,
+	kraken = 1,
+	frog = 1.2,
+	caravel = 1.1,
+	griffin_walking = 1,
+}
 function MangroveAI.setProfile()
 	DefaultAI.setProfile()
 	CustomAI.valueReductionPerUnitList = valueReductionPerUnitList
 	CustomAI.idealUnitRatioList = idealUnitRatioList
 	CustomAI.powerMultiplierList = powerMultiplierList
-	-- CustomAI.antiAirMultiplierList = antiAirMultiplierList
+	CustomAI.antiAirMultiplierList = antiAirMultiplierList
 	-- CustomAI.bannedUnitList = bannedUnitList
 	-- CustomAI.antiAirReluctance = antiAirReluctance
 	-- CustomAI.airThreatPerTower = airThreatPerTower

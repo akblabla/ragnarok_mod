@@ -29,6 +29,7 @@ unitClasses:
     verbs:
       - load
       - capture
+      - capture_AI
       - spell_heal
       - rescue
       - attack_AI

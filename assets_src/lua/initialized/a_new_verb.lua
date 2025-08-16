@@ -5,8 +5,6 @@ local VisionTracker = require "initialized/vision_tracker"
 local AIManager = require "initialized/ai_manager"
 local Pathfinding = require "util/pathfinding"
 local StealthManager = require "scripts/stealth_manager"
-local PosKey = require "util/posKey"
-local Events = require "wargroove/events"
 local function dump(o,level)
     if type(o) == 'table' then
        local s = '\n' .. string.rep("   ", level) .. '{\n'
@@ -24,29 +22,9 @@ local Verb = {}
 function Verb.init()
     OldVerb.doExecuteEntry = Verb.doExecuteEntry
     OldVerb.canExecute = Verb.canExecute
---    OldVerb.executeEntry = Verb.executeEntry
---    OldVerb.generateOrders = Verb.generateOrders
-end
-local borderLandPlayerList = {}
-function Verb.setBorderLands(location, playerId)
-    borderLandPlayerList[playerId] = {}
-    for i, tile in pairs(location.positions) do
-        borderLandPlayerList[playerId][PosKey.generatePosKey(tile)] = true
-    end 
-end
-function Verb.inInBorderlands(pos, playerId)
-    if borderLandPlayerList[playerId]~=nil then
-        if borderLandPlayerList[playerId][PosKey.generatePosKey(pos)]~=nil then
-            return true
-        end
-    end
-    return false
 end
 
 function Verb:canExecute(unit, endPos, targetPos, strParam)
-    if Verb.inInBorderlands(endPos, unit.playerId) then
-        return false
-    end
     if not self:canExecuteAnywhere(unit) then
         return false
     end

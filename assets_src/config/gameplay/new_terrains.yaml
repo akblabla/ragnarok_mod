@@ -300,6 +300,8 @@ terrains:
     tilesets:
       0: [plains, plains_alt]
       1: brush
+    wang:
+      complementary: true
 
   - id: brush_invis
     name: terrain_name_brush

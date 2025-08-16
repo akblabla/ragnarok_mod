@@ -2,7 +2,7 @@
 tilesets:
   - id: wall_no_blocking
     biomes:
-      - types: [grass,tropical, ice, desert]
+      - types: [grass,tropical, flower, ice, desert]
         spriteSheet: terrain_tilesets
         spriteBase: wall_no_blocking
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod

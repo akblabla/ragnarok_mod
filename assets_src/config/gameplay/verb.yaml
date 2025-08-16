@@ -20,6 +20,15 @@ verbs:
     # description: ui_unit_verbs_attack_description
     scriptName: verbs/attack_AI
 
+  - id: capture_AI
+    icon: ui/icons/unit_action_icon_capture.png
+    name: ui_unit_verbs_capture
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetted: true
+    directTarget: true
+    scriptName: verbs/capture_AI
+
   - id: groove_smoke_screen
     icon: ui/icons/grooves/unit_action_icon_smoke_tier_1.png
     name: groove_name_smoke_screen
