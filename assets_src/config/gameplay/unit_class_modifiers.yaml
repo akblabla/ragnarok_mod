@@ -1,0 +1,8 @@
+
+---
+unitClassModifiers:
+  - id: sickness_dmg
+    baseDamage:
+      land: -0.25
+      buildings: -0.25
+

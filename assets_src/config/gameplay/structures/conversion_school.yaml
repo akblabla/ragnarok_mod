@@ -1,0 +1,23 @@
+---
+
+unitClasses:
+  - id: conversion_school
+    name: structure_name_conversion_school
+    aiPriority: 4.0
+    battleUnitCount: 1
+    isStructure: true
+    garrisonUnit: garrison
+    canReinforce: true
+    canBeReinforced: false
+    canBeCaptured: true
+    isNeutraliseable: true
+    damageMultiplier: 1
+    movement: river_sea_building
+    income: 0
+    cost: 500
+    regeneration: 10
+    tags:
+      - structure
+    sightRange: 1
+      
+...

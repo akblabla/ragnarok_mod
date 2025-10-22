@@ -42,6 +42,9 @@ function Golf:getMaximumRange(unit, endPos)
     return 1
 end
 
+function Golf:getTier(unit)
+    return 2;
+end
 function Golf:canExecuteAnywhere(unit)
     local tier = self:getCurrentGrooveTier(unit)
     return tier>=Golf:getTier(unit)

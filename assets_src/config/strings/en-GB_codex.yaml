@@ -12,6 +12,7 @@ en-GB: &flag-en
   codex_commander_duchess_lore1_text: "Age: 42.\nHeight: 173 cm.\nFavourite thing: Pâté.\nLeast favourite thing: Outlaws."
   codex_commander_duchess_lore2_text: "Retired marshal of the Cherrystone Kingdom, who was rewarded the title of Duchess of Dorne. Her harsh ways of dealing with subordinates have made her unpopular amongs her citizens."
   codex_commander_duchess_lore3_text: "Being born a noble, it was only natural she started her career as a knight. Her first experience in war was fighting against the vile Floran raids of the north. Her skills in predicting floran ambushes quickly came to attention and she was chosen as marshal to lead the campaign against the florans. As a reward for her duties, she was given the title of Duchess of the trading city of Dorne."
+  codex_mini_groove_description_duchess: "Sabah commmands a friendly unit to reorganize, splitting them into two units of equal size at an adjacent tile. It can't be used on singleton units (giants, trebuchets, dragons, ships, ect.) \n\nGroove Charge Speed: Normal."
   codex_groove_description_duchess: "With a shot commanding attention, Sabah orders her troops within 2 tiles to stand guard. Units standing guard will strike first when attacked until your next turn. After counter attacking, the unit will drop their guards once more."
   codex_groove_description_2_duchess: "Units standing guard who can't normally counter attack will be able to counter attack last.\n\nGroove Charge Speed: Normal."
   codex_title_strategy_duchess: "En Garde Strategy"
@@ -111,7 +112,7 @@ en-GB: &flag-en
   
   codex_unit_balloon_outlaw_lore_text: "Outlaw Balloons are woven from a silk produced by silkworms found on the western edge of the Gloomwoods. Powered by a particularly potent Trickster's brew, they are capable of transporting heavy cargo and staying aloft almost indefinitely. Once in a while, the Balloon's pilot will add iron filings to the brew to ensure it continues to bubble. No one questions why this works for fear it may stop."
   
-  codex_unit_giant_outlaw_lore_text: "The Golem is Cherrystone's Giant unit. Golems are the work of Cherrystone's master stonemasons. They are constructed from the toughest rock washed ashore from Guardian's Teeth, and shaped with tools made of dragon scales. At the heart of each Golem sits a single, pebble-sized Cherrystone, its power imbuing the lifeless stone with sentience and purpose. Those brave enough to place their ear to the Golem's chest may hear strange whispers from within."
+  codex_unit_giant_outlaw_lore_text: "\"We were investigating a group of knucklefish who had been harassing local fishermen. Our lead led us to the tavern 'The Iron Chalice'. As we opened the door, a large fella, a lad, stepped in front of us. 'You've got business 'ere?'. His presence was intense, the lad was at least 10 feet tall and fully blocked the doorway. I doubt even a charging horse could get him out of the way. As I fumbled my words, he slammed the door in front of us. This tavern was no place for orderly folk like us.\" - Local investigator"
   
   codex_unit_ballista_outlaw_lore_text: "Each Ballista is manned and maintained by a skilled Bowman. The Bowman will grow to appreciate the eccentricities of his or her particular Ballista, compensating for its shortcomings and leaning into its strengths. Should the machine be damaged in battle, the Bowman will carefully relearn the idiosyncrasies of his newly mended charge."
   
@@ -120,7 +121,7 @@ en-GB: &flag-en
   codex_unit_villager_outlaw_lore_text: "The poor exist in all corners of Aurania. These people become Beggars that live off what they are donated. Some of these take to the Outlaws where they are welcomed with open arms, and can learn valuable skills such as pickpocketing and sewing."
   
   codex_unit_thief_outlaw_lore_text: "Smuggler's are the backbone of the Outlaw economy. It is a dangerous job, but a thief must make an honest living somehow."
-  codex_unit_thief_cherrystone_lore_text: "\"Nyaffs of the cherrystone kingdom thaty use the authority of the crown to nick anyone they see fit. A visit at the wrong time can ruin any poor family. The bane of the common folk everywhere!\" -Wulfar"
+  codex_unit_thief_cherrystone_lore_text: "\"Nyaffs of the cherrystone kingdom that use the authority of the crown to nick anyone they see fit. A visit at the wrong time can ruin any poor family. The bane of the common folk everywhere!\" -Wulfar"
   
   codex_unit_rifleman_outlaw_lore_text: "The Sharpshooters are the riflemen of the Outlaw. These trickshooters can knock a coin off a post a mile away. Although they constantly talk about how busy they are, and demand high pay for their work, you can somehow always find them playing cards at the bar day and night."
   
@@ -128,47 +129,47 @@ en-GB: &flag-en
   codex_unit_flare_critical_text: "Flares can be launched from towers to any visible tile on the map. They provide a cheap way to spot into the fog, as they both reveal and can move after being deployed. They can also potentially block would be attackers from closing towards your units."
 
 # CODEX: TERRAIN INFORMATION
-  terrain_name_road_tropical: "Tropical Road"
+  terrain_name_road_tropical: "Mediterranean Road"
   codex_terrain_road_tropical_description_text: "The distinctive red clay of Cradle Island is commenly used as roads. The rich colour lets it stand out in the foliage, so even the most weary of travelers can find back to civilization."
 
-  terrain_name_plains_tropical: "Tropical Plains"
+  terrain_name_plains_tropical: "Mediterranean Plains"
   codex_terrain_plains_tropical_description_text: "Clearings in the jungles are rare, but appriated by those who would otherwise risk being ambushed by florans every step in the jungle."
 
-  terrain_name_forest_tropical: "Tropical Forest"
+  terrain_name_forest_tropical: "Mediterranean Forest"
   codex_terrain_forest_tropical_description_text: "The jungle is as beautiful as it is dangorous. Who knows what can hide in this dense foliage."
   
-  terrain_name_mountain_tropical: "Tropical Mountain"
+  terrain_name_mountain_tropical: "Mediterranean Mountain"
   codex_terrain_mountain_tropical_description_text: "Alpine grasses thrive in the damp, cool air of the mountains, nestled in loose earth between jagged rocks."
   
-  terrain_name_river_tropical: "Tropical River"
+  terrain_name_river_tropical: "Mediterranean River"
   codex_terrain_river_tropical_description_text: "Sparkling water meanders lazily across the land. Flickering shafts of sunlight pierce the clear water, dancing across the scales of the tiny, flitting fish that dwell in the shallow coolness."
   
-  terrain_name_bridge_tropical: "Tropical Bridge"
+  terrain_name_bridge_tropical: "Mediterranean Bridge"
   codex_terrain_bridge_tropical_description_text: "A broad stone bridge. Though worn and weathered, it remains as strong as the day it was built."
   
-  terrain_name_beach_tropical: "Tropical Beach"
+  terrain_name_beach_tropical: "Mediterranean Beach"
   codex_terrain_beach_tropical_description_text: "The coast dips gently, and sand stretches out to the sea, falling away to twilight darkness beneath the quiet waves."
   
-  terrain_name_ocean_tropical: "Tropical Sea"
+  terrain_name_ocean_tropical: "Mediterranean Sea"
   codex_terrain_sea_tropical_description_text: "Crystal clear waters where silver-scaled fish flock, and the air is filled with the tang of salt."
   
-  terrain_name_deepsea_tropical: "Tropical Deep Sea"
+  terrain_name_deepsea_tropical: "Mediterranean Deep Sea"
   codex_terrain_deepsea_tropical_description_text: "Clear water grows dark, and the ocean floor gives way to the fathomless deeps."
   
-  terrain_name_reef_tropical: "Tropical Reef"
+  terrain_name_reef_tropical: "Mediterranean Reef"
   codex_terrain_reef_tropical_description_text: "Barnacled rocks break the swell of the water. Below the surface, the reef teems with life."
   
-  terrain_name_wall_tropical: "Tropical Wall"
+  terrain_name_wall_tropical: "Mediterranean Wall"
   codex_terrain_wall_tropical_description_text: "An impassible bulwark of thick, heavy stone."
   
-  terrain_name_cobblestone_tropical: "Tropical Flagstone"
+  terrain_name_cobblestone_tropical: "Mediterranean Flagstone"
   codex_terrain_cobblestone_tropical_description_text: "Floor made from solid stone slabs. Built to last the ages."
   
-  terrain_name_carpet_tropical: "Tropical Carpet"
+  terrain_name_carpet_tropical: "Mediterranean Carpet"
   codex_terrain_carpet_tropical_description_text: "A carpet of woven lambswool. The pile is thick and warm underfoot."
   
   terrain_name_mangrove_grass: "Grass Mangrove"
-  terrain_name_mangrove_tropical: "Tropical Mangrove"
+  terrain_name_mangrove_tropical: "Mediterranean Mangrove"
   terrain_name_mangrove_ice: "Snow Mangrove"
   terrain_name_mangrove_desert: "Desert Mangrove"
   terrain_name_mangrove_strategy: "Mangrove Strategy"

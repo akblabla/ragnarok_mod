@@ -1,4 +1,5 @@
 local Wargroove = require "wargroove/wargroove"
+local WargrooveExtra = require "initialized/wargroove_extra"
 local VisionTracker = require "initialized/vision_tracker"
 local AIManager = require "initialized/ai_manager"
 local Ragnarok = require "initialized/ragnarok"
@@ -43,14 +44,14 @@ local StealthManager = {}
 local fleeingCount = 0
 
 function StealthManager.setBravery(playerId, bravery)
-    local stealthManager = StealthManager.getStealthManagerObject()
-    Wargroove.setUnitState(stealthManager,"bravery"..tostring(playerId),bravery)
-    Wargroove.updateUnit(stealthManager)
+    local globalObject = WargrooveExtra.getGlobalObject()
+    Wargroove.setUnitState(globalObject,"bravery"..tostring(playerId),bravery)
+    Wargroove.updateUnit(globalObject)
 end
 
 function StealthManager.getBravery(playerId)
-    local stealthManager = StealthManager.getStealthManagerObject()
-    local bravery = Wargroove.getUnitState(stealthManager,"bravery"..tostring(playerId))
+    local globalObject = WargrooveExtra.getGlobalObject()
+    local bravery = Wargroove.getUnitState(globalObject,"bravery"..tostring(playerId))
     if bravery == nil then
         return 100
     else
@@ -162,30 +163,16 @@ function StealthManager.removeUnit(unit, noUpdate)
     end
 end
 
-local stealthManagerObject = nil
 
-function StealthManager.getStealthManagerObject()
-	if stealthManagerObject == nil then
-        for i,unit in ipairs(Wargroove.getUnitsAtLocation(nil)) do
-            if unit.unitClassId == "stealth_manager" then
-                stealthManagerObject = unit
-                return stealthManagerObject
-            end
-        end
-        local id = Wargroove.spawnUnit(-1, {x=-50,y=-50}, "stealth_manager", false)
-        return Wargroove.getUnitById(id)
-    else
-        return stealthManagerObject
-    end
-end
+
 
 function StealthManager.setActive(playerId,isActive)
-    local stealthManager = StealthManager.getStealthManagerObject()
+    local globalObject = WargrooveExtra.getGlobalObject()
     local isActiveString = "false"
     if isActive then
         isActiveString = "true"
     end
-    Wargroove.setUnitState(stealthManager,"active"..tostring(playerId),isActiveString)
+    Wargroove.setUnitState(globalObject,"stealthActive"..tostring(playerId),isActiveString)
     if isActive == false then
         local units = Wargroove.getUnitsAtLocation(nil)
         for i, unit in pairs(units) do
@@ -194,12 +181,12 @@ function StealthManager.setActive(playerId,isActive)
             end
         end
     end
-    Wargroove.updateUnit(stealthManager)
+    Wargroove.updateUnit(globalObject)
 end
 
 function StealthManager.isActive(playerId)
-    local stealthManager = StealthManager.getStealthManagerObject()
-    local activeState = Wargroove.getUnitState(stealthManager,"active"..tostring(playerId))
+    local globalObject = WargrooveExtra.getGlobalObject()
+    local activeState = Wargroove.getUnitState(globalObject,"stealthActive"..tostring(playerId))
     if activeState == nil then
         return false
     end

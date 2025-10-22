@@ -5,18 +5,6 @@ local Combat = require "wargroove/combat"
 
 local WargrooveExtra = {}
 local Original = {}
-local function dump(o,level)
-	if type(o) == 'table' then
-	   local s = '\n' .. string.rep("   ", level) .. '{\n'
-	   for k,v in pairs(o) do
-		  if type(k) ~= 'number' then k = '"'..k..'"' end
-		  s = s .. string.rep("   ", level+1) .. '['..k..'] = ' .. dump(v,level+1) .. ',\n'
-	   end
-	   return s .. string.rep("   ", level) .. '}'
-	else
-	   return tostring(o)
-	end
- end
 function WargrooveExtra.init()
 	print("wargroove_extra.lua loaded")
 	Original.getMapTriggers = OldWargroove.getMapTriggers
@@ -24,9 +12,6 @@ function WargrooveExtra.init()
 	
 	Original.applyBuffs = OldWargroove.applyBuffs
 	OldWargroove.applyBuffs = WargrooveExtra.applyBuffs
-
-	OldWargroove.highAlertBuff = WargrooveExtra.highAlertBuff
-	
 
 	OldWargroove.removeUnitState = WargrooveExtra.removeUnitState
 	OldWargroove.unitHasState = WargrooveExtra.unitHasState
@@ -50,6 +35,8 @@ function WargrooveExtra.init()
 
 	OldWargroove.isPlayersCurrentTurn = WargrooveExtra.isPlayersCurrentTurn
 
+	OldWargroove.removeBuff = WargrooveExtra.removeBuff
+
 	Original.setAIRestriction = OldWargroove.setAIRestriction
 	OldWargroove.setAIRestriction = WargrooveExtra.setAIRestriction
 	
@@ -60,13 +47,46 @@ function WargrooveExtra.init()
 
 	Original.startCapture = OldWargroove.startCapture
 	OldWargroove.startCapture = WargrooveExtra.startCapture
+
+	Original.tableToString = OldWargroove.tableToString
+	OldWargroove.tableToString = WargrooveExtra.tableToString
+	
+	OldWargroove.setTurnZero = WargrooveExtra.setTurnZero
+
+	Original.setTurnInfo = OldWargroove.setTurnInfo
+	OldWargroove.setTurnInfo = WargrooveExtra.setTurnInfo
+
+	Original.highlightLocation = OldWargroove.highlightLocation
+	OldWargroove.highlightLocation = WargrooveExtra.highlightLocation
+
+	Original.setLocationProperties = OldWargroove.setLocationProperties
+	OldWargroove.setLocationProperties = WargrooveExtra.setLocationProperties
+
+	Original.revealFogOfWar = OldWargroove.revealFogOfWar
+	OldWargroove.revealFogOfWar = WargrooveExtra.revealFogOfWar
+
+	Original.setWeather = OldWargroove.setWeather
+	OldWargroove.setWeather = WargrooveExtra.setWeather
+
+	Original.setAIProfile = OldWargroove.setAIProfile
+	OldWargroove.setAIProfile = WargrooveExtra.setAIProfile
+	
+	Original.setDaytime = OldWargroove.setDaytime
+	OldWargroove.setDaytime = WargrooveExtra.setDaytime
+
+	Original.setDaytime = OldWargroove.setDaytime
+	OldWargroove.setDaytime = WargrooveExtra.setDaytime
+	
+	Original.setMapMusic = OldWargroove.setMapMusic
+	OldWargroove.setMapMusic = WargrooveExtra.setMapMusic
+
+	OldWargroove.fullClearCache = WargrooveExtra.fullClearCache
+
 end
 
 local hiddenTriggersStart = {}
 local hiddenTriggersEnd = {}
 
-local highAlertAnimation = "ui/icons/high_alert"
-local highAlertEntity = {}
 --[[function WargrooveExtra:doPostCombat(unitId, isAttacker, healthAfterCombat)
     local unit = self.getUnitById(unitId)
     if unit == nil then
@@ -100,34 +120,6 @@ function WargrooveExtra:doPostCombat(unitId, isAttacker, healthAfterCombat)
 
 end
 
-function WargrooveExtra.highAlertBuff(unit)
-
-    if OldWargroove.isSimulating() then
-        return
-    end
-	if (OldWargroove.getUnitState(unit, "high_alert") == nil) then
-        OldWargroove.setUnitState(unit, "high_alert", "false")
-        OldWargroove.updateUnit(unit)
-    end
-	local isHighAlert = OldWargroove.getUnitState(unit, "high_alert")
-	if (isHighAlert ~= nil) and (isHighAlert ~= "false") then
-		isHighAlert = true
-	else
-		isHighAlert = false
-	end
-	if (isHighAlert) then
-		if not OldWargroove.hasUnitEffect(unit.id, highAlertAnimation) then
-			highAlertEntity[unit.id] = OldWargroove.spawnUnitEffect(unit.id, highAlertAnimation, "idle", "spawn", true, false)
-		end
-	elseif OldWargroove.hasUnitEffect(unit.id, highAlertAnimation)  then
-		if highAlertEntity[unit.id] ~= nil then
-			OldWargroove.deleteUnitEffect(highAlertEntity[unit.id], "death")
-		else
-			OldWargroove.deleteUnitEffectByAnimation(unit.id, highAlertAnimation, "death")
-		end
-	end
-end
-
 local crownAnimation = "ui/icons/fx_crown"
 function WargrooveExtra.crownBuff(unit)
 
@@ -154,7 +146,6 @@ end
 function WargrooveExtra.applyBuffs()
 	for i,id in pairs(OldWargroove.getAllUnitIds()) do
 		local unit = OldWargroove.getUnitById(id)
-		WargrooveExtra.highAlertBuff(unit)
 		WargrooveExtra.crownBuff(unit)
 	end
     Original.applyBuffs()
@@ -243,15 +234,6 @@ function WargrooveExtra.unitHasState(unit, key, value)
 		return state==value
 	end
 	return state ~= "false"
-end
-
-function WargrooveExtra.waitTime(time)
-	local currentTime = 0
-    local timeStamp = currentTime+ time
-    while currentTime < timeStamp do
-		currentTime = currentTime +1.0/60.0
-        coroutine.yield()
-    end
 end
 
 function WargrooveExtra.isValidPushPullTarget(unit, pushCommanders)
@@ -356,6 +338,253 @@ function WargrooveExtra.startCapture(attacker, defender, attackerPos)
     Original.startCapture(attacker, defender, attackerPos)
 	OldWargroove.lastAttacker = deepcopy(attacker)
 	OldWargroove.lastDefender = deepcopy(defender)
+end
+local function dump(o,level)
+	if type(o) == 'table' then
+	   local s = '\n' .. string.rep("   ", level) .. '{\n'
+	   for k,v in pairs(o) do
+		  if type(k) ~= 'number' then k = '"'..k..'"' end
+		  s = s .. string.rep("   ", level+1) .. '['..k..'] = ' .. dump(v,level+1) .. ',\n'
+	   end
+	   return s .. string.rep("   ", level) .. '}'
+	else
+	   return tostring(o)
+	end
+ end
+function WargrooveExtra.tableToString(o)
+    return dump(o,0)
+end
+
+function WargrooveExtra.removeBuff(unit, playerId, buffSpawnId, buffId, buffDeathId)
+	local buffUnits = OldWargroove.getUnitsAtLocation()
+	local foundBuff = nil
+	local lowestTurnCount = 100000 
+	for i, buffUnit in ipairs(buffUnits) do
+		if buffUnit.unitClassId == "buff" then
+			local foundUnitId = OldWargroove.getUnitState(buffUnit,"unitId")
+			if foundUnitId~=nil then
+				foundUnitId = tonumber(foundUnitId)
+			end
+			local foundBuffSpawnId = OldWargroove.getUnitState(buffUnit,"buffSpawnId")
+			local foundBuffId = OldWargroove.getUnitState(buffUnit,"buffId")
+			local foundBuffDeathId = OldWargroove.getUnitState(buffUnit,"buffDeathId")
+			local foundTurnCount = OldWargroove.getUnitState(buffUnit,"turnCount")
+			if foundTurnCount~=nil then
+				foundTurnCount = tonumber(foundTurnCount)
+			end
+			if foundUnitId == unit.id and foundBuffSpawnId == buffSpawnId and foundBuffId == buffId and foundBuffDeathId == buffDeathId and foundTurnCount<lowestTurnCount then
+				foundBuff = buffUnit
+				if foundTurnCount == nil then
+					lowestTurnCount = 0
+				else
+					lowestTurnCount = foundTurnCount
+				end
+			end
+		end
+	end
+	if foundBuff~=nil then
+		foundBuff:setHealth(0, foundBuff.id, true)
+		OldWargroove.updateUnit(foundBuff)
+	end
+end
+local turnZero = 0
+function WargrooveExtra.setTurnZero(turnNumber)
+    turnZero = turnNumber
+end
+
+function WargrooveExtra.getTurnZero()
+    return turnZero
+end
+
+function WargrooveExtra.setTurnInfo(turnNumber, currentPlayerId)
+    Original.setTurnInfo(turnNumber + turnZero, currentPlayerId)
+end
+
+local locationObjects = {}
+
+function WargrooveExtra.getStealthManagerObject(locationId)
+	if locationObjects[locationId] == nil then
+        for i,unit in ipairs(OldWargroove.getUnitsAtLocation(nil)) do
+            if unit.unitClassId == "location_object" then
+				local foundLocationId = OldWargroove.getUnitState(unit,"locationId")
+				if foundLocationId~=nil and tonumber(foundLocationId) == locationId then
+					locationObjects[locationId] = unit
+					return locationObjects[locationId]
+				end
+            end
+        end
+        local id = OldWargroove.spawnUnit(-1, {x=-50,y=-50}, "location_object", false,nil,{{key = "locationId", value = tostring(locationId)}})
+		OldWargroove.clearCaches()
+        return OldWargroove.getUnitById(id)
+    else
+        return locationObjects[locationId]
+    end
+end
+
+function WargrooveExtra.highlightLocation(locationId, highlightId, colour, hideOnSelection, hideOnAction, showOnUnitSelection, showOnEndPosSelection, showOnActionSelected)
+    local locationObject = WargrooveExtra.getStealthManagerObject(locationId)
+	local stateToSave = ""
+	OldWargroove.setUnitState(locationObject,"highlightId",highlightId)
+	OldWargroove.setUnitState(locationObject,"colour",colour)
+
+	if hideOnSelection then
+		stateToSave = "true"
+	else
+		stateToSave = "false"
+	end
+	OldWargroove.setUnitState(locationObject,"hideOnSelection",stateToSave)
+
+	if hideOnAction then
+		stateToSave = "true"
+	else
+		stateToSave = "false"
+	end
+	OldWargroove.setUnitState(locationObject,"hideOnAction",stateToSave)
+
+	if showOnUnitSelection then
+		stateToSave = "true"
+	else
+		stateToSave = "false"
+	end
+	OldWargroove.setUnitState(locationObject,"showOnUnitSelection",stateToSave)
+	
+	if showOnEndPosSelection then
+		stateToSave = "true"
+	else
+		stateToSave = "false"
+	end
+	OldWargroove.setUnitState(locationObject,"showOnEndPosSelection",stateToSave)
+	
+	if showOnActionSelected then
+		stateToSave = "true"
+	else
+		stateToSave = "false"
+	end
+	OldWargroove.setUnitState(locationObject,"showOnActionSelected",stateToSave)
+	OldWargroove.updateUnit(locationObject)
+	Original.highlightLocation(locationId, highlightId, colour, hideOnSelection, hideOnAction, showOnUnitSelection, showOnEndPosSelection, showOnActionSelected)
+end
+
+function WargrooveExtra.setLocationProperties(locationId, isAIObstacle, isObstacle, isInteractable)
+	local locationObject = WargrooveExtra.getStealthManagerObject(locationId)
+	local stateToSave = ""	
+	if isAIObstacle then
+		stateToSave = "true"
+	else
+		stateToSave = "false"
+	end
+	OldWargroove.setUnitState(locationObject,"isAIObstacle",stateToSave)
+	
+	if isObstacle then
+		stateToSave = "true"
+	else
+		stateToSave = "false"
+	end
+	OldWargroove.setUnitState(locationObject,"isObstacle",stateToSave)
+	
+	if isInteractable then
+		stateToSave = "true"
+	else
+		stateToSave = "false"
+	end
+	OldWargroove.setUnitState(locationObject,"isInteractable",stateToSave)
+	OldWargroove.updateUnit(locationObject)
+    Original.setLocationProperties(locationId, isAIObstacle, isObstacle, isInteractable)
+end
+
+function WargrooveExtra.setWeather(weather, daysAhead)
+	local globalObject = WargrooveExtra.getGlobalObject()
+	OldWargroove.setUnitState(globalObject,"weather",weather)
+	OldWargroove.updateUnit(globalObject)
+    Original.setWeather(weather, daysAhead)
+end
+
+function WargrooveExtra.setAIProfile(player, profile)
+	local globalObject = WargrooveExtra.getGlobalObject()
+	OldWargroove.setUnitState(globalObject,"player"..player.."AIProfile",profile)
+	OldWargroove.updateUnit(globalObject)
+    Original.setAIProfile(player, profile)
+end
+
+function WargrooveExtra.setDaytime(daytime)
+	local globalObject = WargrooveExtra.getGlobalObject()
+	OldWargroove.setUnitState(globalObject,"dayTime",daytime)
+	OldWargroove.updateUnit(globalObject)
+    Original.setDaytime(daytime)
+end
+
+function WargrooveExtra.setMapMusic(music, intensity)
+	local globalObject = WargrooveExtra.getGlobalObject()
+	OldWargroove.setUnitState(globalObject,"music",music)
+	OldWargroove.setUnitState(globalObject,"musicIntensity",intensity)
+	OldWargroove.updateUnit(globalObject)
+    Original.setMapMusic(music, intensity)
+end
+
+function WargrooveExtra.revealFogOfWar(playerId, locationId, visible)
+	local locationObject = WargrooveExtra.getStealthManagerObject(locationId)
+	local stateToSave = ""	
+	if visible then
+		stateToSave = "true"
+	else
+		stateToSave = "false"
+	end
+	if playerId~=nil then
+		OldWargroove.setUnitState(locationObject,"player"..playerId.."visible",stateToSave)
+	else
+		OldWargroove.setUnitState(locationObject,"playerAnyVisible",stateToSave)
+	end
+	OldWargroove.updateUnit(locationObject)
+    Original.revealFogOfWar(playerId, locationId, visible)
+end
+
+local globalObject = nil
+
+function WargrooveExtra.getGlobalObject()
+	if globalObject == nil then
+        for i,unit in ipairs(OldWargroove.getUnitsAtLocation(nil)) do
+            if unit.unitClassId == "global_object" then
+                globalObject = unit
+                return globalObject
+            end
+        end
+        local id = OldWargroove.spawnUnit(-1, {x=-50,y=-50}, "global_object", false)
+        OldWargroove.clearCaches()
+        return OldWargroove.getUnitById(id)
+    else
+        return globalObject
+    end
+end
+
+
+function WargrooveExtra.clearLocationObjectsCache()
+	locationObjects = {}
+end
+
+function WargrooveExtra.clearGlobalObjectCache()
+	globalObject = nil
+end
+
+function WargrooveExtra.clearCheckpointObjectCache()
+	checkpointObject = nil
+end
+
+function WargrooveExtra.fullClearCache()
+	OldWargroove.clearCaches()
+	OldWargroove.clearDisplayTargets()
+	WargrooveExtra.clearLocationObjectsCache()
+	WargrooveExtra.clearGlobalObjectCache()
+	WargrooveExtra.clearCheckpointObjectCache()
+end
+
+function WargrooveExtra.isSkippingIntroOveride()
+	return WargrooveExtra.skippingIntroOveride
+end
+
+WargrooveExtra.skippingIntroOveride = false
+
+function WargrooveExtra.skipIntroOveride(skip)
+	WargrooveExtra.skippingIntroOveride = skip
 end
 
 

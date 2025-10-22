@@ -6,8 +6,10 @@ weapons:
     canMoveAndAttack: true
     canAttackSecondaryTiles: false
     baseDamage:
+      land: 1
       air: 1
       water: 1
+      buildings: 1      
 
 unitClasses:
   - id: harpoonship

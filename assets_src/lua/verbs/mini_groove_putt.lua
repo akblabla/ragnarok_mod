@@ -5,8 +5,8 @@ local UnitOnTurn = require "wargroove/unit_on_turn"
 local Putt = GrooveVerb:new()
 Putt.isInPreExecute = false
 
-function Putt:getTier()
-    return 1
+function Putt:getTier(unit)
+    return 1;
 end
 local maxPuttRange = 3
 function Putt:getMaximumRange(unit, endPos)
@@ -77,7 +77,7 @@ end
 
 function Putt:canExecuteAnywhere(unit)
     local tier = self:getCurrentGrooveTier(unit)
-    return tier>=1
+    return tier>=Putt:getTier(unit)
 end
 
 function Putt:canExecuteWithTarget(unit, endPos, targetPos, strParam)

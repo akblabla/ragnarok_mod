@@ -40,6 +40,7 @@ luac.out
 *.hex
 
 # Compiled by Wargroove ModPacker
+assets_unpacked/*
 *.dat
 *tavernDistant.ogg
 *bar_ambianceDistant.ogg

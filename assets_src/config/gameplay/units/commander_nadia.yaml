@@ -1,0 +1,252 @@
+---
+
+weapons:
+  - id: nadiaAttack
+    rangeMin: 1
+    rangeMax: 1
+    canMoveAndAttack: true
+    baseDamage:
+      land: 1
+      buildings: 1
+    tagDamageOverwrite: commander
+      
+unitClasses:
+  - id: commander_nadia
+    name: unit_class_name_commander
+    cost: 500
+    resourceCost: 3
+    movement: walking
+    moveRange: 4
+    aiPriority: 8.0
+    regeneration: 5
+    canBeRenamed: false
+    weapons:
+      - id: nadiaAttack
+    verbs:
+      - load
+      - capture
+    tags:
+      - commander
+      - type.ground.light
+    battleUnitCount: 1
+    sightRange: 3
+    isCommander: true
+    grooveId: fire_craze
+    grooveChargeConfig: commander
+
+units:
+  - class: commander_nadia
+    faction: pirates
+    name: character_nadia_name
+    mapAnimation: units/commanders/nadia/map_nadia
+    mapLightSource:
+      sprite: lights_medium
+      scale: [1.0, 1.0]
+      jitter:
+        scale: 1.0
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleLightSource:
+      sprite: lights_battle_medium
+      scale: [0.75, 0.4]
+      jitter:
+        scale: 0.75
+        frequency: 0.3
+        frequencyVariance: 0.15
+    battleAnimation: units/commanders/nadia/battle_nadia
+    battleAnimationRiver: fx/river_overlay/battle_nadia_river
+    smallPortrait: units/commanders/nadia/portrait_nadia_small.png
+    mediumPortrait: units/commanders/nadia/portrait_nadia_medium.png
+    mapSpeed: 4.0
+    skinColour: typeVI
+    grabPos: [39, 44]
+    attackTimingsHack: false
+    deathMoveMin: 0
+    deathMoveMax: 0
+    sounds:
+      attackMap: unitAttack
+      attack: nadia/nadiaAttack
+      attackShout: nadia/nadiaAttackShout
+      attackCommanderShout: nadia/nadiaCommanderKillShout
+      captureShout: nadia/nadiaDontMindIfIDo
+      death: nadia/nadiaDie
+      deathMap: nadia/nadiaDieGhost
+      deathMapNoBattle: nadia/nadiaDieNoBattle
+      run: infantryLightMapEntry
+      runMap: infantryLightMapEntry
+      firstHit: nadia/nadiaHit
+      hit: hitOrganic
+      hitMap: hitOrganic
+      groove: nadia/nadiaGrooveIntro
+    attacks:
+      - id: primary
+        hitSpark: fx/bs_stab_attack
+        hitDelay: 1.0
+    emotes:
+      idle: idle
+      surprise: emote_surprise
+      positive: emote_positive
+      negative: emote_negative
+      laugh: emote_laugh
+      idle_neutral: idle_neutral
+      cry: emote_cry
+      child_idle: emote_child
+      back: emote_back
+      child_cry: emote_child_cry
+      attack: attack
+    alternativeRuns:
+      - id: neutral_run
+
+    shouts:
+      nadia_arr: nadia/nadiaArr
+      nadia_attack_shout: nadia/nadiaAttackShout
+      nadia_avast: nadia/nadiaAvast
+      nadia_aye_aye: nadia/nadiaAyeAye
+      nadia_bravo: nadia/nadiaBravo
+      nadia_caesar_neutral: nadia/nadiaCaesarNeutral
+      nadia_caesar_shocked: nadia/nadiaCaesarShocked
+      nadia_caesar_shouting: nadia/nadiaCaesarShouting
+      nadia_call_me_firebird: nadia/nadiaCallMeFirebird
+      nadia_careful_admiral: nadia/nadiaCarefulAdmiral
+      nadia_careful_now: nadia/nadiaCarefulNow
+      nadia_commander_kill_shout: nadia/nadiaCommanderKillShout
+      nadia_defiant_laugh: nadia/nadiaDefiantLaugh
+      nadia_die: nadia/nadiaDie
+      nadia_die_ghost: nadia/nadiaDieGhost
+      nadia_die_no_battle: nadia/nadiaDieNoBattle
+      nadia_dont_mind_if_i_do: nadia/nadiaDontMindIfIDo
+      nadia_easy: nadia/nadiaEasy
+      nadia_elodie_neutral: nadia/nadiaElodieNeutral
+      nadia_elodie_shocked: nadia/nadiaElodieShocked
+      nadia_elodie_shouting: nadia/nadiaElodieShouting
+      nadia_emeric_neutral: nadia/nadiaEmericNeutral
+      nadia_emeric_shocked: nadia/nadiaEmericShocked
+      nadia_emeric_shouting: nadia/nadiaEmericShouting
+      nadia_empress_tenri_matter_of_fact: nadia/nadiaEmpressTenriMatterOfFact
+      nadia_empress_tenri_shouting: nadia/nadiaEmpressTenriShouting
+      nadia_errol_neutral: nadia/nadiaErrolNeutral
+      nadia_errol_shocked: nadia/nadiaErrolShocked
+      nadia_errol_shouting: nadia/nadiaErrolShouting
+      nadia_exclamation: nadia/nadiaExclamation
+      nadia_greenfinger_neutral: nadia/nadiaGreenfingerNeutral
+      nadia_greenfinger_shocked: nadia/nadiaGreenfingerShocked
+      nadia_greenfinger_shouting: nadia/nadiaGreenfingerShouting
+      nadia_groove: nadia/nadiaGroove
+      nadia_groove_hit: nadia/nadiaGrooveHit
+      nadia_groove_intro: nadia/nadiaGrooveIntro
+      nadia_groove_part1: nadia/nadiaGroovePart1
+      nadia_groove_part2: nadia/nadiaGroovePart2
+      nadia_hearty_laugh: nadia/nadiaHeartyLaugh
+      nadia_here_it_is_eight_arm_bay: nadia/nadiaHereItIsEightArmBay
+      nadia_hey: nadia/nadiaHey
+      nadia_hey_exclamation: nadia/nadiaHeyExclamation
+      nadia_hit: nadia/nadiaHit
+      nadia_hmm_thinking: nadia/nadiaHmmThinking
+      nadia_huh: nadia/nadiaHuh
+      nadia_i: nadia/nadiaI
+      nadia_im_nadia: nadia/nadiaImNadia
+      nadia_im_ready: nadia/nadiaImReady
+      nadia_is_that_all1: nadia/nadiaIsThatAll1
+      nadia_is_that_all2: nadia/nadiaIsThatAll2
+      nadia_it_wont_be_easy: nadia/nadiaItWontBeEasy
+      nadia_ive_waited_years_for_this: nadia/nadiaIveWaitedYearsForThis
+      nadia_janjak: nadia/nadiaJanjak
+      nadia_koji_neutral: nadia/nadiaKojiNeutral
+      nadia_koji_shocked: nadia/nadiaKojiShocked
+      nadia_koji_shouting: nadia/nadiaKojiShouting
+      nadia_lets_go: nadia/nadiaLetsGo
+      nadia_looks_like_trouble: nadia/nadiaLooksLikeTrouble
+      nadia_lord_valder_neutral: nadia/nadiaLordValderNeutral
+      nadia_lord_valder_shocked: nadia/nadiaLordValderShocked
+      nadia_lord_valder_shouting: nadia/nadiaLordValderShouting
+      nadia_lytra_neutral: nadia/nadiaLytraNeutral
+      nadia_lytra_shocked: nadia/nadiaLytraShocked
+      nadia_lytra_shouting: nadia/nadiaLytraShouting
+      nadia_mercia_neutral: nadia/nadiaMerciaNeutral
+      nadia_mercia_shocked: nadia/nadiaMerciaShocked
+      nadia_mercia_shouting: nadia/nadiaMerciaShouting
+      nadia_mercival_neutral: nadia/nadiaMercivalNeutral
+      nadia_mercival_shocked: nadia/nadiaMercivalShocked
+      nadia_mercival_shouting: nadia/nadiaMercivalShouting
+      nadia_mm: nadia/nadiaMm
+      nadia_no: nadia/nadiaNo
+      nadia_no_defiant: nadia/nadiaNoDefiant
+      nadia_no_horrified: nadia/nadiaNoHorrified
+      nadia_nuru_neutral: nadia/nadiaNuruNeutral
+      nadia_nuru_shocked: nadia/nadiaNuruShocked
+      nadia_nuru_shouting: nadia/nadiaNuruShouting
+      nadia_oh: nadia/nadiaOh
+      nadia_oh_question: nadia/nadiaOhQuestion
+      nadia_orla_neutral: nadia/nadiaOrlaNeutral
+      nadia_orla_shocked: nadia/nadiaOrlaShocked
+      nadia_orla_shouting: nadia/nadiaOrlaShouting
+      nadia_pistil_neutral: nadia/nadiaPistilNeutral
+      nadia_pistil_shocked: nadia/nadiaPistilShocked
+      nadia_pistil_shouting: nadia/nadiaPistilShouting
+      nadia_ragna_neutral: nadia/nadiaRagnaNeutral
+      nadia_ragna_shocked: nadia/nadiaRagnaShocked
+      nadia_ragna_shouting: nadia/nadiaRagnaShouting
+      nadia_relieved_sigh: nadia/nadiaRelievedSigh
+      nadia_rhomb_neutral: nadia/nadiaRhombNeutral
+      nadia_rhomb_shocked: nadia/nadiaRhombShocked
+      nadia_rhomb_shouting: nadia/nadiaRhombShouting
+      nadia_ryota_matter_of_fact: nadia/nadiaRyotaMatterOfFact
+      nadia_ryota_shocked: nadia/nadiaRyotaShocked
+      nadia_ryota_shouting: nadia/nadiaRyotaShouting
+      nadia_sedge_neutral: nadia/nadiaSedgeNeutral
+      nadia_sedge_shocked: nadia/nadiaSedgeShocked
+      nadia_sedge_shouting: nadia/nadiaSedgeShouting
+      nadia_short_chuckle: nadia/nadiaShortChuckle
+      nadia_showtime: nadia/nadiaShowtime
+      nadia_sigrid_neutral: nadia/nadiaSigridNeutral
+      nadia_sigrid_shocked: nadia/nadiaSigridShocked
+      nadia_sigrid_shouting: nadia/nadiaSigridShouting
+      nadia_sorry: nadia/nadiaSorry
+      nadia_sorry_about_that: nadia/nadiaSorryAboutThat
+      nadia_surprised_grunt: nadia/nadiaSurprisedGrunt
+      nadia_tenri_matter_of_fact: nadia/nadiaTenriMatterOfFact
+      nadia_tenri_shocked: nadia/nadiaTenriShocked
+      nadia_tenri_shouting: nadia/nadiaTenriShouting
+      nadia_thanks: nadia/nadiaThanks
+      nadia_thank_you: nadia/nadiaThankYou
+      nadia_thats_for_my_sister: nadia/nadiaThatsForMySister
+      nadia_the_empire_they_took_everything_from_us: nadia/nadiaTheEmpireTheyTookEverythingFromUs
+      nadia_the_empress: nadia/nadiaTheEmpress
+      nadia_ugh: nadia/nadiaUgh
+      nadia_uhh: nadia/nadiaUhh
+      nadia_uh_huh: nadia/nadiaUhHuh
+      nadia_uh_oh: nadia/nadiaUhOh
+      nadia_vesper_neutral: nadia/nadiaVesperNeutral
+      nadia_vesper_shocked: nadia/nadiaVesperShocked
+      nadia_vesper_shouting: nadia/nadiaVesperShouting
+      nadia_wait: nadia/nadiaWait
+      nadia_we_demand_freedom: nadia/nadiaWeDemandFreedom
+      nadia_were_notf_after_gold_or_glory: nadia/nadiaWereNotfAfterGoldOrGlory
+      nadia_whaddya_say: nadia/nadiaWhaddyaSay
+      nadia_what_hurt: nadia/nadiaWhatHurt
+      nadia_what_incredulous: nadia/nadiaWhatIncredulous
+      nadia_what_staring: nadia/nadiaWhatStaring
+      nadia_whoa: nadia/nadiaWhoa
+      nadia_why: nadia/nadiaWhy
+      nadia_wulfar_casual: nadia/nadiaWulfarCasual
+      nadia_wulfar_orders: nadia/nadiaWulfarOrders
+      nadia_wulfar_shocked: nadia/nadiaWulfarShocked
+      nadia_yeah: nadia/nadiaYeah
+      nadia_yeah_question: nadia/nadiaYeahQuestion
+      nadia_yohoho: nadia/nadiaYohoho
+      nadia_you_ok_there: nadia/nadiaYouOKThere
+      nadia_admiral: nadia/nadiaAdmiral
+      nadia_admiral_blade_runner: nadia/nadiaAdmiralBladeRunner
+      nadia_aki: nadia/nadiaAki
+      nadia_alia_my_sister: nadia/nadiaAliaMySister
+      nadia_all_power_to_the_people: nadia/nadiaAllPowerToThePeople
+      nadia_all_right: nadia/nadiaAllRight
+      nadia_annoyed_sigh: nadia/nadiaAnnoyedSigh
+
+    alternativeAttackSounds:
+      no_voice: tenri/tenriAttackNoVoice
+    hidden:
+      emotes:
+        - child_idle
+        - emote_child_cry
+...

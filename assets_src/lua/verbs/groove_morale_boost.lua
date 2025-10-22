@@ -17,6 +17,13 @@ end
 
 local highAlertAnimation = "ui/icons/high_alert"
 local highAlertBuffSound = "highAlertBuff"
+function MoraleBoost:getTier(unit)
+    return 2;
+end
+function MoraleBoost:canExecuteAnywhere(unit)
+    local tier = self:getCurrentGrooveTier(unit)
+    return tier>=MoraleBoost:getTier(unit)
+end
 function MoraleBoost:execute(unit, targetPos, strParam, path)
     print("MoraleBoost")
     Wargroove.setIsUsingGroove(unit.id, true)
@@ -45,7 +52,8 @@ function MoraleBoost:execute(unit, targetPos, strParam, path)
         if u ~= nil and Wargroove.areAllies(u.playerId, unit.playerId) and (not uc.isStructure) then
             if (uc.weapons ~= nil) and (uc.weapons[1] ~= nil) and (uc.weapons[1].canMoveAndAttack == true) then
                 Wargroove.setUnitState(u, "high_alert", "true")
-                Wargroove.highAlertBuff(u)
+                Wargroove.pushBuff(1, u, unit.playerId, "high_alert_spawn", "high_alert", "high_alert_death")
+                --Wargroove.highAlertBuff(u)
                 Wargroove.playMapSound(highAlertBuffSound,pos)
                 Wargroove.updateUnit(u)
                 Wargroove.waitTime(0.02)

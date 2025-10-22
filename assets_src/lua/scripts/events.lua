@@ -1,11 +1,12 @@
 local VisionTracker = require "initialized/vision_tracker"
 local OldEvents = require("wargroove/events")
 local Wargroove = require("wargroove/wargroove")
+local WargrooveExtra = require("initialized/wargroove_extra")
 local TriggerContext = require("triggers/trigger_context")
 local Resumable = require("wargroove/resumable")
 local StealthManager = require("scripts/stealth_manager")
-local Pathfinding = require("util/pathfinding")
-
+local hash = require("util/hash")
+local CheckpointManager = require("initialized/checkpoint_manager_stub")
 
 
 local function dump(o,level)
@@ -21,7 +22,20 @@ local function dump(o,level)
     end
  end
  
-
+local function deepcopy(orig)
+    local orig_type = type(orig)
+    local copy
+    if orig_type == 'table' then
+        copy = {}
+        for orig_key, orig_value in next, orig, nil do
+            copy[deepcopy(orig_key)] = deepcopy(orig_value)
+        end
+        setmetatable(copy, deepcopy(getmetatable(orig)))
+    else -- number, string, boolean, etc
+        copy = orig
+    end
+    return copy
+end
 
 local Events = {}
 
@@ -67,11 +81,12 @@ local pendingVerbsUsed = {}
 local pendingInteractionsUsed = {}
 local checkEventsAfter = false
 
+local mapSeed = nil
+
 function Events.startSession(matchState)
     pendingDeadUnits = {}
     pendingVerbsUsed = {}
     pendingInteractionsUsed = {}
-
     Events.populateTriggerList()
 
     function readVariables(name)
@@ -100,6 +115,7 @@ function Events.startSession(matchState)
     end
 
     triggerContext.creditsToPlay = matchState.creditsToPlay
+
 end
 
 
@@ -171,7 +187,10 @@ function Events.populateTriggerList()
     for i, condition in ipairs(additionalConditions) do
       condition.populate(triggerConditions)
     end
+    CheckpointManager.setMapSeed(hash.hash(hash.sortedTableToString(triggerList)))
 end
+
+
 local wasEndOfTurn = false
 function Events.checkEventsAfter()
     checkEventsAfter = true
@@ -185,6 +204,8 @@ function Events.checkEventsAfter()
 end
 
 function Events.doCheckEvents(state)
+    CheckpointManager.checkCheckpoint()
+    
     triggerContext.state = state
     triggerContext.deadUnits = pendingDeadUnits
     triggerContext.verbsUsed = pendingVerbsUsed
@@ -337,10 +358,10 @@ function Events.canExecuteTrigger(trigger)
     end
 
     if trigger.recurring ~= 'start_of_match' then
-        if triggerContext:checkState('startOfMatch') then
+        if triggerContext:checkState('startOfMatch') and not CheckpointManager.isCheckpointLoaded() then
             return false
         end        
-    elseif not triggerContext:checkState('startOfMatch') then
+    elseif not (triggerContext:checkState('startOfMatch') and not CheckpointManager.isCheckpointLoaded()) then
         return false
     end
 
@@ -383,8 +404,12 @@ end
 function Events.executeTrigger(trigger)
     triggerContext.fired[Events.getTriggerKey(trigger)] = true
     triggerContext.spawnedUnits = {}
-    local applySkippable = Wargroove.areIntroEventsSkippable() and trigger.isIntro
-
+    local applySkippable = false
+    if WargrooveExtra.isSkippingIntroOveride() then
+        applySkippable = trigger.isIntro 
+    else
+        applySkippable = Wargroove.areIntroEventsSkippable() and trigger.isIntro 
+    end
     if not applySkippable then
         Events.runActions(trigger.actions, trigger.isIntro)
     else

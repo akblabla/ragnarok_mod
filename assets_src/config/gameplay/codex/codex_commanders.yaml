@@ -66,6 +66,11 @@ codex:
     title: codex_commander_ethoshistory
     text: codex_commander_duchess_lore3_text
   - pageType: groove
+    layoutType: image
+    image: ui/codex/content/commander_duchess_portrait.png
+    title: mini_groove_name_split
+    text: codex_mini_groove_description_duchess
+  - pageType: groove
     layoutType: animation
     animation: ui/codex/content/commander_en_garde_grove
     title: groove_name_morale_boost

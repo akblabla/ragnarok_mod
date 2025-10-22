@@ -56,8 +56,20 @@ function Attack:execute(unit, targetPos, strParam, path, telegraph)
     end
 
     local target = Wargroove.getUnitAt(targetPos)
-    Wargroove.startCombat(unit, target, path, "average")
-    local attackerWitnessIds = VisionTracker.getListOfViewerIds(path[#path])
+	local defenderIsHighAlert = Wargroove.getUnitState(target, "high_alert")
+
+	if defenderIsHighAlert~=nil and defenderIsHighAlert == "true" and self:canExecuteWithTarget(target, targetPos, unit.pos, "") then
+        Combat:startReverseCombat(unit, target, path)
+    else
+        Wargroove.startCombat(unit, target, path, "average")
+    end
+    --[[
+    local attackerWitnessIds
+    if path[#path]~=nil then
+        attackerWitnessIds = VisionTracker.getListOfViewerIds(path[#path])
+    else
+        attackerWitnessIds = VisionTracker.getListOfViewerIds(targetPos)
+    end
     local defenderWitnessIds = VisionTracker.getListOfViewerIds(targetPos)
     local witnesses = {}
     for i,witnessId in ipairs(attackerWitnessIds) do
@@ -71,29 +83,17 @@ function Attack:execute(unit, targetPos, strParam, path, telegraph)
         if witness ~= nil then
             if StealthManager.isActive(witness.playerId) then
                 StealthManager.awarenessCheck(unit, {path[#path]})
-                if (otherUnit~=nil) and (StealthManager.canAlert(otherUnit)) and Wargroove.areEnemies(unit.playerId,otherUnit.playerId) then
-                    StealthManager.makeAlerted(unit)
-                    StealthManager.setLastKnownLocation(unit,otherUnit.pos)
+                if (witness~=nil) and (StealthManager.canBeAlerted(witness)) and Wargroove.areEnemies(unit.playerId,witness.playerId) then
+                    StealthManager.makeAlerted(witness)
+                    StealthManager.setLastKnownLocation(witness,unit.pos)
                     break
                 end
             end
         end
-    end
+    end]]
 end
 
 
-function dump(o,level)
-   if type(o) == 'table' then
-      local s = '\n' .. string.rep("   ", level) .. '{\n'
-      for k,v in pairs(o) do
-         if type(k) ~= 'number' then k = '"'..k..'"' end
-         s = s .. string.rep("   ", level+1) .. '['..k..'] = ' .. dump(v,level+1) .. ',\n'
-      end
-      return s .. string.rep("   ", level) .. '}'
-   else
-      return tostring(o)
-   end
-end
 
 function Attack:canExecuteWithTarget(unit, endPos, targetPos, strParam)
     if strParam == "always" then

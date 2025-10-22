@@ -51,6 +51,10 @@ cutscene_backgrounds:
     spritesheet: backgrounds/map_backgrounds_RagnarokMod
     background: cutscene_quay_background
     tileHeight: 44
+  - id: grass_bridge_no_foreground
+    spritesheet: backgrounds/grass_battlescreen_extendedbackgrounds
+    background: grass_battlescreen_extendedbackgrounds_bridge
+    tileHeight: 24
 
   - id: grass_forest_scene
     spritesheet: backgrounds/map_backgrounds_RagnarokMod

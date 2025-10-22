@@ -8,7 +8,7 @@ function SmokeScreen:getTier(unit)
     return 2
 end
 function SmokeScreen:getMaximumRange(unit, endPos)
-    return 6
+    return 2
 end
 
 function SmokeScreen:getTargetType()

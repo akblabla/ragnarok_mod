@@ -2,8 +2,13 @@
 actions:
 
   - type: play
-    clips: [ sfx/outlawGiant/pain1.ogg, sfx/outlawGiant/pain2.ogg, sfx/outlawGiant/pain3.ogg, sfx/outlawGiant/pain4.ogg ]
+    clips: [ sfx/moneyMedium1.ogg ]
     group: sfx
+    volume: 0.8
+    delay: 0
+  - type: play
+    clips: [ sfx/outlawGiant/yahShort1.ogg, sfx/outlawGiant/yahShort2.ogg, sfx/outlawGiant/yahShort3.ogg ]
+    group: voice
     volume: 1.1
     delay: 0
     pitch: 1
@@ -11,12 +16,30 @@ actions:
     clips: [ sfx/cutscene/land.ogg ]
     group: sfx
     volume: 1.1
-    delay: 0.8
+    delay: 1.2
     pitch: 1
+  - type: play
+    clips: [ sfx/moneyMedium2.ogg ]
+    group: sfx
+    volume: 0.8
+    delay: 1.2
   - type: play
     clips: [ sfx/giantStep.ogg ]
     group: sfx
     volume: 1.3
-    delay: 1.4
-    pitch: 1
+    delay: 1.8
+    pitch: 0.8
+  - type: play
+    clips: [ sfx/outlawGiant/spineSnap.ogg ]
+    group: sfx
+    volume: 0.6
+    delay: 1.8
+    pitch: 0.8
+  - type: play
+    clips: [ sfx/moneyLarge2.ogg ]
+    group: sfx
+    volume: 0.9
+    delay: 1.9
+    
+    
 ...

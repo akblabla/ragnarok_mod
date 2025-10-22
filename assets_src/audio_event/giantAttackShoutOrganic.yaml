@@ -2,7 +2,7 @@
 actions:
   - type: play
     clips: [ sfx/outlawGiant/yeah.ogg, sfx/outlawGiant/yah1.ogg, sfx/outlawGiant/yah2.ogg, sfx/outlawGiant/yah3.ogg ]
-    group: sfx
+    group: voice
     volume: 1.1
     delay: 0.4
     pitch: 1

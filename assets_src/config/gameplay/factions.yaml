@@ -1,12 +1,66 @@
 ---
 
 factions:
+  - id: cherrystone
+    name: faction_name_cherrystone
+    stdColour: red
+    altColour: green
+    skinColours: [ "typeII", "typeIII", "typeIII", "typeIV", "typeV", "typeVI", "typeXI" ]
+    bannerForeground: backgrounds/banners/banner_cherrystone_FG
+    bannerBackground: backgrounds/banners/banner_cherrystone_BG
+    rivalFaction: felheim
+
+  - id: felheim
+    name: faction_name_felheim
+    stdColour: blue
+    altColour: red
+    skinColours: [ "typeI" ]
+    bannerForeground: backgrounds/banners/banner_felheim_FG
+    bannerBackground: backgrounds/banners/banner_felheim_BG
+    rivalFaction: cherrystone
+
+  - id: floran
+    name: faction_name_floran
+    stdColour: green
+    altColour: blue
+    skinColours: [ "green" ]
+    bannerForeground: backgrounds/banners/banner_floran_FG
+    bannerBackground: backgrounds/banners/banner_floran_BG
+    rivalFaction: faahri
+
+  - id: heavensong
+    name: faction_name_heavensong
+    stdColour: yellow
+    altColour: purple
+    skinColours: [ "typeII", "typeIII", "typeIV", "typeIV", "typeV", "typeV", "typeVI" ]
+    bannerForeground: backgrounds/banners/banner_heavensong_FG
+    bannerBackground: backgrounds/banners/banner_heavensong_BG
+    rivalFaction: pirates
+
+  - id: neutral
+    name: faction_name_neutral
+    stdColour: neutral
+    altColour: neutral
+    skinColours: [ "typeII", "typeIII", "typeIV", "typeV", "typeVI" ]
+    hasCodex: false
+
   - id: outlaw
     name: faction_name_outlaw
     stdColour: black
     altColour: cyan
-    skinColours: [ "typeII", "typeIII", "typeIV", "typeV", "typeVI" ]
+    skinColours: [ "typeII", "typeIII", "typeIV", "typeV", "typeVI", "typeXI"]
     bannerForeground: backgrounds/banners/banner_outlaw_FG
     bannerBackground: backgrounds/banners/banner_outlaw_BG
     rivalFaction: cherrystone
+
+  - id: pirates
+    name: faction_name_pirates
+    stdColour: black
+    altColour: pink
+    skinColours: [ "typeII", "typeIII", "typeIV", "typeV", "typeV", "typeVI", "typeVI" ]
+    bannerForeground: backgrounds/banners/banner_pirates_FG
+    bannerBackground: backgrounds/banners/banner_pirates_BG
+    hasCodex: true
+    rivalFaction: heavensong
+
 ...

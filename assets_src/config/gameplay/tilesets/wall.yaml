@@ -1,0 +1,178 @@
+---
+tilesets:
+  - id: wall
+    type: WangBlob
+    biomes:
+      - types: [grass, flower]
+        spriteSheet: tilesets
+        spriteBase: wang_grass_walls_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_city
+        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_wall
+        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_road_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_wall
+        infoScreenOffset: 30
+        fillColour: '#6d5e56'
+      - types: [deepforest, tropical]
+        spriteSheet: tilesets
+        spriteBase: wang_deepforest_walls_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_city
+        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_wall
+        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_road_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_wall
+        infoScreenOffset: 30
+        fillColour: '#6d5e56'
+      - types: [dungeon, dungeon_purple]
+        spriteSheet: tilesets
+        spriteBase: wang_dungeon_walls_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_city
+        battleBackgroundSpriteSheet: backgrounds/dungeon_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: dungeon_battlescreen_extendedbackgrounds_wall
+        battleBackgroundSpriteForeground: dungeon_battlescreen_extendedbackgrounds_road_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_wall
+        infoScreenOffset: 30
+        fillColour: '#6d5e56'
+      - types: [dungeon_lava]
+        spriteSheet: tilesets
+        spriteBase: wang_dungeon_lava_walls_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_city
+        battleBackgroundSpriteSheet: backgrounds/dungeon_lava_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: dungeon_lava_battlescreen_extendedbackgrounds_wall
+        battleBackgroundSpriteForeground: dungeon_lava_battlescreen_extendedbackgrounds_road_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_wall
+        infoScreenOffset: 30
+        fillColour: '#6d5e56'
+      - types: [jungle]
+        spriteSheet: tilesets
+        spriteBase: wang_jungle_walls_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_city
+        battleBackgroundSpriteSheet: backgrounds/jungle_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: jungle_battlescreen_extendedbackgrounds_wall
+        battleBackgroundSpriteForeground: jungle_battlescreen_extendedbackgrounds_road_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_wall
+        infoScreenOffset: 30
+        fillColour: '#6d5e56'
+      - types: [desert]
+        spriteSheet: tilesets
+        spriteBase: wang_desert_walls_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_city
+        battleBackgroundSpriteSheet: backgrounds/desert_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: desert_battlescreen_extendedbackgrounds_wall
+        battleBackgroundSpriteForeground: desert_battlescreen_extendedbackgrounds_road_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_wall
+        infoScreenOffset: 30
+        fillColour: '#6d5e56'
+      - types: [ice, ice_low]
+        spriteSheet: tilesets
+        spriteBase: wang_ice_walls_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_city
+        battleBackgroundSpriteSheet: backgrounds/ice_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: ice_battlescreen_extendedbackgrounds_wall
+        battleBackgroundSpriteForeground: ice_battlescreen_extendedbackgrounds_road_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_wall
+        infoScreenOffset: 30
+        fillColour: '#6d5e56'
+      - types: [arctic]
+        spriteSheet: tilesets
+        spriteBase: wang_arctic_walls_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_city
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_wall
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_road_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_wall
+        infoScreenOffset: 30
+        fillColour: '#6d5e56'
+      - types: [arctic_bloom]
+        spriteSheet: tilesets
+        spriteBase: wang_arctic_walls_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_city
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds_bloom
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_bloom_wall
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_bloom_road_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_wall
+        infoScreenOffset: 30
+        fillColour: '#6d5e56'
+      - types: [arctic_blood]
+        spriteSheet: tilesets
+        spriteBase: wang_arctic_walls_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_city
+        battleBackgroundSpriteSheet: backgrounds/arctic_battlescreen_extendedbackgrounds_red
+        battleBackgroundSprite: arctic_battlescreen_extendedbackgrounds_red_wall
+        battleBackgroundSpriteForeground: arctic_battlescreen_extendedbackgrounds_red_road_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_wall
+        infoScreenOffset: 30
+        fillColour: '#6d5e56'
+    primaryConnect: [undefined, wall]
+    decayTo: plains
+    extras:
+    # Single tile variation
+      - { x: 6, y: 7, mask: 256 }
+      - { x: 6, y: 8, mask: 256 }
+      - { x: 6, y: 9, mask: 256 }
+      - { x: 3, y: 8, mask: 255 }
+      - { x: 3, y: 9, mask: 255 }
+      - { x: 3, y: 10, mask: 255 }
+      - { x: 1, y: 10, mask: 255 }
+      - { x: 2, y: 10, mask: 255 }
+
+    # Corner tile variation
+      - { x: 0, y: 7, mask: 28 }
+      - { x: 4, y: 7, mask: 112 }
+      - { x: 0, y: 11, mask: 7 }
+      - { x: 4, y: 11, mask: 193 }
+    # Outer corner tile variation
+      - { x: 1, y: 8, mask: 247 }
+      - { x: 2, y: 8, mask: 223 }
+      - { x: 1, y: 9, mask: 253 }
+      - { x: 2, y: 9, mask: 127 }
+    # Side tile variation
+      - { x: 1, y: 7, mask: 124 }
+      - { x: 2, y: 7, mask: 124 }
+      - { x: 3, y: 7, mask: 124 }
+
+      - { x: 0, y: 8, mask: 31 }
+      - { x: 0, y: 9, mask: 31 }
+      - { x: 0, y: 10, mask: 31 }
+
+      - { x: 4, y: 8, mask: 241 }
+      - { x: 4, y: 9, mask: 241 }
+      - { x: 4, y: 10, mask: 241 }
+
+      - { x: 1, y: 11, mask: 199 }
+      - { x: 2, y: 11, mask: 199 }
+      - { x: 3, y: 11, mask: 199 }
+    # U-shaped 1 tile wide ending variation
+      - { x: 0, y: 12, mask: 4 }
+      - { x: 4, y: 12, mask: 64 }
+      - { x: 5, y: 7, mask: 16 }
+      - { x: 5, y: 11, mask: 1 }
+    # Parallel 1 tile beach river variation
+      - { x: 1, y: 12, mask: 68 }
+      - { x: 2, y: 12, mask: 68 }
+      - { x: 3, y: 12, mask: 68 }
+
+      - { x: 5, y: 8, mask: 17 }
+      - { x: 5, y: 9, mask: 17 }
+      - { x: 5, y: 10, mask: 17 }
+...

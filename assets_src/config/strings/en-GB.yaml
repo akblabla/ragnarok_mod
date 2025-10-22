@@ -110,7 +110,9 @@ en-GB: &flag-en
   mini_groove_name_putt: "Putt"
   mini_groove_name_teleport: "Teleport"
   mini_groove_name_ram: "Ram"
-
+  mini_groove_name_split: "Réorganiser"
+  mini_groove_name_gun: "La Solution"
+  
   character_flagship_wulfar_name: "Wulfar's Flagship"
   character_flagship_wulfar_title: "Captain Wulfar"
   
@@ -178,7 +180,7 @@ en-GB: &flag-en
   unit_name_harpoonship_outlaw: Harpoon Ship 
   unit_name_dragon_outlaw: Emberwing 
   unit_name_trebuchet_outlaw: Trebuchet 
-  unit_name_merman_outlaw: Lumper
+  unit_name_merman_outlaw: Knucklefish
   unit_name_turtle_outlaw: Seadog 
   unit_name_witch_outlaw: Hag 
   unit_name_harpy_outlaw: Magpie 
@@ -245,7 +247,7 @@ en-GB: &flag-en
   ui_cutscene_background_tropical_beach_telescope: "Tropical Beach Telescope"
   ui_cutscene_background_sand_cave: "Sand Cave"
   ui_cutscene_background_forge: "Forge"
-  ui_cutscene_background_grass_bridge_bg: "Grass Bridge BG"
+  ui_cutscene_background_grass_bridge_no_foreground: "Bridge no Foreground"
   ui_cutscene_background_grass_forest_scene: "Grass Forest Scene"
   
   #cutscene sound effects

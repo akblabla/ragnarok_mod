@@ -15,10 +15,12 @@ unitClasses:
   - id: commander_duchess
     name: unit_class_name_commander
     cost: 500
+    resourceCost: 3
     movement: walking
     moveRange: 4
     aiPriority: 8.0
     regeneration: 5
+    canBeRenamed: false
     weapons:
       - id: pistol
     verbs:
@@ -29,6 +31,8 @@ unitClasses:
       - attack_AI
       - hire
       - take_crown
+      - groove_morale_boost
+      - mini_groove_split
     tags:
       - commander
       - type.ground.light
@@ -37,6 +41,7 @@ unitClasses:
     sightRange: 4
     isCommander: true
     grooveId: groove_morale_boost
+    grooveChargeConfig: commander
 
 
 units:
@@ -50,12 +55,15 @@ units:
     mediumPortrait: units/commanders/duchess/portrait_duchess_medium.png
     mapSpeed: 4.0
     skinColour: typeV
-    grabPos: [47, 48]
+    grabPos: [109, 94]
     deathMoveMin: 0
     deathMoveMax: 0
     sounds:
       attackMap: unitAttack
-      attack: duchess/duchessAttack
+      attack1: duchess/duchessAttack1
+      attack2: duchess/duchessAttack2
+      attack3: duchess/duchessAttack3
+      attack4: duchess/duchessAttack4
       counter: duchess/duchessCounterAttack
       attackCommanderShout: duchess/duchessCommanderKillShout
       captureShout: duchess/duchessCapture
@@ -76,17 +84,17 @@ units:
         samePanel: true
         attackSound: counter
       - id: secondary
-        attackAnimationSequence: [attack]
+        attackAnimationSequence: [attack_1, attack_2, attack_3, attack_4]
         hitSpark: fx/bs_stab_attack
         effect: fx/bs_duchess_attack
         effectDelay: 1.4
         hitDelay: 1.4
         ranged: true
-        attackSound: [attack]
-        postAttackAnimationSequence: post_attack_idle
-        postAttackHitSequence: post_attack_hit
+        attackSound: [attack1, attack2, attack3, attack4]
     emotes:
       idle: idle
+      positive: emote_positive
+      negative: emote_angry
       attack: attack
     shouts:
       duchess_acoldwindblows: duchess/duchessShoutAColdWindBlows

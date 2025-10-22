@@ -59,7 +59,7 @@ actions:
     pitch: 1.44
   - type: play
     clips: [ sfx/outlawGiant/exertion1.ogg, sfx/outlawGiant/exertion2.ogg, sfx/outlawGiant/exertion3.ogg, sfx/outlawGiant/exertion4.ogg, sfx/outlawGiant/exertion5.ogg, sfx/outlawGiant/exertion6.ogg]
-    group: sfx
+    group: voice
     volume: 1
     delay: 1.25
   - type: play

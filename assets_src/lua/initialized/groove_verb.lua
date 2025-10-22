@@ -22,12 +22,12 @@ end
 function GrooveVerb:consumeGroove(unit)
     local groove = Wargroove.getGroove(self:getGrooveId(unit))
     unit.grooveChargeOnUse = unit.grooveCharge
-    unit.grooveCharge = unit.grooveCharge-groove.grooveCost[GrooveVerb:getTier()]
+    unit.grooveCharge = unit.grooveCharge-groove.grooveCost[GrooveVerb:getTier(unit)]
     if unit.grooveCharge<0 then unit.grooveCharge = 0 end
     Wargroove.updateUnit(unit)
 end
 
-function GrooveVerb:getTier()
+function GrooveVerb:getTier(unit)
     return 2;
 end
 

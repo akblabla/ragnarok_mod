@@ -4,7 +4,7 @@ local GrooveVerb = require "wargroove/groove_verb"
 
 local Teleport = GrooveVerb:new()
 
-function Teleport:getTier()
+function Teleport:getTier(unit)
     return 1
 end
 

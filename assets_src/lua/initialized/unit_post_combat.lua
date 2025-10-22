@@ -157,17 +157,12 @@ function PostCombatGeneric.attack(Wargroove, unit, isAttacker, healthAfterCombat
         print(dump(defender,0))
         StealGoldBonus(Wargroove, unit, defender)
     end
---[[local isHighAlertToBeRemoved = Wargroove.getUnitState(unit, "high_alert")
-	if (isHighAlertToBeRemoved ~= nil) and (isHighAlertToBeRemoved == "to_be_removed") then
-		isHighAlertToBeRemoved = true
-	else
-		isHighAlertToBeRemoved = false
+    local high_alert = Wargroove.getUnitState(attacker, "high_alert")
+	if high_alert~=nil and high_alert == "true" and isAttacker == false  then
+		Wargroove.setUnitState(attacker,"high_alert","false")
+        Wargroove.removeBuff(attacker, attacker.playerId, "high_alert_spawn", "high_alert", "high_alert_death")
+		Wargroove.updateUnit(attacker)
 	end
-	if isHighAlertToBeRemoved then
-		Wargroove.setUnitState(unit,"high_alert","false")
-		Wargroove.highAlertBuff(unit)
-		Wargroove.updateUnit(unit)
-	end]]
 end
 
 return UnitPostCombat

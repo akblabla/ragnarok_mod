@@ -29,6 +29,14 @@ verbs:
     directTarget: true
     scriptName: verbs/capture_AI
 
+  - id: mini_groove_teleport
+    icon: ui/icons/grooves/unit_action_icon_teleport_tier_0.png
+    name: mini_groove_name_teleport
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetted: true
+    scriptName: verbs/mini_groove_teleport
+    
   - id: groove_smoke_screen
     icon: ui/icons/grooves/unit_action_icon_smoke_tier_1.png
     name: groove_name_smoke_screen
@@ -38,26 +46,6 @@ verbs:
     targetted: true
     hasCustomSplash: true
     scriptName: verbs/groove_smoke_screen_extra
-
-  - id: mini_groove_teleport
-    icon: ui/icons/grooves/unit_action_icon_teleport_tier_0.png
-    name: mini_groove_name_teleport
-    targetColour: target
-    targetOutlineColour: target_outline
-    targetted: true
-    scriptName: verbs/mini_groove_teleport
-
-  - id: groove_golf
-    icon: ui/icons/grooves/unit_action_icon_golf_tier_1.png
-    name: groove_name_golf
-    targetColour: target
-    targetOutlineColour: target_outline
-    targetDisplayColour: attack_target
-    targetDisplayOutlineColour: attack_target_outline
-    preExecute: true
-    targetted: true
-    directTarget: true
-    scriptName: verbs/groove_golf_extra
 
   - id: mini_groove_putt
     icon: ui/icons/grooves/unit_action_icon_putt_tier_0.png
@@ -70,6 +58,18 @@ verbs:
     targetted: true
     directTarget: true
     scriptName: verbs/mini_groove_putt
+
+  - id: groove_golf
+    icon: ui/icons/grooves/unit_action_icon_golf_tier_1.png
+    name: groove_name_golf
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetDisplayColour: attack_target
+    targetDisplayOutlineColour: attack_target_outline
+    preExecute: true
+    targetted: true
+    directTarget: true
+    scriptName: verbs/groove_golf_extra
 
   - id: groove_no_groove
     icon: ui/icons/grooves/unit_action_icon_inspire.png
@@ -155,6 +155,15 @@ verbs:
     targetColour: target
     scriptName: verbs/pirate_claim
 
+    
+  - id: mini_groove_ram
+    icon: ui/icons/grooves/unit_action_icon_ram_tier_0.png
+    name: mini_groove_name_ram
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetted: true
+    scriptName: verbs/mini_groove_ram
+
   - id: groove_broadside
     icon: ui/icons/grooves/unit_action_icon_broadside_tier_1.png
     name: groove_name_broadside
@@ -165,13 +174,26 @@ verbs:
     preExecute: true
     scriptName: verbs/groove_broadside
     
-  - id: mini_groove_ram
-    icon: ui/icons/grooves/unit_action_icon_ram_tier_0.png
-    name: mini_groove_name_ram
+  - id: mini_groove_gun
+    icon: ui/icons/grooves/unit_action_icon_gun_tier_0.png
+    name: mini_groove_name_gun
     targetColour: target
     targetOutlineColour: target_outline
+    targetDisplayColour: attack_target
+    targetDisplayOutlineColour: attack_target_outline
+    preExecute: true
+    scriptName: verbs/mini_groove_gun
+
+  - id: mini_groove_split
+    icon: ui/icons/grooves/unit_action_icon_split_tier_0.png
+    name: mini_groove_name_split
+    targetColour: target
+    targetOutlineColour: target_outline
+    targetDisplayColour: attack_target
+    targetDisplayOutlineColour: attack_target_outline
     targetted: true
-    scriptName: verbs/mini_groove_ram
+    preExecute: true
+    scriptName: verbs/mini_groove_split
 
   - id: groove_area_damage_rival
     icon: ui/icons/grooves/unit_action_icon_shield.png
@@ -194,6 +216,16 @@ verbs:
     scriptName: verbs/groove_alert_area
     splashOutlineColour: attack_target_outline
     splashRadius: 2
+
+  - id: groove_morale_boost
+    icon: ui/icons/grooves/unit_action_icon_en_garde_tier_1.png
+    name: groove_name_morale_boost
+    targetColour: target
+    targetOutlineColour: target_outline
+    splashOutlineColour: heal_outline
+    targetted: true
+    splashRadius: 2
+    scriptName: verbs/groove_morale_boost
 
   - id: rescue
     icon: ui/icons/grooves/unit_action_icon_inspire.png

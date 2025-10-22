@@ -16,6 +16,8 @@ unitClasses:
     battleUnitCount: 1
     canAttack: false
     canSeeOverTerrain: true
+    treatAsNeutralObstacle: true
+    canBeReinforced: false
     regeneration: -35
     classIcon: unit_icons_summon
     scout: true

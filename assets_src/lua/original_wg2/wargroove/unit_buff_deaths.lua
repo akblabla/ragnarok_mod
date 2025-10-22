@@ -2,6 +2,7 @@ local UnitBuffDeaths = {}
 
 local BuffDeaths = {}
 
+
 function BuffDeaths.vampiric_touch_death(Wargroove, unit)
     if not unit then
         return

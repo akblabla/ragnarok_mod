@@ -31,7 +31,7 @@ function DeathGiveGold:execute(unit, targetPos, strParam, path)
         return
     end
     
-    Wargroove.changeMoney(killedByUnit.playerId, amountCarried)
+    Wargroove.changeMoney(killedByUnit.playerId, tonumber(amountCarried))
 end
 
 

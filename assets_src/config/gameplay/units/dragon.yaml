@@ -7,7 +7,6 @@ weapons:
     canMoveAndAttack: true
     baseDamage:
       land: 1
-      air: 1
       water: 1
       buildings: 1
 

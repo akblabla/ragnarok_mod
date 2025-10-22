@@ -27,7 +27,7 @@ local function breakOnTerrain(unit,endPos)
     end
 end
 
-function Ram:getTier()
+function Ram:getTier(unit)
     return 1
 end
 
@@ -171,8 +171,7 @@ end
 function Ram:onPostUpdateUnit(unit, targetPos, strParam, path)
     GrooveVerb.onPostUpdateUnit(self, unit, targetPos, strParam, path)
     local endPos = path[#path]
-    local endFacing = (currentPos.x > endPos.x and 1 or 3)
-    unit.pos = { x = currentPos.x, y = currentPos.y }
+    local endFacing = (targetPos.x < endPos.x and 1 or 3)
     unit.pos.facing = endFacing
 end
 

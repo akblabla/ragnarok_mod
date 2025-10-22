@@ -1,7 +1,7 @@
 ---
 
 unitClasses:
-  - id: stealth_manager
+  - id: location_object
     name: unit_class_name_area_heal
     movement: hovering
     moveRange: 0
@@ -22,7 +22,7 @@ unitClasses:
 
 
 units:
-  - class: stealth_manager
+  - class: location_object
     faction: outlaw
     name: unit_class_name_area_heal
     mapAnimation: units/commanders/emeric/crystal

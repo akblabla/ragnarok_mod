@@ -3,7 +3,7 @@ tilesets:
   - id: carpet
     type: WangBlob
     biomes:
-      - types: [grass, flower, deepforest]
+      - types: [grass, flower, deepforest, tropical]
         spriteSheet: tilesets
         spriteBase: wang_grass_carpet_tileset
         portraitSpriteSheet: terrain/terrain_portraits

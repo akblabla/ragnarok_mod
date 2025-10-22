@@ -28,40 +28,63 @@ local function dump(o,level)
 	end
  end
 function Combat.init()
+	
+    OldCombat.getBestWeapon = Combat.getBestWeapon
     OldCombat.getDamage = Combat.getDamage
 	OldCombat.getGrooveAttackerDamage = Combat.getGrooveAttackerDamage
     OldCombat.solveCombat = Combat.solveCombat
 	OldCombat.forceAttack = Combat.forceAttack
 	OldCombat.forceAttackFake = Combat.forceAttackFake
 	OldCombat.solveRound = Combat.solveRound
+	OldCombat.solveBothRounds = Combat.solveBothRounds
 	OldCombat.getPassiveMultiplier = Combat.getPassiveMultiplier
+	OldCombat.startReverseCombat = Combat.startReverseCombat
 end
+function Combat:getBestWeapon(unit, target, delta, moved, facing)
+	if facing == nil then facing = 0 end --Wargroove doesn't care about facing..
+	assert(facing ~= nil)
 
-function Combat:getPassiveMultiplier(attacker, defender, attackerPos, defenderPos, path, isCounter, unitState)
+	local weapons = unit.unitClass.weapons
+		for i, weapon in ipairs(weapons) do
+		if self:canUseWeapon(weapon, moved, delta, facing) then
+			local dmg = Wargroove.getWeaponDamage(weapon, unit, target)
+			if unit.unitClassId == "turtle" and target.unitClass.isStructure and not (target.unitClass.movementType == "sea_building" or target.unitClass.movementType == "river_building" or target.unitClass.movementType == "river_sea_building" ) then
+
+				dmg = 0
+			end
+            if dmg > 0.0001 then
+                return weapon, dmg
+            end
+        end
+    end
+
+	return nil, 0.0
+end
+function Combat:getPassiveMultiplier(unit, target, unitPos, targetPos, path, isCounter, unitState)
 	local condition = nil
 
 	-- Itemified unit class
-	if attacker.unitClass.aliasId ~= "" then
-		condition = self.passiveConditions[attacker.unitClass.aliasId]
+	if unit.unitClass.aliasId ~= "" then
+		condition = self.passiveConditions[unit.unitClass.aliasId]
 	else
-		if attacker.unitClass.critConditionId == "" then
-			condition = self.passiveConditions[attacker.unitClassId]
+		if unit.unitClass.critConditionId == "" then
+			condition = self.passiveConditions[unit.unitClassId]
 		else
-			condition = self.passiveConditions[attacker.unitClass.critConditionId]
+			condition = self.passiveConditions[unit.unitClass.critConditionId]
 		end
 	end
 
 	local payload = {
-		attacker = attacker,
-		defender = defender,
-		attackerPos = attackerPos,
-		defenderPos = defenderPos,
+		attacker = unit,
+		defender = target,
+		attackerPos = unitPos,
+		defenderPos = targetPos,
 		path = path,
 		isCounter = isCounter,
 		unitState = unitState
 	}
 	if condition ~= nil and condition(payload) then
-		return attacker.unitClass.passiveMultiplier
+		return unit.unitClass.passiveMultiplier
 	else
 		return 1.0
 	end
@@ -120,14 +143,14 @@ function Combat:getGrooveAttackerDamage(attacker, defender, solveType, attackerP
 	return damage
 end
 
-function Combat:getDamage(attacker, defender, solveType, isCounter, attackerPos, defenderPos, attackerPath, defenderPath, isGroove, grooveWeaponIdOverride)
+function Combat:getDamage(unit, target, solveType, isCounter, unitPos, targetPos, unitPath, targetPath, isGroove, grooveWeaponIdOverride)
 	if type(solveType) ~= "string" then
 		error("solveType should be a string. Value is " .. tostring(solveType))
 	end
 	local missedAttack = 1.0
 	if solveType == "crazy" then
-		local values = { attacker.id, attacker.unitClassId, attacker.startPos.x, attacker.startPos.y, attackerPos.x, attackerPos.y,
-		                 defender.id, defender.unitClassId, isCounter, Wargroove.getTurnNumber(), Wargroove.getCurrentPlayerId() }
+		local values = { unit.id, unit.unitClassId, unit.startPos.x, unit.startPos.y, unitPos.x, unitPos.y,
+		                 target.id, target.unitClassId, isCounter, Wargroove.getTurnNumber(), Wargroove.getCurrentPlayerId() }
 		local roll = Wargroove.randomIntegerFromTable(values, 1, 100)
 		if roll <= 50 then
 			missedAttack = 0.0
@@ -136,18 +159,18 @@ function Combat:getDamage(attacker, defender, solveType, isCounter, attackerPos,
 		solveType = "average"
 	end
 
-	local delta = {x = defenderPos.x - attackerPos.x, y = defenderPos.y - attackerPos.y }
-	local moved = attackerPath and #attackerPath > 1
+	local delta = {x = targetPos.x - unitPos.x, y = targetPos.y - unitPos.y }
+	local moved = unitPath and #unitPath > 1
 
 	-- This check is specifically relevant in two situations: Koji's groove and Lytra's ultra
-	if not attacker.unitClass.canAttack and not isGroove then
+	if not unit.unitClass.canAttack and not isGroove then
 		return nil, false
 	end
 
 	local randomValue = 0.5
 	if solveType == "random" and Wargroove.isRNGEnabled() then
-		local values = { attacker.id, attacker.unitClassId, attacker.startPos.x, attacker.startPos.y, attackerPos.x, attackerPos.y,
-		                 defender.id, defender.unitClassId, defender.startPos.x, defender.startPos.y, defenderPos.x, defenderPos.y,
+		local values = { unit.id, unit.unitClassId, unit.startPos.x, unit.startPos.y, unitPos.x, unitPos.y,
+		                 target.id, target.unitClassId, target.startPos.x, target.startPos.y, targetPos.x, targetPos.y,
 						 isCounter, Wargroove.getTurnNumber(), Wargroove.getCurrentPlayerId() }
 		local str = ""
 		for i, v in ipairs(values) do
@@ -177,56 +200,56 @@ function Combat:getDamage(attacker, defender, solveType, isCounter, attackerPos,
 		randomValue = 0.5
 	end
 
-	local attackerHealth = isGroove and 100 or attacker.health
-	local attackerEffectiveness = (attackerHealth * 0.01) * (damageAt100Health - damageAt0Health) + damageAt0Health
-	local defenderEffectiveness = (defender.health * 0.01) * (damageAt100Health - damageAt0Health) + damageAt0Health
+	local unitHealth = isGroove and 100 or unit.health
+	local unitEffectiveness = (unitHealth * 0.01) * (damageAt100Health - damageAt0Health) + damageAt0Health
+	local targetEffectiveness = (target.health * 0.01) * (damageAt100Health - damageAt0Health) + damageAt0Health
 
 	-- For structures, check if there's a garrison; if so, attack as if it was that instead
-	local effectiveAttacker
-	if attacker.garrisonClassId ~= '' then
-		effectiveAttacker = {
-			id = attacker.id,
-			pos = attacker.pos,
-			startPos = attacker.startPos,
-			playerId = attacker.playerId,
-			unitClassId = attacker.garrisonClassId,
-			unitClass = Wargroove.getUnitClass(attacker.garrisonClassId),
-			health = attackerHealth,
-			state = attacker.state,
-			damageTakenPercent = attacker.damageTakenPercent,
-			stunned = attacker.stunned,
-			tentacled = attacker.tentacled
+	local effectiveUnit
+	if unit.garrisonClassId ~= '' then
+		effectiveUnit = {
+			id = unit.id,
+			pos = unit.pos,
+			startPos = unit.startPos,
+			playerId = unit.playerId,
+			unitClassId = unit.garrisonClassId,
+			unitClass = Wargroove.getUnitClass(unit.garrisonClassId),
+			health = unitHealth,
+			state = unit.state,
+			damageTakenPercent = unit.damageTakenPercent,
+			stunned = unit.stunned,
+			tentacled = unit.tentacled
 		}
-		--attackerEffectiveness = 1.0
+		--unitEffectiveness = 1.0
 	else
-		effectiveAttacker = attacker
+		effectiveUnit = unit
 	end
 
-	local passiveMultiplier = self:getPassiveMultiplier(effectiveAttacker, defender, attackerPos, defenderPos, attackerPath, isCounter, attacker.state)
+	local passiveMultiplier = self:getPassiveMultiplier(effectiveUnit, target, unitPos, targetPos, unitPath, isCounter, unit.state)
 	if not isGroove then
-	--	passiveMultiplier = sawItComingMultiplier(attacker, defender, attackerPos, defenderPos, attackerPath, defenderPath, passiveMultiplier)
+	--	passiveMultiplier = sawItComingMultiplier(unit, target, unitPos, targetPos, unitPath, targetPath, passiveMultiplier)
 	end
-	local defenderUnitClass = Wargroove.getUnitClass(defender.unitClassId)
-	local defenderIsInAir = defenderUnitClass.inAir
-	local defenderIsStructure = defenderUnitClass.isStructure
-	local defenderIsPoisoned = Wargroove.getUnitState(defender, "poisoned")
+	local targetUnitClass = Wargroove.getUnitClass(target.unitClassId)
+	local targetIsInAir = targetUnitClass.inAir
+	local targetIsStructure = targetUnitClass.isStructure
+	local targetIsPoisoned = Wargroove.getUnitState(target, "poisoned")
 	-- TODO
-	local defenderCanBeAttackedFromDistance = defender.canBeAttackedFromDistance;
+	local targetCanBeAttackedFromDistance = target.canBeAttackedFromDistance;
 
 	local terrainDefence
-	if defenderIsInAir then
-		terrainDefence = Wargroove.getSkyDefenceAt(defenderPos)
-	elseif defenderIsStructure then
+	if targetIsInAir then
+		terrainDefence = Wargroove.getSkyDefenceAt(targetPos)
+	elseif targetIsStructure then
 		terrainDefence = 0
 	else
-		terrainDefence = Wargroove.getTerrainDefenceAt(defenderPos)
+		terrainDefence = Wargroove.getTerrainDefenceAt(targetPos)
 	end
 
 	local terrainDefenceBonus = terrainDefence * defencePerShield
-	if defenderIsPoisoned == "true" then
+	if targetIsPoisoned == "true" then
 		terrainDefenceBonus = terrainDefenceBonus - 0.15
 	end
-	if not defenderCanBeAttackedFromDistance then
+	if not targetCanBeAttackedFromDistance then
 		terrainDefenceBonus = terrainDefenceBonus + 0.20
 	end
 
@@ -236,29 +259,29 @@ function Combat:getDamage(attacker, defender, solveType, isCounter, attackerPos,
 		if (grooveWeaponIdOverride ~= nil) then
 			weaponId = grooveWeaponIdOverride
 		else
-			weaponId = attacker.unitClass.weapons[1].id
+			weaponId = unit.unitClass.weapons[1].id
 		end
-		baseDamage = Wargroove.getWeaponDamageForceGround(weaponId, attacker, defender)
+		baseDamage = Wargroove.getWeaponDamageForceGround(weaponId, unit, target)
 	else	
 		local weapon
 		if grooveWeaponIdOverride ~= nil then
-			weapon = Wargroove.getWeapon(grooveWeaponIdOverride, attacker.unitClassId, attacker.id)
-			baseDamage = Wargroove.getWeaponDamage(weapon, attacker, defender)
+			weapon = Wargroove.getWeapon(grooveWeaponIdOverride, unit.unitClassId, unit.id)
+			baseDamage = Wargroove.getWeaponDamage(weapon, unit, target)
 		else
-			weapon, baseDamage = self:getBestWeapon(effectiveAttacker, defender, delta, moved, attackerPos.facing)
+			weapon, baseDamage = self:getBestWeapon(effectiveUnit, target, delta, moved, unitPos.facing)
 		end
 
 		if weapon == nil or (isCounter and not weapon.canMoveAndAttack) 
 						 or baseDamage < 0.01 
 						 or (isCounter and not weapon.canCounterAttack) 
-						 or (isCounter and effectiveAttacker.stunned)
-						 or (effectiveAttacker.tentacled)
+						 or (isCounter and effectiveUnit.stunned)
+						 or (effectiveUnit.tentacled)
 						 then
 			return nil, false
 		end
 
 		if #(weapon.terrainExclusion) > 0 then
-			local targetTerrain = Wargroove.getTerrainNameAt(defenderPos)
+			local targetTerrain = Wargroove.getTerrainNameAt(targetPos)
 			for i, terrain in ipairs(weapon.terrainExclusion) do
 				if targetTerrain == terrain then
 					return nil, false
@@ -268,12 +291,12 @@ function Combat:getDamage(attacker, defender, solveType, isCounter, attackerPos,
 	end
 
 	--To fix the error in the "getWeaponDamage" engine method that returns the wrong value.
-	if damageMultiplierList[defender.unitClassId]~=nil then
-		baseDamage = baseDamage - 0.05*(1-damageMultiplierList[defender.unitClassId])
+	if damageMultiplierList[target.unitClassId]~=nil then
+		baseDamage = baseDamage - 0.05*(1-damageMultiplierList[target.unitClassId])
 	end
 
 	local multiplier = 1.0
-	if Wargroove.isHuman(defender.playerId) then
+	if Wargroove.isHuman(target.playerId) then
 		multiplier = Wargroove.getDamageMultiplier()
 		
 		-- If the player is on "easy" for damage, make the AI overlook that.
@@ -288,13 +311,13 @@ function Combat:getDamage(attacker, defender, solveType, isCounter, attackerPos,
 	end
 
 	-- Damage reduction
-	multiplier = multiplier * defender.damageTakenPercent / 100
+	multiplier = multiplier * target.damageTakenPercent / 100
 
-	local damage = self:solveDamage(baseDamage, attackerEffectiveness, defenderEffectiveness, terrainDefenceBonus, randomValue, passiveMultiplier, multiplier)
+	local damage = self:solveDamage(baseDamage, unitEffectiveness, targetEffectiveness, terrainDefenceBonus, randomValue, passiveMultiplier, multiplier)
 
 	-- In case the map a counter modifier we increase the base damage of the unit here
 	if isCounter then
-		local counterModifier = Wargroove.getCounterModifierAt(attackerPos)
+		local counterModifier = Wargroove.getCounterModifierAt(unitPos)
 		damage = damage + counterModifier
 	end
 
@@ -307,6 +330,12 @@ function Combat:getDamage(attacker, defender, solveType, isCounter, attackerPos,
 		hasPassive = nil
 	end
 
+	-- turtles not allowed to attack land buildings
+	if unit.unitClassId == "turtle" and target.unitClass.isStructure and not (target.unitClass.movementType == "sea_building" or target.unitClass.movementType == "river_building" or target.unitClass.movementType == "river_sea_building" ) then
+
+		damage = nil
+		hasPassive = nil
+	end
 	return damage, hasPassive
 end
 
@@ -318,27 +347,21 @@ function Combat:forceAttack(attacker, defender)
 
 end
 
-function Combat:solveRound(attacker, defender, solveType, isCounter, attackerPos, defenderPos, attackerPath, defenderPath)
-	if (defender.canBeAttacked == false) or (not defender.unitClass.isAttackable) then
+function Combat:solveRound(unit, target, solveType, isCounter, unitPos, targetPos, unitPath, targetPath)
+	if (target.canBeAttacked == false) or (not target.unitClass.isAttackable) then
 		return nil, false
 	end
 
-	local damage, hadPassive = self:getDamage(attacker, defender, solveType, isCounter, attackerPos, defenderPos, attackerPath, defenderPath, false, nil)	
+	local damage, hadPassive = self:getDamage(unit, target, solveType, isCounter, unitPos, targetPos, unitPath, targetPath, false, nil)	
 	if (damage == nil) then
 		return nil, false
 	end
 	
-	local defenderHealth = math.floor(defender.health - damage)
-	return defenderHealth, hadPassive
+	local targetHealth = math.floor(target.health - damage)
+	return targetHealth, hadPassive
 end
 
-function Combat:solveCombat(attackerId, defenderId, attackerPath, solveType)
-
-	local attacker = Wargroove.getUnitById(attackerId)
-	assert(attacker ~= nil)
-	local defender = Wargroove.getUnitById(defenderId)
-	assert(defender ~= nil)
-
+function Combat:solveBothRounds(attacker, defender, solveType, attackerPath, defenderPath, counterFirst)
 	local results = {
 		attackerHealth = attacker.health,
 		defenderHealth = defender.health,
@@ -347,20 +370,10 @@ function Combat:solveCombat(attackerId, defenderId, attackerPath, solveType)
 		hasCounter = false,
 		hasAttackerCrit = false
 	}
-
-	local e0 = self:getEndPosition(attackerPath, attacker.pos)
-	Wargroove.pushUnitPos(attacker, e0)
-
-	if solveType ~= "random" then
-		Wargroove.setSimulating(true)
-	end
-	Wargroove.applyBuffs()
-
-	local attackResult
-	local defenderPath = {defender.pos}
-	attackResult, results.hasAttackerCrit = self:solveRound(attacker, defender, solveType, false, attacker.pos, defender.pos, attackerPath, defenderPath)
-	if attackResult ~= nil then
-		results.defenderHealth = attackResult
+	local targetHealth = nil
+	targetHealth, results.hasAttackerCrit = self:solveRound(attacker, defender, solveType, counterFirst, attacker.pos, defender.pos, attackerPath, defenderPath)
+	if targetHealth ~= nil then
+		results.defenderHealth = targetHealth
 		results.attackerAttacked = true
 		if results.defenderHealth < 1 and solveType == "random" then
 			results.defenderHealth = 0
@@ -380,10 +393,9 @@ function Combat:solveCombat(attackerId, defenderId, attackerPath, solveType)
 			state = defender.state,
 			stunned = defender.stunned
 		}
-		local defenderResult
-		defenderResult, results.hasDefenderCrit = self:solveRound(damagedDefender, attacker, solveType, true, defender.pos, attacker.pos, defenderPath, attackerPath)
-		if defenderResult ~= nil then
-			results.attackerHealth = defenderResult
+		targetHealth, results.hasDefenderCrit = self:solveRound(damagedDefender, attacker, solveType, not counterFirst, defender.pos, attacker.pos, defenderPath, attackerPath)
+		if targetHealth ~= nil then
+			results.attackerHealth = targetHealth
 			results.defenderAttacked = true
 			results.hasCounter = true
 			if results.attackerHealth < 1 and solveType == "random" then
@@ -391,13 +403,101 @@ function Combat:solveCombat(attackerId, defenderId, attackerPath, solveType)
 			end
 		end
 	end
+	return results
+end
+local reverseOrder = false
+function Combat:solveCombat(attackerId, defenderId, attackerPath, solveType)
+	local attacker = Wargroove.getUnitById(attackerId)
+	assert(attacker ~= nil)
+	local defender = Wargroove.getUnitById(defenderId)
+	assert(defender ~= nil)
 
+	local results = {
+		attackerHealth = attacker.health,
+		defenderHealth = defender.health,
+		attackerAttacked = false,
+		defenderAttacked = false,
+		hasCounter = false,
+		hasAttackerCrit = false,
+		hasDefenderCrit = false
+	}
+
+	if  (reverseOrder == true) then
+		local e1 = self:getEndPosition(attackerPath, defender.pos)
+		Wargroove.pushUnitPos(defender, e1)
+	else
+		local e1 = self:getEndPosition(attackerPath, attacker.pos)
+		Wargroove.pushUnitPos(attacker, e1)
+	end
+
+	if solveType ~= "random" then
+		Wargroove.setSimulating(true)
+	end
+	Wargroove.applyBuffs()
+
+	local defenderPath = {}
+	local defenderIsHighAlert = Wargroove.getUnitState(defender, "high_alert")
+	local testResult, testCrit = self:solveRound(defender, attacker, solveType, true, defender.pos, attacker.pos, defenderPath, attackerPath)
+	local defenderAttacksFirst = defenderIsHighAlert~=nil and defenderIsHighAlert == "true" and testResult ~= nil
+	local isPreview =  (solveType == "random" or solveType == "average")
+	if defenderAttacksFirst and isPreview then
+		for i,tile in pairs(attackerPath) do
+			defenderPath[i] = tile
+		end
+		attackerPath = {defender.pos}
+	else
+		defenderPath = {defender.pos}
+	end
+	if defenderAttacksFirst and not isPreview then
+		local tempResults = self:solveBothRounds(defender, attacker, solveType, defenderPath, attackerPath, true)
+		results = {
+			attackerHealth = tempResults.defenderHealth,
+			defenderHealth = tempResults.attackerHealth,
+			attackerAttacked = true,
+			defenderAttacked = tempResults.attackerAttacked,
+			hasCounter = tempResults.attackerAttacked,
+			hasAttackerCrit = tempResults.hasDefenderCrit,
+			hasDefenderCrit = tempResults.hasAttackerCrit
+		}
+	else
+		local tempResults = self:solveBothRounds(attacker, defender, solveType, attackerPath, defenderPath, false)
+		results = tempResults
+	end
 	Wargroove.popUnitPos()
 	Wargroove.applyBuffs()
 	
 	Wargroove.setSimulating(false)
-
+	reverseOrder = false
 	return results
+end
+local function deepcopy(orig)
+    local orig_type = type(orig)
+    local copy
+    if orig_type == 'table' then
+        copy = {}
+        for orig_key, orig_value in next, orig, nil do
+            copy[deepcopy(orig_key)] = deepcopy(orig_value)
+        end
+        setmetatable(copy, deepcopy(getmetatable(orig)))
+    else -- number, string, boolean, etc
+        copy = orig
+    end
+    return copy
+end
+function Combat:startReverseCombat(attacker, defender, path)
+	reverseOrder = true
+	attacker.pos = self:getEndPosition(path, attacker.pos)
+
+    Wargroove.doPreCombat(attacker.id, defender.id)
+    Wargroove.startCombat(defender, attacker, {}, "average")
+	Wargroove.lastAttacker = deepcopy(attacker)
+	Wargroove.lastDefender = deepcopy(defender)
+	local result = self:solveCombat(attacker.id, defender.id, path, "")
+	Wargroove.lastAttacker.health = result.attackerHealth
+	Wargroove.lastDefender.health = result.defenderHealth
+    Wargroove.setMetaLocation("last_attacker", attacker.pos)
+    Wargroove.setMetaLocation("last_defender", defender.pos)
+    Wargroove.clearUnitPositionCache()
 end
 
 function Combat:solveDamage(weaponDamage, attackerEffectiveness, defenderEffectiveness, terrainDefenceBonus, randomValue, crit, multiplier)

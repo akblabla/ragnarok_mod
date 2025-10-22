@@ -8,6 +8,7 @@ unitClasses:
       - recruit
     battleUnitCount: 1
     isStructure: true
+    garrisonUnit: garrison
     canReinforce: true
     canBeReinforced: false
     canBeCaptured: true

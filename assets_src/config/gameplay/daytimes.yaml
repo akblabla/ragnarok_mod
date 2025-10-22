@@ -1,0 +1,369 @@
+---
+
+daytimes:
+  - id: dusk
+    name: daytime_name_duskdusk
+    hidden: false
+    lights: false
+    emitLights: false
+    clearColour: '#ff0000'
+    shadowMaskColour: '#ff00ff'
+    separateShadowColour: '#898b8e'
+    biomes:
+    - biomeId: grass
+      intensity: palettes/light_ramp_intensity.png
+      lightColours: ['#c2cccc', '#020c0c']
+      nightColours: palettes/night_ramp_grass.png
+      nightColoursBlend: 0.8
+      borderColours: palettes/border_day_grass.png
+      borderShadowColour: '#dfcb9d'
+      fogColourFilter: [
+        0.60, 0.89, 0.38, 1.00,
+        0.44, 0.84, 0.30, 1.00,
+        0.32, 0.66, 0.17, 1.00
+      ]
+    - biomeId: desert
+      borderColours: palettes/border_day_desert.png
+      lightColours: ['#c2cccc', '#c2cccc']
+      borderShadowColour: '#dfcb9d'
+      nightColoursBlend: 0.5
+      fogColourFilter: [
+        0.60, 0.86, 0.47, 0.72,
+        0.52, 0.68, 0.42, 0.76,
+        0.32, 0.66, 0.17, 0.79
+      ]
+    - biomeId: jungle
+      borderColours: palettes/border_day_jungle.png
+      lightColours: ['#c2cccc', '#c2cccc']
+      borderShadowColour: '#dfcb9d'
+      nightColoursBlend: 0.5
+      fogColourFilter: [
+        0.60, 0.89, 0.38, 1.00,
+        0.44, 0.84, 0.30, 1.00,
+        0.32, 0.66, 0.17, 1.00
+      ]
+    - biomeId: ice
+      borderColours: palettes/border_day_ice.png
+      lightColours: ['#c2cccc', '#c2cccc']
+      borderShadowColour: '#dfcb9d'
+      nightColoursBlend: 0.5
+      fogColourFilter: [
+        0.60, 0.89, 0.38, 0.82,
+        0.44, 0.84, 0.30, 0.83,
+        0.32, 0.63, 0.17, 0.87
+      ]
+    - biomeId: ice_low
+      borderColours: palettes/border_day_ice.png
+      lightColours: ['#c2cccc', '#c2cccc']
+      borderShadowColour: '#dfcb9d'
+      nightColoursBlend: 0.5
+      fogColourFilter: [
+        0.60, 0.89, 0.38, 0.82,
+        0.44, 0.84, 0.30, 0.83,
+        0.32, 0.63, 0.17, 0.87
+      ]
+    - biomeId: dungeon
+      borderColours: palettes/border_day_dungeon.png
+      lightColours: ['#c2cccc', '#c2cccc']
+      borderShadowColour: '#dfcb9d'
+      nightColoursBlend: 0.5
+      fogColourFilter: [
+        0.50, 0.72, 0.47, 0.92,
+        0.47, 0.57, 0.30, 0.92,
+        0.18, 0.48, 0.18, 1.00
+      ]
+    - biomeId: dungeon_lava
+      borderColours: palettes/border_day_dungeon_lava.png
+      lightColours: ['#c2cccc', '#c2cccc']
+      borderShadowColour: '#dfcb9d'
+      nightColoursBlend: 0.5
+      fogColourFilter: [
+        0.70, 0.62, 0.58, 0.92,
+        0.44, 0.61, 0.35, 0.92,
+        0.18, 0.48, 0.18, 1.00
+      ]
+    - biomeId: arctic
+      intensity: palettes/light_ramp_intensity.png
+      lightColours: ['#e6f7ff', '#d0f1ff']
+      # lightColours: ['#ffffff', '#ffffff']
+      nightColours: palettes/day_ramp_arctic.png
+      nightColoursBlend: 0.5
+      borderColours: palettes/border_day_arctic.png
+      borderShadowColour: '#dfcb9d'
+      fogColourFilter: [
+        0.60, 0.89, 0.38, 0.82,
+        0.44, 0.84, 0.30, 0.83,
+        0.32, 0.63, 0.17, 0.87
+      ]
+    - biomeId: arctic_blood
+      intensity: palettes/light_ramp_intensity.png
+      lightColours: ['#e6f7ff', '#d0f1ff']
+      nightColours: palettes/day_ramp_arctic.png
+      nightColoursBlend: 0.5
+      borderColours: palettes/border_day_arctic_blood.png
+      borderShadowColour: '#dfcb9d'
+      fogColourFilter: [
+        0.60, 0.89, 0.38, 0.82,
+        0.44, 0.84, 0.30, 0.83,
+        0.32, 0.63, 0.17, 0.87
+      ]
+    - biomeId: arctic_bloom
+      intensity: palettes/light_ramp_intensity.png
+      lightColours: ['#e6f7ff', '#d0f1ff']
+      nightColours: palettes/day_ramp_arctic.png
+      nightColoursBlend: 0.5
+      borderColours: palettes/border_day_arctic.png
+      borderShadowColour: '#dfcb9d'
+      fogColourFilter: [
+        0.60, 0.89, 0.38, 0.82,
+        0.44, 0.84, 0.30, 0.83,
+        0.32, 0.63, 0.17, 0.87
+      ]
+
+  - id: morning
+    name: daytime_name_morning
+    hidden: false
+    lights: false
+    emitLights: false
+    clearColour: '#ff0000'
+    shadowMaskColour: '#ff00ff'
+    separateShadowColour: '#ffffff'
+    biomes:
+    - biomeId: grass
+      intensity: palettes/light_ramp_intensity.png
+      lightColours: ['#ffe6bc', '#ffe6bc']
+      nightColours: palettes/night_ramp_grass.png
+      nightColoursBlend: 0.65
+      borderColours: palettes/border_day_grass.png
+      borderShadowColour: '#dfcb9d'
+      fogColourFilter: [
+        0.60, 0.89, 0.38, 1.00,
+        0.44, 0.84, 0.30, 1.00,
+        0.32, 0.66, 0.17, 1.00
+      ]
+    - biomeId: desert
+      borderColours: palettes/border_day_desert.png
+      lightColours: ['#e2f4ff', '#e2f4ff']
+      nightColours: palettes/night_ramp_desert.png
+      borderShadowColour: '#dfcb9d'
+      nightColoursBlend: 0.6
+      fogColourFilter: [
+        0.60, 0.86, 0.47, 0.72,
+        0.52, 0.68, 0.42, 0.76,
+        0.32, 0.66, 0.17, 0.79
+      ]
+    - biomeId: jungle
+      borderColours: palettes/border_day_jungle.png
+      lightColours: ['#e2f4ff', '#e2f4ff']
+      nightColours: palettes/night_ramp_jungle.png
+      borderShadowColour: '#dfcb9d'
+      nightColoursBlend: 0.6
+      fogColourFilter: [
+        0.60, 0.89, 0.38, 1.00,
+        0.44, 0.84, 0.30, 1.00,
+        0.32, 0.66, 0.17, 1.00
+      ]
+    - biomeId: ice
+      borderColours: palettes/border_day_ice.png
+      lightColours: ['#e2f4ff', '#e2f4ff']
+      nightColours: palettes/night_ramp_ice.png
+      borderShadowColour: '#dfcb9d'
+      nightColoursBlend: 0.6
+      fogColourFilter: [
+        0.60, 0.89, 0.38, 0.82,
+        0.44, 0.84, 0.30, 0.83,
+        0.32, 0.63, 0.17, 0.87
+      ]
+    - biomeId: ice_low
+      borderColours: palettes/border_day_ice.png
+      lightColours: ['#e2f4ff', '#e2f4ff']
+      nightColours: palettes/night_ramp_ice.png
+      borderShadowColour: '#dfcb9d'
+      nightColoursBlend: 0.6
+      fogColourFilter: [
+        0.60, 0.89, 0.38, 0.82,
+        0.44, 0.84, 0.30, 0.83,
+        0.32, 0.63, 0.17, 0.87
+      ]
+    - biomeId: dungeon
+      borderColours: palettes/border_day_dungeon.png
+      lightColours: ['#e2f4ff', '#e2f4ff']
+      nightColours: palettes/night_ramp_grass.png
+      borderShadowColour: '#dfcb9d'
+      nightColoursBlend: 0.6
+      fogColourFilter: [
+        0.50, 0.72, 0.47, 0.92,
+        0.47, 0.57, 0.30, 0.92,
+        0.18, 0.48, 0.18, 1.00
+      ]
+    - biomeId: dungeon_lava
+      borderColours: palettes/border_day_dungeon_lava.png
+      lightColours: ['#e2f4ff', '#e2f4ff']
+      nightColours: palettes/night_ramp_grass.png
+      borderShadowColour: '#dfcb9d'
+      nightColoursBlend: 0.6
+      fogColourFilter: [
+        0.70, 0.62, 0.58, 0.92,
+        0.44, 0.61, 0.35, 0.92,
+        0.18, 0.48, 0.18, 1.00
+      ]
+    - biomeId: arctic
+      intensity: palettes/light_ramp_intensity.png
+      lightColours: ['#e2f4ff', '#e2f4ff']
+      # lightColours: ['#ffffff', '#ffffff']
+      nightColours: palettes/night_ramp_arctic.png
+      nightColoursBlend: 0.6
+      borderColours: palettes/border_day_arctic.png
+      borderShadowColour: '#dfcb9d'
+      fogColourFilter: [
+        0.60, 0.89, 0.38, 0.82,
+        0.44, 0.84, 0.30, 0.83,
+        0.32, 0.63, 0.17, 0.87
+      ]
+    - biomeId: arctic_blood
+      intensity: palettes/light_ramp_intensity.png
+      lightColours: ['#e2f4ff', '#e2f4ff']
+      nightColours: palettes/night_ramp_arctic.png
+      nightColoursBlend: 0.6
+      borderColours: palettes/border_day_arctic_blood.png
+      borderShadowColour: '#dfcb9d'
+      fogColourFilter: [
+        0.60, 0.89, 0.38, 0.82,
+        0.44, 0.84, 0.30, 0.83,
+        0.32, 0.63, 0.17, 0.87
+      ]
+    - biomeId: arctic_bloom
+      intensity: palettes/light_ramp_intensity.png
+      lightColours: ['#e2f4ff', '#e2f4ff']
+      nightColours: palettes/night_ramp_arctic.png
+      nightColoursBlend: 0.6
+      borderColours: palettes/border_day_arctic.png
+      borderShadowColour: '#dfcb9d'
+      fogColourFilter: [
+        0.60, 0.89, 0.38, 0.82,
+        0.44, 0.84, 0.30, 0.83,
+        0.32, 0.63, 0.17, 0.87
+      ]
+
+  - id: evening
+    name: daytime_name_evening
+    hidden: false
+    lights: true
+    emitLights: true
+    clearColour: '#100000'
+    shadowMaskColour: '#0000ff'
+    separateShadowColour: '#aaaaaa'
+    biomes:
+    - biomeId: grass
+      intensity: palettes/light_ramp_intensity.png
+      lightColours: ['#ffd8ae', '#ffd8ae']
+      nightColours: palettes/night_ramp_grass.png
+      nightColoursBlend: 0.8
+      borderColours: palettes/border_day_grass.png
+      borderShadowColour: '#dfcb9d'
+      fogColourFilter: [
+        0.60, 0.89, 0.38, 1.00,
+        0.44, 0.84, 0.30, 1.00,
+        0.32, 0.66, 0.17, 1.00
+      ]
+    - biomeId: desert
+      borderColours: palettes/border_day_desert.png
+      lightColours: ['#ffedce', '#ffedce']
+      nightColours: palettes/night_ramp_desert.png
+      borderShadowColour: '#dfcb9d'
+      nightColoursBlend: 0.5
+      fogColourFilter: [
+        0.60, 0.86, 0.47, 0.72,
+        0.52, 0.68, 0.42, 0.76,
+        0.32, 0.66, 0.17, 0.79
+      ]
+    - biomeId: jungle
+      borderColours: palettes/border_day_jungle.png
+      lightColours: ['#ffedce', '#ffedce']
+      nightColours: palettes/night_ramp_jungle.png
+      borderShadowColour: '#dfcb9d'
+      nightColoursBlend: 0.5
+      fogColourFilter: [
+        0.60, 0.89, 0.38, 1.00,
+        0.44, 0.84, 0.30, 1.00,
+        0.32, 0.66, 0.17, 1.00
+      ]
+    - biomeId: ice
+      borderColours: palettes/border_day_ice.png
+      lightColours: ['#ffedce', '#ffedce']
+      nightColours: palettes/night_ramp_ice.png
+      borderShadowColour: '#dfcb9d'
+      nightColoursBlend: 0.5
+      fogColourFilter: [
+        0.60, 0.89, 0.38, 0.82,
+        0.44, 0.84, 0.30, 0.83,
+        0.32, 0.63, 0.17, 0.87
+      ]
+    - biomeId: ice_low
+      borderColours: palettes/border_day_ice.png
+      lightColours: ['#ffedce', '#ffedce']
+      nightColours: palettes/night_ramp_ice.png
+      borderShadowColour: '#dfcb9d'
+      nightColoursBlend: 0.5
+      fogColourFilter: [
+        0.60, 0.89, 0.38, 0.82,
+        0.44, 0.84, 0.30, 0.83,
+        0.32, 0.63, 0.17, 0.87
+      ]
+    - biomeId: dungeon
+      borderColours: palettes/border_day_dungeon.png
+      lightColours: ['#ffedce', '#ffedce']
+      borderShadowColour: '#dfcb9d'
+      nightColoursBlend: 0.5
+      fogColourFilter: [
+        0.50, 0.72, 0.47, 0.92,
+        0.47, 0.57, 0.30, 0.92,
+        0.18, 0.48, 0.18, 1.00
+      ]
+    - biomeId: dungeon_lava
+      borderColours: palettes/border_day_dungeon_lava.png
+      borderShadowColour: '#dfcb9d'
+      nightColoursBlend: 0.5
+      fogColourFilter: [
+        0.70, 0.62, 0.58, 0.92,
+        0.44, 0.61, 0.35, 0.92,
+        0.18, 0.48, 0.18, 1.00
+      ]
+    - biomeId: arctic
+      intensity: palettes/light_ramp_intensity.png
+      lightColours: ['#ffedce', '#ffedce']
+      # lightColours: ['#ffffff', '#ffffff']
+      nightColours: palettes/night_ramp_arctic.png
+      nightColoursBlend: 0.5
+      borderColours: palettes/border_day_arctic.png
+      borderShadowColour: '#dfcb9d'
+      fogColourFilter: [
+        0.60, 0.89, 0.38, 0.82,
+        0.44, 0.84, 0.30, 0.83,
+        0.32, 0.63, 0.17, 0.87
+      ]
+    - biomeId: arctic_blood
+      intensity: palettes/light_ramp_intensity.png
+      lightColours: ['#ffedce', '#ffedce']
+      nightColours: palettes/night_ramp_arctic.png
+      nightColoursBlend: 0.5
+      borderColours: palettes/border_day_arctic_blood.png
+      borderShadowColour: '#dfcb9d'
+      fogColourFilter: [
+        0.60, 0.89, 0.38, 0.82,
+        0.44, 0.84, 0.30, 0.83,
+        0.32, 0.63, 0.17, 0.87
+      ]
+    - biomeId: arctic_bloom
+      intensity: palettes/light_ramp_intensity.png
+      lightColours: ['#ffedce', '#ffedce']
+      nightColours: palettes/night_ramp_arctic.png
+      nightColoursBlend: 0.5
+      borderColours: palettes/border_day_arctic.png
+      borderShadowColour: '#dfcb9d'
+      fogColourFilter: [
+        0.60, 0.89, 0.38, 0.82,
+        0.44, 0.84, 0.30, 0.83,
+        0.32, 0.63, 0.17, 0.87
+      ]
+...

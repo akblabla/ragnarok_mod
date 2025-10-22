@@ -52,6 +52,12 @@ triggerActions:
       - type: string
       - type: string
 
+  - id: set_checkpoint
+
+  - id: set_weather
+    parameters:
+      - type: weather
+
   - id: spawn_unit_in_transport
     parameters:
       - type: unit_class_star

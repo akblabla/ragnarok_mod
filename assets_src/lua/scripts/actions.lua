@@ -1,6 +1,7 @@
 local Wargroove = require "wargroove/wargroove"
 local Combat = require "wargroove/combat"
 local Events = require "wargroove/events"
+local CheckpointManager = require "initialized/checkpoint_manager_stub"
 local Resumable = require"wargroove/resumable"
 local Ragnarok = require "initialized/ragnarok"
 local Rescue = require "verbs/rescue"
@@ -100,6 +101,7 @@ function Actions.populate(dst)
     dst["run_group_sequentially"] = Actions.runGroupSequentially
     dst["run_group_concurrently"] = Actions.runGroupConcurrently
     dst["end_group"] = Actions.endGroup
+	dst["set_checkpoint"] = Actions.setCheckpoint
 	--Hidden actions
 	dst["run_start_front_actions"] = Actions.runStartFrontActions
 	dst["run_start_back_actions"] = Actions.runStartBackActions
@@ -111,6 +113,11 @@ function Actions.populate(dst)
 	dst["reset_rescue_list"] = Actions.resetRescueList
 end
 
+function Actions.setCheckpoint(context)
+    -- "Sets a checkpoint"
+    Wargroove.showMessage("Checkpoint set!")
+    CheckpointManager.setCheckpointWithId()
+end
 
 function Actions.ignoreEnemiesThreateningAllies(context)
     -- "Make player {0} ignore enemies threatening allies"
@@ -1341,6 +1348,12 @@ function Actions.dialogueBoxUnit(context)
         Wargroove.trackCameraTo(unit.pos)
 	end
     Wargroove.showDialogueBox(context:getString(3), "mercia", context:getString(4), "")
+end
+
+function Actions.setWeather(context)
+    local weather = context:getString(0)
+    Wargroove.setWeather(weather, 0)
+    Wargroove.setWeather(weather, 1)
 end
 
 return Actions

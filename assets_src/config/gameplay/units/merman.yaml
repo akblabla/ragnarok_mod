@@ -16,7 +16,7 @@ unitClasses:
     cost: 350
     resourceCost: 2
     movement: amphibious
-    moveRange: 5
+    moveRange: 4
     damageMultiplier: 1
     uiEffectivenessMultiplier: 2
     aiPriority: 1.0
@@ -97,8 +97,8 @@ units:
         effectDelay: 1.3
         attackEffectSound: attackEffect1
         postAttackAnimationSequence: post_attack_idle
-        postAttackHitSequence: hit
-        postAttackDeathSequence: death
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
         numAttackers: 1
         ranged: true
       - id: twoMermen
@@ -108,8 +108,8 @@ units:
         effectDelay: 1.3
         attackEffectSound: attackEffect2
         postAttackAnimationSequence: post_attack_idle
-        postAttackHitSequence: hit
-        postAttackDeathSequence: death
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
         numAttackers: 2
         ranged: true
       - id: threeMermen
@@ -119,8 +119,8 @@ units:
         effectDelay: 1.3
         attackEffectSound: attackEffect3
         postAttackAnimationSequence: post_attack_idle
-        postAttackHitSequence: hit
-        postAttackDeathSequence: death
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
         numAttackers: 3
         ranged: true
       - id: fourMermen
@@ -130,8 +130,8 @@ units:
         effectDelay: 1.3
         attackEffectSound: attackEffect4
         postAttackAnimationSequence: post_attack_idle
-        postAttackHitSequence: hit
-        postAttackDeathSequence: death
+        postAttackHitSequence: post_attack_hit
+        postAttackDeathSequence: post_attack_death
         numAttackers: 4
         ranged: true
     shouts:      

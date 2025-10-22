@@ -3,7 +3,7 @@ tilesets:
   - id: cobblestone
     type: WangBlob
     biomes:
-      - types: [grass, flower, deepforest]
+      - types: [grass, flower, deepforest, tropical]
         spriteSheet: tilesets
         spriteBase: wang_grass_cobblestone_tileset
         portraitSpriteSheet: terrain/terrain_portraits

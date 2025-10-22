@@ -3,6 +3,13 @@
 # This is the string configuration file for English.
 en-GB: &flag-en
   # Actions
+
+  trigger_action_readable_set_weather: "Set the current weather to {0}."
+
+  trigger_action_name_set_checkpoint: "Map: Set Checkpoint"
+  trigger_action_description_set_checkpoint: "Sets a checkpoint"
+  trigger_action_readable_set_checkpoint: "Sets a checkpoint"
+
   trigger_action_name_ignore_enemies_threatening_allies: "AI: Ignore Enemies Threatening Allies"
   trigger_action_description_ignore_enemies_threatening_allies: "Prevents AI from attacking enemies threatening allies more than themselves."
   trigger_action_readable_ignore_enemies_threatening_allies: "Make player {0} ignore enemies threatening allies"
