@@ -16,7 +16,7 @@ unitClasses:
     name: unit_class_name_flagship_wulfar
     cost: 500
     movement: sailing
-    moveRange: 12.0
+    moveRange: 8
     aiPriority: 4.0
     weapons:
       - id: flagship_cannon

@@ -116,7 +116,7 @@ end
 function Actions.setCheckpoint(context)
     -- "Sets a checkpoint"
     Wargroove.showMessage("Checkpoint set!")
-    CheckpointManager.setCheckpointWithId()
+    CheckpointManager.setCheckpointWithId(context)
 end
 
 function Actions.ignoreEnemiesThreateningAllies(context)

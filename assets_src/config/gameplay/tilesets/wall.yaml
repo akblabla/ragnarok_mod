@@ -15,7 +15,7 @@ tilesets:
         iconSprite: terrain_icons_wall
         infoScreenOffset: 30
         fillColour: '#6d5e56'
-      - types: [deepforest, tropical]
+      - types: [deepforest]
         spriteSheet: tilesets
         spriteBase: wang_deepforest_walls_tileset
         portraitSpriteSheet: terrain/terrain_portraits
@@ -47,6 +47,18 @@ tilesets:
         battleBackgroundSpriteSheet: backgrounds/dungeon_lava_battlescreen_extendedbackgrounds
         battleBackgroundSprite: dungeon_lava_battlescreen_extendedbackgrounds_wall
         battleBackgroundSpriteForeground: dungeon_lava_battlescreen_extendedbackgrounds_road_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_wall
+        infoScreenOffset: 30
+        fillColour: '#6d5e56'
+      - types: [tropical]
+        spriteSheet: terrain_tilesets
+        spriteBase: wang_tropical_walls_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_city
+        battleBackgroundSpriteSheet: backgrounds/jungle_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: jungle_battlescreen_extendedbackgrounds_wall
+        battleBackgroundSpriteForeground: jungle_battlescreen_extendedbackgrounds_road_foreground
         iconSpriteSheet: ui
         iconSprite: terrain_icons_wall
         infoScreenOffset: 30

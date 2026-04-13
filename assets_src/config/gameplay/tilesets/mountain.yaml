@@ -14,13 +14,13 @@ tilesets:
         iconSpriteSheet: ui
         iconSprite: terrain_icons_Mountain
       - types: [tropical]
-        spriteSheet: terrain_tilesets
+        spriteSheet: terrain_big_tilesets
         spriteBase: wang_tropical_mountain_tileset
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_mountain
-        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_mountain
-        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_mountain_foreground
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: tropical_mountain_background
+        battleBackgroundSpriteForeground: tropical_mountain_foreground
         swapBackgroundPanes: true
         iconSpriteSheet: ui
         iconSprite: terrain_icons_Mountain

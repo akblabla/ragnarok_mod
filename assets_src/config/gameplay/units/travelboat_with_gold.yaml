@@ -3,8 +3,8 @@ unitClasses:
   - id: travelboat_with_gold
     name: unit_class_name_travelboat_with_gold
     cost: 300
-    movement: river_sailing
-    moveRange: 5.0
+    movement: sailing
+    moveRange: 6.0
     damageMultiplier: 1
     aiPriority: 300
     weapons: []

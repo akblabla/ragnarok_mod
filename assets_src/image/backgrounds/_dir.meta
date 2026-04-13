@@ -1,4 +1,5 @@
 ---
 - data:
     material: Wargroove/MapNoShadows
+    atlas: backgrounds/map_backgrounds_RagnarokMod
 ...

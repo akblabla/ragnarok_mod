@@ -4,27 +4,27 @@ local MangroveAI = {}
 
 
 local valueReductionPerUnitList = {
-	archer = 0.8,
+	archer = 0.7,
 	ballista = 0.3,
-	dog = 0.7,
-	dragon = 0.7,
-	giant = 0.9,
-	harpoonship = 0.7,
-	harpy = 0.8,
-	knight = 0.7,
-	mage = 0.8,
-	merman = 0.9,
-	rifleman = 0.5,
-	soldier = 0.85,
-	spearman = 0.95,
-	trebuchet = 0.5,
-	turtle = 0.8,
-	warship = 0.8,
-	witch = 0.6,
-	kraken = 0.6,
-	frog = 0.8,
-	caravel = 0.85,
-	griffin_walking = 0.8,
+	dog = 0.6,
+	dragon = 0.6,
+	giant = 0.8,
+	harpoonship = 0.6,
+	harpy = 0.7,
+	knight = 0.6,
+	mage = 0.7,
+	merman = 0.8,
+	rifleman = 0.4,
+	soldier = 0.75,
+	spearman = 0.85,
+	trebuchet = 0.4,
+	turtle = 0.7,
+	warship = 0.4,
+	witch = 0.5,
+	kraken = 0.5,
+	frog = 0.7,
+	caravel = 0.75,
+	griffin_walking = 0.6,
 }
 
 local idealUnitRatioList = {
@@ -34,7 +34,7 @@ local idealUnitRatioList = {
 	dragon = 0.5,
 	giant = 0.5,
 	harpoonship = 1,
-	harpy = 1,
+	harpy = 2,
 	knight = 0.1,
 	mage = 1,
 	merman = 1,
@@ -48,7 +48,7 @@ local idealUnitRatioList = {
 	kraken = 0.65,
 	frog = 0.85,
 	caravel = 1,
-	griffin_walking = 0.75,
+	griffin_walking = 0.5,
 }
 
 local powerMultiplierList = {
@@ -65,23 +65,16 @@ local powerMultiplierList = {
 	kraken = 1,
 	frog = 1.2,
 	caravel = 1.1,
-	griffin_walking = 1,
+	griffin_walking = 0.6,
+	trebuchet = 0.5,
+	warship = 0.5,
 }
 local antiAirMultiplierList = {
-	archer = 1,
-	dog = 1.25,
 	ballista = 0.5,
-	dragon = 1.2,
-	harpy = 1.2,
-	knight = 0.5,
-	harpoonship = 0.5,
+	harpy = 0.6,
+	harpoonship = 1.2,
 	mage = 0.8,
-	soldier = 1.5,
-	witch = 0,
-	kraken = 1,
-	frog = 1.2,
-	caravel = 1.1,
-	griffin_walking = 1,
+	witch = 2.5,
 }
 function MangroveAI.setProfile()
 	DefaultAI.setProfile()
@@ -90,7 +83,7 @@ function MangroveAI.setProfile()
 	CustomAI.powerMultiplierList = powerMultiplierList
 	CustomAI.antiAirMultiplierList = antiAirMultiplierList
 	-- CustomAI.bannedUnitList = bannedUnitList
-	-- CustomAI.antiAirReluctance = antiAirReluctance
+	CustomAI.antiAirReluctance = 500
 	-- CustomAI.airThreatPerTower = airThreatPerTower
 	-- CustomAI.baseLineOpportunityCost = baseLineOpportunityCost
 	-- CustomAI.baseLineOpportunityCostScaling = baseLineOpportunityCostScaling

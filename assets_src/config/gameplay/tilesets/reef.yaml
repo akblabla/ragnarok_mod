@@ -20,9 +20,9 @@ tilesets:
         foregroundSpriteBase: wang_tropical_reef_tileset_001
         foregroundBaseLine: 18
         waterSpriteBase: wang_tropical_reef_tileset_002
-        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_reef
-        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_reef_foreground
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: tropical_reef_background
+        battleBackgroundSpriteForeground: tropical_reef_foreground
         iconSpriteSheet: ui
         iconSprite: terrain_icons_Reef
         infoScreenOffset: 30

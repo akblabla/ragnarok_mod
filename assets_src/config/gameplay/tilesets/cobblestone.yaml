@@ -3,7 +3,7 @@ tilesets:
   - id: cobblestone
     type: WangBlob
     biomes:
-      - types: [grass, flower, deepforest, tropical]
+      - types: [grass, flower, deepforest]
         spriteSheet: tilesets
         spriteBase: wang_grass_cobblestone_tileset
         portraitSpriteSheet: terrain/terrain_portraits
@@ -32,6 +32,17 @@ tilesets:
         portraitSprite: terrain_portraits_city
         battleBackgroundSpriteSheet: backgrounds/dungeon_lava_battlescreen_extendedbackgrounds
         battleBackgroundSprite: dungeon_lava_battlescreen_extendedbackgrounds_flagstone
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_cobblestone
+        infoScreenOffset: 30
+        fillColour: '#83786e'
+      - types: [tropical]
+        spriteSheet: terrain_tilesets
+        spriteBase: wang_tropical_cobblestone_tileset
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_city
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: tropical_flagstone_background
         iconSpriteSheet: ui
         iconSprite: terrain_icons_cobblestone
         infoScreenOffset: 30

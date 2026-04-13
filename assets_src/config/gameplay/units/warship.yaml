@@ -15,7 +15,7 @@ unitClasses:
     cost: 900
     resourceCost: 3
     movement: sailing
-    moveRange: 12.0
+    moveRange: 8.0
     damageMultiplier: 1
     aiPriority: 1.0
     weapons:
@@ -29,6 +29,7 @@ unitClasses:
       - attack_AI
       - hire
       - take_crown
+      - pirate_claim
     battleUnitCount: 1
     passiveMultiplier: 1.5
     sightRange: 4

@@ -15,7 +15,7 @@ unitClasses:
     cost: 1000
     resourceCost: 2
     movement: sailing
-    moveRange: 12.0
+    moveRange: 8
     damageMultiplier: 1
     aiPriority: 1.0
     weapons:

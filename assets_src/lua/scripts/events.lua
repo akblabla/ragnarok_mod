@@ -21,21 +21,6 @@ local function dump(o,level)
        return tostring(o)
     end
  end
- 
-local function deepcopy(orig)
-    local orig_type = type(orig)
-    local copy
-    if orig_type == 'table' then
-        copy = {}
-        for orig_key, orig_value in next, orig, nil do
-            copy[deepcopy(orig_key)] = deepcopy(orig_value)
-        end
-        setmetatable(copy, deepcopy(getmetatable(orig)))
-    else -- number, string, boolean, etc
-        copy = orig
-    end
-    return copy
-end
 
 local Events = {}
 
@@ -84,6 +69,8 @@ local checkEventsAfter = false
 local mapSeed = nil
 
 function Events.startSession(matchState)
+    print("matchState")
+    print(dump(matchState,0))
     pendingDeadUnits = {}
     pendingVerbsUsed = {}
     pendingInteractionsUsed = {}
@@ -204,8 +191,10 @@ function Events.checkEventsAfter()
 end
 
 function Events.doCheckEvents(state)
-    CheckpointManager.checkCheckpoint()
-    
+    CheckpointManager.initMapWasPlayedBefore()
+    if not CheckpointManager.checkedForCheckpoint() and CheckpointManager.mapWasPlayedBefore() then
+        Wargroove.fadeStage("out", 0, false)
+    end
     triggerContext.state = state
     triggerContext.deadUnits = pendingDeadUnits
     triggerContext.verbsUsed = pendingVerbsUsed
@@ -269,6 +258,15 @@ function Events.doCheckEvents(state)
             for n = 0, 7 do
                 triggerContext.triggerInstancePlayerId = n
                 if trigger.enabled and Events.canExecuteTrigger(trigger) then
+                    if (trigger.recurring ~= 'start_of_match' or trigger.isIntro) then
+                        if  not CheckpointManager.checkedForCheckpoint() and CheckpointManager.mapWasPlayedBefore() then
+                            Wargroove.fadeStage("in", 0.4, false)
+                            local matchState = CheckpointManager.checkCheckpoint(Events.getMatchState())
+                            if matchState ~= nil then
+                                Events.startSession(matchState)
+                            end
+                        end
+                    end
                     Events.executeTrigger(trigger)
                     for j, unit in ipairs(pendingDeadUnits) do
                         if unit.triggeredBy == nil then
@@ -289,6 +287,14 @@ function Events.doCheckEvents(state)
                         end
                     end
                 end
+            end
+        end
+        if not CheckpointManager.checkedForCheckpoint() and CheckpointManager.mapWasPlayedBefore() then
+            print("no non intro Start of Match triggers, do checkpoint stuff anyway")
+            Wargroove.fadeStage("in", 0.4, false)
+            local matchState = CheckpointManager.checkCheckpoint(Events.getMatchState())
+            if matchState ~= nil then
+                Events.startSession(matchState)
             end
         end
     end

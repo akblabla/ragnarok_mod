@@ -189,9 +189,9 @@ tilesets:
         maxRandomElements: 3
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_forest
-        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_forest
-        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_forest_foreground
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: tropical_forest_background
+        battleBackgroundSpriteForeground: tropical_forest_foreground
         iconSpriteSheet: ui
         iconSprite: terrain_icons_Forest
         fillColour: '#7fa33b'
@@ -243,14 +243,6 @@ tilesets:
             shadowSprite: shadows_large    
             
           - sprite: terrain/trees/desert/shrub_desert2_medium
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_small
-            
-          - sprite: terrain/trees/jungle/grass1_small
-            shadowSpriteSheet: fx/shadows
-            shadowSprite: shadows_jungle
-
-          - sprite: terrain/trees/jungle/grass2_small
             shadowSpriteSheet: fx/shadows
             shadowSprite: shadows_small
 

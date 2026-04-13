@@ -7,10 +7,16 @@ actions:
     volume: [ 0.5, 0.55 ]
     delay: 0
   - type: play
-    clips: [ sfx/hitStone1.ogg, sfx/hitStone2.ogg, sfx/hitStone3.ogg ]
+    clips: [ sfx/dartHit1.ogg, sfx/dartHit2.ogg, sfx/dartHit3.ogg ]
     group: sfx
     pitch: [ 0.9, 1.1 ]
     volume: [ 0.9, 1.0 ]
     delay: 1.75
+  - type: play
+    clips: [ sfx/dartHit1.ogg, sfx/dartHit2.ogg, sfx/dartHit3.ogg ]
+    group: sfx
+    pitch: [ 0.9, 1.1 ]
+    volume: [ 0.9, 1.0 ]
+    delay: 1.825
 
 ...

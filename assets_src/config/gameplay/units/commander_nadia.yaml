@@ -38,7 +38,7 @@ units:
   - class: commander_nadia
     faction: pirates
     name: character_nadia_name
-    mapAnimation: units/commanders/nadia/map_nadia
+    mapAnimation: units/commanders/nadia/map_nadia_2
     mapLightSource:
       sprite: lights_medium
       scale: [1.0, 1.0]
@@ -53,10 +53,10 @@ units:
         scale: 0.75
         frequency: 0.3
         frequencyVariance: 0.15
-    battleAnimation: units/commanders/nadia/battle_nadia
+    battleAnimation: units/commanders/nadia/battle_nadia_2
     battleAnimationRiver: fx/river_overlay/battle_nadia_river
-    smallPortrait: units/commanders/nadia/portrait_nadia_small.png
-    mediumPortrait: units/commanders/nadia/portrait_nadia_medium.png
+    smallPortrait: units/commanders/nadia/portrait_nadia_2_small.png
+    mediumPortrait: units/commanders/nadia/portrait_nadia_2_medium.png
     mapSpeed: 4.0
     skinColour: typeVI
     grabPos: [39, 44]

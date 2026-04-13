@@ -23,25 +23,6 @@ triggerActions:
     parameters:
       - type: player
       
-  - id: set_match_seed
-    parameters:
-      - type: integer
-      
-  - id: reveal_all
-    parameters:
-      - type: player
-      - type: location
-
-  - id: reveal_all_but_hidden
-    parameters:
-      - type: player
-      - type: location
-      
-  - id: reveal_all_but_over
-    parameters:
-      - type: player
-      - type: location
-      
   - id: enable_AI_fog_limitations
 
   - id: set_state
@@ -117,13 +98,6 @@ triggerActions:
       - type: location_star
       - type: boolean
 
-  - id: set_threat_at_location
-    parameters:
-      - type: location_star
-      - type: integer
-      - type: unit_class_star
-      - type: location_star
-      - type: player_neutral_star
 
   - id: give_crown
     parameters:
@@ -206,13 +180,6 @@ triggerActions:
       - type: character_expression
       - type: string
       - type: string
-  - id: change_objective_with_3_counters
-    parameters:
-      - type: counter
-      - type: counter
-      - type: counter
-      - type: counter
-      - type: counter
       
   - id: modify_healing_potion_count
     parameters:
@@ -320,9 +287,6 @@ triggerActions:
       - type: player_neutral_star
       - type: location
 
-  - id: run_group_sequentially
-  - id: run_group_concurrently
-  - id: end_group
   - id: set_hide_and_seek
     parameters:
       - type: boolean

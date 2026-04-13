@@ -63,7 +63,22 @@ tilesets:
         iconSprite: terrain_icons_Bridge
         infoScreenOffset: 30
         fillColour: '#2a2542'
-      - types: [jungle, tropical]
+      - types: [tropical]
+        spriteSheet: terrain_tilesets
+        spriteBase: wang_tropical_bridge_tileset_000
+        foregroundSpriteBase: wang_tropical_bridge_tileset_001
+        foregroundBaseLine: 18
+        waterSpriteBase: wang_tropical_bridge_tileset_002
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_bridge
+        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
+        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_bridge
+        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_bridge_foreground
+        iconSpriteSheet: ui
+        iconSprite: terrain_icons_Bridge
+        infoScreenOffset: 30
+        fillColour: '#2a2542'
+      - types: [jungle]
         spriteSheet: tilesets
         spriteBase: wang_jungle_bridge_tileset_000
         foregroundSpriteBase: wang_jungle_bridge_tileset_001

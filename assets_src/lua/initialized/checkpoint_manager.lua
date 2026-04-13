@@ -4,33 +4,81 @@ local WargrooveExtra = require("initialized/wargroove_extra")
 local Ragnarok = require("initialized/ragnarok")
 local json = require("util/json")
 local io = require("io")
-local TriggerContext = require("triggers/trigger_context")
 local CheckpointManager = {}
 local checkpointLoaded = false
+
+local function dump(o,level)
+    if type(o) == 'table' then
+       local s = '\n' .. string.rep("   ", level) .. '{\n'
+       for k,v in pairs(o) do
+          if type(k) ~= 'number' then k = '"'..k..'"' end
+          s = s .. string.rep("   ", level+1) .. '['..k..'] = ' .. dump(v,level+1) .. ',\n'
+       end
+       return s .. string.rep("   ", level) .. '}'
+    else
+       return tostring(o)
+    end
+ end
+
 function CheckpointManager.init()
-    Ragnarok.addAction(CheckpointManager.updateCheckpointBuffer,"repeating",true)
-    Ragnarok.addAction(CheckpointManager.setupCheckpointFile,"start_of_match",true)
+    Ragnarok.addAction(CheckpointManager.updateCheckpointBuffer,"repeating",false)
 end
 function CheckpointManager.isCheckpointLoaded()
     return checkpointLoaded
 end
-function CheckpointManager.setupCheckpointFile(context)
-    CheckpointManager.clearCheckpoint()
+
+function CheckpointManager.extractMatchState(context)
+    local matchState = {}
+    print("set up matchState")
+    matchState.mapCounters = {}
+    for k,data in ipairs(context.mapCounters) do
+        matchState.mapCounters[k] = data
+    end
+    print("set up mapCounters")
+    matchState.creditsToPlay = context.creditsToPlay
+    print("set up creditsToPlay")
+    matchState.campaignCutscenes = {}
+    for k,data in ipairs(context.campaignCutscenes) do
+        matchState.campaignCutscenes[k] = data
+    end
+    print("set up campaignCutscenes")
+    matchState.mapFlags = {} --only string keys are allowed for this json library
+    for k,flag in ipairs(context.mapFlags) do
+        matchState.mapFlags[k] = flag
+    end
+    print("set up mapFlags")
+    matchState.triggersFired = {}
+    for k,flag in pairs(context.fired) do
+        matchState.triggersFired[k] = flag
+    end
+    print("set up triggersFired")
+    matchState.campaignFlags = {}
+    for k,flag in ipairs(context.campaignFlags) do
+        matchState.campaignFlags[k] = flag
+    end
+    print("set up campaignFlags")
+    matchState.party = {}
+    for k,member in ipairs(context.party) do
+        matchState.party[k] = member
+    end
+    print("set up party")
+    return matchState
 end
+
 function CheckpointManager.updateCheckpointBuffer(context)
     if context:checkState("startOfTurn") and Wargroove.getCurrentPlayerId() == 0 then
-        local checkpointData = CheckpointManager.setupCheckpointData()
-        CheckpointManager.setCheckpointWithId("-tmp", checkpointData)
+        print("Updating buffer")
+        print("context:")
+        print(dump(context,0))
+        local matchState = CheckpointManager.extractMatchState(context)
+        print("matchState:")
+        print(dump(matchState,0))
+        local checkpointData = CheckpointManager.setupCheckpointData(matchState)
+        CheckpointManager.setCheckpointWithId(matchState, "-tmp", checkpointData)
     end
 end
 function CheckpointManager.getCheckpointDataFromStartOfRound()
-        local checkpointData = CheckpointManager.getCheckpointDataWithId("-tmp")
-        if checkpointData ~= nil then
-            return checkpointData
-        else
-            return CheckpointManager.setupCheckpointData()
-        end
-
+        return CheckpointManager.getCheckpointDataWithId("-tmp")
 end
 
 
@@ -49,25 +97,28 @@ function CheckpointManager.clearCheckpoint(id)
     end
     local file = io.open(tostring(CheckpointManager.getMapSeed())..id..".save", "w+")
     if file == nil then
-        Wargroove.showMessage("Failed to clear checkpoint. Access Denied.")
+        Wargroove.showMessage("Failed to clear checkpoint "..tostring(CheckpointManager.getMapSeed())..id..".save. Access Denied.")
         return
     end
     file:flush()
     file:close()
 end
 
-function CheckpointManager.setCheckpointWithId(id, checkpointData)
+function CheckpointManager.setCheckpointWithId(matchState, id, checkpointData)
     if id==nil then
         id=""
     end
     --Wargroove.showMessage("setting checkpoint with id: "..tostring(CheckpointManager.getMapSeed()..id))
     local file = io.open(tostring(CheckpointManager.getMapSeed())..id..".save", "w+")
     if file == nil then
-        Wargroove.showMessage("Failed to load checkpoint. Access Denied.")
+        Wargroove.showMessage("Failed to load checkpoint "..tostring(CheckpointManager.getMapSeed())..id..".save. Access Denied.")
         return
     end
     if checkpointData == nil then
         checkpointData = CheckpointManager.getCheckpointDataFromStartOfRound()
+    end
+    if checkpointData == nil then
+        checkpointData = CheckpointManager.setupCheckpointData(matchState)
     end
     local status, err = pcall(function() file:write(json.encode(checkpointData)) end)
 
@@ -80,15 +131,31 @@ function CheckpointManager.setCheckpointWithId(id, checkpointData)
     
     Wargroove.runGC(false)
 end
+local function deepcopy(orig)
+    local orig_type = type(orig)
+    local copy
+    if orig_type == 'table' then
+        copy = {}
+        for orig_key, orig_value in next, orig, nil do
+            copy[deepcopy(orig_key)] = deepcopy(orig_value)
+        end
+        setmetatable(copy, deepcopy(getmetatable(orig)))
+    else -- number, string, boolean, etc
+        copy = orig
+    end
+    return copy
+end
 
-function CheckpointManager.setupCheckpointData()
+function CheckpointManager.setupCheckpointData(matchState)
+    print("Setting up checkpoint data")
     local units = Wargroove.getUnitsAtLocation()
     local unitTable = {}
+    print("Setting up unit checkpoint data")
     for k,unit in ipairs(units) do
         local serializableUnit = {}
         serializableUnit.loadedUnits = {}
-        for k,unit in pairs(unit.loadedUnits) do
-            serializableUnit.loadedUnits[k] = unit
+        for k,unitId in pairs(unit.loadedUnits) do
+            serializableUnit.loadedUnits[tostring(k)] = unitId
         end
         serializableUnit.merchantDiscountMultiplier = unit.merchantDiscountMultiplier
         serializableUnit.attackerId = unit.attackerId
@@ -123,6 +190,7 @@ function CheckpointManager.setupCheckpointData()
         serializableUnit.attackerPlayerId = unit.attackerPlayerId
         table.insert(unitTable,serializableUnit)
     end
+    print("Setting up location checkpoint data")
     local locationTable = {}
     for locationId = 0,255 do
         local location = Wargroove.getLocationById(locationId)
@@ -138,7 +206,33 @@ function CheckpointManager.setupCheckpointData()
     for k,item in pairs(items) do
         serializableItems[tostring(item.itemId)] = item
     end
-    return {triggerContext = triggerContext, turnNumber = Wargroove.getTurnNumber(), units = unitTable, locationTable = locationTable, items = serializableItems}
+    local newMatchState = {}
+    newMatchState.mapCounters = {}
+    for k,data in ipairs(matchState.mapCounters) do
+        newMatchState.mapCounters[tostring(k)] = data
+    end
+    print("setup matchState.mapCounters")
+    newMatchState.creditsToPlay = matchState.creditsToPlay
+    print("setup matchState.creditsToPlay")
+    newMatchState.campaignCutscenes = {}
+    for k,data in ipairs(matchState.campaignCutscenes) do
+        newMatchState.campaignCutscenes[tostring(k)] = data
+    end
+    print("setup matchState.campaignCutscenes")
+    newMatchState.mapFlags = {} --only string keys are allowed for this json library
+    for k,flag in ipairs(matchState.mapFlags) do
+        newMatchState.mapFlags[tostring(k)] = flag
+    end
+    print("setup matchState.mapFlags")
+    newMatchState.triggersFired = {}
+    for k,flag in pairs(matchState.triggersFired) do
+        newMatchState.triggersFired[tostring(k)] = flag
+    end
+    print("setup matchState.triggersFired")
+    
+
+    print("Returning setup checkpoint data")
+    return {matchState = newMatchState, turnNumber = Wargroove.getTurnNumber(), units = unitTable, locationTable = locationTable, items = serializableItems}
 end
 
 local function tobool(string)
@@ -227,7 +321,7 @@ function CheckpointManager.getCheckpointDataWithId(id)
     print("Opening...")
     local file = io.open(tostring(CheckpointManager.getMapSeed())..id..".save", "r")
     if file == nil then
-        Wargroove.showMessage("Failed to save checkpoint. Access Denied.")
+        Wargroove.showMessage("Failed to load checkpoint "..tostring(CheckpointManager.getMapSeed())..id..".save. Access Denied.")
         return -1
     end
     print("Open!")
@@ -240,11 +334,13 @@ end
 
 function CheckpointManager.loadCheckpointWithId(id)
     local data = CheckpointManager.getCheckpointDataWithId(id)
-    CheckpointManager.loadCheckpoint(data)
+    print("loading checkpoint data")
+    print(dump(data,0))
+    return CheckpointManager.loadCheckpoint(data)
 end
+
 function CheckpointManager.loadCheckpoint(checkpointData)
     print("CheckpointManager.loadCheckpoint(checkpointData)")
-    --triggerContext = TriggerContext:new(checkpointData.triggerContext)
     Wargroove.setTurnZero(checkpointData.turnNumber-1)
     local unitIds = Wargroove.getAllUnitIds()
     for k, v in pairs(unitIds) do
@@ -256,53 +352,43 @@ function CheckpointManager.loadCheckpoint(checkpointData)
     local maxId = -1
     local indexedUnits = {}
     local spawnedUnits = {}
-    local toBeRemoved = {}
+    local unitsInsideTransports = {}
     for k, unit in pairs(checkpointData.units) do
         if maxId<unit.id then
             maxId = unit.id
         end
         indexedUnits[unit.id] = unit
     end
-    unitIds = Wargroove.getAllUnitIds()
-
-    print("unitIds left after removing them all. This should be empty")
-    print(dump(unitIds,0))
-    print("Units to spawn")
-    print(dump(indexedUnits,0))
-    local currentId = 1
-    while currentId<=maxId do
-        local unit = indexedUnits[currentId]
+    local globalObjectUnit = nil
+    for unitId, unit in pairs(indexedUnits) do
         local spawnedUnitId = -1
         if unit ~= nil then
-            spawnedUnitId = Wargroove.spawnUnit(unit.playerId,unit.pos,unit.unitClassId,unit.hadTurn,nil,unit.state,unit.factionOverride)
+            if unit.inTransport then
+                table.insert(unitsInsideTransports,unit)
+            else
+                spawnedUnitId = Wargroove.spawnUnit(unit.playerId,unit.pos,unit.unitClassId,unit.hadTurn,nil,unit.state,unit.factionOverride)
+            end
         else
             spawnedUnitId = Wargroove.spawnUnit(-1,{x = -100,y=-100},"soldier",false)
         end
-        print("spawned unit ID ".. spawnedUnitId)
-        print("expected unit ID ".. currentId)
-        if (spawnedUnitId ~= currentId) then
-            Wargroove.showMessage("Loading checkpoint failed.")
-            Wargroove.showMessage("spawned unit ID ".. spawnedUnitId.." ~= ".."expected unit ID ".. currentId)
+        if spawnedUnitId ~= -1 then
             Wargroove.clearCaches()
-            Wargroove.removeUnit(spawnedUnitId)
-            Wargroove.clearCaches()
-            if unit ~= nil then
-                spawnedUnitId = Wargroove.spawnUnit(unit.playerId,unit.pos,unit.unitClassId,unit.hadTurn,nil,unit.state,unit.factionOverride)
-            else
-                spawnedUnitId = Wargroove.spawnUnit(-1,{x = -100,y=-100},"soldier",false)
-            end
-            --break;
-        end
-        --unit = indexedUnits[spawnedUnitId]
-        Wargroove.clearCaches()
-        if unit ~= nil then
             local spawnedUnit = Wargroove.getUnitById(spawnedUnitId)
+            spawnedUnits[unitId] = spawnedUnit;
+        end
+    end
+    for unitId, unit in pairs(unitsInsideTransports) do
+
+    end
+
+    for unitId, spawnedUnit in pairs(spawnedUnits) do
+        
+            local unit = Wargroove.getUnitById(unitId)
             spawnedUnit.loadedUnits = {}
             for k,unit in pairs(unit.loadedUnits) do
-                spawnedUnit.loadedUnits[k] = unit
+                spawnedUnit.loadedUnits[tonumber(k)] = unit
             end
             spawnedUnit.merchantDiscountMultiplier = unit.merchantDiscountMultiplier
-            spawnedUnit.attackerId = unit.attackerId
             spawnedUnit.attackerUnitClass = unit.attackerUnitClass
             spawnedUnit.rangedDamageTakenPercent = unit.rangedDamageTakenPercent
             if unit.itemId ~= nil and unit.itemId~="" then
@@ -321,10 +407,6 @@ function CheckpointManager.loadCheckpoint(checkpointData)
             spawnedUnit.tentacled = unit.tentacled
             spawnedUnit.underwater = unit.underwater
             spawnedUnit.canChargeGroove = unit.canChargeGroove
-            spawnedUnit.state = {}
-            for k,state in pairs(unit.state) do
-                spawnedUnit.state[k] = state
-            end
             spawnedUnit.factionOverride = unit.factionOverride
             spawnedUnit.startPos = {x = unit.startPos.x, y = unit.startPos.y, facing = unit.startPos.facing}
             spawnedUnit.damageTakenPercent = unit.damageTakenPercent
@@ -337,25 +419,55 @@ function CheckpointManager.loadCheckpoint(checkpointData)
                 CheckpointManager.loadLocationObject(spawnedUnit)
             end
             if spawnedUnit.unitClassId == "global_object" then
-                CheckpointManager.loadGlobalObject(spawnedUnit)
+                globalObjectUnit = spawnedUnit
             end
-            spawnedUnits[currentId] = spawnedUnit;
+            if unit.unitClassId == "outpost" then
+                print("bugged outpost")
+                print("unit")
+                print(dump(unit,0))
+                print("spawnedUnit")
+                print(dump(spawnedUnit,0))
+            end
+    end
+    for unitId, spawnedUnit in pairs(spawnedUnits) do
+        print("setting unit id's stored in unit ".. unitId)
+        print("original attacker: ".. indexedUnits[unitId].attackerId)
+        if spawnedUnits[indexedUnits[unitId].attackerId] ~= nil then
+            spawnedUnit.attackerId = spawnedUnits[indexedUnits[unitId].attackerId].id
         else
-            table.insert(toBeRemoved,spawnedUnitId)
+            spawnedUnit.attackerId = -1
         end
-        currentId = currentId +1;
+        print("new attacker: ".. spawnedUnit.attackerId)
+        spawnedUnit.state = {}
+        for name,state in pairs(indexedUnits[unitId].state) do
+            if name == "unitId" or name == "targetId" or name == "hiddenId" or name == "parentId" then
+                local newUnit = spawnedUnits[tonumber(state)]
+                if newUnit ~= nil then
+                    spawnedUnit.state[name] = tostring(spawnedUnits[tonumber(state)].id)
+                else
+                    spawnedUnit.state[name] = nil
+                end
+                goto next
+            end
+            spawnedUnit.state[name] = state
+            ::next::
+        end
+        spawnedUnit.loadedUnits = {}
+        for id,loadedUnit in pairs(indexedUnits[unitId].loadedUnits) do
+            spawnedUnit.loadedUnits[tonumber(id)] = spawnedUnits[tonumber(loadedUnit)].id
+        end
+        if spawnedUnits[indexedUnits[unitId].transportedBy] ~= nil then
+            spawnedUnit.transportedBy = spawnedUnits[indexedUnits[unitId].transportedBy].id
+        else
+            spawnedUnit.transportedBy = -1
+        end
     end
+    if globalObjectUnit~= nil then
+        CheckpointManager.loadGlobalObject(globalObjectUnit)
+    end
+    print("spawned units")
+    print(dump(spawnedUnits,0))
     Wargroove.updateUnits(spawnedUnits)
-    print("Removing extra units...")
-    for k,id in ipairs(toBeRemoved) do
-        local unit = indexedUnits[id]
-        print("id to remove: ".. id)
-        if unit == nil then
-            Wargroove.removeUnit(id)
-            print("id ".. id.. " removed")
-        end
-    end
-    print("Extra units removed")
     print("Deleting items...")
     local items = Wargroove.getMapItemsAtLocation()
     for k,item in pairs(items) do
@@ -371,15 +483,34 @@ function CheckpointManager.loadCheckpoint(checkpointData)
     Wargroove.clearCaches()
 
     Wargroove.updateFogOfWar()
-    unitIds = Wargroove.getAllUnitIds()
 
-    print("unitIds after loading")
-    print(dump(unitIds,0))
     Wargroove.runGC(false)
-    return 0
+    print("loading map flags...")
+    for k,flag in ipairs(checkpointData.matchState.mapFlags) do
+        checkpointData.matchState.mapFlags[tonumber(k)] = flag
+        checkpointData.matchState.mapFlags[k] = nil
+    end
+    for k,counter in ipairs(checkpointData.matchState.mapCounters) do
+        checkpointData.matchState.mapCounters[tonumber(k)] = counter
+        checkpointData.matchState.mapCounters[k] = nil
+    end
+    for k,cutscene in ipairs(checkpointData.matchState.campaignCutscenes) do
+        checkpointData.matchState.campaignCutscenes[tonumber(k)] = cutscene
+        checkpointData.matchState.campaignCutscenes[k] = nil
+    end
+    print("Map flags loaded!")
+    Wargroove.waitFrame()
+    local units = Wargroove.getUnitsAtLocation()
+    print("loaded units")
+    print(dump(units,0))
+    return checkpointData.matchState
 end
 
 local checkedForCheckpoint = false
+
+function CheckpointManager.checkedForCheckpoint()
+    return checkedForCheckpoint
+end
 
 local function file_exists(name)
     local file = io.open(name, "r")
@@ -411,6 +542,25 @@ function CheckpointManager.checkpointExistsWithId(id)
     return true
 end
 
+local mapWasPlayedBefore = false
+local wasInitMapWasPlayedBefore = false
+function CheckpointManager.initMapWasPlayedBefore()
+    if not wasInitMapWasPlayedBefore then
+        mapWasPlayedBefore = file_exists(tostring(CheckpointManager.getMapSeed()).."-tmp"..".save")
+        if mapWasPlayedBefore then
+            print("This map was played before")
+            print(tostring(CheckpointManager.getMapSeed()).."-tmp"..".save")
+        else
+            print("This map was NOT played before")
+            print(tostring(CheckpointManager.getMapSeed()).."-tmp"..".save")
+        end
+        wasInitMapWasPlayedBefore = true
+    end
+end
+function CheckpointManager.mapWasPlayedBefore()
+    return mapWasPlayedBefore
+end
+
 local function calculateAveragePosOwnedByPlayer(playerId)
     print("calculateAveragePos(units)")
     local units = Wargroove.getUnitsAtLocation()
@@ -418,7 +568,7 @@ local function calculateAveragePosOwnedByPlayer(playerId)
     local totalY = 0
     local count = 0
     for k, unit in pairs(units) do
-        if Wargroove.areAllies(unit.playerId,playerId) then
+        if Wargroove.areAllies(unit.playerId,playerId) and unit.pos.x>=0 and unit.pos.y>=0 then
             print("unit.pos.x: "..unit.pos.x)
             totalX = totalX + unit.pos.x
             print("unit.pos.y: "..unit.pos.y)
@@ -427,7 +577,7 @@ local function calculateAveragePosOwnedByPlayer(playerId)
         end
     end
     if count>0 then
-        local averagePos = {x = totalX/count, y = totalX/count}
+        local averagePos = {x = totalX/count, y = totalY/count}
         print("averagePos: "..averagePos.x..","..averagePos.y)
         return averagePos
     else
@@ -436,14 +586,18 @@ local function calculateAveragePosOwnedByPlayer(playerId)
     end
 end
 
-function CheckpointManager.checkCheckpoint()
+function CheckpointManager.checkCheckpoint(matchState)
+    local newMatchState = nil
     if not checkedForCheckpoint then
         checkedForCheckpoint = true
         if CheckpointManager.checkpointExistsWithId() then
-            local preCheckpointData = CheckpointManager.setupCheckpointData()
-            CheckpointManager.loadCheckpointWithId()
+            print("checkpoint found!")
+            local preCheckpointData = CheckpointManager.setupCheckpointData(matchState)
+            print("setup checkpoint data")
+            newMatchState = CheckpointManager.loadCheckpointWithId()
+            print("loaded checkpoint")
             local averagePos = calculateAveragePosOwnedByPlayer(0)
-            averagePos = {x = math.floor(averagePos.x+0.5), y = math.floor(averagePos.y+0.5)}
+            averagePos = {x = math.floor(averagePos.x+0.5), y = math.floor(averagePos.y+0.5+1)}
             print("rounded averagePos: "..averagePos.x..","..averagePos.y)
             Wargroove.trackCameraTo(averagePos,true)
             Wargroove.showDialogueBox("happy", "generic_codex", "Continue from this checkpoint?", "", { "Yes", "No" }, "standard", true, "Preview", "black")
@@ -451,7 +605,7 @@ function CheckpointManager.checkCheckpoint()
                 CheckpointManager.clearCheckpoint()
                 Wargroove.fadeStage("out", 0.4, false)
                 Wargroove.waitTime(0.5)
-                CheckpointManager.loadCheckpoint(preCheckpointData)
+                newMatchState = CheckpointManager.loadCheckpoint(preCheckpointData)
                 Wargroove.fullClearCache()
                 Wargroove.fadeStage("in", 0.4, false)
                 Wargroove.waitTime(0.4)
@@ -464,17 +618,21 @@ function CheckpointManager.checkCheckpoint()
                 checkpointLoaded = true
             end
         end
-        if not checkpointLoaded and file_exists(tostring(CheckpointManager.getMapSeed())..".save") and not Wargroove.areIntroEventsSkippable() then
+        if not checkpointLoaded and CheckpointManager.mapWasPlayedBefore() and not Wargroove.areIntroEventsSkippable() then
             local averagePos = calculateAveragePosOwnedByPlayer(0)
-            averagePos = {x = math.floor(averagePos.x+0.5), y = math.floor(averagePos.y+0.5)}
+            averagePos = {x = math.floor(averagePos.x+0.5), y = math.floor(averagePos.y+0.5+1)}
             Wargroove.trackCameraTo(averagePos,true)
             Wargroove.showDialogueBox("happy", "generic_codex", "Skip intro?", "", { "Yes", "No" }, "standard", true, nil, "black")
             if Wargroove.getSelectedDecision() == 0 then
                 WargrooveExtra.skipIntroOveride(true)
             end
         end
+        if not CheckpointManager.mapWasPlayedBefore() then
+            CheckpointManager.clearCheckpoint()
+        end
         print("Done checking checkpoint.")
     end
+    return newMatchState
 end
 
 return CheckpointManager

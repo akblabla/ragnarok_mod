@@ -209,7 +209,7 @@ commanders:
   - id: empty
     name: unit_class_name_rival
     faction: outlaw
-    playable: false
+    mpPlayable: false
     portrait:
       neutral: portraits/commanders/small/soldier_portrait_extra.png
       happy: portraits/commanders/small/soldier_portrait_extra.png
@@ -243,7 +243,7 @@ commanders:
   - id: wulfar_offset
     name: character_wulfar_name
     title: character_wulfar_title
-    playable: false
+    mpPlayable: false
     faction: outlaw
     factionIndex: 0
     portrait:
@@ -282,7 +282,7 @@ commanders:
   - id: emeric_forced_red
     name: character_emeric_name
     title: character_emeric_title
-    playable: false
+    mpPlayable: false
     faction: cherrystone
     factionIndex: 1
     portrait:
@@ -301,7 +301,7 @@ commanders:
   - id: outlaw_gang
     name: character_generic_outlaw_gang_name
     faction: outlaw
-    playable: false
+    mpPlayable: false
     portrait:
         happy: portraits/commanders/small/soldier_portrait_extra.png
         neutral: portraits/commanders/small/outlaw_soldier_portrait.png
@@ -317,7 +317,7 @@ commanders:
   - id: vesper_gang
     name: character_generic_vesper_gang_name
     faction: outlaw
-    playable: false
+    mpPlayable: false
     portrait:
         happy: portraits/commanders/small/outlaw_archer_portrait.png
         neutral: portraits/commanders/small/outlaw_soldier_portrait.png
@@ -333,13 +333,13 @@ commanders:
   - id: generic_floran
     name: character_generic_floran_name
     faction: floran
-    playable: false
+    mpPlayable: false
     portrait:
       neutral: portraits/commanders/small/floran_portrait_small.png
       happy: portraits/commanders/small/floran_portrait_small.png
       sad: portraits/commanders/small/floran_portrait_small.png
     cutscenePortrait: portraits/commanders/big/floran_portrait
-    themeSong: music/nuru
+    themeSong: sedge
     skinColour: green
     unitClassId: soldier
     dialogueBoxVoice: ui/dialogue/textScroll
@@ -347,7 +347,7 @@ commanders:
   - id: generic_heavensong
     name: character_generic_heavensong_name
     faction: heavensong
-    playable: false
+    mpPlayable: false
     portrait:
       neutral: portraits/commanders/small/heavensong_portrait_small.png
       happy: portraits/commanders/small/heavensong_portrait_small.png

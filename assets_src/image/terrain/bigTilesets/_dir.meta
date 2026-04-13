@@ -1,0 +1,5 @@
+---
+- data:
+  atlas: terrain_big_tilesets
+  material: Halley/Sprite
+...

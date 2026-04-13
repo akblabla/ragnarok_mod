@@ -22,9 +22,9 @@ tilesets:
         waterSpriteBase: wang_tropical_river_tileset_001
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_ocean
-        battleBackgroundSpriteSheet: backgrounds/grass_battlescreen_extendedbackgrounds
-        battleBackgroundSprite: grass_battlescreen_extendedbackgrounds_river
-        battleBackgroundSpriteForeground: grass_battlescreen_extendedbackgrounds_river_foreground
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: tropical_river_background
+        battleBackgroundSpriteForeground: tropical_river_foreground
         iconSpriteSheet: ui
         iconSprite: terrain_icons_River
         infoScreenOffset: 30

@@ -493,4 +493,918 @@ decorations:
     layer: ground
     animation:
       undefined: decoration/water/lavabubble      
+
+  # ruins
+  - id: ruin1
+    layer: units
+    animation:
+      grass: decoration/unit/ruin1_grass
+      dungeon: decoration/unit/ruin1_dungeon
+      dungeon_lava: decoration/unit/ruin1_dungeon_lava
+      ice: decoration/unit/ruin1_ice
+      arctic: decoration/unit/ruin1_arctic
+      jungle: decoration/unit/ruin1_jungle
+      desert: decoration/unit/ruin1_desert
+      tropical: decoration/unit/tropical/ruin1_tropical
+  - id: ruin2
+    layer: units
+    animation:
+      grass: decoration/unit/ruin2_grass
+      dungeon: decoration/unit/ruin2_dungeon
+      dungeon_lava: decoration/unit/ruin2_dungeon_lava
+      ice: decoration/unit/ruin2_ice
+      arctic: decoration/unit/ruin2_arctic
+      jungle: decoration/unit/ruin2_jungle
+      desert: decoration/unit/ruin2_desert
+      tropical: decoration/unit/tropical/ruin2_tropical
+  - id: ruin3
+    layer: units
+    animation:
+      grass: decoration/unit/ruin3_grass
+      dungeon: decoration/unit/ruin3_dungeon
+      dungeon_lava: decoration/unit/ruin3_dungeon_lava
+      ice: decoration/unit/ruin3_ice
+      arctic: decoration/unit/ruin3_arctic
+      jungle: decoration/unit/ruin3_jungle
+      desert: decoration/unit/ruin3_desert
+      tropical: decoration/unit/tropical/ruin3_tropical
+  - id: ruin4
+    layer: units
+    animation:
+      grass: decoration/unit/ruin4_grass
+      dungeon: decoration/unit/ruin4_dungeon
+      dungeon_lava: decoration/unit/ruin4_dungeon_lava
+      ice: decoration/unit/ruin4_ice
+      arctic: decoration/unit/ruin4_arctic
+      jungle: decoration/unit/ruin4_jungle
+      desert: decoration/unit/ruin4_desert
+      tropical: decoration/unit/tropical/ruin4_tropical
+  - id: ruin5
+    layer: units
+    animation:
+      grass: decoration/unit/ruin5_grass
+      dungeon: decoration/unit/ruin5_dungeon
+      dungeon_lava: decoration/unit/ruin5_dungeon_lava
+      ice: decoration/unit/ruin5_ice
+      arctic: decoration/unit/ruin5_arctic
+      jungle: decoration/unit/ruin5_jungle
+      desert: decoration/unit/ruin5_desert
+      tropical: decoration/unit/tropical/ruin5_tropical
+  - id: ruin6
+    layer: units
+    animation:
+      grass: decoration/unit/ruin6_grass
+      dungeon: decoration/unit/ruin6_dungeon
+      dungeon_lava: decoration/unit/ruin6_dungeon_lava
+      ice: decoration/unit/ruin6_ice
+      arctic: decoration/unit/ruin6_arctic
+      jungle: decoration/unit/ruin6_jungle
+      desert: decoration/unit/ruin6_desert
+      tropical: decoration/unit/tropical/ruin6_tropical
+  - id: ruin7
+    layer: ground
+    animation:
+      grass: decoration/ground/ruin7_grass
+      dungeon: decoration/ground/ruin7_dungeon
+      dungeon_lava: decoration/ground/ruin7_dungeon_lava
+      ice: decoration/ground/ruin7_ice
+      arctic: decoration/ground/ruin7_arctic
+      jungle: decoration/ground/ruin7_jungle
+      desert: decoration/ground/ruin7_desert 
+      tropical: decoration/ground/tropical/ruin7_tropical    
+  - id: ruinground
+    layer: ground
+    animation:
+      grass: decoration/ground/ruinground_grass
+      dungeon: decoration/ground/ruinground_dungeon
+      dungeon_lava: decoration/ground/ruinground_dungeon_lava
+      ice: decoration/ground/ruinground_ice
+      arctic: decoration/ground/ruinground_arctic
+      jungle: decoration/ground/ruinground_jungle
+      desert: decoration/ground/ruinground_desert
+      tropical: decoration/ground/tropical/ruinground_tropical    
+  - id: orbstatue
+    layer: units
+    animation:
+      grass: decoration/unit/orb_statue_grass
+      dungeon: decoration/unit/orb_statue_grass
+      ice: decoration/unit/orb_statue_ice
+      arctic: decoration/unit/orb_statue_arctic
+      jungle: decoration/unit/orb_statue_jungle
+      desert: decoration/unit/orb_statue_desert
+      tropical: decoration/unit/tropical/orb_statue
+  - id: princessstatue
+    layer: units
+    animation:
+      grass: decoration/unit/princess_statue_grass
+      dungeon: decoration/unit/princess_statue_dungeon
+      dungeon_lava: decoration/unit/princess_statue_dungeon_lava
+      ice: decoration/unit/princess_statue_ice
+      arctic: decoration/unit/princess_statue_arctic
+      jungle: decoration/unit/princess_statue_jungle
+      desert: decoration/unit/princess_statue_desert                               
+      tropical: decoration/unit/tropical/princess_statue_tropical    
+      
+  - id: pillar1
+    layer: units
+    animation:
+      grass: decoration/unit/pillar1_grass
+      dungeon: decoration/unit/pillar1_dungeon
+      dungeon_lava: decoration/unit/pillar1_dungeon_lava
+      ice: decoration/unit/pillar1_ice
+      arctic: decoration/unit/pillar1_arctic
+      jungle: decoration/unit/pillar1_jungle
+      desert: decoration/unit/pillar1_desert   
+      tropical: decoration/unit/tropical/pillar1_tropical 
+  - id: pillar2
+    layer: units
+    animation:
+      grass: decoration/unit/pillar2_grass
+      dungeon: decoration/unit/pillar2_dungeon
+      dungeon_lava: decoration/unit/pillar2_dungeon_lava
+      ice: decoration/unit/pillar2_ice
+      arctic: decoration/unit/pillar2_arctic
+      jungle: decoration/unit/pillar2_jungle
+      desert: decoration/unit/pillar2_desert
+      tropical: decoration/unit/tropical/pillar2_tropical
+      
+  - id: gravestone1
+    layer: units
+    animation:
+      grass: decoration/unit/gravestone1_grass
+      dungeon: decoration/unit/gravestone1_dungeon
+      dungeon_lava: decoration/unit/gravestone1_dungeon_lava
+      ice: decoration/unit/gravestone1_ice
+      arctic: decoration/unit/gravestone1_arctic
+      jungle: decoration/unit/gravestone1_jungle
+      desert: decoration/unit/gravestone1_desert  
+      tropical: decoration/unit/tropical/gravestone1_tropical  
+  - id: well
+    layer: units
+    animation:
+      grass: decoration/unit/well_grass
+      dungeon: decoration/unit/well_grass
+      ice: decoration/unit/well_ice
+      arctic: decoration/unit/well_arctic
+      jungle: decoration/unit/well_jungle
+      desert: decoration/unit/well_desert   
+      tropical: decoration/unit/tropical/well_tropical  
+  - id: monolith1
+    layer: units
+    animation:
+      grass: decoration/unit/monolith1_grass
+      dungeon: decoration/unit/monolith1_grass
+      ice: decoration/unit/monolith1_ice
+      arctic: decoration/unit/monolith1_arctic
+      jungle: decoration/unit/monolith1_jungle
+      desert: decoration/unit/monolith1_desert  
+      tropical: decoration/unit/tropical/monolith1_tropical  
+      
+  - id: rubble1
+    layer: ground
+    animation:
+      grass: decoration/ground/rubble1_grass_interior
+      dungeon: decoration/ground/rubble1_dungeon_interior
+      dungeon_lava: decoration/ground/rubble1_dungeon_lava_interior
+      ice: decoration/ground/rubble1_ice_interior
+      arctic: decoration/ground/rubble1_arctic_interior
+      jungle: decoration/ground/rubble1_jungle_interior
+      desert: decoration/ground/rubble1_desert_interior
+      tropical: decoration/ground/tropical/rubble1_interior
+  - id: rubble2
+    layer: ground
+    animation:
+      grass: decoration/ground/rubble2_grass_interior
+      dungeon: decoration/ground/rubble2_dungeon_interior
+      dungeon_lava: decoration/ground/rubble2_dungeon_lava_interior
+      ice: decoration/ground/rubble2_ice_interior
+      arctic: decoration/ground/rubble2_arctic_interior
+      jungle: decoration/ground/rubble2_jungle_interior
+      desert: decoration/ground/rubble2_desert_interior
+      tropical: decoration/ground/tropical/rubble2_interior
+  - id: rubble3
+    layer: ground
+    animation:
+      grass: decoration/ground/rubble3_grass_interior
+      dungeon: decoration/ground/rubble3_dungeon_interior
+      dungeon_lava: decoration/ground/rubble3_dungeon_lava_interior
+      ice: decoration/ground/rubble3_ice_interior
+      arctic: decoration/ground/rubble3_arctic_interior
+      jungle: decoration/ground/rubble3_jungle_interior
+      desert: decoration/ground/rubble3_desert_interior
+      tropical: decoration/ground/tropical/rubble3_interior
+  - id: rubble4
+    layer: ground
+    animation:
+      grass: decoration/ground/rubble4_grass_interior
+      dungeon: decoration/ground/rubble4_dungeon_interior
+      dungeon_lava: decoration/ground/rubble4_dungeon_lava_interior
+      ice: decoration/ground/rubble4_ice_interior
+      arctic: decoration/ground/rubble4_arctic_interior
+      jungle: decoration/ground/rubble4_jungle_interior
+      desert: decoration/ground/rubble4_desert_interior
+      tropical: decoration/ground/tropical/rubble4_interior
+
+# Silmor and Cacaphony banners
+
+  - id: cacaphony_banner1
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/cacaphony_banner1
+      tropical: decoration/unit/tropical/cacaphony_banner1
+
+  - id: cacaphony_banner2
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/cacaphony_banner2
+      tropical: decoration/unit/tropical/cacaphony_banner2
+
+  - id: cacaphony_banner3
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/cacaphony_banner3
+      tropical: decoration/unit/tropical/cacaphony_banner3
+
+  - id: cacaphony_banner4
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/cacaphony_banner4
+      tropical: decoration/unit/tropical/cacaphony_banner4
+
+  - id: cacaphony_banner5
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/cacaphony_banner5
+      tropical: decoration/unit/tropical/cacaphony_banner5
+
+  - id: cacaphony_banner6
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/cacaphony_banner6
+      tropical: decoration/unit/tropical/cacaphony_banner6
+
+  - id: cacaphony_banner7
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/cacaphony_banner7
+      tropical: decoration/unit/tropical/cacaphony_banner7
+
+  - id: cacaphony_banner8
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/cacaphony_banner8
+
+  - id: silmor_banner1
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/silmor_banner1
+      tropical: decoration/unit/tropical/silmor_banner1
+
+  - id: silmor_banner2
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/silmor_banner2
+      tropical: decoration/unit/tropical/silmor_banner2
+
+  - id: silmor_banner3
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/silmor_banner3
+      tropical: decoration/unit/tropical/silmor_banner3
+
+  - id: silmor_banner4
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/silmor_banner4
+      tropical: decoration/unit/tropical/silmor_banner4
+
+  - id: silmor_banner5
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/silmor_banner5
+      tropical: decoration/unit/tropical/silmor_banner5
+
+  - id: silmor_banner6
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/silmor_banner6
+      tropical: decoration/unit/tropical/silmor_banner6
+
+  - id: silmor_banner7
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/silmor_banner7
+      tropical: decoration/unit/tropical/silmor_banner7
+
+  - id: silmor_banner8
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/silmor_banner8
+
+# E1M2 ruins
+
+  - id: forest_ruins_1
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/forest_ruins_1
+      tropical: decoration/unit/tropical/forest_ruins_1
+
+  - id: forest_ruins_2
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/forest_ruins_2
+      tropical: decoration/unit/tropical/forest_ruins_2
+
+  - id: forest_ruins_3
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/forest_ruins_3
+      tropical: decoration/unit/tropical/forest_ruins_3
+
+  - id: forest_ruins_4
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/forest_ruins_4
+
+  - id: dungeon_door_1
+    layer: ground
+    animation:
+      undefined: decoration/campaign/earth/ground/dungeon_door_1
+      ice: decoration/campaign/earth/ground/dungeon_door_1_ice
+      arctic: decoration/campaign/earth/ground/dungeon_door_1_arctic
+      dungeon: decoration/campaign/earth/ground/dungeon_door_1_dungeon
+      dungeon_lava: decoration/campaign/earth/ground/dungeon_door_1_dungeon_lava
+      jungle: decoration/campaign/earth/ground/dungeon_door_1_jungle
+      desert: decoration/campaign/earth/ground/dungeon_door_1_desert
+      tropical: decoration/ground/tropical/dungeon_door_2
+
+  - id: dungeon_door_2
+    layer: ground
+    animation:
+      undefined: decoration/campaign/earth/ground/dungeon_door_2
+      ice: decoration/campaign/earth/ground/dungeon_door_2_ice
+      arctic: decoration/campaign/earth/ground/dungeon_door_2_arctic
+      dungeon: decoration/campaign/earth/ground/dungeon_door_2_dungeon
+      dungeon_lava: decoration/campaign/earth/ground/dungeon_door_2_dungeon_lava
+      jungle: decoration/campaign/earth/ground/dungeon_door_2_jungle
+      desert: decoration/campaign/earth/ground/dungeon_door_2_desert
+      tropical: decoration/ground/tropical/dungeon_door_2
+
+  - id: cacaphony_statue01
+    layer: units
+    animation:
+      undefined: decoration/campaign/intro/unit/cacaphony_statue01
+      tropical: decoration/unit/tropical/cacaphony_statue01
+  - id: cacaphony_statue01b
+    layer: units
+    animation:
+      undefined: decoration/campaign/intro/unit/cacaphony_statue01b
+      tropical: decoration/unit/tropical/cacaphony_statue01b
+  - id: cacaphony_statue02
+    layer: units
+    animation:
+      undefined: decoration/campaign/intro/unit/cacaphony_statue02
+      tropical: decoration/unit/tropical/cacaphony_statue02
+  - id: cacaphony_statue02b
+    layer: units
+    animation:
+      undefined: decoration/campaign/intro/unit/cacaphony_statue02b
+      tropical: decoration/unit/tropical/cacaphony_statue02b
+  - id: cacaphony_statue03
+    layer: units
+    animation:
+      undefined: decoration/campaign/intro/unit/cacaphony_statue03
+      tropical: decoration/unit/tropical/cacaphony_statue03
+  - id: cacaphony_statue03b
+    layer: units
+    animation:
+      undefined: decoration/campaign/intro/unit/cacaphony_statue03b
+      tropical: decoration/unit/tropical/cacaphony_statue03b
+  - id: cacaphony_statue04
+    layer: units
+    animation:
+      undefined: decoration/campaign/intro/unit/cacaphony_statue04
+      tropical: decoration/unit/tropical/cacaphony_statue04
+  - id: cacaphony_statue04b
+    layer: units
+    animation:
+      undefined: decoration/campaign/intro/unit/cacaphony_statue04b
+      tropical: decoration/unit/tropical/cacaphony_statue04b
+  - id: cacaphony_statue05
+    layer: units
+    animation:
+      undefined: decoration/campaign/intro/unit/cacaphony_statue05
+      tropical: decoration/unit/tropical/cacaphony_statue05
+  - id: cacaphony_statue05b
+    layer: units
+    animation:
+      undefined: decoration/campaign/intro/unit/cacaphony_statue05b
+      tropical: decoration/unit/tropical/cacaphony_statue05b
+
+# Stone Pipes:
+
+  - id: stone_pipe1
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/stone_pipe1
+      dungeon_lava: decoration/campaign/earth/unit/stone_pipe1_dungeon_lava
+      tropical: decoration/unit/tropical/stone_pipe1
+  - id: stone_pipe2
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/stone_pipe2
+      dungeon_lava: decoration/campaign/earth/unit/stone_pipe2_dungeon_lava
+      tropical: decoration/unit/tropical/stone_pipe2
+  - id: stone_pipe3
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/stone_pipe3
+      dungeon_lava: decoration/campaign/earth/unit/stone_pipe3_dungeon_lava
+      tropical: decoration/unit/tropical/stone_pipe3
+  - id: stone_pipe4
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/stone_pipe4
+      dungeon_lava: decoration/campaign/earth/unit/stone_pipe4_dungeon_lava
+      tropical: decoration/unit/tropical/stone_pipe4
+  - id: stone_pipe5
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/stone_pipe5
+      dungeon_lava: decoration/campaign/earth/unit/stone_pipe5_dungeon_lava
+      tropical: decoration/unit/tropical/stone_pipe5
+  - id: stone_pipe6
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/stone_pipe6
+      dungeon_lava: decoration/campaign/earth/unit/stone_pipe6_dungeon_lava
+      tropical: decoration/unit/tropical/stone_pipe6
+  - id: stone_pipe7
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/stone_pipe7
+      dungeon_lava: decoration/campaign/earth/unit/stone_pipe7_dungeon_lava
+      tropical: decoration/unit/tropical/stone_pipe7
+  - id: stone_pipe8
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/stone_pipe8
+      dungeon_lava: decoration/campaign/earth/unit/stone_pipe8_dungeon_lava
+      tropical: decoration/unit/tropical/stone_pipe8
+
+  - id: old_statue01 
+    layer: units
+    animation:
+      grass: decoration/artefacts/old_statue01_grass
+      dungeon: decoration/artefacts/old_statue01_grass
+      ice: decoration/artefacts/old_statue01_ice
+      arctic: decoration/artefacts/old_statue01_arctic
+      jungle: decoration/artefacts/old_statue01_jungle
+      desert: decoration/artefacts/old_statue01_desert
+      tropical: decoration/unit/tropical/old_statue01
+
+  - id: old_statue02
+    layer: units
+    animation:
+      grass: decoration/artefacts/old_statue02_grass
+      dungeon: decoration/artefacts/old_statue02_grass
+      ice: decoration/artefacts/old_statue02_ice
+      arctic: decoration/artefacts/old_statue02_arctic
+      jungle: decoration/artefacts/old_statue02_jungle
+      desert: decoration/artefacts/old_statue02_desert
+      tropical: decoration/unit/tropical/old_statue02
+
+  - id: flower_ruin1
+    layer: units
+    animation:
+      undefined: decoration/campaign/intro/unit/flower_ruin1
+      arctic: decoration/campaign/intro/unit/flower_ruin1_arctic
+      desert: decoration/campaign/intro/unit/flower_ruin1_desert
+      ice: decoration/campaign/intro/unit/flower_ruin1_ice
+      jungle: decoration/campaign/intro/unit/flower_ruin1_jungle
+      dungeon: decoration/campaign/intro/unit/flower_ruin1_dungeon
+      dungeon_lava: decoration/campaign/intro/unit/flower_ruin1_dungeon_lava
+      tropical: decoration/unit/tropical/flower_ruin1
+  - id: flower_ruin2
+    layer: units
+    animation:
+      undefined: decoration/campaign/intro/unit/flower_ruin2
+      arctic: decoration/campaign/intro/unit/flower_ruin2_arctic
+      desert: decoration/campaign/intro/unit/flower_ruin2_desert
+      ice: decoration/campaign/intro/unit/flower_ruin2_ice
+      jungle: decoration/campaign/intro/unit/flower_ruin2_jungle
+      dungeon: decoration/campaign/intro/unit/flower_ruin2_dungeon
+      dungeon_lava: decoration/campaign/intro/unit/flower_ruin2_dungeon_lava
+      tropical: decoration/unit/tropical/flower_ruin2
+  - id: flower_ruin3
+    layer: units
+    animation:
+      undefined: decoration/campaign/intro/unit/flower_ruin3
+      arctic: decoration/campaign/intro/unit/flower_ruin3_arctic
+      desert: decoration/campaign/intro/unit/flower_ruin3_desert
+      ice: decoration/campaign/intro/unit/flower_ruin3_ice
+      jungle: decoration/campaign/intro/unit/flower_ruin3_jungle
+      dungeon: decoration/campaign/intro/unit/flower_ruin3_dungeon
+      dungeon_lava: decoration/campaign/intro/unit/flower_ruin3_dungeon_lava
+      tropical: decoration/unit/tropical/flower_ruin3
+  - id: flower_ruin4
+    layer: units
+    animation:
+      undefined: decoration/campaign/intro/unit/flower_ruin4
+      arctic: decoration/campaign/intro/unit/flower_ruin4_arctic
+      desert: decoration/campaign/intro/unit/flower_ruin4_desert
+      ice: decoration/campaign/intro/unit/flower_ruin4_ice
+      jungle: decoration/campaign/intro/unit/flower_ruin4_jungle
+      dungeon: decoration/campaign/intro/unit/flower_ruin4_dungeon
+      dungeon_lava: decoration/campaign/intro/unit/flower_ruin4_dungeon_lava
+      tropical: decoration/unit/tropical/flower_ruin4
+  - id: flower_ruin5
+    layer: units
+    animation:
+      undefined: decoration/campaign/intro/unit/flower_ruin5
+      arctic: decoration/campaign/intro/unit/flower_ruin5_arctic
+      desert: decoration/campaign/intro/unit/flower_ruin5_desert
+      ice: decoration/campaign/intro/unit/flower_ruin5_ice
+      jungle: decoration/campaign/intro/unit/flower_ruin5_jungle
+      dungeon: decoration/campaign/intro/unit/flower_ruin5_dungeon
+      dungeon_lava: decoration/campaign/intro/unit/flower_ruin5_dungeon_lava
+      tropical: decoration/unit/tropical/flower_ruin5
+  - id: flower_ruin6
+    layer: units
+    animation:
+      undefined: decoration/campaign/intro/unit/flower_ruin6
+      arctic: decoration/campaign/intro/unit/flower_ruin6_arctic
+      desert: decoration/campaign/intro/unit/flower_ruin6_desert
+      ice: decoration/campaign/intro/unit/flower_ruin6_ice
+      jungle: decoration/campaign/intro/unit/flower_ruin6_jungle
+      dungeon: decoration/campaign/intro/unit/flower_ruin6_dungeon
+      dungeon_lava: decoration/campaign/intro/unit/flower_ruin6_dungeon_lava
+      tropical: decoration/unit/tropical/flower_ruin6
+  - id: flower_ruin7
+    layer: units
+    animation:
+      undefined: decoration/campaign/intro/unit/flower_ruin7
+      arctic: decoration/campaign/intro/unit/flower_ruin7_arctic
+      desert: decoration/campaign/intro/unit/flower_ruin7_desert
+      ice: decoration/campaign/intro/unit/flower_ruin7_ice
+      jungle: decoration/campaign/intro/unit/flower_ruin7_jungle
+      dungeon: decoration/campaign/intro/unit/flower_ruin7_dungeon
+      dungeon_lava: decoration/campaign/intro/unit/flower_ruin7_dungeon_lava
+      tropical: decoration/unit/tropical/flower_ruin7
+  - id: flower_ruin8
+    layer: units
+    animation:
+      undefined: decoration/campaign/intro/unit/flower_ruin8
+      arctic: decoration/campaign/intro/unit/flower_ruin8_arctic
+      desert: decoration/campaign/intro/unit/flower_ruin8_desert
+      ice: decoration/campaign/intro/unit/flower_ruin8_ice
+      jungle: decoration/campaign/intro/unit/flower_ruin8_jungle
+      dungeon: decoration/campaign/intro/unit/flower_ruin8_dungeon
+      dungeon_lava: decoration/campaign/intro/unit/flower_ruin8_dungeon_lava
+      tropical: decoration/unit/tropical/flower_ruin8
+  - id: flower_ruin9
+    layer: units
+    animation:
+      undefined: decoration/campaign/intro/unit/flower_ruin9
+      arctic: decoration/campaign/intro/unit/flower_ruin9_arctic
+      desert: decoration/campaign/intro/unit/flower_ruin9_desert
+      ice: decoration/campaign/intro/unit/flower_ruin9_ice
+      jungle: decoration/campaign/intro/unit/flower_ruin9_jungle
+      dungeon: decoration/campaign/intro/unit/flower_ruin9_dungeon
+      dungeon_lava: decoration/campaign/intro/unit/flower_ruin9_dungeon_lava
+      tropical: decoration/unit/tropical/flower_ruin9
+  - id: flower_ruin10
+    layer: units
+    animation:
+      undefined: decoration/campaign/intro/unit/flower_ruin10
+      arctic: decoration/campaign/intro/unit/flower_ruin10_arctic
+      desert: decoration/campaign/intro/unit/flower_ruin10_desert
+      ice: decoration/campaign/intro/unit/flower_ruin10_ice
+      jungle: decoration/campaign/intro/unit/flower_ruin10_jungle
+      dungeon: decoration/campaign/intro/unit/flower_ruin10_dungeon
+      dungeon_lava: decoration/campaign/intro/unit/flower_ruin10_dungeon_lava
+      tropical: decoration/unit/tropical/flower_ruin10
+  - id: flower_ruin11
+    layer: units
+    animation:
+      undefined: decoration/campaign/intro/unit/flower_ruin11
+      arctic: decoration/campaign/intro/unit/flower_ruin11_arctic
+      desert: decoration/campaign/intro/unit/flower_ruin11_desert
+      ice: decoration/campaign/intro/unit/flower_ruin11_ice
+      jungle: decoration/campaign/intro/unit/flower_ruin11_jungle
+      dungeon: decoration/campaign/intro/unit/flower_ruin11_dungeon
+      dungeon_lava: decoration/campaign/intro/unit/flower_ruin11_dungeon_lava
+      tropical: decoration/unit/tropical/flower_ruin11
+
+# Sedges Old Hideout ruins
+  - id: wall_ruins_right_1
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/wall_ruins_right_1
+      desert: decoration/campaign/earth/unit/wall_ruins_right_1_desert
+      jungle: decoration/campaign/earth/unit/wall_ruins_right_1_jungle
+      arctic: decoration/campaign/earth/unit/wall_ruins_right_1_arctic
+      dungeon: decoration/campaign/earth/unit/wall_ruins_right_1_dungeon
+      dungeon_lava: decoration/campaign/earth/unit/wall_ruins_right_1_dungeon_lava
+      tropical: decoration/unit/tropical/wall_ruins_right_1
+
+  - id: wall_ruins_left_1
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/wall_ruins_left_1
+      desert: decoration/campaign/earth/unit/wall_ruins_left_1_desert
+      jungle: decoration/campaign/earth/unit/wall_ruins_left_1_jungle
+      arctic: decoration/campaign/earth/unit/wall_ruins_left_1_arctic
+      dungeon: decoration/campaign/earth/unit/wall_ruins_left_1_dungeon
+      dungeon_lava: decoration/campaign/earth/unit/wall_ruins_left_1_dungeon_lava
+      tropical: decoration/unit/tropical/wall_ruins_left_1
+
+  - id: wall_ruins_up_1
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/wall_ruins_up_1
+      desert: decoration/campaign/earth/unit/wall_ruins_up_1_desert
+      jungle: decoration/campaign/earth/unit/wall_ruins_up_1_jungle
+      arctic: decoration/campaign/earth/unit/wall_ruins_up_1_arctic
+      dungeon: decoration/campaign/earth/unit/wall_ruins_up_1_dungeon
+      dungeon_lava: decoration/campaign/earth/unit/wall_ruins_up_1_dungeon_lava
+      tropical: decoration/unit/tropical/wall_ruins_up_1
+
+  - id: wall_ruins_down_1
+    layer: units
+    animation:
+      undefined: decoration/campaign/earth/unit/wall_ruins_down_1
+      desert: decoration/campaign/earth/unit/wall_ruins_down_1_desert
+      jungle: decoration/campaign/earth/unit/wall_ruins_down_1_jungle
+      arctic: decoration/campaign/earth/unit/wall_ruins_down_1_arctic
+      dungeon: decoration/campaign/earth/unit/wall_ruins_down_1_dungeon
+      dungeon_lava: decoration/campaign/earth/unit/wall_ruins_down_1_dungeon_lava
+      tropical: decoration/unit/tropical/wall_ruins_down_1
+
+      
+# Abyss Waterfalls:
+
+  - id: abyss_waterfall_1
+    layer: above_water
+    noShadowMask: true
+    depthScale: 0.0
+    snapToGrid: true
+    animation:
+      grass: decoration/water/abyss_waterfall_grass_1
+      ice: decoration/water/abyss_waterfall_ice_1
+      desert: decoration/water/abyss_waterfall_desert_1
+      jungle: decoration/water/abyss_waterfall_jungle_1
+      arctic: decoration/water/abyss_waterfall_arctic_1
+      arctic_blood: decoration/water/abyss_waterfall_arctic_blood_1
+      undefined: decoration/water/abyss_waterfall_dungeon_1
+      dungeon_lava: decoration/water/abyss_waterfall_dungeon_lava_1
+      tropical: decoration/water/abyss_waterfall_tropical_1
+
+  - id: abyss_waterfall_2
+    layer: above_water
+    noShadowMask: true
+    depthScale: 0.0
+    snapToGrid: true
+    animation:
+      grass: decoration/water/abyss_waterfall_grass_2
+      ice: decoration/water/abyss_waterfall_ice_2
+      desert: decoration/water/abyss_waterfall_desert_2
+      jungle: decoration/water/abyss_waterfall_jungle_2
+      arctic: decoration/water/abyss_waterfall_arctic_2
+      arctic_blood: decoration/water/abyss_waterfall_arctic_blood_2
+      undefined: decoration/water/abyss_waterfall_dungeon_2
+      dungeon_lava: decoration/water/abyss_waterfall_dungeon_lava_2
+      tropical: decoration/water/abyss_waterfall_tropical_2
+
+  - id: abyss_waterfall_3
+    layer: above_water
+    noShadowMask: true
+    depthScale: 0.0
+    snapToGrid: true
+    animation:
+      grass: decoration/water/abyss_waterfall_grass_3
+      ice: decoration/water/abyss_waterfall_ice_3
+      desert: decoration/water/abyss_waterfall_desert_3
+      jungle: decoration/water/abyss_waterfall_jungle_3
+      arctic: decoration/water/abyss_waterfall_arctic_3
+      arctic_blood: decoration/water/abyss_waterfall_arctic_blood_3
+      undefined: decoration/water/abyss_waterfall_dungeon_3
+      dungeon_lava: decoration/water/abyss_waterfall_dungeon_lava_3
+      tropical: decoration/water/abyss_waterfall_tropical_3
+
+  - id: abyss_waterfall_4
+    layer: above_water
+    noShadowMask: true
+    depthScale: 0.0
+    snapToGrid: true
+    animation:
+      grass: decoration/water/abyss_waterfall_grass_4
+      ice: decoration/water/abyss_waterfall_ice_4
+      desert: decoration/water/abyss_waterfall_desert_4
+      jungle: decoration/water/abyss_waterfall_jungle_4
+      arctic: decoration/water/abyss_waterfall_arctic_4
+      arctic_blood: decoration/water/abyss_waterfall_arctic_blood_4
+      undefined: decoration/water/abyss_waterfall_dungeon_4
+      dungeon_lava: decoration/water/abyss_waterfall_dungeon_lava_4
+      tropical: decoration/water/abyss_waterfall_tropical_4
+  
+  - id: abyss_waterfall_5
+    layer: above_water
+    noShadowMask: true
+    depthScale: 0.0
+    snapToGrid: true
+    animation:
+      grass: decoration/water/abyss_waterfall_grass_5
+      ice: decoration/water/abyss_waterfall_ice_5
+      desert: decoration/water/abyss_waterfall_desert_5
+      jungle: decoration/water/abyss_waterfall_jungle_5
+      arctic: decoration/water/abyss_waterfall_arctic_5
+      arctic_blood: decoration/water/abyss_waterfall_arctic_blood_5
+      undefined: decoration/water/abyss_waterfall_dungeon_5
+      dungeon_lava: decoration/water/abyss_waterfall_dungeon_lava_5
+      tropical: decoration/water/abyss_waterfall_tropical_5
+
+# River Deltas:
+  - id: delta_grass1
+    layer: above_water
+    noShadowMask: true
+    depthScale: 0.0
+    snapToGrid: true
+    animation:
+      undefined: decoration/water/delta_grass1
+      grass: decoration/water/delta_grass1
+      ice: decoration/water/delta_ice1
+      desert: decoration/water/delta_desert1
+      jungle: decoration/water/delta_jungle1
+      arctic: decoration/water/delta_arctic1
+      arctic_blood: decoration/water/delta_arctic_blood1
+      dungeon: decoration/water/delta_dungeon1
+      dungeon_lava: decoration/water/delta_dungeon_lava1
+      tropical: decoration/water/delta_tropical1
+
+  - id: delta_grass2
+    layer: above_water
+    noShadowMask: true
+    depthScale: 0.0
+    snapToGrid: true
+    animation:
+      undefined: decoration/water/delta_grass2
+      grass: decoration/water/delta_grass2
+      ice: decoration/water/delta_ice2
+      desert: decoration/water/delta_desert2
+      jungle: decoration/water/delta_jungle2
+      arctic: decoration/water/delta_arctic2
+      arctic_blood: decoration/water/delta_arctic_blood2
+      dungeon: decoration/water/delta_dungeon2
+      dungeon_lava: decoration/water/delta_dungeon_lava2
+      tropical: decoration/water/delta_tropical2
+
+  - id: delta_grass3
+    layer: above_water
+    noShadowMask: true
+    depthScale: 0.0
+    snapToGrid: true
+    animation:
+      undefined: decoration/water/delta_grass3
+      grass: decoration/water/delta_grass3
+      ice: decoration/water/delta_ice3
+      desert: decoration/water/delta_desert3
+      jungle: decoration/water/delta_jungle3
+      arctic: decoration/water/delta_arctic3
+      arctic_blood: decoration/water/delta_arctic_blood3
+      dungeon: decoration/water/delta_dungeon3
+      dungeon_lava: decoration/water/delta_dungeon_lava3
+      tropical: decoration/water/delta_tropical3
+
+  - id: delta_grass4
+    layer: above_water
+    noShadowMask: true
+    depthScale: 0.0
+    snapToGrid: true
+    animation:
+      undefined: decoration/water/delta_grass4
+      grass: decoration/water/delta_grass4
+      ice: decoration/water/delta_ice4
+      desert: decoration/water/delta_desert4
+      jungle: decoration/water/delta_jungle4
+      arctic: decoration/water/delta_arctic4
+      arctic_blood: decoration/water/delta_arctic_blood4
+      dungeon: decoration/water/delta_dungeon4
+      dungeon_lava: decoration/water/delta_dungeon_lava4
+      tropical: decoration/water/delta_tropical4
+
+# Beach bridges
+  - id: beach_bridge1
+    layer: above_water
+    animation:
+      undefined: decoration/water/beach_bridge1
+      desert: decoration/water/beach_bridge1_desert
+      ice: decoration/water/beach_bridge1_ice
+      jungle: decoration/water/beach_bridge1_jungle
+      dungeon: decoration/water/beach_bridge1_dungeon
+      dungeon_lava: decoration/water/beach_bridge1_dungeon_lava
+      arctic: decoration/water/beach_bridge1_arctic
+      arctic_blood: decoration/water/beach_bridge1_arctic_red
+      tropical: decoration/water/beach_bridge1_tropical
+
+  - id: beach_bridge2
+    layer: above_water
+    animation:
+      undefined: decoration/water/beach_bridge2
+      desert: decoration/water/beach_bridge2_desert
+      ice: decoration/water/beach_bridge2_ice
+      dungeon: decoration/water/beach_bridge2_dungeon
+      dungeon_lava: decoration/water/beach_bridge2_dungeon_lava
+      jungle: decoration/water/beach_bridge2_jungle
+      arctic: decoration/water/beach_bridge2_arctic
+      arctic_blood: decoration/water/beach_bridge2_arctic_red
+      tropical: decoration/water/beach_bridge2_tropical
+
+  - id: beach_bridge3
+    layer: above_water
+    animation:
+      undefined: decoration/water/beach_bridge3
+      desert: decoration/water/beach_bridge3_desert
+      ice: decoration/water/beach_bridge3_ice
+      dungeon: decoration/water/beach_bridge3_dungeon
+      dungeon_lava: decoration/water/beach_bridge3_dungeon_lava
+      jungle: decoration/water/beach_bridge3_jungle
+      arctic: decoration/water/beach_bridge3_arctic
+      arctic_blood: decoration/water/beach_bridge3_arctic_red
+      tropical: decoration/water/beach_bridge3_tropical
+
+  # Water level plants
+
+  - id: dungeon_lilies_4
+    layer: above_water
+    animation:
+      dungeon: decoration/campaign/earth/water/dungeon_lilies_4
+      dungeon_lava: decoration/campaign/earth/water/dungeon_lava_lilies_4
+      grass: decoration/campaign/earth/water/grass_lilies_4
+      ice: decoration/campaign/earth/water/ice_lilies_4
+      desert: decoration/campaign/earth/water/grass_lilies_4
+      arctic: decoration/campaign/earth/water/arctic_lilies_4
+      arctic_blood: decoration/campaign/earth/water/arctic_blood_lilies_4
+      jungle: decoration/campaign/earth/water/jungle_lilies_4
+      tropical: decoration/water/tropical_lilies_4
+      
+  - id: dungeon_lilies_5
+    layer: above_water
+    animation:
+      dungeon: decoration/campaign/earth/water/dungeon_lilies_5
+      dungeon_lava: decoration/campaign/earth/water/dungeon_lava_lilies_5
+      grass: decoration/campaign/earth/water/grass_lilies_5
+      ice: decoration/campaign/earth/water/ice_lilies_5
+      desert: decoration/campaign/earth/water/grass_lilies_5
+      arctic: decoration/campaign/earth/water/arctic_lilies_5
+      arctic_blood: decoration/campaign/earth/water/arctic_blood_lilies_5
+      jungle: decoration/campaign/earth/water/jungle_lilies_5
+      tropical: decoration/water/tropical_lilies_5
+
+  - id: dungeon_lilies_6
+    layer: above_water
+    animation:
+      dungeon: decoration/campaign/earth/water/dungeon_lilies_6
+      dungeon_lava: decoration/campaign/earth/water/dungeon_lava_lilies_6
+      grass: decoration/campaign/earth/water/grass_lilies_6
+      ice: decoration/campaign/earth/water/ice_lilies_6
+      desert: decoration/campaign/earth/water/grass_lilies_6
+      arctic: decoration/campaign/earth/water/arctic_lilies_6
+      arctic_blood: decoration/campaign/earth/water/arctic_blood_lilies_6
+      jungle: decoration/campaign/earth/water/jungle_lilies_6
+      tropical: decoration/water/tropical_lilies_6
+
+  - id: dungeon_lilies_7
+    layer: above_water
+    animation:
+      dungeon: decoration/campaign/earth/water/dungeon_lilies_7
+      dungeon_lava: decoration/campaign/earth/water/dungeon_lava_lilies_7
+      grass: decoration/campaign/earth/water/grass_lilies_7
+      ice: decoration/campaign/earth/water/ice_lilies_7
+      desert: decoration/campaign/earth/water/grass_lilies_7
+      arctic: decoration/campaign/earth/water/arctic_lilies_7
+      arctic_blood: decoration/campaign/earth/water/arctic_blood_lilies_7
+      jungle: decoration/campaign/earth/water/jungle_lilies_7
+      tropical: decoration/water/tropical_lilies_7
+
+  - id: dungeon_lilies_8
+    layer: above_water
+    animation:
+      dungeon: decoration/campaign/earth/water/dungeon_lilies_8
+      dungeon_lava: decoration/campaign/earth/water/dungeon_lava_lilies_8
+      grass: decoration/campaign/earth/water/grass_lilies_8
+      ice: decoration/campaign/earth/water/ice_lilies_8
+      desert: decoration/campaign/earth/water/grass_lilies_8
+      arctic: decoration/campaign/earth/water/arctic_lilies_8
+      arctic_blood: decoration/campaign/earth/water/arctic_blood_lilies_8
+      jungle: decoration/campaign/earth/water/jungle_lilies_8
+      tropical: decoration/water/tropical_lilies_8
+
+# Conquest Mode specific decorations:
+
+  - id: start_statue01
+    layer: units
+    animation:
+      undefined: decoration/conquest/unit/start_statue01
+      tropical: decoration/water/start_statue01_tropical
 ...

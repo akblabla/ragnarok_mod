@@ -23,7 +23,7 @@ function Death:giveGold(unit, targetPos, strParam, path)
         return
     end
 
-    local amountCarried = Wargroove.getUnitState(unit, stateKey)
+    local amountCarried = tonumber(Wargroove.getUnitState(unit, stateKey))
     
     if (amountCarried == nil) then
         return

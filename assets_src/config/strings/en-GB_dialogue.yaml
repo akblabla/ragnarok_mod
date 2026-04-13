@@ -3,7 +3,7 @@ en-GB: &flag-en
 
   # STORY MAIN 1 Prologue
   # Cutscene: Start of match. Vesper stalks Emeric's ship
-  ragnarok_main1_cutscene_intro_1stMate_00: "Finally! We've been trailing this damn ship for weeks, and now they're in sight![short_pause] Time for some action, let's get 'em!"
+  ragnarok_main1_cutscene_intro_1stMate_00: "Finally! We've been trailing this dang ship for weeks, and now they're in sight![short_pause] Time for some action, let's get 'em!"
   ragnarok_main1_cutscene_intro_Vesper_00: "Indeed, it's time for us to make our move."
   ragnarok_main1_cutscene_intro_Vesper_01: "Men! Raise the clan flag!"
   # Vesper catches up to Emeric's ship

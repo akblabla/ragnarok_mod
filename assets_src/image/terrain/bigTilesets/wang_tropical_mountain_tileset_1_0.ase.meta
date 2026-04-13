@@ -1,0 +1,6 @@
+---
+pivotX: 4
+pivotY: 4
+atlas: terrain_big_tilesets
+material: Halley/Sprite
+...

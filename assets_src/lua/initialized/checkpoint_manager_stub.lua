@@ -57,6 +57,10 @@ end
 
 local checkedForCheckpoint = false
 
+function CheckpointManager.checkedForCheckpoint()
+    return checkedForCheckpoint
+end
+
 local function file_exists(name)
     return false
 end
@@ -68,4 +72,13 @@ end
 function CheckpointManager.checkCheckpoint()
 end
 
+function CheckpointManager.checkpointExistsWithId(id)
+    return false
+end
+
+function CheckpointManager.initMapWasPlayedBefore()
+end
+function CheckpointManager.mapWasPlayedBefore()
+    return false
+end
 return CheckpointManager
