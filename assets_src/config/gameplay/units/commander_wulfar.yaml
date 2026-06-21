@@ -123,6 +123,8 @@ units:
       hug_idle: emote_hug_idle
       faint: emote_faint
       fainted: emote_fainted
+      sitting: emote_sitting
+      sitting_looking: emote_sitting_looking
 
     shouts:
       wulfar_agreed: wulfar/wulfarShoutAgreed

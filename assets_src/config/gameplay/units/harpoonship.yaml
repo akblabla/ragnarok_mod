@@ -14,10 +14,10 @@ weapons:
 unitClasses:
   - id: harpoonship
     name: unit_class_name_harpoonship
-    cost: 500
+    cost: 600
     resourceCost: 2
     movement: sailing
-    moveRange: 8
+    moveRange: 6
     damageMultiplier: 1
     aiPriority: 1.0
     weapons:

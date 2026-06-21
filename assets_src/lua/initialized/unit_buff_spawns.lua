@@ -29,6 +29,10 @@ function BuffSpawns.high_alert_spawn(Wargroove, unit)
     Wargroove.displayBuffVisualEffect(unit.id, unit.playerId, "units/commanders/duchess/high_alert", "spawn", 1, {}, "over_units")
 end
 
+function BuffSpawns.crown_spawn(Wargroove, unit)
+    --Wargroove.displayBuffVisualEffect(unit.id, unit.playerId, "units/crown/fx_crown", "spawn", 1, {}, "over_units")
+end
+
 function BuffSpawns.vampiric_touch_spawn(Wargroove, unit)
     Wargroove.displayBuffVisualEffect(unit.id, unit.playerId, "units/commanders/sigrid/sigrid_groove_2_back", "idle", 1.0, {}, "units", {x = 0, y = -1}, false, false)
     Wargroove.displayBuffVisualEffect(unit.id, unit.playerId, "units/commanders/sigrid/sigrid_groove_2_front", "idle", 1.0, {}, "over_units", {x = 0, y = 0}, false, false)

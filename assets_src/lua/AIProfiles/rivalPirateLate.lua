@@ -6,7 +6,7 @@ local RivalPirate = {}
 local valueReductionPerUnitList = {
 	archer = 0.1,
 	ballista = 0.1,
-	barge = 0.85,
+	barge = 0.75,
 	dog = 0.1,
 	dragon = 0.1,
 	giant = 0.1,
@@ -52,7 +52,7 @@ local idealUnitRatioList = {
 }
 
 local powerMultiplierList = {
-	barge = 7,
+	barge = 4,
 	merman = 0.75,
 	caravel = 0.75,
 	harpoonship = 1,

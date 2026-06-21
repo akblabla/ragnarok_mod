@@ -5,6 +5,7 @@ en-GB: &flag-en
   #AI
   ai_profile_rival_pirate: Rival Pirate
   ai_profile_rival_pirate_late: Rival Pirate Late game
+  ai_profile_rival_pirate_brawl: Rival Pirate Brawl
   ai_profile_coward: Coward
   ai_profile_charge: Charge
   ai_profile_mangrove_madness: Mangrove Madness
@@ -145,8 +146,9 @@ en-GB: &flag-en
   groove_description_morale_boost: "Friendly units within 2 tiles strike first when attacked."
   groove_name_all_caps_groove_morale_boost: "EN GARDE"
 
-  character_generic_outlaw_gang_name: "Outlaw Gang"
-  character_generic_vesper_gang_name: "Vespers Gang"
+  character_generic_outlaw_gang_name: "Outlaw Gang (skin II)"
+  character_generic_vesper_gang_name: "Outlaw Gang (skin IV)"
+  character_generic_merman_name: "Merfolk"
   character_villager_neutral_name: "Villager Neutral"
   
   
@@ -174,7 +176,7 @@ en-GB: &flag-en
   unit_name_mage_outlaw: Trickster 
   unit_name_soldier_outlaw: Cutthroat
   unit_name_spearman_outlaw: Brigand 
-  unit_name_knight_outlaw: Highwayman 
+  unit_name_knight_outlaw: Knave 
   unit_name_wagon_outlaw: Wagon
   unit_name_warship_outlaw: Warship 
   unit_name_harpoonship_outlaw: Harpoon Ship 
@@ -232,7 +234,7 @@ en-GB: &flag-en
   unit_description_travelboat: "Boats able to transport all ground units across water. Can steal from buildings."  
   unit_description_travelboat_with_gold: "A vulnerable unit that cannot transport, but is able to deposit the gold it has stolen at a friendly Flagship, Warship or Dock. If defeated, the gold goes to the attacker."  
   unit_description_rifleman: "A long-range ground unit. Can't target enemies behind other units or tall terrain. Critical hit when target is in the centre of the Rifleman's sights."
-  unit_description_griffin_walking: "Flies over units, but must land on solid ground. Crit when ally is opposite to target."
+  unit_description_griffin_walking: "Flies over units, but must land on solid ground. Crit when an ally is opposite to target."
   unit_description_caravel: "Cost-effective for neutralizing structures. Crit when target is adjacent to a structure. Strong vs Ships."
   unit_description_kraken: "Naval supremacist. Tentacle ability immobilizes a unit for one turn (Range: 3).\nCritical hit when enemy has no adjacent allies."
   #backgrounds
@@ -354,10 +356,10 @@ en-GB: &flag-en
   ui_cutscene_shout_duchess_youthinkthisisagame: "\"You think this is a game?\""
 
   crown_name: "The Cherrystone Crown"
-  crown_description: "Unit can't attack. At the start of each turn, unit regains 20 health.\nFits snuggly on any commander's head."
+  crown_description: "Unit can't attack. At the start of each turn, unit regains 5 health.\nFits snuggly on any commander's head."
 
   mighty_boot_name: "Mighty Boot"
-  mighty_boot_description: "Unit can kick another unit, pushing it two tiles and dealing 20 damage."
+  mighty_boot_description: "Unit can kick another unit, dealing 20 damage and pushing it two tiles."
 
   fire_arrows_name: "Fire Arrows"
   fire_arrows_description: "Ignites enemies hit by attacks. "

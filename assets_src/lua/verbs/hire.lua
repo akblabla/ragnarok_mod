@@ -8,6 +8,7 @@ local costMultiplier = 1
 
 local defaultUnits = {"soldier", "dog", "spearman", "mage", "archer"}
 
+
 function Hire:recruitsContain(recruits, unit)
     for i, recruit in pairs(recruits) do
         if recruit == unit then 
@@ -40,8 +41,8 @@ function Hire:getTargetType()
 end
 
 function Hire:canExecuteAnywhere(unit)
-    local canReqruit = Wargroove.getUnitState(unit,"canReqruit")
-    return canReqruit ~= nil
+    local canHire = Wargroove.canPlayerHire(unit.playerId)
+    return canHire
 end
 
 Hire.inPreExecute = true
@@ -60,8 +61,8 @@ function Hire:canExecuteWithTarget(unit, endPos, targetPos, strParam)
     if (Hire.inPreExecute) then
         local u = Wargroove.getUnitAt(targetPos)
         if (u ~= nil) then
-            local canBeRequired = Wargroove.getUnitState(u,"Recruitable")
-            return (canBeRequired ~= nil) and Wargroove.isNeutral(u.playerId)
+            local canBeRecruited = Wargroove.getUnitState(u,"Recruitable")
+            return (canBeRecruited ~= nil) and Wargroove.isNeutral(u.playerId)
         end
     else
 

@@ -7,8 +7,8 @@ tilesets:
         spriteBase: cave_sea_tileset_000
         waterSpriteBase: cave_sea_tileset_001
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
-        battleBackgroundSprite: cove_battlescreen_background
-        battleBackgroundSpriteForeground: cove_battlescreen_foreground
+        battleBackgroundSprite: cove_battlescreen_grass_background
+        battleBackgroundSpriteForeground: cove_battlescreen_grass_foreground
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_ocean
         iconSpriteSheet: ui_RagnarokMod

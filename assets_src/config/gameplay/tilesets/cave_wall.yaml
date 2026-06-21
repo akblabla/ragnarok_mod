@@ -3,9 +3,22 @@ tilesets:
   - id: cave_wall
     decayTo: plains
     biomes:
-      - types: [grass,tropical, flower, ice, desert, volcano]
+      - types: [grass, ice, ice_low, deepforest, dungeon, dungeon_purple, dungeon_lava, arctic, arctic_bloom, arctic_blood]
         spriteSheet: terrain_tall_tilesets
         spriteBase: grass_cave_wall_tileset_tall
+        portraitSpriteSheet: terrain/terrain_portraits
+        portraitSprite: terrain_portraits_city
+        battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
+        battleBackgroundSprite: cave_battlescreen_grass_background
+        battleBackgroundSpriteForeground: cave_battlescreen_grass_foreground
+        iconSpriteSheet: ui_RagnarokMod
+        iconSprite: ":img:ui/codex/icons/icon_terrain_cave_wall.png"
+        infoScreenOffset: 80
+        fillColour: '#83786e'
+
+      - types: [jungle,tropical, flower, desert]
+        spriteSheet: terrain_tall_tilesets
+        spriteBase: tropical_cave_wall_tileset_tall
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_city
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod

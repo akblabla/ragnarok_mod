@@ -1,0 +1,7 @@
+---
+- data:
+    pivotX: 0
+    pivotY: 24
+    atlas: terrain_tall_tilesets
+    material: Halley/Sprite
+...

@@ -8,8 +8,8 @@ tilesets:
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_road
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
-        battleBackgroundSprite: cave_road_battlescreen_sand_background
-        battleBackgroundSpriteForeground: cave_battlescreen_sand_foreground
+        battleBackgroundSprite: cave_road_battlescreen_grass_background
+        battleBackgroundSpriteForeground: cave_battlescreen_grass_foreground
         iconSpriteSheet: ui
         iconSprite: terrain_icons_Road
         infoScreenOffset: 80
@@ -20,8 +20,8 @@ tilesets:
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_road
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
-        battleBackgroundSprite: cave_road_battlescreen_sand_background
-        battleBackgroundSpriteForeground: cave_battlescreen_sand_foreground
+        battleBackgroundSprite: cave_road_battlescreen_grass_background
+        battleBackgroundSpriteForeground: cave_battlescreen_grass_foreground
         iconSpriteSheet: ui
         iconSprite: terrain_icons_Road
         infoScreenOffset: 80

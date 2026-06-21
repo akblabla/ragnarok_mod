@@ -26,6 +26,19 @@ function Recruit:getMaximumRange(unit, endPos)
     return 100
 end
 
+function Recruit:getFacing(a, b)
+	local dx = b.x - a.x
+	local dy = b.y - a.y
+	if math.abs(dx) > math.abs(dy) then
+		if dx > 0 then
+			return "right"
+		else
+			return "left"
+		end
+	else
+		return "centre"
+	end
+end
 
 function Recruit:getTargetType()
     return "empty"
@@ -91,9 +104,14 @@ end
 
 function Recruit:execute(unit, targetPos, strParam, path)
 	local uc = Wargroove.getUnitClass(strParam)
-	Wargroove.changeMoney(unit.playerId, -uc.cost)
+    local recruitDiscount = 1.0
+    local recruiter = Wargroove.getUnitClass(unit.unitClassId, unit.id)
+    if Wargroove.isInList(strParam, unit.recruitDiscounts) then
+        recruitDiscount = unit.recruitDiscountMultiplier
+    end
+    Wargroove.changeMoney(unit.playerId, -(uc.cost * recruiter.recruitingCostMultiplier * recruitDiscount))
 	if strParam ~= "flare" then
-		local spawnedId = Wargroove.spawnUnit(unit.playerId, targetPos, strParam, true)
+		local spawnedId = Wargroove.spawnUnit(unit.playerId, targetPos, strParam, true,nil,nil,nil,nil,nil,Recruit:getFacing(unit.pos, targetPos))
 		Wargroove.spawnMapAnimation(targetPos, 0, "fx/mapeditor_unitdrop")
 		Wargroove.playMapSound("spawn", targetPos)
 		Wargroove.playPositionlessSound("recruit")
@@ -121,7 +139,7 @@ function Recruit:execute(unit, targetPos, strParam, path)
 		print("-1")
 		Wargroove.playMapSound("ballistaAttack", unit.pos)
 		Wargroove.waitTime(0.52)
-		local spawnedId = Wargroove.spawnUnit(unit.playerId, unit.pos, "flare", false, "summon")
+		local spawnedId = Wargroove.spawnUnit(unit.playerId, unit.pos, "flare", false, "summon",nil,nil,nil,nil,Recruit:getFacing(unit.pos, targetPos))
 		print("0")
 		local spawn = Wargroove.getUnitById(spawnedId)
 		print("1")
@@ -191,14 +209,18 @@ function Recruit:execute(unit, targetPos, strParam, path)
 	end
 	Wargroove.notifyEvent("unit_recruit", unit.playerId)
 	Wargroove.setMetaLocation("last_recruit", targetPos)
+    Wargroove.setMetaUnitClass("last_recruit", uc)
+    Wargroove.reportUnitRecruited(unit.id, strParam)
 	for i,recruit in ipairs(unit.recruits) do
 		if recruit==strParam then
 			table.remove(unit.recruits,i)
 			break
 		end
 	end
+    Wargroove.logAnalyticsAction("UnitPurchased", unit.playerId, strParam, "", uc.cost)
 	Wargroove.updateUnit(unit)
 end
+
 
 function Recruit:generateOrders(unitId, canMove)
     local unit = Wargroove.getUnitById(unitId)

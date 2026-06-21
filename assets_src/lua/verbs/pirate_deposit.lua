@@ -5,7 +5,18 @@ local Ragnarok = require "initialized/ragnarok"
 local pirate_deposit = Verb:new()
 
 local stateKey = "gold"
-
+local function dump(o,level)
+   if type(o) == 'table' then
+      local s = '\n' .. string.rep("   ", level) .. '{\n'
+      for k,v in pairs(o) do
+         if type(k) ~= 'number' then k = '"'..k..'"' end
+         s = s .. string.rep("   ", level+1) .. '['..k..'] = ' .. dump(v,level+1) .. ',\n'
+      end
+      return s .. string.rep("   ", level) .. '}'
+   else
+      return tostring(o)
+   end
+end
 function pirate_deposit:getMaximumRange(unit, endPos)
     return 1
 end
@@ -30,24 +41,27 @@ end
 
 function pirate_deposit:execute(unit, targetPos, strParam, path)
     local targetUnit = Wargroove.getUnitAt(targetPos)
-    local amountToDeposit = Wargroove.getUnitState(unit, stateKey)
-    Wargroove.setUnitState(unit, stateKey, 0)
-    unit.unitClassId = "travelboat"
-    Wargroove.waitTime(0.2)
-    Wargroove.playMapSound("thiefGoldReleased", targetPos)
-    Wargroove.spawnMapAnimation(unit.pos, 0, "fx/ransack_1", "default", "over_units", { x = 12, y = 0 })
-    Wargroove.updateUnit(unit)
-    Wargroove.waitTime(1.0)
-    Wargroove.spawnMapAnimation(targetPos, 0, "fx/ransack_2", "default", "over_units", { x = 12, y = 0 })
-    Wargroove.waitTime(0.2)
-    Wargroove.playMapSound("thiefDeposit", targetPos)
-    Wargroove.waitTime(0.4)
-    Wargroove.changeMoney(targetUnit.playerId, amountToDeposit)
-	Ragnarok.addGoldRobbed(unit.playerId, tonumber(amountToDeposit))
-	Ragnarok.reportOccation("pirate_ship_deposited")
-	if unit.playerId ~= targetUnit.playerId then
-		Ragnarok.reportOccation("pirate_ship_donation")
-	end
+    if targetUnit~=nil then
+        local amountToDeposit = Wargroove.getUnitState(unit, stateKey)
+        Wargroove.setUnitState(unit, stateKey, 0)
+        unit.unitClassId = "travelboat"
+        Wargroove.waitTime(0.2)
+        Wargroove.playMapSound("thiefGoldReleased", targetPos)
+        Wargroove.spawnMapAnimation(unit.pos, 0, "fx/ransack_1", "default", "over_units", { x = 12, y = 0 })
+        --unit.hadTurn = true
+        Wargroove.updateUnit(unit)
+        Wargroove.waitTime(1.0)
+        Wargroove.spawnMapAnimation(targetPos, 0, "fx/ransack_2", "default", "over_units", { x = 12, y = 0 })
+        Wargroove.waitTime(0.2)
+        Wargroove.playMapSound("thiefDeposit", targetPos)
+        Wargroove.waitTime(0.4)
+        Wargroove.changeMoney(targetUnit.playerId, tonumber(amountToDeposit))
+        Ragnarok.addGoldRobbed(unit.playerId, tonumber(amountToDeposit))
+        Wargroove.reportOccation("pirate_ship_deposited")
+        if unit.playerId ~= targetUnit.playerId then
+            Wargroove.reportOccation("pirate_ship_donation")
+        end
+    end
 end
 
 function pirate_deposit:generateOrders(unitId, canMove)

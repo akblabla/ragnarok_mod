@@ -8,30 +8,30 @@ grooves:
     grooveCostTier2: 150
     verb: groove_no_groove                      #   The verb associated with the groove. This should match the id of the verb in verbs.yaml.
 
-  - id: groove_area_damage_rival                     # The groove id
-    name: groove_name_area_damage_rival                 # The groove name (looks up the string in the string yaml file)
-    description: groove_description_area_damage_rival   # The groove description (looks up the string in the string yaml file)
+  - id: groove_area_damage_rival                     
+    name: groove_name_area_damage_rival                 
+    description: groove_description_area_damage_rival   
     grooveCostTier1: 100
-    verb: groove_area_damage_rival                      #   The verb associated with the groove. This should match the id of the verb in verbs.yaml.
+    verb: groove_area_damage_rival                      
     
-  - id: groove_alert_area                     # The groove id
-    name: groove_name_alert_area                 # The groove name (looks up the string in the string yaml file)
-    description: groove_description_alert_area   # The groove description (looks up the string in the string yaml file)
+  - id: groove_alert_area                     
+    name: groove_name_alert_area                
+    description: groove_description_alert_area  
     grooveCostTier1: 50
-    verb: groove_alert_area                      #   The verb associated with the groove. This should match the id of the verb in verbs.yaml.
+    verb: groove_alert_area                     
 
-  - id: groove_morale_boost                     # The groove id
-    name: groove_name_morale_boost                 # The groove name (looks up the string in the string yaml file)
-    description: groove_description_morale_boost   # The groove description (looks up the string in the string yaml file)
+  - id: groove_morale_boost                     
+    name: groove_name_morale_boost              
+    description: groove_description_morale_boost
     grooveCostTier1: 75
     grooveCostTier2: 150
-    verb: groove_no_groove                      #   The verb associated with the groove. This should match the id of the verb in verbs.yaml.
+    verb: groove_no_groove                      
 
   - id: golf
     name: groove_name_golf
     description: groove_description_golf
     grooveCostTier1: 50
-    grooveCostTier2: 100
+    grooveCostTier2: 150
     verb: groove_no_groove
     
   - id: smoke_screen

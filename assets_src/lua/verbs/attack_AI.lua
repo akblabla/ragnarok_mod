@@ -1,8 +1,13 @@
 local Wargroove = require "wargroove/wargroove"
 local Combat = require "wargroove/combat"
 local Attack = require "verbs/attack"
+local newAttack = require "initialized/attack"
 
 local AttackAI = Attack:new()
+AttackAI.canExecuteWithTarget = newAttack.canExecuteWithTarget
+AttackAI.execute = newAttack.execute
+AttackAI.onPostUpdateUnit = newAttack.onPostUpdateUnit
+AttackAI.canExecuteAt = newAttack.canExecuteAt
 
 function AttackAI:canExecuteAnywhere(unit)
     return not Wargroove.isHuman(unit.playerId)
@@ -52,6 +57,9 @@ function AttackAI:getScore(unitId, order)
         else
             return {score = tonumber(attackScore)*(target.health-result.defenderHealth)/100-(unit.health-result.attackerHealth)/100*unit.unitClass.cost, introspection = {}}
         end
+    end
+    if target.unitClassId == "travelboat_with_gold" and target.playerId == 0 then
+        return {score = 1100, introspection = {}}
     end
     if target.unitClassId == "travelboat_with_gold" then
         return {score = 1000, introspection = {}}

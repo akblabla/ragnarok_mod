@@ -12,5 +12,9 @@ music:
     
   - id: ocean_ambience
     name: music_name_ocean_ambience
-    audioEvent: environmental/oceanAmbience
+    audioEvent: music/ocean
+    
+  - id: windy_ambience
+    name: music_name_windy_ambience
+    audioEvent: environmental/weatherWindy
 ...

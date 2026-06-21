@@ -1,7 +1,7 @@
 ---
 unitClassModifiers:
   - id: crown
-    regeneration: 20
+    regeneration: 5
     canAttack: false
     baseDamage:
       land: -10

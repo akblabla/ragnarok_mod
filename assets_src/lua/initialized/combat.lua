@@ -90,8 +90,7 @@ function Combat:getPassiveMultiplier(unit, target, unitPos, targetPos, path, isC
 	end
 end
 
-local function sawItComingMultiplier(attacker, defender, attackerPos, defenderPos, attackerPath, defenderPath, passiveMultiplier)
-
+local function sawItComingMultiplier(attacker, defender, solveType, attackerPos, defenderPos, attackerPath, defenderPath, passiveMultiplier)
 	local result = false
 	for i,tile in pairs(attackerPath) do
 		if (i ~= #attackerPath) and VisionTracker.canUnitSeeTile(defender,tile) then
@@ -227,7 +226,7 @@ function Combat:getDamage(unit, target, solveType, isCounter, unitPos, targetPos
 
 	local passiveMultiplier = self:getPassiveMultiplier(effectiveUnit, target, unitPos, targetPos, unitPath, isCounter, unit.state)
 	if not isGroove then
-	--	passiveMultiplier = sawItComingMultiplier(unit, target, unitPos, targetPos, unitPath, targetPath, passiveMultiplier)
+		passiveMultiplier = sawItComingMultiplier(unit, target, solveType, unitPos, targetPos, unitPath, targetPath, passiveMultiplier)
 	end
 	local targetUnitClass = Wargroove.getUnitClass(target.unitClassId)
 	local targetIsInAir = targetUnitClass.inAir
@@ -468,6 +467,17 @@ function Combat:solveCombat(attackerId, defenderId, attackerPath, solveType)
 	
 	Wargroove.setSimulating(false)
 	reverseOrder = false
+	if not isPreview then
+		print("should be real combat here")
+		print("attacker.health["..attacker.health.."]>results.attackerHealth["..results.attackerHealth.."]")
+		if attacker.health>results.attackerHealth then
+        	Wargroove.registerDamagedUnit(attacker.id,defender.id)
+		end
+		print("defender.health["..defender.health.."]>results.defenderHealth["..results.defenderHealth.."]")
+		if defender.health>results.defenderHealth then
+        	Wargroove.registerDamagedUnit(defender.id,attacker.id)
+		end
+	end
 	return results
 end
 local function deepcopy(orig)

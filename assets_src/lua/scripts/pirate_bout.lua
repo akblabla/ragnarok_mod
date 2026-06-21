@@ -60,12 +60,6 @@ function PirateBout.playerIgnoreUnitsThreateningAllies(playerId)
    local units = Wargroove.getUnitsAtLocation(nil)
    for i,unit in ipairs(units) do
       if Wargroove.isPlayersCurrentTurn(playerId) and Wargroove.areEnemies(playerId, unit.playerId) then
-         print("Is Unit "..unit.id.." of type "..unit.unitClassId.." at pos "..unit.pos.x..", "..unit.pos.y.." a threat?")
-         local moveLocationHashed = Pathfinding.getMoveTiles(unit)
-         local moveLocation = {}
-         for posKey,dist in pairs(moveLocationHashed) do
-            table.insert(moveLocation,PosKey.revertPosKey(posKey))
-         end
          if unit.unitClass.isStructure then
             goto next
          end
@@ -75,6 +69,21 @@ function PirateBout.playerIgnoreUnitsThreateningAllies(playerId)
          end
          local weapons = unit.unitClass.weapons
          
+         if weapons[1].maxRange == 0 then
+            goto next
+         end
+         print("Is Unit "..unit.id.." of type "..unit.unitClassId.." at pos "..unit.pos.x..", "..unit.pos.y.." a threat?")
+         Wargroove.trackCameraTo(unit.pos, false)
+         Wargroove.spawnMapAnimation(unit.pos, 0, "ui/grid/selection_cursor", "target", "over_units", {x = -4, y = -4})
+         Wargroove.waitTime(0.5)
+         local moveLocationHashed = Pathfinding.getMoveTiles(unit)
+         local moveLocation = {}
+         for posKey,dist in pairs(moveLocationHashed) do
+            table.insert(moveLocation,PosKey.revertPosKey(posKey))
+            Wargroove.spawnMapAnimation(PosKey.revertPosKey(posKey), 0, "ui/grid/selection_cursor", "target", "over_units", {x = -4, y = -4})
+         end
+         Wargroove.waitTime(0.5)
+         
          local rangeLocation = getTilesInRange({x=0,y=0}, weapons[1].minRange, weapons[1].maxRange)
 
 
@@ -82,7 +91,10 @@ function PirateBout.playerIgnoreUnitsThreateningAllies(playerId)
          --print("targetableLocation")
          --print(dump(targetableLocation,0))
          local bargeScore = 0
+         local bestRivalScore = 0
+         local bestPlayerScore = 0
          for i,tile in ipairs(targetableLocation) do
+            Wargroove.spawnMapAnimation(tile, 0, "ui/grid/selection_cursor", "target", "over_units", {x = -4, y = -4})
             local target = Wargroove.getUnitAt(tile)
             if target~=nil and Wargroove.areAllies(playerId, target.playerId) then
                local attackLocations = convolve({tile},rangeLocation)
@@ -105,17 +117,37 @@ function PirateBout.playerIgnoreUnitsThreateningAllies(playerId)
                if target.unitClassId == "travelboat_with_gold" then
                   targetValue = targetValue+2000
                end
+               if target.unitClassId == "travelboat" then
+                  targetValue = targetValue+200
+               end
                print("targetValue: ".. targetValue)
                if target.playerId~=playerId then
-                  bargeScore=bargeScore-targetValue*0.75
+                  targetValue = targetValue*1.25
+                  print("subtracting: ".. targetValue)
+                  if bestPlayerScore< targetValue then
+                     bestPlayerScore = targetValue
+                  end
+                  bargeScore=bargeScore-targetValue
                else
+                  print("adding: ".. targetValue)
+                  if bestRivalScore< targetValue then
+                     bestRivalScore = targetValue
+                  end
                   bargeScore=bargeScore+targetValue
                end
                print("bargeScore: ".. bargeScore)
                
             end
          end
+         --best target is the most important, the total targets is a tie breaker.
+         bargeScore = bargeScore - bestPlayerScore*100
+         bargeScore = bargeScore + bestRivalScore*100
+         Wargroove.showMessage("bargeScore: ".. bargeScore)
+         Wargroove.waitTime(0.5)
          if bargeScore<0 then
+            Wargroove.spawnPaletteSwappedMapAnimation(unit.pos, 0, "fx/surprised_fx", unit.playerId, "default", "over_units", { x = 12, y = 0 })
+            Wargroove.playMapSound("cutscene/surprised",unit.pos)
+            Wargroove.waitTime(0.5)
             Wargroove.setAIRestriction(unit.id,"dont_target_this", true)
          else
             Wargroove.setAIRestriction(unit.id,"dont_target_this", false)

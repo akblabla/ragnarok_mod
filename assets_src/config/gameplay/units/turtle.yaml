@@ -12,7 +12,7 @@ weapons:
 unitClasses:
   - id: turtle
     name: unit_class_name_turtle
-    cost: 400
+    cost: 450
     resourceCost: 2
     movement: river_sailing
     moveRange: 8

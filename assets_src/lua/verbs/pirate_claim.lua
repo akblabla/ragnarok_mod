@@ -59,7 +59,7 @@ function pirate_claim:execute(unit, targetPos, strParam, path)
     Wargroove.waitTime(0.4)
     Wargroove.changeMoney(unit.playerId, amountToReceive)
 	Ragnarok.addGoldRobbed(unit.playerId, tonumber(amountToReceive))
-	Ragnarok.reportOccation("pirate_ship_deposited")
+	Wargroove.reportOccation("pirate_ship_deposited")
 end
 
 return pirate_claim

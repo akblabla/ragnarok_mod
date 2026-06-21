@@ -81,4 +81,8 @@ units:
         postAttackHitLeadupSequence: post_attack_hit_leadup
         postAttackHitEndSequence: post_attack_hit_end
 
+    shouts:
+      outlaw_giant_yeah: giantShoutOrganicYeah
+        
+
 ...

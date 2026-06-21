@@ -86,16 +86,34 @@ commanders:
     mpPlayable: false
     faction: outlaw
     portrait:
-      neutral: portraits/commanders/small/outlaw_archer_portrait.png
-      happy: portraits/commanders/small/outlaw_archer_portrait.png
-      sad: portraits/commanders/small/outlaw_archer_portrait.png
+      neutral: portraits/commanders/small/outlaw_archer_portrait_small.png
+      happy: portraits/commanders/small/outlaw_archer_portrait_happy.png
+      sad: portraits/commanders/small/outlaw_archer_portrait_sad.png
+      extra: portraits/commanders/small/outlaw_archer_portrait_extra.png
     cutscenePortrait: portraits/commanders/big/rival_portrait
     portraitOffset: [0, 20]
-    themeSong: music/twins
+    themeSong: ragna
     skinColour: typeII
     unitClassId: rival
     dialogueBoxVoice: ui/dialogue/textScroll
     
+  - id: outlaw_giant
+    name: character_outlaw_giant_name
+    title: character_outlaw_giant_title
+    playable: false
+    mpPlayable: false
+    faction: outlaw
+    portrait:
+      neutral: portraits/commanders/small/outlaw_giant_portrait.png
+      happy: portraits/commanders/small/outlaw_giant_portrait_happy.png
+      sad: portraits/commanders/small/outlaw_giant_portrait_sad.png
+    cutscenePortrait: portraits/commanders/big/rival_portrait
+    portraitOffset: [0, 20]
+    themeSong: ragna
+    skinColour: typeVI
+    unitClassId: giant
+    dialogueBoxVoice: ui/dialogue/textScroll
+
   - id: flagship_rival
     name: character_rival_name
     playable: false
@@ -108,7 +126,7 @@ commanders:
       sad: portraits/commanders/small/soldier_portrait_extra.png
     cutscenePortrait: portraits/commanders/big/rival_portrait
     portraitOffset: [0, 20]
-    themeSong: music/twins
+    themeSong: ragna
     skinColour: typeII
     unitClassId: commander_flagship_rival
     dialogueBoxVoice: ui/dialogue/textScroll
@@ -303,7 +321,7 @@ commanders:
     faction: outlaw
     mpPlayable: false
     portrait:
-        happy: portraits/commanders/small/soldier_portrait_extra.png
+        happy: portraits/commanders/small/outlaw_archer_portrait_small.png
         neutral: portraits/commanders/small/outlaw_soldier_portrait.png
         sad: portraits/commanders/small/thief_portrait.png
         extra: portraits/commanders/small/outlaw_merfolk_portrait.png
@@ -319,17 +337,33 @@ commanders:
     faction: outlaw
     mpPlayable: false
     portrait:
-        happy: portraits/commanders/small/outlaw_archer_portrait.png
+        happy: portraits/commanders/small/outlaw_archer_portrait_small.png
         neutral: portraits/commanders/small/outlaw_soldier_portrait.png
         sad: portraits/commanders/small/outlaw_thief_portrait.png
         extra: portraits/commanders/small/outlaw_merfolk_portrait.png
     cutscenePortrait: portraits/commanders/big/outlaw_portrait
     portraitOffset: [0, 20]
     themeSong: music/hostile
-    skinColour: typeII
+    skinColour: typeIII
     unitClassId: soldier
     dialogueBoxVoice: ui/dialogue/textScroll
     
+  - id: merman
+    name: character_generic_merman_name
+    faction: outlaw
+    mpPlayable: false
+    portrait:
+        happy: portraits/commanders/small/merfolk_portrait.png
+        neutral: portraits/commanders/small/merfolk_portrait.png
+        sad: portraits/commanders/small/merfolk_portrait.png
+        extra: portraits/commanders/small/outlaw_merfolk_portrait.png
+    cutscenePortrait: portraits/commanders/big/outlaw_portrait
+    portraitOffset: [0, 20]
+    themeSong: music/hostile
+    skinColour: typeIV
+    unitClassId: merman
+    dialogueBoxVoice: ui/dialogue/textScroll
+
   - id: generic_floran
     name: character_generic_floran_name
     faction: floran

@@ -1,0 +1,9 @@
+---
+actions:
+  - type: play
+    clips: [ sfx/outlawGiant/yeah.ogg]
+    group: voice
+    volume: 1.1
+    delay: 0.4
+    pitch: 1
+...

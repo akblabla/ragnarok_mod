@@ -171,8 +171,10 @@ end
 function Ram:onPostUpdateUnit(unit, targetPos, strParam, path)
     GrooveVerb.onPostUpdateUnit(self, unit, targetPos, strParam, path)
     local endPos = path[#path]
-    local endFacing = (targetPos.x < endPos.x and 1 or 3)
+    local endFacing = (targetPos.x < endPos.x)
     unit.pos.facing = endFacing
+    unit.pos.x = currentPos.x
+    unit.pos.y = currentPos.y
 end
 
 return Ram

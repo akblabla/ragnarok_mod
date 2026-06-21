@@ -2,6 +2,7 @@ local Wargroove = require "wargroove/wargroove"
 local Ragnarok = require "initialized/ragnarok"
 local Stats = require "util/stats"
 local VectorMath = require "util/vectorMath"
+local VisionTrackerCache = require "util/vision_tracker_cache"
 
 local function dump(o,level)
    if type(o) == 'table' then
@@ -365,6 +366,7 @@ function VisionTracker.setup()
 	end
 
 	for i, unit in pairs(Wargroove.getUnitsAtLocation(nil)) do
+		VisionTrackerCache.clearCalculateVisionOfUnitCache()
 		local visibleTiles = VisionTracker.calculateVisionOfUnit(unit)
 		for j, pos in pairs(visibleTiles) do
 			addUnitToListOfViewers(unit,pos)
@@ -523,8 +525,11 @@ function VisionTracker.canUnitSeeTile(unit,tile)
 	-- print("\tNo blockers!")
 	return true
 end
-
 function VisionTracker.calculateVisionOfUnit(unit)
+	local cacheValue = VisionTrackerCache.getCalculateVisionOfUnitCache(unit)
+	if cacheValue~=nil then
+		return cacheValue
+	end
 	local mapSize = Wargroove.getMapSize()
 	if isInsideBounds(unit.pos) == false then
 		return {}
@@ -576,6 +581,7 @@ function VisionTracker.calculateVisionOfUnit(unit)
 		end
 		visibleTiles = removeDuplicates(visibleTiles)
 	end
+	VisionTrackerCache.addCalculateVisionOfUnitCache(unit,visibleTiles)
 	return visibleTiles
 --	return VisionTracker.calculateLoSOfUnitRays(unit,getSightRange(unit))
 end

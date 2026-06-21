@@ -39,7 +39,7 @@ function Rescue:execute(unit, targetPos, strParam, path)
 	print("Rescue:execute starts here")
    local targetUnit = Wargroove.getUnitAt(targetPos)
 	rescuedCrewList[targetUnit.id] = unit.playerId
-	Ragnarok.reportOccation("rescued")
+	Wargroove.reportOccation("rescued")
 end
 
 function dump(o,level)

@@ -22,6 +22,16 @@ function BuffDeaths.high_alert_death(Wargroove, unit)
     Wargroove.updateUnit(unit)
 end
 
+function BuffDeaths.crown_death(Wargroove, unit)
+    if not unit then
+        return
+    end
+
+    --Wargroove.setUnitState(unit, "high_alert", "false")
+    --Wargroove.spawnPaletteSwappedMapAnimation(unit.pos, 0, "ui/icons/fx_crown", unit.playerId, "despawn", "over_units", { x = 12, y = 12 })
+--    Wargroove.clearBuffVisualEffect(unit.id)
+end
+
 function BuffDeaths.vampiric_touch_death(Wargroove, unit)
     if not unit then
         return

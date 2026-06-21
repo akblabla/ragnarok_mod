@@ -27,6 +27,11 @@ function AIProfile.setProfile(playerId, profile)
         AIProfile.setProfile()
     end
     
+    if profile == "rival_pirate_brawl" then
+        local AIProfile = require "AIProfiles/rivalPirateBrawl"
+        AIProfile.setProfile()
+    end
+    
     if profile == "hidden_fjord" then
         local AIProfile = require "AIProfiles/hiddenFjord"
         AIProfile.setProfile()
@@ -84,6 +89,7 @@ function AIProfile.setCanAttackBuildings(playerId, canAttack)
         Wargroove.setUnitState(AIProfileObject,"canAttackBuildings"..tostring(playerId),"false")
     end
     Wargroove.updateUnit(AIProfileObject)
+    AIProfileObject = AIProfile.getAIProfileObject()
 end
 
 

@@ -127,6 +127,11 @@ triggerActions:
       - type: location_star
       - type: player_neutral_star
 
+  - id: set_location_to_damaged_units
+    parameters:
+      - type: location
+      
+
   - id: set_location_to_units_with_state
     parameters:
       - type: location

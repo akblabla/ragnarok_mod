@@ -48,7 +48,7 @@ en-GB: &flag-en
  # ragnarok_main1_cutscene_interlude_2ndMate_01: "[wavy]*gulp*[wavy][short_pause] Are you suggestion using the old backdoor?"
   #ragnarok_main1_cutscene_interlude_Vesper_01: "Are you suggesting going through the fleet instead, darling?"
   ragnarok_main1_cutscene_interlude_Vesper_00: "Yes. We'll use the old backdoor to throw them off though. The fjords of Felheim should slow them down."
-  ragnarok_main1_cutscene_interlude_2ndMate_01: "Oh, we'll be passing by Garbhof then, right? I wish we had time to stop for pint of ale..."
+  ragnarok_main1_cutscene_interlude_2ndMate_01: "Oh, we'll be passing by Garbhof then, right? I wish we had time to stop for pint of root beer..."
   ragnarok_main1_cutscene_interlude_Vesper_01: "There'll be plenty of time to celebrate at the hideout later, darling."
   ragnarok_main1_cutscene_interlude_Vesper_02: "So, stop your whinging."
   ragnarok_main1_cutscene_interlude_Vesper_03: "We'll party when the deal has gone through!"
@@ -72,14 +72,14 @@ en-GB: &flag-en
   ragnarok_main2_ingameIntro_2ndMate_01: "No! Not the tavernkeep!"
   ragnarok_main2_ingameIntro_2ndMate_02: "And the innkeeper! Have they no mercy?!"
   ragnarok_main2_ingameIntro_Vesper_01: "Shush."
-  ragnarok_main2_ingameIntro_2ndMate_03: "But, but... my ale...?"
+  ragnarok_main2_ingameIntro_2ndMate_03: "But, but... my root beer...?"
   ragnarok_main2_ingameIntro_Vesper_02: "The undead are none of our concern. We just need to get the crown past them."
   #1st Mate lands via a barge with the crown
   ragnarok_main2_ingameIntro_1stMate_00: "Wait,[short_pause] [wavy]*gasp*[wavy] the crown!"
   ragnarok_main2_ingameIntro_Vesper_03: "Just pass it along. We don't have all day."
   
   #After you move the crownbearer for the first time
-  ragnarok_main2_postThrow_Vesper_00: "Do keep yourself safe with the crown. I won't have you fight whilst holding it."
+  ragnarok_main2_postThrow_Vesper_00: "You might be defensless whilst holding unto that crown, but don't you dare drop it!"
   ragnarok_main2_postThrow_Vesper_01: "It's worth more than you can imagine."
   #ragnarok_main2_ingameIntro_Crew_00: "Aww, ma'am, it's sweet that you worry about us!"
   #ragnarok_main2_postThrow_Vesper_00: "What? No. The crown. You could damage it!"
@@ -97,7 +97,7 @@ en-GB: &flag-en
   ragnarok_main2_ending_Vesper_01: "I see you've woken up from your little nap."
   ragnarok_main2_ending_Vesper_02: "But sadly, I don't have time for chit chat."
   ragnarok_main2_ending_Vesper_03: "So if you don't mind, we'll just take our leave!"
-  ragnarok_main2_ending_Emeric_01: "You won't shake us of this easily, pirate!"
+  ragnarok_main2_ending_Emeric_01: "You won't shake us off this easily, pirate!"
   ragnarok_main2_ending_Vesper_04: "It's Vesper, darling."
   
   # Cutscene: Interlude. Vespers is traveling along the fjord towards the outlaw HQ
@@ -114,7 +114,8 @@ en-GB: &flag-en
   # STORY MAIN 3 Election
   # Objective: 
   ragnarok_main3_objective: "Steal more gold than your rival."
-  ragnarok_main3_objective_updated: "Steal more gold than your rival.\n\nDo NOT kill another of your rival's unit."
+  ragnarok_main3_objective_updated: "Steal more gold than your rival.\n\nDo NOT damage your rival's units."
+  ragnarok_main3_objective_brawl: "No more rules, we fight!"
 
   # Cutscene: Start of match. We encounter Wulfar dancing among his peers in the tavern.
   #After a bit of dancing, Rival dramatically kicks down the door. Everyone is silent except Wulfar, who keeps dancing without noticing.

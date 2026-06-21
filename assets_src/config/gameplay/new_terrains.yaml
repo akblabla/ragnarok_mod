@@ -65,7 +65,7 @@ terrains:
     cantStop: [airphibious]
     defenceBonus: 1
     movementCost:
-      sailing: 2
+      sailing: 1
       flying: 1
       hovering: 1
       amphibious: 1
@@ -132,7 +132,7 @@ terrains:
     cantStop: [airphibious]
     defenceBonus: 2
     movementCost:
-      sailing: 2
+      sailing: 1
       hovering: 1
       amphibious: 1
       sea_building: 1
@@ -181,7 +181,7 @@ terrains:
     cantStop: [airphibious]
     defenceBonus: 3
     movementCost:
-      sailing: 4
+      sailing: 3
       hovering: 1
       amphibious: 1
       airphibious: 1
@@ -209,7 +209,7 @@ terrains:
       volcano: terrain_description_lava
     defenceBonus: -1
     movementCost:
-      sailing: 2
+      sailing: 1
       walking: 2
       riding: 4
       hovering: 1
@@ -235,7 +235,7 @@ terrains:
     name: terrain_name_cave_beach
     defenceBonus: -0
     movementCost:
-      sailing: 3
+      sailing: 2
       walking: 1
       riding: 2
       hovering: 1
@@ -436,7 +436,7 @@ terrains:
     defenceBonus: 1
     cantStop: [airphibious]
     movementCost:
-      sailing: 2
+      sailing: 1
       river_sailing: 1
       flying: 1
       hovering: 1

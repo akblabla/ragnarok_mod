@@ -75,6 +75,7 @@ function Actions.populate(dst)
 	dst["set_location_to_vision"] = Actions.setLocationToVision
 	dst["set_location_to_spawned"] = Actions.setLocationToSpawned
 	dst["set_location_to_units"] = Actions.setLocationToUnits
+    dst["set_location_to_damaged_units"] = Actions.setLocationToDamagedUnits
 	dst["set_location_to_units_with_state"] = Actions.setLocationToUnitsWithState
 	dst["dialogue_box_unit"] = Actions.dialogueBoxUnit
 	dst["set_match_seed"] = Actions.setMatchSeed
@@ -184,8 +185,7 @@ end
 function Actions.enableHiring(context)
     -- "Let player {0} hire villagers."
     local playerId = context:getPlayerId(0)
-	local Hire = require "verbs/hire"
---    Hire.enableForPlayer(playerId)
+    Wargroove.enableHireForPlayer(playerId)
 end
 function Actions.dialogueBox(context)
     -- "Display dialogue box with {0} {1} saying {2} with shout {3} using name {5} for {6}. (instant = {4})"
@@ -209,7 +209,7 @@ end
 
 function Actions.resetOccurenceList(context)
     -- "Hidden action"
-	Ragnarok.resetOccurences()
+	Wargroove.cleanUp()
 end
 
 function Actions.resetRescueList(context)
@@ -396,6 +396,21 @@ function Actions.setLocationToUnits(context)
 	location:setArea(newLocation)
 end
 
+function Actions.setLocationToDamagedUnits(context)
+    -- "Set location {0} to damaged units."
+    local location = context:getLocation(0)
+    local damagedUnitTable = Wargroove.getDamagedUnits()
+    local newLocation = {}
+    for unitId,attackerId in pairs(damagedUnitTable) do
+        local unit = Wargroove.getUnitById(unitId)
+        if unit~=nil then
+            table.insert(newLocation,unit.pos)
+        end
+    end
+	location:setArea(newLocation)
+end
+
+
 function Actions.setLocationToUnitsWithState(context)
     -- "Set location {0} to units of type(s) {1} at location {2} owned by player {3} with state {4} equal to {5}."
     local location = context:getLocation(0)
@@ -482,6 +497,12 @@ function Actions.setPriorityTarget(context)
         end
         if order == "road move right" then
             AIManager.roadMoveRightOrder(unit.id,location.positions)
+        end
+        if order == "road move up" then
+            AIManager.roadMoveUpOrder(unit.id,location.positions)
+        end
+        if order == "road move down" then
+            AIManager.roadMoveDownOrder(unit.id,location.positions)
         end
         if order == "retreat" then
             AIManager.retreatOrder(unit.id)

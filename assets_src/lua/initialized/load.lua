@@ -24,11 +24,11 @@ function Load:canExecuteWithTarget(unit, endPos, targetPos, strParam)
    
     
 
-	if targetUnit.unitClassId == "travelboat" then
-		if not Wargroove.canStandAt(unit.unitClassId, targetPos) and not Wargroove.canStandAt("soldier", targetPos) then
-			return false
-		end
-	end
+--	if targetUnit.unitClassId == "travelboat" then
+--		if not Wargroove.canStandAt(unit.unitClassId, targetPos) and not Wargroove.canStandAt("soldier", targetPos) then
+--			return false
+--		end
+--	end
 	
     -- Can carry me?
     local myTags = unit.unitClass.tags

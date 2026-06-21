@@ -11,8 +11,8 @@ tilesets:
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_bridge
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
-        battleBackgroundSprite: cove_bridge_battlescreen_background
-        battleBackgroundSpriteForeground: cove_bridge_battlescreen_foreground
+        battleBackgroundSprite: cove_bridge_battlescreen_grass_background
+        battleBackgroundSpriteForeground: cove_bridge_battlescreen_grass_foreground
         iconSpriteSheet: ui_RagnarokMod
         iconSprite: ":img:ui/codex/icons/icon_terrain_cave_bridge.png"
         infoScreenOffset: 75
@@ -26,8 +26,8 @@ tilesets:
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_snow_bridge
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
-        battleBackgroundSprite: cove_bridge_battlescreen_background
-        battleBackgroundSpriteForeground: cove_bridge_battlescreen_foreground
+        battleBackgroundSprite: cove_bridge_battlescreen_grass_background
+        battleBackgroundSpriteForeground: cove_bridge_battlescreen_grass_foreground
         iconSpriteSheet: ui_RagnarokMod
         iconSprite: ":img:ui/codex/icons/icon_terrain_cave_bridge.png"
         infoScreenOffset: 75

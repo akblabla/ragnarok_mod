@@ -9,8 +9,8 @@ tilesets:
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_ocean
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
-        battleBackgroundSprite: cave_river_battlescreen_sand_background
-        battleBackgroundSpriteForeground: cave_battlescreen_sand_foreground
+        battleBackgroundSprite: cave_river_battlescreen_grass_background
+        battleBackgroundSpriteForeground: cave_battlescreen_grass_foreground
         iconSpriteSheet: ui_RagnarokMod
         iconSprite: ":img:ui/codex/icons/icon_terrain_cave_river.png"
         infoScreenOffset: 70
@@ -22,8 +22,8 @@ tilesets:
         portraitSpriteSheet: terrain/terrain_portraits
         portraitSprite: terrain_portraits_snow_river
         battleBackgroundSpriteSheet: backgrounds/map_backgrounds_RagnarokMod
-        battleBackgroundSprite: cave_river_battlescreen_sand_background
-        battleBackgroundSpriteForeground: cave_battlescreen_sand_foreground
+        battleBackgroundSprite: cave_river_battlescreen_grass_background
+        battleBackgroundSpriteForeground: cave_battlescreen_grass_foreground
         iconSpriteSheet: ui_RagnarokMod
         iconSprite: ":img:ui/codex/icons/icon_terrain_cave_river.png"
         infoScreenOffset: 70

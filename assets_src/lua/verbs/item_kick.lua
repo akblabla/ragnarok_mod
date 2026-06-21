@@ -30,9 +30,6 @@ function Kick:canExecuteWithTarget(unit, endPos, targetPos, strParam)
     if targetUnit.id == unit.id then
         return false
     end
-    if not Wargroove.isValidPushPullTarget(targetUnit, false) then
-        return false
-    end
     return true
 end
 
@@ -40,15 +37,18 @@ function Kick:getTargetArrows(unit, targetPos, endPos)
     local results = {}
 
     local targetUnit = Wargroove.getUnitAt(targetPos)
-    local pushResults = Wargroove.getPushPullResult(endPos, targetPos, 1, false, false)
-    if pushResults == nil then return results end
-    if pushResults["pushTargetUnit"] and not pushResults["isBreakPosition"] then
-        Wargroove.pushUnitPos(targetUnit, pushResults["pushPosition"])
-        pushResults = Wargroove.getPushPullResult(endPos, pushResults["pushPosition"], 1, false, false)
-        Wargroove.popUnitPos()
+    
+    if Wargroove.isValidPushPullTarget(targetUnit, false) then
+        local pushResults = Wargroove.getPushPullResult(endPos, targetPos, 1, false, false)
+        if pushResults == nil then return results end
+        if pushResults["pushTargetUnit"] and not pushResults["isBreakPosition"] then
+            Wargroove.pushUnitPos(targetUnit, pushResults["pushPosition"])
+            pushResults = Wargroove.getPushPullResult(endPos, pushResults["pushPosition"], 1, false, false)
+            Wargroove.popUnitPos()
+        end
+        local targetArrow = Wargroove.createTargetArrowFromPushPullResult(pushResults)
+        table.insert(results, targetArrow)
     end
-    local targetArrow = Wargroove.createTargetArrowFromPushPullResult(pushResults)
-    table.insert(results, targetArrow)
 
     return results
 end
@@ -56,7 +56,6 @@ end
 function Kick:execute(unit, targetPos, strParam, path)
 
     local targetUnit = Wargroove.getUnitAt(targetPos)
-    local pushResults = Wargroove.getPushPullResult(unit.pos, targetPos, 1, false, false)
 
 
     --- Telegraph
@@ -83,19 +82,22 @@ function Kick:execute(unit, targetPos, strParam, path)
     end
     Wargroove.playMapSound("hitKick", targetPos)
     
-
+    if Wargroove.isValidPushPullTarget(targetUnit, false) then
+        
+    local pushResults = Wargroove.getPushPullResult(unit.pos, targetPos, 1, false, false)
     if pushResults == nil then return end
-    if pushResults["pushTargetUnit"] and not pushResults["isBreakPosition"] then
-        Wargroove.pushUnitPos(targetUnit, pushResults["pushPosition"])
-        pushResults = Wargroove.getPushPullResult(unit.pos, pushResults["pushPosition"], 1, false, false)
-        Wargroove.popUnitPos()
-        pushResults["pushTargetUnit"] = true
-    end
-    Wargroove.moveUnitToOverride(unit.id, unit.pos, 0, 0, 3)
-    Wargroove.processPushPullResult(unit, pushResults, 20, 20)
-    
-    while Wargroove.isLuaMoving(unit.id) do
-      coroutine.yield()
+        if pushResults["pushTargetUnit"] and not pushResults["isBreakPosition"] then
+            Wargroove.pushUnitPos(targetUnit, pushResults["pushPosition"])
+            pushResults = Wargroove.getPushPullResult(unit.pos, pushResults["pushPosition"], 1, false, false)
+            Wargroove.popUnitPos()
+            pushResults["pushTargetUnit"] = true
+        end
+        Wargroove.moveUnitToOverride(unit.id, unit.pos, 0, 0, 3)
+        Wargroove.processPushPullResult(unit, pushResults, 20, 20)
+        
+        while Wargroove.isLuaMoving(unit.id) do
+        coroutine.yield()
+        end
     end
     Wargroove.updateUnit(targetUnit)
 end

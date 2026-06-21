@@ -70,8 +70,8 @@ function WargrooveVision.startCapture(attacker, defender, attackerPos)
 	VisionTracker.addUnitToVisionMatrix(defender)
 end
 
-function WargrooveVision.spawnUnit(playerId, pos, unitType, turnSpent, startAnimation, startingState, factionOverride)  
-	local unitId = Original.spawnUnit(playerId, pos, unitType, turnSpent, startAnimation, startingState, factionOverride)  
+function WargrooveVision.spawnUnit(playerId, pos, unitType, turnSpent, startAnimation, startingState, factionOverride, ignoreBuffSpawns, skinColour, mapFacing)
+	local unitId = Original.spawnUnit(playerId, pos, unitType, turnSpent, startAnimation, startingState, factionOverride, ignoreBuffSpawns, skinColour, mapFacing)  
 	if Pathfinding.withinBounds(pos) then
 		local unit = {id = unitId,pos = pos, playerId=playerId, unitClassId = unitType, unitClass = OldWargroove.getUnitClass(unitType)}
 		VisionTracker.addUnitToVisionMatrix(unit)

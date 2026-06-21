@@ -15,7 +15,7 @@ unitClasses:
     name: unit_class_name_caravel
     cost: 200
     movement: river_sailing
-    moveRange: 6
+    moveRange: 5
     damageMultiplier: 1
     aiPriority: 1.0
     weapons:

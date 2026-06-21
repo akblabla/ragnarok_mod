@@ -3,8 +3,8 @@ local Ragnarok = require "initialized/ragnarok"
 local Wargroove = require "wargroove/wargroove"
 local outpost = {}
 function outpost.init()
-	Ragnarok.addAction(outpost.update,"repeating",false)
-	Ragnarok.addAction(outpost.setup,"start_of_match",false)
+	Ragnarok.addAction(outpost.update,"repeating",true)
+	Ragnarok.addAction(outpost.setup,"start_of_match",true)
 
 end
 

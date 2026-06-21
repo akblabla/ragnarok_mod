@@ -36,11 +36,11 @@ function Unload:canExecuteWithTarget(unit, endPos, targetPos, strParam)
         local loadedUnit = Wargroove.getUnitById(unitId)
 
         if Wargroove.canStandAt(loadedUnit.unitClassId, targetPos) and Wargroove.getUnitAt(targetPos)== nil then
-            if unit.unitClassId == "travelboat" then
-				if not Wargroove.canStandAt(loadedUnit.unitClassId, endPos) and not Wargroove.canStandAt("soldier", endPos) then
-					return false
-				end
-            end
+--            if unit.unitClassId == "travelboat" then
+--				if not Wargroove.canStandAt(loadedUnit.unitClassId, endPos) and not Wargroove.canStandAt("soldier", endPos) then
+--					return false
+--				end
+--            end
             return true
         end
 
@@ -50,11 +50,11 @@ function Unload:canExecuteWithTarget(unit, endPos, targetPos, strParam)
     local targets = Wargroove.stringToPositions(strParam)
     for unitId, target in pairs(targets) do
         local loadedUnit = Wargroove.getUnitById(unitId)
-		if unit.unitClassId == "travelboat"  then
-			if not Wargroove.canStandAt(loadedUnit.unitClassId, endPos) and not Wargroove.canStandAt("soldier", endPos) then
-				return false
-			end
-		end
+--		if unit.unitClassId == "travelboat"  then
+--			if not Wargroove.canStandAt(loadedUnit.unitClassId, endPos) and not Wargroove.canStandAt("soldier", endPos) then
+--				return false
+--			end
+--		end
         if not Wargroove.canStandAt(loadedUnit.unitClassId, target) or not Wargroove.getUnitAt(targetPos)== nil then
             return false
         end

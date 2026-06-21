@@ -16,6 +16,7 @@ local function dump(o,level)
  end
 
 local Ragnarok = {}
+local occurences = {}
 
 
 local actions = {
@@ -181,7 +182,6 @@ local crownAnimation = "ui/icons/fx_crown"
 --local crownOffsetAnimation = "ui/icons/fx_crown_offset"
 local crownStateKey = "crown"
 local fogOfWarRulesEnabled = false
-local occurences = {}
 
 function Ragnarok.canHoldItem(unit)
     if unit.unitClass.isCommander then
@@ -242,19 +242,6 @@ end
 
 function Ragnarok.getLinkedLocations()
 	return linkedLocations
-end
-
-
-function Ragnarok.resetOccurences()
-	occurences = {}
-end
-
-function Ragnarok.didItOccur(occation)
-	return occurences[occation] ~= nil
-end
-
-function Ragnarok.reportOccation(occation)
-	occurences[occation] = true
 end
 
 function Ragnarok.setFogOfWarRules(fogOn)
@@ -341,7 +328,7 @@ function Ragnarok.removeCrown()
 	end
 	local crownBearer = Ragnarok.getCrownBearer()
 	if crownBearer ~= nil then
-		Wargroove.unequipItem(crownBearer)
+		WargrooveExtra.unequipItem(crownBearer)
 	end
 	Ragnarok.crownID = nil
 	Ragnarok.crownBearerID = nil
@@ -648,5 +635,12 @@ function Ragnarok.moveInArch(unitId, startPos, targetPos, numSteps, speed, gravi
 	end
 end
 
+function Ragnarok.didItOccur(occation)
+	return occurences[occation] ~= nil
+end
+
+function Ragnarok.reportOccation(occation)
+	occurences[occation] = true
+end
 
 return Ragnarok

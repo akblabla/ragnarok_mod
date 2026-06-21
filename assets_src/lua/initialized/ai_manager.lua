@@ -373,6 +373,73 @@ function AIManager.getPath(unitId)
       end, pathPenaltyId = "roads_and_right"})
 	   return path
    end
+   if order.type == "road_move_up" then
+      if order.location == nil then
+         return {}
+      end
+      local path = Pathfinding.AStar(unit, order.location,{pathPenalty = function(unit,pos)
+         local terrainName = Wargroove.getTerrainNameAt(pos)
+         local movementType = Stats.getMovementType(unit.unitClassId);
+         local cover = Stats.isTerrainFowCover(Wargroove.getTerrainNameAt(pos))
+         local blocker = Stats.isTerrainBlocking(Wargroove.getTerrainNameAt(pos))
+         local bonus = 2
+         local positionalBonus = math.max(pos.y,0)/Wargroove.getMapSize().y
+         if cover then
+            bonus = bonus+1
+         end
+         if blocker then
+            bonus = bonus+1
+         end
+         if (movementType == "walking") or (movementType == "riding") or (movementType == "wheels") then
+            if not (terrainName == "road" or terrainName == "bridge") then
+               return Stats.getMovementCostAtPos(unit,pos)+bonus+positionalBonus
+            end
+         end
+         if (movementType == "amphibious") or (movementType == "sailing") then
+            if not (terrainName == "sea" or terrainName == "river" or terrainName == "ocean") then
+               return Stats.getMovementCostAtPos(unit,pos)+bonus+positionalBonus
+            end
+         end
+         return positionalBonus
+      end, pathPenaltyId = "roads_and_up"})
+	   return path
+   end
+   if order.type == "road_move_down" then
+      if order.location == nil then
+         return {}
+      end
+      local path = Pathfinding.AStar(unit, order.location,{pathPenalty = function(unit,pos)
+         local terrainName = Wargroove.getTerrainNameAt(pos)
+         local movementType = Stats.getMovementType(unit.unitClassId);
+         local cover = Stats.isTerrainFowCover(Wargroove.getTerrainNameAt(pos))
+         local blocker = Stats.isTerrainBlocking(Wargroove.getTerrainNameAt(pos))
+         local bonus = 2
+         local positionalBonus = math.max(Wargroove.getMapSize().y-pos.y,0)/Wargroove.getMapSize().y
+         positionalBonus = 0
+         if (pos.y<Wargroove.getMapSize().y/2) and (pos.x<Wargroove.getMapSize().x/2) then --Freaking hate the top left region
+            positionalBonus = 100
+         end
+
+         if cover then
+            bonus = bonus+1
+         end
+         if blocker then
+            bonus = bonus+1
+         end
+         if (movementType == "walking") or (movementType == "riding") or (movementType == "wheels") then
+            if not (terrainName == "road" or terrainName == "bridge") then
+               return Stats.getMovementCostAtPos(unit,pos)+bonus+positionalBonus*100
+            end
+         end
+         if (movementType == "amphibious") or (movementType == "sailing") then
+            if not (terrainName == "sea" or terrainName == "river" or terrainName == "ocean") then
+               return Stats.getMovementCostAtPos(unit,pos)+bonus+positionalBonus*100
+            end
+         end
+         return positionalBonus
+      end, pathPenaltyId = "roads_and_down"})
+	   return path
+   end
    if order.type == "move" then
       if order.location == nil then
          return {}
@@ -647,6 +714,20 @@ function AIManager.roadMoveRightOrder(unitId, location, maxSpeed)
       return
    end
    AIManager.order("road_move_right", unitId, location, maxSpeed)
+end
+
+function AIManager.roadMoveUpOrder(unitId, location, maxSpeed)
+   if location == nil then
+      return
+   end
+   AIManager.order("road_move_up", unitId, location, maxSpeed)
+end
+
+function AIManager.roadMoveDownOrder(unitId, location, maxSpeed)
+   if location == nil then
+      return
+   end
+   AIManager.order("road_move_down", unitId, location, maxSpeed)
 end
 
 function AIManager.safeMoveOrder(unitId, location, maxSpeed)

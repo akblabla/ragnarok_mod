@@ -177,7 +177,6 @@ function Attack:canExecuteWithTarget(unit, endPos, targetPos, strParam)
     end
     
     if #weapons == 1 and weapons[1].unitIdWhenAttacking ~= "" and weapons[1].unitIdWhenAttacking ~= unit.unitClass then
-        print("Attack consideration: UnitIdWhenAttacking")
 
         if not Wargroove.canStandAt(weapons[1].unitIdWhenAttacking, endPos) then
             return false
@@ -187,7 +186,7 @@ function Attack:canExecuteWithTarget(unit, endPos, targetPos, strParam)
     if targetUnit.canBeAttacked ~= nil and (not targetUnit.canBeAttacked or not targetUnit.unitClass.isAttackable) then
       return false
     end
-    if targetUnit.isStructure and not AIProfile.canAttackBuildings(unit.playerId) then
+    if targetUnit.unitClass.isStructure and not AIProfile.canAttackBuildings(unit.playerId) then
         return false
     end
     local result = Combat:solveCombat(unit.id, targetUnit.id, {endPos}, "average")

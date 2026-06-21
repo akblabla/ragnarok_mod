@@ -73,7 +73,7 @@ end
 function Conditions.didItOccur(context)
     -- "If {0} occured"
     local occation = context:getString(0)
-	return Ragnarok.didItOccur(occation)
+	return Wargroove.didItOccur(occation)
 end
 
 function Conditions.isRescued(context)

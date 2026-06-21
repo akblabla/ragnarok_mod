@@ -59,6 +59,7 @@ function itemThrow:execute(unit, targetPos, strParam, path)
 	    heightEnd = 0.8
     end
     Wargroove.playMapSound("cutscene/throwObject", targetPos)
+	Wargroove.deleteUnitEffectByAnimation(unit.id, crownAnimation, "death")
     for i = 1,numSteps do
       if (xDiff ~= 0) then
         local radians = i / numSteps * 3.14

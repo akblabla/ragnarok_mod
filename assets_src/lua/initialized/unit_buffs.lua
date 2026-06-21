@@ -44,6 +44,18 @@ function Buffs.high_alert(Wargroove, unit)
     )
 end
 
+function Buffs.crown(Wargroove, unit)
+--    Wargroove.displayBuffVisualEffect(
+--        unit.id --[[parentId]], 
+--        unit.playerId --[[playerId]],
+--        "units/crown/fx_crown" --[[animation]],
+--        "spawn" --[[startSequence]],
+--        1.0 --[[alpha]],
+--        {} --[[effectPositions]],
+--        "over_units" --[[layer]]
+--    )
+end
+
 function Buffs.vampiric_touch(Wargroove, unit)
     Wargroove.displayBuffVisualEffect(unit.id, unit.playerId, "units/commanders/sigrid/sigrid_groove_2_back", "idle", 0.6, {}, "units", {x = 0, y = -1}, false, false)
     Wargroove.displayBuffVisualEffect(unit.id, unit.playerId, "units/commanders/sigrid/sigrid_groove_2_front", "idle", 0.6, {}, "over_units", {x = 0, y = 0}, false, false)

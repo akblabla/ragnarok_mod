@@ -13,7 +13,7 @@ weapons:
 unitClasses:
   - id: frog
     name: unit_class_name_frog
-    cost: 600
+    cost: 500
     resourceCost: 2
     movement: amphibious
     moveRange: 6

@@ -109,12 +109,18 @@ function Upgrade:canExecuteWithTarget(unit, endPos, targetPos, strParam)
     end
 end
 
+function Upgrade:getDiscount(unit)
+    local fullCost = Wargroove.getUnitClass(unit.unitClassId, unit.id).cost
+    return math.ceil(unit.health * fullCost / 100)
+end
+
 function Upgrade:preExecute(unit, targetPos, strParam, endPos)
     Upgrade.inPreExecute = false
     local recruitableUnits = Upgrade:getRecruitableTargets(unit,endPos);
 
-    Wargroove.openRecruitMenu(unit.playerId, unit.id, unit.pos, unit.unitClassId, recruitableUnits, costMultiplier, defaultUnits);
-
+    local discount = Upgrade:getDiscount(unit)
+    Wargroove.openRecruitMenu(unit.playerId, unit.id, unit.pos, "conversion_school", recruitableUnits, costMultiplier, defaultUnits, "", discount)
+    
     while Wargroove.recruitMenuIsOpen() do
         coroutine.yield()
     end
@@ -151,7 +157,9 @@ function Upgrade:execute(unit, targetPos, strParam, path)
     Wargroove.playMapSound("thiefDeposit", targetPos)
     Wargroove.waitTime(0.4)
     local uc = Wargroove.getUnitClass(strParam)
-    Wargroove.changeMoney(unit.playerId, -getCost(uc.cost))
+    local discount = Upgrade:getDiscount(unit)
+    local cost = math.max(uc.cost - discount, 0)
+    Wargroove.changeMoney(unit.playerId, -cost)
  --   Wargroove.spawnUnit(unit.playerId, targetPos, strParam, false, "", "", "floran")
 
     unit.unitClassId = strParam
@@ -160,6 +168,8 @@ function Upgrade:execute(unit, targetPos, strParam, path)
     if (strParam=="rifleman") then
         Wargroove.setUnitState(unit, "ammo",3)
     end
+    Wargroove.pushUnitClassModifier(unit.id, "spin_concussion")
+    Wargroove.pushBuff(1, unit, unit.playerId, "spin_concussion_spawn", "spin_concussion", "spin_concussion_death")
     Wargroove.updateUnit(unit)
 
     Wargroove.waitTime(0.2)

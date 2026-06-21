@@ -139,7 +139,7 @@ function BuffDeaths.rhomb_rage_death(Wargroove, unit)
     Wargroove.updateUnit(unit)
 end
 
-function UnitBuffDeaths:getBuffDeaths()
+function UnitBuffDeaths:()
     return BuffDeaths
 end
 

@@ -66,7 +66,7 @@ function PassiveConditions.frog(payload)
     if Wargroove.getUnitClass(payload.defender.unitClassId).isStructure then
         return false
     end
-    return terrainName == "beach" or terrainName == "river" or terrainName == "cave_beach" or terrainName == "cave_river"
+    return terrainName == "beach" or terrainName == "river" or terrainName == "cave_beach" or terrainName == "cave_river" or terrainName == "mangrove"
 end
 
 

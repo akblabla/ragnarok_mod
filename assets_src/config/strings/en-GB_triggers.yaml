@@ -134,6 +134,8 @@ en-GB: &flag-en
   trigger_action_description_set_location_to_spawned: "Set to Spawned Units"
   trigger_action_readable_set_location_to_spawned: "Set location {0} to the spawned units in this trigger."
 
+
+
   trigger_action_name_set_location_to_units_with_state: "Location: Set to Units with State" 
   trigger_action_description_set_location_to_units_with_state: "Set to location of Units with State"
   trigger_action_readable_set_location_to_units_with_state: "Set location {0} to units of type(s) {1} at location {2} owned by player {3} with state {4} equal to {5}."
@@ -141,6 +143,10 @@ en-GB: &flag-en
   trigger_action_name_set_location_to_units: "Location: Set to Units" 
   trigger_action_description_set_location_to_units: "Set to location of Units"
   trigger_action_readable_set_location_to_units: "Set location {0} to units of type(s) {1} at location {2} owned by player {3}."
+
+  trigger_action_name_set_location_to_damaged_units: "Location: Set to damaged Units" 
+  trigger_action_description_set_location_to_damaged_units: "Set to location of damaged Units"
+  trigger_action_readable_set_location_to_damaged_units: "Set location {0} to damaged units."
 
   trigger_action_name_dialogue_box_unit: "UI: Show Dialogue Box for Unit"
   trigger_action_description_dialogue_box_unit: "Triggers a dialogue box for a unit."

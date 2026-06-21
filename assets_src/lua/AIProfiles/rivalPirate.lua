@@ -52,7 +52,7 @@ local idealUnitRatioList = {
 }
 
 local powerMultiplierList = {
-	barge = 6,
+	barge = 4,
 	merman = 1,
 	harpoonship = 1,
 	warship = 0.25,

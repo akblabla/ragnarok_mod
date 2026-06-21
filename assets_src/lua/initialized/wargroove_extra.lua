@@ -2,9 +2,14 @@ local OldWargroove = require "wargroove/wargroove"
 local UnitPostCombat = require "wargroove/unit_post_combat"
 local Stats = require "util/stats"
 local Combat = require "wargroove/combat"
+local UnitBuffDeaths = require "initialized/unit_buff_deaths"
+local VisionTrackerCache = require "util/vision_tracker_cache"
 
 local WargrooveExtra = {}
 local Original = {}
+local occurences = {}
+local damagedUnits = {}
+local healedUnits = {}
 function WargrooveExtra.init()
 	print("wargroove_extra.lua loaded")
 	Original.getMapTriggers = OldWargroove.getMapTriggers
@@ -81,7 +86,58 @@ function WargrooveExtra.init()
 	OldWargroove.setMapMusic = WargrooveExtra.setMapMusic
 
 	OldWargroove.fullClearCache = WargrooveExtra.fullClearCache
+	OldWargroove.enableHireForPlayer = WargrooveExtra.enableHireForPlayer
 
+	OldWargroove.canPlayerHire = WargrooveExtra.canPlayerHire
+	OldWargroove.getDamagedUnits = WargrooveExtra.getDamagedUnits
+	OldWargroove.getHealedUnits = WargrooveExtra.getHealedUnits
+	
+	Original.clearUnitPositionCache = OldWargroove.clearUnitPositionCache
+	OldWargroove.clearUnitPositionCache = OldWargroove.clearUnitPositionCache
+	
+	
+	Original.getUnitById = OldWargroove.getUnitById
+
+	OldWargroove.getUnitById = WargrooveExtra.getUnitById
+
+	OldWargroove.cleanUp = WargrooveExtra.cleanUp
+	OldWargroove.didItOccur = WargrooveExtra.didItOccur
+	OldWargroove.reportOccation = WargrooveExtra.reportOccation
+	OldWargroove.registerDamagedUnit = WargrooveExtra.registerDamagedUnit
+	OldWargroove.registerHealedUnit = WargrooveExtra.registerHealedUnit
+end
+
+function WargrooveExtra.clearUnitPositionCache()
+	Original.clearUnitPositionCache()
+	VisionTrackerCache.clearCalculateVisionOfUnitCache()
+end
+
+function WargrooveExtra.cleanUp()
+	damagedUnits = {}
+	healedUnits = {}
+	occurences = {}
+end
+
+function WargrooveExtra.registerDamagedUnit(unitId,attackerId)
+	damagedUnits[unitId] = attackerId
+end
+function WargrooveExtra.registerHealedUnit(unitId,healerId)
+	healedUnits[unitId] = healerId
+end
+
+function WargrooveExtra.getDamagedUnits()
+	return damagedUnits
+end
+
+function WargrooveExtra.getHealedUnits()
+	return healedUnits
+end
+function WargrooveExtra.didItOccur(occation)
+	return occurences[occation] ~= nil
+end
+
+function WargrooveExtra.reportOccation(occation)
+	occurences[occation] = true
 end
 
 local hiddenTriggersStart = {}
@@ -126,27 +182,20 @@ function WargrooveExtra.crownBuff(unit)
     if OldWargroove.isSimulating() then
         return
     end
-	local hasCrown = OldWargroove.getUnitState(unit, "crown") ~= nil
+	local hasCrown = unit.itemId=="crown"
 	if (hasCrown) then
-		if not OldWargroove.hasUnitEffect(unit.id, crownAnimation) then
-			local crownEffectEntityId = OldWargroove.spawnUnitEffect(unit.id, crownAnimation, "idle", nil, true, false)
-			OldWargroove.setUnitState(unit, "crownEffectEntityId", crownEffectEntityId)
-		end
-	elseif OldWargroove.hasUnitEffect(unit.id, crownAnimation)  then
-		local crownEffectEntityId = OldWargroove.getUnitState(unit, "crownEffectEntityId")
-		if crownEffectEntityId~=nil then
-			OldWargroove.deleteUnitEffect(crownEffectEntityId, "death")
-		else
-			OldWargroove.deleteUnitEffectByAnimation(unit.id, crownAnimation, "death")
-
-		end
+		WargrooveExtra.applyItemEffect(unit, "crown")
+	else
+		WargrooveExtra.removeItemEffect(unit, "crown")
 	end
 end
 
 function WargrooveExtra.applyBuffs()
 	for i,id in pairs(OldWargroove.getAllUnitIds()) do
 		local unit = OldWargroove.getUnitById(id)
-		WargrooveExtra.crownBuff(unit)
+		if unit~=nil then
+			WargrooveExtra.crownBuff(unit)
+		end
 	end
     Original.applyBuffs()
 end
@@ -273,17 +322,23 @@ end
 function WargrooveExtra.applyItemEffect(unit, itemType)
 	if itemType == "crown" then
 		if not OldWargroove.hasUnitEffect(unit.id, crownAnimation) then
-			OldWargroove.spawnMapAnimation(unit.pos, 0, crownAnimation, "spawn", "over_units")
-			OldWargroove.waitTime(0.5)
-			OldWargroove.spawnUnitEffect(unit.id, unit.id, crownAnimation, "idle", "spawn", true, false)
-			OldWargroove.updateUnit(unit)
+			print(dump(unit,0))
+			local crownEffectEntityId = OldWargroove.spawnUnitEffect(unit.id, unit.id, crownAnimation, "idle", nil, true, false)
+			OldWargroove.setUnitState(unit, "crownEffectEntityId", crownEffectEntityId)
 		end
 	end
 end
 function WargrooveExtra.removeItemEffect(unit, itemType)
 	if itemType == "crown" then
-		if OldWargroove.hasUnitEffect(unit.id, crownAnimation) then
-			OldWargroove.deleteUnitEffectByAnimation(unit.id, crownAnimation)
+		if OldWargroove.hasUnitEffect(unit.id, crownAnimation)  then
+			local crownEffectEntityId = OldWargroove.getUnitState(unit, "crownEffectEntityId")
+			if crownEffectEntityId~=nil then
+				OldWargroove.deleteUnitEffect(crownEffectEntityId)
+				WargrooveExtra.removeUnitState(unit, "crownEffectEntityId")
+			else
+				OldWargroove.deleteUnitEffectByAnimation(unit.id, crownAnimation)
+
+			end
 		end
 	end
 end
@@ -385,6 +440,17 @@ function WargrooveExtra.removeBuff(unit, playerId, buffSpawnId, buffId, buffDeat
 	if foundBuff~=nil then
 		foundBuff:setHealth(0, foundBuff.id, true)
 		OldWargroove.updateUnit(foundBuff)
+--        local buffDeaths = UnitBuffDeaths:getBuffDeaths()
+--        local buffDeathId = OldWargroove.getUnitState(foundBuff, "buffDeathId")
+--        local unitId = OldWargroove.getUnitState(foundBuff, "unitId")
+--        local buffUnit = OldWargroove.getUnitById(tonumber(unitId))
+--        if buffDeathId and buffDeathId ~= "" then
+--            local buffDeath = buffDeaths[buffDeathId]
+--            if buffDeath then
+--                buffDeath(OldWargroove, buffUnit)
+--                --coroutine.yield()
+--            end
+--        end
 	end
 end
 local turnZero = 0
@@ -521,6 +587,19 @@ function WargrooveExtra.setMapMusic(music, intensity)
     Original.setMapMusic(music, intensity)
 end
 
+function WargrooveExtra.enableHireForPlayer(playerId)
+	local globalObject = WargrooveExtra.getGlobalObject()
+	OldWargroove.setUnitState(globalObject,"enableHire"..playerId,"true")
+	OldWargroove.updateUnit(globalObject)
+end
+
+function WargrooveExtra.canPlayerHire(playerId)
+	local globalObject = WargrooveExtra.getGlobalObject()
+	local state = OldWargroove.getUnitState(globalObject,"enableHire"..playerId)
+	if state == nil then return false end
+	return state == "true"
+end
+
 function WargrooveExtra.revealFogOfWar(playerId, locationId, visible)
 	local locationObject = WargrooveExtra.getStealthManagerObject(locationId)
 	local stateToSave = ""	
@@ -586,6 +665,45 @@ WargrooveExtra.skippingIntroOveride = false
 function WargrooveExtra.skipIntroOveride(skip)
 	WargrooveExtra.skippingIntroOveride = skip
 end
+function WargrooveExtra.getUnitById(unitId)
+	local unit = Original.getUnitById(unitId)
 
+	local function unitSetHealth(self, health, attackerId, ignoreParenting)
+		print("unit health was set.")
+        if ignoreParenting == nil then
+            ignoreParenting = false
+        end
+		local originalHealth = self.health+0
+        if self.unitClass.isDamagingParentUnit and not ignoreParenting then
+            local parentId = OldWargroove.getUnitState(self, "parentId")
+            local parent = WargrooveExtra.getUnitById(tonumber(parentId))
+
+            if parent then
+                parent:setHealth(health, attackerId)
+                OldWargroove.updateUnit(parent)
+            else
+                print("Child that is supposed to have a parent didn't. Something went terribly wrong.")
+            end
+        end
+
+        self.health = math.floor(math.max(0, math.min(health, 100)) * 0.01 * self.unitClass.maxHealth + 0.5)
+        self.attackerId = attackerId
+        if attackerId >= 0 then
+            local attacker = WargrooveExtra.getUnitById(attackerId)
+            self.attackerUnitClass = attacker.unitClass.id
+            self.attackerPlayerId = attacker.playerId
+        end
+		if health>originalHealth then
+			WargrooveExtra.registerHealedUnit(self.id,attackerId)
+			WargrooveExtra.reportOccation("unit_was_healed")
+		elseif health<originalHealth then
+			WargrooveExtra.registerDamagedUnit(self.id,attackerId)
+			WargrooveExtra.reportOccation("unit_was_damaged")
+		end
+    end
+
+	if unit~=nil then unit.setHealth = unitSetHealth end
+    return unit
+end
 
 return WargrooveExtra
