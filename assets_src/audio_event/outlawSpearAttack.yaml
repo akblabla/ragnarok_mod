@@ -1,0 +1,18 @@
+---
+actions:
+
+  - type: play
+    clips: [ sfx/clothMovement3.ogg ]
+    group: sfx
+    volume: 0.7
+    delay: 0
+    pitch: 1.2
+  - type: play
+    clips: [ sfx/cutscene/heavyStab.ogg ]
+    group: sfx
+    delay: 0.2
+    pitch: [ 0.9, 1.1 ]
+    volume: [ 0.9, 1.0 ]
+
+  
+...

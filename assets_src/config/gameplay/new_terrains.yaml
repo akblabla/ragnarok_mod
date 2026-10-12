@@ -362,7 +362,7 @@ terrains:
 
   - id: rough
     name: terrain_name_rough
-    defenceBonus: 1
+    defenceBonus: 2
     movementCost:
       walking: 1
       riding: 1

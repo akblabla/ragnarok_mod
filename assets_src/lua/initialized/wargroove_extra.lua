@@ -644,16 +644,11 @@ function WargrooveExtra.clearGlobalObjectCache()
 	globalObject = nil
 end
 
-function WargrooveExtra.clearCheckpointObjectCache()
-	checkpointObject = nil
-end
-
 function WargrooveExtra.fullClearCache()
 	OldWargroove.clearCaches()
 	OldWargroove.clearDisplayTargets()
 	WargrooveExtra.clearLocationObjectsCache()
 	WargrooveExtra.clearGlobalObjectCache()
-	WargrooveExtra.clearCheckpointObjectCache()
 end
 
 function WargrooveExtra.isSkippingIntroOveride()

@@ -61,15 +61,8 @@ function CheckpointManager.checkedForCheckpoint()
     return checkedForCheckpoint
 end
 
-local function file_exists(name)
-    return false
-end
 
-function CheckpointManager.checkpointExistsWithId(id)
-    return false
-end
-
-function CheckpointManager.checkCheckpoint()
+function CheckpointManager.checkCheckpoint(matchState)
 end
 
 function CheckpointManager.checkpointExistsWithId(id)

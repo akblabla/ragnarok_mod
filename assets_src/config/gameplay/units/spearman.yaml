@@ -64,7 +64,8 @@ units:
       idle: idle
     sounds:
       attackMap: unitAttack
-      attack: soldierAttackRed
+      attack: outlawSpearAttack
+      counter: soldierAttackRed
       attackShout: soldierPreAttackRed
       captureShout: soldierPreAttackRed
       death: soldierDieRed
@@ -74,9 +75,17 @@ units:
       hit: hitOrganic
       hitMap: hitOrganic
     attacks:
-      - id: primary
+      - id: counter
+        attackAnimationSequence: counter
         hitSpark: fx/bs_stab_attack
-        hitDelay: 0.4
+        hitDelay: 0.7
+        attackSound: counter
+        samePanel: true
+      - id: primary
+        attackAnimationSequence: attack
+        hitSpark: fx/bs_stab_attack
+        attackEffectSound: attack
+        hitDelay: [0.3, 0.9]
     shouts:
       soldier_shout1: soldierShoutRed1
       soldier_shout2: soldierShoutRed2
