@@ -121,7 +121,6 @@ function Recruit:execute(unit, targetPos, strParam, path)
 		 	StealthManager.makePermaSearching(spawn)
 		 	StealthManager.updateAwareness(spawn,false)
 		end
-		local spawn = Wargroove.getUnitById(spawnedId) 
 		print("We are building a unit")
 		Wargroove.updateUnit(spawn)
 		if unit.unitClassId == "outpost" then

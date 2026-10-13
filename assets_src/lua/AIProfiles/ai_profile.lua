@@ -18,6 +18,10 @@ function AIProfile.setProfile(playerId, profile)
         local AIProfile = require "AIProfiles/cityWar"
         AIProfile.setProfile()
     end
+    if profile == "abandoned_bandits" then
+        local AIProfile = require "AIProfiles/abandonedBandits"
+        AIProfile.setProfile()
+    end
     if profile == "rival_pirate" then
         local AIProfile = require "AIProfiles/rivalPirate"
         AIProfile.setProfile()
